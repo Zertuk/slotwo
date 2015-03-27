@@ -11,6 +11,8 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel = "stylesheet" href = "styles/skeleton.css">
+    <link rel = "stylesheet" href = "styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -20,23 +22,39 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">slotwo</h3>
+    <nav ng-controller = "MainCtrl">
+      <div class = "navMainInfo">
+        <p class = "navText">{{player.cash}} Gold</p>
+        <p class = "navText">{{player.health}} Health</p>
       </div>
+      <button>Player</button>
+      <button>Map</button>
+      <div class = "navCombatInfo">
+        <p class = "navText">Armor {{player.armor}}</p>
+        <p class = "navText">Damage {{player.damage}}</p>
+      </div>
+    </nav>
+    <div>
+      <div class = "sidebar">
+      </p>text</p>
+      </div>
+      <div class = "test">
+        <div class = "wrap" ng-controller = "MainCtrl">
+          <div class = "asciiWrap">
+            <pre>{{ascii.house}}</pre>
+          </div>
+        </div>
+     </div>
+    </div>
+    <div class="container">
+
 
       <div ng-view=""></div>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
     </div>
 
+
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

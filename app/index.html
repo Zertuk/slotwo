@@ -27,7 +27,7 @@
         <p class = "navText">{{player.cash}} Gold</p>
         <p class = "navText">{{player.health}} Health</p>
       </div>
-      <button>Player</button>
+      <button href = "/#/inventory">Player</button>
       <button>Map</button>
       <div class = "navCombatInfo">
         <p class = "navText">Armor {{player.armor}}</p>
@@ -38,20 +38,9 @@
       <div class = "sidebar">
       </p>text</p>
       </div>
-      <div class = "test">
-        <div class = "wrap" ng-controller = "MainCtrl">
-          <div class = "asciiWrap">
-            <pre>{{ascii.house}}</pre>
-          </div>
-        </div>
-     </div>
     </div>
-    <div class="container">
-
-
-      <div ng-view=""></div>
-
-    </div>
+    
+    <div class = "view" ng-view=""></div>
 
 
     

@@ -1,9 +1,9 @@
 body {
   font-size: 8px;
+  background-color: black;
+  color: white;
 }
 nav {
-  background-color: white;
-  color: black;
   height: 60px;
   text-align: center;
   font-size: 14px;
@@ -13,6 +13,14 @@ button {
   margin-top: 10px;
   height: 40px;
   width: 100px;
+}
+
+.mainTitle {
+  font-size: 14px;
+}
+
+.view {
+  display: inline-block;
 }
 
 
@@ -34,8 +42,8 @@ button {
   display: inline-block;
   text-align: center;
   width: 419px;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
 
 }
 
@@ -51,7 +59,7 @@ button {
 }
 
 .asciiWrap {
-  width: 300px;
+  width: 360px;
   margin: auto;
 }
 

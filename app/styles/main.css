@@ -10,10 +10,41 @@ nav {
 }
 
 button {
-  margin-top: 10px;
-  height: 40px;
+  height: 35px;
   width: 100px;
+  margin-top: 2px;
 }
+
+.health {
+  width: 100%;
+  font-size: 12px;
+  margin-top: 3px;
+  border-top: 1px solid white;
+}
+
+.healthBar {
+  width: 100%;
+  background-color: green;
+  height: 20px;
+  position: fixed;
+  z-index: -1;
+}
+
+
+.ascii {
+  display: inline-block;
+  background-color: green;
+  width: 200px;
+}
+
+.shopprices {
+  width: 100px;
+  display: inline-block;
+  background-color: red;
+  margin-top: -250px;
+}
+
+
 
 .mainTitle {
   font-size: 14px;
@@ -21,6 +52,8 @@ button {
 
 .view {
   display: inline-block;
+  border-top: 1px solid white;
+  width: 100%;
 }
 
 
@@ -41,9 +74,7 @@ button {
 .test {
   display: inline-block;
   text-align: center;
-  width: 419px;
-  border-top: 1px solid white;
-  border-left: 1px solid white;
+  width: 100%;
 
 }
 
@@ -65,9 +96,10 @@ button {
 
 
 .navMainInfo {
-  float: left;
   text-align: left;
+  margin-left: 3px;
 }
+
 
 .navCombatInfo {
   float: right;
@@ -80,6 +112,7 @@ button {
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 2px;
+  display: inline-block;
 }
 
 @media screen and (min-width: 768px) {

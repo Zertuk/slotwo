@@ -24,21 +24,18 @@
     <!-- Add your site or application content here -->
     <nav ng-controller = "MainCtrl">
       <div class = "navMainInfo">
+        <button>Player</button>
+        <button>Map</button>
         <p class = "navText">{{player.cash}} Gold</p>
-        <p class = "navText">{{player.health}} Health</p>
+
       </div>
-      <button href = "/#/inventory">Player</button>
-      <button>Map</button>
       <div class = "navCombatInfo">
-        <p class = "navText">Armor {{player.armor}}</p>
-        <p class = "navText">Damage {{player.damage}}</p>
+      </div>
+      <div class = "health">
+        <div class = "healthBar" ng-style = "healthWidth" ng-style = "healthColor"></div>
+        <p class = "healthText">{{player.health}} Health</p>
       </div>
     </nav>
-    <div>
-      <div class = "sidebar">
-      </p>text</p>
-      </div>
-    </div>
     
     <div class = "view" ng-view=""></div>
 

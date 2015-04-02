@@ -9,6 +9,8 @@
  */
 angular.module('slotwoApp')
   .controller('MainCtrl', function ($scope, $interval) {
+
+
   	$scope.rotate = false;
 
     var Monster = function() {
@@ -28,13 +30,14 @@ angular.module('slotwoApp')
       },
       this.damageDealtCall = function() {
         $scope.battle.damageDealth(this.monster, $scope.player);
-      }
+      };
     };
 
     var test = new Monster();
+    test.cashDrop = 5;
     console.log(test);
 
-    $scope.battle = {
+     var battle = {
       'active': false,
       damageDealt: function(unit, enemy) {
         var effectiveArmor = enemy.armor - unit.armorPen;
@@ -78,7 +81,6 @@ angular.module('slotwoApp')
         var percent = (this.health / this.maxHealth)*100;
         return percent;
       },
-
       healthUpdate: function() {
         if (this.health < this.maxHealth) {
           this.health = this.health + 1;
@@ -98,6 +100,7 @@ angular.module('slotwoApp')
         }
       }
   	};
+
 
   	function update()  {
       $scope.player.cashUpdate();

@@ -39,6 +39,10 @@ angular
         templateUrl: 'views/shop.html',
         controller: 'MainCtrl'
       })
+      .when('/level', {
+        templateUrl: 'views/level.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

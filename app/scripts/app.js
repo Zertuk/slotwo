@@ -43,6 +43,10 @@ angular
         templateUrl: 'views/level.html',
         controller: 'MainCtrl'
       })
+      .when('/battle', {
+        templateUrl: 'views/battle.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

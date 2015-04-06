@@ -13,11 +13,20 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel = "stylesheet" href = "styles/skeleton.css">
     <link rel = "stylesheet" href = "styles/normalize.css">
+    <link rel = "stylesheet" href = "scripts/unicodetiles/unicodetiles.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+      <script src="scripts/unicodetiles/unicodetiles.js"></script>
+  <script src="scripts/unicodetiles/ut.WebGLRenderer.js"></script>
+  <script src="scripts/unicodetiles/ut.CanvasRenderer.js"></script>
+  <script src="scripts/unicodetiles/ut.DOMRenderer.js"></script>
+  <script src="scripts/unicodetiles/input.js"></script>
+
+  <script src = "scripts/main.js"></script>
+
   </head>
-  <body ng-app="slotwoApp">
+  <body ng-app="slotwoApp" onload="initSimpleDungeon();">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -25,10 +34,14 @@
     <!-- Add your site or application content here -->
     <nav ng-controller = "MainCtrl">
       <div class = "navMainInfo">
-        <button>Player</button>
+        <button ng-click = "dropDown();">Player</button>
         <button>Map</button>
         <p class = "navText">{{player.cash}} Gold</p>
-
+      </div>
+      <div class = "testdrop" ng-style = "drop">
+        <p>test info</p>
+        <p>test info</p>
+        <p>test info</p>
       </div>
       <div class = "navCombatInfo">
       </div>
@@ -37,15 +50,15 @@
         <p class = "healthText">{{player.health}} Health</p>
       </div>
     </nav>
-    
-    <div class = "view" ng-view=""></div>
+    <div class = "view" ng-view="">
+    </div>
+    <div id = "game"></div>
 
 
     
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
-      var myDataRef = new Firebase('https://em15rlt96wv.firebaseio-demo.com/');
     </script>
 
     <!-- build:js(.) scripts/oldieshim.js -->

@@ -19,6 +19,10 @@ button {
   margin-top: 2px;
 }
 
+button:visited {
+  color: white;
+}
+
 .health {
   width: 100%;
   font-size: 12px;
@@ -128,38 +132,48 @@ button {
   text-align: center;
 }
 
-.levelplayerinfo {
-  background-color: red;
-  width: 49.5%;
+.leveltextbox {
+  height: 50px;
+  width: 49.8%;
   display: inline-block;
   margin: 0;
   padding: 0;
   text-align: left;
+  float: left;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
 }
 
-.levelplayerinfo p {
+.leveltextbox p {
   margin: 0;
   padding: 0;
+  padding-left: 10px;
 }
 
 .levelenemyinfo {
-  background-color: blue;
-  width: 49.5%;
+  width: 49.8%;
+  height: 50px;
+  float: right;
   display: inline-block;
   margin: 0;
   padding: 0;
   text-align: right;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
 }
 
 .levelenemyinfo p {
   margin: 0;
   padding: 0;
+  padding-right: 10px;
 }
 
 .levelenemyhealth {
   height: 15px;
-  width:  100px;
+  width:  75px;
   border: 1px solid white;
+  float: right;
+  margin-right: 10px;
 }
 
 .levelenemyhealthcolor {
@@ -168,6 +182,82 @@ button {
   height: 15px;
   margin-top: -12.5px;
 }
+
+.testdrop {
+  position: absolute;
+  display: none;
+  width: 100px;
+  margin-left: 3px;
+  margin-top: -1px;
+  float: left;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+  color: white
+}
+
+.testdrop p {
+  border-bottom: 1px solid white;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+.testdrop p:hover {
+  background-color: grey;
+}
+
+.inline {
+  display: inline;
+  margin: -1px;
+  padding: -1px;
+}
+
+.player {
+  float: left;
+}
+
+.level {
+  font-size: 8px;
+}
+
+#game {
+  font-size: 14px;
+  margin-top: 0px;
+  margin-left: 5px;
+
+  background-color: black;
+
+}
+
+.centerer {
+  text-align: center;
+}
+
+.battleplayer {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  height: 150px;
+}
+
+.battleenemy {
+  width: 50%;
+  display: inline-block;
+  float: right;
+  height: 150px;
+}
+
+.battleoptions {
+  display: block;
+  float: left;
+  height: 38px;
+  width: 100%;
+  border-top: 1px solid white;
+}
+
+
 
 @media screen and (min-width: 768px) {
 

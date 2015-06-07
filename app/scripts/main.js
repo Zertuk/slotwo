@@ -2,35 +2,52 @@
 var term, eng; // Can't be initialized yet because DOM is not ready
 var pl = { x: 3, y: 2 }; // Player position
 var updateFOV; // For some of the examples
-var map = [
-"Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ",
-"‡                                                                          ‡‡‡‡‡‡",
-"‡‡                                                                          ‡‡‡‡‡",
-"‡‡                               ______       ,,,,,  ,,,,,                   ‡‡‡ ",
-"‡‡                              /-\\\\\\\\\\\\     ,,,,,  ,,,,,                   ‡‡‡  ",
-"‡‡‡                             |=|____|    ,,,,,  ,,,,,                  ‡‡‡    ",
-"‡‡‡                                                                     ‡‡‡      ",
-" ‡‡‡                                                                  ‡‡‡        ",
-"  ‡‡‡‡                                                                ‡‡‡        ",
-"     ‡‡‡‡‡                                                          ‡‡‡          ",
-"        ‡‡‡‡‡‡                                                 ‡‡‡‡‡‡            ",
-"            ‡‡‡‡                                              ‡‡‡                ",
-"               ‡‡‡‡                                        ‡‡‡                   ",
-"                 ‡‡‡‡‡‡‡‡‡                           ‡‡‡‡‡‡‡‡                    ",
-"                    ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡\\O/‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡                       "];
+var current;
+
+var barn = {
+	start: [10, 10],
+	exits: {
+		begin: '0',
+		barn: '='
+	},
+	map:   ["Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ",
+			"‡                                                                          ‡‡‡‡‡‡",
+			"‡‡                                                                          ‡‡‡‡‡",
+			"‡‡                               ______       ,,,,,  ,,,,,                   ‡‡‡ ",
+			"‡‡                              /-\\\\\\\\\\\\     ,,,,,  ,,,,,                   ‡‡‡  ",
+			"‡‡‡                             |=|____|    ,,,,,  ,,,,,                  ‡‡‡    ",
+			"‡‡‡                                                                     ‡‡‡      ",
+			" ‡‡‡                                                                  ‡‡‡        ",
+			"  ‡‡‡‡                                                                ‡‡‡        ",
+			"     ‡‡‡‡‡                                                          ‡‡‡          ",
+			"        ‡‡‡‡‡‡                                                 ‡‡‡‡‡‡            ",
+			"            ‡‡‡‡                                              ‡‡‡                ",
+			"               ‡‡‡‡                                        ‡‡‡                   ",
+			"                 ‡‡‡‡‡‡‡‡‡                           ‡‡‡‡‡‡‡‡                    ",
+			"                    ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡\\O/‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡                       "]
+}
+
+var begin = {
+	start: [5, 5],
+	nextLevel: barn,
+	map: [
+			"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
+			"▒▒       ▒▒▒▒▒       ▒▒",
+			"▒▒       ▒▒▒▒▒        O",
+			"▒▒-^-    ▒▒▒▒▒       ▒▒",
+			"▒▒o__    ▒▒▒▒▒       ▒▒",
+			"▒▒       ▒▒▒▒▒    ---▒▒",
+			"▒▒       ▒▒▒▒▒  oxc  ▒▒",                 
+			"▒▒                   ▒▒",
+			"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"]
+}
 
 
-var map = [
-"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
-"▒▒       ▒▒▒▒▒       ▒▒",
-"▒▒       ▒▒▒▒▒        O",
-"▒▒-^-    ▒▒▒▒▒       ▒▒",
-"▒▒o__    ▒▒▒▒▒       ▒▒",
-"▒▒       ▒▒▒▒▒    ---▒▒",
-"▒▒       ▒▒▒▒▒  oxc  ▒▒",                 
-"▒▒                   ▒▒",
-"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"
-];
+barn.prevLevel = begin;
+
+var map;
+
+
 // thousands of Tiles on the fly.
 var AT = new ut.Tile("Y", 255, 255, 255);
 var TREE = new ut.Tile('‡', 0, 140, 40);
@@ -93,9 +110,20 @@ function onKeyDown(k) {
 	var oldx = pl.x, oldy = pl.y;
 	pl.x += movedir.x;
 	pl.y += movedir.y;
+	if (eng.tileFunc(pl.x, pl.y).getChar() === 'O') { loadNextLevel(); }
+	if (eng.tileFunc(pl.x, pl.y).getChar() === '=') { loadPrevLevel(); }
 	if (eng.tileFunc(pl.x, pl.y).getChar() !== '.') { pl.x = oldx; pl.y = oldy; console.log('ow')}
-	if (eng.tileFunc(pl.x, pl.y - 1).getChar() === '=') { initEffect(); }
 	tick();
+}
+
+function loadNextLevel() {
+	console.log('next');
+	mapSwitch('next');
+}
+
+function loadPrevLevel() {
+	console.log('prev');
+	mapSwitch('prev');
 }
 
 // Initialize stuff
@@ -103,39 +131,47 @@ function initSimpleDungeon() {
 	window.setInterval(tick, 50); // Animation
 	// Initialize Viewport, i.e. the place where the characters are displayed
 	term = new ut.Viewport(document.getElementById("game"), 60, 15);
-	// Initialize Engine, i.e. the Tile manager
-	eng = new ut.Engine(term, getDungeonTile, map[0].length, map.length);
+	initMapEngine(begin);
 	// Initialize input
 	ut.initInput(onKeyDown);
 }
 
-		function getAnotherTile(x, y) {
-			var t = "";
-			try { t = map[map.length - y - 1][x]; }
-			catch(err) { return ut.NULLTILE; }
-			if (t === '#') return WALL;
-			if (t === '.') return FLOOR;
-			return ut.NULLTILE;
-		}
+function initMapEngine(level) {
+	map = level.map
+	current = level;
+	pl.x = level.start[0]; pl.y = level.start[1];
+	eng = new ut.Engine(term, getDungeonTile, map[0].length, map.length);
+}
 
-		function mapSwitch() {
-			map = map2;
-			var eng;
-			eng = new ut.Engine(term, getDungeonTile, map[0].length, map.length);
-		}
+function mapSwitch(input) {
+	console.log(input);
+	if (input == 'next') {
+		current = current.nextLevel;
+	}
+	else if (input == 'prev') {
+		current = current.prevLevel;
+		console.log(current);
+	}
+	map = current.map;
+	pl.x = current.start[0]; 
+	pl.y = current.start[1];
+	eng = new ut.Engine(term, getDungeonTile, map[0].length, map.length);
 
-		var flipflop = false;
-		function doTransition() {
-			var effects = ["boxout", "boxin" ];
-			var effect = effects[0];
-			var duration = 250;
-			eng.setTileFunc(getAnotherTile, effect, duration);
-			mapSwitch();
-			eng.setTileFunc(getDungeonTile, effect, duration);
-		}
 
-		function initEffect() {
-			pl.x = 5; pl.y = 4;
-			doTransition();
-		}
+}
+
+
+function doTransition() {
+	var effects = ["boxout", "boxin" ];
+	var effect = effects[0];
+	var duration = 250;
+	eng.setTileFunc(getAnotherTile, effect, duration);
+	mapSwitch();
+	eng.setTileFunc(getDungeonTile, effect, duration);
+}
+
+function initEffect() {
+	pl.x = 5; pl.y = 4;
+	doTransition();
+}
 

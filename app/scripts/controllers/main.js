@@ -70,7 +70,38 @@ angular.module('slotwoApp')
           }
         }
       }
-    }; 
+    };
+
+    $scope.moves = {
+      'resourcesUsed': 0,
+      'damage': 5,
+      'name': 'Attack',
+      'description': 'This is a basic attack',
+      attack: function() {
+        this.resourcesUsed = 0;
+        this.damage = 5;
+        this.name = "Attack"
+      },
+      fireball: function() {
+        this.resourcesUsed = 10;
+        this.damage = 10;
+        this.name = "Fireball";
+        this.description = "A fiery blast dealing small damage"
+      },
+      block: function() {
+        this.resourcesUsed = 10;
+        this.damage = 5;
+        this.name = "Block";
+        this.description = "Blocks half of the enemys next attac dealing minimal damage."
+      }
+    }
+
+
+
+
+
+
+
 
 
 
@@ -83,6 +114,9 @@ angular.module('slotwoApp')
   		'damage': 5,
   		'cash': 0,
       'cashPerTick': 1,
+      moveOne: $scope.moves.attack,
+      moveTwo: $scope.moves.fireball,
+      'moveThree': $scope.moves.block,
       cashUpdate: function() {
         this.cash = this.cash + this.cashPerTick;
       },
@@ -113,6 +147,9 @@ angular.module('slotwoApp')
         }
       }
   	};
+
+    $scope.player.moveTwo
+    console.log($scope.moves.damage);
 
     var testX;
     var testY;

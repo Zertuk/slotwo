@@ -66,11 +66,18 @@ angular.module('slotwoApp')
 		stick.desc   = 'It used to be part of a log';
 		stick.name   = "Stick";
 
+		var rock   = new Item();
+		rock.spawn = ['Forest'];
+		rock.desc  = 'It is a rock';
+		rock.name  = "Rock";
+
+
 
 		$scope.inventory = {
 			grass: 0,
 			wood: 0,
-			stick: 0
+			stick: 0,
+			rock: 0
 		}
 		$scope.base = {
 			campfire: null,
@@ -258,141 +265,7 @@ angular.module('slotwoApp')
  
 
 
-	   $scope.ascii.testing = [
-"Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ----Ÿ",
-"‡                                                                          ‡‡‡‡‡‡",
-"‡‡                                                                          ‡‡‡‡‡",
-"‡‡                               ______       /////  /////                   ‡‡‡ ",
-"‡‡                              /-\\\\\\\\\\\\     /////  /////                   ‡‡‡  ",
-"‡‡‡                             |H|____|    /////  /////                  ‡‡‡    ",
-"‡‡‡                                                                     ‡‡‡      ",
-" ‡‡‡                                                                  ‡‡‡        ",
-"  ‡‡‡‡                                                                ‡‡‡        ",
-"     ‡‡‡‡‡                                                          ‡‡‡          ",
-"        ‡‡‡‡‡‡                                                 ‡‡‡‡‡‡            ",
-"            ‡‡‡‡                                              ‡‡‡                ",
-"               ‡‡‡‡                                        ‡‡‡                   ",
-"                 ‡‡‡‡‡‡‡‡‡                           ‡‡‡‡‡‡‡‡                    ",
-"                    ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡\\O/‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡                       "];
-
-	function makeArray(rows, cols) {
-	  var asciiArray = [];
-	  for (var i = 0; i < rows; i++) {
-		asciiArray.push([]);
-	  }
-	  for (var i = 0; i < rows; i++) {
-		for (var j = asciiArray[i].length; j < cols; j++) {
-		  if (i == rows - 1) {
-			asciiArray[i].push('_');
-		  }
-		  else {
-			asciiArray[i].push("'");
-		  }
-		}
-	  }
-	  asciiArray[rows - 2][4] = 'Y';
-	  testX = 4;
-	  testY = rows - 2;
-	  console.log(asciiArray);
-	  $scope.testArray = asciiArray;
-	}
-
-	$scope.move = function() {
-	  //up
-	  $scope.testArray[testY][testX] = "'";
-	  $scope.testArray[testY - 1][testX] = 'Y';
-
-	}
-
-	// document.onkeydown = function(e) {
-	//     e = e || window.event;
-	//     switch(e.which || e.keyCode) {
-	//         case 37: // left
-	//           console.log('left');
-	//           if ($scope.testArray[testY][testX - 1] == "'") {
-	//             $scope.testArray[testY][testX] = "'";
-	//             $scope.testArray[testY][testX - 1] = "Y";
-	//             testX = testX - 1;
-	//           }
-	//           else {
-	//             console.log('cnat move that way')
-	//           }
-	//           break;
-
-	//         case 38: // up
-	//           console.log('up');
-	//           if ($scope.testArray[testY - 1][testX] == "'") {
-	//             $scope.testArray[testY][testX] = "'";
-	//             $scope.testArray[testY - 1][testX] = "Y";
-	//             testY = testY - 1;
-	//           }
-	//           else {
-	//             console.log('cnat move that way')
-	//           }
-	//           break;
-
-	//         case 39: // right
-	//           console.log('right');
-	//           if ($scope.testArray[testY][testX + 1] == "'") {
-	//             $scope.testArray[testY][testX] = "'";
-	//             $scope.testArray[testY][testX + 1] = "Y";
-	//             testX = testX + 1;
-	//           }
-	//           else {
-	//             console.log('cnat move that way')
-	//           }
-	//           break;
-
-	//         case 40: // down
-	//           console.log('down');
-	//           if ($scope.testArray[testY + 1][testX] == "'") {
-	//             $scope.testArray[testY][testX] = "'";
-	//             $scope.testArray[testY + 1][testX] = "Y";
-	//             testY = testY + 1;
-	//           }
-	//           else {
-	//             console.log('cnat move that way')
-	//           }
-	//           break;
-
-	//         default: return; // exit this handler for other keys
-	//     }
-	//     e.preventDefault(); // prevent the default action (scroll / move caret)
-	// };
-
-	makeArray(11,120);
-	$scope.textBoxArray = function(input) {
-	  $scope.textbox[3] = $scope.textbox[2];
-	  $scope.textbox[2] = $scope.textbox[1];
-	  $scope.textbox[1] = $scope.textbox[0];
-	  $scope.textbox[0] = input;
-	}
 
 
 
-
-
-
-
-
-	$scope.makeLevel = function() {
-	  $scope.levelArray = new Array();
-	  var j = 0;
-	  for (var i = 0; i < $scope.ascii.level.length; i++) {
-		var test = $scope.ascii.level[i][j] + $scope.ascii.level[i+1];
-		if (test == 'n') {
-		  j = j + 1;
-		}
-		else {
-		  $scope.levelArray[i] = $scope.ascii.level[i]
-		}
-	  }
-	   console.log($scope.levelArray);
-	}
-	$scope.makeLevel();
-
-	$scope.textbox = ['hello', 'ok', 'no', 'yes'];
-  });
-
-
-  
+}); 

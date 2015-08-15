@@ -42,17 +42,14 @@ angular.module('slotwoApp')
 		}
 
 		//item initialization
-
 		var grass   = new Item();
 		grass.spawn = ['Forest'];
 		grass.desc  = 'A bundle of grass';
 		grass.name = 'Grass';
 
-
 		var wood  = new Item();
 		wood.desc = 'A slab of wood';
 		wood.name = 'Wood';
-
 
 		var campfire    = new Item();
 		campfire.recipe = ['wood-2', 'grass-2'];
@@ -76,6 +73,10 @@ angular.module('slotwoApp')
 		tent.desc   = 'Stay safe for the night';
 		tent.name   = 'Tent';
 
+		var club = new Item();
+		club.recipe = ['stick-1', 'grass-1', 'rock-1'];
+		club.desc = 'This thing is a beast';
+		club.name = "Club";
 
 		$scope.inventory = {
 			grass: 0,
@@ -93,19 +94,8 @@ angular.module('slotwoApp')
 
 
 
-	$scope.rotate = false;
-	var hidden = true;
 
-	$scope.dropDown = function() {
-	  if (hidden) {
-		$scope.drop = {"display": "block"};
-		hidden = false;
-	  }
-	  else {
-		$scope.drop = {"display": "none"};
-		hidden = true;
-	  }
-	}
+
 
 
 

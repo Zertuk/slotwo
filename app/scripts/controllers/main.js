@@ -57,20 +57,24 @@ angular.module('slotwoApp')
 		var campfire    = new Item();
 		campfire.recipe = ['wood-2', 'grass-2'];
 		campfire.desc   = 'A warm fire';
-		campfire.name   = "Campfire";
+		campfire.name   = 'Campfire';
 		campfire.craft();
 
 		var stick    = new Item();
 		stick.recipe = ['wood-1'];
 		stick.quant  = 5;
 		stick.desc   = 'It used to be part of a log';
-		stick.name   = "Stick";
+		stick.name   = 'Stick';
 
 		var rock   = new Item();
 		rock.spawn = ['Forest'];
 		rock.desc  = 'It is a rock';
-		rock.name  = "Rock";
+		rock.name  = 'Rock';
 
+		var tent = new Item();
+		tent.recipe = ['stick-4, grass-4'];
+		tent.desc   = 'Stay safe for the night';
+		tent.name   = 'Tent';
 
 
 		$scope.inventory = {

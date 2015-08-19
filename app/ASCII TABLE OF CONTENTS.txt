@@ -1,7 +1,0 @@
-ASCII TABLE OF CONTENTS
-
-‡ = tree
-C = chest
-, = open area
-. = shallow water
-/ = tilled land

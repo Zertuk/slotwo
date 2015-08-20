@@ -10,7 +10,7 @@
 	/* @ngInject */
 	function InventoryController($q, dataservice, logger) {
 		var vm = this;
-
+		vm.itemDictionary = {}
 		vm.inventory = {
 			//materials
 			stick: 0,
@@ -46,7 +46,7 @@
 				var testAmt = 5;
 				for (var i = 0; i < this.recipe.length; i++) {
 					recipe[i] = this.recipe[i].split('-');
-					if (recipe[i][1] > testAmt) {
+					if (recipe[i][1] > vm.itemDictionary[recipe[i][0]][1][1]) {
 						console.log('not enough items');
 						err = err + 1;
 					}
@@ -54,7 +54,7 @@
 				if (err === 0) {
 					console.log('create');
 					for (var j = 0; j < recipe.length; j++) {
-						testAmt = testAmt - recipe[j][0];
+						vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
 					}
 				}
 			}
@@ -75,7 +75,6 @@
 		campfire.recipe = ['wood-2', 'grass-2'];
 		campfire.desc   = 'A warm fire';
 		campfire.name   = 'Campfire';
-		campfire.craft();
 
 		var stick    = new Item();
 		stick.recipe = ['wood-1'];
@@ -98,15 +97,12 @@
 		club.desc = 'This thing is a beast';
 		club.name = 'Club';
 
-		vm.itemDictionay = {}
-		vm.itemDictionay['grass'] = [['item', grass], ['amount', 0], ['test', 0]]
-
+		
+		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5], ['test', 0]];
+		vm.itemDictionary['wood']  = [['item', wood], ['amount', 3], ['test', 0]];
 
 		function activate() {
-			console.log(vm.itemDictionay[grass.slug][1][1]);
-			console.log(vm.itemDictionay[grass.slug]);
-
-
+			campfire.craft();
 		}
 		activate();
 	}

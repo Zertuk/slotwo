@@ -25,22 +25,23 @@
 				console.log('does nothing');
 			},
 			this.craft = function() {
-				var recipe = [];
-				var err = 0;
-				var testAmt = 5;
-				for (var i = 0; i < this.recipe.length; i++) {
-					recipe[i] = this.recipe[i].split('-');
-					if (recipe[i][1] > vm.itemDictionary[recipe[i][0]][1][1]) {
-						console.log('not enough items');
-						err = err + 1;
+				if (typeof this.recipe !== 'undefined') {
+					var recipe = [];
+					var err = 0;
+					var testAmt = 5;
+					for (var i = 0; i < this.recipe.length; i++) {
+						recipe[i] = this.recipe[i].split('-');
+						if (recipe[i][1] > vm.itemDictionary[recipe[i][0]][1][1]) {
+							console.log('not enough items');
+							err = err + 1;
+						}
 					}
-				}
-				if (err === 0) {
-					console.log('create');
-					for (var j = 0; j < recipe.length; j++) {
-						vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
+					if (err === 0) {
+						for (var j = 0; j < recipe.length; j++) {
+							vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
+						}
+						vm.itemDictionary[this.slug()][1][1] = vm.itemDictionary[this.slug()][1][1] + this.quant;
 					}
-					vm.itemDictionary[this.slug()][1][1] = vm.itemDictionary[this.slug()][1][1] + this.quant;
 				}
 			}
 		};
@@ -84,7 +85,7 @@
 		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', wood], ['amount', 3]];
 		vm.itemDictionary['campfire'] = [['item', campfire], ['amount', 0]];
-		vm.itemDictionary['stick'] = [['item', stick], ['amount', 0]];
+		vm.itemDictionary['stick'] = [['item', stick], ['amount', 10]];
 		vm.itemDictionary['tent'] = [['item', tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item'], club, ['amount', 0]]
 

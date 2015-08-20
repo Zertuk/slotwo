@@ -32,10 +32,6 @@
 			loincloth: 0
 		};
 
-		vm.itemDictionary = {
-			stick: vm.inventory.stick,
-			gass: vm.inventory.grass
-		}
 		var Item = function() {
 			this.recipe  = undefined,
 			this.quant = 1,
@@ -102,11 +98,15 @@
 		club.desc = 'This thing is a beast';
 		club.name = 'Club';
 
+		vm.itemDictionay = {}
+		vm.itemDictionay['grass'] = [['item', grass], ['amount', 0], ['test', 0]]
 
 
 		function activate() {
-			console.log(vm.itemDictionary(grass.slug));
-			console.log(vm.inventory.test);
+			console.log(vm.itemDictionay[grass.slug][1][1]);
+			console.log(vm.itemDictionay[grass.slug]);
+
+
 		}
 		activate();
 	}

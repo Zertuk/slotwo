@@ -1,3 +1,16 @@
 <div ng-controller = "InventoryController as vm">
-	<p>inventory controller</p>
+	<h1>inventory controller</h1>
+		<table>
+			<tr>
+				<th>Item</th>
+				<th>Amount</th>
+				<th>Craft</th>
+			</tr>
+			<tr ng-repeat = "item in vm.itemDictionary">
+				<td>{{item[0][1].name}}</td>
+				<td>{{item[1][1]}}</td>
+				<td ng-click = "item[0][1].craft()">Craft
+			</tr>
+		</table>
+	</div>
 </div>

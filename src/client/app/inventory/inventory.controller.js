@@ -11,26 +11,6 @@
 	function InventoryController($q, dataservice, logger) {
 		var vm = this;
 		vm.itemDictionary = {}
-		vm.inventory = {
-			//materials
-			stick: 0,
-			grass: 0,
-			rock: 0,			
-			wood: 0,
-
-			//food
-			meat: 0,
-
-			//structure
-			tent: 0,
-			campfire: 0,
-
-			//weapons
-			club: 0,
-
-			//armor
-			loincloth: 0
-		};
 
 		var Item = function() {
 			this.recipe  = undefined,
@@ -60,7 +40,6 @@
 				}
 			}
 		};
-
 
 		var grass   = new Item();
 		grass.slug = 'grass';
@@ -100,13 +79,14 @@
 		club.desc = 'This thing is a beast';
 		club.name = 'Club';
 
-		
 		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', wood], ['amount', 3]];
-		vm.itemDictionary['campfire'] = [['item', campfire], ['amount', 0]]
+		vm.itemDictionary['campfire'] = [['item', campfire], ['amount', 0]];
+		vm.itemDictionary['stick'] = [['item', stick], ['amount', 0]];
+		vm.itemDictionary['tent'] = [['item', tent], ['amount', 0]];
+		vm.itemDictionary['club'] = [['item'], club, ['amount', 0]]
 
 		function activate() {
-			campfire.craft();
 		}
 		activate();
 	}

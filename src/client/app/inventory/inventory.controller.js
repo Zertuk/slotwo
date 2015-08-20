@@ -16,7 +16,11 @@
 			this.recipe  = undefined,
 			this.quant = 1,
 			this.spawn = undefined,
-			this.slug = undefined,
+			this.name = "Default",
+			this.slug = function() {
+				var slug = this.name.toLowerCase();
+				return slug;
+			},
 			this.effect = function() {
 				console.log('does nothing');
 			},
@@ -36,24 +40,22 @@
 					for (var j = 0; j < recipe.length; j++) {
 						vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
 					}
-					vm.itemDictionary[this.slug][1][1] = vm.itemDictionary[this.slug][1][1] + this.quant;
+					vm.itemDictionary[this.slug()][1][1] = vm.itemDictionary[this.slug()][1][1] + this.quant;
 				}
 			}
 		};
 
 		var grass   = new Item();
-		grass.slug = 'grass';
 		grass.spawn = ['Forest'];
 		grass.desc  = 'A bundle of grass';
 		grass.name = 'Grass';
+		grass.slug;
 
 		var wood  = new Item();
-		wood.slug = 'wood';
 		wood.desc = 'A slab of wood';
 		wood.name = 'Wood';
 
 		var campfire    = new Item();
-		campfire.slug = 'campfire'
 		campfire.recipe = ['wood-2', 'grass-2'];
 		campfire.desc   = 'A warm fire';
 		campfire.name   = 'Campfire';
@@ -87,6 +89,7 @@
 		vm.itemDictionary['club'] = [['item'], club, ['amount', 0]]
 
 		function activate() {
+			console.log(grass.slug());
 		}
 		activate();
 	}

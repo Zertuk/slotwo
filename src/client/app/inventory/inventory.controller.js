@@ -56,6 +56,7 @@
 					for (var j = 0; j < recipe.length; j++) {
 						vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
 					}
+					vm.itemDictionary[this.slug][1][1] = vm.itemDictionary[this.slug][1][1] + this.quant;
 				}
 			}
 		};
@@ -68,10 +69,12 @@
 		grass.name = 'Grass';
 
 		var wood  = new Item();
+		wood.slug = 'wood';
 		wood.desc = 'A slab of wood';
 		wood.name = 'Wood';
 
 		var campfire    = new Item();
+		campfire.slug = 'campfire'
 		campfire.recipe = ['wood-2', 'grass-2'];
 		campfire.desc   = 'A warm fire';
 		campfire.name   = 'Campfire';
@@ -98,8 +101,9 @@
 		club.name = 'Club';
 
 		
-		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5], ['test', 0]];
-		vm.itemDictionary['wood']  = [['item', wood], ['amount', 3], ['test', 0]];
+		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5]];
+		vm.itemDictionary['wood']  = [['item', wood], ['amount', 3]];
+		vm.itemDictionary['campfire'] = [['item', campfire], ['amount', 0]]
 
 		function activate() {
 			campfire.craft();

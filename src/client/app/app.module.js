@@ -8,6 +8,7 @@
 		'app.inventory',
 		'app.map',
 		'app.town',
+		'app.main',
 		'app.layout'
 	]);
 

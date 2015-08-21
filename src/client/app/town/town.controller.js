@@ -5,14 +5,16 @@
         .module('app.town')
         .controller('TownController', TownController);
 
-    TownController.$inject = [];
+    TownController.$inject = ['$scope'];
 
     /* @ngInject */
-    function TownController() {
+    function TownController($scope) {
         var vm = this;
-        vm.title = 'TownController';
-
-        activate();
+        vm.structures = {
+            campfire: 0,
+            tent: 0
+        }
+        activate(console.log($scope));
 
         ////////////////
 

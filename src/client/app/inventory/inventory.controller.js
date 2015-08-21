@@ -6,9 +6,9 @@
 		.controller('InventoryController', InventoryController);
 
 
-	InventoryController.$inject = [];
+	InventoryController.$inject = ['$scope'];
 	/* @ngInject */
-	function InventoryController() {
+	function InventoryController($scope) {
 		var vm = this;
 		vm.itemDictionary = {}
 
@@ -98,6 +98,8 @@
 		vm.itemDictionary['stick'] = [['item', stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item', club], ['amount', 0]]
+
+		$scope.itemDictionary = vm.itemDictionary;
 
 		function activate() {
 		}

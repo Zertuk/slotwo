@@ -15,6 +15,7 @@
 		var Item = function() {
 			this.recipe  = undefined,
 			this.quant = 1,
+			this.cat = 'default',
 			this.spawn = undefined,
 			this.name = "Default",
 			this.slug = function() {
@@ -52,36 +53,43 @@
 		grass.spawn = ['Forest'];
 		grass.desc  = 'A bundle of grass';
 		grass.name = 'Grass';
+		grass.cat = 'ingredient';
 		grass.slug;
 
 		var wood  = new Item();
 		wood.desc = 'A slab of wood';
+		wood.cat = 'ingredient';
 		wood.name = 'Wood';
 
 		var campfire    = new Item();
 		campfire.recipe = ['wood-2', 'grass-2'];
 		campfire.desc   = 'A warm fire';
+		campfire.cat = 'structure';
 		campfire.name   = 'Campfire';
 
 		var stick    = new Item();
 		stick.recipe = ['wood-1'];
 		stick.quant  = 5;
 		stick.desc   = 'It used to be part of a log';
+		stick.cat = 'ingredient'
 		stick.name   = 'Stick';
 
 		var rock   = new Item();
 		rock.spawn = ['Forest'];
 		rock.desc  = 'It is a rock';
+		rock.cat = 'ingredient';
 		rock.name  = 'Rock';
 
 		var tent = new Item();
 		tent.recipe = ['stick-1', 'grass-1'];
 		tent.desc   = 'Stay safe for the night';
+		tent.cat = 'structure';
 		tent.name   = 'Tent';
 
 		var club = new Item();
 		club.recipe = ['stick-1', 'grass-1', 'rock-1'];
 		club.desc = 'This thing is a beast';
+		club.cat = 'weapon';
 		club.name = 'Club';
 
 		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5]];

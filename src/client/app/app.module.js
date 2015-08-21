@@ -7,6 +7,7 @@
 		'app.admin',
 		'app.inventory',
 		'app.map',
+		'app.town',
 		'app.layout'
 	]);
 

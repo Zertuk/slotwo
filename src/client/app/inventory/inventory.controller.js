@@ -39,7 +39,9 @@
 					if (err === 0) {
 						for (var j = 0; j < recipe.length; j++) {
 							vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
+							console.log(vm.itemDictionary[recipe[j][0]][1])
 						}
+						console.log(vm.itemDictionary[this.slug()][1][1])
 						vm.itemDictionary[this.slug()][1][1] = vm.itemDictionary[this.slug()][1][1] + this.quant;
 					}
 				}
@@ -73,7 +75,7 @@
 		rock.name  = 'Rock';
 
 		var tent = new Item();
-		tent.recipe = ['stick-4, grass-4'];
+		tent.recipe = ['stick-1', 'grass-1'];
 		tent.desc   = 'Stay safe for the night';
 		tent.name   = 'Tent';
 
@@ -85,12 +87,11 @@
 		vm.itemDictionary['grass'] = [['item', grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', wood], ['amount', 3]];
 		vm.itemDictionary['campfire'] = [['item', campfire], ['amount', 0]];
-		vm.itemDictionary['stick'] = [['item', stick], ['amount', 10]];
+		vm.itemDictionary['stick'] = [['item', stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', tent], ['amount', 0]];
-		vm.itemDictionary['club'] = [['item'], club, ['amount', 0]]
+		vm.itemDictionary['club'] = [['item', club], ['amount', 0]]
 
 		function activate() {
-			console.log(grass.slug());
 		}
 		activate();
 	}

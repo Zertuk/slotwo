@@ -6,9 +6,9 @@
 		.controller('InventoryController', InventoryController);
 
 
-	InventoryController.$inject = ['$q', 'dataservice', 'logger'];
+	InventoryController.$inject = [];
 	/* @ngInject */
-	function InventoryController($q, dataservice, logger) {
+	function InventoryController() {
 		var vm = this;
 		vm.itemDictionary = {}
 

@@ -18,7 +18,7 @@
                 config: {
                     url: '/town',
                     templateUrl: 'app/town/town.html',
-                    controller: 'MapController',
+                    controller: 'TownController',
                     controllerAs: 'vm',
                     title: 'town'
                 }

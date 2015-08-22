@@ -1,4 +1,7 @@
 <div ng-controller = "MapController as vm">
 	<h1>map controller</h1>
-		
+	<button ng-click = "vm.gatherResource(vm.forest, 'wood-1')">gather</button>
+	<div class = "loadwrap">
+		<div class = "gatherload loading"></div>
+	</div>
 </div>

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.map')
+        .module('app.maps')
         .controller('MapController', MapController);
 
     MapController.$inject = [];
@@ -28,6 +28,7 @@
             //will be used in future when linked
             // var duration = resourceArray[0].time * resourceArray[1];
             var duration = 60 * resourceArray[1];
+
             console.log(duration)
         }
 

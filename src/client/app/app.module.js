@@ -5,6 +5,7 @@
 		'app.core',
 		'app.widgets',
 		'app.admin',
+		'app.maps',
 		'app.inventory',
 		'app.town',
 		'app.main',

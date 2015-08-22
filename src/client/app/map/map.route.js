@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.map')
+        .module('app.maps')
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];

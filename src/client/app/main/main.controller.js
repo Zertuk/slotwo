@@ -5,10 +5,10 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = [];
+    MainController.$inject = ['$rootScope'];
 
     /* @ngInject */
-    function MainController() {
+    function MainController($rootScope) {
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;
@@ -25,6 +25,7 @@
             vm.count = vm.count + 1;
             console.log(vm.count);
             setTimeout(mainLoop, 1000);
+            console.log($rootScope.gather)
         }
     }
 })();

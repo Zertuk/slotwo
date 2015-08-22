@@ -5,10 +5,10 @@
         .module('app.maps')
         .controller('MapController', MapController);
 
-    MapController.$inject = [];
+    MapController.$inject = ['$rootScope'];
 
     /* @ngInject */
-    function MapController() {
+    function MapController($rootScope) {
         var vm = this;
         
         var Location = function() {
@@ -27,6 +27,7 @@
             var resourceArray = resource.split('-');
             //will be used in future when linked
             // var duration = resourceArray[0].time * resourceArray[1];
+            $rootScope.gather = true;
             var duration = 60 * resourceArray[1];
 
             console.log(duration)

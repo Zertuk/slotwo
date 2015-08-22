@@ -1,9 +1,11 @@
-@color_lightblue: #52b9e9;
+@color_lightblue: #00BFFF;
 @color_blue: #1171a3;
 @color_success: #43c83c;
 @color_warning: #f88529;
 @color_important: #fa3031;
 @color_violet: #932ab6;
+@color_black: #191919;
+@color_white: #f7f7f7;
 
 * {
     /*-webkit-box-shadow: none !important;
@@ -25,8 +27,8 @@ nav ul li {
 body {
     box-sizing: border-box;
     padding: 50px;
-    background: #191919;
-    color:  #f7f7f7;
+    background: @color_black;
+    color: @color_white;
 }
 
 div {
@@ -36,12 +38,12 @@ div {
 .loadwrap {
     width: 200px;
     height: 24px;
-    border: 1px solid #f7f7f7;
+    border: 1px solid @color_white;
 }
 
 .gatherload.loading {
     width: 100px;
-    background: #00BFFF;
+    background: @color_lightblue;
     height: 22px;
 }
 

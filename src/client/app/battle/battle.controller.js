@@ -11,7 +11,9 @@
     function BattleController($rootScope) {
         var vm = this;
 
-        vm.level = '__________________';
+        vm.level = [];
+
+        vm.level = ['_', '_', '_', '_', '_']
 
 
 
@@ -21,7 +23,6 @@
 
         function moveInLevel(i) {
             var player = "Y";
-            console.log(vm.level.split());
             if (vm.level[i] == '_') {
                 console.log('floor');
             }

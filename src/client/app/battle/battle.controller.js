@@ -5,12 +5,12 @@
         .module('app.battle')
         .controller('BattleController', BattleController);
 
-    BattleController.$inject = ['$rootScope'];
+    BattleController.$inject = ['$scope'];
 
     /* @ngInject */
-    function BattleController($rootScope) {
+    function BattleController($scope) {
         var vm = this;
-
+        vm.count = 0;
         vm.level = [];
 
         vm.level = ['_', '_', '_', '_', '_']
@@ -21,20 +21,29 @@
         activate();
 
 
-        function moveInLevel(i) {
+        function moveInLevel() {
             var player = "Y";
-            if (vm.level[i] == '_') {
-                console.log('floor');
+
+            if (vm.level[vm.count + 1] == '_') {
+                vm.level[vm.count + 1] = 'Y';
+                vm.level[vm.count] = '_';
+                vm.count = vm.count + 1;
+                console.log(vm.level);
             }
+            else {
+                console.log(vm.count + ' count')
+            }
+            if(!$scope.$$phase) {
+                $scope.$apply();
+            }
+            setTimeout(moveInLevel, 1000);
         }
 
 
         ////////////////
 
         function activate() {
-            for (var i = 0; i < vm.level.length; i++) {
-                moveInLevel(i);
-            }
+            moveInLevel();
         }
     }
 })();

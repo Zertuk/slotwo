@@ -13,7 +13,8 @@
         vm.count = 0;
         vm.level = [];
 
-        vm.level = ['_', '_', '_', '_', '_']
+        vm.level = ['_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '-',
+                    '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_']
 
 
 
@@ -23,7 +24,6 @@
 
         function moveInLevel() {
             var player = "Y";
-
             if (vm.level[vm.count + 1] == '_') {
                 vm.level[vm.count + 1] = 'Y';
                 vm.level[vm.count] = '_';
@@ -36,7 +36,7 @@
             if(!$scope.$$phase) {
                 $scope.$apply();
             }
-            setTimeout(moveInLevel, 1000);
+            setTimeout(moveInLevel, 500);
         }
 
 

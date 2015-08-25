@@ -36,8 +36,12 @@ div {
     box-sizing: border-box;
 }
 
-pre {
-    display: inline-block;
+p, pre {
+    float: left;
+}
+
+pre:nth-of-type(27) {
+    clear: both;
 }
 
 .loadwrap {
@@ -52,3 +56,8 @@ pre {
     height: 22px;
 }
 
+.levelwrap {
+}
+
+.levelwrap pre {
+}

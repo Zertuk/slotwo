@@ -1,4 +1,7 @@
 <div ng-controller = "BattleController as vm">
 	<h1>battle controller</h1>
-	<pre ng-repeat = "tile in vm.level track by $index">{{tile}}</pre>
+	<div class = "levelwrap">
+		<pre ng-repeat = "tile in vm.level track by $index">{{tile}}</pre>
+		<br ng-if="($index == 10)">
+	</div>
 </div>

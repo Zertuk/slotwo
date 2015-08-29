@@ -15,10 +15,11 @@
         vm.level = [];
 
         vm.level = ['_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_',
-                    '_', '_', '_', '_', '_', '_', '_', '_', '_', 'S', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', 'T']
+                    '_', '_', '_', '_', '_', '_', '_', '_', '_', 'S', '_', '_', 'S', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', 'T']
 
 
         var Enemy = function() {
+            this.fullHealth = 10;
             this.health = 10;
             this.damage = 1;
             this.name = 'Default Name';
@@ -34,14 +35,28 @@
                             vm.level[i] = '_';
                         }
                         else if (vm.level[i - 1] == 'Y') {
-                            console.log('hit player');
+                            this.health = this.health - 5;
+                            console.log(this.health);
+                            this.death();
+                            if (!this.alive) {
+                                vm.level[i] = '_';
+                                console.log('dead');
+                                this.health = this.fullHealth;
+                            }
                         }
                     }
                 }
             }
+            this.alive = true;
+            this.death = function() {
+                if (this.health <= 0) {
+                    this.alive = false;
+                } 
+            }
         }
 
         var snake = new Enemy();
+        snake.fullHealth = 25;
         snake.health = 25;
         snake.damage = 1;
         snake.name = 'Snake';

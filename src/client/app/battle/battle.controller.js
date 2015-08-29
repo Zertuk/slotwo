@@ -14,7 +14,7 @@
         vm.count = 0;
         vm.level = [];
 
-        vm.level = ['_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_',
+        vm.level = ['_', '_', '_', '_', '_', 'S', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_',
                     '_', '_', '_', '_', '_', '_', '_', '_', '_', 'S', '_', '_', 'S', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', 'T']
 
 
@@ -26,7 +26,11 @@
             this.desc = "Default Description";
             this.symbol = 'DEF';
             this.move = true;
-            this.money = 1;
+            this.moneyMult = 1;
+            this.moneyDrop = function() {
+                var cash = Math.round(this.moneyMult * ( Math.random() + 1));
+                console.log(cash);
+            },
             this.moveInLevel = function() {
                 for (var i = 0; i < vm.level.length; i++) {
                     if (vm.level[i] == this.symbol) {
@@ -36,12 +40,12 @@
                         }
                         else if (vm.level[i - 1] == 'Y') {
                             this.health = this.health - 5;
-                            console.log(this.health);
                             this.death();
                             if (!this.alive) {
                                 vm.level[i] = '_';
-                                console.log('dead');
+                                this.moneyDrop();
                                 this.health = this.fullHealth;
+                                this.alive = true;
                             }
                         }
                     }

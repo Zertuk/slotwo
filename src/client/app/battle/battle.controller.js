@@ -65,10 +65,6 @@
                 vm.level[vm.count + 1] = 'Y';
                 vm.level[vm.count] = '_';
                 vm.count = vm.count + 1;
-                console.log(vm.level);
-            }
-            else {
-                console.log(vm.count + ' count')
             }
             if(!$scope.$$phase) {
                 $scope.$apply();

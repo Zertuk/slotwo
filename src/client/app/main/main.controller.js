@@ -23,9 +23,7 @@
 
         function mainLoop() {
             vm.count = vm.count + 1;
-            console.log(vm.count);
             setTimeout(mainLoop, 1000);
-            console.log($rootScope.gather)
         }
     }
 })();

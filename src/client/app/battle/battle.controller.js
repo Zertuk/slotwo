@@ -27,6 +27,13 @@
             this.symbol = 'DEF';
             this.move = true;
             this.moneyMult = 1;
+            this.itemChance = 10;
+            this.itemDrop = function() {
+                var random = Math.round(Math.random()*100);
+                if (random <= this.itemChance) {
+                    console.log('item dropped');
+                }
+            }
             this.moneyDrop = function() {
                 var cash = Math.round(this.moneyMult * ( Math.random() + 1));
                 console.log(cash);
@@ -41,6 +48,7 @@
                         else if (vm.level[i - 1] == 'Y') {
                             this.health = this.health - 5;
                             this.death();
+                            this.itemDrop();
                             if (!this.alive) {
                                 vm.level[i] = '_';
                                 this.moneyDrop();

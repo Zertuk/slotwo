@@ -25,7 +25,36 @@
         "    __        __        __    ",
         ".--`  `--..--`  `--..--`  `--."
         ];
-        
+        // x, y
+        var player = [0, 0];
+        console.log(player[1])
+        function testMove() {
+            console.log(vm.test);
+            vm.test[player[1]] = setCharAt(vm.test[player[1]], player[0], 'Y');
+            vm.test[player[0]] = setCharAt(vm.test[player[1]], player[0], 'Y');
+            if (vm.test[player[1] + 1][player[0]] == ' ') {
+                player[1] = player[1] + 1;
+            }
+            else if (vm.test[player[1]][player[0] + 1]) {
+                player[0] = player[0] + 1;
+            }
+            setTimeout(testMove, 500);
+        }
+        testMove();
+
+        function setCharAt(str,index,chr) {
+            if(index > str.length-1) return str;
+            return str.substr(0,index) + chr + str.substr(index+1);
+        }
+
+
+
+
+
+
+
+
+
 
 
         var Enemy = function() {

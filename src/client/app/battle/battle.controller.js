@@ -22,23 +22,41 @@
         "                              ",
         "                              ",
         "                              ",
-        "    __        __        __    ",
+        "    __        ..        __    ",
         ".--`  `--..--`  `--..--`  `--."
         ];
         // x, y
         var player = [0, 0];
+        var playerOld = [0, 0];
+        var grounded = false;
         console.log(player[1])
         function testMove() {
             console.log(vm.test);
+            vm.test[playerOld[1]] = setCharAt(vm.test[playerOld[1]], playerOld[0], ' ');
             vm.test[player[1]] = setCharAt(vm.test[player[1]], player[0], 'Y');
-            vm.test[player[0]] = setCharAt(vm.test[player[1]], player[0], 'Y');
-            if (vm.test[player[1] + 1][player[0]] == ' ') {
+            if (grounded) {
+                grounded = false;
+                var groundedLastTurn = true;
+            }
+            if ((vm.test[player[1] + 1][player[0]] == ' ') && !groundedLastTurn) {
+                playerOld[1] = player[1];
                 player[1] = player[1] + 1;
             }
-            else if (vm.test[player[1]][player[0] + 1]) {
+            else if (vm.test[player[1]][player[0] + 1] == ' ') {
+                playerOld[0] = player[0];
+                player[0] = player[0] + 1;
+                if (!groundedLastTurn) {
+                    grounded = true;
+                }
+            }
+            else {
+                playerOld[1] = player[1];
+                playerOld[0] = player[0];
+                player[1] = player[1] - 1;
                 player[0] = player[0] + 1;
             }
-            setTimeout(testMove, 500);
+            $scope.$apply();
+            setTimeout(testMove, 125);
         }
         testMove();
 

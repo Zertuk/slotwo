@@ -20,7 +20,7 @@
 
         vm.test = [
         
-        "                                                                                            ",
+        "           _______    ____                                                                             ",
         "-----------------------------\\                                                                                           ",
         "                              \\__                                                                                        ",
         "    __        ..         __      \\__        ..        __        __        ..        __--------------------------111111111",
@@ -31,35 +31,57 @@
         var playerOld = [0, 0];
         var grounded = false;
         console.log(player[1])
+
+        function updatePosition(unit, unitOld, x, y) {
+            unitOld[0] = unit[0];
+            unitOld[1] = unit[1];
+            unit[1] = unit[1] + y;
+            unit[0] = unit[0] + x;
+        }
+
+        function updateMap(unit, unitOld) {
+            vm.test[unitOld[1]] = setCharAt(vm.test[unitOld[1]], unitOld[0], ' ');
+            vm.test[unit[1]] = setCharAt(vm.test[unit[1]], unit[0], 'Y');
+        }
+
+        function prevTile(unitOld) {
+            vm.test[unitOld[1]] = setCharAt(vm.test[unitOld[1]], unitOld[0], '_');
+        }
+        var prev = false;
+        var prevCheck = false;
         function testMove() {
-            vm.test[playerOld[1]] = setCharAt(vm.test[playerOld[1]], playerOld[0], ' ');
-            vm.test[playerOld[1]] = setCharAt(vm.test[playerOld[1]], playerOld[0], ' ');
-            vm.test[player[1]] = setCharAt(vm.test[player[1]], player[0], 'Y');
-            console.log(player + 'current');
-            console.log(playerOld + ' old')
+            
+            if (vm.test[player[1]].length <= player[0]) {
+                return;
+            }
             if (grounded) {
                 grounded = false;
                 var groundedLastTurn = true;
             }
-            if ((vm.test[player[1] + 1][player[0]] == ' ') && !groundedLastTurn) {
-                playerOld[1] = player[1];
-                playerOld[0] = player[0];
-                player[1] = player[1] + 1;
+
+            if ((vm.test[player[1] + 1][player[0]] == ' ') && !prevCheck) {
+                updatePosition(player, playerOld, 0, 1);
             }
             else if (vm.test[player[1]][player[0] + 1] == ' ') {
-                playerOld[0] = player[0];
-                playerOld[1] = player[1];
-                player[0] = player[0] + 1;
-                if (!groundedLastTurn) {
-                    grounded = true;
-                }
+                updatePosition(player, playerOld, 1, 0);
+            }
+            else if (vm.test[player[1]][player[0] + 1] == '_') {
+                prev = true;
+                updatePosition(player, playerOld, 1, 0);
             }
             else {
-                playerOld[1] = player[1];
-                playerOld[0] = player[0];
-                player[1] = player[1] - 1;
-                player[0] = player[0] + 1;
-                vm.test[player[1]] = setCharAt(vm.test[player[1]], player[0], ' ');
+                updatePosition(player, playerOld, 1, -1);
+            }
+            updateMap(player, playerOld);
+            if (prevCheck) {
+                prevTile(playerOld);
+            }
+            if (prev) {
+                prevCheck = true;
+                prev = false;
+            }
+            else {
+                prevCheck = false;
             }
             $scope.$apply();
             setTimeout(testMove, 150);

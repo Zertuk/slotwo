@@ -19,11 +19,12 @@
 
 
         vm.test = [
-        "                              ",
-        "                              ",
-        "                              ",
-        "    __        ..        __    ",
-        ".--`  `--..--`  `--..--`  `--."
+        
+        "                                                                                            ",
+        "-----------------------------\\                                                                                           ",
+        "                              \\__                                                                                        ",
+        "    __        ..         __      \\__        ..        __        __        ..        __--------------------------111111111",
+        "                                    `--..--`  `--..--`  `--..--`  `--..--`  `--..--`  `                                   "
         ];
         // x, y
         var player = [0, 0];
@@ -31,19 +32,23 @@
         var grounded = false;
         console.log(player[1])
         function testMove() {
-            console.log(vm.test);
+            vm.test[playerOld[1]] = setCharAt(vm.test[playerOld[1]], playerOld[0], ' ');
             vm.test[playerOld[1]] = setCharAt(vm.test[playerOld[1]], playerOld[0], ' ');
             vm.test[player[1]] = setCharAt(vm.test[player[1]], player[0], 'Y');
+            console.log(player + 'current');
+            console.log(playerOld + ' old')
             if (grounded) {
                 grounded = false;
                 var groundedLastTurn = true;
             }
             if ((vm.test[player[1] + 1][player[0]] == ' ') && !groundedLastTurn) {
                 playerOld[1] = player[1];
+                playerOld[0] = player[0];
                 player[1] = player[1] + 1;
             }
             else if (vm.test[player[1]][player[0] + 1] == ' ') {
                 playerOld[0] = player[0];
+                playerOld[1] = player[1];
                 player[0] = player[0] + 1;
                 if (!groundedLastTurn) {
                     grounded = true;
@@ -54,9 +59,10 @@
                 playerOld[0] = player[0];
                 player[1] = player[1] - 1;
                 player[0] = player[0] + 1;
+                vm.test[player[1]] = setCharAt(vm.test[player[1]], player[0], ' ');
             }
             $scope.$apply();
-            setTimeout(testMove, 125);
+            setTimeout(testMove, 150);
         }
         testMove();
 

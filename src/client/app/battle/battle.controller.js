@@ -47,28 +47,38 @@
         function prevTile(unitOld) {
             vm.test[unitOld[1]] = setCharAt(vm.test[unitOld[1]], unitOld[0], '_');
         }
+
+        function checkLevelEnd(unit) {
+            if (vm.test[unit[1]].length <= unit[0]) {
+                console.log('level end');
+                return true;
+            }
+        }
+
         var prev = false;
         var prevCheck = false;
         function testMove() {
-            
-            if (vm.test[player[1]].length <= player[0]) {
+            if (checkLevelEnd(player)) {
                 return;
             }
             if (grounded) {
                 grounded = false;
                 var groundedLastTurn = true;
             }
-
+            //collission detection y
             if ((vm.test[player[1] + 1][player[0]] == ' ') && !prevCheck) {
                 updatePosition(player, playerOld, 0, 1);
             }
+            //collision detection x
             else if (vm.test[player[1]][player[0] + 1] == ' ') {
                 updatePosition(player, playerOld, 1, 0);
             }
+            //collision detection with replacable tiles
             else if (vm.test[player[1]][player[0] + 1] == '_') {
                 prev = true;
                 updatePosition(player, playerOld, 1, 0);
             }
+            //move up and over if nothing else possible
             else {
                 updatePosition(player, playerOld, 1, -1);
             }
@@ -84,7 +94,7 @@
                 prevCheck = false;
             }
             $scope.$apply();
-            setTimeout(testMove, 150);
+            setTimeout(testMove, 120);
         }
         testMove();
 

@@ -23,7 +23,7 @@
 
         function mainLoop() {
             vm.count = vm.count + 1;
-            setTimeout(mainLoop, 500);
+            setTimeout(mainLoop, 1000);
         }
     }
 })();

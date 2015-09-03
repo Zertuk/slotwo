@@ -39,17 +39,17 @@
             unit[0] = unit[0] + x;
         }
 
-        function updateMap(unit, unitOld) {
-            vm.test[unitOld[1]] = setCharAt(vm.test[unitOld[1]], unitOld[0], ' ');
-            vm.test[unit[1]] = setCharAt(vm.test[unit[1]], unit[0], 'Y');
+        function updateMap(unit, unitOld, map, unitSymbol) {
+            map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
+            map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
         }
 
-        function prevTile(unitOld) {
-            vm.test[unitOld[1]] = setCharAt(vm.test[unitOld[1]], unitOld[0], '_');
+        function prevTile(unitOld, map) {
+            map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
         }
 
-        function checkLevelEnd(unit) {
-            if (vm.test[unit[1]].length <= unit[0]) {
+        function checkLevelEnd(unit, map) {
+            if (map[unit[1]].length <= unit[0]) {
                 console.log('level end');
                 return true;
             }
@@ -57,6 +57,56 @@
 
         var prev = false;
         var prevCheck = false;
+
+
+        function collisionCheck(map, unit) {
+            console.log(map);
+            console.log(unit.position);
+            console.log(unit);
+            if (checkLevelEnd(unit.position, map)) {
+                return;
+            }
+            if (grounded) {
+                grounded = false;
+                var groundedLastTurn = true;
+            }
+            //collission detection y
+            if ((map[unit.position[1] + 1][unit.position[0]] == ' ') && !prevCheck) {
+                updatePosition(unit.position, unit.positionOld, 0, 1);
+            }
+             //collision detection x
+            else if (map[unit.position[1]][unit.position[0] + unit.speed] == ' ') {
+                updatePosition(unit.position, unit.positionOld, unit.speed, 0);
+            }
+            //collision detection with replacable tiles
+            else if (map[unit.position[1]][unit.position[0] + unit.speed] == '_') {
+                prev = true;
+                updatePosition(unit.position, unit.positionOld, unit.speed, 0);
+            }
+            //move up and over if nothing else possible
+            else {
+                updatePosition(unit.position, unit.positionOld, unit.speed, -1);
+            }
+            updateMap(unit.position, unit.positionOld, map, unit.symbol);
+            if (prevCheck) {
+                prevTile(unit.positionOld, map);
+            }
+            if (prev) {
+                prevCheck = true;
+                prev = false;
+            }
+            else {
+                prevCheck = false;
+            }
+            $scope.$apply();
+            console.log('run')
+            setTimeout(function() {
+                collisionCheck(map, unit);
+            }, 120);
+        }
+ 
+
+
         function testMove() {
             if (checkLevelEnd(player)) {
                 return;
@@ -96,15 +146,21 @@
             $scope.$apply();
             setTimeout(testMove, 120);
         }
-        testMove();
+
 
         function setCharAt(str,index,chr) {
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
         }
+        var player = {
+            position: [0, 0],
+            positionOld: [0, 0],
+            speed: 1,
+            symbol: 'Y'
 
+        }
 
-
+        collisionCheck(vm.test, player)
 
 
 
@@ -114,6 +170,9 @@
 
 
         var Enemy = function() {
+            this.speed = -1;
+            this.position = [90, 0];
+            this.positionOld = [90, 0];
             this.fullHealth = 10;
             this.health = 10;
             this.damage = 1;
@@ -123,6 +182,9 @@
             this.move = true;
             this.moneyMult = 1;
             this.itemChance = 10;
+            this.movetest = function() {
+                collisionCheck(vm.test, this);
+            },
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 if (random <= this.itemChance) {
@@ -169,6 +231,8 @@
         snake.name = 'Snake';
         snake.desc = "A scary snake";
         snake.symbol = 'S';
+        snake.movetest();
+
 
         var mushroom = new Enemy();
         mushroom.move = false;

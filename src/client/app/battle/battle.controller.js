@@ -26,6 +26,9 @@
         "    __        ..         __      \\__        ..        __        __        ..        __--------------------------111111111",
         "                                    `--..--`  `--..--`  `--..--`  `--..--`  `--..--`  `                                   "
         ];
+
+        vm.test2 = ["                                                                                                                                  ",
+                    "=================================================================================================================================="]
         // x, y
         var player = [0, 0];
         var playerOld = [0, 0];
@@ -55,14 +58,26 @@
             }
         }
 
-        var prev = false;
-        var prevCheck = false;
-
+        function battle(unit, enemy) {
+            if (count % enemy.attackSpeed) {
+                unit.health = unit.health = enemy.damage;
+                console.log(unit.health);
+            }
+            if (count % unit.attackSpeed == 0) {
+                enemy.health = enemy.health - unit.damage;
+                console.log(enemy.health);
+            }
+            if (enemy.health <= 0) {
+                console.log('enemy dead');
+            }
+            if (unit.health <= 0) {
+                console.log('player dead');
+            }
+        }
+        var count = 0;
 
         function collisionCheck(map, unit) {
-            console.log(map);
-            console.log(unit.position);
-            console.log(unit);
+            count = count + 1;
             if (checkLevelEnd(unit.position, map)) {
                 return;
             }
@@ -71,7 +86,7 @@
                 var groundedLastTurn = true;
             }
             //collission detection y
-            if ((map[unit.position[1] + 1][unit.position[0]] == ' ') && !prevCheck) {
+            if ((map[unit.position[1] + 1][unit.position[0]] == ' ') && !unit.prevCheck) {
                 updatePosition(unit.position, unit.positionOld, 0, 1);
             }
              //collision detection x
@@ -80,71 +95,33 @@
             }
             //collision detection with replacable tiles
             else if (map[unit.position[1]][unit.position[0] + unit.speed] == '_') {
-                prev = true;
+                unit.prev = true;
                 updatePosition(unit.position, unit.positionOld, unit.speed, 0);
+            }
+            else if (map[unit.position[1]][unit.position[0] + unit.speed] == 'S'||'Y') {
+                if (unit.enemy) {
+                    battle(player, unit);
+                }
             }
             //move up and over if nothing else possible
             else {
                 updatePosition(unit.position, unit.positionOld, unit.speed, -1);
             }
             updateMap(unit.position, unit.positionOld, map, unit.symbol);
-            if (prevCheck) {
+            if (unit.prevCheck) {
                 prevTile(unit.positionOld, map);
             }
-            if (prev) {
-                prevCheck = true;
-                prev = false;
+            if (unit.prev) {
+                unit.prevCheck = true;
+                unit.prev = false;
             }
             else {
-                prevCheck = false;
+                unit.prevCheck = false;
             }
             $scope.$apply();
-            console.log('run')
             setTimeout(function() {
                 collisionCheck(map, unit);
             }, 120);
-        }
- 
-
-
-        function testMove() {
-            if (checkLevelEnd(player)) {
-                return;
-            }
-            if (grounded) {
-                grounded = false;
-                var groundedLastTurn = true;
-            }
-            //collission detection y
-            if ((vm.test[player[1] + 1][player[0]] == ' ') && !prevCheck) {
-                updatePosition(player, playerOld, 0, 1);
-            }
-            //collision detection x
-            else if (vm.test[player[1]][player[0] + 1] == ' ') {
-                updatePosition(player, playerOld, 1, 0);
-            }
-            //collision detection with replacable tiles
-            else if (vm.test[player[1]][player[0] + 1] == '_') {
-                prev = true;
-                updatePosition(player, playerOld, 1, 0);
-            }
-            //move up and over if nothing else possible
-            else {
-                updatePosition(player, playerOld, 1, -1);
-            }
-            updateMap(player, playerOld);
-            if (prevCheck) {
-                prevTile(playerOld);
-            }
-            if (prev) {
-                prevCheck = true;
-                prev = false;
-            }
-            else {
-                prevCheck = false;
-            }
-            $scope.$apply();
-            setTimeout(testMove, 120);
         }
 
 
@@ -153,14 +130,18 @@
             return str.substr(0,index) + chr + str.substr(index+1);
         }
         var player = {
+            damage: 5,
             position: [0, 0],
             positionOld: [0, 0],
             speed: 1,
-            symbol: 'Y'
+            symbol: 'Y',
+            prev: false,
+            prevCheck: false,
+            attackSpeed: 3
 
         }
 
-        collisionCheck(vm.test, player)
+        collisionCheck(vm.test2, player)
 
 
 
@@ -170,6 +151,10 @@
 
 
         var Enemy = function() {
+            this.attackSpeed = 1;
+            this.enemy = true;
+            this.prev = false,
+            this.prevCheck = false,
             this.speed = -1;
             this.position = [90, 0];
             this.positionOld = [90, 0];
@@ -183,7 +168,7 @@
             this.moneyMult = 1;
             this.itemChance = 10;
             this.movetest = function() {
-                collisionCheck(vm.test, this);
+                collisionCheck(vm.test2, this);
             },
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);

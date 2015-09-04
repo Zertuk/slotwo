@@ -28,6 +28,7 @@
         ];
 
         vm.test2 = ["                                                                                                                                  ",
+                    "                                                                                                                                  ",
                     "=================================================================================================================================="]
         // x, y
         var player = [0, 0];
@@ -153,13 +154,56 @@
             prev: false,
             prevCheck: false,
             attackSpeed: 3
-
         }
 
-        collisionCheck(vm.test2, player)
+
+        var Unit = function() {
+            //combat
+            this.attackSpeed = 1;
+            this.health = 10,
+            this.maxHealth = 10,
+            this.damage = 1,
+            this.alive = true,
+            //movement
+            this.prev = false;
+            this.prevCheck = false;
+            this.speed = 1;
+            this.position = [0, 0];
+            this.positionOld = [0, 0];
+            this.initPosition = function() {
+                this.positionOld = this.position;
+            },
+            //other
+            this.name = 'default',
+            this.desc = 'default desc'
+        };
+
+        var Player = function Player() {
+            this.name = 'Player',
+            this.desc = 'This is you'
+        };
+        Player.prototype = new Unit();
+        console.log(Player.name);
+        
+
+        var Enemy = function Enemy() {
+            this.speed = -1
+        };
+        Enemy.prototype = new Unit();
 
 
-
+        var Snake = function Snake() {
+            this.fullHealth = 25;
+            this.health = 25;
+            this.damage = 1;
+            this.name = 'Snake';
+            this.desc = "A scary snake";
+            this.symbol = 'S';
+        };
+        Snake.prototype = new Enemy();
+        
+        var snake = new Snake();
+        console.log(snake);
 
 
 
@@ -167,6 +211,9 @@
 
         var Enemy = function() {
             this.attackSpeed = 1;
+            this.big = false;
+            this.yCollision = 0;
+            this.xCollision = 0;
             this.enemy = true;
             this.prev = false,
             this.prevCheck = false,
@@ -229,9 +276,32 @@
                 } 
             }
         }
+        var Test = function Test() {};
+        Test.prototype = new Enemy();
+        var test = new Test();
+        console.log(test);
+        
+        test.big = true;
+        test.symbol = '|';
+        test.art = ['0.--. ',  
+                    ' |  |`' ];
+
+        function enemyArt(enemy) {
+            for (var i = 0; i < enemy.art.length; i++) {
+                var row = enemy.art[i].split("");
+                for (var j = 0; j < row.length; j++) {
+                    map[enemy[1]] =  setCharAt(map[enemy[1]], enemy[0], '');
+                }
+            }
+        }
 
 
+        test.position = [90, 1];
+        test.positionOld = [90, 1];
 
+        vm.test2[test.position[1]] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[1]);
+        // vm.test2[test.position[1] - 1] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[0]);
+        console.log(test.art[0]);
         var snake = new Enemy();
         snake.fullHealth = 25;
         snake.health = 25;
@@ -239,7 +309,6 @@
         snake.name = 'Snake';
         snake.desc = "A scary snake";
         snake.symbol = 'S';
-        snake.movetest();
 
         var mushroom = new Enemy();
         mushroom.move = false;
@@ -250,7 +319,6 @@
         mushroom.position = [85, 0];
         mushroom.positionOld = [85, 0];
 
-        mushroom.movetest();
         activate();
 
 

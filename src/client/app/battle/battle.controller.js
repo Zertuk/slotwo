@@ -42,6 +42,7 @@
             unit[0] = unit[0] + x;
         }
 
+
         function updateMap(unit, unitOld, map, unitSymbol) {
             map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
             map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
@@ -58,7 +59,7 @@
             }
         }
 
-        function battle(unit, enemy) {
+        function battle(unit, enemy, map) {
             if (count % enemy.attackSpeed) {
                 unit.health = unit.health = enemy.damage;
                 console.log(unit.health);
@@ -69,59 +70,72 @@
             }
             if (enemy.health <= 0) {
                 console.log('enemy dead');
+
             }
             if (unit.health <= 0) {
                 console.log('player dead');
             }
+            enemy.death(map);
         }
         var count = 0;
 
         function collisionCheck(map, unit) {
-            count = count + 1;
-            if (checkLevelEnd(unit.position, map)) {
+            if (unit.alive) {
+                count = count + 1;
+                if (checkLevelEnd(unit.position, map)) {
+                    return;
+                }
+                if (grounded) {
+                    grounded = false;
+                    var groundedLastTurn = true;
+                }
+                //collission detection y
+                if ((map[unit.position[1] + 1][unit.position[0]] == ' ') && !unit.prevCheck) {
+                    updatePosition(unit.position, unit.positionOld, 0, 1);
+                }
+                 //collision detection x
+                else if (map[unit.position[1]][unit.position[0] + unit.speed] == ' ') {
+                    updatePosition(unit.position, unit.positionOld, unit.speed, 0);
+                }
+                //collision detection with replacable tiles
+                else if (map[unit.position[1]][unit.position[0] + unit.speed] == '_') {
+                    unit.prev = true;
+                    updatePosition(unit.position, unit.positionOld, unit.speed, 0);
+                }
+                else if (map[unit.position[1]][unit.position[0] + unit.speed] == 'Y') {
+                    battle(player, unit, map);
+                    var inCombat = true;
+                }
+                else {
+                    setTimeout(function() {
+                        var wait = true;
+                    }, 1000);
+                }
+                //move up and over if nothing else possible
+                // else {
+                //     updatePosition(unit.position, unit.positionOld, unit.speed, -1);
+                // }
+                if (!inCombat) {
+                    updateMap(unit.position, unit.positionOld, map, unit.symbol);
+                }
+                if (unit.prevCheck) {
+                    prevTile(unit.positionOld, map);
+                }
+                if (unit.prev) {
+                    unit.prevCheck = true;
+                    unit.prev = false;
+                }
+                else {
+                    unit.prevCheck = false;
+                }
+                $scope.$apply();
+                setTimeout(function() {
+                    collisionCheck(map, unit);
+                }, 120);
+            }
+            else {
                 return;
             }
-            if (grounded) {
-                grounded = false;
-                var groundedLastTurn = true;
-            }
-            //collission detection y
-            if ((map[unit.position[1] + 1][unit.position[0]] == ' ') && !unit.prevCheck) {
-                updatePosition(unit.position, unit.positionOld, 0, 1);
-            }
-             //collision detection x
-            else if (map[unit.position[1]][unit.position[0] + unit.speed] == ' ') {
-                updatePosition(unit.position, unit.positionOld, unit.speed, 0);
-            }
-            //collision detection with replacable tiles
-            else if (map[unit.position[1]][unit.position[0] + unit.speed] == '_') {
-                unit.prev = true;
-                updatePosition(unit.position, unit.positionOld, unit.speed, 0);
-            }
-            else if (map[unit.position[1]][unit.position[0] + unit.speed] == 'S'||'Y') {
-                if (unit.enemy) {
-                    battle(player, unit);
-                }
-            }
-            //move up and over if nothing else possible
-            else {
-                updatePosition(unit.position, unit.positionOld, unit.speed, -1);
-            }
-            updateMap(unit.position, unit.positionOld, map, unit.symbol);
-            if (unit.prevCheck) {
-                prevTile(unit.positionOld, map);
-            }
-            if (unit.prev) {
-                unit.prevCheck = true;
-                unit.prev = false;
-            }
-            else {
-                unit.prevCheck = false;
-            }
-            $scope.$apply();
-            setTimeout(function() {
-                collisionCheck(map, unit);
-            }, 120);
         }
 
 
@@ -130,6 +144,7 @@
             return str.substr(0,index) + chr + str.substr(index+1);
         }
         var player = {
+            alive: true,
             damage: 5,
             position: [0, 0],
             positionOld: [0, 0],
@@ -202,12 +217,20 @@
                 }
             }
             this.alive = true;
-            this.death = function() {
+            this.death = function(map) {
                 if (this.health <= 0) {
                     this.alive = false;
+                    this.itemDrop();
+                    this.moneyDrop();
+                    this.health = this.fullHealth;
+                    console.log(map[this.position[1]][this.position[0]])
+                    map[this.position[1]] =  setCharAt(map[this.position[1]], this.position[0], '');
+                    console.log(map[this.position[1]][this.position[0]]);
                 } 
             }
         }
+
+
 
         var snake = new Enemy();
         snake.fullHealth = 25;
@@ -218,14 +241,16 @@
         snake.symbol = 'S';
         snake.movetest();
 
-
         var mushroom = new Enemy();
         mushroom.move = false;
         mushroom.health = 25;
         mushroom.damage = 1;
         mushroom.desc = 'Releases a poisonous aura';
         mushroom.symbol = "T";
+        mushroom.position = [85, 0];
+        mushroom.positionOld = [85, 0];
 
+        mushroom.movetest();
         activate();
 
 

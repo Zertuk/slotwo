@@ -173,6 +173,9 @@
             this.initPosition = function() {
                 this.positionOld = this.position;
             },
+            this.collisionCheck = function() {
+
+            },
             //other
             this.name = 'default',
             this.desc = 'default desc'
@@ -188,6 +191,10 @@
 
         var Enemy = function Enemy() {
             this.speed = -1
+            this.destroy = function() {
+                var test =this;
+                test = null;
+            }
         };
         Enemy.prototype = new Unit();
 
@@ -203,6 +210,8 @@
         Snake.prototype = new Enemy();
         
         var snake = new Snake();
+        console.log(snake);
+        snake.destroy();
         console.log(snake);
 
 

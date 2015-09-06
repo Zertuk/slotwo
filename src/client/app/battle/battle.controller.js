@@ -38,7 +38,6 @@
             unit[0] = unit[0] + x;
         }
 
-
         function updateMap(unit, unitOld, map, unitSymbol) {
             map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
             map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
@@ -140,10 +139,6 @@
                         current.prevCheck = false;
                     }
                     $scope.$apply();
-                    setTimeout(function() {
-                        spawnEnemy()
-                        current.collisionCheck(map);
-                    }, 120);
                 }   
                 else {
                     return;
@@ -170,13 +165,13 @@
         };
 
         var Player = function Player() {
+            this.damage = 10,
             this.name = 'Player',
             this.symbol = 'Y',
             this.desc = 'This is you'
         };
         Player.prototype = new Unit();
         var player = new Player();
-        player.collisionCheck(vm.test2);
         console.log(player);
 
         var Enemy = function Enemy() {
@@ -184,11 +179,14 @@
             this.death = function(map) {
                 if (this.health <= 0) {
                     this.alive = false;
+                    console.log(this.alive)
                     this.itemDrop();
                     this.moneyDrop();
                     this.health = this.fullHealth;
+                    console.log(this);
                     console.log(map[this.position[1]][this.position[0]])
-                    map[this.position[1]] =  setCharAt(map[this.position[1]], this.position[0], '');
+                    map[this.position[1]] = setCharAt(map[this.position[1]], this.position[0], '');
+                    this.symbol = '';
                     console.log(map[this.position[1]][this.position[0]]);
                 } 
             },
@@ -200,9 +198,7 @@
             }
             this.moneyDrop = function() {
                 var cash = Math.round(this.moneyMult * ( Math.random() + 1));
-                console.log(cash);
-            },
-            this.position = [90, 0]
+            }
         };
         Enemy.prototype = new Unit();
 
@@ -216,6 +212,13 @@
             this.symbol = 'S';
         };
         Snake.prototype = new Enemy();
+
+        var Cat = function Cat() {
+            this.name = 'Cat';
+            this.symbol = 'C';
+        }
+
+        Cat.prototype = new Enemy();
         
         var snake = new Snake();
         snake.fullHealth = 25;
@@ -224,10 +227,35 @@
         snake.name = 'Snake';
         snake.desc = "A scary snake";
         snake.symbol = 'S';
-        snake.position[50, 0];
-        snake.positionOld[50, 0];
-        snake.collisionCheck(vm.test2);
+        snake.position = [50, 0];
+        snake.positionOld = [50, 0];
         console.log(snake);
+
+        var snake2 = new Cat();
+        snake2.position = [75, 0];
+        snake2.positionOld = [75, 0];
+
+
+        var array = [player, snake, snake2];
+
+        function levelLoop() {
+            for (var i = 0; i < array.length; i++) {
+                array[i].collisionCheck(vm.test2);
+                if (!array[i].alive) {
+                    for (var j = 0; j < array.length; j++) {
+                        var newArray = [];
+                        if (j != i) {
+                            console.log(array[j]);
+                            newArray.push(array[j]);
+                        }
+                    }
+                    array = newArray;
+                }
+                console.log(array);
+            }
+            setTimeout(levelLoop, 125);
+        }
+        levelLoop();
 
 
         activate();

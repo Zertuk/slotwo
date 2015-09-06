@@ -138,7 +138,7 @@
                 return;
             }
         }
-
+        collisionCheck(vm.test2, player);
 
         function setCharAt(str,index,chr) {
             if(index > str.length-1) return str;
@@ -308,7 +308,7 @@
         test.position = [90, 1];
         test.positionOld = [90, 1];
 
-        vm.test2[test.position[1]] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[1]);
+        // vm.test2[test.position[1]] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[1]);
         // vm.test2[test.position[1] - 1] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[0]);
         console.log(test.art[0]);
         var snake = new Enemy();

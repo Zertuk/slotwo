@@ -34,7 +34,6 @@
         var player = [0, 0];
         var playerOld = [0, 0];
         var grounded = false;
-        console.log(player[1])
 
         function updatePosition(unit, unitOld, x, y) {
             unitOld[0] = unit[0];
@@ -138,23 +137,12 @@
                 return;
             }
         }
-        collisionCheck(vm.test2, player);
 
         function setCharAt(str,index,chr) {
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
         }
-        var player = {
-            alive: true,
-            damage: 5,
-            position: [0, 0],
-            positionOld: [0, 0],
-            speed: 1,
-            symbol: 'Y',
-            prev: false,
-            prevCheck: false,
-            attackSpeed: 3
-        }
+
 
 
         var Unit = function() {
@@ -183,11 +171,13 @@
 
         var Player = function Player() {
             this.name = 'Player',
+            this.symbol = 'Y',
             this.desc = 'This is you'
         };
         Player.prototype = new Unit();
-        console.log(Player.name);
-        
+        var player = new Player();
+        collisionCheck(vm.test2, player);
+        console.log(player);
 
         var Enemy = function Enemy() {
             this.speed = -1
@@ -209,10 +199,6 @@
         };
         Snake.prototype = new Enemy();
         
-        var snake = new Snake();
-        console.log(snake);
-        snake.destroy();
-        console.log(snake);
 
 
 
@@ -288,7 +274,6 @@
         var Test = function Test() {};
         Test.prototype = new Enemy();
         var test = new Test();
-        console.log(test);
         
         test.big = true;
         test.symbol = '|';
@@ -310,7 +295,7 @@
 
         // vm.test2[test.position[1]] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[1]);
         // vm.test2[test.position[1] - 1] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[0]);
-        console.log(test.art[0]);
+
         var snake = new Enemy();
         snake.fullHealth = 25;
         snake.health = 25;

@@ -14,7 +14,7 @@
         vm.count = 0;
         vm.level = [];
 
-        vm.test = [
+        vm.test2 = [
         
         "           _______    ____                                                                             ",
         "-----------------------------\\                                                                                           ",
@@ -23,7 +23,13 @@
         "                                    `--..--`  `--..--`  `--..--`  `--..--`  `--..--`  `                                   "
         ];
 
-        vm.test2 = ["                                                                                                                                  ",
+
+        vm.test2og = ["                                                                                                                                  ",
+                    "                                                                                                                                  ",
+                    "=================================================================================================================================="]
+
+
+        vm.test = ["                                                                                                                                  ",
                     "                                                                                                                                  ",
                     "=================================================================================================================================="]
         // x, y
@@ -125,9 +131,6 @@
                     // else {
                     //     updatePosition(unit.position, unit.positionOld, unit.speed, -1);
                     // }
-                    if (!inCombat) {
-                        updateMap(current.position, current.positionOld, map, current.symbol);
-                    }
                     if (current.prevCheck) {
                         prevTile(current.positionOld, map);
                     }
@@ -165,7 +168,7 @@
         };
 
         var Player = function Player() {
-            this.damage = 10,
+            this.damage = 5,
             this.name = 'Player',
             this.symbol = 'Y',
             this.desc = 'This is you'
@@ -185,7 +188,7 @@
                     this.health = this.fullHealth;
                     console.log(this);
                     console.log(map[this.position[1]][this.position[0]])
-                    map[this.position[1]] = setCharAt(map[this.position[1]], this.position[0], '');
+                    // map[this.position[1]] = setCharAt(map[this.position[1]], this.position[0], '');
                     this.symbol = '';
                     console.log(map[this.position[1]][this.position[0]]);
                 } 
@@ -221,14 +224,14 @@
         Cat.prototype = new Enemy();
         
         var snake = new Snake();
-        snake.fullHealth = 25;
-        snake.health = 25;
+        snake.fullHealth = 20;
+        snake.health = 20;
         snake.damage = 1;
         snake.name = 'Snake';
         snake.desc = "A scary snake";
         snake.symbol = 'S';
-        snake.position = [50, 0];
-        snake.positionOld = [50, 0];
+        snake.position = [30, 0];
+        snake.positionOld = [30, 0];
         console.log(snake);
 
         var snake2 = new Cat();
@@ -236,22 +239,36 @@
         snake2.positionOld = [75, 0];
 
 
-        var array = [player, snake, snake2];
+        var Dog = function Dog() {
+            this.name = 'Dog',
+            this.symbol = 'D'
+        };
+        Dog.prototype = new Enemy();
+        var dog = new Dog();
+        dog.position = [100, 0];
+
+        var array = [player, snake, snake2, dog];
 
         function levelLoop() {
+            var dead = false;
             for (var i = 0; i < array.length; i++) {
                 array[i].collisionCheck(vm.test2);
                 if (!array[i].alive) {
+                    var newArray = [];
                     for (var j = 0; j < array.length; j++) {
-                        var newArray = [];
                         if (j != i) {
-                            console.log(array[j]);
                             newArray.push(array[j]);
+                        }
+                        else {
+                            updateMap(array[i].position, array[i].positionOld, vm.test2, ' ');
+                            dead = true;
                         }
                     }
                     array = newArray;
                 }
-                console.log(array);
+                if (typeof array[i] !== 'undefined') {
+                    updateMap(array[i].position, array[i].positionOld, vm.test2, array[i].symbol);
+                }
             }
             setTimeout(levelLoop, 125);
         }

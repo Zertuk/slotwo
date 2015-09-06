@@ -14,10 +14,6 @@
         vm.count = 0;
         vm.level = [];
 
-        vm.level = [' ', ' ', ' ', ' ', '_', 'S', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_',
-                    '_', '_', '_', '_', '_', '_', '_', '_', '_', 'S', '_', '_', 'S', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', 'T']
-
-
         vm.test = [
         
         "           _______    ____                                                                             ",
@@ -79,74 +75,81 @@
         }
         var count = 0;
 
-        function collisionCheck(map, unit) {
-            if (unit.alive) {
-                count = count + 1;
-                if (checkLevelEnd(unit.position, map)) {
-                    return;
-                }
-                if (grounded) {
-                    grounded = false;
-                    var groundedLastTurn = true;
-                }
-                //collission detection y
-                if ((map[unit.position[1] + 1][unit.position[0]] == ' ') && !unit.prevCheck) {
-                    updatePosition(unit.position, unit.positionOld, 0, 1);
-                }
-                 //collision detection x
-                else if (map[unit.position[1]][unit.position[0] + unit.speed] == ' ') {
-                    updatePosition(unit.position, unit.positionOld, unit.speed, 0);
-                }
-                //collision detection with replacable tiles
-                else if (map[unit.position[1]][unit.position[0] + unit.speed] == '_') {
-                    unit.prev = true;
-                    updatePosition(unit.position, unit.positionOld, unit.speed, 0);
-                }
-                else if (map[unit.position[1]][unit.position[0] + unit.speed] == 'Y') {
-                    battle(player, unit, map);
-                    var inCombat = true;
-                }
-                else {
-                    setTimeout(function() {
-                        var wait = true;
-                    }, 1000);
-                }
-                //move up and over if nothing else possible
-                // else {
-                //     updatePosition(unit.position, unit.positionOld, unit.speed, -1);
-                // }
-                if (!inCombat) {
-                    updateMap(unit.position, unit.positionOld, map, unit.symbol);
-                }
-                if (unit.prevCheck) {
-                    prevTile(unit.positionOld, map);
-                }
-                if (unit.prev) {
-                    unit.prevCheck = true;
-                    unit.prev = false;
-                }
-                else {
-                    unit.prevCheck = false;
-                }
-                $scope.$apply();
-                setTimeout(function() {
-                    collisionCheck(map, unit);
-                }, 120);
-            }
-            else {
-                return;
-            }
-        }
-
         function setCharAt(str,index,chr) {
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
         }
 
+        function spawnEnemy() {
+            var random = Math.round(Math.random()*100);
+            if (random > 95) {
+                console.log('hello');
+            }
 
+        }
 
         var Unit = function() {
             //combat
+            this.collisionCheck = function(map) {
+                var current = this;
+                if (current.alive) {
+                    if (checkLevelEnd(current.position, map)) {
+                        return;
+                    }
+                    if (current.grounded) {
+                        current.grounded = false;
+                        var groundedLastTurn = true;
+                    }
+                    //collission detection y
+                    if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
+                        updatePosition(current.position, current.positionOld, 0, 1);
+                    }
+                     //collision detection x
+                    else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
+                        updatePosition(current.position, current.positionOld, current.speed, 0);
+                    }
+                    //collision detection with replacable tiles
+                    else if (map[current.position[1]][current.position[0] + current.speed] == '_') {
+                        current.prev = true;
+                        updatePosition(current.position, current.positionOld, current.speed, 0);
+                    }
+                    else if (map[current.position[1]][current.position[0] + current.speed] == 'Y') {
+                        battle(player, current, map);
+                        var inCombat = true;
+                    }
+                    else {
+                        setTimeout(function() {
+                            var wait = true;
+                        }, 1000);
+                    }
+                    //move up and over if nothing else possible
+                    // else {
+                    //     updatePosition(unit.position, unit.positionOld, unit.speed, -1);
+                    // }
+                    if (!inCombat) {
+                        updateMap(current.position, current.positionOld, map, current.symbol);
+                    }
+                    if (current.prevCheck) {
+                        prevTile(current.positionOld, map);
+                    }
+                    if (current.prev) {
+                        current.prevCheck = true;
+                        current.prev = false;
+                    }
+                    else {
+                        current.prevCheck = false;
+                    }
+                    $scope.$apply();
+                    setTimeout(function() {
+                        spawnEnemy()
+                        current.collisionCheck(map);
+                    }, 120);
+                }   
+                else {
+                    return;
+                }
+            },
+            this.ground = false,
             this.attackSpeed = 1;
             this.health = 10,
             this.maxHealth = 10,
@@ -161,9 +164,6 @@
             this.initPosition = function() {
                 this.positionOld = this.position;
             },
-            this.collisionCheck = function() {
-
-            },
             //other
             this.name = 'default',
             this.desc = 'default desc'
@@ -176,15 +176,33 @@
         };
         Player.prototype = new Unit();
         var player = new Player();
-        collisionCheck(vm.test2, player);
+        player.collisionCheck(vm.test2);
         console.log(player);
 
         var Enemy = function Enemy() {
-            this.speed = -1
-            this.destroy = function() {
-                var test =this;
-                test = null;
+            this.speed = -1,
+            this.death = function(map) {
+                if (this.health <= 0) {
+                    this.alive = false;
+                    this.itemDrop();
+                    this.moneyDrop();
+                    this.health = this.fullHealth;
+                    console.log(map[this.position[1]][this.position[0]])
+                    map[this.position[1]] =  setCharAt(map[this.position[1]], this.position[0], '');
+                    console.log(map[this.position[1]][this.position[0]]);
+                } 
+            },
+            this.itemDrop = function() {
+                var random = Math.round(Math.random()*100);
+                if (random <= this.itemChance) {
+                    console.log('item dropped');
+                }
             }
+            this.moneyDrop = function() {
+                var cash = Math.round(this.moneyMult * ( Math.random() + 1));
+                console.log(cash);
+            },
+            this.position = [90, 0]
         };
         Enemy.prototype = new Unit();
 
@@ -199,144 +217,29 @@
         };
         Snake.prototype = new Enemy();
         
-
-
-
-
-
-        var Enemy = function() {
-            this.attackSpeed = 1;
-            this.big = false;
-            this.yCollision = 0;
-            this.xCollision = 0;
-            this.enemy = true;
-            this.prev = false,
-            this.prevCheck = false,
-            this.speed = -1;
-            this.position = [90, 0];
-            this.positionOld = [90, 0];
-            this.fullHealth = 10;
-            this.health = 10;
-            this.damage = 1;
-            this.name = 'Default Name';
-            this.desc = "Default Description";
-            this.symbol = 'DEF';
-            this.move = true;
-            this.moneyMult = 1;
-            this.itemChance = 10;
-            this.movetest = function() {
-                collisionCheck(vm.test2, this);
-            },
-            this.itemDrop = function() {
-                var random = Math.round(Math.random()*100);
-                if (random <= this.itemChance) {
-                    console.log('item dropped');
-                }
-            }
-            this.moneyDrop = function() {
-                var cash = Math.round(this.moneyMult * ( Math.random() + 1));
-                console.log(cash);
-            },
-            this.moveInLevel = function() {
-                for (var i = 0; i < vm.level.length; i++) {
-                    if (vm.level[i] == this.symbol) {
-                        if (vm.level[i - 1] == '_') {
-                            vm.level[i - 1] = this.symbol;
-                            vm.level[i] = '_';
-                        }
-                        else if (vm.level[i - 1] == 'Y') {
-                            this.health = this.health - 5;
-                            this.death();
-                            this.itemDrop();
-                            if (!this.alive) {
-                                vm.level[i] = '_';
-                                this.moneyDrop();
-                                this.health = this.fullHealth;
-                                this.alive = true;
-                            }
-                        }
-                    }
-                }
-            }
-            this.alive = true;
-            this.death = function(map) {
-                if (this.health <= 0) {
-                    this.alive = false;
-                    this.itemDrop();
-                    this.moneyDrop();
-                    this.health = this.fullHealth;
-                    console.log(map[this.position[1]][this.position[0]])
-                    map[this.position[1]] =  setCharAt(map[this.position[1]], this.position[0], '');
-                    console.log(map[this.position[1]][this.position[0]]);
-                } 
-            }
-        }
-        var Test = function Test() {};
-        Test.prototype = new Enemy();
-        var test = new Test();
-        
-        test.big = true;
-        test.symbol = '|';
-        test.art = ['0.--. ',  
-                    ' |  |`' ];
-
-        function enemyArt(enemy) {
-            for (var i = 0; i < enemy.art.length; i++) {
-                var row = enemy.art[i].split("");
-                for (var j = 0; j < row.length; j++) {
-                    map[enemy[1]] =  setCharAt(map[enemy[1]], enemy[0], '');
-                }
-            }
-        }
-
-
-        test.position = [90, 1];
-        test.positionOld = [90, 1];
-
-        // vm.test2[test.position[1]] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[1]);
-        // vm.test2[test.position[1] - 1] = setCharAt(vm.test2[test.position[1]], vm.test2[0], test.art[0]);
-
-        var snake = new Enemy();
+        var snake = new Snake();
         snake.fullHealth = 25;
         snake.health = 25;
         snake.damage = 1;
         snake.name = 'Snake';
         snake.desc = "A scary snake";
         snake.symbol = 'S';
+        snake.position[50, 0];
+        snake.positionOld[50, 0];
+        snake.collisionCheck(vm.test2);
+        console.log(snake);
 
-        var mushroom = new Enemy();
-        mushroom.move = false;
-        mushroom.health = 25;
-        mushroom.damage = 1;
-        mushroom.desc = 'Releases a poisonous aura';
-        mushroom.symbol = "T";
-        mushroom.position = [85, 0];
-        mushroom.positionOld = [85, 0];
 
         activate();
 
 
 
-        function moveInLevel() {
-            var player = "Y";
-            if (vm.level[vm.count + 1] == '_') {
-                vm.level[vm.count + 1] = 'Y';
-                vm.level[vm.count] = '_';
-                vm.count = vm.count + 1;
-            }
-            if(!$scope.$$phase) {
-                $scope.$apply();
-            }
-            snake.moveInLevel();
-            mushroom.moveInLevel();
-            setTimeout(moveInLevel, 500);
-        }
+
 
 
         ////////////////
 
         function activate() {
-            moveInLevel();
         }
     }
 })();

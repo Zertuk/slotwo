@@ -44,9 +44,15 @@
             unit[0] = unit[0] + x;
         }
 
-        function updateMap(unit, unitOld, map, unitSymbol) {
-            map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
-            map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
+        function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
+            if (!prevCheck) {
+                map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
+                map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
+            }
+            else {
+                map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
+                map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
+            }
         }
 
         function prevTile(unitOld, map) {
@@ -76,6 +82,7 @@
             if (unit.health <= 0) {
                 console.log('player dead');
             }
+            console.log(enemy);
             enemy.death(map);
         }
         var count = 0;
@@ -105,6 +112,14 @@
                         current.grounded = false;
                         var groundedLastTurn = true;
                     }
+                    if (current.prev) {
+                        current.prevCheck = true;
+                        current.prev = false;
+                    }
+                    else {
+                        current.prevCheck = false;
+                    }
+
                     //collission detection y
                     if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
                         updatePosition(current.position, current.positionOld, 0, 1);
@@ -118,29 +133,36 @@
                         current.prev = true;
                         updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
-                    else if (map[current.position[1]][current.position[0] + current.speed] == 'Y') {
-                        battle(player, current, map);
-                        var inCombat = true;
+                    else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y') || (current.symbol == 'Y')) {
+                        if (current.symbol == 'Y') {
+                            var inCombat = false;
+                            for (var i = 0; i < array.length; i++) {
+                                if ((map[current.position[1]][current.position[0] + current.speed]) == (array[i].symbol)) {
+                                    inCombat = true;
+                                }
+                            }
+                            if (!inCombat) {
+                                updatePosition(current.position, current.positionOld, current.speed, -1);
+                            }
+                        }
+                        else {
+                            battle(player, current, map);
+                            var inCombat = true;
+                        }
                     }
-                    else {
-                        setTimeout(function() {
-                            var wait = true;
-                        }, 1000);
-                    }
-                    //move up and over if nothing else possible
                     // else {
-                    //     updatePosition(unit.position, unit.positionOld, unit.speed, -1);
+                    //     setTimeout(function() {
+                    //         var wait = true;
+                    //     }, 1000);
                     // }
-                    if (current.prevCheck) {
-                        prevTile(current.positionOld, map);
-                    }
-                    if (current.prev) {
-                        current.prevCheck = true;
-                        current.prev = false;
-                    }
+                    //move up and over if nothing else possible
                     else {
-                        current.prevCheck = false;
+                        updatePosition(current.position, current.positionOld, current.speed, -1);
                     }
+                    // if (current.prevCheck) {
+                    //     console.log('test');
+                    //     prevTile(current.positionOld, map);
+                    // }
                     $scope.$apply();
                 }   
                 else {
@@ -148,17 +170,17 @@
                 }
             },
             this.ground = false,
-            this.attackSpeed = 1;
+            this.attackSpeed = 1,
             this.health = 10,
             this.maxHealth = 10,
             this.damage = 1,
             this.alive = true,
             //movement
-            this.prev = false;
-            this.prevCheck = false;
-            this.speed = 1;
-            this.position = [0, 0];
-            this.positionOld = [0, 0];
+            this.prev = false,
+            this.prevCheck = false,
+            this.speed = 1,
+            this.position = [0, 0],
+            this.positionOld = [0, 0],
             this.initPosition = function() {
                 this.positionOld = this.position;
             },
@@ -247,8 +269,8 @@
         var dog = new Dog();
         dog.position = [100, 0];
 
-        var array = [player, snake, snake2, dog];
-
+        var array = [player, snake2];
+        console.log(snake2);
         function levelLoop() {
             var dead = false;
             for (var i = 0; i < array.length; i++) {
@@ -260,14 +282,14 @@
                             newArray.push(array[j]);
                         }
                         else {
-                            updateMap(array[i].position, array[i].positionOld, vm.test2, ' ');
+                            updateMap(array[i].position, array[i].positionOld, vm.test2, ' ', array[i].prevCheck);
                             dead = true;
                         }
                     }
                     array = newArray;
                 }
                 if (typeof array[i] !== 'undefined') {
-                    updateMap(array[i].position, array[i].positionOld, vm.test2, array[i].symbol);
+                    updateMap(array[i].position, array[i].positionOld, vm.test2, array[i].symbol, array[i].prevCheck);
                 }
             }
             setTimeout(levelLoop, 125);

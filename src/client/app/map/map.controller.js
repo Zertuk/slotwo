@@ -25,7 +25,7 @@
 
 
         vm.ascii =        ['||-------------------------------------------------------||',
-                           '||<span class = "click">.--.</span>    .-._                        .----.             ||',
+                           '||.--.    .-._                        .----.             ||',
                            '|||==|____| |H|___            .---.___|""""|_____.--.___ ||',
                            '|||  |====| | |xxx|_          |+++|=-=|_  _|-=+=-|==|---|||',
                            '|||==|    | | |   | \\         |   |   |_\\/_|Black|  | ^ |||',
@@ -47,10 +47,20 @@
                            '||_______________________________________________________||']
 
 
-        vm.click = function(x, y, xlength, ylength) {
-
+        function setCharAt(str,index,chr) {
+            if(index > str.length-1) return str;
+            return str.substr(0,index) + chr + str.substr(index+1);
         }
-
+        vm.click = function(x, y, xlength, ylength, info) {
+            for (var i = 0; i < ylength; i++) {
+                var before = '<span class = "click">' + vm.ascii[y + i][x];
+                var after = vm.ascii[y + i][5] + '</span>';
+                //after then before to not break order!
+                vm.ascii[y + i] = setCharAt(vm.ascii[y + i], x + xlength, after);
+                vm.ascii[y + i] = setCharAt(vm.ascii[y + i], x, before);
+            }
+        }
+        vm.click(2, 1, 3, 8);
 
         vm.gatherResource = function(location, resource) {
             var resourceArray = resource.split('-');

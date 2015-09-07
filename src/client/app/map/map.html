@@ -3,5 +3,6 @@
 	<button ng-click = "vm.gatherResource(vm.forest, 'wood-1')">gather</button>
 	<div class = "loadwrap">
 		<div class = "gatherload loading"></div>
+		<pre ng-repeat = "row in vm.ascii track by $index"><span ng-bind-html="row"></span></pre>
 	</div>
 </div>

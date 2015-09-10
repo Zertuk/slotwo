@@ -49,19 +49,6 @@
 
 
 
-        vm.level = {
-            ascii: vm.test4,
-            asciiOriginal: vm.test2,
-            playerSpawn: [0, 0],
-            enemySpawn: [0, 0]
-        }
-
-
-
-
-
-
-
 
         // x, y
         var player = [0, 0];
@@ -316,6 +303,16 @@
         var array = [player, tree];
         var array = [player];
 
+        vm.level = {
+            ascii: vm.test4,
+            asciiOriginal: vm.test2,
+            playerSpawn: [0, 0],
+            enemySpawn: [30, 0],
+            enemyArray: [Dog, Snake]
+        }
+
+
+
         function spawnEnemy() {
             var random = Math.round(Math.random()*100);
             if (random > 80) {
@@ -324,8 +321,13 @@
         }
 
         function createEnemy() {
-            var test = new Snake();
-            test.position = [25,0];
+            var random = Math.round(Math.random()*100);
+            if (random > 50) {
+                var test = new vm.level.enemyArray[0];
+            } else {
+                var test = new vm.level.enemyArray[1];
+            }
+            test.position = vm.level.enemySpawn;
             array.push(test);
         }
 

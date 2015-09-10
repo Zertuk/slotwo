@@ -77,7 +77,6 @@
         var testage = false;
         function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
             if (!prevCheck) {
-                console.log(map[unitOld[1]]);
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
                 map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
             }
@@ -116,14 +115,11 @@
             if (unit.health <= 0) {
                 console.log('player dead');
             }
-            console.log(enemy);
             enemy.death(map);
         }
         var count = 0;
 
         function setCharAt(str,index,chr) {
-            console.log(testage);
-            testage = false;
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
         }
@@ -169,7 +165,7 @@
                         current.prev = true;
                         updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
-                    else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y') || (current.symbol == 'Y')) {
+                    else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                         if (current.symbol == 'Y') {
                             var inCombat = false;
                             for (var i = 0; i < array.length; i++) {
@@ -192,9 +188,17 @@
                     //     }, 1000);
                     // }
                     //move up and over if nothing else possible
-                    // else {
-                    //     updatePosition(current.position, current.positionOld, current.speed, -1);
-                    // }
+                    else {
+                        var cantMove = false;
+                        for (var i = 0; i < array.length; i++) {
+                            if (map[current.position[1]][current.position[0] + current.speed] == array[i].symbol) {
+                                cantMove = true;
+                            }
+                        }
+                        if (!cantMove) {
+                            updatePosition(current.position, current.positionOld, current.speed, -1);                            
+                        }
+                    }
                     // if (current.prevCheck) {
                     //     console.log('test');
                     //     prevTile(current.positionOld, map);
@@ -228,7 +232,7 @@
         var Player = function Player() {
             this.position = [0, 0];
             this.positionOld = [0, 0];
-            this.damage = 5,
+            this.damage = 2,
             this.name = 'Player',
             this.symbol = 'Y',
             this.desc = 'This is you'
@@ -251,7 +255,6 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 if (random <= this.itemChance) {
-                    console.log('item dropped');
                 }
             }
             this.moneyDrop = function() {
@@ -332,7 +335,6 @@
             spawnEnemy()
             for (var i = 0; i < array.length; i++) {
                 array[i].collisionCheck(vm.test2);
-                console.log(array[i].position);
                 if (!array[i].alive) {
                     var newArray = [];
                     for (var j = 0; j < array.length; j++) {

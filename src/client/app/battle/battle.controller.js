@@ -16,10 +16,11 @@
 
 
 
+        vm.test2 = ["                                    ",
+                    "------------------------------------"];
 
 
-
-        vm.test2 = ["     /         \\   .^.               .'                          \\/                                                                                                  ",        
+        vm.test3 = ["     /         \\   .^.               .'                          \\/                                                                                                  ",        
                     "      .'           './   \\    .'\\      /                            /                                                                                                ",
                     "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                     "  .'                      /      '../               //\\\\        .'                                                                                                   ",
@@ -48,9 +49,12 @@
 
 
 
-
-
-
+        vm.level = {
+            ascii: vm.test4,
+            asciiOriginal: vm.test2,
+            playerSpawn: [0, 0],
+            enemySpawn: [0, 0]
+        }
 
 
 
@@ -70,20 +74,23 @@
             unit[1] = unit[1] + y;
             unit[0] = unit[0] + x;
         }
-
+        var testage = false;
         function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
             if (!prevCheck) {
+                console.log(map[unitOld[1]]);
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
                 map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
             }
             else {
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
                 map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
+                testage = '2';
             }
         }
 
         function prevTile(unitOld, map) {
             map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
+            testage = 3;
         }
 
         function checkLevelEnd(unit, map) {
@@ -115,6 +122,8 @@
         var count = 0;
 
         function setCharAt(str,index,chr) {
+            console.log(testage);
+            testage = false;
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
         }
@@ -183,9 +192,9 @@
                     //     }, 1000);
                     // }
                     //move up and over if nothing else possible
-                    else {
-                        updatePosition(current.position, current.positionOld, current.speed, -1);
-                    }
+                    // else {
+                    //     updatePosition(current.position, current.positionOld, current.speed, -1);
+                    // }
                     // if (current.prevCheck) {
                     //     console.log('test');
                     //     prevTile(current.positionOld, map);
@@ -217,8 +226,8 @@
         };
 
         var Player = function Player() {
-            this.position = [0, 23];
-            this.positionOld = [0, 23];
+            this.position = [0, 0];
+            this.positionOld = [0, 0];
             this.damage = 5,
             this.name = 'Player',
             this.symbol = 'Y',
@@ -226,22 +235,17 @@
         };
         Player.prototype = new Unit();
         var player = new Player();
-        console.log(player);
 
         var Enemy = function Enemy() {
             this.speed = -1,
             this.death = function(map) {
                 if (this.health <= 0) {
                     this.alive = false;
-                    console.log(this.alive)
                     this.itemDrop();
                     this.moneyDrop();
                     this.health = this.fullHealth;
-                    console.log(this);
-                    console.log(map[this.position[1]][this.position[0]])
                     // map[this.position[1]] = setCharAt(map[this.position[1]], this.position[0], '');
                     this.symbol = '';
-                    console.log(map[this.position[1]][this.position[0]]);
                 } 
             },
             this.itemDrop = function() {
@@ -283,7 +287,6 @@
         snake.symbol = 'S';
         snake.position = [30, 0];
         snake.positionOld = [30, 0];
-        console.log(snake);
 
         var snake2 = new Cat();
         snake2.position = [75, 0];
@@ -298,14 +301,38 @@
         var dog = new Dog();
         dog.position = [100, 0];
 
-        var array = [player, snake2];
-        console.log(snake2);
+        var Tree = function Tree() {
+            this.name = "Tree",
+            this.symbol = '|',
+            this.move = false
+        }
+        Tree.prototype = new Enemy();
+        var tree = new Tree();
+        tree.position = [100, 10];
+
+        var array = [player, tree];
         var array = [player];
+
+        function spawnEnemy() {
+            var random = Math.round(Math.random()*100);
+            if (random > 80) {
+                createEnemy();
+            }
+        }
+
+        function createEnemy() {
+            var test = new Snake();
+            test.position = [25,0];
+            array.push(test);
+        }
+
 
         function levelLoop() {
             var dead = false;
+            spawnEnemy()
             for (var i = 0; i < array.length; i++) {
                 array[i].collisionCheck(vm.test2);
+                console.log(array[i].position);
                 if (!array[i].alive) {
                     var newArray = [];
                     for (var j = 0; j < array.length; j++) {

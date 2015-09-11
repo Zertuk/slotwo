@@ -5,15 +5,15 @@
         .module('app.battle')
         .controller('BattleController', BattleController);
 
-    BattleController.$inject = ['$scope'];
+    BattleController.$inject = ['$scope', 'levelService'];
 
 
     /* @ngInject */
-    function BattleController($scope) {
+    function BattleController($scope, levelService) {
         var vm = this;
         vm.count = 0;
         vm.level = [];
-
+        console.log(levelService.level1);
 
 
         vm.test2 = ["                                    ",
@@ -327,7 +327,7 @@
             } else {
                 var test = new vm.level.enemyArray[1];
             }
-            test.position = vm.level.enemySpawn;
+            test.position = [30, 0];
             array.push(test);
         }
 

@@ -2,14 +2,14 @@
     'use strict';
 
     angular
-        .module('module')
-        .service('levelService', levelService);
+        .module('app.battle')
+        .service('battleService', battleService);
 
-    levelService.$inject = ['dependencies'];
+    // levelService.$inject = ['dependencies'];
 
     /* @ngInject */
-    function levelService(dependencies) {
-    	this.levels = {
+    function battleService() {
+    	this.level = {
     		level1: 'test',
     		level2: 'test2'
     	}

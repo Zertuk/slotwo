@@ -5,17 +5,16 @@
         .module('app.battle')
         .controller('BattleController', BattleController);
 
-    BattleController.$inject = ['$scope', 'levelService'];
+    BattleController.$inject = ['$scope', 'battleService'];
 
 
     /* @ngInject */
-    function BattleController($scope, levelService) {
+    function BattleController($scope, battleService) {
         var vm = this;
         vm.count = 0;
         vm.level = [];
-        console.log(levelService.level1);
 
-
+        console.log(battleService.level)
         vm.test2 = ["                                    ",
                     "------------------------------------"];
 

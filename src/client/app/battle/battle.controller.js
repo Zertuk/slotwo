@@ -5,16 +5,18 @@
         .module('app.battle')
         .controller('BattleController', BattleController);
 
-    BattleController.$inject = ['$scope', 'battleService'];
+    BattleController.$inject = ['$scope', 'playerService'];
 
 
     /* @ngInject */
-    function BattleController($scope, battleService) {
+    function BattleController($scope, playerService) {
         var vm = this;
         vm.count = 0;
         vm.level = [];
 
-        console.log(battleService.level)
+        console.log(playerService.player.damage)
+
+
         vm.test2 = ["                                    ",
                     "------------------------------------"];
 
@@ -88,11 +90,9 @@
         function battle(unit, enemy, map) {
             if (count % enemy.attackSpeed) {
                 unit.health = unit.health = enemy.damage;
-                console.log(unit.health);
             }
             if (count % unit.attackSpeed == 0) {
                 enemy.health = enemy.health - unit.damage;
-                console.log(enemy.health);
             }
             if (enemy.health <= 0) {
                 console.log('enemy dead');

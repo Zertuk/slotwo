@@ -1,16 +1,15 @@
-<div ng-controller = "BattleController as vm">
+<!-- <div ng-controller = "BattleController as vm">
 	<h1>battle controller</h1>
-<!-- 	<div class = "levelwrap">
+	<div class = "levelwrap">
 		<pre ng-repeat = "tile in vm.level track by $index">{{tile}}</pre>
-	</div> -->
+	</div>
 
 	<div class = "levelwrap">
 		<pre class = "levelrow" ng-repeat = "row in vm.test2 track by $index">{{row}}</pre>
 	</div>
-</div>
-
+</div> -->
 
 <div ng-controller = "LevelController as vm">
 	<h1>level controller</h1>
-
+	<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
 </div>

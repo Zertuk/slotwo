@@ -11,12 +11,29 @@
 
         ////////////////
 
+
         this.Player = function() {
+            this.updatePosition = function(unit, unitOld, x, y) {
+                unitOld[0] = unit[0];
+                unitOld[1] = unit[1];
+                unit[1] = unit[1] + y;
+                unit[0] = unit[0] + x;
+            },
+            this.prevTile = function(unitOld, map) {
+                map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
+                testage = 3;
+            },
+            this.checkLevelEnd = function(unit, map) {
+                if (map[unit[1]].length <= unit[0]) {
+                    console.log('level end');
+                    return true;
+                }
+            },
             //combat
-            this.collisionCheck = function(map) {
+            this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive) {
-                    if (checkLevelEnd(current.position, map)) {
+                    if (current.checkLevelEnd(current.position, map)) {
                         return;
                     }
                     if (current.grounded) {
@@ -33,16 +50,16 @@
 
                     //collission detection y
                     if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
-                        updatePosition(current.position, current.positionOld, 0, 1);
+                        current.updatePosition(current.position, current.positionOld, 0, 1);
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
-                        updatePosition(current.position, current.positionOld, current.speed, 0);
+                        current.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
                     //collision detection with replacable tiles
                     else if (map[current.position[1]][current.position[0] + current.speed] == '_') {
                         current.prev = true;
-                        updatePosition(current.position, current.positionOld, current.speed, 0);
+                        current.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
                     else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                         if (current.symbol == 'Y') {
@@ -53,7 +70,7 @@
                                 }
                             }
                             if (!inCombat) {
-                                updatePosition(current.position, current.positionOld, current.speed, -1);
+                                current.updatePosition(current.position, current.positionOld, current.speed, -1);
                             }
                         }
                         else {
@@ -69,20 +86,20 @@
                     //move up and over if nothing else possible
                     else {
                         var cantMove = false;
-                        for (var i = 0; i < array.length; i++) {
-                            if (map[current.position[1]][current.position[0] + current.speed] == array[i].symbol) {
+                        for (var i = 0; i < enemyArray.length; i++) {
+                            if (map[current.position[1]][current.position[0] + current.speed] == enemyArray[i].symbol) {
                                 cantMove = true;
                             }
                         }
                         if (!cantMove) {
-                            updatePosition(current.position, current.positionOld, current.speed, -1);                            
+                            current.updatePosition(current.position, current.positionOld, current.speed, -1);                            
                         }
                     }
                     // if (current.prevCheck) {
                     //     console.log('test');
                     //     prevTile(current.positionOld, map);
                     // }
-                    $scope.$apply();
+                    // $scope.$apply();
                 }   
                 else {
                     return;
@@ -106,13 +123,12 @@
             //other
             this.position = [0, 0];
             this.positionOld = [0, 0];
-            this.damage = 2,
             this.name = 'Player',
             this.symbol = 'Y',
             this.desc = 'This is you'
         };
 
         this.player = new this.Player();
-        this.player.damage = 5;
+        this.player.damage = 1;
     }
 })();

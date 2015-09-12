@@ -12,14 +12,19 @@
         var vm = this;
         vm.title = 'LevelController';
 
+
         vm.currentLevel = levelService.treeOne;
+        vm.currentLevel.checkLength();
         vm.unitArray = [playerService.player];
 
         function createEnemy() {
             var random = Math.round(Math.random()*100);
             if (random > 90) {
                 var test = new vm.currentLevel.enemyArray[0];
-                test.position = [30, 0];
+                var spawn = [];
+                spawn[0] = vm.currentLevel.enemySpawn[0];
+                spawn[1] = vm.currentLevel.enemySpawn[1];
+                test.position = spawn;
                 vm.unitArray.push(test);
             }
         }
@@ -37,8 +42,10 @@
 
 
         function setCharAt(str,index,chr) {
-            if(index > str.length-1) return str;
-            return str.substr(0,index) + chr + str.substr(index+1);
+            if (typeof str !== 'undefined') {
+                if(index > str.length-1) return str;
+                return str.substr(0,index) + chr + str.substr(index+1);
+            }
         }
 
 
@@ -71,41 +78,12 @@
             setTimeout(levelLoop, 125);
         }
 
-
-
-        function levelLoopOld() {
-            var dead = false;
-            spawnEnemy()
-            for (var i = 0; i < array.length; i++) {
-                array[i].collisionCheck(vm.test2);
-                if (!array[i].alive) {
-                    var newArray = [];
-                    for (var j = 0; j < array.length; j++) {
-                        if (j != i) {
-                            newArray.push(array[j]);
-                        }
-                        else {
-                            updateMap(array[i].position, array[i].positionOld, vm.test2, ' ', array[i].prevCheck);
-                            dead = true;
-                        }
-                    }
-                    array = newArray;
-                }
-                if (typeof array[i] !== 'undefined') {
-                    updateMap(array[i].position, array[i].positionOld, vm.test2, array[i].symbol, array[i].prevCheck);
-                }
-            }
-            setTimeout(levelLoop, 125);
-        }
-        levelLoop();
-
-
-
         activate();
 
         ////////////////
 
         function activate() {
+            levelLoop();
         }
     }
 })();

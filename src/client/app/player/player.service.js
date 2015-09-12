@@ -26,6 +26,7 @@
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
                     console.log('level end');
+                    this.active = false;
                     return true;
                 }
             },
@@ -49,8 +50,12 @@
                     }
 
                     //collission detection y
-                    if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
+                    if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
+                        if (map[current.position[1] + 1][current.position[0]] == '_') {
+                            current.prev = true;
+                            current.prevY = true;
+                        }
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
@@ -64,8 +69,8 @@
                     else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                         if (current.symbol == 'Y') {
                             var inCombat = false;
-                            for (var i = 0; i < array.length; i++) {
-                                if ((map[current.position[1]][current.position[0] + current.speed]) == (array[i].symbol)) {
+                            for (var i = 0; i < enemyArray.length; i++) {
+                                if ((map[current.position[1]][current.position[0] + current.speed]) == (enemyArray[i].symbol)) {
                                     inCombat = true;
                                 }
                             }
@@ -105,6 +110,7 @@
                     return;
                 }
             },
+            this.active = true,
             this.ground = false,
             this.attackSpeed = 1,
             this.health = 10,

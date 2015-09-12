@@ -4,3 +4,9 @@
 	<br>
 	<br>
 </div>
+
+
+<div ng-controller = "LevelController as vm">
+	<h1>level controller</h1>
+	<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
+</div>

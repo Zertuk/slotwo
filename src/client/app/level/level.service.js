@@ -9,10 +9,16 @@
 
     /* @ngInject */
     function levelService(enemyService) {
-        this.Level = function() {};
+        this.Level = function() {
+            this.checkLength = function() {
+                console.log(this.ascii[0].length);
+            }
+        };
         this.treeOne = new this.Level();
+        this.treeOne.enemySpawn = [164, 23];
+        this.treeOne.playerSpawn = [0, 23];
         this.treeOne.enemyArray = [enemyService.Cat, enemyService.Tree];
-        this.treeOne.ascil = ["     /         \\   .^.               .'                          \\/                                                                                                  ",        
+        this.treeOne.ascii = ["     /         \\   .^.               .'                          \\/                                                                                                  ",        
                               "      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                               "  .'                      /      '../               //\\\\        .'                                                                                                   ",
@@ -36,8 +42,10 @@
                               "      |         / \\          /   \\                  / \\       |     /   \\   /   \\                   / \\                                     / \                      ",
                               "                / \\          /   \\                  / \\             /   \\     |             _________|___________         --------------  ___|_                      ",
                               "_________________|_____________|_____________________|________________|___________----------------------------------------              ----------                   ",
-                              "------------------------------------------------------------------------------------                                                                -----------------"];
-        this.treeOne.ascii = ["                                    ",
+                              "------------------------------------------------------------------------------------                                                              -------------------"];
+        this.treeOne.ascil = ["                                    ",
                               "------------------------------------"];
+
+
     }
 })();

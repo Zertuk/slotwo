@@ -52,9 +52,8 @@
                     //collission detection y
                     if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
-                        if (map[current.position[1] + 1][current.position[0]] == '_') {
+                        if (map[current.position[1]][current.position[0]] == '_') {
                             current.prev = true;
-                            current.prevY = true;
                         }
                     }
                      //collision detection x

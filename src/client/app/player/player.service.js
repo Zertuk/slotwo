@@ -11,7 +11,7 @@
 
         ////////////////
 
-        this.Unit = function() {
+        this.Player = function() {
             //combat
             this.collisionCheck = function(map) {
                 var current = this;
@@ -104,11 +104,6 @@
                 this.positionOld = this.position;
             },
             //other
-            this.name = 'default',
-            this.desc = 'default desc'
-        };
-
-        this.Player = function Player() {
             this.position = [0, 0];
             this.positionOld = [0, 0];
             this.damage = 2,
@@ -116,8 +111,6 @@
             this.symbol = 'Y',
             this.desc = 'This is you'
         };
-        this.Player.prototype = new this.Unit();
-
 
         this.player = new this.Player();
         this.player.damage = 5;

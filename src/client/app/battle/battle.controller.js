@@ -14,7 +14,7 @@
         vm.count = 0;
         vm.level = [];
 
-        console.log(playerService.player.damage)
+        console.table(playerService.player.damage)
 
 
         vm.test2 = ["                                    ",

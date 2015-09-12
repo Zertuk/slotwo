@@ -18,7 +18,6 @@
                 unit.health = unit.health = enemy.damage;
             }
             if (count % unit.attackSpeed == 0) {
-                console.log(unit);
                 enemy.health = enemy.health - unit.damage;
             }
             if (enemy.health <= 0) {
@@ -130,7 +129,6 @@
                             }
                         }
                         else {
-                            console.log('test');
                             battle(enemyArray[0], current, map);
                             var inCombat = true;
                         }

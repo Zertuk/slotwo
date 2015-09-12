@@ -10,7 +10,6 @@
     /* @ngInject */
     function levelService(enemyService) {
         this.Level = function() {};
-        console.log(enemyService.Cat);
         this.treeOne = new this.Level();
         this.treeOne.enemyArray = [enemyService.Cat, enemyService.Tree];
         this.treeOne.ascil = ["     /         \\   .^.               .'                          \\/                                                                                                  ",        

@@ -33,7 +33,6 @@
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
                 map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
             }
-            console.log(unitSymbol);
         }
 
 
@@ -42,22 +41,7 @@
             return str.substr(0,index) + chr + str.substr(index+1);
         }
 
-        function battle(unit, enemy, map) {
-            if (count % enemy.attackSpeed) {
-                unit.health = unit.health = enemy.damage;
-            }
-            if (count % unit.attackSpeed == 0) {
-                enemy.health = enemy.health - unit.damage;
-            }
-            if (enemy.health <= 0) {
-                console.log('enemy dead');
 
-            }
-            if (unit.health <= 0) {
-                console.log('player dead');
-            }
-            enemy.death(map);
-        }
 
 
         function levelLoop() {

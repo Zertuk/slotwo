@@ -10,7 +10,6 @@
 		'app.inventory',
 		'app.town',
 		'app.battle',
-		'app.layout',
 		'app.player',
 		'app.enemy',
 		'app.level'

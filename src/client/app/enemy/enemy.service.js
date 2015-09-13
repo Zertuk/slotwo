@@ -37,11 +37,21 @@
             this.damage = 1,
             this.alive = true,
             //movement
+            this.move = true;
             this.prev = false,
             this.prevCheck = false,
             this.speed = -1,
             this.position = [0, 0],
             this.positionOld = [0, 0],
+            this.battleCheck = function(enemyArray, current, map) {
+                if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
+                    console.log('test');
+                    battle(enemyArray, current, map);
+                }
+                else {
+                    console.log(map[current.position[1]][current.position[0] - 1])
+                }
+            },
             this.initPosition = function() {
                 this.positionOld = this.position;
             },
@@ -87,7 +97,7 @@
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 count = count + 1;
-                if (current.alive) {
+                if (current.alive && current.move) {
                     if (this.checkLevelEnd(current.position, map)) {
                         return;
                     }
@@ -155,7 +165,10 @@
                     //     prevTile(current.positionOld, map);
                     // }
                     // $scope.$apply();
-                }   
+                }
+                else if (current.alive) {
+                    this.battleCheck(enemyArray[0], current, map);
+                }
                 else {
                     return;
                 }
@@ -170,6 +183,10 @@
 
         this.Tree = function Tree() {
             this.name = "Tree";
+            this.symbol = '|';
+            this.move = false;
+            this.health = 5;
+            this.colBox = [3, 4];
         }
         this.Tree.prototype = new this.Enemy();
 

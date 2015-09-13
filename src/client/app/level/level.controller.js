@@ -15,6 +15,7 @@
 
         vm.currentLevel = levelService.treeOne;
         vm.currentLevel.checkLength();
+        playerService.player.position = vm.currentLevel.playerSpawn;
         vm.unitArray = [playerService.player];
 
         function createEnemy() {
@@ -28,6 +29,28 @@
                 vm.unitArray.push(test);
             }
         }
+
+        function spawnEnemyAtStart(position) {
+            var entity = new vm.currentLevel.enemyArray[0];
+            var spawn = [];
+            spawn[0] = position[0];
+            spawn[1] = position[1];
+            entity.position = spawn;
+            vm.unitArray.push(entity);
+        }
+
+        function initLevel() {
+            if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
+                console.log(vm.currentLevel.spawnAtStart);
+                for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
+                    spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+                }
+            }
+            else {
+                console.log(vm.currentLevel.spawnAtStart);
+            }
+        }
+        initLevel()
 
         function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
             if (!prevCheck) {
@@ -49,7 +72,17 @@
         }
 
 
-
+        function checkBig(unit) {
+            if (typeof unit.colBox !== 'undefined') {
+                for (var j = 1; j < unit.colBox[1] + 1; j++) {
+                    for (var i = 0; i < unit.colBox[0]; i++) {
+                        setCharAt();
+                        vm.currentLevel.ascii[unit.position[1] - j] = setCharAt(vm.currentLevel.ascii[unit.position[1] - j], unit.position[0] + i, ' ');
+                        vm.currentLevel.ascii[unit.position[1] - j] = setCharAt(vm.currentLevel.ascii[unit.position[1] - j], unit.position[0] - i, ' ');
+                    }
+                }
+            }
+        }
 
         function levelLoop() {
             var dead = false;
@@ -57,6 +90,7 @@
             for (var i = 0; i < vm.unitArray.length; i++) {
                 vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
                 if (!vm.unitArray[i].alive) {
+                    checkBig(vm.unitArray[i]);
                     var newArray = [];
                     for (var j = 0; j < vm.unitArray.length; j++) {
                         if (j != i) {

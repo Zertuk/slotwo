@@ -13,6 +13,9 @@
     /* @ngInject */
     function enemyService(inventoryService) {
         var count = 0;
+        var vm = this;
+        vm.itemDictionary = inventoryService.itemDictionary;
+
         function battle(unit, enemy, map) {
             if (count % enemy.attackSpeed) {
                 unit.health = unit.health = enemy.damage;
@@ -43,6 +46,7 @@
             this.speed = -1,
             this.position = [0, 0],
             this.positionOld = [0, 0],
+            this.itemMult = 1,
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                     battle(enemyArray, current, map);
@@ -84,11 +88,21 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 if (random <= this.itemChance) {
+                    
+                    if (this.itemMult > 1) {
+                        var num = Math.round(this.itemMult * (Math.random() + 1));
+                    }
+                    else {
+                        var num = 1;
+                    }
+                    console.log('you found ' + num + ' ' + this.items[0][0][1].name)
+                    console.log(this.items[0][1][1]);
+                    this.items[0][1][1] = this.items[0][1][1] + num;
                 }
-            }
+            },
             this.moneyDrop = function() {
                 var cash = Math.round(this.moneyMult * ( Math.random() + 1));
-            }
+            },
             //combat
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
@@ -183,6 +197,9 @@
             this.move = false;
             this.health = 5;
             this.colBox = [3, 4];
+            this.items = [vm.itemDictionary['wood']];
+            this.itemChance = 100;
+            this.itemMult = 3;
         }
         this.Tree.prototype = new this.Enemy();
 

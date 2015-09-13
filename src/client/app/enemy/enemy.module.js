@@ -3,5 +3,6 @@
 
     angular
         .module('app.enemy', [
+        	'app.inventory'
         ]);
 })();

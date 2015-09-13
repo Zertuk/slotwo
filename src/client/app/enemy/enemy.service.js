@@ -6,12 +6,12 @@
         .service('enemyService', enemyService);
 
 
-    enemyService.$inject = [];
+    enemyService.$inject = ['inventoryService'];
 
 
 
     /* @ngInject */
-    function enemyService() {
+    function enemyService(inventoryService) {
         var count = 0;
         function battle(unit, enemy, map) {
             if (count % enemy.attackSpeed) {

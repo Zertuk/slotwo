@@ -45,11 +45,7 @@
             this.positionOld = [0, 0],
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
-                    console.log('test');
                     battle(enemyArray, current, map);
-                }
-                else {
-                    console.log(map[current.position[1]][current.position[0] - 1])
                 }
             },
             this.initPosition = function() {

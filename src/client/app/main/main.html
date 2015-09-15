@@ -1,8 +1,12 @@
 <div ng-controller = "MainController as vm">
-	<h1>main controller</h1>
-	<p>Count: {{vm.count}}</p>
-	<br>
-	<br>
+	<div class = "row">
+		<button>Home</button>
+		<button>Inventory</button>
+		<button>Map</button>
+	</div><!--row-->
+	<div class = "row">
+		<div class = "healthbar"><p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p></div>
+	</div><!--row-->
 </div>
 
 

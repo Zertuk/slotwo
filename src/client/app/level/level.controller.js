@@ -5,10 +5,10 @@
         .module('app.level')
         .controller('LevelController', LevelController);
 
-    LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope'];
+    LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout'];
 
     /* @ngInject */
-    function LevelController(levelService, playerService, enemyService, $scope) {
+    function LevelController(levelService, playerService, enemyService, $scope, $timeout) {
         var vm = this;
         vm.title = 'LevelController';
 
@@ -108,8 +108,7 @@
                 }
 
             }
-            $scope.$apply();
-            setTimeout(levelLoop, 125);
+            $timeout(levelLoop, 125);
         }
 
         activate();

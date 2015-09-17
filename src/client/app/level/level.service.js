@@ -12,9 +12,11 @@
         this.Level = function() {
             this.checkLength = function() {
                 console.log(this.ascii[0].length);
-            }
+            },
+            this.spawnMore = true;
         };
         this.treeOne = new this.Level();
+        this.treeOne.spawnMore = false;
         this.treeOne.enemySpawn = [141, 22];
         this.treeOne.playerSpawn = [0, 23];
         this.treeOne.enemyArray = [enemyService.Tree];

@@ -86,7 +86,7 @@
 
         function levelLoop() {
             var dead = false;
-            createEnemy();
+            // createEnemy();
             for (var i = 0; i < vm.unitArray.length; i++) {
                 vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
                 if (!vm.unitArray[i].alive) {

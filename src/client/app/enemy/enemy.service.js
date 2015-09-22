@@ -17,18 +17,17 @@
         vm.itemDictionary = inventoryService.itemDictionary;
 
         function battle(unit, enemy, map) {
-            if (count % enemy.attackSpeed) {
-                unit.health = unit.health = enemy.damage;
+            if (count % enemy.attackSpeed == 0) {
+                unit.health = unit.health - enemy.damage;
+                console.log(enemy.damage);
             }
             if (count % unit.attackSpeed == 0) {
                 enemy.health = enemy.health - unit.damage;
             }
-            if (enemy.health <= 0) {
-                console.log('enemy dead');
-
-            }
             if (unit.health <= 0) {
-                console.log('player dead');
+                unit.alive = false;
+                console.log('you have been slain');
+                return;
             }
             enemy.death(map);
         }

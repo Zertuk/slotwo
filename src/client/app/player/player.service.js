@@ -22,18 +22,14 @@
                     // this.health = this.health + 0.1;
                 }
                 var percent = this.healthPercent();
-                console.log(percent);
                 if (percent > 65) {
                     this.healthWidth = {'background-color': 'green', 'width': percent + '%'};
-                    console.log('green');
                 }
                 else if (40 < percent) {
                     this.healthWidth = {'background-color': 'orange', 'width': percent + '%'};
-                    console.log('orange');
                 }
                 else {
                     this.healthWidth = {'background-color': 'red', 'width': percent + '%'};
-                    console.log('red');
                 }
             },
             this.updatePosition = function(unit, unitOld, x, y) {
@@ -135,8 +131,8 @@
             this.active = true,
             this.ground = false,
             this.attackSpeed = 1,
-            this.health = 10,
-            this.maxHealth = 10,
+            this.health = 100,
+            this.maxHealth = 100,
             this.damage = 1,
             this.alive = true,
             //movement

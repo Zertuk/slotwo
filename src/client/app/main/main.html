@@ -5,7 +5,12 @@
 		<button>Map</button>
 	</div><!--row-->
 	<div class = "row">
-		<div class = "healthbar"><p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p></div>
+		<div class = "healthbar">
+			<div class = "healthbarinner" ng-style = "vm.player.healthWidth">
+			</div>
+			<p class = "alignvert">
+				{{vm.player.health}} / {{vm.player.maxHealth}}</p>
+			</div>
 	</div><!--row-->
 </div>
 
@@ -16,6 +21,7 @@
 	<div class = "enemyinfo">
 		<p class = "enemyname">{{vm.currentEnemy.name}}</p>
 		<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>
+
 		<p ng-if="vm.currentEnemy.health">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
 	</div><!--enemyinfo-->
 </div>

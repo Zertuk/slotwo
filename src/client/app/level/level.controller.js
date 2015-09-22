@@ -15,8 +15,10 @@
 
         vm.currentLevel = levelService.treeOne;
         vm.currentLevel.checkLength();
+        vm.player = playerService.player;
         playerService.player.position = vm.currentLevel.playerSpawn;
         vm.unitArray = [playerService.player];
+
 
         function createEnemy() {
             var random = Math.round(Math.random()*100);
@@ -107,7 +109,7 @@
                     updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prevCheck);
                 }
                 vm.currentEnemy = enemyService.currentEnemy;
-                console.log(vm.currentEnemy);
+                vm.player.healthUpdate();
             }
             $timeout(levelLoop, 125);
         }

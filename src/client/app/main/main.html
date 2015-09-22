@@ -13,4 +13,9 @@
 <div ng-controller = "LevelController as vm">
 	<h1>level controller</h1>
 	<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
+	<div class = "enemyinfo">
+		<p class = "enemyname">{{vm.currentEnemy.name}}</p>
+		<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>
+		<p ng-if="vm.currentEnemy.health">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
+	</div><!--enemyinfo-->
 </div>

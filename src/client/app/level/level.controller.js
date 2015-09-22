@@ -106,7 +106,8 @@
                 if (typeof vm.unitArray[i] !== 'undefined') {
                     updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prevCheck);
                 }
-
+                vm.currentEnemy = enemyService.currentEnemy;
+                console.log(vm.currentEnemy);
             }
             $timeout(levelLoop, 125);
         }

@@ -13,6 +13,7 @@
 
 
         this.Player = function() {
+
             this.updatePosition = function(unit, unitOld, x, y) {
                 unitOld[0] = unit[0];
                 unitOld[1] = unit[1];

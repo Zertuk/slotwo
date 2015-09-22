@@ -17,12 +17,16 @@
         vm.itemDictionary = inventoryService.itemDictionary;
 
         function battle(unit, enemy, map) {
+            vm.currentEnemy = enemy;
             if (count % enemy.attackSpeed == 0) {
                 unit.health = unit.health - enemy.damage;
                 console.log(enemy.damage);
             }
             if (count % unit.attackSpeed == 0) {
                 enemy.health = enemy.health - unit.damage;
+            }
+            if (enemy.health <= 0) {
+                vm.currentEnemy = '';
             }
             if (unit.health <= 0) {
                 unit.alive = false;
@@ -194,7 +198,7 @@
             this.name = "Tree";
             this.symbol = '|';
             this.move = false;
-            this.health = 5;
+            this.health = 500;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;

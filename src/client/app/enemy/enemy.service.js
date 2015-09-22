@@ -199,6 +199,7 @@
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;
             this.itemMult = 3;
+            this.damage = 0;
         }
         this.Tree.prototype = new this.Enemy();
 

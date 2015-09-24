@@ -17,12 +17,15 @@
         vm.itemDictionary = inventoryService.itemDictionary;
 
         function battle(unit, enemy, map) {
+            count = count + 1;
             vm.currentEnemy = enemy;
             if (count % enemy.attackSpeed == 0) {
                 unit.health = unit.health - enemy.damage;
                 console.log(enemy.damage);
             }
+            console.log(unit);
             if (count % unit.attackSpeed == 0) {
+                console.log('test');
                 enemy.health = enemy.health - unit.damage;
             }
             if (enemy.health <= 0) {
@@ -109,7 +112,6 @@
             //combat
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
-                count = count + 1;
                 if (current.alive && current.move) {
                     if (this.checkLevelEnd(current.position, map)) {
                         return;

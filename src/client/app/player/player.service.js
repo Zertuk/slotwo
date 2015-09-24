@@ -6,11 +6,15 @@
         .service('playerService', playerService);
 
 
+    playerService.$inject = ['inventoryService'];
+
     /* @ngInject */
-    function playerService() {
+    function playerService(inventoryService) {
 
         ////////////////
-
+        var vm = this;
+        vm.itemDictionary = inventoryService.itemDictionary;
+        console.log(vm.itemDictionary.club[0][1]);
 
         this.Player = function() {
             this.healthPercent = function() {
@@ -130,7 +134,6 @@
             },
             this.active = true,
             this.ground = false,
-            this.attackSpeed = 1,
             this.health = 100,
             this.maxHealth = 100,
             this.damage = 1,
@@ -150,9 +153,12 @@
             this.name = 'Player',
             this.symbol = 'Y',
             this.desc = 'This is you'
+            //attack
+            this.weapon = vm.itemDictionary.club[0][1];
+            this.damage = this.weapon.damage;
+            this.attackSpeed = this.weapon.attackSpeed;
         };
 
         this.player = new this.Player();
-        this.player.damage = 1;
     }
 })();

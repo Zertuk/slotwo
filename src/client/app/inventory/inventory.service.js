@@ -105,14 +105,24 @@
 		this.club.recipe = ['stick-1', 'grass-1', 'rock-1'];
 		this.club.desc = 'This thing is a beast';
 		this.club.cat = 'weapon';
+		this.club.damage = 4;
+		this.club.attackSpeed = 2;
 		this.club.name = 'Club';
+
+		this.sword = new this.Item();
+		this.sword.desc = 'A basic sword';
+		this.sword.cat = 'weapon';
+		this.sword.damage = 2;
+		this.sword.attackSpeed = 1;
+
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 3]];
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
 		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
-		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
+		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
+		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 
     }
 })();

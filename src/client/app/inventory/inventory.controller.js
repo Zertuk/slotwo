@@ -11,6 +11,7 @@
 	function InventoryController($scope, inventoryService) {
 		var vm = this;
 		vm.itemDictionary = inventoryService.itemDictionary;
+		vm.weapons = inventoryService.weapons;
 
 		inventoryService.tent.amountCheck();
 

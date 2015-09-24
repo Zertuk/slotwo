@@ -10,7 +10,7 @@
     /* @ngInject */
     function inventoryService() {
     	var vm = this;
-		vm.itemDictionary = {};
+		vm.itemDictionary = [];
 
 		this.Item = function() {
 			this.craftTime = 5000;
@@ -110,6 +110,7 @@
 		this.club.name = 'Club';
 
 		this.sword = new this.Item();
+		this.sword.name = "Sword";
 		this.sword.desc = 'A basic sword';
 		this.sword.cat = 'weapon';
 		this.sword.damage = 2;
@@ -124,5 +125,27 @@
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 
+
+
+
+
+
+		vm.weapons = [vm.itemDictionary['club'], 
+					  vm.itemDictionary['sword']]
+
+
+		// function findWeapons() {
+		// 	var length = Object.keys(vm.itemDictionary).length;
+		// 	for (var i = 0; i < length; i++) {
+		// 		console.log(vm.itemDictionary[0])
+		// 		// if (vm.itemDictionary[i][0][1].cat == 'weapon') {
+		// 		// 	console.log(vm.itemDictionary[0][1].name);
+		// 		// }
+		// 		// else {
+		// 		// 	console.log(vm.itemDictionary[0][1].cat);
+		// 		// }
+		// 	}
+		// }
+		// findWeapons();
     }
 })();

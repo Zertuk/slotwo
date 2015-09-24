@@ -17,6 +17,16 @@
 </div>
 
 
+<div ng-controller = "InventoryController as vm">
+	<div ng-repeat = "item in vm.weapons track by $index">
+		<p>{{item[0][1].name}}</p>
+		<p>damage: {{item[0][1].damage}}, attack speed: {{item[0][1].attackSpeed}}</p>
+	</div>
+
+</div>
+
+
+
 <div ng-controller = "LevelController as vm">
 	<h1>level controller</h1>
 	<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>

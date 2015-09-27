@@ -12,6 +12,7 @@
 		var vm = this;
 		vm.itemDictionary = inventoryService.itemDictionary;
 		vm.weapons = inventoryService.weapons;
+		vm.armor = inventoryService.armor;
 
 		inventoryService.tent.amountCheck();
 

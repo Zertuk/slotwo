@@ -23,7 +23,6 @@
                 var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
                 unit.health = unit.health - damageDealt;
                 unit.health = unit.health.toFixed(2);
-                console.log(damageDealt);
             }
             if (count % unit.attackSpeed == 0) {
                 enemy.health = enemy.health - unit.damage;

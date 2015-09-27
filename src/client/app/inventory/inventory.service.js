@@ -122,6 +122,12 @@
 		this.woodArmor.cat = 'armor';
 		this.woodArmor.armor = 0.1;
 
+		this.boneArmor = new this.Item();
+		this.boneArmor.name = 'Bone Armor';
+		this.boneArmor.desc = 'Bonez';
+		this.boneArmor.cat = 'armor';
+		this.boneArmor.armor = 0.2;
+
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 3]];
@@ -131,14 +137,19 @@
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount'], 0];
-
+		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount'], 0];
 
 
 
 
 
 		vm.weapons = [vm.itemDictionary['club'], 
-					  vm.itemDictionary['sword']]
+					  vm.itemDictionary['sword']];
+
+
+		vm.armor = [vm.itemDictionary['woodArmor'],
+					vm.itemDictionary['boneArmor']];
+
 
 
 		// function findWeapons() {

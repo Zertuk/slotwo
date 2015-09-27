@@ -154,9 +154,12 @@
             this.symbol = 'Y',
             this.desc = 'This is you'
             //attack
-            this.weapon = vm.itemDictionary.club[0][1];
-            this.damage = this.weapon.damage;
-            this.attackSpeed = this.weapon.attackSpeed;
+            this.weapon = vm.itemDictionary.club[0][1],
+            this.damage = this.weapon.damage,
+            this.attackSpeed = this.weapon.attackSpeed,
+            //armor
+            this.armor = vm.itemDictionary.woodArmor[0][1],
+            this.armorValue = this.armor.armor
         };
 
         this.player = new this.Player();

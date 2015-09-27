@@ -20,12 +20,12 @@
             count = count + 1;
             vm.currentEnemy = enemy;
             if (count % enemy.attackSpeed == 0) {
-                unit.health = unit.health - enemy.damage;
-                console.log(enemy.damage);
+                var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
+                unit.health = unit.health - damageDealt;
+                unit.health = unit.health.toFixed(2);
+                console.log(damageDealt);
             }
-            console.log(unit);
             if (count % unit.attackSpeed == 0) {
-                console.log('test');
                 enemy.health = enemy.health - unit.damage;
             }
             if (enemy.health <= 0) {

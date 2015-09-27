@@ -110,11 +110,17 @@
 		this.club.name = 'Club';
 
 		this.sword = new this.Item();
-		this.sword.name = "Sword";
+		this.sword.name = 'Sword';
 		this.sword.desc = 'A basic sword';
 		this.sword.cat = 'weapon';
 		this.sword.damage = 2;
 		this.sword.attackSpeed = 1;
+
+		this.woodArmor = new this.Item();
+		this.woodArmor.name = 'Wood Armor';
+		this.woodArmor.desc = 'Hope for no splinters!';
+		this.woodArmor.cat = 'armor';
+		this.woodArmor.armor = 0.1;
 
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
@@ -124,6 +130,7 @@
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
+		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount'], 0];
 
 
 

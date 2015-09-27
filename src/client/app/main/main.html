@@ -18,11 +18,12 @@
 
 
 <div ng-controller = "InventoryController as vm">
-	<div ng-repeat = "item in vm.weapons track by $index">
-		<p>{{item[0][1].name}}</p>
-		<p>damage: {{item[0][1].damage}}, attack speed: {{item[0][1].attackSpeed}}</p>
-	</div>
-
+	<h3>Weapons</h3>
+	<select ng-model="weapon">
+		<option ng-repeat = "item in vm.weapons track by $index">
+			{{item[0][1].name}}
+		</option>
+	</select>
 </div>
 
 

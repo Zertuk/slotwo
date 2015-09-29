@@ -23,7 +23,8 @@
             },
             this.healthUpdate = function() {
                 if (this.health < this.maxHealth) {
-                    // this.health = this.health + 0.1;
+                    var health = parseFloat(this.health);
+                    this.health = (health + this.regen).toFixed(2);
                 }
                 var percent = this.healthPercent();
                 if (percent > 65) {
@@ -134,9 +135,9 @@
             },
             this.active = true,
             this.ground = false,
-            this.health = 100,
+            this.health = 90,
             this.maxHealth = 100,
-            this.damage = 1,
+            this.regen = 0.05,
             this.alive = true,
             //movement
             this.prev = false,
@@ -161,7 +162,6 @@
             this.armor = vm.itemDictionary.woodArmor[0][1],
             this.armorValue = this.armor.armor
         };
-
         this.player = new this.Player();
     }
 })();

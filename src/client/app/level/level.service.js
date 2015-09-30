@@ -17,11 +17,10 @@
         };
         this.treeOne = new this.Level();
         this.treeOne.spawnMore = false;
-        this.treeOne.enemySpawn = [141, 22];
-        this.treeOne.playerSpawn = [0, 23];
+        this.treeOne.enemySpawn = [141, 21];
+        this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
-        this.treeOne.ascii = ["     /         \\   .^.               .'                          \\/                                                                                                  ",        
-                              "      .'           './   \\    .'\\      /                            /                                                                                                ",
+        this.treeOne.ascii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                               "  .'                      /      '../               //\\\\        .'                                                                                                   ",
                               " /                 .     /         /               ///\\\\\\    . /                                                                                                     ",
@@ -48,7 +47,7 @@
         this.treeOne.ascil = ["                                    ",
                               "------------------------------------"];
 
-        this.treeOne.spawnAtStart = [[17, 23], [31, 23], [53, 23], [70, 23], [101, 22], [141, 22]]
+        this.treeOne.spawnAtStart = [[17, 22], [31, 22], [53, 22], [70, 22], [101, 21], [141, 21]];
 
 
     }

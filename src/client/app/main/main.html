@@ -3,9 +3,9 @@
 		<button>Home</button>
 		<button>Inventory</button>
 		<button>Map</button>
-		<p>damage: {{vm.player.damage}}</p>
+<!-- 		<p>damage: {{vm.player.damage}}</p>
 		<p>attack speed: {{vm.player.attackSpeed}}</p>
-	</div><!--row-->
+ -->	</div><!--row-->
 	<div class = "row">
 		<div class = "healthbar">
 			<div class = "healthbarinner" ng-style = "vm.player.healthWidth">
@@ -17,7 +17,7 @@
 </div>
 
 
-<div ng-controller = "InventoryController as vm">
+<!-- <div ng-controller = "InventoryController as vm">
 	<h3>Weapons</h3>
 	<select ng-model="weapon">
 		<option ng-repeat = "item in vm.weapons track by $index">
@@ -31,11 +31,10 @@
 		</option>
 	</select>
 </div>
-
+ -->
 
 
 <div ng-controller = "LevelController as vm">
-	<h1>level controller</h1>
 	<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
 	<div class = "enemyinfo">
 		<p class = "enemyname">{{vm.currentEnemy.name}}</p>

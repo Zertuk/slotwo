@@ -43,4 +43,7 @@
 
 		<p ng-if="vm.currentEnemy.health">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
 	</div><!--enemyinfo-->
+	<div class = "log" id = "log">
+		<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>
+	</div><!--log-->
 </div>

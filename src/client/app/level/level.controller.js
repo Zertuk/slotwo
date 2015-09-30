@@ -100,6 +100,7 @@
 			for (var i = 0; i < vm.unitArray.length; i++) {
 				vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
 				if (!vm.unitArray[i].alive) {
+					addMessage(vm.unitArray[i].deathMessage);
 					checkBig(vm.unitArray[i]);
 					var newArray = [];
 					for (var j = 0; j < vm.unitArray.length; j++) {
@@ -119,7 +120,6 @@
 				vm.currentEnemy = enemyService.currentEnemy;
 				vm.player.healthUpdate();
 			}
-			addMessage(vm.count);
 			$timeout(levelLoop, 125);
 		}
 

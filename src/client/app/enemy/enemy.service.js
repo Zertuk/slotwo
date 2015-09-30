@@ -63,6 +63,7 @@
             //other
             this.name = 'default',
             this.desc = 'default desc',
+
             //methods
             this.updatePosition = function(unit, unitOld, x, y) {
                 unitOld[0] = unit[0];
@@ -190,16 +191,17 @@
         }
 
         this.Cat = function Cat() {
-            this.name = "Cat";
+            this.name = 'Cat';
             this.symbol = 'C';
         }
         this.Cat.prototype = new this.Enemy();
 
         this.Tree = function Tree() {
-            this.name = "Tree";
+            this.name = 'Tree';
+            this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.health = 500;
+            this.health = 50;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;

@@ -21,6 +21,19 @@
 
 		vm.messageLog = [];
 
+		function levelRenderArea() {
+			var length = vm.currentLevel.ascii[0].length;
+			console.log(length);
+			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
+				var left = (vm.player.position[0] - 50)*5;
+
+				var elem = document.getElementById('levelwrap');
+				console.log(elem);
+				elem.style.left = '-' + left + 'px';
+			}
+		}
+		levelRenderArea();
+
 		function addMessage(message) {
 			vm.messageLog.push(message);
 			var elem = document.getElementById('log');
@@ -120,6 +133,7 @@
 				vm.currentEnemy = enemyService.currentEnemy;
 				vm.player.healthUpdate();
 			}
+			levelRenderArea();
 			$timeout(levelLoop, 125);
 		}
 

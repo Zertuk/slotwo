@@ -201,7 +201,7 @@
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.health = 50;
+            this.health = 1;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;

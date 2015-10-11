@@ -3,16 +3,18 @@
 		<button>Home</button>
 		<button>Inventory</button>
 		<button>Map</button>
-<!-- 		<p>damage: {{vm.player.damage}}</p>
-		<p>attack speed: {{vm.player.attackSpeed}}</p>
- -->	</div><!--row-->
+	</div><!--row-->
 	<div class = "row">
 		<div class = "healthbar">
 			<div class = "healthbarinner" ng-style = "vm.player.healthWidth">
 			</div>
-			<p class = "alignvert">
-				{{vm.player.health}} / {{vm.player.maxHealth}}</p>
-			</div>
+			<p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p>
+		</div><!--healthbar-->
+	</div><!--row-->
+	<div class = "row">
+		<div id = "levelwrap">
+			<pre class = "levelrow" ng-repeat = "row in vm.currentLocation.ascii track by $index"><span ng-bind-html="row"></span></pre>
+		</div>
 	</div><!--row-->
 </div>
 
@@ -33,18 +35,17 @@
 </div>
  -->
 
-
-<div ng-controller = "LevelController as vm">
+<!-- <div ng-controller = "LevelController as vm">
 	<div id = "levelwrap">
 		<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
-	</div><!--levelwrap-->
+	</div>
 	<div class = "enemyinfo">
 		<p class = "enemyname">{{vm.currentEnemy.name}}</p>
 		<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>
 
 		<p ng-if="vm.currentEnemy.health">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
-	</div><!--enemyinfo-->
+	</div>
 	<div class = "log" id = "log">
 		<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>
-	</div><!--log-->
-</div>
+	</div>
+</div> -->

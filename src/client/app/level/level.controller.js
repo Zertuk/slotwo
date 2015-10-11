@@ -13,22 +13,20 @@
 		vm.title = 'LevelController';
 
 
-		vm.currentLevel = levelService.treeTwo;
+		vm.currentLevel = levelService.bridge;
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
 		playerService.player.position = vm.currentLevel.playerSpawn;
 		vm.unitArray = [playerService.player];
+		vm.enemySpawn = false;
 
 		vm.messageLog = [];
 
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
-			console.log(length);
 			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
 				var left = (vm.player.position[0] - 50)*5;
-
 				var elem = document.getElementById('levelwrap');
-				console.log(elem);
 				elem.style.left = '-' + left + 'px';
 			}
 		}
@@ -44,6 +42,7 @@
 		test.split('//');
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
+			console.log(random);
 			if (random > 90) {
 				var test = new vm.currentLevel.enemyArray[0];
 				var spawn = [];
@@ -51,6 +50,7 @@
 				spawn[1] = vm.currentLevel.enemySpawn[1];
 				test.position = spawn;
 				vm.unitArray.push(test);
+				console.log(vm.unitArray);
 			}
 		}
 
@@ -70,7 +70,7 @@
 				}
 			}
 			else {
-				console.log(vm.currentLevel.spawnAtStart);
+				vm.enemySpawn = true;
 			}
 		}
 		initLevel()
@@ -105,13 +105,21 @@
 				}
 			}
 		}
+		function autoKill(unit) {
+			if (unit.position[0] == 0) {
+				unit.alive = false;
+			}
+		}
+
 		vm.count = 0;
 		function levelLoop() {
 			var dead = false;
 			vm.count = vm.count + 1;
-			// createEnemy();
 			for (var i = 0; i < vm.unitArray.length; i++) {
 				vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
+				if (i > 0) {
+					autoKill(vm.unitArray[i]);
+				}
 				if (!vm.unitArray[i].alive) {
 					addMessage(vm.unitArray[i].deathMessage);
 					checkBig(vm.unitArray[i]);
@@ -132,6 +140,9 @@
 				}
 				vm.currentEnemy = enemyService.currentEnemy;
 				vm.player.healthUpdate();
+			}
+			if (vm.enemySpawn) {
+				createEnemy();
 			}
 			levelRenderArea();
 			$timeout(levelLoop, 125);

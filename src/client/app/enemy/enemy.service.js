@@ -218,7 +218,7 @@
             this.deathMessage = 'A Treeperson Warrior has been slain!';
             this.symbol = "T";
             this.health = 15;
-            this.damage = 1;
+            this.damage = 1.5;
         }
         this.TreeWarrior.prototype = new this.Enemy();
 

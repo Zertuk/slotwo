@@ -5,14 +5,16 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', 'playerService'];
+    MainController.$inject = ['$rootScope', 'playerService', 'mainService'];
 
     /* @ngInject */
-    function MainController($rootScope, playerService) {
+    function MainController($rootScope, playerService, mainService) {
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;
         vm.player = playerService.player;
+
+        vm.currentLocation = 
 
         activate();
 

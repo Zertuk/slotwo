@@ -13,7 +13,7 @@
 		vm.title = 'LevelController';
 
 
-		vm.currentLevel = levelService.treeOne;
+		vm.currentLevel = levelService.treeTwo;
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
 		playerService.player.position = vm.currentLevel.playerSpawn;

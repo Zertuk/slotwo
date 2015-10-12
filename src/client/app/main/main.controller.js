@@ -13,7 +13,8 @@
         vm.title = 'MainController';
         vm.count = 0;
         vm.player = playerService.player;
-        vm.currentLocation = mainService.treeCity;
+        vm.currentLocation = mainService.treeSlums;
+        vm.currentLocation.initClicks();
 
         function sanitizeAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
@@ -31,6 +32,7 @@
 
         function mainLoop() {
             vm.count = vm.count + 1;
+            vm.player.healthUpdate();
             $timeout(mainLoop, 1000);
         }
     }

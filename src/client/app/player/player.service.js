@@ -137,7 +137,7 @@
             this.ground = false,
             this.health = 90,
             this.maxHealth = 100,
-            this.regen = 0.05,
+            this.regen = 1,
             this.alive = true,
             //movement
             this.prev = false,

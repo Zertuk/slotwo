@@ -5,10 +5,10 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', 'playerService', 'mainService', '$timeout', '$sce'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$sce', '$compile'];
 
     /* @ngInject */
-    function MainController($rootScope, playerService, mainService, $timeout, $sce) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $sce, $compile) {
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;
@@ -19,7 +19,10 @@
         function sanitizeAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
                 vm.currentLocation.ascii[i] = $sce.trustAsHtml(vm.currentLocation.ascii[i]);
+                var test = $compile(vm.currentLocation.ascii[i]);
+                vm.currentLocation.ascii[i] = test;
             }
+            console.log(vm.currentLocation.ascii);
         }
         activate();
 

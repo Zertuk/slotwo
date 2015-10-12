@@ -17,7 +17,7 @@
         vm.click = function(ascii, data,  x, y, xlength, ylength) {
             for (var i = 0; i < ylength; i++) {
             	console.log(data);
-                var before = '<span class = "click" ng-model = "' + data + '">' + ascii[y + i][x];
+                var before = '<span class = "click">' + ascii[y + i][x];
                 var after = ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 ascii[y + i] = this.setCharAt(ascii[y + i], x + xlength, after);
@@ -79,7 +79,7 @@
 								"     /    ~~~                ~~~~       \\//////\\\\\\\\\\\\\\\\   /   ~~~~                           ~~~    \\////\\\\\\\\\\\\/    ~~                    //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\   ",                                                           
 								"    /____________________________________\\   |  |        /___________________________________________\\  | |   /____________________________/////////////\\\\\\\\\\\\\\\\\\\\\\\\\\     ",                                                            
 								"    |                                    |   |  |        |                                           |  | |   |                             ////////////\\\\\\\\\\\\\\\\\\\\\\       ",                                                          
-								"    |    ____                   ____     |   |  |        |    __         __        __        __      |  | |   |                            /////////////\\\\\\\\\\\\\\\\\\\\\\\\\      ",                                                                    
+								"    |   <span>{{vm.count}} ____</snap>                   ____     |   |  |        |    __         __        __        __      |  | |   |                            /////////////\\\\\\\\\\\\\\\\\\\\\\\\\      ",                                                                    
 								"    |   |    |                 |    |    |               |   |__|       |__|      |__|      |__|     |  | |   |                                     |    | |              ",                                                                
 								"    |   |____|         ____    |____|    |    O     O    |        ____                               |        |     ___        _____         _____  |      |              ",                                                                
 								"    |                 |    |             |   /|\\   /|\\   |       |    |        ___     ___           |       O|    |   |       |   |         |   |  |   |  |              ",                                                          
@@ -97,6 +97,8 @@
 		vm.treeShop.name = 'Tree Shop';
 		vm.treeShop.ascii = ['test location'];
 
-
+		vm.switchLocation = function() {
+			console.log('test');
+		}
     }
 })();

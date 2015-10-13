@@ -14,7 +14,7 @@
 	<div class = "row">
 		<div id = "levelwrap">
 			{{vm.count}}
-			<pre class = "levelrow" ng-repeat = "row in vm.currentLocation.ascii track by $index"><span compile="row"></span>{{row}}</pre>
+			<pre class = "levelrow" ng-repeat = "row in vm.currentLocation.ascii track by $index"><span ng-bind-html="row"></span>{{row}}</pre>
 		</div>
 	</div><!--row-->
 </div>

@@ -19,8 +19,6 @@
         function sanitizeAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
                 vm.currentLocation.ascii[i] = $sce.trustAsHtml(vm.currentLocation.ascii[i]);
-                var test = $compile(vm.currentLocation.ascii[i]);
-                vm.currentLocation.ascii[i] = test;
             }
             console.log(vm.currentLocation.ascii);
         }

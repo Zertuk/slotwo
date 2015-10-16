@@ -17,7 +17,7 @@
         vm.click = function(ascii, data,  x, y, xlength, ylength) {
             for (var i = 0; i < ylength; i++) {
             	console.log(data);
-                var before = '<span class = "click">' + ascii[y + i][x];
+                var before = '<span class = "click" ng-click = "vm.test = vm.test + 1">' + ascii[y + i][x];
                 var after = ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 ascii[y + i] = this.setCharAt(ascii[y + i], x + xlength, after);
@@ -31,7 +31,7 @@
 
         vm.treeCity = new vm.Location;
         vm.treeCity.name = 'Tree City';
-		vm.treeCity.ascii = ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
+		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
 							   "      /////////\\\\\\\\\\\\\\\\\\     ////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////\\\\\\\\\\\\              |       |           |              ",                                                                        
 							   "       ////////\\\\\\\\\\\\\\              |                   |    ///////\\\\\\\\\\\\\\             |       |     |     |              ",                                                                 
 							   "    ///////////\\\\\\\\\\\\\\\\\\\\           |      |            |    ///////\\\\\\\\\\\\\\\\      .     |   |         |     |              ",                                                               
@@ -54,11 +54,11 @@
 							   "                 |     / \\      |       |   | / \\   |  .'          |                                                       ",                                                                        
 							   "                 |      |               |   |  |      ;            |                                                       "]                                                                        
 		vm.treeCity.initClicks = function() {
-			vm.click(this.ascii, 'government', 92, 6, 12, 7);
-			vm.click(this.ascii, 'slums', 83, 15, 40, 5);
-			vm.click(this.ascii, 'minishop', 66, 8, 2, 2);
-			vm.click(this.ascii, 'shop1', 40, 9, 7, 3);
-			vm.click(this.ascii, 'shop2', 12, 9, 7, 3);
+			// vm.click(this.ascii, 'government', 92, 6, 12, 7);
+			// vm.click(this.ascii, 'slums', 83, 15, 40, 5);
+			// vm.click(this.ascii, 'minishop', 66, 8, 2, 2);
+			// vm.click(this.ascii, 'shop1', 40, 9, 7, 3);
+			// vm.click(this.ascii, 'shop2', 12, 9, 7, 3);
 		}
 
 		vm.treeSlums = new vm.Location;

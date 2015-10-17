@@ -16,21 +16,21 @@
         vm.currentLocation = mainService.treeCity;
         vm.currentLocation.initClicks();
         vm.test2 = '<p>test1</p>';
+        vm.trustAsHtml = $sce.trustAsHtml;
+        $rootScope.test = 0;
 
         function test() {
-            vm.test2 = '<p ng-click = "vm.test = vm.test + 1">test</p>';
+            vm.test2 = '<p ng-click = "console.log(\'hello\')">test</p>';
             vm.test2 = $compile(vm.test2)(vm);
         }
-        test();
+
         function sanitizeAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
-                var before = '<pre>';
-                var after = '</pre>';
-                vm.currentLocation.ascii[i] = before + vm.currentLocation.ascii[i] + after;
-                // vm.currentLocation.ascii[i] = $sce.trustAsHtml(vm.currentLocation.ascii[i]);
-                vm.currentLocation.ascii[i] = $compile(vm.currentLocation.ascii[i])(vm);
-            }
-            console.log(vm.currentLocation.ascii[9][0]);
+                vm.currentLocation.ascii[i] = '<pre>' + vm.currentLocation.ascii[i] + '</pre>';
+                console.log(vm.currentLocation.ascii[i])
+                vm.currentLocation.ascii[i] = $compile(vm.currentLocation.ascii[i])($scope);
+                angular.element(document.getElementById('levelwrap')).append(vm.currentLocation.ascii[i]);
+            }                    
         }
         vm.test = 0;
         function testFunction() {
@@ -39,6 +39,8 @@
         activate();
 
         ////////////////
+
+
 
         function activate() {
             sanitizeAscii();

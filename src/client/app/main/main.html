@@ -12,11 +12,10 @@
 		</div><!--healthbar-->
 	</div><!--row-->
 	<div class = "row">
-		{{vm.test2}}
+		<p ng-click = "vm.test = vm.test + 1">test</p>
 		<div id = "levelwrap">
-			{{vm.count}}
-			<pre main-directive class = "levelrow" ng-repeat = "row in vm.currentLocation.ascii track by $index"><span compile="row"></span>{{row}}</pre>
-		</div>
+<!-- 			<pre class = "levelrow" ng-repeat = "row in vm.currentLocation.ascii track by $index"><span compile="{{row}}"></span></pre>
+ -->		</div>
 	</div><!--row-->
 </div>
 

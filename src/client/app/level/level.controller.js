@@ -139,7 +139,6 @@
 					updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prevCheck);
 				}
 				vm.currentEnemy = enemyService.currentEnemy;
-				vm.player.healthUpdate();
 			}
 			if (vm.enemySpawn) {
 				createEnemy();

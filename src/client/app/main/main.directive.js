@@ -3,16 +3,14 @@
 
     angular
         .module('app.main')
-        .directive('mainDirective', mainDirective);
+        .directive('compile', compile);
 
-    mainDirective.$inject = ['MainController'];
+    compile.$inject = ['$compile'];
 
     /* @ngInject */
-    function mainDirective(MainController) {
+    function compile($compile) {
 
         var directive = {
-            bindToController: true,
-            controller: MainController,
             controllerAs: 'vm',
             link: link,
             restrict: 'A',
@@ -22,7 +20,7 @@
         return directive;
 
         function link(scope, element, attrs) {
-       		console.log('test');
+            element.append(attrs.compile);        
         }
     }
 

@@ -54,11 +54,11 @@
 							   "                 |     / \\      |       |   | / \\   |  .'          |                                                       ",                                                                        
 							   "                 |      |               |   |  |      ;            |                                                       "]                                                                        
 		vm.treeCity.initClicks = function() {
-			// vm.click(this.ascii, 'government', 92, 6, 12, 7);
-			// vm.click(this.ascii, 'slums', 83, 15, 40, 5);
-			// vm.click(this.ascii, 'minishop', 66, 8, 2, 2);
-			// vm.click(this.ascii, 'shop1', 40, 9, 7, 3);
-			// vm.click(this.ascii, 'shop2', 12, 9, 7, 3);
+			vm.click(this.ascii, 'government', 92, 6, 12, 7);
+			vm.click(this.ascii, 'slums', 83, 15, 40, 5);
+			vm.click(this.ascii, 'minishop', 66, 8, 2, 2);
+			vm.click(this.ascii, 'shop1', 40, 9, 7, 3);
+			vm.click(this.ascii, 'shop2', 12, 9, 7, 3);
 		}
 
 		vm.treeSlums = new vm.Location;

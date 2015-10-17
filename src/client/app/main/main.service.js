@@ -16,7 +16,6 @@
         }
         vm.click = function(ascii, data,  x, y, xlength, ylength) {
             for (var i = 0; i < ylength; i++) {
-            	console.log(data);
                 var before = '<span class = "click" ng-click = "vm.test = vm.test + 1">' + ascii[y + i][x];
                 var after = ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!

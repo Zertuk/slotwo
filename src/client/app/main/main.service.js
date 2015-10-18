@@ -25,7 +25,9 @@
         }
 
         vm.Location = function() {
-    		
+    		this.asciiFormatted = [];
+    		this.asciiSpanned = [];
+    		this.formatted = false;
         };
         vm.locationDictionary = [];
 

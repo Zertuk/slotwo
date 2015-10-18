@@ -15,13 +15,17 @@
         vm.player = playerService.player;
         vm.currentLocation = mainService.treeCity;
         vm.locationDictionary = mainService.locationDictionary;
-        vm.currentLocation.initClicks();
+        if (!vm.currentLocation.formatted) {
+            vm.currentLocation.initClicks();
+        }
 
         vm.switchLocation = function(location) {
             console.log(location);
             vm.currentLocation = vm.locationDictionary[location];
             console.log(vm.currentLocation);
-            vm.currentLocation.initClicks();
+            if (!vm.currentLocation.formatted) {
+                vm.currentLocation.initClicks();
+            }
             removeAscii();
         };
 
@@ -32,10 +36,13 @@
         }
         function sanitizeAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
-                vm.currentLocation.ascii[i] = '<pre>' + vm.currentLocation.ascii[i] + '</pre>';
+                if (!vm.currentLocation.formatted) {
+                    vm.currentLocation.ascii[i] = '<pre>' + vm.currentLocation.ascii[i] + '</pre>';
+                }
                 vm.currentLocation.ascii[i] = $compile(vm.currentLocation.ascii[i])($scope);
                 angular.element(document.getElementById('levelwrap')).append(vm.currentLocation.ascii[i]);
-            }                    
+            }
+            vm.currentLocation.formatted = true;
         }
 
         activate();

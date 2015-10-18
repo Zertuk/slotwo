@@ -14,8 +14,22 @@
         vm.count = 0;
         vm.player = playerService.player;
         vm.currentLocation = mainService.treeCity;
+        vm.locationDictionary = mainService.locationDictionary;
         vm.currentLocation.initClicks();
 
+        vm.switchLocation = function(location) {
+            console.log(location);
+            vm.currentLocation = vm.locationDictionary[location];
+            console.log(vm.currentLocation);
+            vm.currentLocation.initClicks();
+            removeAscii();
+        };
+
+        function removeAscii() {
+            var elements = angular.element(document.getElementById('levelwrap')).children();
+            elements.remove();
+            sanitizeAscii();
+        }
         function sanitizeAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
                 vm.currentLocation.ascii[i] = '<pre>' + vm.currentLocation.ascii[i] + '</pre>';

@@ -16,7 +16,7 @@
         }
         vm.click = function(ascii, data,  x, y, xlength, ylength) {
             for (var i = 0; i < ylength; i++) {
-                var before = '<span class = "click" ng-click = "vm.test = vm.test + 1">' + ascii[y + i][x];
+                var before = '<span class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + ascii[y + i][x];
                 var after = ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 ascii[y + i] = this.setCharAt(ascii[y + i], x + xlength, after);
@@ -27,9 +27,11 @@
         vm.Location = function() {
     		
         };
+        vm.locationDictionary = [];
 
         vm.treeCity = new vm.Location;
         vm.treeCity.name = 'Tree City';
+        vm.treeCity.prev = "slums";
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
 							   "      /////////\\\\\\\\\\\\\\\\\\     ////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////\\\\\\\\\\\\              |       |           |              ",                                                                        
 							   "       ////////\\\\\\\\\\\\\\              |                   |    ///////\\\\\\\\\\\\\\             |       |     |     |              ",                                                                 
@@ -67,8 +69,8 @@
 			vm.click(this.ascii, 'tavern', 64, 11, 6, 5);
 			vm.click(this.ascii, 'thugs', 42, 11, 13, 5);
 		}
-
-		this.treeSlums.ascii = ["            `                              ////\\\\\\\\                                                   ///\\\\\\                                      /////\\\\\\\\\\              ",                                                      
+		vm.treeSlums.prev = "treeCity";
+		vm.treeSlums.ascii = ["            `                              ////\\\\\\\\                                                   ///\\\\\\                                      /////\\\\\\\\\\              ",                                                      
 								"           `                                ///\\\\\\                                                   ////\\\\\\\\\\                                  ///////\\\\\\\\\\\\\\            ",                                                      
 								"             `                            /////\\\\\\\\\                                                //////\\\\\\\\\\\\\\                                 //////\\\\\\\\\\\\\\            ",                                                      
 								"           ___                             ////\\\\\\\\                                                //////\\\\\\\\\\\\                              ///////////\\\\\\\\\\\\\\\\\\         ",                                                      
@@ -95,6 +97,10 @@
 		vm.treeShop = new vm.Location;
 		vm.treeShop.name = 'Tree Shop';
 		vm.treeShop.ascii = ['test location'];
+
+		vm.locationDictionary['slums'] = this.treeSlums;
+		vm.locationDictionary['treeCity'] = this.treeCity;
+
 
 		vm.switchLocation = function() {
 			console.log('test');

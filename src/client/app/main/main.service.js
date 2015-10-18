@@ -28,12 +28,14 @@
     		this.asciiFormatted = [];
     		this.asciiSpanned = [];
     		this.formatted = false;
+    		this.initClicks = function(){}
         };
+
         vm.locationDictionary = [];
 
         vm.treeCity = new vm.Location;
         vm.treeCity.name = 'Tree City';
-        vm.treeCity.prev = "slums";
+        vm.treeCity.prev = "mainMap";
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
 							   "      /////////\\\\\\\\\\\\\\\\\\     ////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////\\\\\\\\\\\\              |       |           |              ",                                                                        
 							   "       ////////\\\\\\\\\\\\\\              |                   |    ///////\\\\\\\\\\\\\\             |       |     |     |              ",                                                                 
@@ -57,21 +59,37 @@
 							   "                 |     / \\      |       |   | / \\   |  .'          |                                                       ",                                                                        
 							   "                 |      |               |   |  |      ;            |                                                       "]                                                                        
 		vm.treeCity.initClicks = function() {
-			vm.click(this.ascii, 'government', 92, 6, 12, 7);
+			vm.click(this.ascii, 'treeGovernment', 92, 6, 12, 7);
 			vm.click(this.ascii, 'slums', 83, 15, 40, 5);
-			vm.click(this.ascii, 'minishop', 66, 8, 2, 2);
-			vm.click(this.ascii, 'shop1', 40, 9, 7, 3);
-			vm.click(this.ascii, 'shop2', 12, 9, 7, 3);
+			vm.click(this.ascii, 'treeSecret', 66, 8, 2, 2);
+			vm.click(this.ascii, 'treeInn', 40, 9, 7, 3);
+			vm.click(this.ascii, 'treeShop', 12, 9, 7, 3);
 		}
+
+		vm.treeGovernment = new vm.Location;
+		vm.treeGovernment.ascii = ['tree government'];
+		vm.treeGovernment.prev = 'treeCity';
+
+		vm.treeSecret = new vm.Location;
+		vm.treeSecret.ascii = ['tree secret'];
+		vm.treeSecret.prev = 'treeCity';
+
+		vm.treeShop = new vm.Location;
+		vm.treeShop.ascii = ['tree shop'];
+		vm.treeShop.prev = 'treeCity';
+
+		vm.treeInn = new vm.Location;
+		vm.treeInn.ascii = ['tree inn'];
+		vm.treeInn.prev = 'treeCity';
 
 		vm.treeSlums = new vm.Location;
 		vm.treeSlums.name = 'Tree Slums';
 		vm.treeSlums.initClicks = function() {
-			vm.click(this.ascii, 'homeless', 105, 12, 5, 4);
-			vm.click(this.ascii, 'tavern', 64, 11, 6, 5);
-			vm.click(this.ascii, 'thugs', 42, 11, 13, 5);
+			vm.click(this.ascii, 'slumsBum', 105, 12, 5, 4);
+			vm.click(this.ascii, 'slumsInn', 64, 11, 6, 5);
+			vm.click(this.ascii, 'slumsThugs', 42, 11, 13, 5);
 		}
-		vm.treeSlums.prev = "treeCity";
+		vm.treeSlums.prev = 'treeCity';
 		vm.treeSlums.ascii = ["            `                              ////\\\\\\\\                                                   ///\\\\\\                                      /////\\\\\\\\\\              ",                                                      
 								"           `                                ///\\\\\\                                                   ////\\\\\\\\\\                                  ///////\\\\\\\\\\\\\\            ",                                                      
 								"             `                            /////\\\\\\\\\                                                //////\\\\\\\\\\\\\\                                 //////\\\\\\\\\\\\\\            ",                                                      
@@ -95,13 +113,27 @@
                                                                                                                                                                                                                      
                                                                                                                                                                                                                            
 
+		vm.treeSlumsInn = new vm.Location;
+		vm.treeSlumsInn.ascii = ['tree slums inn'];
+		vm.treeSlumsInn.prev = 'slums';
 
-		vm.treeShop = new vm.Location;
-		vm.treeShop.name = 'Tree Shop';
-		vm.treeShop.ascii = ['test location'];
+		vm.treeSlumsThugs = new vm.Location;
+		vm.treeSlumsThugs.ascii = ['tree slums thugs'];
+		vm.treeSlumsThugs.prev = 'slums';
 
-		vm.locationDictionary['slums'] = this.treeSlums;
+		vm.treeSlumsBum = new vm.Location;
+		vm.treeSlumsBum.ascii = ['tree slums bum'];
+		vm.treeSlumsBum.prev = 'slums';
+
 		vm.locationDictionary['treeCity'] = this.treeCity;
+			vm.locationDictionary['treeSecret'] = this.treeSecret;
+			vm.locationDictionary['treeGovernment'] = this.treeGovernment;
+			vm.locationDictionary['treeInn'] = this.treeInn;
+			vm.locationDictionary['treeShop'] = this.treeShop;
+			vm.locationDictionary['slums'] = this.treeSlums;
+				vm.locationDictionary['slumsInn'] = this.treeSlumsInn;
+				vm.locationDictionary['slumsThugs'] = this.treeSlumsThugs;
+				vm.locationDictionary['slumsBum'] = this.treeSlumsBum
 
 
 		vm.switchLocation = function() {

@@ -12,7 +12,8 @@
 		</div><!--healthbar-->
 	</div><!--row-->
 	<div class = "row">
-		<button ng-click = "vm.switchLocation(vm.currentLocation.prev)">test</button>
+		<h1>{{vm.currentLocation.name}}</h1>
+		<button class = "marginbottom10" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return</button>
 		<div id = "levelwrap">
 		</div>
 	</div><!--row-->
@@ -36,7 +37,7 @@
  -->
 
 <!-- <div ng-controller = "LevelController as vm">
-	<div id = "levelwrap">
+	<div id = "levelwrap" class = "overflowhidden">
 		<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
 	</div>
 	<div class = "enemyinfo">

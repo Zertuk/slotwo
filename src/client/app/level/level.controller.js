@@ -42,7 +42,6 @@
 		test.split('//');
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
-			console.log(random);
 			if (random > 95) {
 				var test = new vm.currentLevel.enemyArray[0];
 				var spawn = [];
@@ -50,7 +49,6 @@
 				spawn[1] = vm.currentLevel.enemySpawn[1];
 				test.position = spawn;
 				vm.unitArray.push(test);
-				console.log(vm.unitArray);
 			}
 		}
 
@@ -64,7 +62,6 @@
 		}
 		function initLevel() {
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
-				console.log(vm.currentLevel.spawnAtStart);
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
 					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
 				}
@@ -115,36 +112,38 @@
 		function levelLoop() {
 			var dead = false;
 			vm.count = vm.count + 1;
-			for (var i = 0; i < vm.unitArray.length; i++) {
-				vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
-				if (i > 0) {
-					autoKill(vm.unitArray[i]);
-				}
-				if (!vm.unitArray[i].alive) {
-					addMessage(vm.unitArray[i].deathMessage);
-					checkBig(vm.unitArray[i]);
-					var newArray = [];
-					for (var j = 0; j < vm.unitArray.length; j++) {
-						if (j !== i) {
-							newArray.push(vm.unitArray[j]);
-						}
-						else {
-							updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, ' ', vm.unitArray[i].prevCheck);
-							dead = true;
-						}
+			if (vm.player.active) {
+				for (var i = 0; i < vm.unitArray.length; i++) {
+					vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
+					if (i > 0) {
+						autoKill(vm.unitArray[i]);
 					}
-					vm.unitArray = newArray;
+					if (!vm.unitArray[i].alive) {
+						addMessage(vm.unitArray[i].deathMessage);
+						checkBig(vm.unitArray[i]);
+						var newArray = [];
+						for (var j = 0; j < vm.unitArray.length; j++) {
+							if (j !== i) {
+								newArray.push(vm.unitArray[j]);
+							}
+							else {
+								updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, ' ', vm.unitArray[i].prevCheck);
+								dead = true;
+							}
+						}
+						vm.unitArray = newArray;
+					}
+					if (typeof vm.unitArray[i] !== 'undefined') {
+						updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prevCheck);
+					}
+					vm.currentEnemy = enemyService.currentEnemy;
 				}
-				if (typeof vm.unitArray[i] !== 'undefined') {
-					updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prevCheck);
+				if (vm.enemySpawn) {
+					createEnemy();
 				}
-				vm.currentEnemy = enemyService.currentEnemy;
+				levelRenderArea();
+				$timeout(levelLoop, 125);
 			}
-			if (vm.enemySpawn) {
-				createEnemy();
-			}
-			levelRenderArea();
-			$timeout(levelLoop, 125);
 		}
 
 		activate();

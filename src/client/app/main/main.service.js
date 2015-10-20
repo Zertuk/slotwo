@@ -140,9 +140,9 @@
 		vm.treeSlums = new vm.Location;
 		vm.treeSlums.name = 'Tree Slums';
 		vm.treeSlums.initClicks = function() {
-			vm.click(this, 'slumsBum', 105, 12, 5, 4);
-			vm.click(this, 'slumsInn', 64, 11, 6, 5);
-			vm.click(this, 'slumsThugs', 42, 11, 13, 5);
+			vm.click(this, 'test', 'slumsBum', 105, 12, 5, 4);
+			vm.click(this, 'test', 'slumsInn', 64, 11, 6, 5);
+			vm.click(this, 'test', 'slumsThugs', 42, 11, 13, 5);
 		}
 		vm.treeSlums.prev = 'treeCity';
 		vm.treeSlums.ascii = ["            `                              ////\\\\\\\\                                                   ///\\\\\\                                      /////\\\\\\\\\\              ",                                                      

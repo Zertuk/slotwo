@@ -24,6 +24,7 @@
             vm.currentLocation = vm.locationDictionary[location];
             console.log(vm.currentLocation);
             if (!vm.currentLocation.formatted) {
+                console.log('test');
                 vm.currentLocation.initClicks();
             }
             removeAscii();

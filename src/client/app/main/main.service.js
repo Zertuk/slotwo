@@ -14,9 +14,14 @@
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
         }
-        vm.click = function(location, hover, data,  x, y, xlength, ylength) {
+        vm.click = function(location, hover, data,  x, y, xlength, ylength, isLevel) {
             for (var i = 0; i < ylength; i++) {
-                var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
+            	if (isLevel) {
+                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\'' + data + '\')">' + location.ascii[y + i][x];
+            	}
+            	else {
+                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
+            	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x + xlength, after);
@@ -35,7 +40,9 @@
 
         vm.mainMap = new vm.Location;
         vm.mainMap.name = 'Map';
-
+        vm.mainMap.initClicks = function() {
+        	vm.click(this, 'test', 'treeOne', 30, 29, 30, 10, true);
+        };
 		vm.mainMap.ascii = [	"            .                                  /              \\     /   \\                                                    /         \\   .'                         \\                  ",
 								"           /_\\'.                             .'   .^.         /\\   /     \\     ^                                           .'     ^  .  '. '.                          |         \\_      ",
 								"          /___\\/'.                          /    .   \\    ^ .'  '.'       '. .' '.             .......                    /      / .' '.  \\  :                          \\        /__     ",

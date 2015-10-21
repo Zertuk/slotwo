@@ -19,8 +19,8 @@
         if (!vm.currentLocation.formatted) {
             vm.currentLocation.initClicks();
         }
-        vm.switchLevel = function(levle) {
-            console.log(level);
+        vm.switchLevel = function(level) {
+            console.log(vm.levelDictionary[level]);
         }
         vm.switchLocation = function(location) {
             console.log(location);

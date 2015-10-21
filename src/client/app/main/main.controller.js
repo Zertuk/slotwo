@@ -5,20 +5,23 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService) {
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;
         vm.player = playerService.player;
         vm.currentLocation = mainService.treeCity;
         vm.locationDictionary = mainService.locationDictionary;
+        vm.levelDictionary = levelService.levelDictionary;
         if (!vm.currentLocation.formatted) {
             vm.currentLocation.initClicks();
         }
-
+        vm.switchLevel = function(levle) {
+            console.log(level);
+        }
         vm.switchLocation = function(location) {
             console.log(location);
             vm.currentLocation = vm.locationDictionary[location];

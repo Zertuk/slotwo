@@ -14,6 +14,7 @@
     function enemyService(inventoryService) {
         var count = 0;
         var vm = this;
+        vm.watch = false;
         vm.itemDictionary = inventoryService.itemDictionary;
 
         function battle(unit, enemy, map) {
@@ -113,6 +114,10 @@
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive && current.move) {
+                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
+                        var inCombat = true;
+                        console.log('in combat')
+                    }
                     if (this.checkLevelEnd(current.position, map)) {
                         return;
                     }
@@ -121,27 +126,15 @@
                         var groundedLastTurn = true;
                     }
                     if (current.prev) {
+                        if (!inCombat) {
+                            current.prev = false;
+                        }
                         current.prevCheck = true;
-                        current.prev = false;
                     }
                     else {
                         current.prevCheck = false;
                     }
-
-                    //collission detection y
-                    if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
-                        this.updatePosition(current.position, current.positionOld, 0, 1);
-                    }
-                     //collision detection x
-                    else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
-                        this.updatePosition(current.position, current.positionOld, current.speed, 0);
-                    }
-                    //collision detection with replacable tiles
-                    else if (map[current.position[1]][current.position[0] + current.speed] == '_') {
-                        current.prev = true;
-                        this.updatePosition(current.position, current.positionOld, current.speed, 0);
-                    }
-                    else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
+                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                         if (current.symbol == 'Y') {
                             var inCombat = false;
                             for (var i = 0; i < array.length; i++) {
@@ -154,9 +147,28 @@
                             }
                         }
                         else {
+                            vm.watch = true;
                             battle(enemyArray[0], current, map);
                             var inCombat = true;
                         }
+                    }
+                    //collission detection y
+                    else if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
+                        this.updatePosition(current.position, current.positionOld, 0, 1);
+                        console.log('test2');
+                    }
+                     //collision detection x
+                    else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
+                        this.updatePosition(current.position, current.positionOld, current.speed, 0);
+                    }
+                    //collision detection with replacable tiles
+                    else if (map[current.position[1]][current.position[0] + current.speed] == '_') {
+                        current.prev = true;
+                        this.updatePosition(current.position, current.positionOld, current.speed, 0);
+                    }
+                    else if (map[current.position[1] + 1][current.position[0]] == '_') {
+                        current.prev = true;
+                        this.updatePosition(current.position, current.positionOld, 0, 1);
                     }
                     // else {
                     //     setTimeout(function() {

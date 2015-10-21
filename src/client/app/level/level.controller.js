@@ -40,9 +40,11 @@
 
 		var test = "test/test";
 		test.split('//');
+		var testvar = 0;
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
-			if (random > 95) {
+			if ((random > 0) && (testvar < 1)) {
+				testvar = testvar + 1;
 				var test = new vm.currentLevel.enemyArray[0];
 				var spawn = [];
 				spawn[0] = vm.currentLevel.enemySpawn[0];

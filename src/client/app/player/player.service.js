@@ -53,11 +53,6 @@
                     this.active = false;
                     return true;
                 }
-                else {
-                    console.log(map[unit[1]].length);
-                    console.log(unit[0]);
-                    console.log('---');
-                }
             },
             //combat
             this.collisionCheck = function(map, enemyArray) {

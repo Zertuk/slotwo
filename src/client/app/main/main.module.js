@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('app.main', [
-    	'app.player'
+    	'app.player',
+    	'app.level'
         ]);
 })();

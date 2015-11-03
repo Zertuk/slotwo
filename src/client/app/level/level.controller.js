@@ -5,10 +5,10 @@
 		.module('app.level')
 		.controller('LevelController', LevelController);
 
-	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout'];
+	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService'];
 
 	/* @ngInject */
-	function LevelController(levelService, playerService, enemyService, $scope, $timeout) {
+	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService) {
 		var vm = this;
 		vm.title = 'LevelController';
 
@@ -31,12 +31,6 @@
 			}
 		}
 		levelRenderArea();
-
-		function addMessage(message) {
-			vm.messageLog.push(message);
-			var elem = document.getElementById('log');
-  			elem.scrollTop = elem.scrollHeight;
-		}
 
 		var test = "test/test";
 		test.split('//');
@@ -121,7 +115,7 @@
 						autoKill(vm.unitArray[i]);
 					}
 					if (!vm.unitArray[i].alive) {
-						addMessage(vm.unitArray[i].deathMessage);
+						messageService.addMessage(vm.unitArray[i].deathMessage);
 						checkBig(vm.unitArray[i]);
 						var newArray = [];
 						for (var j = 0; j < vm.unitArray.length; j++) {

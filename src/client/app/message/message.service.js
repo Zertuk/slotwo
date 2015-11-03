@@ -9,8 +9,11 @@
 
     /* @ngInject */
     function messageService() {
-        this.func = func;
-
+        this.addMessage = function(message) {
+			vm.messageLog.push(message);
+			var elem = document.getElementById('log');
+  			elem.scrollTop = elem.scrollHeight;
+		}
         ////////////////
 
         function func() {

@@ -3,5 +3,6 @@
 
     angular
         .module('app.player', [
+        	'app.message'
         ]);
 })();

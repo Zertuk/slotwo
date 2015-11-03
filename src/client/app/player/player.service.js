@@ -6,10 +6,10 @@
         .service('playerService', playerService);
 
 
-    playerService.$inject = ['inventoryService'];
+    playerService.$inject = ['inventoryService', 'messageService'];
 
     /* @ngInject */
-    function playerService(inventoryService) {
+    function playerService(inventoryService, messageService) {
 
         ////////////////
         var vm = this;
@@ -49,7 +49,7 @@
             },
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
-                    console.log('level end');
+                    messageService.addMessage('You have reached the end of the level');
                     this.active = false;
                     return true;
                 }

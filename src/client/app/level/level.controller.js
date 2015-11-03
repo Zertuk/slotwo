@@ -19,8 +19,7 @@
 		playerService.player.position = vm.currentLevel.playerSpawn;
 		vm.unitArray = [playerService.player];
 		vm.enemySpawn = false;
-
-		vm.messageLog = [];
+		vm.messageLog = messageService.messageLog;
 
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;

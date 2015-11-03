@@ -25,6 +25,9 @@
                 if (this.health < this.maxHealth) {
                     var health = parseFloat(this.health);
                     this.health = (health + this.regen).toFixed(2);
+                } 
+                if (this.health > this.maxHealth) {
+                    this.health = this.maxHealth;
                 }
                 var percent = this.healthPercent();
                 if (percent > 65) {

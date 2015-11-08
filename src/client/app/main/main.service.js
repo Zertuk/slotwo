@@ -38,6 +38,7 @@
     		this.asciiSpanned = [];
     		this.formatted = false;
     		this.initClicks = function(){}
+    		this.specFunc = function(){}
         };
 
         vm.locationDictionary = [];
@@ -142,6 +143,7 @@
 		vm.treeShop.name = 'Tree Shop';
 		vm.treeShop.ascii = ['tree shop'];
 		vm.treeShop.prev = 'treeCity';
+
 
 		vm.treeInn = new vm.Location;
 		vm.treeInn.name = 'Tree Inn';

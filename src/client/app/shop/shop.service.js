@@ -71,7 +71,7 @@
         }
 
         function addToInventory(item) {
-
+        	item.quantity = item.quantity + 1;
         }
 
     }

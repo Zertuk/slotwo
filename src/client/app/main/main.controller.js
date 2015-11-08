@@ -13,10 +13,13 @@
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;
+        vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
-        vm.currentLocation = mainService.treeCity;
+        vm.currentLocation = mainService.treeShop;
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
+        vm.currentLocation.specFunc();
+
         if (!vm.currentLocation.formatted) {
             vm.currentLocation.initClicks();
         }

@@ -17,6 +17,7 @@
         console.log(vm.itemDictionary.club[0][1]);
 
         this.Player = function() {
+            this.money = 0,
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;
                 return percent;

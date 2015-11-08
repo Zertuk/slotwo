@@ -2,7 +2,8 @@
     'use strict';
 
     angular
-        .module('module', [
-            'dependencies'
+        .module('app.shop', [
+        	'app.player',
+        	'app.inventory'
         ]);
 })();

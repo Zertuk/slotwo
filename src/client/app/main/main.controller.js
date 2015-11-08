@@ -5,10 +5,11 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService) {
+        shopService.initShop();
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;

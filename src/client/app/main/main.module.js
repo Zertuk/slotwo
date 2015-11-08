@@ -3,6 +3,7 @@
 
     angular.module('app.main', [
     	'app.player',
-    	'app.level'
+    	'app.level',
+    	'app.shop'
         ]);
 })();

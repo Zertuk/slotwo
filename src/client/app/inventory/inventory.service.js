@@ -13,7 +13,8 @@
 		vm.itemDictionary = [];
 
 		this.Item = function() {
-			this.craftTime = 5000;
+			this.buyable = false,
+			this.craftTime = 5000,
 			this.recipe  = undefined,
 			this.quant = 1,
 			this.cat = 'default',
@@ -85,12 +86,14 @@
 		this.stick.desc   = 'It used to be part of a log';
 		this.stick.cat = 'ingredient'
 		this.stick.name   = 'Stick';
+		this.stick.buyable = true;
 
 		this.rock   = new this.Item();
 		this.rock.spawn = ['Forest'];
 		this.rock.desc  = 'It is a rock';
 		this.rock.cat = 'ingredient';
 		this.rock.name  = 'Rock';
+		this.rock.buyable = true;
 
 		this.tent = new this.Item();
 		this.tent.recipe = ['stick-1', 'grass-1'];
@@ -115,12 +118,14 @@
 		this.sword.cat = 'weapon';
 		this.sword.damage = 2;
 		this.sword.attackSpeed = 1;
+		this.sword.buyable = true;
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
 		this.woodArmor.desc = 'Hope for no splinters!';
 		this.woodArmor.cat = 'armor';
 		this.woodArmor.armor = 0.1;
+		this.woodArmor.buyable = true;
 
 		this.boneArmor = new this.Item();
 		this.boneArmor.name = 'Bone Armor';
@@ -141,7 +146,7 @@
 
 
 
-
+		vm.masterItemList = ['grass', 'wood', 'campfire', 'stick', 'tent', 'club', 'sword', 'woodArmor', 'boneArmor'];
 
 		vm.weapons = [vm.itemDictionary['club'], 
 					  vm.itemDictionary['sword']];

@@ -17,6 +17,11 @@
  		<div id = "levelwrap">
 		</div>
 	</div><!--row-->
+	<div class = "row shop">
+		<div ng-repeat = "item in vm.itemList[0] track by $index" class = "list">
+			<p>{{item.name}}</p><p>{{item.price}}
+		</div>
+	</div><!--row-->
 </div>
 
 

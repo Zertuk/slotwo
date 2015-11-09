@@ -88,6 +88,7 @@
 		this.stick.cat = 'ingredient'
 		this.stick.name   = 'Stick';
 		this.stick.buyable = true;
+		this.stick.price = 50;
 
 		this.rock   = new this.Item();
 		this.rock.spawn = ['Forest'];
@@ -120,6 +121,7 @@
 		this.sword.damage = 2;
 		this.sword.attackSpeed = 1;
 		this.sword.buyable = true;
+		this.sword.price = 100;
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
@@ -129,6 +131,7 @@
 		this.woodArmor.buyable = true;
 		this.woodArmor.removeAfterBuy = true;
 		this.woodArmor.unlock = 'boneArmor';
+		this.woodArmor.price = 150;
 
 		this.boneArmor = new this.Item();
 		this.boneArmor.name = 'Bone Armor';

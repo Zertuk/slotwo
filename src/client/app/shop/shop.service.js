@@ -31,8 +31,6 @@
         			vm.shopList.push(thisItem);
         		}
         	}
-        	console.log(vm.shopList)
-
  		}
 
 

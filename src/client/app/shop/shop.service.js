@@ -51,11 +51,15 @@
         }
 
         function addItem(item) {
-
+        	if (typeof item.unlock !== 'undefined') {
+        		inventoryService.itemDictionary[item.unlock][0][1].buyable = true;
+        	}
         }
 
 		function removeItem(item) {
-
+			if (item.removeAfterBuy) {
+				item.buyable = false;
+			}
         }
 
         function displayNextItem(item) {

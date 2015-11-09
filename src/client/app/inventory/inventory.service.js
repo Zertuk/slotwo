@@ -14,6 +14,7 @@
 
 		this.Item = function() {
 			this.buyable = false,
+			this.removeAfterBuy = false,
 			this.craftTime = 5000,
 			this.recipe  = undefined,
 			this.quant = 1,
@@ -126,6 +127,8 @@
 		this.woodArmor.cat = 'armor';
 		this.woodArmor.armor = 0.1;
 		this.woodArmor.buyable = true;
+		this.woodArmor.removeAfterBuy = true;
+		this.woodArmor.unlock = 'boneArmor';
 
 		this.boneArmor = new this.Item();
 		this.boneArmor.name = 'Bone Armor';

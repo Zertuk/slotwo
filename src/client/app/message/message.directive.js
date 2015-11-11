@@ -27,7 +27,6 @@
 
         function link(scope, element, attrs) {
 	        scope.$watch('messageerror', function() {
-                console.log(attrs.messageerror);
 	        	if (attrs.messageerror == 'true') {
 	        		element.addClass('error');
 	        	}

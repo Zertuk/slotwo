@@ -14,7 +14,6 @@
         ////////////////
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
-        console.log(vm.itemDictionary.club[0][1]);
 
         this.Player = function() {
             this.money = 1000,
@@ -90,7 +89,7 @@
                         }
                     }
                     if (inCombat) {
-                        console.log('player in cmbat')
+                        
                     }
                     //collission detection y
                     else if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {

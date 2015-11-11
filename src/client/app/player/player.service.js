@@ -63,6 +63,7 @@
                 var current = this;
                 if (current.alive) {
                     if (current.checkLevelEnd(current.position, map)) {
+                        messageService.updateMainMessage('You finished the level and can leave with what you found.');
                         return;
                     }
                     if (current.grounded) {

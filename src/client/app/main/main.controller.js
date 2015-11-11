@@ -5,10 +5,10 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService) {
         shopService.initShop();
         var vm = this;
         vm.title = 'MainController';
@@ -19,6 +19,7 @@
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
+
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
             $timeout(function() {
@@ -71,6 +72,7 @@
 
         function mainLoop() {
             vm.count = vm.count + 1;
+            vm.mainMessage = messageService.mainMessage;
             vm.player.healthUpdate();
             $timeout(mainLoop, 1000);
         }

@@ -9,6 +9,7 @@
 
     /* @ngInject */
     function levelService(enemyService) {
+        this.mainMessage = '';
         this.Level = function() {
             this.checkLength = function() {
                 console.log(this.ascii[0].length);

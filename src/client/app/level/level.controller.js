@@ -13,13 +13,14 @@
 		vm.title = 'LevelController';
 
 
-		vm.currentLevel = levelService.bridge;
+		vm.currentLevel = levelService.treeOne;
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
 		playerService.player.position = vm.currentLevel.playerSpawn;
 		vm.unitArray = [playerService.player];
 		vm.enemySpawn = false;
 		vm.messageLog = messageService.messageLog;
+		vm.mainMessage = messageService.mainMessage;
 
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;

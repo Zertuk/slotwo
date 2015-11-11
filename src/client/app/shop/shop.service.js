@@ -10,19 +10,17 @@
     /* @ngInject */
     function shopService(playerService, inventoryService) {
     	var vm = this;
+
     	vm.initShop = function() {
     		createShopList();
     	}
 
-        // vm.buyItem = function(item) {
-        //     console.log(item);
-        // }
-
-
-        ////////////////
         vm.initPurchase = function(item) {
             checkBalance(item);
         }
+
+        ////////////////
+
         function createShopList() {
             vm.shopList = [];
         	for (var i = 0; i < inventoryService.masterItemList.length; i++) {
@@ -33,7 +31,6 @@
         		}
         	}
  		}
-
 
         function checkBalance(item) {
         	if (item.price > playerService.player.money) {
@@ -67,9 +64,6 @@
             if (typeof item.unlock !== 'undefined') {
                 inventoryService.itemDictionary[item.unlock][0][1].buyable = true;
             }
-        }
-
-        function checkQuantity(item) {
         }
 
         function increasePrice(item) {

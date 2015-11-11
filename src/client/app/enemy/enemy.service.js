@@ -217,12 +217,12 @@
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.health = 10;
+            this.health = 5;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;
             this.itemMult = 3;
-            this.damage = 10;
+            this.damage = 1;
         }
         this.Tree.prototype = new this.Enemy();
 

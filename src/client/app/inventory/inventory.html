@@ -1,14 +1,27 @@
 <div ng-controller = "InventoryController as vm" class = "container">
-	<h3>Weapons</h3>
-	<select ng-model="weapon">
-		<option ng-repeat = "item in vm.weapons track by $index">
-			{{item[0][1].name}}
-		</option>
-	</select>
-	<h3>Armor</h3>
-	<select>
-		<option ng-repeat = "item in vm.armor track by $index">
-			{{item[0][1].name}}
-		</option>
-	</select>
+	<div class = "inventoryselect half">
+		<h3>Weapon</h3>
+		<select>
+			<option ng-repeat = "item in vm.weapons track by $index">
+				{{item[0][1].name}}
+			</option>
+		</select>
+		<h3>Armor</h3>
+		<select>
+			<option ng-repeat = "item in vm.armor track by $index">
+				{{item[0][1].name}}
+			</option>
+		</select>
+		<h3>Trinket</h3>
+		<select>
+			<option ng-repeat = "item in vm.trinket track by $index">
+				{{item[0][1].name}}
+			</option>
+		</select>
+	</div><!--inventoryselect-->
+	<div class = "inventorylist half">
+		<h3>Consumables</h3>
+		<h3 class = "inline">Combat Items</h3><p class = "italic inline">- These items are always active</p>
+	</div><!--inventorylist-->
+
 </div>

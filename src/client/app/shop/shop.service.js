@@ -30,7 +30,6 @@
         		var thisItem = inventoryService.itemDictionary[key][0][1];
         		if (thisItem.buyable) {
         			vm.shopList.push(thisItem);
-                    console.log(thisItem);
         		}
         	}
  		}
@@ -40,7 +39,6 @@
         	if (item.price > playerService.player.money) {
         		console.log('not enough money');
         	} else {
-                console.log('enough money');
         		subtractCost(item);
         		addToInventory(item);
         	}
@@ -60,12 +58,15 @@
 		function removeItem(item) {
 			if (item.removeAfterBuy) {
 				item.buyable = false;
+                displayNextItem(item);
                 createShopList();
 			}
         }
 
         function displayNextItem(item) {
-
+            if (typeof item.unlock !== 'undefined') {
+                inventoryService.itemDictionary[item.unlock][0][1].buyable = true;
+            }
         }
 
         function checkQuantity(item) {

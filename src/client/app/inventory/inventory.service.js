@@ -147,6 +147,8 @@
 		this.boneArmor.desc = 'Bonez';
 		this.boneArmor.cat = 'armor';
 		this.boneArmor.armor = 0.2;
+		this.boneArmor.price = 300;
+		this.boneArmor.removeAfterBuy = true;
 		this.boneArmor.slug = 'boneArmor';
 
 

@@ -4,6 +4,7 @@
     angular.module('app.main', [
     	'app.player',
     	'app.level',
-    	'app.shop'
+    	'app.shop',
+    	'app.template'
         ]);
 })();

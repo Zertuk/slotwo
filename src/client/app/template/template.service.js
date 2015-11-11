@@ -7,6 +7,10 @@
 
     function templateService() {
         this.func = func;
+        this.activeTemplate = 'app/main/main.html';
+        this.switchTemplate = function(template) {
+        	this.activeTemplate = template;
+        }
 
         ////////////////
 

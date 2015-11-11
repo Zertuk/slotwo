@@ -5,10 +5,10 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService) {
         shopService.initShop();
         var vm = this;
         vm.title = 'MainController';
@@ -21,6 +21,10 @@
         vm.currentLocation.specFunc();
         vm.messageError = messageService.messageError;
 
+        vm.switchTemplate = function(template) {
+            templateService.switchTemplate(template)
+        }
+        
 
 
         vm.buyItem = function(item) {
@@ -81,6 +85,7 @@
         }
         function quickLoop() {
             vm.player.healthBarUpdate();
+            vm.activeTemplate = templateService.activeTemplate;
             vm.messageError = messageService.messageError;
             vm.mainMessage = messageService.mainMessage;
             $timeout(quickLoop, 125);

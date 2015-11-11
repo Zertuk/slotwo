@@ -1,16 +1,14 @@
-<div ng-controller = "InventoryController as vm">
-	<h1>inventory controller</h1>
-	<table>
-		<tr>
-			<th>Item</th>
-			<th>Amount</th>
-			<th>Craft</th>
-		</tr>
-		<tr ng-repeat = "item in vm.itemDictionary">
-			<td>{{item[0][1].name}}</td>
-			<td>{{item[1][1]}}</td>
-			<td ng-click = "item[0][1].craft()"><button class = "craftbutton"><span>Craft</span></button></td>
-
-		</tr>
-	</table>
+<div ng-controller = "InventoryController as vm" class = "container">
+	<h3>Weapons</h3>
+	<select ng-model="weapon">
+		<option ng-repeat = "item in vm.weapons track by $index">
+			{{item[0][1].name}}
+		</option>
+	</select>
+	<h3>Armor</h3>
+	<select>
+		<option ng-repeat = "item in vm.armor track by $index">
+			{{item[0][1].name}}
+		</option>
+	</select>
 </div>

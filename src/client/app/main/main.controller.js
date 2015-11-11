@@ -20,7 +20,7 @@
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
         vm.buyItem = function(item) {
-            console.log(item.slug);
+            shopService.initPurchase(item);
         }
         if (!vm.currentLocation.formatted) {
             vm.currentLocation.initClicks();

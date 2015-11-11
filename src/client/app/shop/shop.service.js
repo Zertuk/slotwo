@@ -14,14 +14,15 @@
     		createShopList();
     	}
 
-        vm.buyItem = function(item) {
-            console.log(item);
-        }
+        // vm.buyItem = function(item) {
+        //     console.log(item);
+        // }
 
         vm.shopList = [];
 
         ////////////////
-        function test(item) {
+        vm.initPurchase = function(item) {
+            checkBalance(item);
         }
         function createShopList() {
         	for (var i = 0; i < inventoryService.masterItemList.length; i++) {
@@ -35,12 +36,15 @@
 
 
         function checkBalance(item) {
+            console.log(item.price);
+            console.log(playerService.player.money);
         	if (item.price > playerService.money) {
         		console.log('not enough money');
         	} else {
-        		subtractCost(item);
-        		addToInventory(item);
-        		checkQuantity(item);
+                console.log('enough money');
+        		// subtractCost(item);
+        		// addToInventory(item);
+        		// checkQuantity(item);
         	}
         }
 

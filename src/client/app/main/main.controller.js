@@ -15,7 +15,7 @@
         vm.count = 0;
         vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
-        vm.currentLocation = mainService.treeShop;
+        vm.currentLocation = mainService.mainMap;
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();

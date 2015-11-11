@@ -1,35 +1,14 @@
-<div ng-controller = "MainController as vm">
-	<header>
-		<div class = "row">
-			<button>Home</button>
-			<button>Inventory</button>
-			<button ng-click = "vm.switchLocation('mainMap')">Map</button>
-			<h1>{{vm.currentLocation.name}}</h1>
-		</div><!--row-->
-		<div class = "row">
-			<div class = "healthbar">
-				<div class = "healthbarinner" ng-style = "vm.player.healthWidth">
-				</div>
-				<p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p>
-			</div><!--healthbar-->
-		</div><!--row-->
-		<div class = "row">
-			<button class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return</button>
-			<p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
-		</div><!--row-->
-	</header>
-	<div class = "container">
-	<!-- 	<div class = "row">
-	  		<div id = "levelwrap">
-			</div>
-	 	</div> --><!--row-->
-		<div class = "row shop">
-	<!-- 		<div ng-repeat = "item in vm.itemList[0] track by $index" class = "list">
-				<p>{{item.name}}</p><p>{{item.price}}</p><p ng-click = "vm.buyItem(item)">Buy</p>
-			</div> -->
-		</div><!--row-->
-	</div><!--container-->
-</div>
+<div class = "container">
+ 	<div class = "row">
+  		<div id = "levelwrap">
+		</div>
+ 	</div><!--row-->
+	<div class = "row shop">
+<!-- 		<div ng-repeat = "item in vm.itemList[0] track by $index" class = "list">
+			<p>{{item.name}}</p><p>{{item.price}}</p><p ng-click = "vm.buyItem(item)">Buy</p>
+		</div> -->
+	</div><!--row-->
+</div><!--container-->
 
 
 <!-- <div ng-controller = "InventoryController as vm">
@@ -48,7 +27,7 @@
 </div>
  -->
 
-<div ng-controller = "LevelController as vm">
+<!-- <div ng-controller = "LevelController as vm">
 	<div class = "container leveloverflow">
 		<div id = "levelwrap">
 			<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
@@ -63,4 +42,4 @@
 			<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>
 		</div>
 	</div>
-</div>
+</div> -->

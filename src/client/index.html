@@ -27,9 +27,29 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div>
+    <div ng-controller = "MainController as vm">
+        <header>
+            <div class = "row">
+                <button>Home</button>
+                <button>Inventory</button>
+                <button ng-click = "vm.switchLocation('mainMap')">Map</button>
+                <h1>{{vm.currentLocation.name}}</h1>
+            </div><!--row-->
+            <div class = "row">
+                <div class = "healthbar">
+                    <div class = "healthbarinner" ng-style = "vm.player.healthWidth">
+                    </div>
+                    <p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p>
+                </div><!--healthbar-->
+            </div><!--row-->
+            <div class = "row">
+                <button class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return</button>
+                <p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
+            </div><!--row-->
+        </header>
         <div class = "one" ng-include="'app/main/main.html'"></div>
     </div>
+    
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
@@ -63,6 +83,7 @@
     <script src="/src/client/app/shop/shop.module.js"></script>
     <script src="/src/client/app/town/town.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
+    <script src="/src/client/app/template/template.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
     <script src="/src/client/app/base-template/map.controller.js"></script>
@@ -84,6 +105,7 @@
     <script src="/src/client/app/main/main.controller.js"></script>
     <script src="/src/client/app/main/main.route.js"></script>
     <script src="/src/client/app/main/main.service.js"></script>
+    <script src="/src/client/app/template/template.service.js"></script>
     <script src="/src/client/app/map/map.controller.js"></script>
     <script src="/src/client/app/map/map.route.js"></script>
     <script src="/src/client/app/message/message.directive.js"></script>

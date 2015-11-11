@@ -12,7 +12,8 @@
 		'app.player',
 		'app.enemy',
 		'app.level',
-		'app.message'
+		'app.message',
+		'app.template'
 	]);
 
 })();

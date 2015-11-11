@@ -68,13 +68,18 @@
         function activate() {
             sanitizeAscii();
             mainLoop();
+            quickLoop();
         }
 
         function mainLoop() {
             vm.count = vm.count + 1;
-            vm.mainMessage = messageService.mainMessage;
-            vm.player.healthUpdate();
+            vm.player.healthRegen();
             $timeout(mainLoop, 1000);
+        }
+        function quickLoop() {
+            vm.player.healthBarUpdate();
+            vm.mainMessage = messageService.mainMessage;
+            $timeout(quickLoop, 125);
         }
     }
 })();

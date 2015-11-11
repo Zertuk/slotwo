@@ -10,10 +10,18 @@
     /* @ngInject */
     function messageService() {
     	this.messageLog = [];
-        this.mainMessage = 'default';
+        this.mainMessage = '';
 
-        this.updateMainMessage = function(messageInput) {
+        //first var = message, second var = whether message is good or bad
+        this.updateMainMessage = function(messageInput, bad) {
             this.mainMessage = messageInput;
+            var message = angular.element('.mainmessage');
+            if (bad) {
+                message.addClass('error');
+            }
+            else {
+                message.removeClass('error')
+            }
         };
 
         this.addMessage = function(message) {

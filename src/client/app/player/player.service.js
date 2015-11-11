@@ -22,14 +22,20 @@
                 var percent = (this.health / this.maxHealth)*100;
                 return percent;
             },
-            this.healthUpdate = function() {
-                if (this.health < this.maxHealth) {
-                    var health = parseFloat(this.health);
-                    this.health = (health + this.regen).toFixed(2);
-                } 
+            this.checkMaxHealth = function() {
                 if (this.health > this.maxHealth) {
                     this.health = this.maxHealth;
                 }
+            }
+            this.healthRegen = function() {
+                if (this.health < this.maxHealth) {
+                    var health = parseFloat(this.health);
+                    this.health = (health + this.regen).toFixed(2);
+                }
+                this.checkMaxHealth();
+            },
+            this.healthBarUpdate = function() {
+                this.checkMaxHealth();
                 var percent = this.healthPercent();
                 if (percent > 65) {
                     this.healthWidth = {'background-color': 'green', 'width': percent + '%'};
@@ -143,6 +149,7 @@
                     // $scope.$apply();
                 }   
                 else {
+                    messageService.updateMainMessage('You have been slain, dropping what you found.', true);
                     return;
                 }
             },

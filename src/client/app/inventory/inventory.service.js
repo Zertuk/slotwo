@@ -17,7 +17,7 @@
 			this.removeAfterBuy = false,
 			this.craftTime = 5000,
 			this.recipe  = undefined,
-			this.quant = 1,
+			this.quantity = 0,
 			this.cat = 'default',
 			this.spawn = undefined,
 			this.name = "Default",
@@ -127,6 +127,7 @@
 		this.sword.damage = 2;
 		this.sword.attackSpeed = 1;
 		this.sword.buyable = true;
+		this.sword.removeAfterBuy = true;
 		this.sword.price = 100;
 		this.sword.slug = 'sword';
 

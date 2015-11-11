@@ -18,38 +18,37 @@
         //     console.log(item);
         // }
 
-        vm.shopList = [];
 
         ////////////////
         vm.initPurchase = function(item) {
             checkBalance(item);
         }
         function createShopList() {
+            vm.shopList = [];
         	for (var i = 0; i < inventoryService.masterItemList.length; i++) {
         		var key = inventoryService.masterItemList[i];
         		var thisItem = inventoryService.itemDictionary[key][0][1];
         		if (thisItem.buyable) {
         			vm.shopList.push(thisItem);
+                    console.log(thisItem);
         		}
         	}
  		}
 
 
         function checkBalance(item) {
-            console.log(item.price);
-            console.log(playerService.player.money);
-        	if (item.price > playerService.money) {
+        	if (item.price > playerService.player.money) {
         		console.log('not enough money');
         	} else {
                 console.log('enough money');
-        		// subtractCost(item);
-        		// addToInventory(item);
-        		// checkQuantity(item);
+        		subtractCost(item);
+        		addToInventory(item);
         	}
         }
 
         function subtractCost(item) {
-        	playerService.money = playerService.money - item.price;
+        	playerService.player.money = playerService.player.money - item.price;
+            console.log(playerService.player.money);
         }
 
         function addItem(item) {
@@ -61,6 +60,7 @@
 		function removeItem(item) {
 			if (item.removeAfterBuy) {
 				item.buyable = false;
+                createShopList();
 			}
         }
 
@@ -69,7 +69,6 @@
         }
 
         function checkQuantity(item) {
-
         }
 
         function increasePrice(item) {
@@ -78,6 +77,7 @@
 
         function addToInventory(item) {
         	item.quantity = item.quantity + 1;
+            removeItem(item);
         }
 
     }

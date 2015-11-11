@@ -21,6 +21,9 @@
         vm.currentLocation.specFunc();
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
+            $timeout(function() {
+                vm.itemList = [shopService.shopList];
+            }, 50);
         }
         if (!vm.currentLocation.formatted) {
             vm.currentLocation.initClicks();

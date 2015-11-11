@@ -19,7 +19,9 @@
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
-
+        vm.buyItem = function(item) {
+            console.log(item.slug);
+        }
         if (!vm.currentLocation.formatted) {
             vm.currentLocation.initClicks();
         }

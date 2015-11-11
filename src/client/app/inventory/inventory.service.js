@@ -68,18 +68,20 @@
 		this.grass.desc  = 'A bundle of grass';
 		this.grass.name = 'Grass';
 		this.grass.cat = 'ingredient';
-		this.grass.slug;
+		this.grass.slug = 'grass';
 
 		this.wood  = new this.Item();
 		this.wood.desc = 'A slab of wood';
 		this.wood.cat = 'ingredient';
 		this.wood.name = 'Wood';
+		this.wood.slug = 'wood';
 
 		this.campfire    = new this.Item();
 		this.campfire.recipe = ['wood-2', 'grass-2'];
 		this.campfire.desc   = 'A warm fire';
 		this.campfire.cat = 'structure';
 		this.campfire.name   = 'Campfire';
+		this.campfire.slug = 'campfire';
 
 		this.stick    = new this.Item();
 		this.stick.recipe = ['wood-1'];
@@ -89,6 +91,7 @@
 		this.stick.name   = 'Stick';
 		this.stick.buyable = true;
 		this.stick.price = 50;
+		this.stick.slug = 'stick';
 
 		this.rock   = new this.Item();
 		this.rock.spawn = ['Forest'];
@@ -96,12 +99,14 @@
 		this.rock.cat = 'ingredient';
 		this.rock.name  = 'Rock';
 		this.rock.buyable = true;
+		this.rock.slug = 'rock';
 
 		this.tent = new this.Item();
 		this.tent.recipe = ['stick-1', 'grass-1'];
 		this.tent.desc   = 'Stay safe for the night';
 		this.tent.cat = 'structure';
 		this.tent.name   = 'Tent';
+		this.tent.slug = 'tent';
 		this.tent.amountCheck = function() {
 			console.log(this.quant);
 		}
@@ -113,6 +118,7 @@
 		this.club.damage = 4;
 		this.club.attackSpeed = 2;
 		this.club.name = 'Club';
+		this.club.slug = 'club';
 
 		this.sword = new this.Item();
 		this.sword.name = 'Sword';
@@ -122,6 +128,7 @@
 		this.sword.attackSpeed = 1;
 		this.sword.buyable = true;
 		this.sword.price = 100;
+		this.sword.slug = 'sword';
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
@@ -132,12 +139,14 @@
 		this.woodArmor.removeAfterBuy = true;
 		this.woodArmor.unlock = 'boneArmor';
 		this.woodArmor.price = 150;
+		this.woodArmor.slug = 'woodArmor';
 
 		this.boneArmor = new this.Item();
 		this.boneArmor.name = 'Bone Armor';
 		this.boneArmor.desc = 'Bonez';
 		this.boneArmor.cat = 'armor';
 		this.boneArmor.armor = 0.2;
+		this.boneArmor.slug = 'boneArmor';
 
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];

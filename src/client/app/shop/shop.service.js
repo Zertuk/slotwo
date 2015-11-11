@@ -15,7 +15,7 @@
     	}
 
         vm.buyItem = function(item) {
-
+            console.log(item);
         }
 
         vm.shopList = [];

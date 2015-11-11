@@ -3,5 +3,6 @@
 
     angular
         .module('app.message', [
+        	'app.main'
         ]);
 })();

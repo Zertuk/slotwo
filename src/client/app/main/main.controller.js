@@ -19,6 +19,9 @@
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
+        vm.messageError = messageService.messageError;
+
+
 
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
@@ -78,6 +81,7 @@
         }
         function quickLoop() {
             vm.player.healthBarUpdate();
+            vm.messageError = messageService.messageError;
             vm.mainMessage = messageService.mainMessage;
             $timeout(quickLoop, 125);
         }

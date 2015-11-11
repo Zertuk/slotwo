@@ -11,16 +11,16 @@
     function messageService() {
     	this.messageLog = [];
         this.mainMessage = '';
+        this.messageError = false;
 
         //first var = message, second var = whether message is good or bad
         this.updateMainMessage = function(messageInput, bad) {
             this.mainMessage = messageInput;
-            var message = angular.element('.mainmessage');
             if (bad) {
-                message.addClass('error');
+                this.messageError = true;
             }
             else {
-                message.removeClass('error')
+                this.messageError = false;
             }
         };
 

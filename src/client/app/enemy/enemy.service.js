@@ -53,6 +53,7 @@
             this.position = [0, 0],
             this.positionOld = [0, 0],
             this.itemMult = 1,
+            this.inCombat = false,
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                     battle(enemyArray, current, map);
@@ -114,11 +115,14 @@
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive && current.move) {
-                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
-                        var inCombat = true;
+                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y') || current.inCombat) {
+                        current.inCombat = true;
                         console.log('in combat')
                     }
-                    if (this.checkLevelEnd(current.position, map)) {
+                    else {
+                        console.log(map[current.position[1]][current.position[0] + current.speed])
+                    }
+                    if (current.checkLevelEnd(current.position, map)) {
                         return;
                     }
                     if (current.grounded) {
@@ -126,7 +130,7 @@
                         var groundedLastTurn = true;
                     }
                     if (current.prev) {
-                        if (!inCombat) {
+                        if (!current.inCombat) {
                             current.prev = false;
                         }
                         current.prevCheck = true;
@@ -136,26 +140,26 @@
                     }
                     if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                         if (current.symbol == 'Y') {
-                            var inCombat = false;
+                            current.inCombat = false;
                             for (var i = 0; i < array.length; i++) {
                                 if ((map[current.position[1]][current.position[0] + current.speed]) == (array[i].symbol)) {
-                                    inCombat = true;
+                                    current.inCombat = true;
                                 }
                             }
-                            if (!inCombat) {
-                                this.updatePosition(current.position, current.positionOld, current.speed, -1);
+                            if (!current.inCombat) {
+                                current.updatePosition(current.position, current.positionOld, current.speed, -1);
                             }
                         }
                         else {
                             vm.watch = true;
                             battle(enemyArray[0], current, map);
-                            var inCombat = true;
+                            current.inCombat = true;
                         }
                     }
                     //collission detection y
-                    else if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
-                        this.updatePosition(current.position, current.positionOld, 0, 1);
-                        console.log('test2');
+                    else if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck && !current.inCombat) {
+                        current.updatePosition(current.position, current.positionOld, 0, 1);
+                        console.log(current.inCombat)
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {

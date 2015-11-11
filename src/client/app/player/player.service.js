@@ -76,9 +76,17 @@
                     else {
                         current.prevCheck = false;
                     }
-
+                    
+                    for (var i = 0; i < enemyArray.length; i++) {
+                        if ((map[current.position[1]][current.position[0] + current.speed]) == (enemyArray[i].symbol)) {
+                            inCombat = true;
+                        }
+                    }
+                    if (inCombat) {
+                        console.log('player in cmbat')
+                    }
                     //collission detection y
-                    if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
+                    else if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                         if (map[current.position[1]][current.position[0]] == '_') {
                             current.prev = true;

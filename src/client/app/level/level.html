@@ -12,5 +12,6 @@
 		<div class = "log" id = "log">
 			<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>
 		</div>
+		<button ng-click = "vm.resetLevel()">reset</button>
 	</div>
 </div>

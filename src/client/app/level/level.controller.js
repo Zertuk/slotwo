@@ -25,7 +25,7 @@
 			var spawn = [];
 			spawn[0] = vm.currentLevel.playerSpawn[0];
 			spawn[1] = vm.currentLevel.playerSpawn[1];
-			playerService.player.position.position = spawn;
+			playerService.player.position = spawn;
 			console.log(spawn);
 		}
 		vm.resetLevel();

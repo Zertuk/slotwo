@@ -23,6 +23,8 @@
         this.treeOne.enemySpawn = [141, 21];
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
+        this.treeOne.name = 'TreeOne';
+        this.treeOne.prev = "mainMap";
         this.treeOne.ascii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                               "  .'                      /      '../               //\\\\        .'                                                                                                   ",

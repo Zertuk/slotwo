@@ -37,10 +37,12 @@
             vm.currentLocation.initClicks();
         }
         vm.switchLevel = function(level) {
-            console.log(vm.levelDictionary[level]);
+            vm.switchTemplate('app/level/level.html');
+            vm.currentLocation = vm.levelDictionary[level];
         }
         vm.switchLocation = function(location) {
             vm.switchTemplate('app/main/main.html');
+            messageService.mainMessage = '';
             vm.currentLocation = vm.locationDictionary[location];
             if (!vm.currentLocation.formatted) {
                 console.log('test');
@@ -50,7 +52,7 @@
         };
 
         function removeAscii() {
-            var elements = angular.element(document.getElementById('levelwrap')).children();
+            var elements = angular.element('#locationwrap').children();
             elements.remove();
             sanitizeAscii();
         }
@@ -68,13 +70,13 @@
 
         function appendAscii() {
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
-                angular.element('#levelwrap').append(vm.currentLocation.ascii[i]);
+                angular.element('#locationwrap').append(vm.currentLocation.ascii[i]);
             }
             $timeout(verifyAscii, 10);
         }
 
         function verifyAscii() {
-            var length = angular.element('#levelwrap').children().length;
+            var length = angular.element('#locationwrap').children().length;
             if (length !== vm.currentLocation.ascii.length) {
                 appendAscii();
             }

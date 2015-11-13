@@ -9,12 +9,16 @@
         this.func = func;
         this.activeTemplate = 'app/main/main.html';
         this.switchTemplate = function(template) {
-        	this.activeTemplate = template;
+        	if (this.activeTemplate !== template) {
+        		this.activeTemplate = template;
+        	}
         }
 
         ////////////////
 
         function func() {
+
         }
     }
+
 })();

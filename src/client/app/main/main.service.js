@@ -20,7 +20,7 @@
                 	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\'' + data + '\')">' + location.ascii[y + i][x];
             	}
             	else {
-                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')"><div class = "tooltip"></div>' + location.ascii[y + i][x];
+                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
             	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!

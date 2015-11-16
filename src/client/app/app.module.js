@@ -13,7 +13,8 @@
 		'app.enemy',
 		'app.level',
 		'app.message',
-		'app.template'
+		'app.template',
+		'720kb.tooltips'
 	]);
 
 })();

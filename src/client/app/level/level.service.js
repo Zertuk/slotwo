@@ -23,7 +23,7 @@
         this.treeOne.enemySpawn = [141, 21];
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
-        this.treeOne.name = 'TreeOne';
+        this.treeOne.name = 'Forest Approach';
         this.treeOne.prev = "mainMap";
         this.treeOne.defaultAscii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",

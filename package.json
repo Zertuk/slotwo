@@ -9,6 +9,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "angular-tooltips": "^0.1.25",
     "body-parser": "^1.8.2",
     "express": "^4.9.3",
     "morgan": "^1.1.1",

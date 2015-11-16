@@ -16,23 +16,42 @@
 		vm.currentLevel = levelService.treeOne;
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
-		vm.unitArray = [playerService.player];
 		vm.enemySpawn = false;
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
 
 		vm.resetLevel = function() {
+			vm.unitArray = [playerService.player];
+			createAscii();
+			initLevel();
 			var spawn = [];
 			spawn[0] = vm.currentLevel.playerSpawn[0];
 			spawn[1] = vm.currentLevel.playerSpawn[1];
 			playerService.player.position = spawn;
-			console.log(spawn);
 		}
 		vm.resetLevel();
 
 
+		function initLevel() {
+			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
+				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
+					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+				}
+			}
+			else {
+				vm.enemySpawn = true;
+			}
+		}
 
-
+		function createAscii() {
+			var ascii = [];
+			for (var i = 0; i < vm.currentLevel.defaultAscii.length; i++) {
+				ascii[i] = vm.currentLevel.defaultAscii[i];
+			}
+			console.log(vm.currentLevel.defaultAscii);
+			vm.currentLevel.ascii = ascii;
+			levelRenderArea();
+		}
 
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
@@ -42,7 +61,6 @@
 				elem.style.left = '-' + left + 'px';
 			}
 		}
-		levelRenderArea();
 
 		var test = "test/test";
 		test.split('//');
@@ -68,18 +86,7 @@
 			entity.position = spawn;
 			vm.unitArray.push(entity);
 		}
-		function initLevel() {
-			console.log('test');
-			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
-				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
-					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
-				}
-			}
-			else {
-				vm.enemySpawn = true;
-			}
-		}
-		initLevel();
+
 
 		function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
 			if (!prevCheck) {

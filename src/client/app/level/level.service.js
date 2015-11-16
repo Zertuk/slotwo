@@ -12,7 +12,7 @@
         this.mainMessage = '';
         this.Level = function() {
             this.checkLength = function() {
-                console.log(this.ascii[0].length);
+                console.log(this.defaultAscii[0].length);
             },
             this.spawnMore = true;
         };
@@ -25,7 +25,7 @@
         this.treeOne.enemyArray = [enemyService.Tree];
         this.treeOne.name = 'TreeOne';
         this.treeOne.prev = "mainMap";
-        this.treeOne.ascii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
+        this.treeOne.defaultAscii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                               "  .'                      /      '../               //\\\\        .'                                                                                                   ",
                               " /                 .     /         /               ///\\\\\\    . /                                                                                                     ",

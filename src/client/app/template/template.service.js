@@ -7,7 +7,7 @@
 
     function templateService() {
         this.func = func;
-        this.activeTemplate = 'app/level/level.html';
+        this.activeTemplate = 'app/main/main.html';
         this.switchTemplate = function(template) {
         	if (this.activeTemplate !== template) {
         		this.activeTemplate = template;

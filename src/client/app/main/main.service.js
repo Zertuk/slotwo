@@ -98,7 +98,8 @@
 
         vm.treeCity = new vm.Location;
         vm.treeCity.name = 'Tree City';
-        vm.treeCity.prev = "mainMap";
+        vm.treeCity.prev = 'mainMap';
+        vm.treeCity.prevName = 'Map';
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
 							   "      /////////\\\\\\\\\\\\\\\\\\     ////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////\\\\\\\\\\\\              |       |           |              ",                                                                        
 							   "       ////////\\\\\\\\\\\\\\              |                   |    ///////\\\\\\\\\\\\\\             |       |     |     |              ",                                                                 
@@ -133,11 +134,13 @@
 		vm.treeGovernment.name = 'Tree Government';
 		vm.treeGovernment.ascii = ['tree government'];
 		vm.treeGovernment.prev = 'treeCity';
+		vm.treeGovernment.prevName = 'Tree City';
 
 		vm.treeSecret = new vm.Location;
 		vm.treeSecret.name = 'Tree secret';
 		vm.treeSecret.ascii = ['tree secret'];
 		vm.treeSecret.prev = 'treeCity';
+		vm.treeSecret.prevName = 'Tree City';
 
 		vm.treeShop = new vm.Location;
 		vm.treeShop.name = 'Tree Shop';
@@ -171,12 +174,14 @@
 
 
 		vm.treeShop.prev = 'treeCity';
+		vm.treeShop.prevName = 'Tree City';
 
 
 		vm.treeInn = new vm.Location;
 		vm.treeInn.name = 'Tree Inn';
 		vm.treeInn.ascii = ['tree inn'];
 		vm.treeInn.prev = 'treeCity';
+		vm.treeInn.prevName = 'Tree City';
 
 		vm.treeSlums = new vm.Location;
 		vm.treeSlums.name = 'Tree Slums';
@@ -186,6 +191,7 @@
 			vm.click(this, 'test', 'slumsThugs', 42, 11, 13, 5);
 		}
 		vm.treeSlums.prev = 'treeCity';
+		vm.treeSlums.prevName = 'Tree City';
 		vm.treeSlums.ascii = ["            `                              ////\\\\\\\\                                                   ///\\\\\\                                      /////\\\\\\\\\\              ",                                                      
 								"           `                                ///\\\\\\                                                   ////\\\\\\\\\\                                  ///////\\\\\\\\\\\\\\            ",                                                      
 								"             `                            /////\\\\\\\\\                                                //////\\\\\\\\\\\\\\                                 //////\\\\\\\\\\\\\\            ",                                                      
@@ -213,16 +219,19 @@
 		vm.treeSlumsInn.name = 'Tree Slums Inn';
 		vm.treeSlumsInn.ascii = ['tree slums inn'];
 		vm.treeSlumsInn.prev = 'slums';
+		vm.treeSlumsInn.prevName = 'Slums';
 
 		vm.treeSlumsThugs = new vm.Location;
 		vm.treeSlumsThugs.name = 'Tree Slums Thugs';
 		vm.treeSlumsThugs.ascii = ['tree slums thugs'];
 		vm.treeSlumsThugs.prev = 'slums';
+		vm.treeSlumsThugs.prevName = 'Slums';
 
 		vm.treeSlumsBum = new vm.Location;
 		vm.treeSlumsBum.name = 'Tree Slums Bum';
 		vm.treeSlumsBum.ascii = ['tree slums bum'];
 		vm.treeSlumsBum.prev = 'slums';
+		vm.treeSlumsBum.prevName = 'Slums';
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;

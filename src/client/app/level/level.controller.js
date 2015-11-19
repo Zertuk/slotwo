@@ -22,6 +22,7 @@
 
 		vm.resetLevel = function() {
 			vm.unitArray = [playerService.player];
+			vm.player.active = true;
 			createAscii();
 			initLevel();
 			var spawn = [];

@@ -22,7 +22,8 @@
         vm.messageError = messageService.messageError;
 
         vm.switchTemplate = function(template) {
-            templateService.switchTemplate(template)
+            vm.player.active = false;
+            templateService.switchTemplate(template);
         }
         
 

@@ -46,7 +46,7 @@
         vm.mainMap = new vm.Location;
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
-        	vm.click(this, 'test', 'treeOne', 30, 29, 30, 10, true);
+        	vm.click(this, 'Tree Two', 'treeTwo', 30, 29, 30, 10, true);
         };
 		vm.mainMap.ascii = [	"            .                                  /              \\     /   \\                                                    /         \\   .'                         \\                  ",
 								"           /_\\'.                             .'   .^.         /\\   /     \\     ^                                           .'     ^  .  '. '.                          |         \\_      ",

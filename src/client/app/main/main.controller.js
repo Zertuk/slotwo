@@ -39,6 +39,7 @@
         }
         vm.switchLevel = function(level) {
             vm.switchTemplate('app/level/level.html');
+            levelService.switchCurrentLevel(level);
             vm.currentLocation = vm.levelDictionary[level];
         }
         vm.switchLocation = function(location) {

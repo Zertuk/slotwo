@@ -21,6 +21,8 @@
 		vm.mainMessage = messageService.mainMessage;
 
 		vm.resetLevel = function() {
+			vm.currentLevel = levelService.currentLevel;
+			console.log(levelService.currentLevel);
 			vm.unitArray = [playerService.player];
 			vm.player.active = true;
 			createAscii();

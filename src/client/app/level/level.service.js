@@ -10,6 +10,7 @@
     /* @ngInject */
     function levelService(enemyService) {
         this.mainMessage = '';
+
         this.Level = function() {
             this.checkLength = function() {
                 console.log(this.defaultAscii[0].length);
@@ -24,7 +25,7 @@
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
         this.treeOne.name = 'Forest Approach';
-        this.treeOne.prev = "mainMap";
+        this.treeOne.prev = 'mainMap';
         this.treeOne.defaultAscii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                               "  .'                      /      '../               //\\\\        .'                                                                                                   ",
@@ -59,8 +60,11 @@
         //treetwo
         this.treeTwo = new this.Level();
         this.treeTwo.enemyArray = [enemyService.TreeWarrior];
+        this.treeTwo.enemySpawn = [50, 20];
         this.treeTwo.playerSpawn = [0, 21];
-        this.treeTwo.ascii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
+        this.treeTwo.name = 'Tree Two';
+        this.treeTwo.prev = 'mainMap';
+        this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
                               "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
                               "    /               \\    \\ .'   \\    /                            /////////////////////////     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",            
                               "  .'                      /      '../                       /////////////////////////////          \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",     
@@ -120,10 +124,12 @@
 
         this.levelDictionary = [];
         this.levelDictionary['treeOne'] = this.treeOne;
-        this.levelDictionary['treeTwo'] = this.treetwo;
+        this.levelDictionary['treeTwo'] = this.treeTwo;
         this.levelDictionary['bridge']  = this.bridge;
 
-
+        this.switchCurrentLevel = function(activeLevel) {
+            this.currentLevel = this.levelDictionary[activeLevel];
+        }
 
     }
 })();

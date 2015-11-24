@@ -60,10 +60,11 @@
         //treetwo
         this.treeTwo = new this.Level();
         this.treeTwo.enemyArray = [enemyService.TreeWarrior];
-        this.treeTwo.enemySpawn = [50, 20];
+        this.treeTwo.enemySpawn = [50, 21];
         this.treeTwo.playerSpawn = [0, 21];
         this.treeTwo.name = 'Tree Two';
         this.treeTwo.prev = 'mainMap';
+        this.treeTwo.prevName = 'Map';
         this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
                               "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
                               "    /               \\    \\ .'   \\    /                            /////////////////////////     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",            

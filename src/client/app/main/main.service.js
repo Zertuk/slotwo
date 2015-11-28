@@ -46,8 +46,14 @@
         vm.mainMap = new vm.Location;
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
+        	//wizard
+        	vm.click(this, 'Wizard', 'wizard', 171, 35, 30, 10);
+        	//snow
+        	vm.click(this, 'Snow', 'snow', 140, 30, 30, 15, true);
         	//bridge
         	vm.click(this, 'Bridge', 'bridge', 110, 39, 25, 5, true);
+        	//tree city
+        	vm.click(this, 'Tree City', 'treeCity', 33, 18, 15, 10);
         	//tree two
         	vm.click(this, 'Tree Two', 'treeTwo', 30, 29, 30, 10, true);
         	//treeone 

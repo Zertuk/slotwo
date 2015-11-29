@@ -104,7 +104,6 @@
                         var num = 1;
                     }
                     console.log('you found ' + num + ' ' + this.items[0][0][1].name)
-                    console.log(this.items[0][1][1]);
                     this.items[0][1][1] = this.items[0][1][1] + num;
                 }
             },
@@ -217,12 +216,12 @@
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.health = 5;
+            this.health = 1;
             this.colBox = [3, 4];
-            this.items = [vm.itemDictionary['wood']];
+            this.items = [vm.itemDictionary['woodArmor']];
             this.itemChance = 100;
-            this.itemMult = 3;
-            this.damage = 50;
+            this.itemMult = 1;
+            this.damage = 0;
         }
         this.Tree.prototype = new this.Enemy();
 

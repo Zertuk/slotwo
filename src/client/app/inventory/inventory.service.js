@@ -151,6 +151,8 @@
 		this.boneArmor.removeAfterBuy = true;
 		this.boneArmor.slug = 'boneArmor';
 
+		
+
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 3]];

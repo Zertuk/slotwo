@@ -12,10 +12,26 @@
 		var vm = this;
 		vm.itemDictionary = inventoryService.itemDictionary;
 		vm.player = playerService.player;
-		vm.weapons = inventoryService.weapons;
-		vm.armor = inventoryService.armor;
+		vm.weapons = [];
+		vm.armor = [];
 		vm.equippedWeapon = vm.player.weapon;
 		vm.equippedArmor = vm.player.armor;
+
+		function armorList() {
+			for (var i = 0; i < inventoryService.armor.length; i++) {
+				if (inventoryService.armor[i][1][1] !== 0) {
+					vm.armor.push(inventoryService.armor[i]);
+				} 
+			}
+		}
+
+		function weaponList() {
+			for (var i = 0; i < inventoryService.weapons.length; i++) {
+				if (inventoryService.weapons[i][1][1] !== 0) {
+					vm.weapons.push(inventoryService.weapons[i]);
+				} 
+			}
+		}
 
 		vm.equipArmor = function() {
 			vm.player.armor = vm.itemDictionary[vm.equippedArmor][0][1];
@@ -40,9 +56,10 @@
 		// 	console.log(formatted);
 		// }
 
-		inventoryService.tent.amountCheck();
 
 		function activate() {
+			armorList();
+			weaponList();
 		}
 		activate();
 	}

@@ -7,16 +7,15 @@
 			</option>
 		</select>
 		<h3>Armor</h3>
-		<select>
-			<option ng-repeat = "item in vm.armor track by $index" ng-if = "item[1][1] !== 0">
-				{{item[1][1]}}
+		<select ng-change = "vm.equipArmor()" ng-model = "vm.test">
+			<option ng-repeat = "item in vm.armor track by $index" ng-if = "item[1][1] !== 0" value = "{{item[0][1].slug}}">
 				{{item[0][1].name}}
 			</option>
 		</select>
 		<h3>Trinket</h3>
 		<select>
 			<option ng-repeat = "item in vm.trinket track by $index">
-				{{item[0][1].name}}
+				<p>{{item[0][1].name}}</p>
 			</option>
 		</select>
 	</div><!--inventoryselect-->
@@ -26,7 +25,7 @@
 	</div><!--inventorylist-->
 	<div>
 		<h3>Player Info</h3>
-		<p>{{vm.player.armor}} : Armor</p>
+		<p>{{vm.player.armorValue*100}}% : Armor</p>
 		<p>{{vm.player.damage}} : Damage</p>
 	</div>
 </div>

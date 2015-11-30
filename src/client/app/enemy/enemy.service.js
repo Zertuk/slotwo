@@ -218,7 +218,7 @@
             this.move = false;
             this.health = 1;
             this.colBox = [3, 4];
-            this.items = [vm.itemDictionary['woodArmor']];
+            this.items = [vm.itemDictionary['boneArmor']];
             this.itemChance = 100;
             this.itemMult = 1;
             this.damage = 0;

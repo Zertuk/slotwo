@@ -151,7 +151,7 @@
 		this.boneArmor.removeAfterBuy = true;
 		this.boneArmor.slug = 'boneArmor';
 
-		
+
 
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
@@ -161,8 +161,8 @@
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
-		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount'], 0];
-		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount'], 0];
+		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
+		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 
 
 

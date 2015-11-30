@@ -12,15 +12,15 @@
 				<p>{{item[0][1].name}}</p>
 			</option>
 		</select>
+		<div>
+			<h3>Player Info</h3>
+			<p>{{vm.player.armorValue*100}}% : Armor</p>
+			<p>{{vm.player.damage}} : Damage</p>
+			<p>current weapon: {{vm.player.weapon.slug}}</p>
+		</div>
 	</div><!--inventoryselect-->
 	<div class = "inventorylist half">
 		<h3>Consumables</h3>
 		<h3 class = "inline">Combat Items</h3><p class = "italic inline">- These items are always active</p>
 	</div><!--inventorylist-->
-	<div>
-		<h3>Player Info</h3>
-		<p>{{vm.player.armorValue*100}}% : Armor</p>
-		<p>{{vm.player.damage}} : Damage</p>
-		<p>current weapon: {{vm.player.weapon.slug}}</p>
-	</div>
 </div>

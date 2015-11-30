@@ -1,16 +1,10 @@
 <div ng-controller = "InventoryController as vm" class = "container">
 	<div class = "inventoryselect half">
 		<h3>Weapon</h3>
-		<select>
-			<option ng-repeat = "item in vm.weapons track by $index">
-				{{item[0][1].name}}
-			</option>
+		<select  ng-init = "vm.equippedWeapon = vm.player.weapon.slug" ng-change = "vm.equipWeapon()" ng-model = "vm.equippedWeapon" ng-options = "item[0][1].slug as item[0][1].name for item in vm.weapons">
 		</select>
 		<h3>Armor</h3>
-		<select ng-change = "vm.equipArmor()" ng-model = "vm.test">
-			<option ng-repeat = "item in vm.armor track by $index" ng-if = "item[1][1] !== 0" value = "{{item[0][1].slug}}">
-				{{item[0][1].name}}
-			</option>
+		<select ng-init = "vm.equippedArmor = vm.player.armor.slug" ng-change = "vm.equipArmor()" ng-model = "vm.equippedArmor" ng-options = "item[0][1].slug as item[0][1].name for item in vm.armor">
 		</select>
 		<h3>Trinket</h3>
 		<select>
@@ -27,5 +21,6 @@
 		<h3>Player Info</h3>
 		<p>{{vm.player.armorValue*100}}% : Armor</p>
 		<p>{{vm.player.damage}} : Damage</p>
+		<p>current weapon: {{vm.player.weapon.slug}}</p>
 	</div>
 </div>

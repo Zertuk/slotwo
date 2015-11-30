@@ -14,11 +14,22 @@
 		vm.player = playerService.player;
 		vm.weapons = inventoryService.weapons;
 		vm.armor = inventoryService.armor;
+		vm.equippedWeapon = vm.player.weapon;
+		vm.equippedArmor = vm.player.armor;
 
 		vm.equipArmor = function() {
-			vm.player.armor = vm.itemDictionary[vm.test][0][1],
-            vm.player.armorValue = vm.itemDictionary[vm.test][0][1].armor
+			vm.player.armor = vm.itemDictionary[vm.equippedArmor][0][1];
+            vm.player.armorValue = vm.player.armor.armor;
 			// toSlug(vm.test);
+		}
+
+		vm.equipWeapon = function() {
+			vm.player.weapon = vm.itemDictionary[vm.equippedWeapon][0][1];
+			vm.player.damage = vm.player.weapon.damage;
+		}
+
+		vm.equipTrinket = function() {
+
 		}
 
 		// function toSlug(input) {

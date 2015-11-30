@@ -160,9 +160,9 @@
 		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
-		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
+		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
-		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 1]];
+		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 
 
 

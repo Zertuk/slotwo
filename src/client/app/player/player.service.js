@@ -60,7 +60,7 @@
             this.endLevel = function() {
                 messageService.addMessage('You have reached the end of the level');
                 this.active = false;
-                messageService.updateMainMessage('You finished the level and can leave with what you found.');
+                messageService.updateMainMessage('You finish the level.');
                 return true;
             }
             this.checkLevelEnd = function(unit, map) {
@@ -155,7 +155,7 @@
                     // $scope.$apply();
                 }   
                 else {
-                    messageService.updateMainMessage('You have been slain, dropping what you found.', true);
+                    messageService.updateMainMessage('You have been slain.', true);
                     return;
                 }
             },

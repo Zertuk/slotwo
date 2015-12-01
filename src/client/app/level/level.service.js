@@ -26,6 +26,7 @@
         this.treeOne.enemyArray = [enemyService.Tree];
         this.treeOne.name = 'Forest Approach';
         this.treeOne.prev = 'mainMap';
+        this.treeOne.prevName = 'Map';
         this.treeOne.defaultAscii = ["      .'           './   \\    .'\\      /                            /                                                                                                ",
                               "    /               \\    \\ .'   \\    /                            /                                                                                                  ",
                               "  .'                      /      '../               //\\\\        .'                                                                                                   ",

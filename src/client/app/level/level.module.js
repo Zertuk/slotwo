@@ -3,6 +3,7 @@
 
     angular
         .module('app.level', [
-        	'app.enemy'
+        	'app.enemy',
+        	'app.message'
         ]);
 })();

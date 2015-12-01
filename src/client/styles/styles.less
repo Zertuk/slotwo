@@ -20,10 +20,52 @@
     /*font-weight: 400;*/
 }
 
+header {
+    border-bottom: 1px solid white;
+    padding: 10px 50px 0;
+
+}
+
+.conditional {
+    height: 33px;
+}
+
+.error {
+    color: red;
+}
+
+.leveloverflow {
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 0 50px 0;
+}
+
+.mainmessage,
+.mainbutton {
+    display: inline-block;
+}
+
+.mainmessage {
+    margin-left: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+#test {
+    background: red !important;
+}
+
 .alignvert {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.marginbottom10 {
+    margin-bottom: 10px;
 }
 
 nav ul li {
@@ -32,8 +74,8 @@ nav ul li {
 
 body {
     box-sizing: border-box;
-    padding: 50px;
-    padding-top: 0;
+    padding: 0;
+    margin: 0;
     background: @color_black;
     color: @color_white;
     font-family: 'Inconsolata';
@@ -43,21 +85,73 @@ div {
     box-sizing: border-box;
 }
 
+.half {
+    float: left;
+    width: 49%;
+}
+.half:first-of-type {
+    margin-right: 2%;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+h1 {
+    font-size: 26px;
+    float: right;
+    margin: 0;
+}
+
 .one {
     width: 100%;
     font-size: 12px
 }
 
-#levelwrap {
-    max-width: 100%;
-    overflow: hidden;
+#levelwrap,
+#locationwrap {
+    height: auto;
     position: relative;
 }
 
+.tooltip {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    min-height: 100px;
+    border: 1px solid #fff;
+}
+.shop .list {
+    width: 200px;
+}
+.shop .list p {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.shop .list p:last-child {
+    float: right;
+}
+
+span {
+    position: relative;
+}
 
 pre {
     font-size: 17px;
     margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 pre:nth-of-type(27) {
     clear: both;
@@ -83,14 +177,6 @@ span.click {
     background: @color_lightblue;
     height: 22px;
 }
-
-.levelwrap {
-}
-
-.levelwrap pre {
-}
-
-
 
 .healthbar {
     width: 100%;
@@ -136,7 +222,10 @@ span.click {
 }
 
 
-
+.overflowhidden {
+    overflow: hidden;
+    max-width: 100%;
+}
 
 /* button styles */
 button {

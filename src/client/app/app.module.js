@@ -11,7 +11,10 @@
 		'app.town',
 		'app.player',
 		'app.enemy',
-		'app.level'
+		'app.level',
+		'app.message',
+		'app.template',
+		'720kb.tooltips'
 	]);
 
 })();

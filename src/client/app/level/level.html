@@ -1,0 +1,16 @@
+<div ng-controller = "LevelController as vm">
+	<div class = "container leveloverflow">
+		<div id = "levelwrap">
+			<pre class = "levelrow" ng-repeat = "row in vm.currentLevel.ascii track by $index">{{row}}</pre>
+		</div>
+		<div class = "enemyinfo">
+			<p class = "enemyname">{{vm.currentEnemy.name}}</p>
+			<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>
+
+			<p ng-if="vm.currentEnemy.health">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
+		</div>
+		<div class = "log" id = "log">
+			<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>
+		</div>
+	</div>
+</div>

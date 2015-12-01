@@ -16,6 +16,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="/bower_components/angular-tooltips/dist/angular-tooltips.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
@@ -27,9 +28,30 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div>
-        <div class = "one" ng-include="'app/main/main.html'"></div>
+    <div ng-controller = "MainController as vm">
+        <header>
+            <div class = "row">
+                <button>Home</button>
+                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
+                <button ng-click = "vm.switchLocation('mainMap')">Map</button>
+                <h1>{{vm.currentLocation.name}}</h1>
+            </div><!--row-->
+            <div class = "row">
+                <div class = "healthbar">
+                    <div class = "healthbarinner" ng-style = "vm.player.healthWidth">
+                    </div>
+                    <p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p>
+                </div><!--healthbar-->
+            </div><!--row-->
+            <div class = "row conditional">
+                <button ng-if = "vm.currentLocation.prevName" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
+                <button ng-if = "vm.prevMessage" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">{{vm.prevMessage}}</button>
+                <p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
+            </div><!--row-->
+        </header>
+        <ng-include class = "template" src="vm.activeTemplate"></ng-include>
     </div>
+    
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
@@ -41,6 +63,7 @@
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/toastr/toastr.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -58,7 +81,10 @@
     <script src="/src/client/app/level/level.module.js"></script>
     <script src="/src/client/app/main/main.module.js"></script>
     <script src="/src/client/app/map/map.module.js"></script>
+    <script src="/src/client/app/message/message.module.js"></script>
     <script src="/src/client/app/player/player.module.js"></script>
+    <script src="/src/client/app/shop/shop.module.js"></script>
+    <script src="/src/client/app/template/template.module.js"></script>
     <script src="/src/client/app/town/town.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
@@ -81,9 +107,14 @@
     <script src="/src/client/app/level/level.service.js"></script>
     <script src="/src/client/app/main/main.controller.js"></script>
     <script src="/src/client/app/main/main.route.js"></script>
+    <script src="/src/client/app/main/main.service.js"></script>
     <script src="/src/client/app/map/map.controller.js"></script>
     <script src="/src/client/app/map/map.route.js"></script>
+    <script src="/src/client/app/message/message.directive.js"></script>
+    <script src="/src/client/app/message/message.service.js"></script>
     <script src="/src/client/app/player/player.service.js"></script>
+    <script src="/src/client/app/shop/shop.service.js"></script>
+    <script src="/src/client/app/template/template.service.js"></script>
     <script src="/src/client/app/town/town.controller.js"></script>
     <script src="/src/client/app/town/town.route.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>

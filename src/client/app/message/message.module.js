@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.player', [
-        	'app.message'
+        .module('app.message', [
+        	'app.main'
         ]);
 })();

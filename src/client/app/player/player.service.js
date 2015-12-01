@@ -6,26 +6,36 @@
         .service('playerService', playerService);
 
 
-    playerService.$inject = ['inventoryService'];
+    playerService.$inject = ['inventoryService', 'messageService'];
 
     /* @ngInject */
-    function playerService(inventoryService) {
+    function playerService(inventoryService, messageService) {
 
         ////////////////
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
-        console.log(vm.itemDictionary.club[0][1]);
 
         this.Player = function() {
+            this.specialEnd = undefined,
+            this.money = 1000,
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;
                 return percent;
             },
-            this.healthUpdate = function() {
+            this.checkMaxHealth = function() {
+                if (this.health > this.maxHealth) {
+                    this.health = this.maxHealth;
+                }
+            }
+            this.healthRegen = function() {
                 if (this.health < this.maxHealth) {
                     var health = parseFloat(this.health);
                     this.health = (health + this.regen).toFixed(2);
                 }
+                this.checkMaxHealth();
+            },
+            this.healthBarUpdate = function() {
+                this.checkMaxHealth();
                 var percent = this.healthPercent();
                 if (percent > 65) {
                     this.healthWidth = {'background-color': 'green', 'width': percent + '%'};
@@ -47,20 +57,27 @@
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
                 testage = 3;
             },
+            this.endLevel = function() {
+                messageService.addMessage('You have reached the end of the level');
+                this.active = false;
+                messageService.updateMainMessage('You finished the level and can leave with what you found.');
+                return true;
+            }
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
-                    console.log('level end');
-                    this.active = false;
-                    return true;
+                    this.endLevel();
+                }
+                else if (typeof this.specialEnd !== 'undefined') {
+                    if (this.specialEnd <= unit[0]) {
+                        this.endLevel();
+                    }
                 }
             },
             //combat
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive) {
-                    if (current.checkLevelEnd(current.position, map)) {
-                        return;
-                    }
+                    current.checkLevelEnd(current.position, map);
                     if (current.grounded) {
                         current.grounded = false;
                         var groundedLastTurn = true;
@@ -72,9 +89,17 @@
                     else {
                         current.prevCheck = false;
                     }
-
+                    
+                    for (var i = 0; i < enemyArray.length; i++) {
+                        if ((map[current.position[1]][current.position[0] + current.speed]) == (enemyArray[i].symbol)) {
+                            inCombat = true;
+                        }
+                    }
+                    if (inCombat) {
+                        
+                    }
                     //collission detection y
-                    if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
+                    else if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                         if (map[current.position[1]][current.position[0]] == '_') {
                             current.prev = true;
@@ -130,6 +155,7 @@
                     // $scope.$apply();
                 }   
                 else {
+                    messageService.updateMainMessage('You have been slain, dropping what you found.', true);
                     return;
                 }
             },
@@ -137,7 +163,7 @@
             this.ground = false,
             this.health = 90,
             this.maxHealth = 100,
-            this.regen = 0.05,
+            this.regen = 1,
             this.alive = true,
             //movement
             this.prev = false,

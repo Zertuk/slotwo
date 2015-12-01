@@ -14,6 +14,7 @@
     function enemyService(inventoryService) {
         var count = 0;
         var vm = this;
+        vm.watch = false;
         vm.itemDictionary = inventoryService.itemDictionary;
 
         function battle(unit, enemy, map) {
@@ -52,6 +53,7 @@
             this.position = [0, 0],
             this.positionOld = [0, 0],
             this.itemMult = 1,
+            this.inCombat = false,
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                     battle(enemyArray, current, map);
@@ -102,7 +104,6 @@
                         var num = 1;
                     }
                     console.log('you found ' + num + ' ' + this.items[0][0][1].name)
-                    console.log(this.items[0][1][1]);
                     this.items[0][1][1] = this.items[0][1][1] + num;
                 }
             },
@@ -113,7 +114,14 @@
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive && current.move) {
-                    if (this.checkLevelEnd(current.position, map)) {
+                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y') || current.inCombat) {
+                        current.inCombat = true;
+                        console.log('in combat')
+                    }
+                    else {
+                        console.log(map[current.position[1]][current.position[0] + current.speed])
+                    }
+                    if (current.checkLevelEnd(current.position, map)) {
                         return;
                     }
                     if (current.grounded) {
@@ -121,16 +129,36 @@
                         var groundedLastTurn = true;
                     }
                     if (current.prev) {
+                        if (!current.inCombat) {
+                            current.prev = false;
+                        }
                         current.prevCheck = true;
-                        current.prev = false;
                     }
                     else {
                         current.prevCheck = false;
                     }
-
+                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
+                        if (current.symbol == 'Y') {
+                            current.inCombat = false;
+                            for (var i = 0; i < array.length; i++) {
+                                if ((map[current.position[1]][current.position[0] + current.speed]) == (array[i].symbol)) {
+                                    current.inCombat = true;
+                                }
+                            }
+                            if (!current.inCombat) {
+                                current.updatePosition(current.position, current.positionOld, current.speed, -1);
+                            }
+                        }
+                        else {
+                            vm.watch = true;
+                            battle(enemyArray[0], current, map);
+                            current.inCombat = true;
+                        }
+                    }
                     //collission detection y
-                    if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck) {
-                        this.updatePosition(current.position, current.positionOld, 0, 1);
+                    else if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck && !current.inCombat) {
+                        current.updatePosition(current.position, current.positionOld, 0, 1);
+                        console.log(current.inCombat)
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
@@ -141,22 +169,9 @@
                         current.prev = true;
                         this.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
-                    else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
-                        if (current.symbol == 'Y') {
-                            var inCombat = false;
-                            for (var i = 0; i < array.length; i++) {
-                                if ((map[current.position[1]][current.position[0] + current.speed]) == (array[i].symbol)) {
-                                    inCombat = true;
-                                }
-                            }
-                            if (!inCombat) {
-                                this.updatePosition(current.position, current.positionOld, current.speed, -1);
-                            }
-                        }
-                        else {
-                            battle(enemyArray[0], current, map);
-                            var inCombat = true;
-                        }
+                    else if (map[current.position[1] + 1][current.position[0]] == '_') {
+                        current.prev = true;
+                        this.updatePosition(current.position, current.positionOld, 0, 1);
                     }
                     // else {
                     //     setTimeout(function() {
@@ -203,12 +218,24 @@
             this.move = false;
             this.health = 1;
             this.colBox = [3, 4];
-            this.items = [vm.itemDictionary['wood']];
+            this.items = [vm.itemDictionary['boneArmor']];
             this.itemChance = 100;
-            this.itemMult = 3;
-            this.damage = 1;
+            this.itemMult = 1;
+            this.damage = 0;
         }
         this.Tree.prototype = new this.Enemy();
+
+
+
+
+        this.TreeWarrior = function TreeWarrior() {
+            this.name = 'Treeperson Warrior';
+            this.deathMessage = 'A Treeperson Warrior has been slain!';
+            this.symbol = "T";
+            this.health = 15;
+            this.damage = 1.5;
+        }
+        this.TreeWarrior.prototype = new this.Enemy();
 
 
 

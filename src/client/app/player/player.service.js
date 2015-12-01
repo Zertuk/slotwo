@@ -16,6 +16,7 @@
         vm.itemDictionary = inventoryService.itemDictionary;
 
         this.Player = function() {
+            this.specialEnd = undefined,
             this.money = 1000,
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;
@@ -56,21 +57,27 @@
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
                 testage = 3;
             },
+            this.endLevel = function() {
+                messageService.addMessage('You have reached the end of the level');
+                this.active = false;
+                messageService.updateMainMessage('You finished the level and can leave with what you found.');
+                return true;
+            }
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
-                    messageService.addMessage('You have reached the end of the level');
-                    this.active = false;
-                    return true;
+                    this.endLevel();
+                }
+                else if (typeof this.specialEnd !== 'undefined') {
+                    if (this.specialEnd <= unit[0]) {
+                        this.endLevel();
+                    }
                 }
             },
             //combat
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive) {
-                    if (current.checkLevelEnd(current.position, map)) {
-                        messageService.updateMainMessage('You finished the level and can leave with what you found.');
-                        return;
-                    }
+                    current.checkLevelEnd(current.position, map);
                     if (current.grounded) {
                         current.grounded = false;
                         var groundedLastTurn = true;

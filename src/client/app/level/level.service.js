@@ -59,6 +59,7 @@
 
         //treetwo
         this.treeTwo = new this.Level();
+        this.treeTwo.specialEnd = 95;
         this.treeTwo.enemyArray = [enemyService.TreeWarrior];
         this.treeTwo.enemySpawn = [89, 22];
         this.treeTwo.playerSpawn = [0, 21];

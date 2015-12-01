@@ -22,7 +22,7 @@
 
 		vm.resetLevel = function() {
 			vm.currentLevel = levelService.currentLevel;
-			console.log(levelService.currentLevel);
+			specialEnd();
 			vm.unitArray = [playerService.player];
 			vm.player.active = true;
 			createAscii();
@@ -30,9 +30,17 @@
 			var spawn = [];
 			spawn[0] = vm.currentLevel.playerSpawn[0];
 			spawn[1] = vm.currentLevel.playerSpawn[1];
-			playerService.player.position = spawn;
+			vm.player.position = spawn;
 		}
 		vm.resetLevel();
+
+		function specialEnd() {
+			if (vm.currentLevel.specialEnd) {
+				vm.player.specialEnd = vm.currentLevel.specialEnd;
+			} else {
+				vm.player.specialEnd = undefined;
+			}
+		}
 
 
 		function initLevel() {

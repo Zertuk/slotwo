@@ -249,6 +249,35 @@
 		vm.treeSlumsBum.prev = 'slums';
 		vm.treeSlumsBum.prevName = 'Slums';
 
+		vm.wizard = new vm.Location;
+		vm.wizard.name = 'Wizard';
+		vm.wizard.prev = 'mainMap';
+		vm.wizard.prevName = 'Map';
+		vm.wizard.ascii =	["                 )(                                     ~  \\  )(  /  ~               ",                                                                                                                                            
+							 "                ))((                                 ~    ~ \\//\\\\/ ~   ~             ",                                                                                                                                           
+							 "               ((()))                                    ---((X.))---                ",                                                                                                                                               
+							 "               \\_  _/             ( >>\\\\\\\\\\           ~   ~ /\\\\//\\ ~   ~             ",                                                                                                                                          
+							 "                 \\  \\             )| . . |)             ~  /  ||  \\  ~               ",                                                                                                                                         
+							 "                  \\  \\           ( |  |  |(                 ~ || ~                   ",                                                                                                                                           
+							 "                   \\  \\           )\\ mmm / )                  ||                     ",                                                                                                                                         
+							 "                    \\  \\_________(__mMMMm_(___________________||                     ",                                                                                                                                           
+							 "                     \\/ _________   mMMMm   _________      |_(__)                    ",                                                                                                                                             
+							 "                     |  |        |  mMMMm  |         \\     |  ||                     ",                                                                                                                                           
+							 "                     |  |        |   MMM   |          \\    |  ||                     ",                                                                                                                                         
+							 "                     |  |        |   mMm   |           \\   |  ||                     ",                                                                                                                                         
+							 "                     |  |        |   mMm   |            \\  |  ||                     ",                                                                                                                                           
+							 "                     | /         |____M____|             \\ |  ||                     ",                                                                                                                                           
+							 "                     |/         /     m     \\             \\|  ||                     ",                                                                                                                                           
+							 "                               /             \\                ||                     ",                                                                                                                                           
+							 "                              /               \\               ||                     ",                                                                                                                                          
+							 "                             /                 \\              ||                     ",                                                                                                                                          
+							 "                          __/                   \\__           ||                     ",                                                                                                                                              
+							 "                          \\_______________________/                                  ",                                                                                                                              
+							 "                               _/_/       \\_\\_                                       ",                                                                                                                               
+							 "                              (___|       |___)                                      "];
+                                                                                                                          
+
+
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;
 				vm.locationDictionary['treeSecret'] = this.treeSecret;
@@ -258,7 +287,8 @@
 				vm.locationDictionary['slums'] = this.treeSlums;
 					vm.locationDictionary['slumsInn'] = this.treeSlumsInn;
 					vm.locationDictionary['slumsThugs'] = this.treeSlumsThugs;
-					vm.locationDictionary['slumsBum'] = this.treeSlumsBum
+					vm.locationDictionary['slumsBum'] = this.treeSlumsBum;
+			vm.locationDictionary['wizard'] = this.wizard;
 
 
 		vm.switchLocation = function() {

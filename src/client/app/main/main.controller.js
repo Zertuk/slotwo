@@ -21,6 +21,8 @@
         vm.currentLocation.specFunc();
         vm.messageError = messageService.messageError;
 
+
+
         vm.switchTemplate = function(template) {
             vm.player.active = false;
             templateService.switchTemplate(template);
@@ -51,6 +53,9 @@
                 vm.currentLocation.initClicks();
             }
             removeAscii();
+            if (vm.currentLocation.specialText) {
+                messageService.locationMessage('this is a test message');
+            }
         };
 
         function removeAscii() {
@@ -106,6 +111,7 @@
             vm.activeTemplate = templateService.activeTemplate;
             vm.messageError = messageService.messageError;
             vm.mainMessage = messageService.mainMessage;
+            vm.locationText = messageService.locationText;
             $timeout(quickLoop, 125);
         }
     }

@@ -11,6 +11,7 @@
     function messageService() {
     	this.messageLog = [];
         this.mainMessage = '';
+        this.locationText = '';
         this.messageError = false;
 
         //first var = message, second var = whether message is good or bad
@@ -23,6 +24,10 @@
                 this.messageError = false;
             }
         };
+
+        this.locationMessage = function(message) {
+            this.locationText = message;
+        }
 
         this.addMessage = function(message) {
 			this.messageLog.push(message);

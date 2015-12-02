@@ -14,7 +14,7 @@
 		'app.level',
 		'app.message',
 		'app.template',
-		'720kb.tooltips'
+		'app.dialogue'
 	]);
 
 })();

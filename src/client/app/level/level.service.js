@@ -173,6 +173,33 @@
 
 
 
+        this.dungeon = new this.Level();
+        this.dungeon.enemyArray = [enemyService.TreeWarrior];
+        this.dungeon.playerSpawn = [0, 0];
+        this.dungeon.enemySpawn = [50, 15];
+        this.dungeon.name = 'Dungeon';
+        this.dungeon.defaultAscii = ["                                             *                                                                                                                                                                                    ",
+                                     "____                                         *                        *   *                                                                                                                                                       ",
+                                     "''''____                                   __*__                      *   *                                                                                                                                                       ",
+                                     "    ''''____                              |||||||                     *   *                                                                                                                                                       ",
+                                     "        ''''____                          |||||||                      \\o/                                                                                                                                                        ",
+                                     "            ''''____                      |||||||                       |                                    _______                    *-------------------*                                                                     ",
+                                     "                ''''____                  *******                      / \\                                  .|'|'|'|.                       |   |   |  |                                                                          ",
+                                     "                    ''''____                                                                                || | | ||                      c|  <|   V =|=                                                                         ",
+                                     "                        ''''____                                               ....0..0....                 || | | ||                                                                                O                            ",
+                                     "                            ''''____                                           |\\   >--\\-o \\                |v v v v|                                                                               /|\\                           ",
+                                     "                                ''''____                                         |--0---0---|                                                                                                        |                            ",
+                                     "                                    ''''____                                                                                                                                                        / \\                           ",
+                                     "                                        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  "]
+
+
+
+
         this.levelDictionary = [];
         this.levelDictionary['treeOne'] = this.treeOne;
         this.levelDictionary['treeTwo'] = this.treeTwo;

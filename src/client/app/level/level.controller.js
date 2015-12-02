@@ -67,7 +67,7 @@
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
 			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
-				var left = (vm.player.position[0] - 50)*5;
+				var left = (vm.player.position[0] - 50)*8;
 				var elem = document.getElementById('levelwrap');
 				elem.style.left = '-' + left + 'px';
 			}

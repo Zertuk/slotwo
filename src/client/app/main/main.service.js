@@ -59,6 +59,9 @@
         	//treeone 
         	vm.click(this, 'Tree One', 'treeOne', 1, 29, 28, 10, true);
         	vm.click(this, 'Tree One', 'treeOne', 30, 40, 38, 5, true);
+        	//ruins
+        	vm.click(this, 'Ruins', 'ruins', 0, 6, 50, 12, true);
+
         };
 		vm.mainMap.ascii = [	"            .                                  /              \\     /   \\                                                    /         \\   .'                          \\                  ",
 								"           /_\\'.                             .'   .^.         /\\   /     \\     ^                                           .'     ^  .  '. '.                          |        \\_      ",

@@ -150,9 +150,10 @@
 
         this.ruins = new this.Level();
         this.ruins.enemyArray = [enemyService.TreeWarrior];
-        this.ruins.playerSpawn = [0, 10];
-        this.ruins.enemySpawn = [30, 10];
+        this.ruins.playerSpawn = [0, 13];
+        this.ruins.enemySpawn = [30, 8];
         this.ruins.name = 'Ruins';
+        this.ruins.specialEnd = 250;
         this.ruins.defaultAscii = ["                                                                                                                                                                                     /                                                                                   ",                                                                                                                       
                                    "                                                                                                                                                                                    /                                        ________________                            ",                                                                                                                       
                                    "                                                                                                                                                                                   /                                                                                     ",                                                                                                                       
@@ -176,6 +177,8 @@
         this.levelDictionary['treeOne'] = this.treeOne;
         this.levelDictionary['treeTwo'] = this.treeTwo;
         this.levelDictionary['bridge']  = this.bridge;
+        this.levelDictionary['snow'] = this.snow;
+        this.levelDictionary['ruins'] = this.ruins;
 
         this.switchCurrentLevel = function(activeLevel) {
             this.currentLevel = this.levelDictionary[activeLevel];

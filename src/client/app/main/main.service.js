@@ -277,6 +277,10 @@
 		vm.treeGovernment.prev = 'treeCity';
 		vm.treeGovernment.prevName = 'Tree City';
 		vm.treeGovernment.specialText = true;
+		vm.treeGovernment.locationText = function() {
+			var text = 'Greetings';
+			return text;
+		}
 		vm.treeGovernment.ascii =   ["                                                                                                  __/                                                       ",                                                                                                                                             
 									 "                                                                                                    \\   \\/ __\\   \\_/   __/                                  ",                                                                                                                                             
 									 "                                                                                               __\\   \\/ /_   /    \\   /__                                   ",                                                                                                                                             

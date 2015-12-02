@@ -54,7 +54,7 @@
             }
             removeAscii();
             if (vm.currentLocation.specialText) {
-                messageService.locationMessage('this is a test message');
+                messageService.locationMessage(vm.currentLocation.locationText());
             }
         };
 

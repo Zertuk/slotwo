@@ -16,6 +16,8 @@
                 console.log(this.defaultAscii[0].length);
             },
             this.spawnMore = true;
+            this.prev = 'mainMap';
+            this.prevName = 'Map';
         };
 
         //treeone
@@ -25,8 +27,6 @@
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
         this.treeOne.name = 'Forest Approach';
-        this.treeOne.prev = 'mainMap';
-        this.treeOne.prevName = 'Map';
         this.treeOne.defaultAscii = ["     .\'           \'./   \\    .\'\\      /                            /                                     \\/                               /                     ",
                                      "    /               \\    \\ .\'   \\    /                            /                                      /                              .\'                       ",
                                      "  .\'                      /      \'../               //\\\\        .\'                                     .\'                              /                           ",
@@ -65,8 +65,6 @@
         this.treeTwo.enemySpawn = [89, 22];
         this.treeTwo.playerSpawn = [0, 21];
         this.treeTwo.name = 'Tree Two';
-        this.treeTwo.prev = 'mainMap';
-        this.treeTwo.prevName = 'Map';
         this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
                               "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
                               "    /               \\    \\ .'   \\    /                            /////////////////////////     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",            
@@ -99,8 +97,6 @@
         this.bridge.playerSpawn = [0, 14];
         this.bridge.enemySpawn = [150, 14];
         this.bridge.name = 'Bridge';
-        this.bridge.prev = 'mainMap';
-        this.bridge.prevName = 'Map';
         this.bridge.defaultAscii =  
                               ["  / \\    / \\                          .           /                                                             _'                                                                         .........                            ",                                                                                                                                                                                                                  
                               "  / \\     |         .                / \\         /                                               ~~~           / \\_                                                                    ..''         ''..                        ",
@@ -131,8 +127,6 @@
         this.snow.playerSpawn = [0, 10];
         this.snow.enemySpawn = [10, 10];
         this.snow.name = 'Snow';
-        this.snow.prev = 'mainMap';
-        this.snow.prevName = 'Map';
         this.snow.defaultAscii = ["                                                                                                                                                           \\                                       ",               
                                   "                                                                                                                                                            \\  /____                               ",               
                                   "                                                                                                                                                             \\/     \\____    ______                ",                            
@@ -153,6 +147,28 @@
                                   "                                                                                                                                                                                                   ",
                                   "                                                                                                                                                                                                   ",
                                   "                                                                                                                                                                                                   "]
+
+        this.ruins = new this.Level();
+        this.ruins.enemyArray = [enemyService.TreeWarrior];
+        this.ruins.playerSpawn = [0, 10];
+        this.ruins.enemySpawn = [30, 10];
+        this.ruins.name = 'Ruins';
+        this.ruins.defaultAscii = ["                                                                                                                                                                                     /                                                                                   ",                                                                                                                       
+                                   "                                                                                                                                                                                    /                                        ________________                            ",                                                                                                                       
+                                   "                                                                                                                                                                                   /                                                                                     ",                                                                                                                       
+                                   "                                                                                                                                                                                  /         __________________________                                                   ",                                                                                                                                                 
+                                   "                                                                                                                                                                                 /                                                                                       ",                                                                                                                          
+                                   "                                                                                                                                                                                /                                                                                        ",                                                                                                                             
+                                   "                                                                                                                                                                               /                        ____________________________                [=]=v=[=]            ",                                                                                                                                                                                                   
+                                   "                                                                                                                                                                              /                                                                     __.\\ /.__            ",                                                                                                                                                                                                             
+                                   "                                                                                                          ____________________________.''''''''''''._________________________/                                                                      |        |           ",                                                                                                                                                                                                                        
+                                   "                                ________.'''''''''._______________                      ________________.'                                                                  /                                                                       |        |           ",                                                                                                                                                                                             
+                                   "______.'''''''''._____________.'                                  '.__________________.'            +                           +                        +                 /                                                                        |        |           ",                                                                                                                                                                                                 
+                                   "                                                       +                                            +                                                    +                                                                                                   |           ",                                                                                                                                                                                        
+                                   "                         +                             +                                                                                                      .'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''           ",                                                                                                                                                                                                     
+                                   "                         +                                                                                         .''''''''''''''''''''''''''''''''''''''''''                                                                                                           ",                                                                                                                                                                                                       
+                                   "                                               .'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''                                                                                                                                                      ",                                                                                                                                                                                                     
+                                   "'''''''''''''''''''''''''''''''''''''''''''''''                                                                                                                                                                                                                          "]                                                                                                                                                                                                  
 
 
 

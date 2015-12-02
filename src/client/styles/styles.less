@@ -20,14 +20,30 @@
     /*font-weight: 400;*/
 }
 
+#locationtext {
+    border: 1px dashed @color_white;
+    min-height: 200px;
+    width: 50%;
+    position: absolute;
+    top: 50px;
+    padding: 10px 50px;
+    line-height: 22px;
+}
+
+.arrow {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+}
+
 header {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid @color_white;
     padding: 10px 50px 0;
 
 }
 
 .borderbottom {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid @color_white;
 }
 
 .conditional {
@@ -44,6 +60,7 @@ header {
 
 .container {
     padding: 0 50px 0;
+    position: relative;
 }
 
 .mainmessage,

@@ -18,6 +18,12 @@
         vm.treeKing = new vm.Dialogue;
 
         vm.treeKing.dialogue = {
+            introduction: {
+                text: 'Greetings, I am King Treemaster.  Welcome to our city, outsider.',
+                next: 'question',
+                master: 'treeKing',
+                continue: true
+            },
             question: {
                 text: 'Now, what can I do for you?',
                 buttons : {
@@ -41,11 +47,16 @@
                         next: 'askCompliment',
                         master: 'treeKing'
                     }
-                },
-                continue: false
+                }
             },
-            introduction: {
-                text: 'Greetings, I am King Treemaster.  Welcome to our city, outsider.',
+            askRumor: {
+                text: 'rumor text',
+                next: 'question',
+                master: 'treeKing',
+                continue: true
+            },
+            askCompliment: {
+                text: 'Flattery will get you nowhere with me, outsider.',
                 next: 'question',
                 master: 'treeKing',
                 continue: true
@@ -91,10 +102,22 @@
                     },
                     no: {
                         text: 'Not yet',
-                        next: 'askWork',
+                        next: 'askWorkIncomplete',
                         master: 'treeKing'
                     }
                 }
+            },
+            askWorkComplete: {
+                text: 'finish quest',
+                next: 'question',
+                master: 'treeKing',
+                continue: true
+            },
+            askWorkIncomplete: {
+                text: 'quest not finished',
+                next: 'question',
+                master: 'treeKing',
+                continue: true
             }
         }
 

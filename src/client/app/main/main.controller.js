@@ -5,17 +5,17 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService) {
         shopService.initShop();
         var vm = this;
         vm.title = 'MainController';
         vm.count = 0;
         vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
-        vm.currentLocation = mainService.mainMap;
+        vm.currentLocation = mainService.treeGovernment;
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
@@ -54,7 +54,7 @@
             }
             removeAscii();
             if (vm.currentLocation.specialText) {
-                messageService.locationMessage(vm.currentLocation.locationText());
+                dialogueService.locationMessage();
             }
         };
 
@@ -111,7 +111,6 @@
             vm.activeTemplate = templateService.activeTemplate;
             vm.messageError = messageService.messageError;
             vm.mainMessage = messageService.mainMessage;
-            vm.locationText = messageService.locationText;
             $timeout(quickLoop, 125);
         }
     }

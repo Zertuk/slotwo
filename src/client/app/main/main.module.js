@@ -5,6 +5,7 @@
     	'app.player',
     	'app.level',
     	'app.shop',
-    	'app.template'
+    	'app.template',
+    	'app.dialogue'
         ]);
 })();

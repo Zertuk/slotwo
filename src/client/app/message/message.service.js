@@ -25,10 +25,6 @@
             }
         };
 
-        this.locationMessage = function(message) {
-            this.locationText = message;
-        }
-
         this.addMessage = function(message) {
 			this.messageLog.push(message);
 			var elem = document.getElementById('log');

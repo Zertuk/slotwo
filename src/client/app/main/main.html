@@ -1,7 +1,9 @@
 <div class = "container borderbottom">
 	<div id = "locationwrap">
 	</div>
-	<div id = "locationtext" ng-if = "vm.currentLocation.specialText">
+	<div id = "locationtext" ng-if = "vm.currentLocation.specialText" ng-controller = "DialogueController as vm">
 		<p class = "text">{{vm.locationText}}</p>
+		<button ng-if = "vm.currentDialogue.continue" ng-click = "vm.switchDialogue(vm.currentDialogue.next, vm.currentDialogue.master)">continue</button>
+		<button ng-if = "!vm.currentDialogue.continue" ng-repeat = "button in vm.currentDialogue.buttons" ng-click = "vm.switchDialogue(button.next, button.master)">{{button.text}}</button>
 	</div>
 </div><!--container-->

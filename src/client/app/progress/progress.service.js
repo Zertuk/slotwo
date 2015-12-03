@@ -13,6 +13,12 @@
         this.test = 'this is a test';
         ////////////////
 
+
+        this.progress = {
+        	treeKingWorkAccept: false,
+        	treeKingCompliment: true
+        }
+
         function func() {
         }
     }

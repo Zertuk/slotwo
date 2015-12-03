@@ -16,6 +16,18 @@
             vm.currentMaster = dialogueService[master];
             vm.currentDialogue = vm.currentMaster.dialogue[input];
             vm.locationText = vm.currentDialogue.text;
+            special();
+        }
+
+        function special() {
+            if (typeof vm.currentDialogue.special !== 'undefined') {
+                vm.currentDialogue.special();
+                console.log('special');
+            }
+            else {
+                console.log('not special');
+                console.log(vm.currentDialogue);
+            }
         }
 
 

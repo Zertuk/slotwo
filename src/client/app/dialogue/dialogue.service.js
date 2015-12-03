@@ -66,7 +66,7 @@
                     master: 'treeKing',
                     continue: true,
                     special: function() {
-                        progressService.progress.treeKingCompliment = false;
+                        vm.progress.treeKingCompliment = false;
                         vm.treeKing.dialogue = vm.treeKing.setDialogue();
                     }
                 },
@@ -93,7 +93,7 @@
                     master: 'treeKing',
                     continue: true,
                     special: function() {
-                        progressService.progress.treeKingWorkAccept = true;
+                        vm.progress.treeKingWorkAccept = true;
                         vm.treeKing.dialogue = vm.treeKing.setDialogue();
                     }
                 },
@@ -115,13 +115,13 @@
                             text: 'news',
                             next: 'askWorkComplete',
                             master: 'treeKing',
-                            active: true
+                            active: vm.progress.ruinsCleared
                         },
                         no: {
                             text: 'Not yet',
                             next: 'askWorkIncomplete',
                             master: 'treeKing',
-                            active: true
+                            active: !vm.progress.ruinsCleared
                         }
                     }
                 },
@@ -129,10 +129,13 @@
                     text: 'finish quest',
                     next: 'question',
                     master: 'treeKing',
-                    continue: true
+                    continue: true,
+                    special: function() {
+                        vm.progress.treeKingWorkHandIn = true;
+                    }
                 },
                 askWorkIncomplete: {
-                    text: 'quest not finished',
+                    text: 'I see.  Please act with haste, I dont want anyone else to go missing.',
                     next: 'question',
                     master: 'treeKing',
                     continue: true

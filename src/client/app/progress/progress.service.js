@@ -16,7 +16,9 @@
 
         this.progress = {
         	treeKingWorkAccept: false,
-        	treeKingCompliment: true
+        	treeKingCompliment: true,
+        	ruinsCleared: false,
+        	treeKingWorkHandIn: false
         }
 
         function func() {

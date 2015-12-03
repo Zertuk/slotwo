@@ -5,11 +5,19 @@
         .module('app.main')
         .service('mainService', mainService);
 
-    mainService.$inject = [];
+    mainService.$inject = ['dialogueService'];
 
     /* @ngInject */
-    function mainService() {
+    function mainService(dialogueService) {
     	var vm = this;
+
+    	vm.switchLocation = function(location) {
+            vm.currentLocation = vm.locationDictionary[location];
+            console.log(vm.currentLocation);
+            return vm.currentLocation;
+        };
+
+
     	vm.setCharAt = function(str,index,chr) {
             if(index > str.length-1) return str;
             return str.substr(0,index) + chr + str.substr(index+1);
@@ -236,6 +244,8 @@
 		vm.treeSlumsThugs.ascii = ['tree slums thugs'];
 		vm.treeSlumsThugs.prev = 'slums';
 		vm.treeSlumsThugs.prevName = 'Slums';
+		vm.treeSlumsThugs.specialText = true;
+		vm.treeSlumsThugs.dialogue = dialogueService.slumThugs;
 
 		vm.treeSlumsBum = new vm.Location;
 		vm.treeSlumsBum.name = 'Tree Slums Bum';
@@ -277,10 +287,7 @@
 		vm.treeGovernment.prev = 'treeCity';
 		vm.treeGovernment.prevName = 'Tree City';
 		vm.treeGovernment.specialText = true;
-		vm.treeGovernment.locationText = function() {
-			var text = 'Greetings';
-			return text;
-		}
+		vm.treeGovernment.dialogue = dialogueService.treeKing;
 		vm.treeGovernment.ascii =   ["                                                                                                  __/                                                       ",                                                                                                                                             
 									 "                                                                                                    \\   \\/ __\\   \\_/   __/                                  ",                                                                                                                                             
 									 "                                                                                               __\\   \\/ /_   /    \\   /__                                   ",                                                                                                                                             
@@ -304,7 +311,7 @@
 									 "                                                                                        /          .'| | /     \\ | |'.                \\                     ",                                                                                                                                             
 									 "                                                                                       /         .'  | |/|     |\\| |  '.               \\                    " ];                                                                                                                                              
 
-
+    	vm.currentLocation = vm.treeGovernment;
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;
@@ -317,10 +324,5 @@
 					vm.locationDictionary['slumsThugs'] = this.treeSlumsThugs;
 					vm.locationDictionary['slumsBum'] = this.treeSlumsBum;
 			vm.locationDictionary['wizard'] = this.wizard;
-
-
-		vm.switchLocation = function() {
-			console.log('test');
-		}
     }
 })();

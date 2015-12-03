@@ -34,7 +34,8 @@
                 <button>Home</button>
                 <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
                 <button ng-click = "vm.switchLocation('mainMap')">Map</button>
-                <h1>{{vm.currentLocation.name}}</h1>
+<!--                 <p>{{vm.player.gold}}</p>
+ -->                <h1>{{vm.currentLocation.name}}</h1>
             </div><!--row-->
             <div class = "row">
                 <div class = "healthbar">
@@ -76,6 +77,7 @@
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
+    <script src="/src/client/app/dialogue/dialogue.module.js"></script>
     <script src="/src/client/app/enemy/enemy.module.js"></script>
     <script src="/src/client/app/inventory/inventory.module.js"></script>
     <script src="/src/client/app/level/level.module.js"></script>
@@ -83,12 +85,11 @@
     <script src="/src/client/app/map/map.module.js"></script>
     <script src="/src/client/app/message/message.module.js"></script>
     <script src="/src/client/app/player/player.module.js"></script>
+    <script src="/src/client/app/progress/progress.module.js"></script>
     <script src="/src/client/app/shop/shop.module.js"></script>
     <script src="/src/client/app/template/template.module.js"></script>
     <script src="/src/client/app/town/town.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
-    <script src="/src/client/app/dialogue/dialogue.module.js"></script>
-    <script src="/src/client/app/progress/progress.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
     <script src="/src/client/app/base-template/map.controller.js"></script>
@@ -101,6 +102,8 @@
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
     <script src="/src/client/app/core/dataservice.js"></script>
+    <script src="/src/client/app/dialogue/dialogue.controller.js"></script>
+    <script src="/src/client/app/dialogue/dialogue.service.js"></script>
     <script src="/src/client/app/enemy/enemy.service.js"></script>
     <script src="/src/client/app/inventory/inventory.controller.js"></script>
     <script src="/src/client/app/inventory/inventory.route.js"></script>
@@ -115,13 +118,11 @@
     <script src="/src/client/app/message/message.directive.js"></script>
     <script src="/src/client/app/message/message.service.js"></script>
     <script src="/src/client/app/player/player.service.js"></script>
+    <script src="/src/client/app/progress/progress.service.js"></script>
     <script src="/src/client/app/shop/shop.service.js"></script>
     <script src="/src/client/app/template/template.service.js"></script>
-    <script src="/src/client/app/dialogue/dialogue.controller.js"></script>
-    <script src="/src/client/app/dialogue/dialogue.service.js"></script>
     <script src="/src/client/app/town/town.controller.js"></script>
     <script src="/src/client/app/town/town.route.js"></script>
-    <script src="/src/client/app/progress/progress.service.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
     <!-- endinject -->

@@ -3,6 +3,7 @@
 
     angular
         .module('app.dialogue', [
-        	'app.progress'
+        	'app.progress',
+        	'app.main'
         ]);
 })();

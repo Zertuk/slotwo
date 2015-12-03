@@ -186,7 +186,9 @@
             this.attackSpeed = this.weapon.attackSpeed,
             //armor
             this.armor = vm.itemDictionary.woodArmor[0][1],
-            this.armorValue = this.armor.armor
+            this.armorValue = this.armor.armor,
+            //money
+            this.gold = 0
         };
         this.player = new this.Player();
     }

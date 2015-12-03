@@ -21,12 +21,25 @@
         vm.currentLocation.specFunc();
         vm.messageError = messageService.messageError;
 
+        vm.switchLocation = function(location) {
+            vm.switchTemplate('app/main/main.html');
+            messageService.mainMessage = '';
+            vm.currentLocation = mainService.switchLocation(location);
+            if (!vm.currentLocation.formatted) {
+                vm.currentLocation.initClicks();
+            }
+            removeAscii();
+            if (vm.currentLocation.specialText) {
+                dialogueService.locationMessage();
+            }
+        };
+
 
 
         vm.switchTemplate = function(template) {
             vm.player.active = false;
             templateService.switchTemplate(template);
-        }
+        };
         
 
 
@@ -44,19 +57,6 @@
             levelService.switchCurrentLevel(level);
             vm.currentLocation = vm.levelDictionary[level];
         }
-        vm.switchLocation = function(location) {
-            vm.switchTemplate('app/main/main.html');
-            messageService.mainMessage = '';
-            vm.currentLocation = vm.locationDictionary[location];
-            if (!vm.currentLocation.formatted) {
-                console.log('test');
-                vm.currentLocation.initClicks();
-            }
-            removeAscii();
-            if (vm.currentLocation.specialText) {
-                dialogueService.locationMessage();
-            }
-        };
 
         function removeAscii() {
             var elements = angular.element('#locationwrap').children();

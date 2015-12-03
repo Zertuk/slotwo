@@ -18,7 +18,8 @@
         	treeKingWorkAccept: false,
         	treeKingCompliment: true,
         	ruinsCleared: false,
-        	treeKingWorkHandIn: false
+        	treeKingWorkHandIn: false,
+        	treeKingIntro: false
         }
 
         function func() {

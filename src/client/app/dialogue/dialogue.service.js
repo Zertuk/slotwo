@@ -14,16 +14,31 @@
         vm.progress = progressService.progress;
 
         vm.Dialogue = function() {
+            this.initDialogue = function() {
+                return 'introduction';
+            }
         };
 
         vm.treeKing = new vm.Dialogue;
+        vm.treeKing.initDialogue = function() {
+            console.log(vm.progress.treeKingIntro)
+            if (!vm.progress.treeKingIntro) {
+                return 'introduction';
+            }
+            else {
+                return 'question';
+            }
+        }
         vm.treeKing.setDialogue = function() {
             var dialogue = {
                 introduction: {
                     text: 'Greetings, I am King Treemaster.  Welcome to our city, outsider.',
                     next: 'question',
                     master: 'treeKing',
-                    continue: true
+                    continue: true,
+                    special: function() {
+                        vm.progress.treeKingIntro = true;
+                    }
                 },
                 question: {
                     text: 'Now, what can I do for you?',
@@ -146,10 +161,82 @@
         vm.treeKing.dialogue = vm.treeKing.setDialogue();
 
 
+        vm.slumThugs = new vm.Dialogue;
+        vm.slumThugs.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'Hey! You dont belong here. Beat it!',
+                    buttons: {
+                        leave: {
+                            text: 'Sorry I will leave!',
+                            next: 'sorryLeave',
+                            master: 'slumThugs',
+                            active: true
+                        },
+                        threaten: {
+                            text: 'I go where I want.',
+                            next: 'threaten',
+                            master: 'slumThugs',
+                            active: true
+                        },
+                        question: {
+                            text: 'What is going on here?',
+                            next: 'question',
+                            master: 'slumThugs',
+                            active: true
+                        }
+                    }
+                },
+                sorryLeave: {
+                    text: 'Thats what I thought.  Now beat it scrub!',
+                },
+                threaten: {
+                    text: 'Oh man I like this guy! Lets take him to meet the boss!',
+                    continue: true,
+                    next: 'introduction',
+                    master: 'slumThugsBoss'
+                }
+            }
+            return dialogue;
+        };
+        vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
+
+        vm.slumThugsBoss = new vm.Dialogue;
+        vm.slumThugsBoss.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'You think you have what it takes huh? Well lets see it then.',
+                    buttons: {
+                        confused: {
+                            text: 'I have no idea what you mean',
+                            next: 'confused',
+                            master: 'slumThugsBoss',
+                            active: true
+                        },
+                        confident: {
+                            text: 'Yeah I do! Lets do this.',
+                            next: 'confident',
+                            master: 'slumThugsBoss',
+                            active: true
+                        },
+                        threaten: {
+                            text: 'I will mess you up old man!',
+                            next: 'threaten',
+                            master: 'slumThugsBoss',
+                            active: true
+                        }
+                    }
+                }
+            }
+            return dialogue;
+        }
+        vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
+
 
         vm.locationMessage = function(message) {
             vm.locationText = vm.treeKing.dialogue['introduction'].text;
         }
+
 
 
         ////////////////

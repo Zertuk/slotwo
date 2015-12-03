@@ -5,13 +5,12 @@
         .module('app.dialogue')
         .controller('DialogueController', DialogueController);
 
-    DialogueController.$inject = ['dialogueService', 'progressService'];
+    DialogueController.$inject = ['dialogueService', 'progressService', 'mainService'];
 
     /* @ngInject */
-    function DialogueController(dialogueService, progressService) {
+    function DialogueController(dialogueService, progressService, mainService) {
+        console.log(mainService);
         var vm = this;
-        vm.title = 'Controller';
-        console.log(progressService.test);
         vm.switchDialogue = function(input, master) {
             vm.currentMaster = dialogueService[master];
             vm.currentDialogue = vm.currentMaster.dialogue[input];
@@ -25,7 +24,6 @@
                 console.log('special');
             }
             else {
-                console.log('not special');
                 console.log(vm.currentDialogue);
             }
         }
@@ -37,9 +35,11 @@
 
 
         function activate() {
-            vm.currentDialogue = dialogueService.treeKing.dialogue['introduction'];
+            var initDialogue = mainService.currentLocation.dialogue;
+            var key = initDialogue.initDialogue();
+            vm.currentDialogue = initDialogue.dialogue[key];
             vm.locationText = vm.currentDialogue.text;
-            console.log(dialogueService.treeKing.dialogue['question']);
+            special();
         }
     }
 })();

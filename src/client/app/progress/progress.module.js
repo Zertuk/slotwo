@@ -2,7 +2,6 @@
     'use strict';
 
     angular
-        .module('app.dialogue', [
-        	'app.progress'
+        .module('app.progress', [
         ]);
 })();

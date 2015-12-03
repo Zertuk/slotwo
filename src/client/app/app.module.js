@@ -14,7 +14,8 @@
 		'app.level',
 		'app.message',
 		'app.template',
-		'app.dialogue'
+		'app.dialogue',
+		'app.progress'
 	]);
 
 })();

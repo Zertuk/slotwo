@@ -10,7 +10,9 @@
     /* @ngInject */
     function ResourcesController(resourcesService, $timeout) {
         var vm = this;
-
+        vm.assignWorker = function(type) {
+        	resourcesService.assignWorker(type);
+        };
         activate();
 
         ////////////////

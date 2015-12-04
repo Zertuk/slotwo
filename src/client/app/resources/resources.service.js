@@ -5,11 +5,20 @@
         .module('app.resources')
         .service('resourcesService', resourcesService);
 
-    // Service.$inject = ['dependencies'];
+    resourcesService.$inject = ['messageService'];
 
-    function resourcesService() {
+    function resourcesService(messageService) {
     	this.moneyTick = function() {
     		this.resources.money = this.resources.money + this.resources.moneyRate;
+    	}
+    	this.assignWorker = function(type) {
+    		if (this.resources.workers > 0) {
+    			this.resources[type] = this.resources[type] + 1;
+    			this.resources[workers] = this.resources[workers] - 1;
+    		}
+    		else {
+
+    		}
     	}
     	this.resources = {
     		money: 0,

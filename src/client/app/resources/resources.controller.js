@@ -22,6 +22,7 @@
 
         function activate() {
         	vm.resources = resourcesService.resources;
+        	vm.workers = resourcesService.workers;
         }
     }
 })();

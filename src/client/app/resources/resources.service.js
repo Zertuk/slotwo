@@ -32,6 +32,23 @@
     			messageService.updateMainMessage(errorMessage, true);
     		}
     	}
+    	this.workers = {
+    		farmers: {
+    			food: 1
+    		},
+    		miners: {
+    			food: -1,
+    			wood: -1,
+    			ore: 1,
+    		},
+    		lumberjacks: {
+    			food: -1,
+    			wood: 1
+    		},
+    		overseers: {
+    			food: -2
+    		}
+    	}
     	this.resources = {
     		money: 0,
     		moneyRate: 1,

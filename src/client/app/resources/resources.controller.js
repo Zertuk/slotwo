@@ -13,6 +13,9 @@
         vm.assignWorker = function(type) {
         	resourcesService.assignWorker(type);
         };
+        vm.removeWorker = function(type) {
+        	resourcesService.removeWorker(type);
+        }
         activate();
 
         ////////////////

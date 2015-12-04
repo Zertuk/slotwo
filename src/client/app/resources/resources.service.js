@@ -21,6 +21,17 @@
     			messageService.updateMainMessage('No workers available.', true);
     		}
     	}
+    	this.removeWorker = function(type) {
+    		if (this.resources[type] > 0) {
+    			this.resources[type] = this.resources[type] - 1;
+    			this.resources['workers'] = this.resources['workers'] + 1;
+    			messageService.updateMainMessage('');
+    		}
+    		else {
+    			var errorMessage = 'No ' + type + ' are currently working.';
+    			messageService.updateMainMessage(errorMessage, true);
+    		}
+    	}
     	this.resources = {
     		money: 0,
     		moneyRate: 1,

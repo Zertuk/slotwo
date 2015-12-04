@@ -19,6 +19,17 @@
             }
         };
 
+        vm.wizard = new vm.Dialogue;
+        vm.wizard.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'wizard introduction',
+                }
+            }
+            return dialogue;
+        }
+        vm.wizard.dialogue = vm.wizard.setDialogue();
+
         vm.treeKing = new vm.Dialogue;
         vm.treeKing.initDialogue = function() {
             console.log(vm.progress.treeKingIntro)

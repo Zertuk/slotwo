@@ -25,6 +25,22 @@
     margin-top: 0;
 }
 
+.worker p {
+    display: inline-block;
+}
+
+.worker p:last-of-type {
+    margin-left: 20px;
+}
+
+.resourcecontrol {
+    margin: 0 2px;
+    border: 1px solid @color_white;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
 
 #locationtext {
     border: 1px dashed @color_white;
@@ -276,11 +292,11 @@ button {
     border: 1px solid @color_white;
     cursor: pointer;
 }
-button:hover {
+button:hover, .resourcecontrol:hover {
     background: #2f2f2f;
 }
 
-button:active {
+button:active, .resourcecontrol:hover {
     background: @color_white;
     color: @color_black;
 }

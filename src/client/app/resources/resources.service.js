@@ -13,7 +13,12 @@
     	}
     	this.resources = {
     		money: 0,
-    		moneyRate: 1
+    		moneyRate: 1,
+    		workers: 10,
+    		lumberjacks: 0,
+    		farmers: 0,
+    		miners: 0,
+    		overseers: 0
     	}
     }
 })();

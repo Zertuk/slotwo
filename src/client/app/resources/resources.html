@@ -1,3 +1,14 @@
-<div ng-controller = "ResourcesController as rc">
-	{{vm.money}}
+<div ng-controller = "ResourcesController as vm" class = "container">
+	<div class = "workerinfo">
+		<p>Available Workers: {{vm.resources.workers}}</p>
+		<div class = "worker">
+			<p class = "resourcecontrol">+</p><p class = "resourcecontrol">-</p><p>Lumberjacks: {{vm.resources.lumberjacks}}</p>
+		</div>
+		<div class = "worker">
+			<p class = "resourcecontrol">+</p><p class = "resourcecontrol">-</p><p>Farmer: {{vm.resources.farmers}}</p>
+		</div>
+		<div class = "worker">
+			<p class = "resourcecontrol">+</p><p class = "resourcecontrol">-</p><p>Miner: {{vm.resources.miners}}</p>
+		</div>
+	</div>
 </div>

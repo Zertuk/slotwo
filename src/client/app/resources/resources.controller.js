@@ -16,6 +16,7 @@
         ////////////////
 
         function activate() {
+        	vm.resources = resourcesService.resources;
         }
     }
 })();

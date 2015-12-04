@@ -15,7 +15,8 @@
 		'app.message',
 		'app.template',
 		'app.dialogue',
-		'app.progress'
+		'app.progress',
+		'app.resources'
 	]);
 
 })();

@@ -31,7 +31,7 @@
     <div ng-controller = "MainController as vm">
         <header>
             <div class = "row">
-                <button>Home</button>
+                <button ng-click = "vm.switchTemplate('app/resources/resources.html')">Home</button>
                 <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
                 <button ng-click = "vm.switchLocation('mainMap')">Map</button>
 <!--                 <p>{{vm.player.gold}}</p>

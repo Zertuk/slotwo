@@ -14,10 +14,11 @@
     	this.assignWorker = function(type) {
     		if (this.resources.workers > 0) {
     			this.resources[type] = this.resources[type] + 1;
-    			this.resources[workers] = this.resources[workers] - 1;
+    			this.resources['workers'] = this.resources['workers'] - 1;
+    			messageService.updateMainMessage('');
     		}
     		else {
-
+    			messageService.updateMainMessage('No workers available.', true);
     		}
     	}
     	this.resources = {

@@ -6,6 +6,7 @@
     	'app.level',
     	'app.shop',
     	'app.template',
-    	'app.dialogue'
+    	'app.dialogue',
+    	'app.resources'
         ]);
 })();

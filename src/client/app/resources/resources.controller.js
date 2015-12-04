@@ -5,12 +5,11 @@
         .module('app.resources')
         .controller('ResourcesController', ResourcesController);
 
-    ResourcesController.$inject = ['resourcesService'];
+    ResourcesController.$inject = ['resourcesService', '$timeout'];
 
     /* @ngInject */
-    function ResourcesController(resourcesService) {
+    function ResourcesController(resourcesService, $timeout) {
         var vm = this;
-        vm.money = resourcesService.resources.money;
 
         activate();
 

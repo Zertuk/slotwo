@@ -162,6 +162,15 @@
 
 
         vm.slumThugs = new vm.Dialogue;
+        vm.slumThugs.initDialogue = function() {
+            if (vm.progress.slumBossMet) {
+                return 'boss';
+            }
+            else {
+                return 'introduction';
+            }
+            console.log('poop test');
+        }
         vm.slumThugs.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -194,7 +203,27 @@
                     text: 'Oh man I like this guy! Lets take him to meet the boss!',
                     continue: true,
                     next: 'introduction',
+                    master: 'slumThugsBoss',
+                    special: function() {
+                        vm.progress.slumBossMet = true;
+                        console.log(vm.progress.slumBossMet);
+                    }
+                },
+                question: {
+                    text: 'Nosy huh?  Lets let the boss deal with him!',
+                    continue: true,
+                    next: 'introductionNosy',
                     master: 'slumThugsBoss'
+                },
+                boss: {
+                    text: 'You need to see the boss again? Lets go.',
+                    continue: true,
+                    next: 'bossReturn',
+                    master: 'slumThugsBoss',
+                    special: function() {
+                        vm.progress.slumBossMet = true;
+                        console.log(vm.progress.slumBossMet);
+                    }
                 }
             }
             return dialogue;
@@ -226,6 +255,42 @@
                             active: true
                         }
                     }
+                },
+                introductionNosy: {
+                    text: 'You like going around asking questions huh?  You think you have what it takes?',
+                    buttons: {
+                        confused: {
+                            text: 'Takes to do what?',
+                            next: 'confused',
+                            master: 'slumThugsBoss',
+                            active: true
+                        },
+                        confident: {
+                            text: 'Yeah I do! Lets do this.',
+                            next: 'confident',
+                            master: 'slumThugsBoss',
+                            active: true
+                        },
+                        threaten: {
+                            text: 'I will mess you up old man!',
+                            next: 'threaten',
+                            master: 'slumThugsBoss',
+                            active: true
+                        }
+                    }
+                },
+                confused: {
+
+                },
+                confident: {
+
+                },
+                threaten: {
+
+                },
+                bossReturn: {
+                    text: 'Back Again? Show me what you got.',
+                    active: true
                 }
             }
             return dialogue;

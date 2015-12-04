@@ -19,7 +19,8 @@
         	treeKingCompliment: true,
         	ruinsCleared: false,
         	treeKingWorkHandIn: false,
-        	treeKingIntro: false
+        	treeKingIntro: false,
+        	slumBossMet: false
         }
 
         function func() {

@@ -11,13 +11,14 @@
     	var vm = this;
     	vm.moneyTick = function() {
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
+    		return vm.resources.money;
     	}
     	vm.assignWorker = function(type) {
     		if (vm.resources.workers > 0) {
     			vm.resources[type] = vm.resources[type] + 1;
     			vm.resources['workers'] = vm.resources['workers'] - 1;
     			messageService.updateMainMessage('');
-    			initRates();
+    			vm.initRates();
     		}
     		else {
     			messageService.updateMainMessage('No workers available.', true);
@@ -28,7 +29,7 @@
     			vm.resources[type] = vm.resources[type] - 1;
     			vm.resources['workers'] = vm.resources['workers'] + 1;
     			messageService.updateMainMessage('');
-    			initRates();
+    			vm.initRates();
     		}
     		else {
     			var errorMessage = 'No ' + type + ' are currently working.';
@@ -59,10 +60,12 @@
     		moneyRate: 1,
     		workers: 10,
     		lumberjacks: 0,
-    		farmers: 2,
+    		farmers: 0,
     		miners: 0,
     		overseers: 0,
     		food: 0,
+    		ore: 0,
+    		wood: 0,
     		produce: function(resource) {
     			var keys = ['farmers', 'miners', 'overseers', 'lumberjacks'];
     			var amount = 0;
@@ -88,9 +91,10 @@
     			var oreUp = vm.workers
     		}
     	}
-    	function initRates() {
-    		vm.resources.foodRate = vm.resources.produce('food')
-
+    	vm.initRates = function() {
+    		vm.resources.foodRate = vm.resources.produce('food');
+    		vm.resources.oreRate = vm.resources.produce('ore');
+    		vm.resources.woodRate = vm.resources.produce('wood');
     	}
 
     	

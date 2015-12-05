@@ -11,8 +11,8 @@
     function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService) {
         shopService.initShop();
         var vm = this;
-        vm.title = 'MainController';
         vm.count = 0;
+        resourcesService.initRates();
         vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
         vm.currentLocation = mainService.treeGovernment;
@@ -93,7 +93,17 @@
 
         ////////////////
 
-
+        function increaseResources() {
+            vm.money = resourcesService.moneyTick();
+            vm.resources = resourcesService.resources;
+            var keys = ['food', 'wood', 'ore'];
+            for (var i = 0; i < keys.length; i ++) {    
+                var rate = keys[i] + 'Rate';
+                console.log(vm.resources[rate]);
+                console.log(vm.resources);
+                resourcesService.resources[keys[i]] = resourcesService.resources[keys[i]] + resourcesService.resources[rate]
+            }     
+        }
 
         function activate() {
             sanitizeAscii();
@@ -104,8 +114,7 @@
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
-            resourcesService.moneyTick();
-            vm.money = resourcesService.resources.money;
+            increaseResources();
             $timeout(mainLoop, 1000);
         }
         function quickLoop() {

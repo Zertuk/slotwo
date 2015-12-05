@@ -95,14 +95,9 @@
 
         function increaseResources() {
             vm.money = resourcesService.moneyTick();
+            resourcesService.resources.updateAmounts();
             vm.resources = resourcesService.resources;
-            var keys = ['food', 'wood', 'ore'];
-            for (var i = 0; i < keys.length; i ++) {    
-                var rate = keys[i] + 'Rate';
-                console.log(vm.resources[rate]);
-                console.log(vm.resources);
-                resourcesService.resources[keys[i]] = resourcesService.resources[keys[i]] + resourcesService.resources[rate]
-            }     
+            console.log(vm.resources);
         }
 
         function activate() {

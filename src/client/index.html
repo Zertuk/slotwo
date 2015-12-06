@@ -31,9 +31,10 @@
     <div ng-controller = "MainController as vm">
         <header>
             <div class = "row">
-                <button>Home</button>
+                <button ng-click = "vm.switchTemplate('app/resources/resources.html')">Home</button>
                 <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
                 <button ng-click = "vm.switchLocation('mainMap')">Map</button>
+                <p class = "inline">{{vm.money}} Gold</p>
 <!--                 <p>{{vm.player.gold}}</p>
  -->                <h1>{{vm.currentLocation.name}}</h1>
             </div><!--row-->
@@ -86,6 +87,7 @@
     <script src="/src/client/app/message/message.module.js"></script>
     <script src="/src/client/app/player/player.module.js"></script>
     <script src="/src/client/app/progress/progress.module.js"></script>
+    <script src="/src/client/app/resources/resources.module.js"></script>
     <script src="/src/client/app/shop/shop.module.js"></script>
     <script src="/src/client/app/template/template.module.js"></script>
     <script src="/src/client/app/town/town.module.js"></script>
@@ -119,6 +121,8 @@
     <script src="/src/client/app/message/message.service.js"></script>
     <script src="/src/client/app/player/player.service.js"></script>
     <script src="/src/client/app/progress/progress.service.js"></script>
+    <script src="/src/client/app/resources/resources.controller.js"></script>
+    <script src="/src/client/app/resources/resources.service.js"></script>
     <script src="/src/client/app/shop/shop.service.js"></script>
     <script src="/src/client/app/template/template.service.js"></script>
     <script src="/src/client/app/town/town.controller.js"></script>

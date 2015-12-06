@@ -5,14 +5,14 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService) {
         shopService.initShop();
         var vm = this;
-        vm.title = 'MainController';
         vm.count = 0;
+        resourcesService.initRates();
         vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
         vm.currentLocation = mainService.treeGovernment;
@@ -93,7 +93,11 @@
 
         ////////////////
 
-
+        function increaseResources() {
+            vm.money = resourcesService.moneyTick();
+            resourcesService.resources.updateAmounts();
+            vm.resources = resourcesService.resources;
+        }
 
         function activate() {
             sanitizeAscii();
@@ -104,6 +108,7 @@
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
+            increaseResources();
             $timeout(mainLoop, 1000);
         }
         function quickLoop() {

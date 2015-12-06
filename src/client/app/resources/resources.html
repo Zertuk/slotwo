@@ -1,0 +1,66 @@
+<div ng-controller = "ResourcesController as vm">
+	<div class = "container borderbottom">
+		<div class = "workerinfo">
+			<p>Available Workers: {{vm.resources.workers}}</p>
+			<div class = "worker">
+				<button class = "resourcecontrol" ng-click = "vm.assignWorker('lumberjacks')">+</button>
+				<button class = "resourcecontrol" ng-click = "vm.removeWorker('lumberjacks')">-</button>
+				<p>Lumberjacks: {{vm.resources.lumberjacks}}</p>
+			</div>
+			<div class = "worker">
+				<button class = "resourcecontrol" ng-click = "vm.assignWorker('farmers')">+</button>
+				<button class = "resourcecontrol" ng-click = "vm.removeWorker('farmers')">-</button>
+				<p>Farmers: {{vm.resources.farmers}}</p>
+			</div>
+			<div class = "worker">
+				<button class = "resourcecontrol"  ng-click = "vm.assignWorker('miners')">+</button>
+				<button class = "resourcecontrol" ng-click = "vm.removeWorker('miners')">-</button>
+				<p>Miners: {{vm.resources.miners}}</p>
+			</div>
+			<div class = "worker">
+				<button class = "resourcecontrol" ng-click = "vm.assignWorker('overseers')">+</button>
+				<button class = "resourcecontrol" ng-click = "vm.removeWorker('overseers')">-</button>
+				<p>Overseers: {{vm.resources.overseers}}</p>
+			</div>
+		</div>
+		<div class = "workerinfo">
+			<div class = "worker">
+				<p class = "info">Produces {{vm.workers.lumberjacks.wood}} wood at the cost of {{-vm.workers.lumberjacks.food}} food.</p>
+			</div>
+			<div class = "worker">
+				<p class = "info">Produces {{vm.workers.farmers.food}} food.</p>
+			</div>
+			<div class = "worker">
+				<p class = "info">Produces {{vm.workers.miners.ore}} ore at the cost of {{-vm.workers.miners.wood}} wood and {{-vm.workers.miners.food}} food.</p>
+			</div>
+			<div class = "worker">
+				<p class = "info">Causes workers to be more productive at the cost of {{-vm.workers.overseers.food}} food.</p>
+			</div>
+		</div>
+	</div>
+	<div class = "container borderbottom">
+		<div class = "workerinfo">
+			<p>Resources</p>
+			<div class = "worker">
+				<p>Food: {{vm.resources.food}}</p>
+			</div>
+			<div class = "worker">
+				<p>Ore: {{vm.resources.ore}}</p>
+			</div>
+			<div class = "worker">
+				<p>Wood: {{vm.resources.wood}}</p>
+			</div>
+		</div>
+		<div class = "workerinfo">
+			<div class = "worker">
+				<p class = "info">{{vm.resources.foodRate}}/s</p>
+			</div>
+			<div class = "worker">
+				<p class = "info">{{vm.resources.oreRate}}/s</p>
+			</div>
+			<div class = "worker">
+				<p class = "info">{{vm.resources.woodRate}}/s</p>
+			</div>
+		</div>
+	</div>
+</div>

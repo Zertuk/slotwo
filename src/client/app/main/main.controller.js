@@ -97,7 +97,6 @@
             vm.money = resourcesService.moneyTick();
             resourcesService.resources.updateAmounts();
             vm.resources = resourcesService.resources;
-            console.log(vm.resources);
         }
 
         function activate() {

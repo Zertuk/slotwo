@@ -18,6 +18,10 @@
         this.Player = function() {
             this.specialEnd = undefined,
             this.money = 1000,
+            this.usePotion = function() {
+                var health = parseFloat(this.health);                
+                this.health = (health + inventoryService.potion.strength).toFixed(2);
+            },
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;
                 return percent;

@@ -151,8 +151,10 @@
 		this.boneArmor.removeAfterBuy = true;
 		this.boneArmor.slug = 'boneArmor';
 
-
-
+		this.potion = new this.Item();
+		this.potion.name = 'Health Potion';
+		this.potion.desc = 'Heals ' + this.potion.strength + ' health';
+		this.potion.strength = 50;
 
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
 		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 3]];

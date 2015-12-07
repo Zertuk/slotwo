@@ -34,6 +34,7 @@
     			messageService.updateMainMessage(errorMessage, true);
     		}
     	}
+        
     	vm.workers = {
     		farmers: {
     			food: 1,

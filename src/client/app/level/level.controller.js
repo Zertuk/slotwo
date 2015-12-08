@@ -5,10 +5,10 @@
 		.module('app.level')
 		.controller('LevelController', LevelController);
 
-	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService'];
+	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService', 'progressService'];
 
 	/* @ngInject */
-	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService) {
+	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService, progressService) {
 		var vm = this;
 		vm.title = 'LevelController';
 
@@ -170,6 +170,11 @@
 				}
 				levelRenderArea();
 				$timeout(levelLoop, 125);
+			}
+			else if (vm.player.levelComplete) {
+				if (vm.currentLevel.unlock) {
+					progressService.progress.levels[vm.currentLevel.unlock] = true;
+				}
 			}
 		}
 

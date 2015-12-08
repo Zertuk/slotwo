@@ -70,6 +70,7 @@
             this.endLevel = function() {
                 messageService.addMessage('You have reached the end of the level');
                 this.active = false;
+                this.levelComplete = true;
                 messageService.updateMainMessage('You finish the level.');
                 return true;
             }
@@ -86,6 +87,7 @@
             //combat
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
+                current.levelComplete = false;
                 if (current.alive) {
                     current.checkLevelEnd(current.position, map);
                     if (current.grounded) {

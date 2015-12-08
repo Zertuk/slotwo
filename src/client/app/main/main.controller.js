@@ -5,10 +5,10 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService', 'progressService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService) {
         shopService.initShop();
         var vm = this;
         vm.count = 0;
@@ -20,6 +20,7 @@
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
         vm.messageError = messageService.messageError;
+        vm.progress = progressService.progress;
 
         vm.switchLocation = function(location) {
             vm.switchTemplate('app/main/main.html');
@@ -53,9 +54,16 @@
             vm.currentLocation.initClicks();
         }
         vm.switchLevel = function(level) {
-            vm.switchTemplate('app/level/level.html');
-            levelService.switchCurrentLevel(level);
-            vm.currentLocation = vm.levelDictionary[level];
+            var unlockCheck = vm.levelDictionary[level];
+            if (vm.progress.levels[unlockCheck.slug]) {
+                vm.switchTemplate('app/level/level.html');
+                levelService.switchCurrentLevel(level);
+                vm.currentLocation = vm.levelDictionary[level];
+                messageService.updateMainMessage('');
+            }
+            else {
+                messageService.updateMainMessage('You cannot visit here yet.', true);
+            }
         }
 
         function removeAscii() {

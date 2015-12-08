@@ -20,7 +20,17 @@
         	ruinsCleared: false,
         	treeKingWorkHandIn: false,
         	treeKingIntro: false,
-        	slumBossMet: false
+        	slumBossMet: false,
+            levels: {
+                treeOne: true,
+                treeTwo: false,
+                treeCity: false,
+                dungeon: false,
+                desert: false,
+                bridge: false,
+                snow: false,
+                wizard: false
+            }
         }
 
         function func() {

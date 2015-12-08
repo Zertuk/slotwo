@@ -120,6 +120,7 @@
                     continue: true,
                     special: function() {
                         vm.progress.treeKingWorkAccept = true;
+                        vm.progress.levels.desert = true;
                         vm.treeKing.dialogue = vm.treeKing.setDialogue();
                     }
                 },

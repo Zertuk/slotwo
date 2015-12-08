@@ -19,8 +19,14 @@
             this.specialEnd = undefined,
             this.money = 1000,
             this.usePotion = function() {
-                var health = parseFloat(this.health);                
-                this.health = (health + inventoryService.potion.strength).toFixed(2);
+                if (inventoryService.itemDictionary.potion[1][1] > 0) {
+                    var health = parseFloat(this.health);                
+                    this.health = (health + inventoryService.potion.strength).toFixed(2);
+                    inventoryService.itemDictionary.potion[1][1] = inventoryService.itemDictionary.potion[1][1] - 1;
+                }
+                else {
+                    messageService.updateMainMessage('You have no potions.', true);
+                }
             },
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;

@@ -165,6 +165,7 @@
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
+		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 10]];
 
 
 

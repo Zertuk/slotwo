@@ -23,11 +23,12 @@
         	slumBossMet: false,
             levels: {
                 //locations
-                treeCity: false,
+                treeCity: true,
                 //levels
                 treeOne: true,
                 treeTwo: false,
-                dungeon: false,
+                dungeon: true,
+                ruinsCleared: false,
                 desert: false,
                 bridge: false,
                 snow: false,

@@ -11,6 +11,7 @@
     function DialogueController(dialogueService, progressService, mainService) {
         console.log(mainService);
         var vm = this;
+        dialogueService.initAllDialogues();
         vm.switchDialogue = function(input, master) {
             vm.currentMaster = dialogueService[master];
             vm.currentDialogue = vm.currentMaster.dialogue[input];

@@ -188,6 +188,7 @@
         this.dungeon.playerSpawn = [0, 0];
         this.dungeon.enemySpawn = [180, 10];
         this.dungeon.slug = 'dungeon';
+        this.dungeon.unlock = 'ruinsCleared';
         this.dungeon.name = 'Dungeon';
         this.dungeon.defaultAscii = ["                                             *                                                                                                                                                                                    ",
                                      "____                                         *                        *   *                                                                                                                                                       ",

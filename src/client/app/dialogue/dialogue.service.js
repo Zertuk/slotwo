@@ -28,7 +28,6 @@
             }
             return dialogue;
         }
-        vm.wizard.dialogue = vm.wizard.setDialogue();
 
         vm.treeKing = new vm.Dialogue;
         vm.treeKing.initDialogue = function() {
@@ -77,8 +76,17 @@
                             next: 'askCompliment',
                             master: 'treeKing',
                             active: vm.progress.treeKingCompliment
+                        },
+                        bridge: {
+                            text: 'Build Bridge',
+                            next: 'askBuild',
+                            master: 'treeKing',
+                            active: vm.progress.treeKingWorkHandIn
                         }
                     }
+                },
+                askBuild: {
+                    text: 'bridge text'
                 },
                 askRumor: {
                     text: 'rumor text',
@@ -142,13 +150,13 @@
                             text: 'news',
                             next: 'askWorkComplete',
                             master: 'treeKing',
-                            active: vm.progress.ruinsCleared
+                            active: vm.progress.levels.ruinsCleared
                         },
                         no: {
                             text: 'Not yet',
                             next: 'askWorkIncomplete',
                             master: 'treeKing',
-                            active: !vm.progress.ruinsCleared
+                            active: !vm.progress.levels.ruinsCleared
                         }
                     }
                 },
@@ -170,7 +178,6 @@
             }
             return dialogue;
         }
-        vm.treeKing.dialogue = vm.treeKing.setDialogue();
 
 
         vm.slumThugs = new vm.Dialogue;
@@ -240,7 +247,6 @@
             }
             return dialogue;
         };
-        vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
 
         vm.slumThugsBoss = new vm.Dialogue;
         vm.slumThugsBoss.setDialogue = function() {
@@ -307,7 +313,14 @@
             }
             return dialogue;
         }
-        vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
+
+
+        vm.initAllDialogues = function() {
+            vm.treeKing.dialogue = vm.treeKing.setDialogue();
+            vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
+            vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
+            vm.wizard.dialogue = vm.wizard.setDialogue();
+        }
 
 
         vm.locationMessage = function(message) {

@@ -22,9 +22,11 @@
         	treeKingIntro: false,
         	slumBossMet: false,
             levels: {
+                //locations
+                treeCity: false,
+                //levels
                 treeOne: true,
                 treeTwo: false,
-                treeCity: false,
                 dungeon: false,
                 desert: false,
                 bridge: false,

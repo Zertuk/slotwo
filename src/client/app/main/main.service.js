@@ -122,6 +122,7 @@
 
         vm.treeCity = new vm.Location;
         vm.treeCity.name = 'Tree City';
+        vm.treeCity.slug = 'treeCity';
         vm.treeCity.prev = 'mainMap';
         vm.treeCity.prevName = 'Map';
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        

@@ -23,15 +23,25 @@
         vm.progress = progressService.progress;
 
         vm.switchLocation = function(location) {
-            vm.switchTemplate('app/main/main.html');
-            messageService.mainMessage = '';
-            vm.currentLocation = mainService.switchLocation(location);
-            if (!vm.currentLocation.formatted) {
-                vm.currentLocation.initClicks();
+            var unlockCheck = vm.locationDictionary[location];
+            console.log(unlockCheck.slug);
+            if (typeof unlockCheck.slug == 'undefined') {
+                var skip = true;
             }
-            removeAscii();
-            if (vm.currentLocation.specialText) {
-                dialogueService.locationMessage();
+            if (vm.progress.levels[unlockCheck.slug] || skip) {
+                vm.switchTemplate('app/main/main.html');
+                messageService.mainMessage = '';
+                vm.currentLocation = mainService.switchLocation(location);
+                if (!vm.currentLocation.formatted) {
+                    vm.currentLocation.initClicks();
+                }
+                removeAscii();
+                if (vm.currentLocation.specialText) {
+                    dialogueService.locationMessage();
+                }
+            }
+            else {
+                messageService.updateMainMessage('You cannot visit here yet.', true);
             }
         };
 

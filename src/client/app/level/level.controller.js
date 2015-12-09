@@ -83,13 +83,18 @@
 			var random = Math.round(Math.random()*100);
 			if ((random > vm.currentLevel.spawnChance) && (enemyCount < vm.currentLevel.enemyMax)) {
 				enemyCount = enemyCount + 1;
-				var random = Math.floor(Math.random()*vm.currentLevel.enemyArray.length);
-				var unit = new vm.currentLevel.enemyArray[random];
-				var spawn = [];
-				spawn[0] = vm.currentLevel.enemySpawn[0];
-				spawn[1] = vm.currentLevel.enemySpawn[1];
-				unit.position = spawn;
-				vm.unitArray.push(unit);
+				var random = Math.floor(Math.random()*100);
+				for (var i = 0; i < vm.currentLevel.unitSpawnChance.length; i++) {
+					if (random < vm.currentLevel.unitSpawnChance[i]) {
+						var unit = new vm.currentLevel.enemyArray[i];
+						var spawn = [];
+						spawn[0] = vm.currentLevel.enemySpawn[0];
+						spawn[1] = vm.currentLevel.enemySpawn[1];
+						unit.position = spawn;
+						vm.unitArray.push(unit);
+						i = vm.currentLevel.unitSpawnChance.length;
+					}
+				}
 			}
 		}
 

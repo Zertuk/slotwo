@@ -84,7 +84,7 @@
                     }
                 }
             },
-            //combat
+            //needs rework
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 current.levelComplete = false;
@@ -108,7 +108,7 @@
                         }
                     }
                     if (inCombat) {
-                        
+                        console.log('in combat');
                     }
                     //collission detection y
                     else if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {

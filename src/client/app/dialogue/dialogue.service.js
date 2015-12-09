@@ -323,12 +323,6 @@
         }
 
 
-        vm.locationMessage = function(message) {
-            vm.locationText = vm.treeKing.dialogue['introduction'].text;
-        }
-
-
-
         ////////////////
 
         function func() {

@@ -36,9 +36,6 @@
                     vm.currentLocation.initClicks();
                 }
                 removeAscii();
-                if (vm.currentLocation.specialText) {
-                    dialogueService.locationMessage();
-                }
             }
             else {
                 messageService.updateMainMessage('You cannot visit here yet.', true);

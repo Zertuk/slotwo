@@ -12,7 +12,6 @@
 		var vm = this;
 		vm.title = 'LevelController';
 
-
 		vm.currentLevel = levelService.treeOne;
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
@@ -20,6 +19,7 @@
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
 
+		//sets everything to default when called
 		vm.resetLevel = function() {
 			vm.currentLevel = levelService.currentLevel;
 			specialEnd();
@@ -34,6 +34,7 @@
 		}
 		vm.resetLevel();
 
+		//used for levels that end early
 		function specialEnd() {
 			if (vm.currentLevel.specialEnd) {
 				vm.player.specialEnd = vm.currentLevel.specialEnd;
@@ -42,13 +43,15 @@
 			}
 		}
 
-
+		//init level
 		function initLevel() {
+			//runs if enemies are immobile and spawn at start, like the trees lvl 1
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
 					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
 				}
 			}
+			//otherwise default spawn is on
 			else {
 				vm.enemySpawn = true;
 			}
@@ -64,6 +67,7 @@
 			levelRenderArea();
 		}
 
+		//moves level to left after certain distance has been travelled
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
 			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
@@ -73,22 +77,22 @@
 			}
 		}
 
-		var test = "test/test";
-		test.split('//');
-		var testvar = 0;
+		//function for default spawning, runs if rng works
+		var enemyCount = 0;
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
-			if ((random > 0) && (testvar < 1)) {
-				testvar = testvar + 1;
-				var test = new vm.currentLevel.enemyArray[0];
+			if ((random > 0) && (enemyCount < 1)) {
+				enemyCount = enemyCount + 1;
+				var unit = new vm.currentLevel.enemyArray[0];
 				var spawn = [];
 				spawn[0] = vm.currentLevel.enemySpawn[0];
 				spawn[1] = vm.currentLevel.enemySpawn[1];
-				test.position = spawn;
-				vm.unitArray.push(test);
+				unit.position = spawn;
+				vm.unitArray.push(unit);
 			}
 		}
 
+		//function for spawning immobile enemies at start of level
 		function spawnEnemyAtStart(position) {
 			var entity = new vm.currentLevel.enemyArray[0];
 			var spawn = [];
@@ -98,8 +102,9 @@
 			vm.unitArray.push(entity);
 		}
 
-
+		//updates map when units move/die
 		function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
+			//checks if previous title unit was on is replaceable so it can replace with correct char
 			if (!prevCheck) {
 				map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
 				map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
@@ -110,7 +115,7 @@
 			}
 		}
 
-
+		//sets character based on function arguments
 		function setCharAt(str,index,chr) {
 			if (typeof str !== 'undefined') {
 				if(index > str.length-1) return str;
@@ -118,6 +123,7 @@
 			}
 		}
 
+		//if it has an extra collission box for large ascii art, delete the extra on death as well
 		function checkBig(unit) {
 			if (typeof unit.colBox !== 'undefined') {
 				for (var j = 1; j < unit.colBox[1] + 1; j++) {
@@ -129,16 +135,17 @@
 				}
 			}
 		}
+
+		//kills unit that reach end
 		function autoKill(unit) {
 			if (unit.position[0] == 0) {
 				unit.alive = false;
 			}
 		}
 
-		vm.count = 0;
+		//master loop for levels
 		function levelLoop() {
 			var dead = false;
-			vm.count = vm.count + 1;
 			if (vm.player.active) {
 				for (var i = 0; i < vm.unitArray.length; i++) {
 					vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
@@ -175,7 +182,10 @@
 				if (vm.currentLevel.unlock) {
 					progressService.progress.levels[vm.currentLevel.unlock] = true;
 					console.log(vm.currentLevel.unlock);
-					console.log(progressService.progress.levels[vm.currentLevel.unlock]);
+					console.log(progressService.progress.levels[vm.currentLevel.unlock]);	
+			else if (vm.player.levelComplete) {
+				if (vm.currentLevel.unlock) {
+					progressService.progress.levels[vm.currentLevel.unlock] = true;
 				}
 			}
 		}

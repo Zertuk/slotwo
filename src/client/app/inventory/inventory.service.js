@@ -124,7 +124,7 @@
 		this.sword.name = 'Sword';
 		this.sword.desc = 'A basic sword';
 		this.sword.cat = 'weapon';
-		this.sword.damage = 2;
+		this.sword.damage = 1;
 		this.sword.attackSpeed = 1;
 		this.sword.buyable = true;
 		this.sword.removeAfterBuy = true;

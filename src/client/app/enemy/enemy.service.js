@@ -216,7 +216,8 @@
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.health = 1;
+            this.maxHealth = 20;
+            this.health = 20;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['boneArmor']];
             this.itemChance = 100;
@@ -226,14 +227,35 @@
         this.Tree.prototype = new this.Enemy();
 
 
+        this.Bear = function Bear() {
+            this.name = 'Bear';
+            this.desc = 'A Wandering Bear';
+            this.deathMessage = '';
+            this.symbol = 'B';
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 2;
+        }
+        this.Bear.prototype = new this.Enemy();
 
+        this.Deer = function Deer() {
+            this.name = 'Deer';
+            this.desc = 'A Cute Deer';
+            this.deathMessage = '';
+            this.symbol = 'D';
+            this.maxHealth = 5;
+            this.health = 5;
+            this.damage = 1;
+        }
+        this.Deer.prototype = new this.Deer();
 
         this.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';
             this.deathMessage = 'A Treeperson Warrior has been slain!';
             this.symbol = "T";
-            this.health = 15;
-            this.damage = 1.5;
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 2;
         }
         this.TreeWarrior.prototype = new this.Enemy();
 

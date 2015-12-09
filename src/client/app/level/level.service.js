@@ -65,7 +65,7 @@
         this.treeTwo.slug = 'treeTwo';
         this.treeTwo.unlock = 'treeCity';
         this.treeTwo.specialEnd = 95;
-        this.treeTwo.enemyArray = [enemyService.TreeWarrior];
+        this.treeTwo.enemyArray = [enemyService.Bear, enemyService.Deer];
         this.treeTwo.enemySpawn = [89, 22];
         this.treeTwo.playerSpawn = [0, 21];
         this.treeTwo.name = 'Tree Two';

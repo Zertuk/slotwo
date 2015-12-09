@@ -214,9 +214,10 @@
 
         this.shroom = new this.Level();
         this.shroom.enemyArray = [enemyService.TreeWarrior];
-        this.shroom.playerSpawn = [0, 0];
+        this.shroom.playerSpawn = [0, 13];
         this.shroom.enemySpawn = [0, 0];
         this.shroom.name = 'Mushroom Level'; 
+        this.shroom.slug = 'shroom';
         this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",
                                    "                                                                                                                                           /  \\                 |'._______'.                                                                   ",
                                    "            ____                                                                                                           /\\              |  |_/\\______________| |   __   |                                                                   ",

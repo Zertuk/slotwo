@@ -19,6 +19,10 @@
             special();
         }
 
+        vm.switchLevel = function(level) {
+            vm.currentLocation = mainService.switchLevel(level);
+        }
+
         function special() {
             if (typeof vm.currentDialogue.special !== 'undefined') {
                 vm.currentDialogue.special();

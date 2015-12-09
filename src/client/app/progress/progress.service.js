@@ -32,6 +32,7 @@
                 desert: false,
                 bridge: false,
                 snow: false,
+                shroom: true,
                 wizard: false
             }
         }

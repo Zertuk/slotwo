@@ -247,7 +247,7 @@
             this.health = 5;
             this.damage = 1;
         }
-        this.Deer.prototype = new this.Deer();
+        this.Deer.prototype = new this.Enemy();
 
         this.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';

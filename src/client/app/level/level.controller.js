@@ -81,9 +81,10 @@
 		var enemyCount = 0;
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
-			if ((random > 0) && (enemyCount < 1)) {
+			if ((random > vm.currentLevel.spawnChance) && (enemyCount < vm.currentLevel.enemyMax)) {
 				enemyCount = enemyCount + 1;
-				var unit = new vm.currentLevel.enemyArray[0];
+				var random = Math.floor(Math.random()*vm.currentLevel.enemyArray.length);
+				var unit = new vm.currentLevel.enemyArray[random];
 				var spawn = [];
 				spawn[0] = vm.currentLevel.enemySpawn[0];
 				spawn[1] = vm.currentLevel.enemySpawn[1];
@@ -155,6 +156,7 @@
 					if (!vm.unitArray[i].alive) {
 						messageService.addMessage(vm.unitArray[i].deathMessage);
 						checkBig(vm.unitArray[i]);
+						enemyCount = enemyCount - 1;
 						var newArray = [];
 						for (var j = 0; j < vm.unitArray.length; j++) {
 							if (j !== i) {

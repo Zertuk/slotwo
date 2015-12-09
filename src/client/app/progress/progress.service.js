@@ -26,7 +26,7 @@
                 treeCity: true,
                 //levels
                 treeOne: true,
-                treeTwo: false,
+                treeTwo: true,
                 dungeon: true,
                 ruinsCleared: false,
                 desert: false,

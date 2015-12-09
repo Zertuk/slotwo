@@ -153,6 +153,11 @@
 		function levelLoop() {
 			var dead = false;
 			if (vm.player.active) {
+				if (!vm.player.alive) {
+					vm.player.alive = true;
+					messageService.updateMainMessage('You have been slain.', true);
+					return;
+				}
 				for (var i = 0; i < vm.unitArray.length; i++) {
 					vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
 					if (i > 0) {
@@ -185,12 +190,7 @@
 				levelRenderArea();
 				$timeout(levelLoop, 125);
 			}
-			else if (vm.player.levelComplete) {
-				if (vm.currentLevel.unlock) {
-					progressService.progress.levels[vm.currentLevel.unlock] = true;
-				}
-			}
-			else if (vm.player.levelComplete) {
+			else if (vm.player.levelComplete && vm.player.alive) {
 				if (vm.currentLevel.unlock) {
 					progressService.progress.levels[vm.currentLevel.unlock] = true;
 				}

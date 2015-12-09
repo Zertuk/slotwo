@@ -181,8 +181,8 @@
 			else if (vm.player.levelComplete) {
 				if (vm.currentLevel.unlock) {
 					progressService.progress.levels[vm.currentLevel.unlock] = true;
-					console.log(vm.currentLevel.unlock);
-					console.log(progressService.progress.levels[vm.currentLevel.unlock]);	
+				}
+			}
 			else if (vm.player.levelComplete) {
 				if (vm.currentLevel.unlock) {
 					progressService.progress.levels[vm.currentLevel.unlock] = true;

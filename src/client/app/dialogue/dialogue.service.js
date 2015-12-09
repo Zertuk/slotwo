@@ -171,7 +171,6 @@
         }
         vm.treeKing.dialogue = vm.treeKing.setDialogue();
 
-
         vm.slumThugs = new vm.Dialogue;
         vm.slumThugs.initDialogue = function() {
             if (vm.progress.slumBossMet) {

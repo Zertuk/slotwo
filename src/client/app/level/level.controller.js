@@ -78,10 +78,11 @@
 		}
 
 		//function for default spawning, runs if rng works
+		var enemyCount = 0;
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
-			if ((random > 0) && (testvar < 1)) {
-				testvar = testvar + 1;
+			if ((random > 0) && (enemyCount < 1)) {
+				enemyCount = enemyCount + 1;
 				var unit = new vm.currentLevel.enemyArray[0];
 				var spawn = [];
 				spawn[0] = vm.currentLevel.enemySpawn[0];

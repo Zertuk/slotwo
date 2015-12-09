@@ -238,6 +238,17 @@
         }
         this.Bear.prototype = new this.Enemy();
 
+        this.Deer = function Deer() {
+            this.name = 'Deer';
+            this.desc = 'A Cute Deer';
+            this.deathMessage = '';
+            this.symbol = 'D';
+            this.maxHealth = 5;
+            this.health = 5;
+            this.damage = 1;
+        }
+        this.Deer.prototype = new this.Deer();
+
         this.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';
             this.deathMessage = 'A Treeperson Warrior has been slain!';

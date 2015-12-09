@@ -171,7 +171,7 @@
             },
             this.active = true,
             this.ground = false,
-            this.health = 90,
+            this.health = 100,
             this.maxHealth = 100,
             this.regen = 1,
             this.alive = true,
@@ -191,7 +191,7 @@
             this.symbol = 'Y',
             this.desc = 'This is you'
             //attack
-            this.weapon = vm.itemDictionary.club[0][1],
+            this.weapon = vm.itemDictionary.sword[0][1],
             this.damage = this.weapon.damage,
             this.attackSpeed = this.weapon.attackSpeed,
             //armor

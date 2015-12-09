@@ -36,7 +36,9 @@
 
 
         function activate() {
-            var initDialogue = mainService.currentLocation.dialogue;
+            var location = mainService.currentLocation;
+            var initDialogue = location.dialogue;
+            console.log(mainService.currentLocation);
             var key = initDialogue.initDialogue();
             vm.currentDialogue = initDialogue.dialogue[key];
             vm.locationText = vm.currentDialogue.text;

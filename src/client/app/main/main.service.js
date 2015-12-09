@@ -5,45 +5,49 @@
         .module('app.main')
         .service('mainService', mainService);
 
-    mainService.$inject = ['dialogueService', 'levelService', 'progressService', 'templateService', 'messageService'];
+    mainService.$inject = ['dialogueService', 'levelService', 'progressService', 'templateService', 'messageService', 'playerService'];
 
     /* @ngInject */
-    function mainService(dialogueService, levelService, progressService, templateService, messageService) {
+    function mainService(dialogueService, levelService, progressService, templateService, messageService, playerService) {
     	var vm = this;
         vm.levelDictionary = levelService.levelDictionary;
         vm.progress = progressService.progress;
+        vm.player = playerService.player;
 
         vm.switchTemplate = function(template) {
+            vm.player.active = false;
             templateService.switchTemplate(template);
         };
 
 
         vm.switchLevel = function(level) {
+            //only works if level is unlocked
             var unlockCheck = vm.levelDictionary[level];
             if (vm.progress.levels[unlockCheck.slug]) {
                 vm.switchTemplate('app/level/level.html');
                 levelService.switchCurrentLevel(level);
                 messageService.updateMainMessage('');
+                vm.currentLocation = vm.levelDictionary[level];
                 return vm.levelDictionary[level];
             }
             else {
                 messageService.updateMainMessage('You cannot visit here yet.', true);
             }
-        }
+        };
 
         vm.switchLocation = function(location) {
+            //only works if location is unlocked
             var unlockCheck = vm.locationDictionary[location];
-            if (typeof unlockCheck.slug == 'undefined') {
-                var skip = true;
+            var skip = false;
+            if (typeof unlockCheck.slug === 'undefined') {
+                skip = true;
             }
             if (vm.progress.levels[unlockCheck.slug] || skip) {
                 vm.switchTemplate('app/main/main.html');
-                var location = vm.locationDictionary[location];
+                var thisLocation = vm.locationDictionary[location];
                 messageService.mainMessage = '';
-                // if (!location.formatted) {
-                //     location.initClicks();
-                // }
-                return location;
+                vm.currentLocation = thisLocation;
+                return thisLocation;
                 
             }
             else {
@@ -62,27 +66,30 @@
 
 
     	vm.setCharAt = function(str,index,chr) {
-            if(index > str.length-1) return str;
+            if (index > str.length-1) {
+                return str;
+            }
             return str.substr(0,index) + chr + str.substr(index+1);
-        }
+        };
         vm.click = function(location, hover, data,  x, y, xlength, ylength, isLevel) {
             for (var i = 0; i < ylength; i++) {
+                var before = '';
             	if (isLevel) {
-                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\'' + data + '\')">' + location.ascii[y + i][x];
+                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + location.ascii[y + i][x];
             	}
             	else {
-                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
+                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
             	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x + xlength, after);
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x, before);
             }
-        }
+        };
 
         vm.hover = function() {
         	console.log('hover');
-        }
+        };
 
         vm.Location = function() {
     		this.asciiFormatted = [];

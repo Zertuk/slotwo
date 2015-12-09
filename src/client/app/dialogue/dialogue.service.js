@@ -301,7 +301,10 @@
 
                 },
                 confident: {
-
+                    text: '',
+                    continue: true,
+                    active: true,
+                    level: 'shroom'
                 },
                 threaten: {
 

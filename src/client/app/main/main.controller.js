@@ -23,31 +23,17 @@
         vm.progress = progressService.progress;
 
         vm.switchLocation = function(location) {
-            var unlockCheck = vm.locationDictionary[location];
-            console.log(unlockCheck.slug);
-            if (typeof unlockCheck.slug == 'undefined') {
-                var skip = true;
-            }
-            if (vm.progress.levels[unlockCheck.slug] || skip) {
-                vm.switchTemplate('app/main/main.html');
-                messageService.mainMessage = '';
+            var check = mainService.switchLocation(location);
+            if (check) {
                 vm.currentLocation = mainService.switchLocation(location);
-                if (!vm.currentLocation.formatted) {
-                    vm.currentLocation.initClicks();
-                }
                 removeAscii();
             }
-            else {
-                messageService.updateMainMessage('You cannot visit here yet.', true);
-            }
+        };
+        vm.switchLevel = function(level) {
+            vm.currentLocation = mainService.switchLevel(level);
         };
 
 
-
-        vm.switchTemplate = function(template) {
-            vm.player.active = false;
-            templateService.switchTemplate(template);
-        };
         
 
 
@@ -57,21 +43,6 @@
                 vm.itemList = [shopService.shopList];
             }, 50);
         }
-        if (!vm.currentLocation.formatted) {
-            vm.currentLocation.initClicks();
-        }
-        vm.switchLevel = function(level) {
-            var unlockCheck = vm.levelDictionary[level];
-            if (vm.progress.levels[unlockCheck.slug]) {
-                vm.switchTemplate('app/level/level.html');
-                levelService.switchCurrentLevel(level);
-                vm.currentLocation = vm.levelDictionary[level];
-                messageService.updateMainMessage('');
-            }
-            else {
-                messageService.updateMainMessage('You cannot visit here yet.', true);
-            }
-        }
 
         function removeAscii() {
             var elements = angular.element('#locationwrap').children();
@@ -79,6 +50,9 @@
             sanitizeAscii();
         }
         function sanitizeAscii() {
+            if (!vm.currentLocation.formatted) {
+                vm.currentLocation.initClicks();
+            }
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
                 if (!vm.currentLocation.formatted) {
                     vm.currentLocation.ascii[i] = '<pre>' + vm.currentLocation.ascii[i] + '</pre>';

@@ -5,17 +5,60 @@
         .module('app.main')
         .service('mainService', mainService);
 
-    mainService.$inject = ['dialogueService'];
+    mainService.$inject = ['dialogueService', 'levelService', 'progressService', 'templateService', 'messageService'];
 
     /* @ngInject */
-    function mainService(dialogueService) {
+    function mainService(dialogueService, levelService, progressService, templateService, messageService) {
     	var vm = this;
+        vm.levelDictionary = levelService.levelDictionary;
+        vm.progress = progressService.progress;
 
-    	vm.switchLocation = function(location) {
-            vm.currentLocation = vm.locationDictionary[location];
-            console.log(vm.currentLocation);
-            return vm.currentLocation;
+        vm.switchTemplate = function(template) {
+            templateService.switchTemplate(template);
         };
+
+
+        vm.switchLevel = function(level) {
+            var unlockCheck = vm.levelDictionary[level];
+            if (vm.progress.levels[unlockCheck.slug]) {
+                vm.switchTemplate('app/level/level.html');
+                levelService.switchCurrentLevel(level);
+                messageService.updateMainMessage('');
+                return vm.levelDictionary[level];
+            }
+            else {
+                messageService.updateMainMessage('You cannot visit here yet.', true);
+            }
+        }
+
+        vm.switchLocation = function(location) {
+            var unlockCheck = vm.locationDictionary[location];
+            if (typeof unlockCheck.slug == 'undefined') {
+                var skip = true;
+            }
+            if (vm.progress.levels[unlockCheck.slug] || skip) {
+                vm.switchTemplate('app/main/main.html');
+                var location = vm.locationDictionary[location];
+                messageService.mainMessage = '';
+                // if (!location.formatted) {
+                //     location.initClicks();
+                // }
+                return location;
+                
+            }
+            else {
+                messageService.updateMainMessage('You cannot visit here yet.', true);
+                return false;
+            }
+        };
+
+
+
+    	// vm.switchLocation = function(location) {
+     //        vm.currentLocation = vm.locationDictionary[location];
+     //        console.log(vm.currentLocation);
+     //        return vm.currentLocation;
+     //    };
 
 
     	vm.setCharAt = function(str,index,chr) {

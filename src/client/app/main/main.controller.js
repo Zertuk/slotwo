@@ -33,8 +33,7 @@
         };
 
         vm.switchTemplate = function(template) {
-            vm.player.active = false;
-            templateService.switchTemplate(template);
+            mainService.switchTemplate(template);
         };
 
         vm.buyItem = function(item) {

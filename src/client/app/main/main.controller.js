@@ -32,6 +32,11 @@
             vm.currentLocation = mainService.switchLevel(level);
         };
 
+        vm.switchTemplate = function(template) {
+            vm.player.active = false;
+            templateService.switchTemplate(template);
+        };
+
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
             $timeout(function() {

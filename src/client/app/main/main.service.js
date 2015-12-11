@@ -14,12 +14,6 @@
         vm.progress = progressService.progress;
         vm.player = playerService.player;
 
-        vm.switchTemplate = function(template) {
-            vm.player.active = false;
-            templateService.switchTemplate(template);
-        };
-
-
         vm.switchLevel = function(level) {
             console.log('testage');
             //only works if level is unlocked

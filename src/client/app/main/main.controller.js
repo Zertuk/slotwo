@@ -19,7 +19,6 @@
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
-        vm.messageError = messageService.messageError;
         vm.progress = progressService.progress;
 
         vm.switchLocation = function(location) {
@@ -44,12 +43,16 @@
             }, 50);
         }
 
+        //if ascii isnt deleted before, can cause issues with different size ascii
         function removeAscii() {
             var elements = angular.element('#locationwrap').children();
             elements.remove();
             sanitizeAscii();
         }
+
+        //add pre tags and $compile to angular code so ng-click works
         function sanitizeAscii() {
+            //dont run twice, adds double pre tags
             if (!vm.currentLocation.formatted) {
                 vm.currentLocation.initClicks();
             }
@@ -71,6 +74,7 @@
             $timeout(verifyAscii, 10);
         }
 
+        //ascii append check, if it didnt work lengths wont matchup, rerun append
         function verifyAscii() {
             var length = angular.element('#locationwrap').children().length;
             if (length !== vm.currentLocation.ascii.length) {
@@ -78,28 +82,21 @@
             }
         }
 
-        activate();
-
-        ////////////////
-
+        //all resource info here
         function increaseResources() {
             vm.money = resourcesService.moneyTick();
             resourcesService.resources.updateAmounts();
             vm.resources = resourcesService.resources;
         }
 
-        function activate() {
-            sanitizeAscii();
-            mainLoop();
-            quickLoop();
-        }
-
+        //1s loop
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
             increaseResources();
             $timeout(mainLoop, 1000);
         }
+        //quicker loop
         function quickLoop() {
             vm.player.healthBarUpdate();
             vm.activeTemplate = templateService.activeTemplate;
@@ -107,5 +104,15 @@
             vm.mainMessage = messageService.mainMessage;
             $timeout(quickLoop, 125);
         }
+
+        ////////////////////
+
+        function activate() {
+            sanitizeAscii();
+            mainLoop();
+            quickLoop();
+        }
+
+        activate();
     }
 })();

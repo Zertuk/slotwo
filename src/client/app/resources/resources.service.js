@@ -5,9 +5,9 @@
         .module('app.resources')
         .service('resourcesService', resourcesService);
 
-    resourcesService.$inject = ['messageService'];
+    resourcesService.$inject = ['messageService', 'inventoryService'];
 
-    function resourcesService(messageService) {
+    function resourcesService(messageService, inventoryService) {
     	var vm = this;
     	vm.moneyTick = function() {
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;

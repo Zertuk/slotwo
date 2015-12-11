@@ -1,6 +1,6 @@
 <div ng-controller = "ResourcesController as vm">
 	<div class = "container borderbottom">
-		<div class = "workerinfo">
+		<div class = "workerinfo actualworkers">
 			<p>Available Workers: {{vm.resources.workers}}</p>
 			<div class = "worker">
 				<button class = "resourcecontrol" ng-click = "vm.assignWorker('lumberjacks')">+</button>
@@ -23,7 +23,7 @@
 				<p>Overseers: {{vm.resources.overseers}}</p>
 			</div>
 		</div>
-		<div class = "workerinfo">
+		<div class = "workerinfo margintop45">
 			<div class = "worker">
 				<p class = "info">Produces {{vm.workers.lumberjacks.wood}} wood at the cost of {{-vm.workers.lumberjacks.food}} food.</p>
 			</div>
@@ -39,27 +39,40 @@
 		</div>
 	</div>
 	<div class = "container borderbottom">
-		<div class = "workerinfo">
-			<p>Resources</p>
-			<div class = "worker">
-				<p>Food: {{vm.resources.food}}</p>
+		<div class = "half">
+			<div class = "workerinfo">
+				<div class = "worker">
+					<p>Food: {{vm.resources.food}}</p>
+				</div>
+				<div class = "worker">
+					<p>Ore: {{vm.resources.ore}}</p>
+				</div>
+				<div class = "worker">
+					<p>Wood: {{vm.resources.wood}}</p>
+				</div>
 			</div>
-			<div class = "worker">
-				<p>Ore: {{vm.resources.ore}}</p>
-			</div>
-			<div class = "worker">
-				<p>Wood: {{vm.resources.wood}}</p>
+			<div class = "workerinfo">
+				<div class = "worker">
+					<p class = "info">{{vm.resources.foodRate}}/s</p>
+				</div>
+				<div class = "worker">
+					<p class = "info">{{vm.resources.oreRate}}/s</p>
+				</div>
+				<div class = "worker">
+					<p class = "info">{{vm.resources.woodRate}}/s</p>
+				</div>
 			</div>
 		</div>
-		<div class = "workerinfo">
-			<div class = "worker">
-				<p class = "info">{{vm.resources.foodRate}}/s</p>
+		<div class = "half">
+			<div class = "workerinfo">
+				<div class = "worker">
+					<button class = "craft">craft sword</button>
+				</div>
 			</div>
-			<div class = "worker">
-				<p class = "info">{{vm.resources.oreRate}}/s</p>
-			</div>
-			<div class = "worker">
-				<p class = "info">{{vm.resources.woodRate}}/s</p>
+			<div class = "workerinfo">
+				<div class = "worker">
+					<p>1000 woood</p>
+				</div>
 			</div>
 		</div>
 	</div>

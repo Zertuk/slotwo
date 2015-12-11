@@ -1,0 +1,6 @@
+<div id = "locationtext" ng-controller = "DialogueController as vm">
+	<p class = "text">{{vm.locationText}}</p>
+	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.next" ng-click = "vm.switchDialogue(vm.currentDialogue.next, vm.currentDialogue.master)">Continue</button>
+	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.level" ng-click = "vm.switchLevel('shroom')">Continue</button>
+	<button ng-if = "!vm.currentDialogue.continue && button.active" ng-repeat = "button in vm.currentDialogue.buttons" ng-click = "vm.switchDialogue(button.next, button.master)">{{button.text}}</button>
+</div>

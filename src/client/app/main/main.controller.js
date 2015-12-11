@@ -32,10 +32,6 @@
             vm.currentLocation = mainService.switchLevel(level);
         };
 
-
-        
-
-
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
             $timeout(function() {

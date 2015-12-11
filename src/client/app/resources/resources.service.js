@@ -9,6 +9,7 @@
 
     function resourcesService(messageService, inventoryService) {
     	var vm = this;
+        vm.itemDictionary = inventoryService.itemDictionary;
 
     	vm.moneyTick = function() {
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
@@ -72,13 +73,13 @@
     		farmers: 0,
     		miners: 0,
     		overseers: 0,
-    		food: 0,
+    		food: vm.itemDictionary['food'][1][1],
     		foodUp: 0,
     		foodDown: 0,
-    		ore: 0,
+    		ore: vm.itemDictionary['ore'][1][1],
     		oreUp: 0,
     		oreDown: 0,
-    		wood: 0,
+    		wood: vm.itemDictionary['wood'][1][1],
     		woodUp: 0,
     		woodDown: 0,
     		keys: ['farmers', 'miners', 'overseers', 'lumberjacks'],

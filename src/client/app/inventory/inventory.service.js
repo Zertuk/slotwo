@@ -40,7 +40,9 @@
 				}
 			},
 			this.craft = function() {
+				console.log('craft');
 				if (typeof this.recipe !== 'undefined') {
+					console.log(this.recipe);
 					var recipe = [];
 					var err = 0;
 					var testAmt = 5;
@@ -56,8 +58,8 @@
 							vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
 							console.log(vm.itemDictionary[recipe[j][0]][1])
 						}
-						console.log(vm.itemDictionary[this.slug()][1][1])
-						vm.itemDictionary[this.slug()][1][1] = vm.itemDictionary[this.slug()][1][1] + this.quant;
+						console.log(vm.itemDictionary[this.slug][1][1])
+						vm.itemDictionary[this.slug][1][1] = vm.itemDictionary[this.slug][1][1] + this.quant;
 					}
 				}
 			}
@@ -123,6 +125,7 @@
 		this.sword = new this.Item();
 		this.sword.name = 'Sword';
 		this.sword.desc = 'A basic sword';
+		this.sword.recipe = ['wood-100'];
 		this.sword.cat = 'weapon';
 		this.sword.damage = 1;
 		this.sword.attackSpeed = 1;
@@ -156,8 +159,18 @@
 		this.potion.desc = 'Heals ' + this.potion.strength + ' health';
 		this.potion.strength = 50;
 
+		this.food = new this.Item();
+		this.food.name = 'Food';
+		this.food.desc = 'Food for workers';
+
+		this.ore = new this.Item();
+		this.ore.name = 'Ore';
+		this.ore.desc = 'Metal stuff';
+
+		vm.itemDictionary['food'] = [['item', this.food], ['amount', 5]];
+		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 5]];
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
-		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 3]];
+		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 500]];
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
 		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];

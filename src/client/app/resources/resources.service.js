@@ -173,11 +173,12 @@
     			}
     		}
             //if error, then some resource doesnt have enough, so dont run
+            console.log(gains);
     		if (error === 0) {
     			vm.workers[key].active = true;
     			for (var j = 0; j < gains.length; j++) {
     				var gainRate = gains[j] + 'Up';
-    				vm.resources[gainRate] = vm.resources[gainRate] + vm.workers[key][gains[i]]*vm.resources[key];
+    				vm.resources[gainRate] = vm.resources[gainRate] + vm.workers[key][gains[j]]*vm.resources[key];
     			}
     		}
     		else {

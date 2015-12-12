@@ -13,6 +13,7 @@
         vm.progress = progressService.progress;
 
     	vm.moneyTick = function() {
+            vm.forgeActive();
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
     		return vm.resources.money;
     	};
@@ -40,13 +41,41 @@
     		}
     	};
 
+        vm.forgeActive = function() {
+            if (vm.resources.forge) {
+                if (vm.resources.ore >= 5) {
+                    vm.resources.ore = vm.resources.ore - 5;
+                    vm.resources.money = vm.resources.money + 25;
+                }
+            }
+        }
+
+        vm.toggleForge = function() {
+            vm.resources.forge = !vm.resources.forge;
+        }
+
+        vm.forgeMessage = function() {
+            var message = '';
+            if (vm.resources.forge) {
+                message = 'Deactivate Forge';
+            }
+            else {
+                message = 'Activate Forge';
+            }
+            return message;
+        }
+
         vm.craftables = {
             sword: {
                 unlock: '',
                 active: !vm.progress.woodSwordCrafted,
                 text: 'Carve Wooden Sword',
                 cost: '50 Wood',
-                key: 'sword'
+                key: 'sword',
+                special: function() {
+                    vm.progress.woodSwordCrafted = true;
+                    this.active = !this.active;
+                }
             },
             bridge: {
                 unlock: '',
@@ -54,6 +83,13 @@
                 text: 'Build Bridge',
                 cost: '500 Wood 250 Ore',
                 key: 'bridge'
+            },
+            forge: {
+                unlock: '',
+                active: vm.progress.forgeActive,
+                text: 'Build Forge',
+                cost: '50 Wood 250 Ore',
+                key: 'forge'
             }
         };
 
@@ -98,6 +134,7 @@
     		wood: vm.itemDictionary['wood'][1][1],
     		woodUp: 0,
     		woodDown: 0,
+            forge: false,
     		keys: ['farmers', 'miners', 'overseers', 'lumberjacks'],
     		resKeys: ['food', 'wood', 'ore'],
     		updateAmounts: function() {

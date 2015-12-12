@@ -28,11 +28,19 @@
             if (crafted) {
                 resourcesService.regrabAmounts();
                 messageService.updateMainMessage(item.name + ' has been created.');
+                vm.craftables[itemInput].special();
             }
             else {
                 messageService.updateMainMessage('Not enough resources to craft.', true);
             }
         };
+
+        vm.toggleForge = function() {
+            resourcesService.toggleForge();
+            vm.forgeMessage = resourcesService.forgeMessage();
+        }
+
+        vm.forgeMessage = resourcesService.forgeMessage();
 
         function activate() {
             vm.resources = resourcesService.resources;

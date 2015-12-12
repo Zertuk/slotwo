@@ -24,6 +24,7 @@
             woodSwordCrafted: false,
             bridgePrompt: false,
             bridgeBuilt: false,
+            forgeActive: true,
             levels: {
                 //locations
                 treeCity: true,

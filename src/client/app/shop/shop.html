@@ -1,3 +1,11 @@
 <div id = "locationtext">
-	<p>this is the shop!</p>
+	<p>Welcome!  Looking to shop?  Here is my current inventory.</p>
+	<div ng-repeat = "item in vm.itemList[0] track by $index" class = "shoprow">
+		<div class = "half">
+			<button ng-click = "vm.buyItem(item)">{{item.name}}</button>
+		</div>
+		<div class = "half">
+			<p class = "nomargin">{{item.price}} gold</p>
+		</div>
+	</div>
 </div>

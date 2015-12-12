@@ -5,11 +5,12 @@
         .module('app.shop')
         .service('shopService', shopService);
 
-    shopService.$inject = ['playerService', 'inventoryService'];
+    shopService.$inject = ['playerService', 'inventoryService', 'resourcesService', 'messageService'];
 
     /* @ngInject */
-    function shopService(playerService, inventoryService) {
+    function shopService(playerService, inventoryService, resourcesService, messageService) {
     	var vm = this;
+        vm.resources = resourcesService.resources;
 
     	vm.initShop = function() {
     		createShopList();
@@ -23,8 +24,8 @@
 
         function createShopList() {
             vm.shopList = [];
-        	for (var i = 0; i < inventoryService.masterItemList.length; i++) {
-        		var key = inventoryService.masterItemList[i];
+        	for (var i = 0; i < inventoryService.buyableItems.length; i++) {
+        		var key = inventoryService.buyableItems[i];
         		var thisItem = inventoryService.itemDictionary[key][0][1];
         		if (thisItem.buyable) {
         			vm.shopList.push(thisItem);
@@ -33,8 +34,8 @@
  		}
 
         function checkBalance(item) {
-        	if (item.price > playerService.player.money) {
-        		console.log('not enough money');
+        	if (item.price > vm.resources.money) {
+        		messageService.updateMainMessage('Not enough money.', true);
         	} else {
         		subtractCost(item);
         		addToInventory(item);
@@ -42,8 +43,7 @@
         }
 
         function subtractCost(item) {
-        	playerService.player.money = playerService.player.money - item.price;
-            console.log(playerService.player.money);
+        	vm.resources.money = vm.resources.money - item.price;
         }
 
         function addItem(item) {
@@ -71,6 +71,7 @@
         }
 
         function addToInventory(item) {
+            messageService.updateMainMessage(item.name + ' has been purchased.');
         	item.quantity = item.quantity + 1;
             removeItem(item);
         }

@@ -155,6 +155,8 @@
 		this.potion.name = 'Health Potion';
 		this.potion.desc = 'Heals ' + this.potion.strength + ' health';
 		this.potion.strength = 50;
+		this.potion.buyable = true;
+		this.potion.price = 100;
 
 		this.food = new this.Item();
 		this.food.name = 'Food';
@@ -179,7 +181,7 @@
 
 
 
-		vm.masterItemList = ['grass', 'wood', 'campfire', 'stick', 'tent', 'club', 'sword', 'woodArmor', 'boneArmor'];
+		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor'];
 
 		vm.weapons = [vm.itemDictionary['club'], 
 					  vm.itemDictionary['sword']];

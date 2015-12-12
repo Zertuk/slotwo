@@ -14,6 +14,7 @@
         resourcesService.initRates();
         vm.player = playerService.player;
         vm.currentLocation = mainService.treeShop;
+        initShop();
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();

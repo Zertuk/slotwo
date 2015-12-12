@@ -4,6 +4,7 @@
     angular
         .module('app.shop', [
         	'app.player',
-        	'app.inventory'
+        	'app.inventory',
+        	'app.resources'
         ]);
 })();

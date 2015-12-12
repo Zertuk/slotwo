@@ -64,14 +64,16 @@
 			</div>
 		</div>
 		<div class = "half">
-			<div class = "workerinfo">
-				<div class = "worker">
-					<button class = "craft" ng-click = "vm.craft('sword')">craft sword</button>
+			<div ng-repeat = "item in vm.craftables">
+				<div class = "workerinfo">
+					<div class = "worker">
+						<button class = "craft" ng-click = "vm.craft(item.key)">{{item.text}}</button>
+					</div>
 				</div>
-			</div>
-			<div class = "workerinfo">
-				<div class = "worker">
-					<p>1000 woood</p>
+				<div class = "workerinfo">
+					<div class = "worker">
+						<p>{{item.cost}}</p>
+					</div>
 				</div>
 			</div>
 		</div>

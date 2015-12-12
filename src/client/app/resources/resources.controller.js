@@ -11,6 +11,7 @@
     function ResourcesController(resourcesService, inventoryService, messageService) {
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
+        vm.craftables = resourcesService.craftables;
 
         vm.assignWorker = function(type) {
         	resourcesService.assignWorker(type);
@@ -21,10 +22,12 @@
         };
 
         vm.craft = function(itemInput) {
+            console.log(itemInput)
             var item = vm.itemDictionary[itemInput][0][1];
             var crafted = item.craft();
             if (crafted) {
                 resourcesService.regrabAmounts();
+                messageService.updateMainMessage(item.name + ' has been created.');
             }
             else {
                 messageService.updateMainMessage('Not enough resources to craft.', true);

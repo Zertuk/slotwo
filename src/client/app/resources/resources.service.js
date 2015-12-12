@@ -40,8 +40,23 @@
     	};
 
         vm.craftables = {
-
+            sword: {
+                unlock: '',
+                active: true,
+                text: 'Carve Wooden Sword',
+                cost: '50 Wood',
+                key: 'sword'
+            },
+            bridge: {
+                unlock: '',
+                active: true,
+                text: 'Build Bridge',
+                cost: '500 Wood 250 Ore',
+                key: 'bridge'
+            }
         };
+
+        vm.craftablesKeys = ['sword', 'bridge'];
         
     	vm.workers = {
     		farmers: {

@@ -5,10 +5,10 @@
         .module('app.resources')
         .controller('ResourcesController', ResourcesController);
 
-    ResourcesController.$inject = ['resourcesService', 'inventoryService'];
+    ResourcesController.$inject = ['resourcesService', 'inventoryService', 'messageService'];
 
     /* @ngInject */
-    function ResourcesController(resourcesService, inventoryService) {
+    function ResourcesController(resourcesService, inventoryService, messageService) {
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
 
@@ -22,7 +22,13 @@
 
         vm.craft = function(itemInput) {
             var item = vm.itemDictionary[itemInput][0][1];
-            item.craft();
+            var crafted = item.craft();
+            if (crafted) {
+                resourcesService.regrabAmounts();
+            }
+            else {
+                messageService.updateMainMessage('Not enough resources to craft.', true);
+            }
         };
 
         function activate() {

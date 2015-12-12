@@ -40,26 +40,23 @@
 				}
 			},
 			this.craft = function() {
-				console.log('craft');
 				if (typeof this.recipe !== 'undefined') {
-					console.log(this.recipe);
 					var recipe = [];
 					var err = 0;
 					var testAmt = 5;
 					for (var i = 0; i < this.recipe.length; i++) {
 						recipe[i] = this.recipe[i].split('-');
 						if (recipe[i][1] > vm.itemDictionary[recipe[i][0]][1][1]) {
-							console.log('not enough items');
 							err = err + 1;
 						}
 					}
+					//if err === 0 then we have enough resources, so craft
 					if (err === 0) {
 						for (var j = 0; j < recipe.length; j++) {
 							vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
-							console.log(vm.itemDictionary[recipe[j][0]][1])
 						}
-						console.log(vm.itemDictionary[this.slug][1][1])
 						vm.itemDictionary[this.slug][1][1] = vm.itemDictionary[this.slug][1][1] + this.quant;
+						return true;
 					}
 				}
 			}

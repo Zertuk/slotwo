@@ -89,6 +89,12 @@
     		}
     	};
 
+        vm.regrabAmounts = function() {
+            vm.resources.wood = vm.itemDictionary['wood'][1][1];
+            vm.resources.food = vm.itemDictionary['food'][1][1];
+            vm.resources.ore = vm.itemDictionary['ore'][1][1];
+        };
+
         //init rates, only works if gain when resource > 0
     	vm.initRates = function() {
             //farmers
@@ -184,6 +190,9 @@
     		else {
     			vm.workers[key].active = false;
     		}
+            vm.itemDictionary['wood'][1][1] = vm.resources.wood;
+            vm.itemDictionary['ore'][1][1] = vm.resources.ore;
+            vm.itemDictionary['food'][1][1] = vm.resources.food;
     		vm.initRates();
     	}
   	

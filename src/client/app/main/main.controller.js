@@ -9,13 +9,11 @@
 
     /* @ngInject */
     function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService) {
-        shopService.initShop();
         var vm = this;
         vm.count = 0;
         resourcesService.initRates();
-        vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
-        vm.currentLocation = mainService.mainMap;
+        vm.currentLocation = mainService.treeShop;
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
@@ -26,7 +24,12 @@
             if (check) {
                 vm.currentLocation = mainService.switchLocation(location);
                 removeAscii();
+                if (location === 'treeShop') {
+                    initShop();
+                    console.log('this is the shop');
+                }
             }
+            console.log(vm.currentLocation.slug);
         };
         vm.switchLevel = function(level) {
             vm.currentLocation = mainService.switchLevel(level);
@@ -42,6 +45,12 @@
                 vm.itemList = [shopService.shopList];
             }, 50);
         }
+
+        function initShop() {
+            shopService.initShop();
+            vm.itemList = [shopService.shopList];
+        }
+
 
         //if ascii isnt deleted before, can cause issues with different size ascii
         function removeAscii() {

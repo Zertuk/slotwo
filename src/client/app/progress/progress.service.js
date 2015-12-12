@@ -21,6 +21,9 @@
         	treeKingWorkHandIn: false,
         	treeKingIntro: false,
         	slumBossMet: false,
+            woodSwordCrafted: false,
+            bridgePrompt: false,
+            bridgeBuilt: false,
             levels: {
                 //locations
                 treeCity: true,

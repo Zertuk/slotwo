@@ -5,11 +5,12 @@
         .module('app.resources')
         .service('resourcesService', resourcesService);
 
-    resourcesService.$inject = ['messageService', 'inventoryService'];
+    resourcesService.$inject = ['messageService', 'inventoryService', 'progressService'];
 
-    function resourcesService(messageService, inventoryService) {
+    function resourcesService(messageService, inventoryService, progressService) {
     	var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
+        vm.progress = progressService.progress;
 
     	vm.moneyTick = function() {
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
@@ -42,14 +43,14 @@
         vm.craftables = {
             sword: {
                 unlock: '',
-                active: true,
+                active: !vm.progress.woodSwordCrafted,
                 text: 'Carve Wooden Sword',
                 cost: '50 Wood',
                 key: 'sword'
             },
             bridge: {
                 unlock: '',
-                active: true,
+                active: vm.progress.bridgePrompt && !vm.progress.bridgeBuilt,
                 text: 'Build Bridge',
                 cost: '500 Wood 250 Ore',
                 key: 'bridge'

@@ -64,7 +64,7 @@
 			</div>
 		</div>
 		<div class = "half">
-			<div ng-repeat = "item in vm.craftables">
+			<div ng-repeat = "item in vm.craftables" ng-if = "item.active">
 				<div class = "workerinfo">
 					<div class = "worker">
 						<button class = "craft" ng-click = "vm.craft(item.key)">{{item.text}}</button>

@@ -3,6 +3,7 @@
 
     angular
         .module('app.resources', [
-        	'app.inventory'
+        	'app.inventory',
+        	'app.progress'
         ]);
 })();

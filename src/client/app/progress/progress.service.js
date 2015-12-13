@@ -28,6 +28,7 @@
             trainBattle: false,
             trainDefense: false,
             trainMoney: false,
+            canLearn: 1,
             levels: {
                 //locations
                 treeCity: true,

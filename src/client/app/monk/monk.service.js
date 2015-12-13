@@ -17,6 +17,7 @@
    			type = type[0].toUpperCase() + type.slice(1);
    			var key = 'train' + type;
    			vm.progress[key] = true;
+   			vm.progress.canLearn = vm.progress.canLearn - 1;
    			messageService.updateMainMessage('train');
     	}
     }

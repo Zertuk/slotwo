@@ -186,9 +186,16 @@
         }
 
         vm.monk = new vm.Dialogue;
+        vm.monk.checkLearn = function() {
+            var learn = false;
+            if (vm.progress.canLearn > 0) {
+                learn = true;
+            }
+            return learn;
+        };
         vm.monk.initDialogue = function() {
             return 'introduction';
-        }
+        };
         vm.monk.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -216,9 +223,21 @@
                             text: 'Can you teach me?',
                             next: 'train',
                             master: 'monk',
-                            active: true
+                            active: vm.monk.checkLearn()
+                        },
+                        trainMore: {
+                            text: 'When can I learn more?',
+                            next: 'trainMore',
+                            master: 'monk',
+                            active: !vm.monk.checkLearn()
                         }
                     }
+                },
+                trainMore: {
+                    text: 'You are not ready yet my student.  Check back later.',
+                    next: 'question',
+                    master: 'monk',
+                    continue: true
                 },
                 why: {
                     text: 'why text',
@@ -227,7 +246,7 @@
                     master: 'monk'
                 },
                 train: {
-                    text: 'Hmm, yes I can teach you.  What would you like to learn?',
+                    text: 'Hmm, yes I can teach you.  I cant teach you everything right now, but after sometime I will be able to teach you more.  What would you like to learn?',
                     buttons: {
                         battle: {
                             text: 'Battle',

@@ -42,6 +42,7 @@
 
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
+            vm.money = resourcesService.resources.money;
             $timeout(function() {
                 vm.itemList = [shopService.shopList];
             }, 50);

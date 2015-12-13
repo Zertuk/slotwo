@@ -5,7 +5,9 @@
 			<button ng-click = "vm.buyItem(item)">{{item.name}}</button>
 		</div>
 		<div class = "half">
-			<p class = "nomargin">{{item.price}} gold</p>
+			<p class = "nomargin inline">{{item.price}} gold</p>
+			<p class = "nomargin inline" ng-if = "item.slug === 'potion'"> | </p>
+			<p class = "nomargin inline small" ng-if = "item.slug === 'potion'">{{item.quantity}} owned</p>
 		</div>
 	</div>
 </div>

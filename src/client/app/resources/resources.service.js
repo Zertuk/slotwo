@@ -118,7 +118,7 @@
     	};
 
     	vm.resources = {
-    		money: 0,
+    		money: 1000,
     		moneyRate: 1,
     		workers: 10,
     		lumberjacks: 0,

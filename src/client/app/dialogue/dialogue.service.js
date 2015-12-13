@@ -240,7 +240,7 @@
                     continue: true
                 },
                 why: {
-                    text: 'why text',
+                    text: 'I am just a guy who is a monk for fun.',
                     continue: true,
                     next: 'question',
                     master: 'monk'

@@ -4,6 +4,7 @@
     angular
         .module('app.dialogue', [
         	'app.progress',
-        	'app.main'
+        	'app.main',
+        	'app.monk'
         ]);
 })();

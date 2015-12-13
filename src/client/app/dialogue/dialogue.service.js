@@ -5,10 +5,10 @@
         .module('app.dialogue')
         .service('dialogueService', dialogueService);
 
-    dialogueService.$inject = ['progressService'];
+    dialogueService.$inject = ['progressService', 'monkService'];
 
     /* @ngInject */
-    function dialogueService(progressService) {
+    function dialogueService(progressService, monkService) {
         var vm = this;
         vm.locationText = '';
         vm.progress = progressService.progress;

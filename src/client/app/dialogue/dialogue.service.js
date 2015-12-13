@@ -198,8 +198,14 @@
                     master: 'monk'
                 },
                 question: {
-                    text: 'list of questions',
+                    text: 'questions list',
                     buttons: {
+                        angry: {
+                            text: 'This is the great monk? I am unimpressed.',
+                            next: 'angry',
+                            master: 'monk',
+                            active: true
+                        },
                         why: {
                             text: 'Why did you become a monk?',
                             next: 'why',
@@ -209,12 +215,6 @@
                         train: {
                             text: 'Can you teach me?',
                             next: 'train',
-                            master: 'monk',
-                            active: true
-                        },
-                        angry: {
-                            text: 'This is the great monk? I am unimpressed.',
-                            next: 'angry',
                             master: 'monk',
                             active: true
                         }
@@ -227,18 +227,33 @@
                     master: 'monk'
                 },
                 train: {
-                    text: 'train text',
+                    text: 'Hmm, yes I can teach you.  What would you like to learn?',
                     buttons: {
                         attack: {
-                            text: 'train attack',
-                            active: true
+                            text: 'Battle',
+                            active: true,
+                            special: function() {
+                                console.log('learn attack');
+                            }
                         },
                         defense: {
-                            text: 'train defense',
-                            active: true
+                            text: 'Defense',
+                            active: true,
+                            special: function() {
+                                console.log('learn defense');
+                            }
                         },
                         money: {
-                            text: 'train money',
+                            text: '$$$',
+                            active: true,
+                            special: function() {
+                                console.log('learn defense');
+                            }
+                        },
+                        nothing: {
+                            text: 'Nothing for now',
+                            next: 'question',
+                            master: 'monk',
                             active: true
                         }
                     }

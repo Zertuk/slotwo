@@ -191,7 +191,81 @@
         }
         vm.monk.setDialogue = function() {
             var dialogue = {
-
+                introduction: {
+                    text: 'introText',
+                    continue: true,
+                    next: 'question',
+                    master: 'monk'
+                },
+                question: {
+                    text: 'list of questions',
+                    buttons: {
+                        why: {
+                            text: 'Why did you become a monk?',
+                            next: 'why',
+                            master: 'monk',
+                            active: true
+                        },
+                        train: {
+                            text: 'Can you teach me?',
+                            next: 'train',
+                            master: 'monk',
+                            active: true
+                        },
+                        angry: {
+                            text: 'This is the great monk? I am unimpressed.',
+                            next: 'angry',
+                            master: 'monk',
+                            active: true
+                        }
+                    }
+                },
+                why: {
+                    text: 'why text',
+                    continue: true,
+                    next: 'question',
+                    master: 'monk'
+                },
+                train: {
+                    text: 'train text',
+                    buttons: {
+                        attack: {
+                            text: 'train attack',
+                            active: true
+                        },
+                        defense: {
+                            text: 'train defense',
+                            active: true
+                        },
+                        money: {
+                            text: 'train money',
+                            active: true
+                        }
+                    }
+                },
+                angry: {
+                    text: 'fight text',
+                    buttons: {
+                        sorry: {
+                            text: 'sorry',
+                            next: 'sorry',
+                            master: 'monk',
+                            active: true
+                        },
+                        fight: {
+                            text: 'fight',
+                            next: 'fight',
+                            level: 'monkFight',
+                            active: true
+                        }
+                    }
+                },
+                sorry: {
+                    text: 'let it go',
+                    continue: true,
+                    next: 'question',
+                    master: 'monk'
+                }
             };
             return dialogue;
         }

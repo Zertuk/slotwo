@@ -104,6 +104,8 @@
         vm.mainMap = new vm.Location;
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
+            //monk
+            vm.click(this, 'Monk', 'monk', 112, 16, 4, 3);
         	//wizard
         	vm.click(this, 'Wizard', 'wizard', 171, 35, 30, 10);
         	//snow
@@ -296,6 +298,14 @@
 		vm.treeSlumsBum.prev = 'slums';
 		vm.treeSlumsBum.prevName = 'Slums';
 
+        vm.monk = new vm.Location;
+        vm.monk.name = 'The Cavern';
+        vm.monk.prev = 'mainMap';
+        vm.monk.prevName = 'Map';
+        vm.monk.specialText = true;
+        vm.monk.dialogue = dialogueService.monk;
+        vm.monk.ascii = ["monk ascii here"];
+
 		vm.wizard = new vm.Location;
 		vm.wizard.name = 'Wizard';
 		vm.wizard.prev = 'mainMap';
@@ -356,7 +366,7 @@
 									 "                                                                                        /          .'| | /     \\ | |'.                \\                     ",                                                                                                                                             
 									 "                                                                                       /         .'  | |/|     |\\| |  '.               \\                    " ];                                                                                                                                              
 
-    	vm.currentLocation = vm.treeGovernment;
+    	vm.currentLocation = vm.monk;
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;
@@ -369,5 +379,6 @@
 					vm.locationDictionary['slumsThugs'] = this.treeSlumsThugs;
 					vm.locationDictionary['slumsBum'] = this.treeSlumsBum;
 			vm.locationDictionary['wizard'] = this.wizard;
+            vm.locationDictionary['monk'] = this.monk;
     }
 })();

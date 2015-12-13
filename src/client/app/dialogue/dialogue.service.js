@@ -231,23 +231,24 @@
                     buttons: {
                         attack: {
                             text: 'Battle',
+                            master: 'monk',
                             active: true,
                             special: function() {
-                                console.log('learn attack');
+                                monkService.train('battle');
                             }
                         },
                         defense: {
                             text: 'Defense',
                             active: true,
                             special: function() {
-                                console.log('learn defense');
+                                monkService.train('defense');
                             }
                         },
                         money: {
                             text: '$$$',
                             active: true,
                             special: function() {
-                                console.log('learn defense');
+                                monkService.train('money');
                             }
                         },
                         nothing: {

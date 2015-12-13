@@ -179,6 +179,18 @@
             return dialogue;
         }
 
+        vm.monk = new vm.Dialogue;
+        vm.monk.initDialogue = function() {
+            return 'introduction';
+        }
+        vm.monk.setDialogue = function() {
+            var dialogue = {
+
+            };
+            return dialogue;
+        }
+
+
 
         vm.slumThugs = new vm.Dialogue;
         vm.slumThugs.initDialogue = function() {
@@ -323,6 +335,7 @@
             vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
             vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
             vm.wizard.dialogue = vm.wizard.setDialogue();
+            vm.monk.dialogue = vm.monk.setDialogue();
         }
 
 

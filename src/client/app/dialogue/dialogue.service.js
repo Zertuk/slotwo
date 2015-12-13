@@ -237,6 +237,8 @@
                         },
                         defense: {
                             text: 'Defense',
+                            master: 'monk',
+                            next: 'defenseLearn',
                             active: !vm.progress.trainDefense,
                             special: function() {
                                 monkService.train('defense');
@@ -244,6 +246,8 @@
                         },
                         money: {
                             text: '$$$',
+                            master: 'monk',
+                            next: 'moneyLearn',
                             active: !vm.progress.trainMoney,
                             special: function() {
                                 monkService.train('money');
@@ -267,6 +271,26 @@
                     continue: true,
                     special: function() {
                         monkService.train('battle');
+                        vm.initAllDialogues();
+                    }
+                },
+                defenseLearn: {
+                    text: 'learn defense',
+                    master: 'monk',
+                    next: 'question',
+                    continue: true,
+                    special: function() {
+                        monkService.train('defense'),
+                        vm.initAllDialogues();
+                    }
+                },
+                moneyLearn: {
+                    text: 'learn money',
+                    master: 'monk',
+                    next: 'question',
+                    continue: true,
+                    special: function() {
+                        monkService.train('money'),
                         vm.initAllDialogues();
                     }
                 },

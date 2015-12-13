@@ -25,6 +25,9 @@
             bridgePrompt: false,
             bridgeBuilt: false,
             forgeActive: true,
+            trainBattle: false,
+            trainDefense: false,
+            trainMoney: false,
             levels: {
                 //locations
                 treeCity: true,

@@ -229,24 +229,22 @@
                 train: {
                     text: 'Hmm, yes I can teach you.  What would you like to learn?',
                     buttons: {
-                        attack: {
+                        battle: {
                             text: 'Battle',
                             master: 'monk',
-                            active: true,
-                            special: function() {
-                                monkService.train('battle');
-                            }
+                            next: 'battleLearn',
+                            active: !vm.progress.trainBattle
                         },
                         defense: {
                             text: 'Defense',
-                            active: true,
+                            active: !vm.progress.trainDefense,
                             special: function() {
                                 monkService.train('defense');
                             }
                         },
                         money: {
                             text: '$$$',
-                            active: true,
+                            active: !vm.progress.trainMoney,
                             special: function() {
                                 monkService.train('money');
                             }
@@ -257,6 +255,19 @@
                             master: 'monk',
                             active: true
                         }
+                    },
+                    special: function() {
+                        console.log('this runs')
+                    }
+                },
+                battleLearn: {
+                    text: 'learn battle',
+                    master: 'monk',
+                    next: 'question',
+                    continue: true,
+                    special: function() {
+                        monkService.train('battle');
+                        vm.initAllDialogues();
                     }
                 },
                 angry: {

@@ -3,5 +3,7 @@
 
     angular
         .module('app.monk', [
+        	'app.progress',
+        	'app.message'
         ]);
 })();

@@ -14,10 +14,16 @@
         vm.progress = progressService.progress;
 
         vm.Dialogue = function() {
+            //return intro by default
             this.initDialogue = function() {
                 return 'introduction';
             }
         };
+
+        //Dialogue function purposes
+
+        //initDialogue : sets initial dialogue on location switch
+        //setDialogue : set up for the dialogue, runs to grab conditional changes for dialogue
 
         vm.wizard = new vm.Dialogue;
         vm.wizard.setDialogue = function() {
@@ -329,19 +335,13 @@
             return dialogue;
         }
 
-
+        //init the dialogues based on setDialogue to grab changed conditionals
         vm.initAllDialogues = function() {
             vm.treeKing.dialogue = vm.treeKing.setDialogue();
             vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
             vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
             vm.wizard.dialogue = vm.wizard.setDialogue();
             vm.monk.dialogue = vm.monk.setDialogue();
-        }
-
-
-        ////////////////
-
-        function func() {
         }
     }
 })();

@@ -16,7 +16,8 @@
 		'app.template',
 		'app.dialogue',
 		'app.progress',
-		'app.resources'
+		'app.resources',
+		'app.monk'
 	]);
 
 })();

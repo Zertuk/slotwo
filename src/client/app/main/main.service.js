@@ -241,8 +241,8 @@
                              "                                                                                                        \\  \\/  /     /   /  \\     /\\      /  /    "]                                                                                                                                                  
 
 		vm.treeInn = new vm.Location;
-		vm.treeInn.name = 'Tree Inn';
-		vm.treeInn.ascii = ['tree inn'];
+		vm.treeInn.name = 'Enchant';
+		vm.treeInn.ascii = ['tree enchant'];
 		vm.treeInn.prev = 'treeCity';
 		vm.treeInn.prevName = 'Tree City';
 

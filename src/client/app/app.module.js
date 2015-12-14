@@ -17,7 +17,8 @@
 		'app.dialogue',
 		'app.progress',
 		'app.resources',
-		'app.monk'
+		'app.monk',
+		'app.enchant'
 	]);
 
 })();

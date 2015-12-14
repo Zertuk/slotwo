@@ -105,6 +105,7 @@
                     }
                     console.log('you found ' + num + ' ' + this.items[0][0][1].name)
                     this.items[0][1][1] = this.items[0][1][1] + num;
+                    console.log(this.items[0][1][1])
                 }
             },
             this.moneyDrop = function() {
@@ -219,7 +220,7 @@
             this.maxHealth = 20;
             this.health = 20;
             this.colBox = [3, 4];
-            this.items = [vm.itemDictionary['boneArmor']];
+            this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;
             this.itemMult = 1;
             this.damage = 0;

@@ -3,13 +3,17 @@
 
     angular
         .module('app.enchant')
-        .controller('EnchantController', en);
+        .controller('EnchantController', EnchantController);
 
     EnchantController.$inject = ['enchantService'];
 
     /* @ngInject */
-    function enchantService(enchantService) {
+    function EnchantController(enchantService) {
         var vm = this;
+
+        vm.enchant = function(type) {
+        	console.log(type);
+        }
 
         activate();
 

@@ -1,3 +1,4 @@
-<div id = "locationtext">
-	<p>enchant stuff</p>
+<div id = "locationtext" ng-controller = "EnchantController as vm">
+	<button ng-click = "vm.enchant('armor')">Enchant Armor</button>
+	<button ng-click = "vm.enchant('weapon')">Enchant Weapon</button>
 </div>

@@ -210,8 +210,29 @@
                             active: true
                         }
                     }
+                },
+                armor: {
+                    text: 'enchant armor',
+                    buttons: {
+                        leave: {
+                            text: 'not now',
+                            next: 'choice',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                weapon: {
+                    text: 'enchant weapon',
+                    buttons: {
+                        leave: {
+                            text: 'not now',
+                            next: 'choice',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
                 }
-
             };
             return dialogue;
         }

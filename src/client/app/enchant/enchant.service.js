@@ -10,6 +10,11 @@
     /* @ngInject */
     function enchantService(inventoryService) {
         this.func = func;
+        this.typeChoosen = '';
+
+        this.enchant = function(type) {
+        	console.log(type);
+        }
 
         ////////////////
 

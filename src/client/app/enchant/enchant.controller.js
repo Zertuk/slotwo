@@ -10,9 +10,11 @@
     /* @ngInject */
     function EnchantController(enchantService) {
         var vm = this;
-
+        vm.typeChoosen = '';
+        
         vm.enchant = function(type) {
-        	console.log(type);
+        	vm.typeChoosen = type;
+        	enchantService.enchant(type);
         }
 
         activate();

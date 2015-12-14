@@ -1,4 +1,12 @@
 <div id = "locationtext" ng-controller = "EnchantController as vm">
-	<button ng-click = "vm.enchant('armor')">Enchant Armor</button>
-	<button ng-click = "vm.enchant('weapon')">Enchant Weapon</button>
+	<div ng-if = "vm.typeChoosen === ''">
+		<button ng-click = "vm.enchant('armor')">Enchant Armor</button>
+		<button ng-click = "vm.enchant('weapon')">Enchant Weapon</button>
+	</div>
+	<div ng-if = "vm.typeChoosen === 'armor'">
+		<p>armor</p>
+	</div>
+	<div ng-if = "vm.typeChoosen === 'weapon'">
+		<p>weapon</p>
+	</div>
 </div>

@@ -243,6 +243,8 @@
 		vm.treeInn = new vm.Location;
 		vm.treeInn.name = 'Enchant';
 		vm.treeInn.ascii = ['tree enchant'];
+        vm.treeInn.specialText = true;
+        vm.treeInn.dialogue = dialogueService.enchant;
 		vm.treeInn.prev = 'treeCity';
 		vm.treeInn.prevName = 'Tree City';
 
@@ -366,7 +368,7 @@
 									 "                                                                                        /          .'| | /     \\ | |'.                \\                     ",                                                                                                                                             
 									 "                                                                                       /         .'  | |/|     |\\| |  '.               \\                    " ];                                                                                                                                              
 
-    	vm.currentLocation = vm.monk;
+    	vm.currentLocation = vm.treeCity;
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;

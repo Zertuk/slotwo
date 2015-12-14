@@ -185,6 +185,37 @@
             return dialogue;
         }
 
+        vm.enchant = new vm.Dialogue;
+        vm.enchant.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'enchant intro',
+                    continue: true,
+                    next: 'choice',
+                    master: 'enchant'
+                },
+                choice: {
+                    text: 'what to enchant',
+                    buttons: {
+                        armor: {
+                            text: 'Armor',
+                            next: 'armor',
+                            master: 'enchant',
+                            active: true
+                        },
+                        weapon: {
+                            text: 'Weapon',
+                            next: 'weapon',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                }
+
+            };
+            return dialogue;
+        }
+
         vm.monk = new vm.Dialogue;
         vm.monk.checkLearn = function() {
             var learn = false;
@@ -192,9 +223,6 @@
                 learn = true;
             }
             return learn;
-        };
-        vm.monk.initDialogue = function() {
-            return 'introduction';
         };
         vm.monk.setDialogue = function() {
             var dialogue = {
@@ -486,6 +514,7 @@
             vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
             vm.wizard.dialogue = vm.wizard.setDialogue();
             vm.monk.dialogue = vm.monk.setDialogue();
+            vm.enchant.dialogue = vm.enchant.setDialogue();
         }
     }
 })();

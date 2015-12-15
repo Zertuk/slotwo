@@ -13,6 +13,9 @@
         vm.itemDictionary = inventoryService.itemDictionary;
         vm.craftables = resourcesService.craftables;
 
+        resourcesService.regrabAmounts()
+
+
         vm.assignWorker = function(type) {
         	resourcesService.assignWorker(type);
         };

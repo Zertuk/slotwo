@@ -178,6 +178,8 @@
     		var gainRate = resource + 'Up';
     		var downRate = resource + 'Down';
     		var rate = vm.resources[gainRate] + vm.resources[downRate];
+            console.log(resource);
+            console.log(rate);
     		vm.resources[resource] = vm.resources[resource] + rate;
     		var totalRate = resource + 'Rate';
     		vm.resources[totalRate] = rate;
@@ -223,16 +225,16 @@
     		for (var i = 0; i < losses.length; i++) {
     			if (vm.workers[key][losses[i]]*vm.resources[key]*-1 <= vm.resources[losses[i]]) {
     				var lossRate = losses[i] + 'Down';
+                    console.log('test')
     				vm.resources[lossRate] = vm.resources[lossRate] + vm.workers[key][losses[i]]*vm.resources[key];
     			}
     			else {
-    				error = error + 1;
     				var errorMessage = 'Not enough ' + losses[i];
     				messageService.updateMainMessage(errorMessage, true);
     			}
     		}
             //if error, then some resource doesnt have enough, so dont run
-            console.log(gains);
+            console.log(vm.resources[losses[0]]);
     		if (error === 0) {
     			vm.workers[key].active = true;
     			for (var j = 0; j < gains.length; j++) {

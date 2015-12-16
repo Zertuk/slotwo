@@ -96,14 +96,17 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 if (random <= this.itemChance) {
-                    
                     if (this.itemMult > 1) {
-                        var num = Math.round(this.itemMult * (Math.random() + 1));
+                        var num = Math.round(this.itemMult * Math.random());
+                        if (num === 0) {
+                            num = 1;
+                        }
                     }
                     else {
                         var num = 1;
                     }
-                    console.log('you found ' + num + ' ' + this.items[0][0][1].name)
+                    this.foundLoot = true;
+                    this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
                     this.items[0][1][1] = this.items[0][1][1] + num;
                     console.log(this.items[0][1][1])
                 }
@@ -222,7 +225,7 @@
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;
-            this.itemMult = 1;
+            this.itemMult = 3;
             this.damage = 0;
         }
         this.Tree.prototype = new this.Enemy();

@@ -164,8 +164,17 @@
 						autoKill(vm.unitArray[i]);
 					}
 					if (!vm.unitArray[i].alive) {
-						messageService.addMessage(vm.unitArray[i].deathMessage);
 						checkBig(vm.unitArray[i]);
+
+						if (vm.unitArray[i].foundLoot) {
+							var lootMessage = vm.unitArray[i].deathMessage + ' ' + vm.unitArray[i].lootMessage;
+						}
+						else {
+							var lootMessage = vm.unitArray[i].deathMessage;
+						}
+						messageService.addMessage(lootMessage);
+
+
 						enemyCount = enemyCount - 1;
 						var newArray = [];
 						for (var j = 0; j < vm.unitArray.length; j++) {

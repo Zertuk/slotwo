@@ -193,11 +193,11 @@
             this.symbol = 'Y',
             this.desc = 'This is you'
             //attack
-            this.weapon = vm.itemDictionary.sword[0][1],
+            this.weapon = vm.itemDictionary.fists[0][1],
             this.damage = this.weapon.damage,
             this.attackSpeed = this.weapon.attackSpeed,
             //armor
-            this.armor = vm.itemDictionary.woodArmor[0][1],
+            this.armor = vm.itemDictionary.clothArmor[0][1],
             this.armorValue = this.armor.armor,
             //money
             this.gold = 0

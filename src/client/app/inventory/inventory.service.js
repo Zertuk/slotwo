@@ -169,6 +169,17 @@
 		this.ore.name = 'Ore';
 		this.ore.desc = 'Metal stuff';
 
+		this.clothArmor = new this.Item();
+		this.clothArmor.name = 'Cloth Armor';
+		this.clothArmor.armor = 0;
+		this.clothArmor.slug = 'clothArmor';
+
+		this.fists = new this.Item();
+		this.fists.name = "Fists";
+		this.fists.damage = 1;
+		this.fists.attackSpeed = 1;
+		this.fists.slug = 'fists';
+
 		vm.itemDictionary['food'] = [['item', this.food], ['amount', 0]];
 		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 0]];
 		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 0]];
@@ -181,16 +192,20 @@
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 10]];
+		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
+		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
 
 
 
 		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor'];
 
-		vm.weapons = [vm.itemDictionary['club'], 
+		vm.weapons = [vm.itemDictionary['fists'],
+					  vm.itemDictionary['club'], 
 					  vm.itemDictionary['sword']];
 
 
-		vm.armor = [vm.itemDictionary['woodArmor'],
+		vm.armor = [vm.itemDictionary['clothArmor'],
+					vm.itemDictionary['woodArmor'],
 					vm.itemDictionary['boneArmor']];
 
 

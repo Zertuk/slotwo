@@ -75,6 +75,8 @@
 			}
 		};
 
+
+		//misc items
 		this.grass   = new this.Item();
 		this.grass.spawn = ['Forest'];
 		this.grass.desc  = 'A bundle of grass';
@@ -82,12 +84,6 @@
 		this.grass.message = 'test message';
 		this.grass.cat = 'ingredient';
 		this.grass.slug = 'grass';
-
-		this.wood  = new this.Item();
-		this.wood.desc = 'A slab of wood';
-		this.wood.cat = 'ingredient';
-		this.wood.name = 'Wood';
-		this.wood.slug = 'wood';
 
 		this.campfire    = new this.Item();
 		this.campfire.recipe = ['wood-2', 'grass-2'];
@@ -124,6 +120,14 @@
 			console.log(this.quant);
 		}
 
+		//weapons
+		this.fists = new this.Item();
+		this.fists.name = 'Fists';
+		this.fists.desc = 'just some fists'
+		this.fists.damage = 1;
+		this.fists.attackSpeed = 1;
+		this.fists.slug = 'fists';
+
 		this.club = new this.Item();
 		this.club.recipe = ['stick-1', 'grass-1', 'rock-1'];
 		this.club.desc = 'This thing is a beast';
@@ -144,6 +148,13 @@
 		this.sword.removeAfterBuy = true;
 		this.sword.price = 100;
 		this.sword.slug = 'sword';
+
+
+		//armor
+		this.clothArmor = new this.Item();
+		this.clothArmor.name = 'Cloth Armor';
+		this.clothArmor.armor = 0;
+		this.clothArmor.slug = 'clothArmor';
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
@@ -166,6 +177,28 @@
 		this.boneArmor.removeAfterBuy = true;
 		this.boneArmor.slug = 'boneArmor';
 
+		this.polarArmor = new this.Item();
+		this.polarArmor.name = 'Polarbear Furcoat';
+		this.polarArmor.desc = 'Coat made from polerbear fur';
+		this.polarArmor.armor = 0.3;
+		this.polarArmor.slug = 'polarArmor';
+
+		//resources
+		this.food = new this.Item();
+		this.food.name = 'Food';
+		this.food.desc = 'Food for workers';
+
+		this.ore = new this.Item();
+		this.ore.name = 'Ore';
+		this.ore.desc = 'Metal stuff';
+
+		this.wood  = new this.Item();
+		this.wood.desc = 'A slab of wood';
+		this.wood.cat = 'ingredient';
+		this.wood.name = 'Wood';
+		this.wood.slug = 'wood';
+
+		//consumables
 		this.potion = new this.Item();
 		this.potion.name = 'Health Potion';
 		this.potion.slug = 'potion';
@@ -175,25 +208,7 @@
 		this.potion.price = 100;
 		this.potion.quantity = 10;
 
-		this.food = new this.Item();
-		this.food.name = 'Food';
-		this.food.desc = 'Food for workers';
 
-		this.ore = new this.Item();
-		this.ore.name = 'Ore';
-		this.ore.desc = 'Metal stuff';
-
-		this.clothArmor = new this.Item();
-		this.clothArmor.name = 'Cloth Armor';
-		this.clothArmor.armor = 0;
-		this.clothArmor.slug = 'clothArmor';
-
-		this.fists = new this.Item();
-		this.fists.name = 'Fists';
-		this.fists.desc = 'just some fists'
-		this.fists.damage = 1;
-		this.fists.attackSpeed = 1;
-		this.fists.slug = 'fists';
 
 		vm.itemDictionary['food'] = [['item', this.food], ['amount', 0]];
 		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 0]];
@@ -222,7 +237,8 @@
 
 		vm.armor = [vm.itemDictionary['clothArmor'],
 					vm.itemDictionary['woodArmor'],
-					vm.itemDictionary['boneArmor']];
+					vm.itemDictionary['boneArmor'],
+					vm.itemDictionary['polarArmor']];
 
 
 

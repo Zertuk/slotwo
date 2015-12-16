@@ -40,9 +40,11 @@
 		<p>Potions: {{vm.itemDictionary.potion[1][1]}}</p>
 		<h3 class = "inline">Other Items</h3><p class = "italic inline">- These items effects are always active</p>
 		<div class = "otheritem" ng-repeat = "item in vm.otherItems" ng-if = "item[1][1] > 0">
-			<h4>{{item[0][1].name}}</h4>
-			<p class = "small italic">{{item[0][1].desc}}</p>
-			<p>{{item[0][1].message}}</p>
+			<div class = "titleborder">
+				<h4 class = "inline nomargin">{{item[0][1].name}}</h4>
+				<p class = "small italic inline nomargin">- {{item[0][1].desc}}</p>
+			</div>
+			<p class = "nomargin">{{item[0][1].message}}</p>
 		</div>
 	</div><!--inventorylist-->
 </div>

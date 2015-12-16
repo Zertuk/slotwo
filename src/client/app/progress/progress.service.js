@@ -22,6 +22,7 @@
         	treeKingIntro: false,
         	slumBossMet: false,
             woodSwordCrafted: false,
+            woodArmorCrafted: false,
             bridgePrompt: false,
             bridgeBuilt: false,
             forgeActive: true,

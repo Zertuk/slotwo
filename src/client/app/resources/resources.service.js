@@ -67,25 +67,32 @@
 
         vm.craftables = {
             sword: {
-                unlock: '',
                 active: !vm.progress.woodSwordCrafted,
                 text: 'Carve Wooden Sword',
-                cost: '50 Wood',
+                cost: '100 Wood',
                 key: 'sword',
                 special: function() {
                     vm.progress.woodSwordCrafted = true;
                     this.active = !this.active;
                 }
             },
+            woodArmor: {
+                active: !vm.progress.woodArmorCrafted,
+                text: 'Carve Wooden Armor',
+                cost: '100 Wood',
+                key: 'woodArmor',
+                special: function() {
+                    vm.progress.woodArmorCrafted = true;
+                    this.active = !this.active;
+                }
+            },
             bridge: {
-                unlock: '',
                 active: vm.progress.bridgePrompt && !vm.progress.bridgeBuilt,
                 text: 'Build Bridge',
                 cost: '500 Wood 250 Ore',
                 key: 'bridge'
             },
             forge: {
-                unlock: '',
                 active: vm.progress.forgeActive,
                 text: 'Build Forge',
                 cost: '50 Wood 250 Ore',

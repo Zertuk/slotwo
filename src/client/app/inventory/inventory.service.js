@@ -138,6 +138,7 @@
 		this.woodArmor.armor = 0.1;
 		this.woodArmor.buyable = true;
 		this.woodArmor.removeAfterBuy = true;
+		this.woodArmor.recipe = ['wood-100'];
 		this.woodArmor.unlock = 'boneArmor';
 		this.woodArmor.price = 150;
 		this.woodArmor.slug = 'woodArmor';
@@ -168,16 +169,16 @@
 		this.ore.name = 'Ore';
 		this.ore.desc = 'Metal stuff';
 
-		vm.itemDictionary['food'] = [['item', this.food], ['amount', 5]];
-		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 5]];
-		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
-		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 500]];
+		vm.itemDictionary['food'] = [['item', this.food], ['amount', 0]];
+		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 0]];
+		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 0]];
+		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 0]];
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
 		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
-		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
+		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 10]];
 

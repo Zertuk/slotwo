@@ -71,8 +71,9 @@
         }
 
         function addToInventory(item) {
+            console.log(item);
             messageService.updateMainMessage(item.name + ' has been purchased.');
-        	item.quantity = item.quantity + 1;
+        	inventoryService.itemDictionary[item.slug][1][1] = inventoryService.itemDictionary[item.slug][1][1] + 1;
             removeItem(item);
         }
 

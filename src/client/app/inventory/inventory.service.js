@@ -198,14 +198,17 @@
 		this.winterCoat.slug = 'winterCoat';
 		this.winterCoat.desc = 'Covered in cute deer and trees~';
 		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely!';
+		this.winterCoat.buyable = true;
+		this.winterCoat.price = 1000;
+		this.winterCoat.removeAfterBuy = true;
 
-		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 1]];
+		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
 
 		////////////////
 
 		vm.otherItems = [vm.itemDictionary['winterCoat']];
 
-		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor'];
+		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor', 'winterCoat'];
 
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['club'], 

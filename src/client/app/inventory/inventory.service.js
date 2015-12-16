@@ -79,6 +79,7 @@
 		this.grass.spawn = ['Forest'];
 		this.grass.desc  = 'A bundle of grass';
 		this.grass.name = 'Grass';
+		this.grass.message = 'test message';
 		this.grass.cat = 'ingredient';
 		this.grass.slug = 'grass';
 
@@ -196,10 +197,10 @@
 
 		vm.itemDictionary['food'] = [['item', this.food], ['amount', 0]];
 		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 0]];
-		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 0]];
+		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 1]];
 		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 0]];
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
-		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
+		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 1]];
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
@@ -209,7 +210,8 @@
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
 
-
+		vm.otherItems = [vm.itemDictionary['grass'],
+						 vm.itemDictionary['stick']];
 
 		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor'];
 

@@ -5,7 +5,7 @@
 				<h4>Weapon</h4>
 				<select  ng-init = "vm.equippedWeapon = vm.player.weapon.slug" ng-change = "vm.equipWeapon()" ng-model = "vm.equippedWeapon" ng-options = "item[0][1].slug as item[0][1].name for item in vm.weapons">
 				</select>
-				<p class = "small italic">-{{vm.player.weapon.desc}}</p>
+				<p class = "small italic">~ {{vm.player.weapon.desc}} ~</p>
 				<p>{{vm.player.weapon.damage}} Damage</p>
 				<p>{{vm.player.weapon.attackSpeedMessage()}}</p>
 			</div>
@@ -13,7 +13,7 @@
 				<h4>Armor</h4>
 				<select ng-init = "vm.equippedArmor = vm.player.armor.slug" ng-change = "vm.equipArmor()" ng-model = "vm.equippedArmor" ng-options = "item[0][1].slug as item[0][1].name for item in vm.armor">
 				</select>
-				<p class = "small italic">-{{vm.player.armor.desc}}</p>
+				<p class = "small italic">~ {{vm.player.armor.desc}} ~</p>
 				<p>{{vm.player.armorValue*100}}% Armor</p>
 			</div>
 		</div>
@@ -38,6 +38,11 @@
 	</div><!--inventoryselect-->
 	<div class = "inventorylist half">
 		<p>Potions: {{vm.itemDictionary.potion[1][1]}}</p>
-		<h3 class = "inline">Combat Items</h3><p class = "italic inline">- These items are always active</p>
+		<h3 class = "inline">Other Items</h3><p class = "italic inline">- These items effects are always active</p>
+		<div class = "otheritem" ng-repeat = "item in vm.otherItems" ng-if = "item[1][1] > 0">
+			<h4>{{item[0][1].name}}</h4>
+			<p class = "small italic">{{item[0][1].desc}}</p>
+			<p>{{item[0][1].message}}</p>
+		</div>
 	</div><!--inventorylist-->
 </div>

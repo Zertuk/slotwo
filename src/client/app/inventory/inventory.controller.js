@@ -14,6 +14,7 @@
 		vm.player = playerService.player;
 		vm.weapons = [];
 		vm.armor = [];
+		vm.otherItems = inventoryService.otherItems;
 		vm.equippedWeapon = vm.player.weapon;
 		vm.equippedArmor = vm.player.armor;
 

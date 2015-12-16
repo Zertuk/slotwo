@@ -59,6 +59,19 @@
 						return true;
 					}
 				}
+			},
+			this.attackSpeedMessage = function() {
+				var message = '';
+				if (this.attackSpeed === 1) {
+					message = 'Average Speed';
+				}
+				else if (this.attackSpeed > 1) {
+					message = 'Slow Speed';
+
+				} else if (this.attackSpeed < 1) {
+					message = 'Fast Speed';
+				}
+				return message;
 			}
 		};
 
@@ -121,10 +134,10 @@
 
 		this.sword = new this.Item();
 		this.sword.name = 'Sword';
-		this.sword.desc = 'A basic sword';
+		this.sword.desc = 'A wooden sword.';
 		this.sword.recipe = ['wood-100'];
 		this.sword.cat = 'weapon';
-		this.sword.damage = 1;
+		this.sword.damage = 2;
 		this.sword.attackSpeed = 1;
 		this.sword.buyable = true;
 		this.sword.removeAfterBuy = true;
@@ -175,7 +188,8 @@
 		this.clothArmor.slug = 'clothArmor';
 
 		this.fists = new this.Item();
-		this.fists.name = "Fists";
+		this.fists.name = 'Fists';
+		this.fists.desc = 'just some fists'
 		this.fists.damage = 1;
 		this.fists.attackSpeed = 1;
 		this.fists.slug = 'fists';
@@ -187,8 +201,8 @@
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
 		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
 		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
-		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
-		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
+		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
+		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 10]];

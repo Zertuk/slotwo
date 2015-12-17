@@ -76,6 +76,18 @@
 					</div>
 				</div>
 			</div>
+			<div class = "campfire" ng-if = "vm.checkActive('campfire')">
+				<div class = "workerinfo">
+					<div class = "worker">
+						<div class = "button" ng-click = "vm.fuelFire()"><div class = "bg"></div>Add wood to fire</div>
+					</div>
+				</div>
+				<div class = "workerinfo">
+					<div class = "worker">
+						<p>Can attract wanderers when lit. Takes 1 to 2 wood to ligt.</p>
+					</div>
+				</div>
+			</div>
 			<div class = "forge">
 				<div class = "workerinfo">
 					<div class = "worker">
@@ -84,7 +96,7 @@
 				</div>
 				<div class = "workerinfo">
 					<div class = "worker">
-						<p>Converts ore to money</p>
+						<p>Converts 5 ore to 25 gold when active.</p>
 					</div>
 				</div>
 			</div>

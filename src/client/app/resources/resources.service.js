@@ -12,6 +12,18 @@
         vm.itemDictionary = inventoryService.itemDictionary;
         vm.progress = progressService.progress;
 
+        vm.addLogToFire = function() {
+            console.log('add log')
+            if (vm.resources.wood > 0) {
+                vm.itemDictionary['wood'][1][1] = vm.itemDictionary['wood'][1][1] - 1;
+                vm.regrabAmounts();
+                return true;
+            }
+            else {
+                return false;
+            }
+        } 
+
     	vm.moneyTick = function() {
             vm.forgeActive();
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
@@ -101,7 +113,7 @@
             campfire: {
                 active: !vm.progress.campfireActive,
                 text: 'Build Fire',
-                cost: '50 Wood',
+                cost: '10 Wood',
                 key: 'campfire',
                 special: function() {
                     vm.progress.campfireActive = true;

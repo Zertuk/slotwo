@@ -212,6 +212,20 @@
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
 
 
+		//misc
+		this.forge = new this.Item();
+		this.forge.name = 'Forge';
+		this.forge.slug = 'forge';
+		this.forge.recipe = ['wood-50', 'ore-250'];
+
+		this.campfire = new this.Item();
+		this.campfire.name = 'Campfire';
+		this.campfire.slug = 'campfire';
+		this.campfire.recipe = ['wood-10'];
+
+		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]]
+		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]]
+
 
 		////////////////
 

@@ -77,10 +77,10 @@
                 var tooltip = '<p class = "tooltip">'+ hover + '</p>';
                 
                 if (isLevel) {
-                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + tooltip + location.ascii[y + i][x];
+                	before = '<span class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
             	else {
-                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + tooltip + location.ascii[y + i][x];
+                	before = '<span class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!

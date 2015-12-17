@@ -12,6 +12,7 @@
         this.mainMessage = '';
 
         this.abilities = {
+          keys: ['berserk'],
           berserk: {
             name: 'Berserk',
             slug: 'berserk',
@@ -24,6 +25,13 @@
             special: function() {
               this.timer = this.max;
               this.active = true;
+            }
+          },
+          resetAbilities: function() {
+            for (var i = 0; i < this.keys.length; i++) {
+              this[this.keys[i]].active = false;
+              this[this.keys[i]].cd = 0;
+              this[this.keys[i]].timer = 0;
             }
           }
         }

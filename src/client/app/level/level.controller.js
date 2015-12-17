@@ -42,19 +42,21 @@
 		}
 
 		function abilityTimer(ability, elem) {
-			if (vm.abilities[ability].timer > 0) {
-				vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
-				var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
-				angular.element(elem).css('width', percent + '%');
-				$timeout(function() {
-					abilityTimer(ability, elem);
-				}, 125);
-			}
-			else {
-				angular.element(elem).css('width', '0%');
-				vm.abilities[ability].timer = 0;
-				vm.abilities[ability].active = false;
-				abilityCooldown(ability, elem);
+			if (vm.abilities[ability].active) {
+				if (vm.abilities[ability].timer > 0) {
+					vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
+					var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
+					angular.element(elem).css('width', percent + '%');
+					$timeout(function() {
+						abilityTimer(ability, elem);
+					}, 125);
+				}
+				else {
+					angular.element(elem).css('width', '0%');
+					vm.abilities[ability].timer = 0;
+					vm.abilities[ability].active = false;
+					abilityCooldown(ability, elem);
+				}
 			}
 		}
 
@@ -81,9 +83,14 @@
 			}
 		}
 
+		function resetAbilities() {
+			vm.abilities.resetAbilities();
+		}
+
 		//sets everything to default when called
 		vm.resetLevel = function() {
 			vm.currentLevel = levelService.currentLevel;
+			resetAbilities();
 			specialEnd();
 			vm.unitArray = [playerService.player];
 			vm.player.active = true;

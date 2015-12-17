@@ -74,21 +74,19 @@
         vm.click = function(location, hover, data,  x, y, xlength, ylength, isLevel) {
             for (var i = 0; i < ylength; i++) {
                 var before = '';
-            	if (isLevel) {
-                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + location.ascii[y + i][x];
+                var tooltip = '<p class = "tooltip">'+ hover + '</p>';
+                
+                if (isLevel) {
+                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
             	else {
-                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
+                	before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x + xlength, after);
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x, before);
             }
-        };
-
-        vm.hover = function() {
-        	console.log('hover');
         };
 
         vm.Location = function() {

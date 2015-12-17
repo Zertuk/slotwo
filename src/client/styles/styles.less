@@ -29,6 +29,19 @@
     /*font-weight: 400;*/
 }
 
+.tooltip {
+    display: none;
+    background: @color_black;
+    font-size: 32px;
+    left: 25%;
+    z-index: 100;
+}
+
+span.click:hover .tooltip {
+    display: block;
+    position: absolute;
+}
+
 .itemdesc.noborder {
     border: none;
 }
@@ -282,13 +295,7 @@ h1 {
     min-height: 420px;
 }
 
-.tooltip {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-    min-height: 100px;
-    border: 1px solid @color_white;
-}
+
 .shop .list {
     width: 200px;
 }

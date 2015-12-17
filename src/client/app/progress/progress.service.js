@@ -37,7 +37,7 @@
                 treeOne: true,
                 treeTwo: true,
                 dungeon: true,
-                ruinsCleared: false,
+                ruins: false,
                 desert: false,
                 bridge: false,
                 snow: false,

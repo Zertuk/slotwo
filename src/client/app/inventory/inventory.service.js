@@ -62,13 +62,13 @@
 			},
 			this.attackSpeedMessage = function() {
 				var message = '';
-				if (this.attackSpeed === 1) {
+				if (this.attackSpeed === 2) {
 					message = 'Average Speed';
 				}
-				else if (this.attackSpeed > 1) {
+				else if (this.attackSpeed > 2) {
 					message = 'Slow Speed';
 
-				} else if (this.attackSpeed < 1) {
+				} else if (this.attackSpeed < 2) {
 					message = 'Fast Speed';
 				}
 				return message;
@@ -202,11 +202,21 @@
 		this.winterCoat.price = 1000;
 		this.winterCoat.removeAfterBuy = true;
 
+		this.deerAntlers = new this.Item();
+		this.deerAntlers.name = 'Deer Antlers';
+		this.deerAntlers.slug = 'deerAntlers';
+		this.deerAntlers.desc = 'The latest in deer fashion';
+		this.deerAntlers.message = 'Attacks cause +1 damage.';
+
+		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
+
+
 
 		////////////////
 
-		vm.otherItems = [vm.itemDictionary['winterCoat']];
+		vm.otherItems = [vm.itemDictionary['winterCoat'],
+						 vm.itemDictionary['deerAntlers']];
 
 		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor', 'winterCoat'];
 
@@ -220,6 +230,10 @@
 					vm.itemDictionary['woodArmor'],
 					vm.itemDictionary['boneArmor'],
 					vm.itemDictionary['polarArmor']];
+
+		vm.trinkets = [];
+
+		vm.helm = [];
 
 
 

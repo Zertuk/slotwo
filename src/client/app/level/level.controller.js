@@ -26,6 +26,10 @@
 				vm.abilities[ability].special();
 				message = vm.abilities[ability].name + ' has been used.';
 				messageService.updateMainMessage(message);
+				var id = '#' + vm.abilities[ability].slug;
+				var elem = id + ' .abilitybg';
+				angular.element(elem).css('width', '100%');
+				abilityTimer(ability, elem);
 			}
 			else {
 				message = vm.abilities[ability].name + ' already active!';
@@ -33,13 +37,18 @@
 			}
 		}
 
-		function abilityTimer(ability) {
-			if (levelService.abilities[ability].timer > 0) {
-				levelService.abilities[ability].timer = levelService.abilities[ability].timer - 1;
+		function abilityTimer(ability, elem) {
+			if (vm.abilities[ability].timer > 0) {
+				vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
+				var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
+				angular.element(elem).css('width', percent + '%');
+				$timeout(function() {
+					abilityTimer(ability, elem);
+				}, 125);
 			}
 			else {
-				levelService.abilities[ability].timer = 0;
-				levelService.abilities[ability].active = false;
+				vm.abilities[ability].timer = 0;
+				vm.abilities[ability].active = false;
 			}
 		}
 

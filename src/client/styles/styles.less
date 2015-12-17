@@ -29,13 +29,27 @@
     /*font-weight: 400;*/
 }
 
-.button .bg {
-    background: #ffa500;
+.abilityactive {
+
+}
+
+.abilitycooldown {
+
+}
+
+
+
+.button .bg, .button .abilitybg {
+    background: @color_white;
     position: absolute;
     height: 22px;
     left: 0;
     top: 0;
     opacity: 0.5;
+}
+
+.button.abilitybg.abilitycooldown {
+    background: red;
 }
 
 .tooltip {

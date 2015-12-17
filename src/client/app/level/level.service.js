@@ -18,8 +18,11 @@
             unlocked: true,
             active: false,
             timer: 0,
+            max: 100,
+            cd: 0,
+            cdMax: 200,
             special: function() {
-              this.timer = 50;
+              this.timer = this.max;
               this.active = true;
             }
           }

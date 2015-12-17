@@ -19,6 +19,10 @@
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
 
+		vm.activateAbility = function(ability) {
+			console.log(levelService.abilities[ability].special());
+		}
+
 		//sets everything to default when called
 		vm.resetLevel = function() {
 			vm.currentLevel = levelService.currentLevel;

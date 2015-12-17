@@ -11,6 +11,16 @@
     function levelService(enemyService) {
         this.mainMessage = '';
 
+        this.abilities = {
+          berserk: {
+            active: false,
+            timer: 0,
+            special: function() {
+              console.log('berserk activate');
+            }
+          }
+        }
+
         this.Level = function() {
             this.checkLength = function() {
                 console.log(this.defaultAscii[0].length);

@@ -6,7 +6,9 @@
 	</div>
 	<div class = "container">
 		<button ng-click = "vm.player.usePotion()">Use Potion</button>
-		<button ng-click = "vm.activateAbility('berserk')">Berserk</button>
+		<div ng-repeat = "ability in vm.abilities track by $index">
+			<button ng-click = "vm.activateAbility(ability.slug)">{{ability.name}}</button>
+		</div>
 		<div class = "enemyinfo">
 			<p class = "enemyname">{{vm.currentEnemy.name}}</p>
 			<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>

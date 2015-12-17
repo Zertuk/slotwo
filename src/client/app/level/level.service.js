@@ -13,10 +13,14 @@
 
         this.abilities = {
           berserk: {
+            name: 'Berserk',
+            slug: 'berserk',
+            unlocked: true,
             active: false,
             timer: 0,
             special: function() {
-              console.log('berserk activate');
+              this.timer = 50;
+              this.active = true;
             }
           }
         }

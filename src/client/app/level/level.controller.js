@@ -18,9 +18,29 @@
 		vm.enemySpawn = false;
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
+		vm.abilities = levelService.abilities;
 
 		vm.activateAbility = function(ability) {
-			console.log(levelService.abilities[ability].special());
+			var message = '';
+			if (!vm.abilities[ability].active) {
+				vm.abilities[ability].special();
+				message = vm.abilities[ability].name + ' has been used.';
+				messageService.updateMainMessage(message);
+			}
+			else {
+				message = vm.abilities[ability].name + ' already active!';
+				messageService.updateMainMessage(message, true)
+			}
+		}
+
+		function abilityTimer(ability) {
+			if (levelService.abilities[ability].timer > 0) {
+				levelService.abilities[ability].timer = levelService.abilities[ability].timer - 1;
+			}
+			else {
+				levelService.abilities[ability].timer = 0;
+				levelService.abilities[ability].active = false;
+			}
 		}
 
 		//sets everything to default when called

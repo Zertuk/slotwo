@@ -22,7 +22,7 @@
 
 		vm.activateAbility = function(ability) {
 			var message = '';
-			if (!vm.abilities[ability].active) {
+			if (!vm.abilities[ability].active && vm.abilities[ability].cd === 0) {
 				vm.abilities[ability].special();
 				message = vm.abilities[ability].name + ' has been used.';
 				messageService.updateMainMessage(message);
@@ -30,6 +30,10 @@
 				var elem = id + ' .abilitybg';
 				angular.element(elem).css('width', '100%');
 				abilityTimer(ability, elem);
+			}
+			else if (vm.abilities[ability].cd > 0) {
+				message = vm.abilities[ability].name + ' is on cooldown!';
+				messageService.updateMainMessage(message, true)
 			}
 			else {
 				message = vm.abilities[ability].name + ' already active!';
@@ -47,8 +51,33 @@
 				}, 125);
 			}
 			else {
+				angular.element(elem).css('width', '0%');
 				vm.abilities[ability].timer = 0;
 				vm.abilities[ability].active = false;
+				abilityCooldown(ability, elem);
+			}
+		}
+
+		function abilityCooldown(ability, elem) {
+			var cdMax = vm.abilities[ability].cdMax;
+			vm.abilities[ability].cd = cdMax;
+			angular.element(elem).addClass('abilitycooldown');
+			abilityCooldownLoop(ability, elem);
+		}
+
+		function abilityCooldownLoop(ability, elem) {
+			if (vm.abilities[ability].cd > 0) {
+				vm.abilities[ability].cd = vm.abilities[ability].cd - 1;
+				var percent = (vm.abilities[ability].cd / vm.abilities[ability].cdMax)*100;
+				angular.element(elem).css('width', percent + '%');
+				$timeout(function() {
+					abilityCooldownLoop(ability, elem);
+				}, 125);
+			}
+			else {
+				vm.abilities[ability].cd = 0;
+				angular.element(elem).removeClass('abilitycooldown');
+				angular.element(elem).css('width', '0%');
 			}
 		}
 

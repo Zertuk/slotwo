@@ -198,11 +198,11 @@
 							   "                 |     / \\      |       |   | / \\   |  .'          |                                                       ",                                                                        
 							   "                 |      |               |   |  |      ;            |                                                       "]                                                                        
 		vm.treeCity.initClicks = function() {
-			vm.click(this, 'test', 'treeGovernment', 92, 6, 12, 7);
-			vm.click(this, 'test', 'slums', 83, 15, 40, 5);
+			vm.click(this, 'The King', 'treeGovernment', 92, 6, 12, 7);
+			vm.click(this, 'Slums', 'slums', 83, 15, 40, 5);
 			vm.click(this, '','treeSecret', 66, 8, 2, 2);
-			vm.click(this, 'test', 'treeInn', 40, 9, 7, 3);
-			vm.click(this, 'test', 'treeShop', 12, 9, 7, 3);
+			vm.click(this, 'Inn', 'treeInn', 40, 9, 7, 3);
+			vm.click(this, 'Shop', 'treeShop', 12, 9, 7, 3);
 		}
 
 		vm.treeSecret = new vm.Location;

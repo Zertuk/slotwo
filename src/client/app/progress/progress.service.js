@@ -26,6 +26,7 @@
             bridgePrompt: false,
             bridgeBuilt: false,
             forgeActive: true,
+            campFireActive: false,
             trainBattle: false,
             trainDefense: false,
             trainMoney: false,

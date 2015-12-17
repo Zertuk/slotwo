@@ -97,6 +97,16 @@
                 text: 'Build Forge',
                 cost: '50 Wood 250 Ore',
                 key: 'forge'
+            },
+            campfire: {
+                active: !vm.progress.campfireActive,
+                text: 'Build Fire',
+                cost: '50 Wood',
+                key: 'campfire',
+                special: function() {
+                    vm.progress.campfireActive = true;
+                    this.active = !this.active;
+                }
             }
         };
 

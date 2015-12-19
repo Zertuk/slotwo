@@ -41,7 +41,7 @@
         }
         this.Enemy = function() {
             this.ground = false,
-            this.attackSpeed = 1,
+            this.attackSpeed = 2,
             this.health = 10,
             this.maxHealth = 10,
             this.damage = 1,
@@ -55,6 +55,17 @@
             this.positionOld = [0, 0],
             this.itemMult = 1,
             this.inCombat = false,
+            this.attackSpeedText = function() {
+                if (this.attackSpeed === 2) {
+                    return 'average';
+                } 
+                else if (this.attackSpeed > 2) {
+                    return 'slow';
+                }
+                else if (this.attackSpeed < 2) {
+                    return 'fast';
+                }
+            }
             this.findHealthPercent = function() {
                 var percent = this.health / this.maxHealth;
                 if (percent > 1) {

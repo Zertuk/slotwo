@@ -20,7 +20,7 @@
 	                <p class = "alignvert">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
 	            </div><!--healthbar-->
 	            <div class = "enemydamage" ng-if = "vm.currentEnemy.damage > 0">
-	            	<p>{{vm.currentEnemy.damage}} damage</p>
+	            	<p>Causes {{vm.currentEnemy.damage}} damage at {{vm.currentEnemy.attackSpeedText()}} speed.</p>
 	            </div>
 	        </div>
 		</div>

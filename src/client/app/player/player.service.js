@@ -15,32 +15,31 @@
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
 
-        this.abilities = {
-          keys: ['berserk'],
-          berserk: {
-            name: 'Berserk',
-            slug: 'berserk',
-            unlocked: true,
-            active: false,
-            timer: 0,
-            max: 100,
-            cd: 0,
-            cdMax: 200,
-            special: function() {
-              this.timer = this.max;
-              this.active = true;
-            }
-          },
-          resetAbilities: function() {
-            for (var i = 0; i < this.keys.length; i++) {
-              this[this.keys[i]].active = false;
-              this[this.keys[i]].cd = 0;
-              this[this.keys[i]].timer = 0;
-            }
-          }
-        }
-
         this.Player = function() {
+            this.abilities = {
+                keys: ['berserk'],
+                berserk: {
+                    name: 'Berserk',
+                    slug: 'berserk',
+                    unlocked: true,
+                    active: false,
+                    timer: 0,
+                    max: 100,
+                    cd: 0,
+                    cdMax: 200,
+                    special: function() {
+                        this.timer = this.max;
+                        this.active = true;
+                    }
+                },
+                resetAbilities: function() {
+                    for (var i = 0; i < this.keys.length; i++) {
+                        this[this.keys[i]].active = false;
+                        this[this.keys[i]].cd = 0;
+                        this[this.keys[i]].timer = 0;
+                    }
+                }
+            },
             this.specialEnd = undefined,
             this.money = 1000,
             this.usePotion = function() {
@@ -196,6 +195,11 @@
                     return;
                 }
             },
+            this.calculateTotalDamage = function() {
+                for (var i = 0; i < this.abilities.keys.length; i++) {
+                    console.log(this.abilities.keys[i]);
+                }
+            },
             this.active = true,
             this.ground = false,
             this.health = 100,
@@ -228,5 +232,6 @@
             this.gold = 0
         };
         this.player = new this.Player();
+        this.player.calculateTotalDamage();
     }
 })();

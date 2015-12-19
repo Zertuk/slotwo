@@ -18,7 +18,7 @@
 		vm.enemySpawn = false;
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
-		vm.abilities = playerService.abilities;
+		vm.abilities = vm.player.abilities;
 
 		vm.activateAbility = function(ability) {
 			var message = '';
@@ -43,6 +43,7 @@
 
 		function abilityTimer(ability, elem) {
 			if (vm.abilities[ability].active) {
+				vm.player.damage = vm.player.calculateTotalDamage();
 				if (vm.abilities[ability].timer > 0) {
 					vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
 					var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
@@ -221,6 +222,7 @@
 		//master loop for levels
 		function levelLoop() {
 			var dead = false;
+			vm.player.damage = vm.player.calculateTotalDamage();
 			if (vm.player.active) {
 				if (!vm.player.alive) {
 					vm.player.alive = true;

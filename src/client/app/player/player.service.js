@@ -196,9 +196,13 @@
                 }
             },
             this.calculateTotalDamage = function() {
-                for (var i = 0; i < this.abilities.keys.length; i++) {
-                    console.log(this.abilities.keys[i]);
+                var damage = this.weapon.damage;
+                if (this.abilities.berserk.active) {
+                    damage = this.weapon.damage*2;
+                    console.log('berserk active');
                 }
+                console.log('damage :'  + damage);
+                return damage;
             },
             this.active = true,
             this.ground = false,
@@ -223,7 +227,7 @@
             this.desc = 'This is you'
             //attack
             this.weapon = vm.itemDictionary.fists[0][1],
-            this.damage = this.weapon.damage,
+            this.damage = this.calculateTotalDamage(),
             this.attackSpeed = this.weapon.attackSpeed,
             //armor
             this.armor = vm.itemDictionary.clothArmor[0][1],

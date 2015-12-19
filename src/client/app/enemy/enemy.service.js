@@ -267,7 +267,7 @@
             this.deathMessage = '';
             this.symbol = 'D';
             this.maxHealth = 5;
-            this.health = 5;
+            this.health = 500;
             this.damage = 1;
         }
         this.Deer.prototype = new this.Enemy();

@@ -18,7 +18,7 @@
 		vm.enemySpawn = false;
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
-		vm.abilities = levelService.abilities;
+		vm.abilities = playerService.abilities;
 
 		vm.activateAbility = function(ability) {
 			var message = '';

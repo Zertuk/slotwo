@@ -15,6 +15,31 @@
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
 
+        this.abilities = {
+          keys: ['berserk'],
+          berserk: {
+            name: 'Berserk',
+            slug: 'berserk',
+            unlocked: true,
+            active: false,
+            timer: 0,
+            max: 100,
+            cd: 0,
+            cdMax: 200,
+            special: function() {
+              this.timer = this.max;
+              this.active = true;
+            }
+          },
+          resetAbilities: function() {
+            for (var i = 0; i < this.keys.length; i++) {
+              this[this.keys[i]].active = false;
+              this[this.keys[i]].cd = 0;
+              this[this.keys[i]].timer = 0;
+            }
+          }
+        }
+
         this.Player = function() {
             this.specialEnd = undefined,
             this.money = 1000,

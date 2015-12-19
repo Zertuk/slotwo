@@ -286,11 +286,30 @@
 
 		vm.treeSlumsThugs = new vm.Location;
 		vm.treeSlumsThugs.name = 'Tree Slums Thugs';
-		vm.treeSlumsThugs.ascii = ['tree slums thugs'];
 		vm.treeSlumsThugs.prev = 'slums';
 		vm.treeSlumsThugs.prevName = 'Slums';
 		vm.treeSlumsThugs.specialText = true;
 		vm.treeSlumsThugs.dialogue = dialogueService.slumThugs;
+        vm.treeSlumsThugs.ascii = ["                                                                                                                                                       ",                                        
+                                   "                                                                                                                                                       ",                                     
+                                   "                                                                                                     \\\\//\\\\//\\\\//                                      ",                                                                                                                                     
+                                   "                                                                               _______               /__    //\\\\\\          .'''''''''''''.             ",                                                                                                                                        
+                                   "                                                                              /       \\             | <      \\\\//|         '_____________'             ",                                                                                                                                     
+                                   "                                                                             /   __\\\\\\|            C.         B \\|        (_______________)            ",                                                                                                                                      
+                                   "                                                                            /  .'                   <            |         (<--.  .--.  \\|             ",                                                                                                                                      
+                                   "                                                                           /   |                    <           /           \\ o   o      |             ",                                                                                                                                      
+                                   "                                                                           |   |      ___            |_________/            /   |        ))            ",                                                                                                                                        
+                                   "                                                                          '     '.  .'   '.   ____    |       |      ____  |   (__.      |             ",                                                                                                                                     
+                                   "                                                                          |       |/       \\''    ''._|       |___.''    '' \\   ___.   .'              ",                                                                                                                                              
+                                   "                                                                          |       |                                          \\_     __/|               ",                                                                                                                                     
+                                   "                                                                          \\                                                    \\_._/   |               ",                                                                                                                                     
+                                   "                                                                           \\______                                        ____.-'       '-._____       ",                                                                                                                                          
+                                   "                                                                                  '--.___.--'.           |              -'      \\       /       '-     ",                                                                                                                                                
+                                   "                                                                                              |          |          |  /         '--.--'          \\    ",                                                                                                                                             
+                                   "                                                                                              |   .      |      .   | /                            \\   ",                                                                                                                                          
+                                   "                                                                                               \\ ______ / \\ ______ / /    |                   |     \\  ",                                                                                                                                          
+                                   "                                                                                               (                    /     |                   |      \\ "]                                                                                                                                           
+
 
 		vm.treeSlumsBum = new vm.Location;
 		vm.treeSlumsBum.name = 'Tree Slums Bum';
@@ -334,6 +353,9 @@
 							 "                                                                                        \\_______________________/                                  ",                                                                                                                              
 							 "                                                                                             _/_/       \\_\\_                                       ",                                                                                                                               
 							 "                                                                                            (___|       |___)                                      "];
+
+
+
 
 
 

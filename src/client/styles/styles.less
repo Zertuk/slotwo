@@ -388,8 +388,11 @@ span.click {
 }
 
 .enemyname {
+    border-bottom: 2px solid @color_white;
+    padding-bottom: 5px;
     font-size: 16px;
-    margin: 0 0 5px;
+    text-align: center;
+    margin: 5px 0 5px;
 }
 
 .enemydesc {
@@ -406,6 +409,18 @@ span.click {
 .enemyinfo {
     float: left;
     width: 25%;
+}
+
+.enemyinfo .healthbarinner {
+    background: green;
+}
+
+.enemyinfo .healthbar {
+    margin: 5px 0;
+}
+
+.enemyplaceholder {
+    min-height: 100px;
 }
 
 .log {

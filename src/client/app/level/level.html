@@ -5,15 +5,24 @@
 		</div>
 	</div>
 	<div class = "container">
-		<button ng-click = "vm.player.usePotion()">Use Potion</button>
+<!-- 		<button ng-click = "vm.player.usePotion()">Use Potion</button>
 		<div ng-repeat = "ability in vm.abilities track by $index">
 			<div ng-click = "vm.activateAbility(ability.slug)" class = "button" id = "{{ability.slug}}" ng-if = "ability.slug"><div class = "abilitybg"></div>{{ability.name}}</div>
-		</div>
+		</div> -->
 		<div class = "enemyinfo">
-			<p class = "enemyname">{{vm.currentEnemy.name}}</p>
-			<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>
-
-			<p ng-if="vm.currentEnemy.health">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
+			<div class = "enemyplaceholder" ng-if = "!vm.currentEnemy"></div>
+			<div ng-if = "vm.currentEnemy">
+				<p class = "enemyname">{{vm.currentEnemy.name}}</p>
+				<p class = "enemydesc">{{vm.currentEnemy.desc}}</p>
+				<div class = "healthbar">
+	                <div class = "healthbarinner" style = "width: {{vm.currentEnemy.percent*100}}%">
+	                </div>
+	                <p class = "alignvert">{{vm.currentEnemy.health}} / {{vm.currentEnemy.maxHealth}}</p>
+	            </div><!--healthbar-->
+	            <div class = "enemydamage" ng-if = "vm.currentEnemy.damage > 0">
+	            	<p>{{vm.currentEnemy.damage}} damage</p>
+	            </div>
+	        </div>
 		</div>
 		<div class = "log" id = "log">
 			<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>

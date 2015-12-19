@@ -21,6 +21,7 @@
                 berserk: {
                     name: 'Berserk',
                     slug: 'berserk',
+                    text: 'Attacks deal double damage',
                     unlocked: true,
                     active: false,
                     timer: 0,
@@ -68,7 +69,7 @@
                 }
                 this.checkMaxHealth();
             },
-            this.healthBarUpdate = function() {
+            this.healthBarUpdate = function(enemy) {
                 this.checkMaxHealth();
                 var percent = this.healthPercent();
                 if (percent > 65) {

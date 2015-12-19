@@ -20,6 +20,7 @@
         function battle(unit, enemy, map) {
             count = count + 1;
             vm.currentEnemy = enemy;
+            vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
             if (count % enemy.attackSpeed == 0) {
                 var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
                 unit.health = unit.health - damageDealt;
@@ -54,6 +55,13 @@
             this.positionOld = [0, 0],
             this.itemMult = 1,
             this.inCombat = false,
+            this.findHealthPercent = function() {
+                var percent = this.health / this.maxHealth;
+                if (percent > 1) {
+                    percent = 1;
+                }
+                return percent;
+            },
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                     battle(enemyArray, current, map);
@@ -221,7 +229,7 @@
             this.symbol = '|';
             this.move = false;
             this.maxHealth = 20;
-            this.health = 20;
+            this.health = 200;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;

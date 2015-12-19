@@ -33,6 +33,21 @@
                         this.active = true;
                     }
                 },
+                block: {
+                    name: 'Block',
+                    slug: 'block',
+                    text: 'Blocks incoming damage',
+                    unlocked: true,
+                    active: false,
+                    timer: 0,
+                    max: 50,
+                    cd: 0,
+                    cdMax: 200,
+                    special: function() {
+                        this.timer = this.max;
+                        this.active = true;
+                    }
+                },
                 resetAbilities: function() {
                     for (var i = 0; i < this.keys.length; i++) {
                         this[this.keys[i]].active = false;

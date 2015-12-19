@@ -49,6 +49,10 @@
                 <button ng-if = "vm.currentLocation.prevName" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
                 <button ng-if = "vm.prevMessage" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">{{vm.prevMessage}}</button>
                 <p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
+                <div class = "playerinfo">
+                    <p>{{vm.player.calculateTotalDamage()}} attack</p>
+                    <p>{{vm.player.armorValue*100}}% armor</p>
+                </div>
             </div><!--row-->
         </header>
         <ng-include class = "template" src="vm.activeTemplate"></ng-include>

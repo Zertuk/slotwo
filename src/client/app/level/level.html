@@ -5,10 +5,7 @@
 		</div>
 	</div>
 	<div class = "container">
-<!-- 		<button ng-click = "vm.player.usePotion()">Use Potion</button>
-		<div ng-repeat = "ability in vm.abilities track by $index">
-			<div ng-click = "vm.activateAbility(ability.slug)" class = "button" id = "{{ability.slug}}" ng-if = "ability.slug"><div class = "abilitybg"></div>{{ability.name}}</div>
-		</div> -->
+
 		<div class = "enemyinfo">
 			<div class = "enemyplaceholder" ng-if = "!vm.currentEnemy"></div>
 			<div ng-if = "vm.currentEnemy">
@@ -23,6 +20,12 @@
 	            	<p>Causes {{vm.currentEnemy.damage}} damage at {{vm.currentEnemy.attackSpeedText()}} speed.</p>
 	            </div>
 	        </div>
+		</div>
+		<div class = "playerabilities">
+			<button ng-click = "vm.player.usePotion()" class = "block">Use Potion</button>
+			<div ng-repeat = "ability in vm.abilities track by $index">
+				<div ng-click = "vm.activateAbility(ability.slug)" class = "button" id = "{{ability.slug}}" ng-if = "ability.slug"><div class = "abilitybg"></div>{{ability.name}}</div>
+			</div>
 		</div>
 		<div class = "log" id = "log">
 			<p ng-repeat = "message in vm.messageLog track by $index">{{message}}</p>

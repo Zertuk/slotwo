@@ -91,6 +91,7 @@
 
 		//sets everything to default when called
 		vm.resetLevel = function() {
+			enemyService.currentEnemy = undefined;
 			vm.currentLevel = levelService.currentLevel;
 			resetAbilities();
 			specialEnd();

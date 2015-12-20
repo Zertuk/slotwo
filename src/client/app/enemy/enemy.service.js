@@ -275,12 +275,25 @@
         this.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';
             this.deathMessage = 'A Treeperson Warrior has been slain!';
-            this.symbol = "T";
+            this.symbol = 'T';
             this.maxHealth = 30;
             this.health = 30;
             this.damage = 2;
         }
         this.TreeWarrior.prototype = new this.Enemy();
+
+        this.Minotaur = function Minotaur() {
+            this.name = 'Minotaur';
+            this.deathMessage = 'The Minotaur has been defeated!';
+            this.symbol = ',';
+            this.maxHealth = 500;
+            this.health = 10;
+            this.damage = 10;
+            this.attackSpeed = 10;
+            this.colBox = [15, 15];
+            this.move = false;
+        }
+        this.Minotaur.prototype = new this.Enemy();
         
 
 

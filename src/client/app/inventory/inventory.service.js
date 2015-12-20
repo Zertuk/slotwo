@@ -202,6 +202,15 @@
 		this.winterCoat.price = 1000;
 		this.winterCoat.removeAfterBuy = true;
 
+		this.wizardsHair = new this.Item();
+		this.wizardsHair.name = 'Wizards Hair';
+		this.wizardsHair.slug = 'wizardsHair';
+		this.wizardsHair.desc = 'Rumored to grant the holder great luck.';
+		this.wizardsHair.message = 'A lock of bushy Wizard hair.';
+		this.wizardsHair.buyable = true;
+		this.wizardsHair.price = 1000;
+		this.wizardsHair.removeAfterBuy = true;
+
 		this.deerAntlers = new this.Item();
 		this.deerAntlers.name = 'Deer Antlers';
 		this.deerAntlers.slug = 'deerAntlers';
@@ -210,6 +219,7 @@
 
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
+		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];
 
 
 		//misc
@@ -230,9 +240,10 @@
 		////////////////
 
 		vm.otherItems = [vm.itemDictionary['winterCoat'],
-						 vm.itemDictionary['deerAntlers']];
+						 vm.itemDictionary['deerAntlers'],
+						 vm.itemDictionary['wizardsHair']];
 
-		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor', 'winterCoat'];
+		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor', 'winterCoat', 'wizardsHair'];
 
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['club'], 

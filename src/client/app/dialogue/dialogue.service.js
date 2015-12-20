@@ -30,6 +30,20 @@
             var dialogue = {
                 introduction: {
                     text: 'wizard introduction',
+                    continue: true,
+                    next: 'question',
+                    master: 'wizard'
+                },
+                question: {
+                    text: 'wizard question',
+                    buttons: {
+                        hair: {
+                            text: 'Is this genuine Wizard hair?',
+                            next: 'hair',
+                            master: 'wizard',
+                            active: true
+                        }
+                    }
                 }
             }
             return dialogue;

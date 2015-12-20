@@ -1,0 +1,13 @@
+<div id = "locationtext">
+	<p>Welcome!  Looking to shop?  Here is my current inventory.</p>
+	<div ng-repeat = "item in vm.itemList[0] track by $index" class = "shoprow">
+		<div class = "half">
+			<button ng-click = "vm.buyItem(item)">{{item.name}}</button>
+		</div>
+		<div class = "half">
+			<p class = "nomargin inline">{{item.price}} gold</p>
+			<p class = "nomargin inline" ng-if = "item.slug === 'potion'"> | </p>
+			<p class = "nomargin inline small" ng-if = "item.slug === 'potion'">{{item.quantity}} owned</p>
+		</div>
+	</div>
+</div>

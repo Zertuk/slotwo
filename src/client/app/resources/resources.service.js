@@ -5,14 +5,31 @@
         .module('app.resources')
         .service('resourcesService', resourcesService);
 
-    resourcesService.$inject = ['messageService'];
+    resourcesService.$inject = ['messageService', 'inventoryService', 'progressService'];
 
-    function resourcesService(messageService) {
+    function resourcesService(messageService, inventoryService, progressService) {
     	var vm = this;
+        vm.itemDictionary = inventoryService.itemDictionary;
+        vm.progress = progressService.progress;
+
+        vm.addLogToFire = function() {
+            console.log('add log')
+            if (vm.resources.wood > 0) {
+                vm.itemDictionary['wood'][1][1] = vm.itemDictionary['wood'][1][1] - 1;
+                vm.regrabAmounts();
+                return true;
+            }
+            else {
+                return false;
+            }
+        } 
+
     	vm.moneyTick = function() {
+            vm.forgeActive();
     		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
     		return vm.resources.money;
-    	}
+    	};
+
     	vm.assignWorker = function(type) {
     		if (vm.resources.workers > 0) {
     			vm.resources[type] = vm.resources[type] + 1;
@@ -22,7 +39,8 @@
     		else {
     			messageService.updateMainMessage('No workers available.', true);
     		}
-    	}
+    	};
+
     	vm.removeWorker = function(type) {
     		if (vm.resources[type] > 0) {
     			vm.resources[type] = vm.resources[type] - 1;
@@ -33,7 +51,78 @@
     			var errorMessage = 'No ' + type + ' are currently working.';
     			messageService.updateMainMessage(errorMessage, true);
     		}
-    	}
+    	};
+
+        vm.forgeActive = function() {
+            if (vm.resources.forge) {
+                if (vm.resources.ore >= 5) {
+                    vm.resources.ore = vm.resources.ore - 5;
+                    vm.resources.money = vm.resources.money + 25;
+                }
+            }
+        }
+
+        vm.toggleForge = function() {
+            vm.resources.forge = !vm.resources.forge;
+        }
+
+        vm.forgeMessage = function() {
+            var message = '';
+            if (vm.resources.forge) {
+                message = 'Deactivate Forge';
+            }
+            else {
+                message = 'Activate Forge';
+            }
+            return message;
+        }
+
+        vm.craftables = {
+            sword: {
+                active: !vm.progress.woodSwordCrafted,
+                text: 'Carve Wooden Sword',
+                cost: '100 Wood',
+                key: 'sword',
+                special: function() {
+                    vm.progress.woodSwordCrafted = true;
+                    this.active = !this.active;
+                }
+            },
+            woodArmor: {
+                active: !vm.progress.woodArmorCrafted,
+                text: 'Carve Wooden Armor',
+                cost: '100 Wood',
+                key: 'woodArmor',
+                special: function() {
+                    vm.progress.woodArmorCrafted = true;
+                    this.active = !this.active;
+                }
+            },
+            bridge: {
+                active: vm.progress.bridgePrompt && !vm.progress.bridgeBuilt,
+                text: 'Build Bridge',
+                cost: '500 Wood 250 Ore',
+                key: 'bridge'
+            },
+            forge: {
+                active: vm.progress.forgeActive,
+                text: 'Build Forge',
+                cost: '50 Wood 250 Ore',
+                key: 'forge'
+            },
+            campfire: {
+                active: !vm.progress.campfireActive,
+                text: 'Build Fire',
+                cost: '10 Wood',
+                key: 'campfire',
+                special: function() {
+                    vm.progress.campfireActive = true;
+                    this.active = !this.active;
+                }
+            }
+        };
+
+        vm.craftablesKeys = ['sword', 'bridge'];
         
     	vm.workers = {
     		farmers: {
@@ -55,69 +144,71 @@
     			food: -2,
     			active: false
     		}
-    	}
+    	};
 
     	vm.resources = {
-    		money: 0,
+    		money: 1000,
     		moneyRate: 1,
     		workers: 10,
     		lumberjacks: 0,
     		farmers: 0,
     		miners: 0,
     		overseers: 0,
-    		food: 0,
+    		food: vm.itemDictionary['food'][1][1],
     		foodUp: 0,
     		foodDown: 0,
-    		ore: 0,
+    		ore: vm.itemDictionary['ore'][1][1],
     		oreUp: 0,
     		oreDown: 0,
-    		wood: 0,
+    		wood: vm.itemDictionary['wood'][1][1],
     		woodUp: 0,
     		woodDown: 0,
+            forge: false,
     		keys: ['farmers', 'miners', 'overseers', 'lumberjacks'],
     		resKeys: ['food', 'wood', 'ore'],
-    		produce: function(resource) {
-    			var keys = vm.resources.keys;
-    			var amount = 0;
-    			for (var i = 0; i < keys.length; i++) {
-    				if ((vm.resources[keys[i]] > 0) && (typeof vm.workers[keys[i]][resource] !== 'undefined')) {
-    					amount = amount + vm.workers[keys[i]][resource]*vm.resources[keys[i]];
-    				}
-    			}
-    			return amount;
-    		},
     		updateAmounts: function() {
     			activeWorkers();
     		}
-    	}
+    	};
+
+        vm.regrabAmounts = function() {
+            vm.resources.wood = vm.itemDictionary['wood'][1][1];
+            vm.resources.food = vm.itemDictionary['food'][1][1];
+            vm.resources.ore = vm.itemDictionary['ore'][1][1];
+        };
+
+        //init rates, only works if gain when resource > 0
     	vm.initRates = function() {
+            //farmers
     		if (vm.workers['farmers'].active) {
-    			vm.resources.foodRate = vm.resources.produce('food');
     			raiseAmounts('food');
     		}
     		else {
     			vm.resources.foodRate = 0;
     		}
+            //lumberjacks
 			if (vm.workers['lumberjacks'].active) {
-    			vm.resources.woodRate = vm.resources.produce('wood');
     			raiseAmounts('wood');
     		}
     		else {
     			vm.resources.woodRate = 0;
     		}
+            //miners
     		if (vm.workers['miners'].active) {
-				vm.resources.oreRate = vm.resources.produce('ore');
 				raiseAmounts('ore');
 			}
 			else {
 				vm.resources.oreRate = 0;
 			}
-    	}
+    	};
 
+        //resource up/down rate calculate
     	function raiseAmounts(resource) {
     		var gainRate = resource + 'Up';
-    		var downRate = resource + 'Down'
+    		var downRate = resource + 'Down';
     		var rate = vm.resources[gainRate] + vm.resources[downRate];
+            console.log(resource);
+            console.log(rate);
     		vm.resources[resource] = vm.resources[resource] + rate;
     		var totalRate = resource + 'Rate';
     		vm.resources[totalRate] = rate;
@@ -125,18 +216,20 @@
     		vm.resources[gainRate] = 0;
     	}
 
+        //checks if there are active workers of each type
     	function activeWorkers() {
-    		var activeWorkers = [];
+    		var activeWorkersArray = [];
     		for (var i = 0; i < vm.resources.keys.length; i++) {
     			if (vm.resources[vm.resources.keys[i]] > 0) {
-    				activeWorkers.push(vm.resources.keys[i]);
+    				activeWorkersArray.push(vm.resources.keys[i]);
     			}
     		}
-    		gainsLossesAssign(activeWorkers);
+    		gainsLossesAssign(activeWorkersArray);
     	}
 
-    	function gainsLossesAssign(activeWorkers) {
-    		var keys = activeWorkers;
+        //checks whether resource is gained or lost for each worker type, based on pos/neg value
+    	function gainsLossesAssign(activeWorkersArray) {
+    		var keys = activeWorkersArray;
     		var resKeys = vm.resources.resKeys;
     		for (var i = 0; i < keys.length; i++) {
     			var gains = [];
@@ -149,37 +242,41 @@
     					losses.push(resKeys[j]);
     				}
     			}
-    			var totals  = []
+    			var totals  = [];
     			var canProduce = checkAmounts(gains, losses, keys[i]);
     		}
     	}
 
+        //checks if enough resources are available for worker to be active
     	function checkAmounts(gains, losses, key) {
     		var error = 0;
     		var canProduce = false;
     		for (var i = 0; i < losses.length; i++) {
-    			console.log(vm.resources[losses[i]]);
-    			console.log(vm.resources[key])
     			if (vm.workers[key][losses[i]]*vm.resources[key]*-1 <= vm.resources[losses[i]]) {
     				var lossRate = losses[i] + 'Down';
+                    console.log('test')
     				vm.resources[lossRate] = vm.resources[lossRate] + vm.workers[key][losses[i]]*vm.resources[key];
     			}
     			else {
-    				error = error + 1;
     				var errorMessage = 'Not enough ' + losses[i];
     				messageService.updateMainMessage(errorMessage, true);
     			}
     		}
+            //if error, then some resource doesnt have enough, so dont run
+            console.log(vm.resources[losses[0]]);
     		if (error === 0) {
     			vm.workers[key].active = true;
-    			for (var i = 0; i < gains.length; i++) {
-    				var gainRate = gains[i] + 'Up';
-    				vm.resources[gainRate] = vm.resources[gainRate] + vm.workers[key][gains[i]]*vm.resources[key];
+    			for (var j = 0; j < gains.length; j++) {
+    				var gainRate = gains[j] + 'Up';
+    				vm.resources[gainRate] = vm.resources[gainRate] + vm.workers[key][gains[j]]*vm.resources[key];
     			}
     		}
     		else {
     			vm.workers[key].active = false;
     		}
+            vm.itemDictionary['wood'][1][1] = vm.resources.wood;
+            vm.itemDictionary['ore'][1][1] = vm.resources.ore;
+            vm.itemDictionary['food'][1][1] = vm.resources.food;
     		vm.initRates();
     	}
   	

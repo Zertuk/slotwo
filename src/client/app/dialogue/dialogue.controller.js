@@ -11,11 +11,16 @@
     function DialogueController(dialogueService, progressService, mainService) {
         console.log(mainService);
         var vm = this;
+        dialogueService.initAllDialogues();
         vm.switchDialogue = function(input, master) {
             vm.currentMaster = dialogueService[master];
             vm.currentDialogue = vm.currentMaster.dialogue[input];
             vm.locationText = vm.currentDialogue.text;
             special();
+        }
+
+        vm.switchLevel = function(level) {
+            vm.currentLocation = mainService.switchLevel(level);
         }
 
         function special() {
@@ -35,7 +40,9 @@
 
 
         function activate() {
-            var initDialogue = mainService.currentLocation.dialogue;
+            var location = mainService.currentLocation;
+            var initDialogue = location.dialogue;
+            console.log(mainService.currentLocation);
             var key = initDialogue.initDialogue();
             vm.currentDialogue = initDialogue.dialogue[key];
             vm.locationText = vm.currentDialogue.text;

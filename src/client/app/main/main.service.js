@@ -5,41 +5,89 @@
         .module('app.main')
         .service('mainService', mainService);
 
-    mainService.$inject = ['dialogueService'];
+    mainService.$inject = ['dialogueService', 'levelService', 'progressService', 'templateService', 'messageService', 'playerService'];
 
     /* @ngInject */
-    function mainService(dialogueService) {
+    function mainService(dialogueService, levelService, progressService, templateService, messageService, playerService) {
     	var vm = this;
+        vm.levelDictionary = levelService.levelDictionary;
+        vm.progress = progressService.progress;
+        vm.player = playerService.player;
 
-    	vm.switchLocation = function(location) {
-            vm.currentLocation = vm.locationDictionary[location];
-            console.log(vm.currentLocation);
-            return vm.currentLocation;
+        vm.switchTemplate = function(template) {
+            vm.player.active = false;
+            templateService.switchTemplate(template);
+        };
+
+        vm.switchLevel = function(level) {
+            console.log('testage');
+            //only works if level is unlocked
+            var unlockCheck = vm.levelDictionary[level];
+            if (vm.progress.levels[unlockCheck.slug]) {
+                vm.switchTemplate('app/level/level.html');
+                levelService.switchCurrentLevel(level);
+                messageService.updateMainMessage('');
+                vm.currentLocation = vm.levelDictionary[level];
+                return vm.levelDictionary[level];
+            }
+            else {
+                messageService.updateMainMessage('You cannot visit here yet.', true);
+            }
+        };
+
+        vm.switchLocation = function(location) {
+            //only works if location is unlocked
+            var unlockCheck = vm.locationDictionary[location];
+            var skip = false;
+            if (typeof unlockCheck.slug === 'undefined') {
+                skip = true;
+            }
+            if (vm.progress.levels[unlockCheck.slug] || skip) {
+                vm.switchTemplate('app/main/main.html');
+                var thisLocation = vm.locationDictionary[location];
+                messageService.mainMessage = '';
+                vm.currentLocation = thisLocation;
+                return thisLocation;
+                
+            }
+            else {
+                messageService.updateMainMessage('You cannot visit here yet.', true);
+                return false;
+            }
         };
 
 
+
+    	// vm.switchLocation = function(location) {
+     //        vm.currentLocation = vm.locationDictionary[location];
+     //        console.log(vm.currentLocation);
+     //        return vm.currentLocation;
+     //    };
+
+
     	vm.setCharAt = function(str,index,chr) {
-            if(index > str.length-1) return str;
+            if (index > str.length-1) {
+                return str;
+            }
             return str.substr(0,index) + chr + str.substr(index+1);
-        }
+        };
         vm.click = function(location, hover, data,  x, y, xlength, ylength, isLevel) {
             for (var i = 0; i < ylength; i++) {
-            	if (isLevel) {
-                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLevel(\'' + data + '\')">' + location.ascii[y + i][x];
+                var before = '';
+                var tooltip = '<p class = "tooltip">'+ hover + '</p>';
+                
+                if (isLevel) {
+                	before = '<span class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
             	else {
-                	var before = '<span title = "' + hover + '" class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + location.ascii[y + i][x];
+                	before = '<span class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
                 //after then before to not break order!
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x + xlength, after);
                 location.ascii[y + i] = this.setCharAt(location.ascii[y + i], x, before);
             }
-        }
-
-        vm.hover = function() {
-        	console.log('hover');
-        }
+        };
 
         vm.Location = function() {
     		this.asciiFormatted = [];
@@ -54,6 +102,8 @@
         vm.mainMap = new vm.Location;
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
+            //monk
+            vm.click(this, 'Monk', 'monk', 112, 16, 4, 3);
         	//wizard
         	vm.click(this, 'Wizard', 'wizard', 171, 35, 30, 10);
         	//snow
@@ -65,11 +115,13 @@
         	//tree two
         	vm.click(this, 'Tree Two', 'treeTwo', 30, 29, 30, 10, true);
         	//treeone 
-        	vm.click(this, 'Tree One', 'treeOne', 1, 29, 28, 10, true);
+        	vm.click(this, 'Tree One', 'treeOne', 1, 29, 28, 8, true);
         	vm.click(this, 'Tree One', 'treeOne', 30, 40, 38, 5, true);
         	//ruins
         	vm.click(this, 'Ruins', 'ruins', 0, 6, 50, 12, true);
         	vm.click(this, 'Dungeon', 'dungeon', 0, 0, 25, 6, true);
+            //house
+            vm.click(this, 'House', 'house', 0, 38, 20, 5);
 
         };
 		vm.mainMap.ascii = [	"            .                                  /              \\     /   \\                                                    /         \\   .'                          \\                  ",
@@ -122,6 +174,7 @@
 
         vm.treeCity = new vm.Location;
         vm.treeCity.name = 'Tree City';
+        vm.treeCity.slug = 'treeCity';
         vm.treeCity.prev = 'mainMap';
         vm.treeCity.prevName = 'Map';
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
@@ -147,11 +200,11 @@
 							   "                 |     / \\      |       |   | / \\   |  .'          |                                                       ",                                                                        
 							   "                 |      |               |   |  |      ;            |                                                       "]                                                                        
 		vm.treeCity.initClicks = function() {
-			vm.click(this, 'test', 'treeGovernment', 92, 6, 12, 7);
-			vm.click(this, 'test', 'slums', 83, 15, 40, 5);
+			vm.click(this, 'The King', 'treeGovernment', 92, 6, 12, 7);
+			vm.click(this, 'Slums', 'slums', 83, 15, 40, 5);
 			vm.click(this, '','treeSecret', 66, 8, 2, 2);
-			vm.click(this, 'test', 'treeInn', 40, 9, 7, 3);
-			vm.click(this, 'test', 'treeShop', 12, 9, 7, 3);
+			vm.click(this, 'Inn', 'treeInn', 40, 9, 7, 3);
+			vm.click(this, 'Shop', 'treeShop', 12, 9, 7, 3);
 		}
 
 		vm.treeSecret = new vm.Location;
@@ -162,44 +215,36 @@
 
 		vm.treeShop = new vm.Location;
 		vm.treeShop.name = 'Tree Shop';
-		
-        vm.treeShop.ascii = ["                                                                         ___________________________| |_____-'-              ",                                                                                                                                                 
-                             "                                                                        /    ____________________   |          |             ",                                                                                                                                                  
-                             "                                                                        \\___________________________|  _____   |             ",                                                                                                                                                    
-                             "                                                                                                    |_|     '-'              ",                                                                                                                                                  
-                             "                                                                      [=]                                                    ",                                                                                                                                                 
-                             "                                                            [=]      /   \\                       .------.                    ",                                                                                                                                                  
-                             "                                                            | |     /  |  \\    [=] [=]          /_______ \\                   ",                                                                                                                                                  
-                             "                                                            | |    /   |   \\   | | | |         (|--  --,'(=).                ",                                                                                                                                                      
-                             "                                                           /   \\   \\   |   /   | | | |        . |>o  o<  | /\\\\.              ",                                                                                                                                                    
-                             "                                                      ____/_____\\___\\_____/____|_|_|_|_      ( .|  /,    ||  |\\)             ",                                                                                                                                                    
-                             "                                                     |_________________________________|   ( .( \\  __.  /||  |/.)            ",                                                                                                                                                  
-                             "                                                                                          . ( . (\\_____/ |)\\/ .) )           ",                                                                                                                                                  
-                             "                                                                                         (. . ( ____|    |_)_.)_. )          ",                                                                                                                                                  
-                             "                                                                                          ( .__/              ___\\__         ",                                                                                                                                                 
-                             "                                                                                            /  \\_.--.\\/.---._/      \\        ",                                                                                                                                                      
-                             "                                                                        ________//         /    :    :               \\       ",                                                                                                                                                      
-                             "                                                                        \\______  \\         \\    '.___..____.' /\\  /  /       ",                                                                                                                                                        
-                             "                                                                               \\  \\        / \\__/ |  ><     \\/  \\___/\\       ",                                                                                                                                                         
-                             "                                                                                \\  \\      /  /    |  ><     /      \\  \\      ",                                                                                                                                                  
-                             "                                                                                 \\  \\    /  /     |  ><     |       \\  \\     ",                                                                                                                                                  
-                             "                                                                                  \\  \\  /  /     /   ><      \\       \\  \\    ",                                                                                                                                                  
-                             "                                                                                   \\  \\/  /     /   /  \\     /\\      /  /    "]                                                                                                                                                  
-                                                                                                                            
-
-
-
-
-
-
-
 		vm.treeShop.prev = 'treeCity';
-		vm.treeShop.prevName = 'Tree City';
-
+        vm.treeShop.prevName = 'Tree City';
+        vm.treeShop.ascii = ["                                                                                              ___________________________| |_____-'-              ",                                                                                                                                                 
+                             "                                                                                             /    ____________________   |          |             ",                                                                                                                                                  
+                             "                                                                                             \\___________________________|  _____   |             ",                                                                                                                                                    
+                             "                                                                                                                         |_|     '-'              ",                                                                                                                                                  
+                             "                                                                                           [=]                                                    ",                                                                                                                                                 
+                             "                                                                                 [=]      /   \\                       .------.                    ",                                                                                                                                                  
+                             "                                                                                 | |     /  |  \\    [=] [=]          /_______ \\                   ",                                                                                                                                                  
+                             "                                                                                 | |    /   |   \\   | | | |         (|--  --,'(=).                ",                                                                                                                                                      
+                             "                                                                                /   \\   \\   |   /   | | | |        . |>o  o<  | /\\\\.              ",                                                                                                                                                    
+                             "                                                                           ____/_____\\___\\_____/____|_|_|_|_      ( .|  /,    ||  |\\)             ",                                                                                                                                                    
+                             "                                                                          |_________________________________|   ( .( \\  __.  /||  |/.)            ",                                                                                                                                                  
+                             "                                                                                                               . ( . (\\_____/ |)\\/ .) )           ",                                                                                                                                                  
+                             "                                                                                                              (. . ( ____|    |_)_.)_. )          ",                                                                                                                                                  
+                             "                                                                                                               ( .__/              ___\\__         ",                                                                                                                                                 
+                             "                                                                                                                 /  \\_.--.\\/.---._/      \\        ",                                                                                                                                                      
+                             "                                                                                             ________//         /    :    :               \\       ",                                                                                                                                                      
+                             "                                                                                             \\______  \\         \\    '.___..____.' /\\  /  /       ",                                                                                                                                                        
+                             "                                                                                                    \\  \\        / \\__/ |  ><     \\/  \\___/\\       ",                                                                                                                                                         
+                             "                                                                                                     \\  \\      /  /    |  ><     /      \\  \\      ",                                                                                                                                                  
+                             "                                                                                                      \\  \\    /  /     |  ><     |       \\  \\     ",                                                                                                                                                  
+                             "                                                                                                       \\  \\  /  /     /   ><      \\       \\  \\    ",                                                                                                                                                  
+                             "                                                                                                        \\  \\/  /     /   /  \\     /\\      /  /    "]                                                                                                                                                  
 
 		vm.treeInn = new vm.Location;
-		vm.treeInn.name = 'Tree Inn';
-		vm.treeInn.ascii = ['tree inn'];
+		vm.treeInn.name = 'Enchant';
+		vm.treeInn.ascii = ['tree enchant'];
+        vm.treeInn.specialText = true;
+        vm.treeInn.dialogue = dialogueService.enchant;
 		vm.treeInn.prev = 'treeCity';
 		vm.treeInn.prevName = 'Tree City';
 
@@ -243,17 +288,44 @@
 
 		vm.treeSlumsThugs = new vm.Location;
 		vm.treeSlumsThugs.name = 'Tree Slums Thugs';
-		vm.treeSlumsThugs.ascii = ['tree slums thugs'];
 		vm.treeSlumsThugs.prev = 'slums';
 		vm.treeSlumsThugs.prevName = 'Slums';
 		vm.treeSlumsThugs.specialText = true;
 		vm.treeSlumsThugs.dialogue = dialogueService.slumThugs;
+        vm.treeSlumsThugs.ascii = ["                                                                                                                                                       ",                                        
+                                   "                                                                                                                                                       ",                                     
+                                   "                                                                                                     \\\\//\\\\//\\\\//                                      ",                                                                                                                                     
+                                   "                                                                               _______               /__    //\\\\\\          .'''''''''''''.             ",                                                                                                                                        
+                                   "                                                                              /       \\             | <      \\\\//|         '_____________'             ",                                                                                                                                     
+                                   "                                                                             /   __\\\\\\|            C.         B \\|        (_______________)            ",                                                                                                                                      
+                                   "                                                                            /  .'                   <            |         (<--.  .--.  \\|             ",                                                                                                                                      
+                                   "                                                                           /   |                    <           /           \\ o   o      |             ",                                                                                                                                      
+                                   "                                                                           |   |      ___            |_________/            /   |        ))            ",                                                                                                                                        
+                                   "                                                                          '     '.  .'   '.   ____    |       |      ____  |   (__.      |             ",                                                                                                                                     
+                                   "                                                                          |       |/       \\''    ''._|       |___.''    '' \\   ___.   .'              ",                                                                                                                                              
+                                   "                                                                          |       |                                          \\_     __/|               ",                                                                                                                                     
+                                   "                                                                          \\                                                    \\_._/   |               ",                                                                                                                                     
+                                   "                                                                           \\______                                        ____.-'       '-._____       ",                                                                                                                                          
+                                   "                                                                                  '--.___.--'.           |              -'      \\       /       '-     ",                                                                                                                                                
+                                   "                                                                                              |          |          |  /         '--.--'          \\    ",                                                                                                                                             
+                                   "                                                                                              |   .      |      .   | /                            \\   ",                                                                                                                                          
+                                   "                                                                                               \\ ______ / \\ ______ / /    |                   |     \\  ",                                                                                                                                          
+                                   "                                                                                               (                    /     |                   |      \\ "]                                                                                                                                           
+
 
 		vm.treeSlumsBum = new vm.Location;
 		vm.treeSlumsBum.name = 'Tree Slums Bum';
 		vm.treeSlumsBum.ascii = ['tree slums bum'];
 		vm.treeSlumsBum.prev = 'slums';
 		vm.treeSlumsBum.prevName = 'Slums';
+
+        vm.monk = new vm.Location;
+        vm.monk.name = 'The Cavern';
+        vm.monk.prev = 'mainMap';
+        vm.monk.prevName = 'Map';
+        vm.monk.specialText = true;
+        vm.monk.dialogue = dialogueService.monk;
+        vm.monk.ascii = ["monk ascii here"];
 
 		vm.wizard = new vm.Location;
 		vm.wizard.name = 'Wizard';
@@ -283,6 +355,37 @@
 							 "                                                                                        \\_______________________/                                  ",                                                                                                                              
 							 "                                                                                             _/_/       \\_\\_                                       ",                                                                                                                               
 							 "                                                                                            (___|       |___)                                      "];
+
+
+        vm.house = new vm.Location;
+        vm.house.name = 'Home';
+        vm.house.prev = 'mainMap';
+        vm.house.prevName = 'Map';
+        vm.house.specialText = true;
+        // vm.house.dialogue = dialogueService.oldLady;
+        vm.house.ascii =["                                                                                                               ",
+                         "                                                                                                               ",
+                         "                                                                                             88888888888       ",                                                                                                                                                                                    
+                         "                                                                                           888888888888888     ",                                                                                                                                                                                      
+                         "                                                                                           |___    ___   88    ",                                                                                                                                                                                    
+                         "                                                                                           / . \\__/ . \\__|8    ",                                                                                                                                                                                    
+                         "                                                                                           \\___/| \\___/  |     ",                                                                                                                                                                                    
+                         "                                                                                           |    <        |     ",                                                                                                                                                                                    
+                         "                                                                                           |  | __ |     |     ",                                                                                                                                                                                      
+                         "                                                                                           \\__|____|____/      ",                                                                                                                                                                                      
+                         "                                                                                           _____|\\  /  |_____  ",                                                                                                                                                                                    
+                         "                                                                                          /     '------'     \\ ",                                                                                                                                                                                      
+                         "                                                                                         /                    \\",  
+                         "                                                                                         |      /\\___/\\       |",                                                                       
+                         "                                                                                         |     /  _ _  \\      |",                                                          
+                         "                                                                                      ____     | > . < |   |  |",                                                                                                                                                                                    
+                         "                                                                                     /    \\     '-----'    |  |",                                                                                                                                                                                    
+                         "                                                                                   .'\\___ /      MEOW!     |  |",                                                                                                                                                                                      
+                         "                                                                                  /_/  | |                 |  |",                                                                                                                                                                                      
+                         "                                                                                       | |                 |  |",                                                                                                                                                                                    
+                         "                                                                                       | |                 |  |",                                                                                                                                                                                    
+                         "                                                                                       | |   ______________|  |"]                                                                                                                                                                                    
+
 
 
 
@@ -315,7 +418,7 @@
 									 "                                                                                        /          .'| | /     \\ | |'.                \\                     ",                                                                                                                                             
 									 "                                                                                       /         .'  | |/|     |\\| |  '.               \\                    " ];                                                                                                                                              
 
-    	vm.currentLocation = vm.treeGovernment;
+    	vm.currentLocation = vm.treeCity;
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;
@@ -328,5 +431,7 @@
 					vm.locationDictionary['slumsThugs'] = this.treeSlumsThugs;
 					vm.locationDictionary['slumsBum'] = this.treeSlumsBum;
 			vm.locationDictionary['wizard'] = this.wizard;
+            vm.locationDictionary['monk'] = this.monk;
+            vm.locationDictionary['house'] = this.house;
     }
 })();

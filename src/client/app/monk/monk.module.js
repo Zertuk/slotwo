@@ -2,9 +2,8 @@
     'use strict';
 
     angular
-        .module('app.dialogue', [
+        .module('app.monk', [
         	'app.progress',
-        	'app.main',
-        	'app.monk'
+        	'app.message'
         ]);
 })();

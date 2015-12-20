@@ -7,6 +7,7 @@
     	'app.shop',
     	'app.template',
     	'app.dialogue',
-    	'app.resources'
+    	'app.resources',
+    	'app.progress'
         ]);
 })();

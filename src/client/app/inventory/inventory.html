@@ -1,27 +1,50 @@
 <div ng-controller = "InventoryController as vm" class = "container">
 	<div class = "inventoryselect half">
-		<h3>Weapon</h3>
-		<select  ng-init = "vm.equippedWeapon = vm.player.weapon.slug" ng-change = "vm.equipWeapon()" ng-model = "vm.equippedWeapon" ng-options = "item[0][1].slug as item[0][1].name for item in vm.weapons">
-		</select>
-		<h3>Armor</h3>
-		<select ng-init = "vm.equippedArmor = vm.player.armor.slug" ng-change = "vm.equipArmor()" ng-model = "vm.equippedArmor" ng-options = "item[0][1].slug as item[0][1].name for item in vm.armor">
-		</select>
-		<h3>Trinket</h3>
-		<select>
-			<option ng-repeat = "item in vm.trinket track by $index">
-				<p>{{item[0][1].name}}</p>
-			</option>
-		</select>
-		<div>
-			<h3>Player Info</h3>
-			<p>{{vm.player.armorValue*100}}% : Armor</p>
-			<p>{{vm.player.damage}} : Damage</p>
-			<p>current weapon: {{vm.player.weapon.slug}}</p>
+		<div class = "row">
+			<div class = "itemdesc">
+				<h4>Weapon</h4>
+				<select  ng-init = "vm.equippedWeapon = vm.player.weapon.slug" ng-change = "vm.equipWeapon()" ng-model = "vm.equippedWeapon" ng-options = "item[0][1].slug as item[0][1].name for item in vm.weapons">
+				</select>
+				<p class = "small italic">~ {{vm.player.weapon.desc}} ~</p>
+				<p>{{vm.player.weapon.damage}} Damage</p>
+				<p>{{vm.player.weapon.attackSpeedMessage()}}</p>
+			</div>
+			<div class = "itemdesc">
+				<h4>Armor</h4>
+				<select ng-init = "vm.equippedArmor = vm.player.armor.slug" ng-change = "vm.equipArmor()" ng-model = "vm.equippedArmor" ng-options = "item[0][1].slug as item[0][1].name for item in vm.armor">
+				</select>
+				<p class = "small italic">~ {{vm.player.armor.desc}} ~</p>
+				<p>{{vm.player.armorValue*100}}% Armor</p>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "itemdesc">
+				<h4>Helm</h4>
+				<select>
+					<option ng-repeat = "item in vm.helm track by $index">
+						<p>{{item[0][1].name}}</p>
+					</option>
+				</select>
+			</div>
+			<div class = "itemdesc">
+				<h4>Trinket</h4>
+				<select>
+					<option ng-repeat = "item in vm.trinkets track by $index">
+						<p>{{item[0][1].name}}</p>
+					</option>
+				</select>
+			</div>
 		</div>
 	</div><!--inventoryselect-->
 	<div class = "inventorylist half">
-		<h3>Consumables</h3>
 		<p>Potions: {{vm.itemDictionary.potion[1][1]}}</p>
-		<h3 class = "inline">Combat Items</h3><p class = "italic inline">- These items are always active</p>
+		<h3 class = "inline">Other Items</h3><p class = "italic inline">- These items effects are always active</p>
+		<div class = "otheritem" ng-repeat = "item in vm.otherItems" ng-if = "item[1][1] > 0">
+			<div class = "titleborder">
+				<h4 class = "inline nomargin">{{item[0][1].name}}</h4>
+				<p class = "small italic inline nomargin">- {{item[0][1].desc}}</p>
+			</div>
+			<p class = "nomargin">{{item[0][1].message}}</p>
+		</div>
 	</div><!--inventorylist-->
 </div>

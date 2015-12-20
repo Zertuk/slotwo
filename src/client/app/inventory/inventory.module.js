@@ -3,5 +3,5 @@
 
     angular.module('app.inventory', [
     	'app.player'
-	]);
+    ]);
 })();

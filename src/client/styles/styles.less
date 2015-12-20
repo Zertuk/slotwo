@@ -7,6 +7,15 @@
 @color_black: #191919;
 @color_white: #f7f7f7;
 
+::selection {
+    background: @color_white;
+    color: @color_black;
+}
+::-moz-selection {
+    background: @color_white;
+    color: @color_black;
+}
+
 * {
     /*-webkit-box-shadow: none !important;
     -ms-box-shadow: none !important;
@@ -20,19 +29,134 @@
     /*font-weight: 400;*/
 }
 
+.playerinfo p {
+    display: inline-block;
+    margin: 0;
+}
+
+.playerinfo {
+    float: right;
+    margin: 5px 0;
+}
+
+.playerabilities button {
+    margin: 5px 0;
+}
+
+
+
+.button .bg, .button .abilitybg {
+    background: @color_white;
+    position: absolute;
+    height: 22px;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+.button .abilitybg.abilitycooldown {
+    background: red;
+    opacity: 0.25;
+    cursor: no-drop;
+}
+
+.tooltip {
+    display: none;
+    background: @color_black;
+    font-size: 32px;
+    left: 25%;
+    z-index: 100;
+}
+
+span.click:hover .tooltip {
+    display: block;
+    position: absolute;
+}
+
+.itemdesc.noborder {
+    border: none;
+}
+
+.titleborder {
+    border-bottom: 2px solid @color_white;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.titleborder h4 {
+    padding-bottom: 5px;
+}
+
+.otheritem {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    margin-bottom: 2%;
+}
+
+.itemdesc {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    float: left;
+    width: 49%;
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: center;
+    height: 225px;
+}
+.itemdesc:first-of-type {
+    margin-left: 0;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.shoprow {
+    margin: 10px 0;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.margintop45 {
+    margin-top: 48px;
+}
+
+
+button.craft {
+    margin: 10px 0;
+}
+
+.half {
+    float: left;
+    margin-right: 2%;
+    width: 49%;
+}
+
+.half:last-child {
+    margin-right: 0;
+}
+
 .workerinfo {
     margin-left: 2%;
     float: left;
-    margin-top: 50px;
 }
 
 .workerinfo:first-of-type {
     margin-left: 0;
-    margin-top: 0;
     width: 275px;
     border-right: 1px dashed grey;
 }
 
+.forge, .campfire {
+    float: left;
+    width: 100%;
+}
+
+.forge button, .campfire button {
+    margin: 10px 0;
+}
 
 .text {
     margin-top: 0;
@@ -42,7 +166,7 @@
     display: inline-block;
 }
 
-.worker p:last-of-type {
+.actualworkers .worker p:last-of-type {
     margin-left: 20px;
 }
 
@@ -110,7 +234,8 @@ header {
     position: relative;
 }
 
-.container:after {
+.container:after,
+.shoprow:after {
     content: "";
     display: table;
     clear: both; 
@@ -174,6 +299,9 @@ div {
 .italic {
     font-style: italic;
     font-size: 12px;
+}
+
+.italic.inline {
     margin-left: 5px;
 }
 
@@ -198,13 +326,7 @@ h1 {
     min-height: 420px;
 }
 
-.tooltip {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-    min-height: 100px;
-    border: 1px solid @color_white;
-}
+
 .shop .list {
     width: 200px;
 }
@@ -272,11 +394,15 @@ span.click {
 }
 
 .enemyname {
+    border-bottom: 2px solid @color_white;
+    padding-bottom: 5px;
     font-size: 16px;
-    margin: 0 0 5px;
+    text-align: center;
+    margin: 5px 0 5px;
 }
 
 .enemydesc {
+    text-align: center;
     font-size: 12px;
     margin: 0;
 }
@@ -289,11 +415,30 @@ span.click {
 
 .enemyinfo {
     float: left;
-    width: 25%;
+    width: 24%;
+    margin-right: 1%;
+}
+
+.playerabilities {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+
+.enemyinfo .healthbarinner {
+    background: green;
+}
+
+.enemyinfo .healthbar {
+    margin: 5px 0;
+}
+
+.enemyplaceholder {
+    min-height: 100px;
 }
 
 .log {
-    float: left;
+    float: right;
     width: 50%;
     max-height: 80px;
     overflow-y: scroll;
@@ -306,7 +451,11 @@ span.click {
 }
 
 /* button styles */
-button {
+.button {
+    display: inline-block;
+    position: relative;
+}
+button, .button {
     padding: 2px 10px;
     background: @color_black;
     color: @color_white;
@@ -314,11 +463,11 @@ button {
     border: 1px solid @color_white;
     cursor: pointer;
 }
-button:hover, .resourcecontrol:hover {
+button:hover, .resourcecontrol:hover, .button:hover {
     background: #2f2f2f;
 }
 
-button:active, .resourcecontrol:active {
+button:active, .resourcecontrol:active, .button:active {
     background: @color_white;
     color: @color_black;
 }

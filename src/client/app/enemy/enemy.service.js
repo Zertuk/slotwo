@@ -20,6 +20,7 @@
         function battle(unit, enemy, map) {
             count = count + 1;
             vm.currentEnemy = enemy;
+            vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
             if (count % enemy.attackSpeed == 0) {
                 var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
                 unit.health = unit.health - damageDealt;
@@ -40,7 +41,7 @@
         }
         this.Enemy = function() {
             this.ground = false,
-            this.attackSpeed = 1,
+            this.attackSpeed = 2,
             this.health = 10,
             this.maxHealth = 10,
             this.damage = 1,
@@ -54,6 +55,24 @@
             this.positionOld = [0, 0],
             this.itemMult = 1,
             this.inCombat = false,
+            this.attackSpeedText = function() {
+                if (this.attackSpeed === 2) {
+                    return 'average';
+                } 
+                else if (this.attackSpeed > 2) {
+                    return 'slow';
+                }
+                else if (this.attackSpeed < 2) {
+                    return 'fast';
+                }
+            }
+            this.findHealthPercent = function() {
+                var percent = this.health / this.maxHealth;
+                if (percent > 1) {
+                    percent = 1;
+                }
+                return percent;
+            },
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
                     battle(enemyArray, current, map);
@@ -96,15 +115,19 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 if (random <= this.itemChance) {
-                    
                     if (this.itemMult > 1) {
-                        var num = Math.round(this.itemMult * (Math.random() + 1));
+                        var num = Math.round(this.itemMult * Math.random());
+                        if (num === 0) {
+                            num = 1;
+                        }
                     }
                     else {
                         var num = 1;
                     }
-                    console.log('you found ' + num + ' ' + this.items[0][0][1].name)
+                    this.foundLoot = true;
+                    this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
                     this.items[0][1][1] = this.items[0][1][1] + num;
+                    console.log(this.items[0][1][1])
                 }
             },
             this.moneyDrop = function() {
@@ -216,24 +239,46 @@
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.health = 1;
+            this.maxHealth = 20;
+            this.health = 200;
             this.colBox = [3, 4];
-            this.items = [vm.itemDictionary['boneArmor']];
+            this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;
-            this.itemMult = 1;
+            this.itemMult = 3;
             this.damage = 0;
         }
         this.Tree.prototype = new this.Enemy();
 
 
+        this.Bear = function Bear() {
+            this.name = 'Bear';
+            this.desc = 'A Wandering Bear';
+            this.deathMessage = '';
+            this.symbol = 'B';
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 2;
+        }
+        this.Bear.prototype = new this.Enemy();
 
+        this.Deer = function Deer() {
+            this.name = 'Deer';
+            this.desc = 'A Cute Deer';
+            this.deathMessage = '';
+            this.symbol = 'D';
+            this.maxHealth = 5;
+            this.health = 500;
+            this.damage = 1;
+        }
+        this.Deer.prototype = new this.Enemy();
 
         this.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';
             this.deathMessage = 'A Treeperson Warrior has been slain!';
             this.symbol = "T";
-            this.health = 15;
-            this.damage = 1.5;
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 2;
         }
         this.TreeWarrior.prototype = new this.Enemy();
 

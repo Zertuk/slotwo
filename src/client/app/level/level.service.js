@@ -18,15 +18,18 @@
             this.spawnMore = true;
             this.prev = 'mainMap';
             this.prevName = 'Map';
+            this.spawnChance = 90;
         };
 
         //treeone
         this.treeOne = new this.Level();
+        this.treeOne.unlock = 'treeTwo';
         this.treeOne.spawnMore = false;
         this.treeOne.enemySpawn = [141, 21];
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
         this.treeOne.name = 'Forest Approach';
+        this.treeOne.slug = 'treeOne'
         this.treeOne.defaultAscii = ["     .\'           \'./   \\    .\'\\      /                            /                                     \\/                               /                     ",
                                      "    /               \\    \\ .\'   \\    /                            /                                      /                              .\'                       ",
                                      "  .\'                      /      \'../               //\\\\        .\'                                     .\'                              /                           ",
@@ -41,7 +44,7 @@
                                      "| .   / \\  / \\   / \\      . |    / \\      //////////    \\\\\\\\\\\\\\\\\     |      |       |   .  / \\      |  / \\  .    / \\   / \\        ^    / \\    / \\        / \\    |    ",
                                      " / \\   |    |    / \\     / \\      |     //////// |        | \\\\\\\\\\\\\\\\ .      .          / \\  |    ^      |  / \\   / \\    |     ^  / \\    |     / \\        / \\         ",
                                      " / \\   .          |     /   \\                   ,|   __   |.        / \\    / \\         / \\      / \\        / \\    |          / \\ / \\      .    |      ^   |    ^     ",
-                                     "  |   / \\         .     /   \\      .        __.\'_|  /__\\. | \\__      / \\    / \\      .   |       / \\    ^    |        ^       / \\  |      / \\   .     / \\      / \\    ",
+                                     "  |   / \\         .     /   \\      .        __.\'_|  /__\\. | \\__     / \\    / \\      .   |       / \\    ^    |        ^       / \\  |      / \\   .     / \\      / \\    ",
                                      "^     / \\        / \\      |       / \\     ,\'__.\'.  \\ \\ / \\|__  \\,.   |    . |      / \\           |    / \\           / \\       |      .   / \\  / \\    / \\      / \\    ",
                                      " \\     |    /\\   / \\   .          / \\    .     / \\ / / / \\   \\___ \\      / \\       / \\      ^         / \\        .  / \\    .        / \\   |   / \\  .  |        |     ",
                                      " \\    ^    /  \\   |   / \\          |    / \\    / \\ \\/   |     ^  \/       / \\        |      / \\         |        / \\  |    / \\       / \\        |  / \\        .       ",
@@ -60,10 +63,14 @@
 
         //treetwo
         this.treeTwo = new this.Level();
+        this.treeTwo.slug = 'treeTwo';
+        this.treeTwo.unlock = 'treeCity';
         this.treeTwo.specialEnd = 95;
-        this.treeTwo.enemyArray = [enemyService.TreeWarrior];
+        this.treeTwo.enemyArray = [enemyService.Bear, enemyService.Deer];
+        this.treeTwo.unitSpawnChance = [25, 100]
+        this.treeTwo.enemyMax = 3;
         this.treeTwo.enemySpawn = [89, 22];
-        this.treeTwo.playerSpawn = [0, 21];
+        this.treeTwo.playerSpawn = [0, 22];
         this.treeTwo.name = 'Tree Two';
         this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
                               "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
@@ -96,6 +103,8 @@
         this.bridge.enemyArray = [enemyService.TreeWarrior];
         this.bridge.playerSpawn = [0, 14];
         this.bridge.enemySpawn = [150, 14];
+        this.bridge.slug = 'bridge';
+        this.bridge.unlock = 'snow'
         this.bridge.name = 'Bridge';
         this.bridge.defaultAscii =  
                               ["  / \\    / \\                          .           /                                                             _'                                                                         .........                            ",                                                                                                                                                                                                                  
@@ -127,6 +136,8 @@
         this.snow.playerSpawn = [0, 10];
         this.snow.enemySpawn = [10, 10];
         this.snow.name = 'Snow';
+        this.snow.slug = 'snow';
+        this.snow.unlock = 'wizard';
         this.snow.defaultAscii = ["                                                                                                                                                           \\                                       ",               
                                   "                                                                                                                                                            \\  /____                               ",               
                                   "                                                                                                                                                             \\/     \\____    ______                ",                            
@@ -149,6 +160,8 @@
                                   "                                                                                                                                                                                                   "];
 
         this.ruins = new this.Level();
+        this.ruins.slug = 'desert';
+        this.ruins.unlock = 'dungeon';
         this.ruins.enemyArray = [enemyService.TreeWarrior];
         this.ruins.playerSpawn = [0, 13];
         this.ruins.enemySpawn = [60, 12];
@@ -177,6 +190,8 @@
         this.dungeon.enemyArray = [enemyService.TreeWarrior];
         this.dungeon.playerSpawn = [0, 0];
         this.dungeon.enemySpawn = [180, 10];
+        this.dungeon.slug = 'dungeon';
+        this.dungeon.unlock = 'ruinsCleared';
         this.dungeon.name = 'Dungeon';
         this.dungeon.defaultAscii = ["                                             *                                                                                                                                                                                    ",
                                      "____                                         *                        *   *                                                                                                                                                       ",
@@ -199,9 +214,10 @@
 
         this.shroom = new this.Level();
         this.shroom.enemyArray = [enemyService.TreeWarrior];
-        this.shroom.playerSpawn = [0, 0];
+        this.shroom.playerSpawn = [0, 13];
         this.shroom.enemySpawn = [0, 0];
         this.shroom.name = 'Mushroom Level'; 
+        this.shroom.slug = 'shroom';
         this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",
                                    "                                                                                                                                           /  \\                 |'._______'.                                                                   ",
                                    "            ____                                                                                                           /\\              |  |_/\\______________| |   __   |                                                                   ",

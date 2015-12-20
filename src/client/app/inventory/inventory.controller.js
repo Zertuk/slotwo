@@ -14,22 +14,17 @@
 		vm.player = playerService.player;
 		vm.weapons = [];
 		vm.armor = [];
+		vm.trinkets = [];
+		vm.helm = [];
+		vm.otherItems = inventoryService.otherItems;
 		vm.equippedWeapon = vm.player.weapon;
 		vm.equippedArmor = vm.player.armor;
 
-		function armorList() {
-			for (var i = 0; i < inventoryService.armor.length; i++) {
-				if (inventoryService.armor[i][1][1] !== 0) {
-					vm.armor.push(inventoryService.armor[i]);
-				} 
-			}
-		}
-
-		function weaponList() {
-			for (var i = 0; i < inventoryService.weapons.length; i++) {
-				if (inventoryService.weapons[i][1][1] !== 0) {
-					vm.weapons.push(inventoryService.weapons[i]);
-				} 
+		function createItemList(items, list) {
+			for (var i = 0; i < items.length; i++) {
+				if (items[i][1][1] !== 0) {
+					list.push(items[i]);
+				}
 			}
 		}
 
@@ -58,8 +53,10 @@
 
 
 		function activate() {
-			armorList();
-			weaponList();
+			createItemList(inventoryService.armor, vm.armor);
+			createItemList(inventoryService.weapons, vm.weapons);
+			createItemList(inventoryService.trinkets, vm.trinkets);
+			createItemList(inventoryService.helm, vm.helm);
 		}
 		activate();
 	}

@@ -1,6 +1,6 @@
 <div ng-controller = "ResourcesController as vm">
 	<div class = "container borderbottom">
-		<div class = "workerinfo">
+		<div class = "workerinfo actualworkers">
 			<p>Available Workers: {{vm.resources.workers}}</p>
 			<div class = "worker">
 				<button class = "resourcecontrol" ng-click = "vm.assignWorker('lumberjacks')">+</button>
@@ -23,7 +23,7 @@
 				<p>Overseers: {{vm.resources.overseers}}</p>
 			</div>
 		</div>
-		<div class = "workerinfo">
+		<div class = "workerinfo margintop45">
 			<div class = "worker">
 				<p class = "info">Produces {{vm.workers.lumberjacks.wood}} wood at the cost of {{-vm.workers.lumberjacks.food}} food.</p>
 			</div>
@@ -39,28 +39,68 @@
 		</div>
 	</div>
 	<div class = "container borderbottom">
-		<div class = "workerinfo">
-			<p>Resources</p>
-			<div class = "worker">
-				<p>Food: {{vm.resources.food}}</p>
+		<div class = "half">
+			<div class = "workerinfo">
+				<div class = "worker">
+					<p>Food: {{vm.resources.food}}</p>
+				</div>
+				<div class = "worker">
+					<p>Ore: {{vm.resources.ore}}</p>
+				</div>
+				<div class = "worker">
+					<p>Wood: {{vm.resources.wood}}</p>
+				</div>
 			</div>
-			<div class = "worker">
-				<p>Ore: {{vm.resources.ore}}</p>
-			</div>
-			<div class = "worker">
-				<p>Wood: {{vm.resources.wood}}</p>
+			<div class = "workerinfo">
+				<div class = "worker">
+					<p class = "info">{{vm.resources.foodRate}}/s</p>
+				</div>
+				<div class = "worker">
+					<p class = "info">{{vm.resources.oreRate}}/s</p>
+				</div>
+				<div class = "worker">
+					<p class = "info">{{vm.resources.woodRate}}/s</p>
+				</div>
 			</div>
 		</div>
-		<div class = "workerinfo">
-			<div class = "worker">
-				<p class = "info">{{vm.resources.foodRate}}/s</p>
+		<div class = "half">
+			<div ng-repeat = "item in vm.craftables" ng-if = "item.active">
+				<div class = "workerinfo">
+					<div class = "worker">
+						<button class = "craft" ng-click = "vm.craft(item.key)">{{item.text}}</button>
+					</div>
+				</div>
+				<div class = "workerinfo">
+					<div class = "worker">
+						<p>{{item.cost}}</p>
+					</div>
+				</div>
 			</div>
-			<div class = "worker">
-				<p class = "info">{{vm.resources.oreRate}}/s</p>
+			<div class = "campfire" ng-if = "vm.checkActive('campfire')">
+				<div class = "workerinfo">
+					<div class = "worker">
+						<div class = "button" ng-click = "vm.fuelFire()"><div class = "bg"></div>Add wood to fire</div>
+					</div>
+				</div>
+				<div class = "workerinfo">
+					<div class = "worker">
+						<p>Can attract wanderers when lit. Takes 1 to 2 wood to ligt.</p>
+					</div>
+				</div>
 			</div>
-			<div class = "worker">
-				<p class = "info">{{vm.resources.woodRate}}/s</p>
+			<div class = "forge">
+				<div class = "workerinfo">
+					<div class = "worker">
+						<button ng-click = "vm.toggleForge()">{{vm.forgeMessage}}</button>
+					</div>
+				</div>
+				<div class = "workerinfo">
+					<div class = "worker">
+						<p>Converts 5 ore to 25 gold when active.</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
 </div>

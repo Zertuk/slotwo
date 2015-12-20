@@ -47,69 +47,44 @@
 					for (var i = 0; i < this.recipe.length; i++) {
 						recipe[i] = this.recipe[i].split('-');
 						if (recipe[i][1] > vm.itemDictionary[recipe[i][0]][1][1]) {
-							console.log('not enough items');
 							err = err + 1;
 						}
 					}
+					//if err === 0 then we have enough resources, so craft
 					if (err === 0) {
 						for (var j = 0; j < recipe.length; j++) {
 							vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
-							console.log(vm.itemDictionary[recipe[j][0]][1])
 						}
-						console.log(vm.itemDictionary[this.slug()][1][1])
-						vm.itemDictionary[this.slug()][1][1] = vm.itemDictionary[this.slug()][1][1] + this.quant;
+						vm.itemDictionary[this.slug][1][1] = vm.itemDictionary[this.slug][1][1] + this.quant;
+						return true;
 					}
 				}
+			},
+			this.attackSpeedMessage = function() {
+				var message = '';
+				if (this.attackSpeed === 2) {
+					message = 'Average Speed';
+				}
+				else if (this.attackSpeed > 2) {
+					message = 'Slow Speed';
+
+				} else if (this.attackSpeed < 2) {
+					message = 'Fast Speed';
+				}
+				return message;
 			}
 		};
 
-		this.grass   = new this.Item();
-		this.grass.spawn = ['Forest'];
-		this.grass.desc  = 'A bundle of grass';
-		this.grass.name = 'Grass';
-		this.grass.cat = 'ingredient';
-		this.grass.slug = 'grass';
 
-		this.wood  = new this.Item();
-		this.wood.desc = 'A slab of wood';
-		this.wood.cat = 'ingredient';
-		this.wood.name = 'Wood';
-		this.wood.slug = 'wood';
 
-		this.campfire    = new this.Item();
-		this.campfire.recipe = ['wood-2', 'grass-2'];
-		this.campfire.desc   = 'A warm fire';
-		this.campfire.cat = 'structure';
-		this.campfire.name   = 'Campfire';
-		this.campfire.slug = 'campfire';
 
-		this.stick    = new this.Item();
-		this.stick.recipe = ['wood-1'];
-		this.stick.quant  = 5;
-		this.stick.desc   = 'It used to be part of a log';
-		this.stick.cat = 'ingredient'
-		this.stick.name   = 'Stick';
-		this.stick.buyable = true;
-		this.stick.price = 50;
-		this.stick.slug = 'stick';
-
-		this.rock   = new this.Item();
-		this.rock.spawn = ['Forest'];
-		this.rock.desc  = 'It is a rock';
-		this.rock.cat = 'ingredient';
-		this.rock.name  = 'Rock';
-		this.rock.buyable = true;
-		this.rock.slug = 'rock';
-
-		this.tent = new this.Item();
-		this.tent.recipe = ['stick-1', 'grass-1'];
-		this.tent.desc   = 'Stay safe for the night';
-		this.tent.cat = 'structure';
-		this.tent.name   = 'Tent';
-		this.tent.slug = 'tent';
-		this.tent.amountCheck = function() {
-			console.log(this.quant);
-		}
+		//weapons
+		this.fists = new this.Item();
+		this.fists.name = 'Fists';
+		this.fists.desc = 'just some fists'
+		this.fists.damage = 1;
+		this.fists.attackSpeed = 1;
+		this.fists.slug = 'fists';
 
 		this.club = new this.Item();
 		this.club.recipe = ['stick-1', 'grass-1', 'rock-1'];
@@ -122,14 +97,35 @@
 
 		this.sword = new this.Item();
 		this.sword.name = 'Sword';
-		this.sword.desc = 'A basic sword';
+		this.sword.desc = 'A wooden sword.';
+		this.sword.recipe = ['wood-100'];
 		this.sword.cat = 'weapon';
-		this.sword.damage = 2;
-		this.sword.attackSpeed = 1;
+		this.sword.damage = 4;
+		this.sword.attackSpeed = 2;
 		this.sword.buyable = true;
 		this.sword.removeAfterBuy = true;
 		this.sword.price = 100;
 		this.sword.slug = 'sword';
+
+		this.bearClaws = new this.Item();
+		this.bearClaws.name = 'Bear Claws';
+		this.bearClaws.desc = 'claws of a bear';
+		this.bearClaws.damage = 3;
+		this.bearClaws.attackSpeed = 1;
+		this.bearClaws.slug = 'bearClaws';
+
+		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
+		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
+		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
+		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 1]];
+
+
+
+		//armor
+		this.clothArmor = new this.Item();
+		this.clothArmor.name = 'Cloth Armor';
+		this.clothArmor.armor = 0;
+		this.clothArmor.slug = 'clothArmor';
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
@@ -138,6 +134,7 @@
 		this.woodArmor.armor = 0.1;
 		this.woodArmor.buyable = true;
 		this.woodArmor.removeAfterBuy = true;
+		this.woodArmor.recipe = ['wood-100'];
 		this.woodArmor.unlock = 'boneArmor';
 		this.woodArmor.price = 150;
 		this.woodArmor.slug = 'woodArmor';
@@ -151,32 +148,117 @@
 		this.boneArmor.removeAfterBuy = true;
 		this.boneArmor.slug = 'boneArmor';
 
+		this.polarArmor = new this.Item();
+		this.polarArmor.name = 'Polarbear Furcoat';
+		this.polarArmor.desc = 'Coat made from polerbear fur';
+		this.polarArmor.armor = 0.3;
+		this.polarArmor.slug = 'polarArmor';
+
+		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
+		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
+		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
+		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 1]];
+
+
+		//resources
+		this.food = new this.Item();
+		this.food.name = 'Food';
+		this.food.desc = 'Food for workers';
+
+		this.ore = new this.Item();
+		this.ore.name = 'Ore';
+		this.ore.desc = 'Metal stuff';
+
+		this.wood  = new this.Item();
+		this.wood.desc = 'A slab of wood';
+		this.wood.cat = 'ingredient';
+		this.wood.name = 'Wood';
+		this.wood.slug = 'wood';
+
+		vm.itemDictionary['food'] = [['item', this.food], ['amount', 0]];
+		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 0]];
+		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 0]];
+
+
+		//consumables
 		this.potion = new this.Item();
 		this.potion.name = 'Health Potion';
+		this.potion.slug = 'potion';
 		this.potion.desc = 'Heals ' + this.potion.strength + ' health';
 		this.potion.strength = 50;
+		this.potion.buyable = true;
+		this.potion.price = 100;
+		this.potion.quantity = 10;
 
-		vm.itemDictionary['grass'] = [['item', this.grass], ['amount', 5]];
-		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 3]];
-		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
-		vm.itemDictionary['stick'] = [['item', this.stick], ['amount', 0]];
-		vm.itemDictionary['tent'] = [['item', this.tent], ['amount', 0]];
-		vm.itemDictionary['club'] = [['item', this.club], ['amount', 1]];
-		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
-		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
-		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 10]];
 
+		//other items
+		this.winterCoat = new this.Item();
+		this.winterCoat.name = 'Winter Sweater';
+		this.winterCoat.slug = 'winterCoat';
+		this.winterCoat.desc = 'Covered in cute deer and trees~';
+		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely!';
+		this.winterCoat.buyable = true;
+		this.winterCoat.price = 1000;
+		this.winterCoat.removeAfterBuy = true;
+
+		this.wizardsHair = new this.Item();
+		this.wizardsHair.name = 'Wizards Hair';
+		this.wizardsHair.slug = 'wizardsHair';
+		this.wizardsHair.desc = 'Rumored to grant the holder great luck.';
+		this.wizardsHair.message = 'A lock of bushy Wizard hair.';
+		this.wizardsHair.buyable = true;
+		this.wizardsHair.price = 1000;
+		this.wizardsHair.removeAfterBuy = true;
+
+		this.deerAntlers = new this.Item();
+		this.deerAntlers.name = 'Deer Antlers';
+		this.deerAntlers.slug = 'deerAntlers';
+		this.deerAntlers.desc = 'The latest in deer fashion';
+		this.deerAntlers.message = 'Attacks cause +1 damage.';
+
+		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
+		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
+		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];
 
 
-		vm.masterItemList = ['grass', 'wood', 'campfire', 'stick', 'tent', 'club', 'sword', 'woodArmor', 'boneArmor'];
+		//misc
+		this.forge = new this.Item();
+		this.forge.name = 'Forge';
+		this.forge.slug = 'forge';
+		this.forge.recipe = ['wood-50', 'ore-250'];
 
-		vm.weapons = [vm.itemDictionary['club'], 
-					  vm.itemDictionary['sword']];
+		this.campfire = new this.Item();
+		this.campfire.name = 'Campfire';
+		this.campfire.slug = 'campfire';
+		this.campfire.recipe = ['wood-10'];
+
+		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]]
+		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]]
 
 
-		vm.armor = [vm.itemDictionary['woodArmor'],
-					vm.itemDictionary['boneArmor']];
+		////////////////
+
+		vm.otherItems = [vm.itemDictionary['winterCoat'],
+						 vm.itemDictionary['deerAntlers'],
+						 vm.itemDictionary['wizardsHair']];
+
+		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor', 'winterCoat', 'wizardsHair'];
+
+		vm.weapons = [vm.itemDictionary['fists'],
+					  vm.itemDictionary['club'], 
+					  vm.itemDictionary['sword'],
+					  vm.itemDictionary['bearClaws']];
+
+
+		vm.armor = [vm.itemDictionary['clothArmor'],
+					vm.itemDictionary['woodArmor'],
+					vm.itemDictionary['boneArmor'],
+					vm.itemDictionary['polarArmor']];
+
+		vm.trinkets = [];
+
+		vm.helm = [];
 
 
 

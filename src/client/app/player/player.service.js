@@ -16,6 +16,46 @@
         vm.itemDictionary = inventoryService.itemDictionary;
 
         this.Player = function() {
+            this.abilities = {
+                keys: ['berserk'],
+                berserk: {
+                    name: 'Berserk',
+                    slug: 'berserk',
+                    text: 'Attacks deal double damage',
+                    unlocked: true,
+                    active: false,
+                    timer: 0,
+                    max: 100,
+                    cd: 0,
+                    cdMax: 200,
+                    special: function() {
+                        this.timer = this.max;
+                        this.active = true;
+                    }
+                },
+                block: {
+                    name: 'Block',
+                    slug: 'block',
+                    text: 'Blocks incoming damage',
+                    unlocked: true,
+                    active: false,
+                    timer: 0,
+                    max: 50,
+                    cd: 0,
+                    cdMax: 200,
+                    special: function() {
+                        this.timer = this.max;
+                        this.active = true;
+                    }
+                },
+                resetAbilities: function() {
+                    for (var i = 0; i < this.keys.length; i++) {
+                        this[this.keys[i]].active = false;
+                        this[this.keys[i]].cd = 0;
+                        this[this.keys[i]].timer = 0;
+                    }
+                }
+            },
             this.specialEnd = undefined,
             this.money = 1000,
             this.usePotion = function() {
@@ -44,7 +84,7 @@
                 }
                 this.checkMaxHealth();
             },
-            this.healthBarUpdate = function() {
+            this.healthBarUpdate = function(enemy) {
                 this.checkMaxHealth();
                 var percent = this.healthPercent();
                 if (percent > 65) {
@@ -70,6 +110,7 @@
             this.endLevel = function() {
                 messageService.addMessage('You have reached the end of the level');
                 this.active = false;
+                this.levelComplete = true;
                 messageService.updateMainMessage('You finish the level.');
                 return true;
             }
@@ -83,9 +124,10 @@
                     }
                 }
             },
-            //combat
+            //needs rework
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
+                current.levelComplete = false;
                 if (current.alive) {
                     current.checkLevelEnd(current.position, map);
                     if (current.grounded) {
@@ -106,7 +148,7 @@
                         }
                     }
                     if (inCombat) {
-                        
+                        console.log('in combat');
                     }
                     //collission detection y
                     else if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
@@ -169,9 +211,18 @@
                     return;
                 }
             },
+            this.calculateTotalDamage = function() {
+                var damage = this.weapon.damage;
+                if (this.abilities.berserk.active) {
+                    damage = this.weapon.damage*2;
+                    console.log('berserk active');
+                }
+                console.log('damage :'  + damage);
+                return damage;
+            },
             this.active = true,
             this.ground = false,
-            this.health = 90,
+            this.health = 100,
             this.maxHealth = 100,
             this.regen = 1,
             this.alive = true,
@@ -191,15 +242,16 @@
             this.symbol = 'Y',
             this.desc = 'This is you'
             //attack
-            this.weapon = vm.itemDictionary.club[0][1],
-            this.damage = this.weapon.damage,
+            this.weapon = vm.itemDictionary.fists[0][1],
+            this.damage = this.calculateTotalDamage(),
             this.attackSpeed = this.weapon.attackSpeed,
             //armor
-            this.armor = vm.itemDictionary.woodArmor[0][1],
+            this.armor = vm.itemDictionary.clothArmor[0][1],
             this.armorValue = this.armor.armor,
             //money
             this.gold = 0
         };
         this.player = new this.Player();
+        this.player.calculateTotalDamage();
     }
 })();

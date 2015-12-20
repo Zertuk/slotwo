@@ -5,65 +5,68 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService', 'progressService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService) {
-        shopService.initShop();
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService) {
         var vm = this;
         vm.count = 0;
         resourcesService.initRates();
-        vm.itemList = [shopService.shopList];
         vm.player = playerService.player;
-        vm.currentLocation = mainService.treeGovernment;
+        vm.currentLocation = mainService.treeCity;
+        initShop();
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
-        vm.messageError = messageService.messageError;
+        vm.progress = progressService.progress;
 
         vm.switchLocation = function(location) {
-            vm.switchTemplate('app/main/main.html');
-            messageService.mainMessage = '';
-            vm.currentLocation = mainService.switchLocation(location);
-            if (!vm.currentLocation.formatted) {
-                vm.currentLocation.initClicks();
+            var check = mainService.switchLocation(location);
+            if (check) {
+                vm.currentLocation = mainService.switchLocation(location);
+                removeAscii();
+                if (location === 'treeShop') {
+                    initShop();
+                    console.log('this is the shop');
+                }
             }
-            removeAscii();
-            if (vm.currentLocation.specialText) {
-                dialogueService.locationMessage();
-            }
+            console.log(vm.currentLocation.slug);
         };
-
-
+        vm.switchLevel = function(level) {
+            vm.currentLocation = mainService.switchLevel(level);
+        };
 
         vm.switchTemplate = function(template) {
-            vm.player.active = false;
-            templateService.switchTemplate(template);
+            mainService.switchTemplate(template);
         };
-        
-
 
         vm.buyItem = function(item) {
             shopService.initPurchase(item);
+            vm.money = resourcesService.resources.money;
             $timeout(function() {
                 vm.itemList = [shopService.shopList];
             }, 50);
         }
-        if (!vm.currentLocation.formatted) {
-            vm.currentLocation.initClicks();
-        }
-        vm.switchLevel = function(level) {
-            vm.switchTemplate('app/level/level.html');
-            levelService.switchCurrentLevel(level);
-            vm.currentLocation = vm.levelDictionary[level];
+
+        function initShop() {
+            shopService.initShop();
+            vm.itemList = [shopService.shopList];
         }
 
+
+        //if ascii isnt deleted before, can cause issues with different size ascii
         function removeAscii() {
             var elements = angular.element('#locationwrap').children();
             elements.remove();
             sanitizeAscii();
         }
+
+        //add pre tags and $compile to angular code so ng-click works
         function sanitizeAscii() {
+            //dont run twice, adds double pre tags
+            if (!vm.currentLocation.formatted) {
+                vm.currentLocation.initClicks();
+            }
             for (var i = 0; i < vm.currentLocation.ascii.length; i++) {
                 if (!vm.currentLocation.formatted) {
                     vm.currentLocation.ascii[i] = '<pre>' + vm.currentLocation.ascii[i] + '</pre>';
@@ -82,6 +85,7 @@
             $timeout(verifyAscii, 10);
         }
 
+        //ascii append check, if it didnt work lengths wont matchup, rerun append
         function verifyAscii() {
             var length = angular.element('#locationwrap').children().length;
             if (length !== vm.currentLocation.ascii.length) {
@@ -89,28 +93,21 @@
             }
         }
 
-        activate();
-
-        ////////////////
-
+        //all resource info here
         function increaseResources() {
             vm.money = resourcesService.moneyTick();
             resourcesService.resources.updateAmounts();
             vm.resources = resourcesService.resources;
         }
 
-        function activate() {
-            sanitizeAscii();
-            mainLoop();
-            quickLoop();
-        }
-
+        //1s loop
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
             increaseResources();
             $timeout(mainLoop, 1000);
         }
+        //quicker loop
         function quickLoop() {
             vm.player.healthBarUpdate();
             vm.activeTemplate = templateService.activeTemplate;
@@ -118,5 +115,15 @@
             vm.mainMessage = messageService.mainMessage;
             $timeout(quickLoop, 125);
         }
+
+        ////////////////////
+
+        function activate() {
+            sanitizeAscii();
+            mainLoop();
+            quickLoop();
+        }
+
+        activate();
     }
 })();

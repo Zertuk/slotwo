@@ -5,19 +5,25 @@
         .module('app.dialogue')
         .service('dialogueService', dialogueService);
 
-    dialogueService.$inject = ['progressService'];
+    dialogueService.$inject = ['progressService', 'monkService'];
 
     /* @ngInject */
-    function dialogueService(progressService) {
+    function dialogueService(progressService, monkService) {
         var vm = this;
         vm.locationText = '';
         vm.progress = progressService.progress;
 
         vm.Dialogue = function() {
+            //return intro by default
             this.initDialogue = function() {
                 return 'introduction';
             }
         };
+
+        //Dialogue function purposes
+
+        //initDialogue : sets initial dialogue on location switch
+        //setDialogue : set up for the dialogue, runs to grab conditional changes for dialogue
 
         vm.wizard = new vm.Dialogue;
         vm.wizard.setDialogue = function() {
@@ -28,7 +34,6 @@
             }
             return dialogue;
         }
-        vm.wizard.dialogue = vm.wizard.setDialogue();
 
         vm.treeKing = new vm.Dialogue;
         vm.treeKing.initDialogue = function() {
@@ -77,8 +82,17 @@
                             next: 'askCompliment',
                             master: 'treeKing',
                             active: vm.progress.treeKingCompliment
+                        },
+                        bridge: {
+                            text: 'Build Bridge',
+                            next: 'askBuild',
+                            master: 'treeKing',
+                            active: vm.progress.treeKingWorkHandIn
                         }
                     }
+                },
+                askBuild: {
+                    text: 'bridge text'
                 },
                 askRumor: {
                     text: 'rumor text',
@@ -120,6 +134,7 @@
                     continue: true,
                     special: function() {
                         vm.progress.treeKingWorkAccept = true;
+                        vm.progress.levels.desert = true;
                         vm.treeKing.dialogue = vm.treeKing.setDialogue();
                     }
                 },
@@ -141,13 +156,13 @@
                             text: 'news',
                             next: 'askWorkComplete',
                             master: 'treeKing',
-                            active: vm.progress.ruinsCleared
+                            active: vm.progress.levels.ruinsCleared
                         },
                         no: {
                             text: 'Not yet',
                             next: 'askWorkIncomplete',
                             master: 'treeKing',
-                            active: !vm.progress.ruinsCleared
+                            active: !vm.progress.levels.ruinsCleared
                         }
                     }
                 },
@@ -169,7 +184,211 @@
             }
             return dialogue;
         }
-        vm.treeKing.dialogue = vm.treeKing.setDialogue();
+
+        vm.enchant = new vm.Dialogue;
+        vm.enchant.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'enchant intro',
+                    continue: true,
+                    next: 'choice',
+                    master: 'enchant'
+                },
+                choice: {
+                    text: 'what to enchant',
+                    buttons: {
+                        armor: {
+                            text: 'Armor',
+                            next: 'armor',
+                            master: 'enchant',
+                            active: true
+                        },
+                        weapon: {
+                            text: 'Weapon',
+                            next: 'weapon',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                armor: {
+                    text: 'enchant armor',
+                    buttons: {
+                        leave: {
+                            text: 'not now',
+                            next: 'choice',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                weapon: {
+                    text: 'enchant weapon',
+                    buttons: {
+                        leave: {
+                            text: 'not now',
+                            next: 'choice',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                }
+            };
+            return dialogue;
+        }
+
+        vm.monk = new vm.Dialogue;
+        vm.monk.checkLearn = function() {
+            var learn = false;
+            if (vm.progress.canLearn > 0) {
+                learn = true;
+            }
+            return learn;
+        };
+        vm.monk.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'introText',
+                    continue: true,
+                    next: 'question',
+                    master: 'monk'
+                },
+                question: {
+                    text: 'questions list',
+                    buttons: {
+                        angry: {
+                            text: 'This is the great monk? I am unimpressed.',
+                            next: 'angry',
+                            master: 'monk',
+                            active: true
+                        },
+                        why: {
+                            text: 'Why did you become a monk?',
+                            next: 'why',
+                            master: 'monk',
+                            active: true
+                        },
+                        train: {
+                            text: 'Can you teach me?',
+                            next: 'train',
+                            master: 'monk',
+                            active: vm.monk.checkLearn()
+                        },
+                        trainMore: {
+                            text: 'When can I learn more?',
+                            next: 'trainMore',
+                            master: 'monk',
+                            active: !vm.monk.checkLearn()
+                        }
+                    }
+                },
+                trainMore: {
+                    text: 'You are not ready yet my student.  Check back later.',
+                    next: 'question',
+                    master: 'monk',
+                    continue: true
+                },
+                why: {
+                    text: 'I am just a guy who is a monk for fun.',
+                    continue: true,
+                    next: 'question',
+                    master: 'monk'
+                },
+                train: {
+                    text: 'Hmm, yes I can teach you.  I cant teach you everything right now, but after sometime I will be able to teach you more.  What would you like to learn?',
+                    buttons: {
+                        battle: {
+                            text: 'Battle',
+                            master: 'monk',
+                            next: 'battleLearn',
+                            active: !vm.progress.trainBattle
+                        },
+                        defense: {
+                            text: 'Defense',
+                            master: 'monk',
+                            next: 'defenseLearn',
+                            active: !vm.progress.trainDefense,
+                            special: function() {
+                                monkService.train('defense');
+                            }
+                        },
+                        money: {
+                            text: '$$$',
+                            master: 'monk',
+                            next: 'moneyLearn',
+                            active: !vm.progress.trainMoney,
+                            special: function() {
+                                monkService.train('money');
+                            }
+                        },
+                        nothing: {
+                            text: 'Nothing for now',
+                            next: 'question',
+                            master: 'monk',
+                            active: true
+                        }
+                    },
+                    special: function() {
+                        console.log('this runs')
+                    }
+                },
+                battleLearn: {
+                    text: 'learn battle',
+                    master: 'monk',
+                    next: 'question',
+                    continue: true,
+                    special: function() {
+                        monkService.train('battle');
+                        vm.initAllDialogues();
+                    }
+                },
+                defenseLearn: {
+                    text: 'learn defense',
+                    master: 'monk',
+                    next: 'question',
+                    continue: true,
+                    special: function() {
+                        monkService.train('defense'),
+                        vm.initAllDialogues();
+                    }
+                },
+                moneyLearn: {
+                    text: 'learn money',
+                    master: 'monk',
+                    next: 'question',
+                    continue: true,
+                    special: function() {
+                        monkService.train('money'),
+                        vm.initAllDialogues();
+                    }
+                },
+                angry: {
+                    text: 'fight text',
+                    buttons: {
+                        sorry: {
+                            text: 'sorry',
+                            next: 'sorry',
+                            master: 'monk',
+                            active: true
+                        },
+                        fight: {
+                            text: 'fight',
+                            next: 'fight',
+                            level: 'monkFight',
+                            active: true
+                        }
+                    }
+                },
+                sorry: {
+                    text: 'let it go',
+                    continue: true,
+                    next: 'question',
+                    master: 'monk'
+                }
+            };
+            return dialogue;
+        }
+
 
         vm.slumThugs = new vm.Dialogue;
         vm.slumThugs.initDialogue = function() {
@@ -238,7 +457,6 @@
             }
             return dialogue;
         };
-        vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
 
         vm.slumThugsBoss = new vm.Dialogue;
         vm.slumThugsBoss.setDialogue = function() {
@@ -293,7 +511,10 @@
 
                 },
                 confident: {
-
+                    text: '',
+                    continue: true,
+                    active: true,
+                    level: 'shroom'
                 },
                 threaten: {
 
@@ -305,18 +526,15 @@
             }
             return dialogue;
         }
-        vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
 
-
-        vm.locationMessage = function(message) {
-            vm.locationText = vm.treeKing.dialogue['introduction'].text;
-        }
-
-
-
-        ////////////////
-
-        function func() {
+        //init the dialogues based on setDialogue to grab changed conditionals
+        vm.initAllDialogues = function() {
+            vm.treeKing.dialogue = vm.treeKing.setDialogue();
+            vm.slumThugs.dialogue = vm.slumThugs.setDialogue();
+            vm.slumThugsBoss.dialogue = vm.slumThugsBoss.setDialogue();
+            vm.wizard.dialogue = vm.wizard.setDialogue();
+            vm.monk.dialogue = vm.monk.setDialogue();
+            vm.enchant.dialogue = vm.enchant.setDialogue();
         }
     }
 })();

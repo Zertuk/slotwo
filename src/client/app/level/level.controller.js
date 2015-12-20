@@ -5,13 +5,12 @@
 		.module('app.level')
 		.controller('LevelController', LevelController);
 
-	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService'];
+	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService', 'progressService'];
 
 	/* @ngInject */
-	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService) {
+	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService, progressService) {
 		var vm = this;
 		vm.title = 'LevelController';
-
 
 		vm.currentLevel = levelService.treeOne;
 		vm.currentLevel.checkLength();
@@ -19,9 +18,80 @@
 		vm.enemySpawn = false;
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
+		vm.abilities = vm.player.abilities;
 
+		vm.activateAbility = function(ability) {
+			var message = '';
+			if (!vm.abilities[ability].active && vm.abilities[ability].cd === 0) {
+				vm.abilities[ability].special();
+				message = vm.abilities[ability].name + ' has been used.';
+				messageService.updateMainMessage(message);
+				var id = '#' + vm.abilities[ability].slug;
+				var elem = id + ' .abilitybg';
+				angular.element(elem).css('width', '100%');
+				abilityTimer(ability, elem);
+			}
+			else if (vm.abilities[ability].cd > 0) {
+				message = vm.abilities[ability].name + ' is on cooldown!';
+				messageService.updateMainMessage(message, true)
+			}
+			else {
+				message = vm.abilities[ability].name + ' already active!';
+				messageService.updateMainMessage(message, true)
+			}
+		}
+
+		function abilityTimer(ability, elem) {
+			if (vm.abilities[ability].active) {
+				vm.player.damage = vm.player.calculateTotalDamage();
+				if (vm.abilities[ability].timer > 0) {
+					vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
+					var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
+					angular.element(elem).css('width', percent + '%');
+					$timeout(function() {
+						abilityTimer(ability, elem);
+					}, 125);
+				}
+				else {
+					angular.element(elem).css('width', '0%');
+					vm.abilities[ability].timer = 0;
+					vm.abilities[ability].active = false;
+					abilityCooldown(ability, elem);
+				}
+			}
+		}
+
+		function abilityCooldown(ability, elem) {
+			var cdMax = vm.abilities[ability].cdMax;
+			vm.abilities[ability].cd = cdMax;
+			angular.element(elem).addClass('abilitycooldown');
+			abilityCooldownLoop(ability, elem);
+		}
+
+		function abilityCooldownLoop(ability, elem) {
+			if (vm.abilities[ability].cd > 0) {
+				vm.abilities[ability].cd = vm.abilities[ability].cd - 1;
+				var percent = (vm.abilities[ability].cd / vm.abilities[ability].cdMax)*100;
+				angular.element(elem).css('width', percent + '%');
+				$timeout(function() {
+					abilityCooldownLoop(ability, elem);
+				}, 125);
+			}
+			else {
+				vm.abilities[ability].cd = 0;
+				angular.element(elem).removeClass('abilitycooldown');
+				angular.element(elem).css('width', '0%');
+			}
+		}
+
+		function resetAbilities() {
+			vm.abilities.resetAbilities();
+		}
+
+		//sets everything to default when called
 		vm.resetLevel = function() {
 			vm.currentLevel = levelService.currentLevel;
+			resetAbilities();
 			specialEnd();
 			vm.unitArray = [playerService.player];
 			vm.player.active = true;
@@ -34,6 +104,7 @@
 		}
 		vm.resetLevel();
 
+		//used for levels that end early
 		function specialEnd() {
 			if (vm.currentLevel.specialEnd) {
 				vm.player.specialEnd = vm.currentLevel.specialEnd;
@@ -42,13 +113,15 @@
 			}
 		}
 
-
+		//init level
 		function initLevel() {
+			//runs if enemies are immobile and spawn at start, like the trees lvl 1
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
 					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
 				}
 			}
+			//otherwise default spawn is on
 			else {
 				vm.enemySpawn = true;
 			}
@@ -64,6 +137,7 @@
 			levelRenderArea();
 		}
 
+		//moves level to left after certain distance has been travelled
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
 			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
@@ -73,22 +147,28 @@
 			}
 		}
 
-		var test = "test/test";
-		test.split('//');
-		var testvar = 0;
+		//function for default spawning, runs if rng works
+		var enemyCount = 0;
 		function createEnemy() {
 			var random = Math.round(Math.random()*100);
-			if ((random > 0) && (testvar < 1)) {
-				testvar = testvar + 1;
-				var test = new vm.currentLevel.enemyArray[0];
-				var spawn = [];
-				spawn[0] = vm.currentLevel.enemySpawn[0];
-				spawn[1] = vm.currentLevel.enemySpawn[1];
-				test.position = spawn;
-				vm.unitArray.push(test);
+			if ((random > vm.currentLevel.spawnChance) && (enemyCount < vm.currentLevel.enemyMax)) {
+				enemyCount = enemyCount + 1;
+				var random = Math.floor(Math.random()*100);
+				for (var i = 0; i < vm.currentLevel.unitSpawnChance.length; i++) {
+					if (random < vm.currentLevel.unitSpawnChance[i]) {
+						var unit = new vm.currentLevel.enemyArray[i];
+						var spawn = [];
+						spawn[0] = vm.currentLevel.enemySpawn[0];
+						spawn[1] = vm.currentLevel.enemySpawn[1];
+						unit.position = spawn;
+						vm.unitArray.push(unit);
+						i = vm.currentLevel.unitSpawnChance.length;
+					}
+				}
 			}
 		}
 
+		//function for spawning immobile enemies at start of level
 		function spawnEnemyAtStart(position) {
 			var entity = new vm.currentLevel.enemyArray[0];
 			var spawn = [];
@@ -98,8 +178,9 @@
 			vm.unitArray.push(entity);
 		}
 
-
+		//updates map when units move/die
 		function updateMap(unit, unitOld, map, unitSymbol, prevCheck) {
+			//checks if previous title unit was on is replaceable so it can replace with correct char
 			if (!prevCheck) {
 				map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], ' ');
 				map[unit[1]] = setCharAt(map[unit[1]], unit[0], unitSymbol);
@@ -110,7 +191,7 @@
 			}
 		}
 
-
+		//sets character based on function arguments
 		function setCharAt(str,index,chr) {
 			if (typeof str !== 'undefined') {
 				if(index > str.length-1) return str;
@@ -118,6 +199,7 @@
 			}
 		}
 
+		//if it has an extra collission box for large ascii art, delete the extra on death as well
 		function checkBig(unit) {
 			if (typeof unit.colBox !== 'undefined') {
 				for (var j = 1; j < unit.colBox[1] + 1; j++) {
@@ -129,25 +211,42 @@
 				}
 			}
 		}
+
+		//kills unit that reach end
 		function autoKill(unit) {
 			if (unit.position[0] == 0) {
 				unit.alive = false;
 			}
 		}
 
-		vm.count = 0;
+		//master loop for levels
 		function levelLoop() {
 			var dead = false;
-			vm.count = vm.count + 1;
+			vm.player.damage = vm.player.calculateTotalDamage();
 			if (vm.player.active) {
+				if (!vm.player.alive) {
+					vm.player.alive = true;
+					messageService.updateMainMessage('You have been slain.', true);
+					return;
+				}
 				for (var i = 0; i < vm.unitArray.length; i++) {
 					vm.unitArray[i].collisionCheck(vm.currentLevel.ascii, vm.unitArray);
 					if (i > 0) {
 						autoKill(vm.unitArray[i]);
 					}
 					if (!vm.unitArray[i].alive) {
-						messageService.addMessage(vm.unitArray[i].deathMessage);
 						checkBig(vm.unitArray[i]);
+
+						if (vm.unitArray[i].foundLoot) {
+							var lootMessage = vm.unitArray[i].deathMessage + ' ' + vm.unitArray[i].lootMessage;
+						}
+						else {
+							var lootMessage = vm.unitArray[i].deathMessage;
+						}
+						messageService.addMessage(lootMessage);
+
+
+						enemyCount = enemyCount - 1;
 						var newArray = [];
 						for (var j = 0; j < vm.unitArray.length; j++) {
 							if (j !== i) {
@@ -170,6 +269,11 @@
 				}
 				levelRenderArea();
 				$timeout(levelLoop, 125);
+			}
+			else if (vm.player.levelComplete && vm.player.alive) {
+				if (vm.currentLevel.unlock) {
+					progressService.progress.levels[vm.currentLevel.unlock] = true;
+				}
 			}
 		}
 

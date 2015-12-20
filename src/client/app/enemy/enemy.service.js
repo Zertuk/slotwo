@@ -281,6 +281,7 @@
             this.damage = 2;
         }
         this.TreeWarrior.prototype = new this.Enemy();
+        
 
 
 

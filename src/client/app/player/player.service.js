@@ -17,7 +17,7 @@
 
         this.Player = function() {
             this.abilities = {
-                keys: ['berserk'],
+                keys: ['berserk', 'block'],
                 berserk: {
                     name: 'Berserk',
                     slug: 'berserk',
@@ -219,6 +219,14 @@
                 }
                 console.log('damage :'  + damage);
                 return damage;
+            },
+            this.calculateTotalArmor = function() {
+                var armor = this.armor.armor;
+                if (this.abilities.block.active) {
+                    armor = 1;
+                }
+                console.log('armor :' + armor)
+                return armor;
             },
             this.active = true,
             this.ground = false,

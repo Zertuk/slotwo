@@ -44,6 +44,7 @@
 		function abilityTimer(ability, elem) {
 			if (vm.abilities[ability].active) {
 				vm.player.damage = vm.player.calculateTotalDamage();
+				vm.player.armorValue = vm.player.calculateTotalArmor();
 				if (vm.abilities[ability].timer > 0) {
 					vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
 					var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
@@ -223,6 +224,7 @@
 		function levelLoop() {
 			var dead = false;
 			vm.player.damage = vm.player.calculateTotalDamage();
+			vm.player.armorValue = vm.player.calculateTotalArmor();
 			if (vm.player.active) {
 				if (!vm.player.alive) {
 					vm.player.alive = true;

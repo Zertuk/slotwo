@@ -215,9 +215,7 @@
                 var damage = this.weapon.damage;
                 if (this.abilities.berserk.active) {
                     damage = this.weapon.damage*2;
-                    console.log('berserk active');
                 }
-                console.log('damage :'  + damage);
                 return damage;
             },
             this.calculateTotalArmor = function() {
@@ -225,7 +223,6 @@
                 if (this.abilities.block.active) {
                     armor = 1;
                 }
-                console.log('armor :' + armor)
                 return armor;
             },
             this.active = true,

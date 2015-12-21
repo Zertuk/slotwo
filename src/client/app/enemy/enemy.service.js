@@ -6,12 +6,12 @@
         .service('enemyService', enemyService);
 
 
-    enemyService.$inject = ['inventoryService'];
+    enemyService.$inject = ['inventoryService', '$timeout'];
 
 
 
     /* @ngInject */
-    function enemyService(inventoryService) {
+    function enemyService(inventoryService, $timeout) {
         var count = 0;
         var vm = this;
         vm.watch = false;
@@ -54,6 +54,7 @@
             this.position = [0, 0],
             this.positionOld = [0, 0],
             this.itemMult = 1,
+            this.test = false,
             this.inCombat = false,
             this.attackSpeedText = function() {
                 if (this.attackSpeed === 2) {
@@ -75,6 +76,9 @@
             },
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
+                    if (this.test == false) {
+                        this.special();
+                    }
                     battle(enemyArray, current, map);
                 }
             },
@@ -287,12 +291,20 @@
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
             this.maxHealth = 500;
-            this.health = 10;
-            this.damage = 10;
-            this.attackSpeed = 10;
+            this.health = 100;
+            this.damage = 2;
+            this.regularDamage = 1;
+            this.attackSpeed = 0.125;
             this.colBox = [15, 15];
             this.move = false;
-        }
+            this.resetDamage = function() {
+                this.Minotaur.damage = this.Minotaur.regularDamage;
+            };
+            this.special = function() {
+                this.Minotaur.damage = 5;
+                $timeout(this.Minotaur.resetDamage, 5000);
+            };
+        };
         this.Minotaur.prototype = new this.Enemy();
         
 

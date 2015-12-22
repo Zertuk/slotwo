@@ -39,12 +39,13 @@
             }
             enemy.death(map);
         }
-        this.Enemy = function() {
+        vm.Enemy = function() {
             this.ground = false,
             this.attackSpeed = 2,
             this.health = 10,
             this.maxHealth = 10,
             this.damage = 1,
+            this.regularDamage = 1,
             this.alive = true,
             //movement
             this.move = true;
@@ -56,6 +57,10 @@
             this.itemMult = 1,
             this.test = false,
             this.inCombat = false,
+            this.phases = false,
+            this.phaseOne = false,
+            this.phaseTwo = false,
+            this.phaseThree = false,
             this.attackSpeedText = function() {
                 if (this.attackSpeed === 2) {
                     return 'average';
@@ -72,13 +77,34 @@
                 if (percent > 1) {
                     percent = 1;
                 }
+                this.phaseCheck(percent);
                 return percent;
             },
+            this.phaseCheck = function(percent) {
+                percent = percent*100;
+                if (this.phases) {
+                    if (this.phaseOne) {
+                        if (percent < 76) {
+                            this.phaseOne = false;
+                            this.phaseOneActivate();
+                        }
+                    }
+                    else if (this.phaseTwo) {
+                        if (percent < 51) {
+                            this.phaseTwo = false;
+                            this.phaseTwoActivate();
+                        }
+                    }
+                    else if (this.phaseThree) {
+                        if (percent < 26) {
+                            this.phaseThree = false;
+                            this.phaseThreeActivate();
+                        }
+                    }
+                }
+            };
             this.battleCheck = function(enemyArray, current, map) {
                 if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
-                    if (this.test == false) {
-                        this.special();
-                    }
                     battle(enemyArray, current, map);
                 }
             },
@@ -143,7 +169,6 @@
                 if (current.alive && current.move) {
                     if ((map[current.position[1]][current.position[0] + current.speed] == 'Y') || current.inCombat) {
                         current.inCombat = true;
-                        console.log('in combat')
                     }
                     else {
                         console.log(map[current.position[1]][current.position[0] + current.speed])
@@ -232,11 +257,11 @@
             }
         }
 
-        this.Cat = function Cat() {
+        vm.Cat = function Cat() {
             this.name = 'Cat';
             this.symbol = 'C';
         }
-        this.Cat.prototype = new this.Enemy();
+        vm.Cat.prototype = new vm.Enemy();
 
         this.Tree = function Tree() {
             this.name = 'Tree';
@@ -284,28 +309,49 @@
             this.health = 30;
             this.damage = 2;
         }
-        this.TreeWarrior.prototype = new this.Enemy();
+        vm.TreeWarrior.prototype = new vm.Enemy();
 
-        this.Minotaur = function Minotaur() {
+        vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
-            this.maxHealth = 500;
+            this.maxHealth = 100;
             this.health = 100;
-            this.damage = 2;
+            this.damage = 1;
             this.regularDamage = 1;
             this.attackSpeed = 0.125;
             this.colBox = [15, 15];
             this.move = false;
+            this.phases = true;
+            this.phaseOne = true;
+            this.phaseTwo = true;
+            this.phaseThree = true;
+            this.resetTimeout = false;
             this.resetDamage = function() {
-                this.Minotaur.damage = this.Minotaur.regularDamage;
+                if (this.resetTimeout) {
+                    console.log('real reset')
+                    this.damage = 1;
+                }
+                else {
+                    this.resetDamage();
+                }
+            }
+            this.phaseOneActivate = function() {
+                var thisEnemy = this;
+                console.log('phase 1')
+                this.damage = 2;
+                $timeout(function() {
+                    thisEnemy.damage = 1;
+                }, 1000);
             };
-            this.special = function() {
-                this.Minotaur.damage = 5;
-                $timeout(this.Minotaur.resetDamage, 5000);
+            this.phaseTwoActivate = function() {
+                console.log('phase 2')
             };
+            this.phaseThreeActivate = function() {
+                console.log('phase 3')
+            }
         };
-        this.Minotaur.prototype = new this.Enemy();
+        vm.Minotaur.prototype = new vm.Enemy();
         
 
 

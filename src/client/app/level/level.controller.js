@@ -225,6 +225,7 @@
 		//master loop for levels
 		function levelLoop() {
 			var dead = false;
+			vm.player.attackSpeed  = vm.player.weapon.attackSpeed;
 			vm.player.damage = vm.player.calculateTotalDamage();
 			vm.player.armorValue = vm.player.calculateTotalArmor();
 			if (vm.player.active) {

@@ -118,7 +118,7 @@
 		this.minotaurHammer.name = 'Minotaur Hammer';
 		this.minotaurHammer.desc = 'minotaur hammer';
 		this.minotaurHammer.damage = 20;
-		this.minotaurHammer.attackSpeed = 10;
+		this.minotaurHammer.attackSpeed = 5;
 		this.minotaurHammer.slug = 'minotaurHammer';
 
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];

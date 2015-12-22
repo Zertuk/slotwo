@@ -67,7 +67,9 @@
         this.treeTwo.unlock = 'treeCity';
         this.treeTwo.specialEnd = 95;
         this.treeTwo.enemyArray = [enemyService.Bear, enemyService.Deer];
-        this.treeTwo.unitSpawnChance = [25, 100]
+        this.treeTwo.specialSpawn = [50, 22];
+        this.treeTwo.specialSpawnChance = 75;
+        this.treeTwo.unitSpawnChance = [25, 100];
         this.treeTwo.enemyMax = 3;
         this.treeTwo.enemySpawn = [89, 22];
         this.treeTwo.playerSpawn = [0, 22];

@@ -160,16 +160,33 @@
 				for (var i = 0; i < vm.currentLevel.unitSpawnChance.length; i++) {
 					if (random < vm.currentLevel.unitSpawnChance[i]) {
 						var unit = new vm.currentLevel.enemyArray[i];
-						var spawn = [];
-						spawn[0] = vm.currentLevel.enemySpawn[0];
-						spawn[1] = vm.currentLevel.enemySpawn[1];
-						unit.position = spawn;
-						vm.unitArray.push(unit);
-						i = vm.currentLevel.unitSpawnChance.length;
+						if (vm.player.position[0] < vm.currentLevel.specialSpawn[0]) {
+							var specialCheck = Math.floor(Math.random()*100);
+							if (specialCheck < vm.currentLevel.specialSpawnChance) {
+								regularSpawn(unit, 'specialSpawn');
+							}
+							else {
+								regularSpawn(unit, 'enemySpawn');
+							}
+						}
+						else {
+							regularSpawn(unit, 'enemySpawn');
+						}
+						return;
 					}
 				}
 			}
 		}
+
+		function regularSpawn(unit, type) {
+			var spawn = [];
+			spawn[0] = vm.currentLevel[type][0];
+			spawn[1] = vm.currentLevel[type][1];
+			unit.position = spawn;
+			vm.unitArray.push(unit);
+		}
+
+
 
 		//function for spawning immobile enemies at start of level
 		function spawnEnemyAtStart(position) {

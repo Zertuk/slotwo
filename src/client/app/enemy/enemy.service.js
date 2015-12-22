@@ -336,32 +336,27 @@
                     this.resetDamage();
                 }
             }
-            this.phaseOneActivate = function() {
-                var thisEnemy = this;
+            this.phaseActive = function(phase) {
+                var thisEnemy= this;
                 this.damage = 2;
-
+                messageService.addMessage('The ' + this.name + ' has enraged, dealing extra damage for a few seconds!');
                 $timeout(function() {
-                    if (thisEnemy.phaseTwo) {
+                    var phaseCheck = thisEnemy[phase];
+                    if (phaseCheck) {
                         thisEnemy.damage = 1;
                     }
                 }, 2000);
+
+            }
+            this.phaseOneActivate = function() {
+                this.phaseActive('phaseTwo');
             };
             this.phaseTwoActivate = function() {
-                var thisEnemy = this;
-                this.damage = 2;
-                $timeout(function() {
-                    if (thisEnemy.phaseThree) {
-                        thisEnemy.damage = 1;
-                    }
-                }, 2000);
+                this.phaseActive('phaseThree');
             };
             this.phaseThreeActivate = function() {
-                var thisEnemy = this;
-                this.damage = 2;
-                $timeout(function() {
-                    thisEnemy.damage = 1;
-                }, 2000);
-            }
+                this.phaseActive();
+            };
         };
         vm.Minotaur.prototype = new vm.Enemy();
         

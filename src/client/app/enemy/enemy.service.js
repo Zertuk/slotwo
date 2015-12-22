@@ -326,16 +326,6 @@
             this.phaseOne = true;
             this.phaseTwo = true;
             this.phaseThree = true;
-            this.resetTimeout = false;
-            this.resetDamage = function() {
-                if (this.resetTimeout) {
-                    console.log('real reset')
-                    this.damage = 1;
-                }
-                else {
-                    this.resetDamage();
-                }
-            }
             this.phaseActive = function(phase) {
                 var thisEnemy= this;
                 this.damage = 2;

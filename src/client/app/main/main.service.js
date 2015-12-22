@@ -176,7 +176,7 @@
         vm.treeCity.name = 'Tree City';
         vm.treeCity.slug = 'treeCity';
         vm.treeCity.prev = 'mainMap';
-        vm.treeCity.prevName = 'Map';
+        vm.treeCity.prevName = 'The Map';
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
 							   "      /////////\\\\\\\\\\\\\\\\\\     ////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////\\\\\\\\\\\\              |       |           |              ",                                                                        
 							   "       ////////\\\\\\\\\\\\\\              |                   |    ///////\\\\\\\\\\\\\\             |       |     |     |              ",                                                                 
@@ -208,7 +208,7 @@
 		}
 
 		vm.treeSecret = new vm.Location;
-		vm.treeSecret.name = 'Tree secret';
+		vm.treeSecret.name = '? ? ?';
 		vm.treeSecret.ascii = ['tree secret'];
 		vm.treeSecret.prev = 'treeCity';
 		vm.treeSecret.prevName = 'Tree City';
@@ -249,7 +249,7 @@
 		vm.treeInn.prevName = 'Tree City';
 
 		vm.treeSlums = new vm.Location;
-		vm.treeSlums.name = 'Tree Slums';
+		vm.treeSlums.name = 'The Slums';
 		vm.treeSlums.initClicks = function() {
 			vm.click(this, 'test', 'slumsBum', 105, 12, 5, 4);
 			vm.click(this, 'test', 'slumsInn', 64, 11, 6, 5);
@@ -287,7 +287,7 @@
 		vm.treeSlumsInn.prevName = 'Slums';
 
 		vm.treeSlumsThugs = new vm.Location;
-		vm.treeSlumsThugs.name = 'Tree Slums Thugs';
+		vm.treeSlumsThugs.name = 'Angry Thugs';
 		vm.treeSlumsThugs.prev = 'slums';
 		vm.treeSlumsThugs.prevName = 'Slums';
 		vm.treeSlumsThugs.specialText = true;
@@ -390,7 +390,7 @@
 
 
 		vm.treeGovernment = new vm.Location;
-		vm.treeGovernment.name = 'Tree King';
+		vm.treeGovernment.name = 'King Treemaster';
 		vm.treeGovernment.prev = 'treeCity';
 		vm.treeGovernment.prevName = 'Tree City';
 		vm.treeGovernment.specialText = true;

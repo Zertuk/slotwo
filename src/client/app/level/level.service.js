@@ -28,7 +28,7 @@
         this.treeOne.enemySpawn = [141, 21];
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
-        this.treeOne.name = 'Forest Approach';
+        this.treeOne.name = 'The Forest';
         this.treeOne.slug = 'treeOne'
         this.treeOne.defaultAscii = ["     .\'           \'./   \\    .\'\\      /                            /                                     \\/                               /                     ",
                                      "    /               \\    \\ .\'   \\    /                            /                                      /                              .\'                       ",
@@ -71,7 +71,7 @@
         this.treeTwo.enemyMax = 3;
         this.treeTwo.enemySpawn = [89, 22];
         this.treeTwo.playerSpawn = [0, 22];
-        this.treeTwo.name = 'Tree Two';
+        this.treeTwo.name = 'Approach the Giant Tree';
         this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
                               "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
                               "    /               \\    \\ .'   \\    /                            /////////////////////////     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",            
@@ -105,7 +105,7 @@
         this.bridge.enemySpawn = [150, 14];
         this.bridge.slug = 'bridge';
         this.bridge.unlock = 'snow'
-        this.bridge.name = 'Bridge';
+        this.bridge.name = 'The Bridge';
         this.bridge.defaultAscii =  
                               ["  / \\    / \\                          .           /                                                             _'                                                                         .........                            ",                                                                                                                                                                                                                  
                               "  / \\     |         .                / \\         /                                               ~~~           / \\_                                                                    ..''         ''..                        ",
@@ -165,7 +165,7 @@
         this.ruins.enemyArray = [enemyService.TreeWarrior];
         this.ruins.playerSpawn = [0, 13];
         this.ruins.enemySpawn = [60, 12];
-        this.ruins.name = 'Ruins';
+        this.ruins.name = 'The Desert of ?';
         this.ruins.specialEnd = 250;
         this.ruins.defaultAscii = ["                                                                                                                                                                                     /                                                                                   ",                                                                                                                       
                                    "                                                                                                                                                                                    /                                        ________________                            ",                                                                                                                       
@@ -193,7 +193,7 @@
         this.dungeon.spawnAtStart = [[198, 11]];
         this.dungeon.slug = 'dungeon';
         this.dungeon.unlock = 'ruinsCleared';
-        this.dungeon.name = 'Dungeon';
+        this.dungeon.name = 'The Beasts Lair';
         this.dungeon.defaultAscii = ["                                             *                                                                                                                                                                                    ",
                                      "____                                         *                        *   *                                                                                                                                                       ",
                                      "''''____                                   __*__                      *   *                                                                                                                                                       ",
@@ -217,7 +217,7 @@
         this.shroom.enemyArray = [enemyService.TreeWarrior];
         this.shroom.playerSpawn = [0, 13];
         this.shroom.enemySpawn = [0, 0];
-        this.shroom.name = 'Mushroom Level'; 
+        this.shroom.name = '? ? ?'; 
         this.shroom.slug = 'shroom';
         this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",
                                    "                                                                                                                                           /  \\                 |'._______'.                                                                   ",

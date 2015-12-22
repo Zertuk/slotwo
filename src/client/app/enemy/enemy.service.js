@@ -325,6 +325,8 @@
 
         vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';
+            this.items = [vm.itemDictionary['minotaurHammer']];
+            this.itemChance = 50;
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
             this.maxHealth = 100;

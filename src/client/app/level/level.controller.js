@@ -5,10 +5,10 @@
 		.module('app.level')
 		.controller('LevelController', LevelController);
 
-	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService', 'progressService'];
+	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService', 'progressService', 'inventoryService'];
 
 	/* @ngInject */
-	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService, progressService) {
+	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService, progressService, inventoryService) {
 		var vm = this;
 		vm.title = 'LevelController';
 
@@ -19,6 +19,7 @@
 		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
 		vm.abilities = vm.player.abilities;
+		vm.itemDictionary = inventoryService.itemDictionary;
 
 		vm.activateAbility = function(ability) {
 			var message = '';

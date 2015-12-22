@@ -114,10 +114,18 @@
 		this.bearClaws.attackSpeed = 1;
 		this.bearClaws.slug = 'bearClaws';
 
+		this.minotaurHammer = new this.Item();
+		this.minotaurHammer.name = 'Minotaur Hammer';
+		this.minotaurHammer.desc = 'minotaur hammer';
+		this.minotaurHammer.damage = 20;
+		this.minotaurHammer.attackSpeed = 10;
+		this.minotaurHammer.slug = 'minotaurHammer';
+
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 1]];
+		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]]
 
 
 
@@ -249,7 +257,8 @@
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['club'], 
 					  vm.itemDictionary['sword'],
-					  vm.itemDictionary['bearClaws']];
+					  vm.itemDictionary['bearClaws'],
+					  vm.itemDictionary['minotaurHammer']];
 
 
 		vm.armor = [vm.itemDictionary['clothArmor'],

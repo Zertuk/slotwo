@@ -152,12 +152,27 @@
                         }
                     }
                     else {
-                        var num = 1;
+                        var num = 'some';
                     }
                     this.foundLoot = true;
                     this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
-                    this.items[0][1][1] = this.items[0][1][1] + num;
-                    console.log(this.items[0][1][1])
+                    if (num === 'some') {
+                        num = 1;
+                    }
+                    if (this.items[0][0][1].lootOnce) {
+                        console.log(this.items[0][1][1])
+                        if (this.items[0][1][1] > 0) {
+                            this.lootMessage = 'You find ' + this.items[0][0][1].name + '.';
+                        }
+                    }
+                    else {
+                        console.log('shouldnt run');
+                        this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
+                        if (num === 'some') {
+                            num = 1;
+                        }
+                        this.items[0][1][1] = this.items[0][1][1] + num;
+                    }
                 }
             },
             this.moneyDrop = function() {
@@ -257,12 +272,6 @@
             }
         }
 
-        vm.Cat = function Cat() {
-            this.name = 'Cat';
-            this.symbol = 'C';
-        }
-        vm.Cat.prototype = new vm.Enemy();
-
         this.Tree = function Tree() {
             this.name = 'Tree';
             this.deathMessage = 'A Tree has been chopped!';
@@ -278,12 +287,13 @@
         }
         this.Tree.prototype = new this.Enemy();
 
-
         this.Bear = function Bear() {
             this.name = 'Bear';
             this.desc = 'A Wandering Bear';
             this.deathMessage = '';
             this.symbol = 'B';
+            this.items = [vm.itemDictionary['bearClaws']];
+            this.itemChance = 5;
             this.maxHealth = 30;
             this.health = 30;
             this.damage = 2;
@@ -293,10 +303,12 @@
         this.Deer = function Deer() {
             this.name = 'Deer';
             this.desc = 'A Cute Deer';
+            this.items = [vm.itemDictionary['deerAntlers']];
+            this.itemChance = 25;
             this.deathMessage = '';
             this.symbol = 'D';
-            this.maxHealth = 5;
-            this.health = 500;
+            this.maxHealth = 10;
+            this.health = 10;
             this.damage = 1;
         }
         this.Deer.prototype = new this.Enemy();

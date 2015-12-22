@@ -216,6 +216,7 @@
 		this.deerAntlers.slug = 'deerAntlers';
 		this.deerAntlers.desc = 'The latest in deer fashion';
 		this.deerAntlers.message = 'Attacks cause +1 damage.';
+		this.deerAntlers.lootOnce = true;
 
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];

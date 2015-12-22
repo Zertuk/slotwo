@@ -6,12 +6,12 @@
         .service('enemyService', enemyService);
 
 
-    enemyService.$inject = ['inventoryService', '$timeout'];
+    enemyService.$inject = ['inventoryService', '$timeout', 'messageService'];
 
 
 
     /* @ngInject */
-    function enemyService(inventoryService, $timeout) {
+    function enemyService(inventoryService, $timeout, messageService) {
         var count = 0;
         var vm = this;
         vm.watch = false;
@@ -338,17 +338,29 @@
             }
             this.phaseOneActivate = function() {
                 var thisEnemy = this;
-                console.log('phase 1')
+                this.damage = 2;
+
+                $timeout(function() {
+                    if (thisEnemy.phaseTwo) {
+                        thisEnemy.damage = 1;
+                    }
+                }, 2000);
+            };
+            this.phaseTwoActivate = function() {
+                var thisEnemy = this;
+                this.damage = 2;
+                $timeout(function() {
+                    if (thisEnemy.phaseThree) {
+                        thisEnemy.damage = 1;
+                    }
+                }, 2000);
+            };
+            this.phaseThreeActivate = function() {
+                var thisEnemy = this;
                 this.damage = 2;
                 $timeout(function() {
                     thisEnemy.damage = 1;
-                }, 1000);
-            };
-            this.phaseTwoActivate = function() {
-                console.log('phase 2')
-            };
-            this.phaseThreeActivate = function() {
-                console.log('phase 3')
+                }, 2000);
             }
         };
         vm.Minotaur.prototype = new vm.Enemy();

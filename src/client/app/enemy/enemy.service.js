@@ -369,7 +369,7 @@
 
 
 
-
+        vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer'];
 
 
 

@@ -3,5 +3,6 @@
 
     angular
         .module('app.book', [
+        	'app.enemy'
         ]);
 })();

@@ -41,7 +41,7 @@
                 ruins: false,
                 desert: false,
                 bridge: false,
-                snow: false,
+                snow: true,
                 shroom: true,
                 wizard: false
             }

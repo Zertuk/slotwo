@@ -109,17 +109,17 @@
         	//snow
         	vm.click(this, 'Snow', 'snow', 140, 30, 30, 15, true);
         	//bridge
-        	vm.click(this, 'Bridge', 'bridge', 110, 39, 25, 5, true);
+        	vm.click(this, 'The Bridge', 'bridge', 110, 39, 25, 5, true);
         	//tree city
         	vm.click(this, 'Tree City', 'treeCity', 33, 18, 15, 10);
         	//tree two
-        	vm.click(this, 'Tree Two', 'treeTwo', 30, 29, 30, 10, true);
+        	vm.click(this, 'Approach the Tree', 'treeTwo', 30, 29, 30, 10, true);
         	//treeone 
-        	vm.click(this, 'Tree One', 'treeOne', 1, 29, 28, 8, true);
-        	vm.click(this, 'Tree One', 'treeOne', 30, 40, 38, 5, true);
+        	vm.click(this, 'The Forest', 'treeOne', 1, 29, 28, 8, true);
+        	vm.click(this, 'The Forest', 'treeOne', 30, 40, 38, 5, true);
         	//ruins
         	vm.click(this, 'Ruins', 'ruins', 0, 6, 50, 12, true);
-        	vm.click(this, 'Dungeon', 'dungeon', 0, 0, 25, 6, true);
+        	vm.click(this, 'The Beasts Lair', 'dungeon', 0, 0, 25, 6, true);
             //house
             vm.click(this, 'House', 'house', 0, 38, 20, 5);
 

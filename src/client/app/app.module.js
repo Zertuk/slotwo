@@ -18,7 +18,8 @@
 		'app.progress',
 		'app.resources',
 		'app.monk',
-		'app.enchant'
+		'app.enchant',
+		'app.book'
 	]);
 
 })();

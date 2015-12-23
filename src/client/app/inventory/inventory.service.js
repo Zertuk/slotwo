@@ -121,11 +121,29 @@
 		this.minotaurHammer.attackSpeed = 5;
 		this.minotaurHammer.slug = 'minotaurHammer';
 
+		this.doubleShield = new this.Item();
+		this.doubleShield.name = 'Double Shields';
+		this.doubleShield.desc = 'Wield two shields at the same time!';
+		this.doubleShield.damage = 0;
+		this.doubleShield.attackSpeed = 999999999999;
+		this.doubleShield.slug = 'doubleShield';
+		this.doubleShield.armor = 100;
+
+		this.swordShield = new this.Item();
+		this.swordShield.name = 'Sword + Shield';
+		this.swordShield.desc = 'Classic Combo';
+		this.swordShield.damage = 2;
+		this.swordShield.attackSpeed = 2;
+		this.swordShield.slug = 'swordShield';
+		this.swordShield.armor = 10;
+
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 1]];
-		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]]
+		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]];
+		vm.itemDictionary['doubleShield'] = [['item', this.doubleShield], ['amount', 1]];
+		vm.itemDictionary['swordShield'] = [['item', this.swordShield], ['amount', 1]];
 
 
 
@@ -258,7 +276,9 @@
 					  vm.itemDictionary['club'], 
 					  vm.itemDictionary['sword'],
 					  vm.itemDictionary['bearClaws'],
-					  vm.itemDictionary['minotaurHammer']];
+					  vm.itemDictionary['minotaurHammer'],
+					  vm.itemDictionary['swordShield'],
+					  vm.itemDictionary['doubleShield']];
 
 
 		vm.armor = [vm.itemDictionary['clothArmor'],

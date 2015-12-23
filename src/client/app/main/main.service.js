@@ -103,11 +103,11 @@
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
             //monk
-            vm.click(this, 'Monk', 'monk', 112, 16, 4, 3);
+            vm.click(this, 'Mysterious Cavern', 'monk', 112, 16, 4, 3);
         	//wizard
-        	vm.click(this, 'Wizard', 'wizard', 171, 35, 30, 10);
+        	vm.click(this, 'The Bear', 'wizard', 171, 35, 30, 10);
         	//snow
-        	vm.click(this, 'Snow', 'snow', 140, 30, 30, 15, true);
+        	vm.click(this, 'Snow Wastes', 'snow', 140, 30, 30, 15, true);
         	//bridge
         	vm.click(this, 'The Bridge', 'bridge', 110, 39, 25, 5, true);
         	//tree city
@@ -118,7 +118,7 @@
         	vm.click(this, 'The Forest', 'treeOne', 1, 29, 28, 8, true);
         	vm.click(this, 'The Forest', 'treeOne', 30, 40, 38, 5, true);
         	//ruins
-        	vm.click(this, 'Ruins', 'ruins', 0, 6, 50, 12, true);
+        	vm.click(this, 'The Desert', 'ruins', 0, 6, 50, 12, true);
         	vm.click(this, 'The Beasts Lair', 'dungeon', 0, 0, 25, 6, true);
             //house
             vm.click(this, 'House', 'house', 0, 38, 20, 5);

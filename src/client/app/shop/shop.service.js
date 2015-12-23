@@ -11,6 +11,7 @@
     function shopService(playerService, inventoryService, resourcesService, messageService) {
     	var vm = this;
         vm.resources = resourcesService.resources;
+        vm.itemDictionary = inventoryService.itemDictionary;
 
     	vm.initShop = function() {
     		createShopList();
@@ -18,6 +19,10 @@
 
         vm.initPurchase = function(item) {
             checkBalance(item);
+        }
+
+        vm.grabItemDictionary = function() {
+            return vm.itemDictionary;
         }
 
         ////////////////

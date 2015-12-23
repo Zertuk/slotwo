@@ -20,6 +20,16 @@
         vm.currentLocation.specFunc();
         vm.progress = progressService.progress;
 
+        function testinghere() {
+            var elem = angular.element('.controls button');
+            elem.click(function() {
+                elem.removeClass('active');
+                angular.element(this).addClass('active');
+            })
+        }
+
+        testinghere();
+
         vm.switchLocation = function(location) {
             var check = mainService.switchLocation(location);
             if (check) {

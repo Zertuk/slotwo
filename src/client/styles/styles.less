@@ -483,8 +483,14 @@ button:hover, .resourcecontrol:hover, .button:hover {
     background: #2f2f2f;
 }
 
-button:active, .resourcecontrol:active, .button:active {
+button:active, 
+.resourcecontrol:active, 
+.button:active, 
+button.active {
     background: @color_white;
     color: @color_black;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}

@@ -1,5 +1,16 @@
 <div class = "container borderbottom">
 	<div ng-controller = "BookController as vm">
-		hello
+		<div class = "enemyinfo book" ng-repeat = "enemy in vm.enemyArray">
+			<p class = "enemyname">{{enemy.name}}</p>
+			<p class = "enemydesc">{{enemy.desc}}</p>
+			<div class = "healthbar">
+                <div class = "healthbarinner" style = "width: {{vm.enemy.percent*100}}%">
+                </div>
+                <p class = "alignvert">{{enemy.health}} / {{enemy.maxHealth}}</p>
+            </div><!--healthbar-->
+            <div class = "enemydamage" ng-if = "vm.currentEnemy.damage > 0">
+            	<p>Causes {{vm.enemy.damage}} damage at {{vm.enemy.attackSpeedText()}} speed.</p>
+            </div>
+		</div>
 	</div>
 </div>

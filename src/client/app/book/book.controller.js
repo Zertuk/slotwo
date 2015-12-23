@@ -10,7 +10,7 @@
     /* @ngInject */
     function BookController(bookService) {
         var vm = this;
-
+        vm.enemyArray = bookService.enemyArray;
         bookService.func();
 
         activate();

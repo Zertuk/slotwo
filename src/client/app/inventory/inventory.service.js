@@ -102,9 +102,6 @@
 		this.sword.cat = 'weapon';
 		this.sword.damage = 4;
 		this.sword.attackSpeed = 2;
-		this.sword.buyable = true;
-		this.sword.removeAfterBuy = true;
-		this.sword.price = 100;
 		this.sword.slug = 'sword';
 
 		this.bearClaws = new this.Item();
@@ -136,6 +133,9 @@
 		this.swordShield.attackSpeed = 2;
 		this.swordShield.slug = 'swordShield';
 		this.swordShield.armor = 10;
+		this.swordShield.buyable = true;
+		this.swordShield.removeAfterBuy = true;
+		this.swordShield.price = 1000;
 
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
@@ -270,7 +270,7 @@
 						 vm.itemDictionary['deerAntlers'],
 						 vm.itemDictionary['wizardsHair']];
 
-		vm.buyableItems = ['potion', 'sword', 'wood', 'boneArmor', 'winterCoat', 'wizardsHair'];
+		vm.buyableItems = ['potion', 'swordShield', 'wood', 'boneArmor', 'winterCoat', 'wizardsHair'];
 
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['club'], 

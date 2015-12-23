@@ -123,7 +123,7 @@
 
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
-		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
+		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 1]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]]
 
@@ -162,7 +162,7 @@
 		this.polarArmor.armor = 0.3;
 		this.polarArmor.slug = 'polarArmor';
 
-		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
+		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
 		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 1]];
@@ -226,7 +226,7 @@
 		this.deerAntlers.message = 'Attacks cause +1 damage.';
 		this.deerAntlers.lootOnce = true;
 
-		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
+		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 0]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
 		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];
 

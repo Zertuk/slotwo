@@ -278,7 +278,7 @@
             this.symbol = '|';
             this.move = false;
             this.maxHealth = 20;
-            this.health = 200;
+            this.health = 20;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['wood']];
             this.itemChance = 100;
@@ -296,7 +296,8 @@
             this.itemChance = 5;
             this.maxHealth = 30;
             this.health = 30;
-            this.damage = 2;
+            this.damage = 10;
+            this.attackSpeed = 5;
         }
         this.Bear.prototype = new this.Enemy();
 
@@ -310,6 +311,7 @@
             this.maxHealth = 10;
             this.health = 10;
             this.damage = 1;
+            this.attackSpeed = 1;
         }
         this.Deer.prototype = new this.Enemy();
 

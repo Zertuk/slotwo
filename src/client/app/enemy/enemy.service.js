@@ -21,12 +21,12 @@
             count = count + 1;
             vm.currentEnemy = enemy;
             vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
-            if (count % enemy.attackSpeed == 0) {
+            if (count % enemy.attackSpeed === 0) {
                 var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
                 unit.health = unit.health - damageDealt;
                 unit.health = unit.health.toFixed(2);
             }
-            if (count % unit.attackSpeed == 0) {
+            if (count % unit.attackSpeed === 0) {
                 enemy.health = enemy.health - unit.damage;
             }
             if (enemy.health <= 0) {
@@ -48,7 +48,7 @@
             this.regularDamage = 1,
             this.alive = true,
             //movement
-            this.move = true;
+            this.move = true,
             this.prev = false,
             this.prevCheck = false,
             this.speed = -1,
@@ -71,7 +71,7 @@
                 else if (this.attackSpeed < 2) {
                     return 'fast';
                 }
-            }
+            },
             this.findHealthPercent = function() {
                 var percent = this.health / this.maxHealth;
                 if (percent > 1) {
@@ -102,9 +102,9 @@
                         }
                     }
                 }
-            };
+            },
             this.battleCheck = function(enemyArray, current, map) {
-                if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
+                if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
                     battle(enemyArray, current, map);
                 }
             },
@@ -145,14 +145,15 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 if (random <= this.itemChance) {
+                    var num;
                     if (this.itemMult > 1) {
-                        var num = Math.round(this.itemMult * Math.random());
+                        num = Math.round(this.itemMult * Math.random());
                         if (num === 0) {
                             num = 1;
                         }
                     }
                     else {
-                        var num = 'some';
+                        num = 'some';
                     }
                     this.foundLoot = true;
                     this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
@@ -160,13 +161,11 @@
                         num = 1;
                     }
                     if (this.items[0][0][1].lootOnce) {
-                        console.log(this.items[0][1][1])
                         if (this.items[0][1][1] > 0) {
                             this.lootMessage = 'You find ' + this.items[0][0][1].name + '.';
                         }
                     }
                     else {
-                        console.log('shouldnt run');
                         this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
                         if (num === 'some') {
                             num = 1;
@@ -182,11 +181,8 @@
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 if (current.alive && current.move) {
-                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y') || current.inCombat) {
+                    if ((map[current.position[1]][current.position[0] + current.speed] === 'Y') || current.inCombat) {
                         current.inCombat = true;
-                    }
-                    else {
-                        console.log(map[current.position[1]][current.position[0] + current.speed])
                     }
                     if (current.checkLevelEnd(current.position, map)) {
                         return;
@@ -204,11 +200,11 @@
                     else {
                         current.prevCheck = false;
                     }
-                    if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
-                        if (current.symbol == 'Y') {
+                    if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
+                        if (current.symbol === 'Y') {
                             current.inCombat = false;
                             for (var i = 0; i < array.length; i++) {
-                                if ((map[current.position[1]][current.position[0] + current.speed]) == (array[i].symbol)) {
+                                if ((map[current.position[1]][current.position[0] + current.speed]) === (array[i].symbol)) {
                                     current.inCombat = true;
                                 }
                             }
@@ -223,20 +219,19 @@
                         }
                     }
                     //collission detection y
-                    else if ((map[current.position[1] + 1][current.position[0]] == ' ') && !current.prevCheck && !current.inCombat) {
+                    else if ((map[current.position[1] + 1][current.position[0]] === ' ') && !current.prevCheck && !current.inCombat) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
-                        console.log(current.inCombat)
                     }
                      //collision detection x
-                    else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
+                    else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
                         this.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
                     //collision detection with replacable tiles
-                    else if (map[current.position[1]][current.position[0] + current.speed] == '_') {
+                    else if (map[current.position[1]][current.position[0] + current.speed] === '_') {
                         current.prev = true;
                         this.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
-                    else if (map[current.position[1] + 1][current.position[0]] == '_') {
+                    else if (map[current.position[1] + 1][current.position[0]] === '_') {
                         current.prev = true;
                         this.updatePosition(current.position, current.positionOld, 0, 1);
                     }
@@ -249,7 +244,7 @@
                     else {
                         var cantMove = false;
                         for (var i = 0; i < enemyArray.length; i++) {
-                            if (map[current.position[1]][current.position[0] + current.speed] == enemyArray[i].symbol) {
+                            if (map[current.position[1]][current.position[0] + current.speed] === enemyArray[i].symbol) {
                                 cantMove = true;
                             }
                         }
@@ -270,7 +265,7 @@
                     return;
                 }
             }
-        }
+        };
 
         this.Tree = function Tree() {
             this.name = 'Tree';
@@ -284,7 +279,7 @@
             this.itemChance = 100;
             this.itemMult = 3;
             this.damage = 0;
-        }
+        };
         this.Tree.prototype = new this.Enemy();
 
         this.Bear = function Bear() {
@@ -298,7 +293,7 @@
             this.health = 30;
             this.damage = 10;
             this.attackSpeed = 5;
-        }
+        };
         this.Bear.prototype = new this.Enemy();
 
         this.Deer = function Deer() {
@@ -312,7 +307,7 @@
             this.health = 10;
             this.damage = 1;
             this.attackSpeed = 1;
-        }
+        };
         this.Deer.prototype = new this.Enemy();
 
         this.TreeWarrior = function TreeWarrior() {
@@ -322,7 +317,7 @@
             this.maxHealth = 30;
             this.health = 30;
             this.damage = 2;
-        }
+        };
         vm.TreeWarrior.prototype = new vm.Enemy();
 
         vm.Minotaur = function Minotaur() {
@@ -352,8 +347,7 @@
                         thisEnemy.damage = 1;
                     }
                 }, 2000);
-
-            }
+            };
             this.phaseOneActivate = function() {
                 this.phaseActive('phaseTwo');
             };
@@ -365,11 +359,22 @@
             };
         };
         vm.Minotaur.prototype = new vm.Enemy();
-        
 
+        vm.Snowman = function Snowman() {
+            this.name = 'Snowman';
+            this.items = [];
+            this.itemChance = 50;
+            this.deathMessage = 'The snowman has been turned to slush!';
+            this.symbol = '(';
+            this.damage = 1;
+            this.attackSpeed = 2;
+            this.colBox = [2, 2];
+            this.move = false;
+        };
+        vm.Snowman.prototype = new vm.Enemy();
 
-
-        vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer'];
+    
+        vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer', 'Snowman'];
 
 
 

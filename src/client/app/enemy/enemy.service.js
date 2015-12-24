@@ -122,10 +122,6 @@
                 unit[1] = unit[1] + y;
                 unit[0] = unit[0] + x;
             },
-            this.prevTile = function(unitOld, map) {
-                map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
-                testage = 3;
-            },
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
                     console.log('level end');

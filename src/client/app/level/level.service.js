@@ -134,9 +134,10 @@
                               "            |         /                                          ~~~~                   .'             |                                                                                                                        "];
 
         this.snow = new this.Level();
-        this.snow.enemyArray = [enemyService.TreeWarrior];
+        this.snow.enemyArray = [enemyService.Snowman, enemyService.snowmanBoss];
         this.snow.playerSpawn = [0, 10];
-        this.snow.enemySpawn = [10, 10];
+        this.snow.spawnMore = false;
+        this.snow.spawnAtStart = [[14, 11], [47, 9], [124, 14]];
         this.snow.name = 'Snow';
         this.snow.slug = 'snow';
         this.snow.unlock = 'wizard';

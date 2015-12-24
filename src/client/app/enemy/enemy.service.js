@@ -360,7 +360,7 @@
             this.name = 'Snowman';
             this.items = [];
             this.itemChance = 50;
-            this.deathMessage = 'The snowman has been turned to slush!';
+            this.deathMessage = 'A Snowman has been turned to slush!';
             this.symbol = '(';
             this.damage = 1;
             this.attackSpeed = 2;

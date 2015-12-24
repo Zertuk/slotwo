@@ -141,6 +141,7 @@
         this.snow.name = 'Snow';
         this.snow.slug = 'snow';
         this.snow.unlock = 'wizard';
+        this.snow.specialEnd = 190;
         this.snow.defaultAscii = ["                                                                                                                                                           \\                                       ",               
                                   "                                                                                                                                                            \\  /____                               ",               
                                   "                                                                                                                          _     _____                        \\/     \\____    ______                ",                            

@@ -377,12 +377,13 @@
             this.symbol = '\\';
             this.damage = 1;
             this.attackSpeed = 2;
+            this.colBox = [20, 20];
             this.move = false;
         }
         vm.SnowmanBoss.prototype = new vm.Enemy();
 
     
-        vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer', 'Snowman'];
+        vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer', 'Snowman', 'SnowmanBoss'];
 
 
 

@@ -121,7 +121,16 @@
 			//runs if enemies are immobile and spawn at start, like the trees lvl 1
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
-					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+					if (i + 1 === vm.currentLevel.spawnAtStart.length) {
+						if (vm.currentLevel.enemyArray.length > 1) {
+							spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i], true);
+						}
+						else {
+							spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+						}
+					} else {
+						spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+					}
 				}
 			}
 			//otherwise default spawn is on
@@ -194,8 +203,14 @@
 		}
 
 		//function for spawning immobile enemies at start of level
-		function spawnEnemyAtStart(position) {
-			var entity = new vm.currentLevel.enemyArray[0];
+		function spawnEnemyAtStart(position, extra) {
+			var entity;
+			if (extra) {
+				entity = new vm.currentLevel.enemyArray[1];
+			}
+			else {
+				entity = new vm.currentLevel.enemyArray[0];
+			}
 			var spawn = [];
 			spawn[0] = position[0];
 			spawn[1] = position[1];

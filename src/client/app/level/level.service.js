@@ -134,7 +134,7 @@
                               "            |         /                                          ~~~~                   .'             |                                                                                                                        "];
 
         this.snow = new this.Level();
-        this.snow.enemyArray = [enemyService.Snowman, enemyService.snowmanBoss];
+        this.snow.enemyArray = [enemyService.Snowman, enemyService.SnowmanBoss];
         this.snow.playerSpawn = [0, 10];
         this.snow.spawnMore = false;
         this.snow.spawnAtStart = [[14, 11], [47, 9], [124, 14]];

@@ -359,15 +359,27 @@
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
             this.items = [];
-            this.itemChance = 50;
+            this.itemChance = 0;
             this.deathMessage = 'A Snowman has been turned to slush!';
             this.symbol = '(';
             this.damage = 1;
             this.attackSpeed = 2;
-            this.colBox = [2, 2];
+            this.colBox = [5, 3];
             this.move = false;
         };
         vm.Snowman.prototype = new vm.Enemy();
+
+        vm.SnowmanBoss = function SnowmanBoss() {
+            this.name = 'Snowman Boss';
+            this.items = [];
+            this.itemChance = 0;
+            this.deathMessage = 'The Snowman Boss has been defeeated!';
+            this.symbol = '\\';
+            this.damage = 1;
+            this.attackSpeed = 2;
+            this.move = false;
+        }
+        vm.SnowmanBoss.prototype = new vm.Enemy();
 
     
         vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer', 'Snowman'];

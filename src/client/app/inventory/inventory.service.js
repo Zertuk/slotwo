@@ -260,8 +260,16 @@
 		this.campfire.slug = 'campfire';
 		this.campfire.recipe = ['wood-10'];
 
-		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]]
-		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]]
+		this.compendium = new this.Item();
+		this.compendium.name = 'Beast compendium';
+		this.compendium.slug = 'compendium';
+		this.compendium.buyable = true;
+		this.compendium.price = 1000;
+		this.compendium.removeAfterBuy = true;
+
+		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
+		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]];
+		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 0]];
 
 
 		////////////////
@@ -270,7 +278,13 @@
 						 vm.itemDictionary['deerAntlers'],
 						 vm.itemDictionary['wizardsHair']];
 
-		vm.buyableItems = ['potion', 'swordShield', 'wood', 'boneArmor', 'winterCoat', 'wizardsHair'];
+		vm.buyableItems = ['potion', 
+						   'swordShield', 
+						   'wood', 
+						   'boneArmor', 
+						   'winterCoat', 
+						   'wizardsHair', 
+						   'compendium'];
 
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['club'], 

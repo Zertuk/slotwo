@@ -446,11 +446,7 @@
                     text: 'Oh man I like this guy! Lets take him to meet the boss!',
                     continue: true,
                     next: 'introduction',
-                    master: 'slumThugsBoss',
-                    special: function() {
-                        vm.progress.slumBossMet = true;
-                        console.log(vm.progress.slumBossMet);
-                    }
+                    master: 'slumThugsBoss'
                 },
                 question: {
                     text: 'Nosy huh?  Lets let the boss deal with him!',
@@ -462,11 +458,7 @@
                     text: 'You need to see the boss again? Lets go.',
                     continue: true,
                     next: 'bossReturn',
-                    master: 'slumThugsBoss',
-                    special: function() {
-                        vm.progress.slumBossMet = true;
-                        console.log(vm.progress.slumBossMet);
-                    }
+                    master: 'slumThugsBoss'
                 }
             }
             return dialogue;
@@ -522,19 +514,43 @@
                     }
                 },
                 confused: {
-
+                    text: 'We need someone clean to do a mission for us, that is all I can say for now. Are you in?',
+                    active: true,
+                    buttons: {
+                        confident: {
+                            text: 'Sure, lets do this.',
+                            next: 'confident',
+                            master: 'slumThugsBoss',
+                            active: true,
+                        },
+                        leave: {
+                            text: 'This is pretty sketchy...',
+                            next: 'leave',
+                            master: 'slumThugsBoss',
+                            active: true
+                        }
+                    }
+                },
+                leave: {
+                    text: 'Then beat it kid! I dont have time for scrubs like you.',
                 },
                 confident: {
-                    text: '',
+                    text: 'Alright!  Here now drink this.  Dont ask any questions.  Hopefully this is the right amount...',
                     continue: true,
                     active: true,
-                    level: 'shroom'
+                    level: 'shroom',
+                    special: function() {
+                        vm.progress.slumBossMet = true;
+                        console.log(vm.progress.slumBossMet);
+                    }
                 },
                 threaten: {
-
+                    text: 'Ha! You wish.  Get out of here before I sick my guard cat on you.  He doesnt mess around.'
                 },
                 bossReturn: {
-                    text: 'Back Again? Show me what you got.',
+                    text: 'Back Again? Drink this again, lets see what you can do!',
+                    continue: true,
+                    level: 'shroom',
                     active: true
                 }
             }

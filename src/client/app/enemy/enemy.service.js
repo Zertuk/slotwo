@@ -360,7 +360,7 @@
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
             this.desc = 'Part snow, part man.'
-            this.items = [vm.itemDictionary['icicleSpear']];
+            this.items = [vm.itemDictionary['garysHat']];
             this.itemChance = 25;
             this.deathMessage = 'A Snowman has been turned to slush!';
             this.symbol = '(';
@@ -374,7 +374,7 @@
         vm.SnowmanBoss = function SnowmanBoss() {
             this.name = 'Gary the Snowman';
             this.desc = 'Just a regular giant guy made of snow.'
-            this.items = [vm.itemDictionary['garysHat']];
+            this.items = [vm.itemDictionary['giantCarrot']];
             this.itemChance = 50;
             this.deathMessage = 'The Snowman Boss has been defeeated!';
             this.symbol = '\\';

@@ -137,13 +137,13 @@
 		this.swordShield.removeAfterBuy = true;
 		this.swordShield.price = 1000;
 
-		this.icicleSpear = new this.Item();
-		this.icicleSpear.name = 'Giant Icicle';
-		this.icicleSpear.desc = 'Keep away from fire.';
-		this.icicleSpear.damage = 5;
-		this.icicleSpear.attackSpeed = 1;
-		this.icicleSpear.slug = 'icicleSpear';
-		this.icicleSpear.lootOnce = true;
+		this.giantCarrot = new this.Item();
+		this.giantCarrot.name = 'Giant Carrot';
+		this.giantCarrot.desc = 'Formerly known as Garys nose';
+		this.giantCarrot.damage = 5;
+		this.giantCarrot.attackSpeed = 1;
+		this.giantCarrot.slug = 'giantCarrot';
+		this.giantCarrot.lootOnce = true;
 
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
@@ -152,7 +152,7 @@
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]];
 		vm.itemDictionary['doubleShield'] = [['item', this.doubleShield], ['amount', 1]];
 		vm.itemDictionary['swordShield'] = [['item', this.swordShield], ['amount', 1]];
-		vm.itemDictionary['icicleSpear'] = [['item', this.icicleSpear], ['amount', 1]];
+		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 1]];
 
 
 
@@ -253,17 +253,17 @@
 		this.deerAntlers.message = 'Attacks cause +1 damage.';
 		this.deerAntlers.lootOnce = true;
 
-		this.garysHat = new this.Item();
-		this.garysHat.name = 'Gary the Snowmans Hat';
-		this.garysHat.slug = 'garysHat';
-		this.garysHat.desc = 'No one will ever wear it as good as Gary...';
-		this.garysHat.message = 'Attacks cause +5 damage';
-		this.garysHat.lootOnce = true;
+		this.snowmanHat = new this.Item();
+		this.snowmanHat.name = 'Snowmans Hat';
+		this.snowmanHat.slug = 'snowmanHat';
+		this.snowmanHat.desc = 'No one will ever wear it as good as the snowman...';
+		this.snowmanHat.message = 'Attacks cause +5 damage';
+		this.snowmanHat.lootOnce = true;
 
-		vm.itemDictionary['garysHat'] = [['item', this.garysHat], ['amount', 0]]
-		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 0]];
-		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
-		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];
+		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 1]]
+		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
+		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 1]];
+		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 1]];
 
 
 		//misc
@@ -294,7 +294,7 @@
 		vm.otherItems = [vm.itemDictionary['winterCoat'],
 						 vm.itemDictionary['deerAntlers'],
 						 vm.itemDictionary['wizardsHair'],
-						 vm.itemDictionary['garysHat']];
+						 vm.itemDictionary['snowmanHat']];
 
 		vm.buyableItems = ['potion', 
 						   'swordShield', 
@@ -311,7 +311,7 @@
 					  vm.itemDictionary['minotaurHammer'],
 					  vm.itemDictionary['swordShield'],
 					  vm.itemDictionary['doubleShield'],
-					  vm.itemDictionary['icicleSpear']];
+					  vm.itemDictionary['giantCarrot']];
 
 
 		vm.armor = [vm.itemDictionary['clothArmor'],

@@ -6,15 +6,16 @@
         .service('enemyService', enemyService);
 
 
-    enemyService.$inject = ['inventoryService', '$timeout', 'messageService'];
+    enemyService.$inject = ['inventoryService', '$timeout', 'messageService', 'progressService'];
 
 
 
     /* @ngInject */
-    function enemyService(inventoryService, $timeout, messageService) {
+    function enemyService(inventoryService, $timeout, messageService, progressService) {
         var count = 0;
         var vm = this;
         vm.watch = false;
+        vm.progress = progressService.progress;
         vm.itemDictionary = inventoryService.itemDictionary;
 
         function battle(unit, enemy, map) {
@@ -358,8 +359,9 @@
 
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
-            this.items = [];
-            this.itemChance = 0;
+            this.desc = 'Part snow, part man.'
+            this.items = [vm.itemDictionary['Snowball']];
+            this.itemChance = 25;
             this.deathMessage = 'A Snowman has been turned to slush!';
             this.symbol = '(';
             this.damage = 1;
@@ -370,25 +372,38 @@
         vm.Snowman.prototype = new vm.Enemy();
 
         vm.SnowmanBoss = function SnowmanBoss() {
-            this.name = 'Snowman Boss';
-            this.items = [];
-            this.itemChance = 0;
+            this.name = 'Gary the Snowman';
+            this.desc = 'Just a regular giant guy made of snow.'
+            this.items = [vm.itemDictionary['garysHat']];
+            this.itemChance = 50;
             this.deathMessage = 'The Snowman Boss has been defeeated!';
             this.symbol = '\\';
             this.damage = 1;
+            this.maxHealth = 30;
+            this.health = 30;
             this.attackSpeed = 2;
             this.colBox = [20, 20];
             this.move = false;
+            this.phases = true;
+            this.phaseOne = true;
+            this.phaseOneActivate = function() {
+                var thisEnemy = this;
+                messageService.addMessage(this.name + ' charges a freezing attack! Stay warm!');
+                $timeout(function() {
+                    if (vm.progress.items.winterSweater) {
+                        messageService.addMessage('You stay toasty in your Winter Sweater!');
+                    }
+                    else {
+                        thisEnemy.damage = 1000;
+                        messageService.addMessage(thisEnemy.name + 's freezing attack is super cold!');
+                    }
+                }, 1500);
+            };
         }
         vm.SnowmanBoss.prototype = new vm.Enemy();
 
     
         vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer', 'Snowman', 'SnowmanBoss'];
-
-
-
-
-
     }
 
 })();

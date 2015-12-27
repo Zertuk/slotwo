@@ -4,6 +4,7 @@
     angular
         .module('app.enemy', [
         	'app.inventory',
-        	'app.message'
+        	'app.message',
+        	'app.progress'
         ]);
 })();

@@ -44,6 +44,9 @@
                 snow: true,
                 shroom: true,
                 wizard: false
+            },
+            items : {
+                winterSweater: false
             }
         }
 

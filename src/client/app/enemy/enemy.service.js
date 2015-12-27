@@ -360,7 +360,7 @@
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
             this.desc = 'Part snow, part man.'
-            this.items = [vm.itemDictionary['Snowball']];
+            this.items = [vm.itemDictionary['icicleSpear']];
             this.itemChance = 25;
             this.deathMessage = 'A Snowman has been turned to slush!';
             this.symbol = '(';

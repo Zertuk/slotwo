@@ -38,12 +38,12 @@
                 treeOne: true,
                 treeTwo: true,
                 dungeon: true,
-                ruins: false,
-                desert: false,
-                bridge: false,
+                ruins: true,
+                desert: true,
+                bridge: true,
                 snow: true,
                 shroom: true,
-                wizard: false
+                wizard: true
             },
             items : {
                 winterSweater: false

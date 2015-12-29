@@ -338,8 +338,18 @@
             this.maxHealth = 30;
             this.health = 30;
             this.damage = 2;
-        }
+        };
         vm.Ghost.prototype = new vm.Enemy();
+
+        vm.Robot = function Robot() {
+            this.name = 'Robot';
+            this.deathMessage = '';
+            this.symbol = 'c';
+            this.maxHealth = '30';
+            this.health = 30;
+            this.damage = 2;
+        };
+        vm.Robot.prototype = vm.Enemy();
 
         vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';

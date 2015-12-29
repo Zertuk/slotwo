@@ -331,7 +331,15 @@
         };
         vm.TreeWarrior.prototype = new vm.Enemy();
 
-
+        vm.Ghost = function Ghost() {
+            this.name = 'Ghost of a Prisoner';
+            this.deathMessage = '';
+            this.symbol = '@';
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 2;
+        }
+        vm.Ghost.prototype = new vm.Enemy();
 
         vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';

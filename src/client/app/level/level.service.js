@@ -196,9 +196,9 @@
 
         this.dungeon = new this.Level();
         this.dungeon.spawnMore = false;
-        this.dungeon.enemyArray = [enemyService.Minotaur];
+        this.dungeon.enemyArray = [enemyService.Ghost, enemyService.Minotaur];
         this.dungeon.playerSpawn = [0, 0];
-        this.dungeon.spawnAtStart = [[198, 11]];
+        this.dungeon.spawnAtStart = [[100, 11], [180, 11], [198, 11]];
         this.dungeon.slug = 'dungeon';
         this.dungeon.unlock = 'ruinsCleared';
         this.dungeon.name = 'The Beasts Lair';
@@ -220,6 +220,7 @@
                                      "                                                                                                                                                                                                                                  ",
                                      "                                                                                                                                                                                                                                  ",
                                      "                                                                                                                                                                                                                                  "];
+ 
 
         this.shroom = new this.Level();
         this.shroom.enemyArray = [enemyService.TreeWarrior];
@@ -247,6 +248,28 @@
                                    "    /            \\                       \\                                   /      /              \\          ||                //                                                                                                             ",
                                    "   /______________\\                       \\_________________________________/      /________________\\         ||                \\\\                                                                                                             ",
                                    "         \\   \\                                                                           /  /                                                                                                                                                  "];
+
+
+        this.robot = new this.Level();
+
+
+        this.robot.defaultAscii = ["           /                                                                                       \\    /                                                     ",
+                                   "          /                                                                                         \\  /                                                      ",
+                                   "        .'                                                                                           '/                                                       ",
+                                   "       /                                                                                                                                                      ",       
+                                   "      /                                                                                                                                                       ",          
+                                   "    .'                                                                                                                                                        ",      
+                                   "   /                                                                                                                                                          ",      
+                                   "  /                                                                                                                                                           ",      
+                                   ".'                                                                                                             .                                              ",
+                                   "                                                                                                            ___|____                                          ",
+                                   "                                                                                                           |        |                                         ",
+                                   "                                                                                                        o  | 0  0   |                                         ",
+                                   "                                                                                                         \\.|  __    |.                                        ",
+                                   "                                                                                                            \\______/  \\                                       ",
+                                   "                                                                                                             |    |    o                                      ",
+                                   "                                                                                                            c|   c|                                           ",
+                                   "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"]                                                                                                                                                               /          
 
 
 

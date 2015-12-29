@@ -102,6 +102,8 @@
         vm.mainMap = new vm.Location;
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
+            //robot
+            vm.click(this, 'Wizards Task', 'robot', 100, 5, 10, 5);
             //monk
             vm.click(this, 'Mysterious Cavern', 'monk', 112, 16, 4, 3);
         	//wizard

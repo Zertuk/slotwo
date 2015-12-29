@@ -220,7 +220,6 @@
 		this.potion.name = 'Health Potion';
 		this.potion.slug = 'potion';
 		this.potion.desc = 'Heals ' + this.potion.strength + ' health';
-		this.potion.strength = 50;
 		this.potion.buyable = true;
 		this.potion.price = 100;
 		this.potion.quantity = 10;

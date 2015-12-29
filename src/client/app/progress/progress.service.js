@@ -9,11 +9,6 @@
 
     /* @ngInject */
     function progressService() {
-        this.func = func;
-        this.test = 'this is a test';
-        ////////////////
-
-
         this.progress = {
         	treeKingWorkAccept: false,
         	treeKingCompliment: true,
@@ -32,9 +27,7 @@
             trainMoney: false,
             canLearn: 1,
             levels: {
-                //locations
                 treeCity: true,
-                //levels
                 treeOne: true,
                 treeTwo: true,
                 dungeon: true,
@@ -43,14 +36,12 @@
                 bridge: true,
                 snow: true,
                 shroom: true,
-                wizard: true
+                wizard: true,
+                robot: true
             },
             items : {
                 winterSweater: false
             }
-        }
-
-        function func() {
         }
     }
 })();

@@ -264,7 +264,7 @@
             }
         };
 
-        this.Tree = function Tree() {
+        vm.Tree = function Tree() {
             this.name = 'Tree';
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
@@ -277,9 +277,9 @@
             this.itemMult = 3;
             this.damage = 0;
         };
-        this.Tree.prototype = new this.Enemy();
+        vm.Tree.prototype = new vm.Enemy();
 
-        this.Bear = function Bear() {
+        vm.Bear = function Bear() {
             this.name = 'Bear';
             this.desc = 'A Wandering Bear';
             this.deathMessage = '';
@@ -291,9 +291,23 @@
             this.damage = 10;
             this.attackSpeed = 5;
         };
-        this.Bear.prototype = new this.Enemy();
+        vm.Bear.prototype = new vm.Enemy();
 
-        this.Deer = function Deer() {
+        vm.Gorilla = function Gorilla() {
+            this.name = 'Desert Gorilla';
+            this.desc = 'They come from under the sand!';
+            this.deathMessage = '';
+            this.symbol = 'G';
+            this.items = [];
+            this.itemChance = 0;
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 10;
+            this.attackSpeed = 5;
+        }
+        vm.Gorilla.prototype = new vm.Enemy();
+
+        vm.Deer = function Deer() {
             this.name = 'Deer';
             this.desc = 'A Cute Deer';
             this.items = [vm.itemDictionary['deerAntlers']];
@@ -305,9 +319,9 @@
             this.damage = 1;
             this.attackSpeed = 1;
         };
-        this.Deer.prototype = new this.Enemy();
+        this.Deer.prototype = new vm.Enemy();
 
-        this.TreeWarrior = function TreeWarrior() {
+        vm.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';
             this.deathMessage = 'A Treeperson Warrior has been slain!';
             this.symbol = 'T';
@@ -316,6 +330,8 @@
             this.damage = 2;
         };
         vm.TreeWarrior.prototype = new vm.Enemy();
+
+
 
         vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';

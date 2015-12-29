@@ -61,7 +61,7 @@
             this.usePotion = function() {
                 if (inventoryService.itemDictionary.potion[1][1] > 0) {
                     var health = parseFloat(this.health);                
-                    this.health = (health + health/2).toFixed(2);
+                    this.health = (health + this.maxHealth/2).toFixed(2);
                     inventoryService.itemDictionary.potion[1][1] = inventoryService.itemDictionary.potion[1][1] - 1;
                 }
                 else {

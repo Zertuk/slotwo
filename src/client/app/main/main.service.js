@@ -364,7 +364,7 @@
         vm.house.prev = 'mainMap';
         vm.house.prevName = 'Map';
         vm.house.specialText = true;
-        // vm.house.dialogue = dialogueService.oldLady;
+        vm.house.dialogue = dialogueService.house;
         vm.house.ascii =["                                                                                                               ",
                          "                                                                                                               ",
                          "                                                                                             88888888888       ",                                                                                                                                                                                    
@@ -420,7 +420,7 @@
 									 "                                                                                        /          .'| | /     \\ | |'.                \\                     ",                                                                                                                                             
 									 "                                                                                       /         .'  | |/|     |\\| |  '.               \\                    " ];                                                                                                                                              
 
-    	vm.currentLocation = vm.treeCity;
+    	vm.currentLocation = vm.mainMap;
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;

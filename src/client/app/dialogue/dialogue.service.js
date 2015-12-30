@@ -464,6 +464,88 @@
             return dialogue;
         };
 
+        vm.house = new vm.Dialogue;
+        vm.house.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'Oh my! you woke up! Do you remember what happened?',
+                    buttons: {
+                        no: {
+                            text: 'I dont even know who I am!',
+                            next: 'memory',
+                            active: true,
+                            master: 'house'
+                        },
+                        yes: {
+                            text: 'Yeah I do!',
+                            next: 'lie',
+                            active: true,
+                            master: 'house'
+                        }
+
+                    }
+                },
+                lie: {
+                    text: 'Well then why did I find you passed out in my yard.  It looked like a few goons had beaten you up.',
+                    buttons: {
+                        lie2: {
+                            text: 'Its what all the kids are doing these days.',
+                            next: 'lie2',
+                            active: true,
+                            master: 'house'
+                        },
+                        kid: {
+                            text: 'Haha I am just kidding! I dont remember a thing!',
+                            next: 'truth',
+                            active: true,
+                            master: 'house'
+                        }
+                    }
+                },
+                lie2: {
+                    text: 'Ok... Anyway, you cant stay here forever.',
+                    continue: true,
+                    next: 'question',
+                    master: 'house'
+                },
+                truth: {
+                    text: 'Kids and your crazy jokes these days I cant keep up!  What do you mean you cant remember anything?',
+                    buttons: {
+                        memory: {
+                            text: 'I dont even know my name.',
+                            next: 'memory2',
+                            active: true,
+                            master: 'house'
+                        }
+                    }
+                },
+                memory: {
+                    text: 'Oh... I am sorry.  Well, I found you unconcious in my yard the other day.  You were in bad condition, so I nursed you back to health.',
+                    continue: true,
+                    master: 'house',
+                    next: 'question'
+                },
+                memory2: {
+                    text: 'Oh...  I am sorry.',
+                    continue: true,
+                    master: 'house',
+                    next: 'question'
+                },
+                question: {
+                    text: 'Here, take this map.  A short distance north east of here is Tree City, there will be work for you there.  Take this backpack too, I am too old for adventuring now.',
+                    continue: true,
+                    master: 'house',
+                    next: 'goodBye'
+                },
+                goodBye: {
+                    text: 'Goodluck kid, and remember, head north east to Tree City!'
+                }
+            };
+            return dialogue;
+        }
+
+
+
         vm.slumThugsBoss = new vm.Dialogue;
         vm.slumThugsBoss.setDialogue = function() {
             var dialogue = {
@@ -565,6 +647,7 @@
             vm.wizard.dialogue = vm.wizard.setDialogue();
             vm.monk.dialogue = vm.monk.setDialogue();
             vm.enchant.dialogue = vm.enchant.setDialogue();
+            vm.house.dialogue = vm.house.setDialogue();
         }
     }
 })();

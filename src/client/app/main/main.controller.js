@@ -13,7 +13,7 @@
         vm.count = 0;
         resourcesService.initRates();
         vm.player = playerService.player;
-        vm.currentLocation = mainService.treeCity;
+        vm.currentLocation = mainService.mainMap;
         initShop();
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;

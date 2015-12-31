@@ -216,6 +216,107 @@
                         }
                     }
                 },
+                memory: {
+                    text: 'I see.  Memory loss is very difficult to handle.  I can help you along but I cannot restore your memories.  What I can do is guide you to your true self.',
+                    next: 'quizIntro',
+                    continue: true,
+                    master: 'enchant'
+                },
+                quizIntro: {
+                    text: 'Very well.  I have a few questions that will help us find your true self.  The first question is: You are walking along when you see a man beating a child, what do you do?',
+                    buttons: {
+                        offense: {
+                            text: 'I punch the man in the face!',
+                            next: 'quizTwo',
+                            master: 'enchant',
+                            active: true
+                        },
+                        defense: {
+                            text: 'I run in and block the mans next punch.',
+                            next: 'quizTwo',
+                            master: 'enchant',
+                            active: true
+                        },
+                        health: {
+                            text: 'I grab the child and find them a better home.',
+                            next: 'quizTwo',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                quizTwo: {
+                    text: 'Next question: If you had to choose an animal to be, which animal would you choose?',
+                    buttons: {
+                        turtle: {
+                            text: 'A turtle of course!',
+                            next: 'quizThree',
+                            master: 'enchant',
+                            active: true
+                        },
+                        bear: {
+                            text: 'The Mountain Lion',
+                            next: 'quizThree',
+                            master: 'enchant',
+                            active: true
+                        },
+                        elephant: {
+                            text: 'An Elephant',
+                            next: 'quizThree',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                quizThree: {
+                    text: 'Only two more questions: A thief is running towards you down an alley, how do you stop him?',
+                    buttons: {
+                        healing: {
+                            text: 'I chase the thief.  My stamina will beat his.',
+                            next: 'quizFinal',
+                            master: 'enchant',
+                            active: true
+                        },
+                        offense: {
+                            text: 'I catch the thief, I can outrun him.',
+                            next: 'quizFinal',
+                            master: 'enchant',
+                            active: true
+                        },
+                        defense: {
+                            text: 'I brace myself and block his path, he has nowhere to run.',
+                            next: 'quizFinal',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                quizFinal: {
+                    text: 'Last question: A destitute youth wanders your way, what lesson do you teach him to obtain a better life?',
+                    buttons: {
+                        offense: {  
+                            text: 'The power of strength.  You can obtain anylife with enough power.',
+                            next: 'result',
+                            master: 'enchant',
+                            active: true
+                        },
+                        healing: {
+                            text: 'Kindness, the knowledge that only compassion will bring happiness.',
+                            next: 'result',
+                            master: 'enchant',
+                            active: true
+                        },
+                        defense: {
+                            text: 'Resolve.  No one can stop you if you are determined enough.',
+                            next: 'result',
+                            master: 'enchant',
+                            active: true
+                        }
+                    }
+                },
+                result: {
+
+                },
                 elder: {
                     text: 'Yes, "The Elder" is granted as a title and position to Tresaboras oldest citizen.  Currently, that is me of course!  I have served as The Elder for 29 years now, I was 137 at the time.',
                     buttons: {

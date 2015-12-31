@@ -282,6 +282,14 @@
 		this.pocketSand.message = '5% chance to evade damage.';
 		this.pocketSand.lootOnce = true;
 
+		this.lostSoul = new this.Item();
+		this.lostSoul.name = 'Lost Soul';
+		this.lostSoul.slug = 'lostSoul';
+		this.lostSoul.desc = 'Victim of The Minotaur';
+		this.lostSoul.message = 'RIP';
+		this.lostSoul.lootOnce = true;
+
+		vm.itemDictionary['']
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];

@@ -194,49 +194,91 @@
         vm.enchant.setDialogue = function() {
             var dialogue = {
                 introduction: {
-                    text: 'enchant intro',
+                    text: 'Welcome young one. As you may know, I am known as The Elder of Tresabor.  Come in, come in.  Let us have some tea and speak.',
                     continue: true,
                     next: 'choice',
                     master: 'enchant'
                 },
                 choice: {
-                    text: 'what to enchant',
+                    text: 'What wisdom can I offer you?',
                     buttons: {
-                        armor: {
-                            text: 'Armor',
-                            next: 'armor',
+                        memory: {
+                            text: 'I lost my memory.',
+                            next: 'memory',
                             master: 'enchant',
                             active: true
                         },
-                        weapon: {
-                            text: 'Weapon',
-                            next: 'weapon',
+                        elder: {
+                            text: 'Is "The Elder" a title?',
+                            next: 'elder',
                             master: 'enchant',
                             active: true
                         }
                     }
                 },
-                armor: {
-                    text: 'enchant armor',
+                elder: {
+                    text: 'Yes, "The Elder" is granted as a title and position to Tresaboras oldest citizen.  Currently, that is me of course!  I have served as The Elder for 29 years now, I was 137 at the time.',
                     buttons: {
-                        leave: {
-                            text: 'not now',
-                            next: 'choice',
+                        old: {
+                            text: 'Wow you are old!',
+                            next: 'old',
+                            active: true,
+                            master: 'enchant'
+                        },
+                        lie: {
+                            text: 'I am 378 years old. I am The Elder now.',
+                            next: 'lie',
+                            active: true,
+                            master: 'enchant'
+                        },
+                        thank: {
+                            text: 'Thank you for the explanation.',
+                            next: 'thank',
+                            active: true,
+                            master: 'enchant'
+                        }
+                    }
+                },
+                thank: {
+                    text: 'You are welcome outsider.  I hope you are enjoying the tea.',
+                    next: 'choice',
+                    master: 'enchant',
+                    continue: true
+                },
+                old: {
+                    text: 'Haha yes I am!',
+                    continue: true,
+                    next: 'choice',
+                    master: 'enchant'
+                },
+                lie: {
+                    text: 'Hm.  It would be wise not to lie young one.  You cannot fool me.',
+                    buttons: {
+                        joke: {
+                            text: 'It was a joke!',
+                            next: 'joke',
+                            master: 'enchant',
+                            active: true
+                        },
+                        sorry: {
+                            text: 'Sorry for lying',
+                            next: 'sorry',
                             master: 'enchant',
                             active: true
                         }
                     }
                 },
-                weapon: {
-                    text: 'enchant weapon',
-                    buttons: {
-                        leave: {
-                            text: 'not now',
-                            next: 'choice',
-                            master: 'enchant',
-                            active: true
-                        }
-                    }
+                joke: {
+                    text: 'Whatever you need to tell yourself.',
+                    next: 'choice',
+                    continue: true,
+                    master: 'enchant'
+                },
+                sorry: {
+                    text: 'I accept your apology, but please do not lie.',
+                    next: 'choice',
+                    continue: true,
+                    master: 'enchant'
                 }
             };
             return dialogue;
@@ -556,6 +598,7 @@
                     master: 'inn'
                 }
             }
+            return dialogue;
         }
 
         vm.house = new vm.Dialogue;
@@ -742,6 +785,7 @@
             vm.monk.dialogue = vm.monk.setDialogue();
             vm.enchant.dialogue = vm.enchant.setDialogue();
             vm.house.dialogue = vm.house.setDialogue();
+            vm.inn.dialogue = vm.inn.setDialogue();
         }
     }
 })();

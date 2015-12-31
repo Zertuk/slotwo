@@ -283,10 +283,12 @@
                                                                                                                                                                                                                            
 
 		vm.treeSlumsInn = new vm.Location;
-		vm.treeSlumsInn.name = 'Tree Slums Inn';
+		vm.treeSlumsInn.name = 'The Sleepy Sapling';
 		vm.treeSlumsInn.ascii = ['tree slums inn'];
 		vm.treeSlumsInn.prev = 'slums';
 		vm.treeSlumsInn.prevName = 'Slums';
+        vm.treeSlumsInn.specialText = true;
+        vm.treeSlumsInn.dialogue = dialogueService.inn;
 
 		vm.treeSlumsThugs = new vm.Location;
 		vm.treeSlumsThugs.name = 'Angry Thugs';

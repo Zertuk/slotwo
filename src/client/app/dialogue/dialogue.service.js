@@ -25,6 +25,15 @@
         //initDialogue : sets initial dialogue on location switch
         //setDialogue : set up for the dialogue, runs to grab conditional changes for dialogue
 
+        function initQuiz() {
+            var results = {
+                offense: 0,
+                defense: 0,
+                healing: 0
+            }
+            return results;
+        }
+
         vm.wizard = new vm.Dialogue;
         vm.wizard.setDialogue = function() {
             var dialogue = {
@@ -220,7 +229,10 @@
                     text: 'I see.  Memory loss is very difficult to handle.  I can help you along but I cannot restore your memories.  What I can do is guide you to your true self.',
                     next: 'quizIntro',
                     continue: true,
-                    master: 'enchant'
+                    master: 'enchant',
+                    special: function() {
+                        vm.quiz = initQuiz();
+                    }
                 },
                 quizIntro: {
                     text: 'Very well.  I have a few questions that will help us find your true self.  The first question is: You are walking along when you see a man beating a child, what do you do?',
@@ -229,19 +241,28 @@
                             text: 'I punch the man in the face!',
                             next: 'quizTwo',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.offense = vm.quiz.offense + 1;
+                            }
                         },
                         defense: {
                             text: 'I run in and block the mans next punch.',
                             next: 'quizTwo',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.defense = vm.quiz.defense + 1;
+                            }
                         },
                         health: {
                             text: 'I grab the child and find them a better home.',
                             next: 'quizTwo',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.healing = vm.quiz.healing + 1;
+                            }
                         }
                     }
                 },
@@ -252,19 +273,28 @@
                             text: 'A turtle of course!',
                             next: 'quizThree',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.defense = vm.quiz.defense + 1;
+                            }
                         },
-                        bear: {
+                        lion: {
                             text: 'The Mountain Lion',
                             next: 'quizThree',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.offense = vm.quiz.offense + 1;
+                            }
                         },
                         elephant: {
                             text: 'An Elephant',
                             next: 'quizThree',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.healing = vm.quiz.healing + 1;
+                            }
                         }
                     }
                 },
@@ -275,19 +305,28 @@
                             text: 'I chase the thief.  My stamina will beat his.',
                             next: 'quizFinal',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.healing = vm.quiz.healing + 1;
+                            }
                         },
                         offense: {
                             text: 'I catch the thief, I can outrun him.',
                             next: 'quizFinal',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.offense = vm.quiz.offense + 1;
+                            }
                         },
                         defense: {
                             text: 'I brace myself and block his path, he has nowhere to run.',
                             next: 'quizFinal',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.defense = vm.quiz.defense + 1;
+                            }
                         }
                     }
                 },
@@ -298,24 +337,60 @@
                             text: 'The power of strength.  You can obtain anylife with enough power.',
                             next: 'result',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.offense = vm.quiz.offense + 1;
+                            }
                         },
                         healing: {
                             text: 'Kindness, the knowledge that only compassion will bring happiness.',
                             next: 'result',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.healing = vm.quiz.healing + 1;
+                            }
                         },
                         defense: {
                             text: 'Resolve.  No one can stop you if you are determined enough.',
                             next: 'result',
                             master: 'enchant',
-                            active: true
+                            active: true,
+                            special: function() {
+                                vm.quiz.defense = vm.quiz.defense + 1;
+                            }
                         }
                     }
                 },
                 result: {
-
+                    specialText: function() {
+                        var text = vm.enchant.dialogue.result.special();
+                        return text;
+                    },
+                    special: function() {
+                        var top = [vm.quiz.offense, 'offense'];
+                        if (top[0] < vm.quiz.defense) {
+                            top = [vm.quiz.defense, 'defense'];
+                        }
+                        if (top[0] < vm.quiz.healing) {
+                            top = [vm.quiz.healing, 'healing'];
+                        }
+                        var text = vm.enchant.dialogue.result.pickText(top[1]);
+                        return text;
+                    },
+                    pickText: function(top) {
+                        var text = '';
+                        if (top === 'offense') {
+                            text = 'Alright lets figure out these results... Ah yes, it seems you prefer to take the offensive.  You will find great power and strength in the future.';
+                        }
+                        else if (top === 'defense') {
+                            text = 'Oh my, you must prefer to stand your ground instead of fighting.  Your physical and mental defenses will be top quality.';
+                        }
+                        else if (top === 'healing') {
+                            text = 'Ahh.. Your true self is leaking kindness.  You will find great friendships and you be in great health.';
+                        }
+                        return text;
+                    }
                 },
                 elder: {
                     text: 'Yes, "The Elder" is granted as a title and position to Tresaboras oldest citizen.  Currently, that is me of course!  I have served as The Elder for 29 years now, I was 137 at the time.',

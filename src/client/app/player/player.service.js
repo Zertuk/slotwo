@@ -14,8 +14,10 @@
         ////////////////
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
-
         this.Player = function() {
+            this.rest = function() {
+                this.health = this.maxHealth;
+            },
             this.abilities = {
                 keys: ['berserk', 'block'],
                 berserk: {

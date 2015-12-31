@@ -9,30 +9,14 @@
 				<p>{{vm.player.weapon.damage}} Damage</p>
 				<p>{{vm.player.weapon.attackSpeedMessage()}}</p>
 			</div>
+		</div>
+		<div class = "row">
 			<div class = "itemdesc">
 				<h4>Armor</h4>
 				<select ng-init = "vm.equippedArmor = vm.player.armor.slug" ng-change = "vm.equipArmor()" ng-model = "vm.equippedArmor" ng-options = "item[0][1].slug as item[0][1].name for item in vm.armor">
 				</select>
 				<p class = "small italic">~ {{vm.player.armor.desc}} ~</p>
 				<p>{{vm.player.armorValue*100}}% Armor</p>
-			</div>
-		</div>
-		<div class = "row">
-			<div class = "itemdesc">
-				<h4>Helm</h4>
-				<select>
-					<option ng-repeat = "item in vm.helm track by $index">
-						<p>{{item[0][1].name}}</p>
-					</option>
-				</select>
-			</div>
-			<div class = "itemdesc">
-				<h4>Trinket</h4>
-				<select>
-					<option ng-repeat = "item in vm.trinkets track by $index">
-						<p>{{item[0][1].name}}</p>
-					</option>
-				</select>
 			</div>
 		</div>
 	</div><!--inventoryselect-->

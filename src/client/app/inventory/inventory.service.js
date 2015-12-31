@@ -268,8 +268,16 @@
 		this.sleepingBag.price = 2000;
 		this.sleepingBag.removeAfterBuy = true;
 
+		this.gorillaFoot = new this.Item();
+		this.gorillaFoot.name = 'Lucky Gorilla Foot';
+		this.gorillaFoot.slug = 'gorillaFoot';
+		this.gorillaFoot.desc = 'Luckiest of all animal feet';
+		this.gorillaFoot.message = 'Holder gains +5 gold a second';
+		this.gorillaFoot.lootOnce = true;
+
+		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 1]];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 1]];
-		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 1]]
+		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 1]];
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 1]];
 		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 1]];
@@ -304,7 +312,8 @@
 						 vm.itemDictionary['deerAntlers'],
 						 vm.itemDictionary['wizardsHair'],
 						 vm.itemDictionary['snowmanHat'],
-						 vm.itemDictionary['sleepingBag']];
+						 vm.itemDictionary['sleepingBag'],
+						 vm.itemDictionary['gorillaFoot']];
 
 		vm.buyableItems = ['potion', 
 						   'swordShield', 

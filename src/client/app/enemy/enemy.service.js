@@ -303,13 +303,26 @@
             this.deathMessage = '';
             this.symbol = 'G';
             this.items = [];
-            this.itemChance = 0;
+            this.itemChance = 20;
             this.maxHealth = 30;
             this.health = 30;
             this.damage = 10;
             this.attackSpeed = 5;
         }
         vm.Gorilla.prototype = new vm.Enemy();
+
+        vm.DustDevil = function DustDevil() {
+            this.name = 'Dust Devil';
+            this.desc = '';
+            this.deathMessage = '';
+            this.symbol ='V';
+            this.items = [];
+            this.itemChance = 10;
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 10;
+            this.attackSpeed = 5;
+        }
 
         vm.Deer = function Deer() {
             this.name = 'Deer';

@@ -275,12 +275,20 @@
 		this.gorillaFoot.message = 'Holder gains +5 gold a second';
 		this.gorillaFoot.lootOnce = true;
 
-		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 1]];
-		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 1]];
-		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 1]];
-		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
-		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 1]];
-		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 1]];
+		this.pocketSand = new this.Item();
+		this.pocketSand.name = 'Pocket Sand';
+		this.pocketSand.slug = 'pocketSand';
+		this.pocketSand.desc = 'Wingo! Pocket sand!';
+		this.pocketSand.message = '5% chance to evade damage.';
+		this.pocketSand.lootOnce = true;
+
+		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]
+		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
+		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];
+		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 0]];
+		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 0]];
+		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
+		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];
 
 
 		//misc
@@ -313,7 +321,8 @@
 						 vm.itemDictionary['wizardsHair'],
 						 vm.itemDictionary['snowmanHat'],
 						 vm.itemDictionary['sleepingBag'],
-						 vm.itemDictionary['gorillaFoot']];
+						 vm.itemDictionary['gorillaFoot'],
+						 vm.itemDictionary['pocketSand']];
 
 		vm.buyableItems = ['potion', 
 						   'swordShield', 

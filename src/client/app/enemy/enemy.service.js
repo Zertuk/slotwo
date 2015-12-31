@@ -62,6 +62,7 @@
             this.phaseOne = false,
             this.phaseTwo = false,
             this.phaseThree = false,
+            this.moneyMult = 1,
             this.attackSpeedText = function() {
                 if (this.attackSpeed === 2) {
                     return 'average';
@@ -141,6 +142,8 @@
             },
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
+                var cash = this.moneyDrop();
+                this.lootMessage ='You find ' + cash + ' gold.';
                 if (random <= this.itemChance) {
                     var num;
                     if (this.itemMult > 1) {
@@ -153,17 +156,17 @@
                         num = 'some';
                     }
                     this.foundLoot = true;
-                    this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
+                    this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + ' and ' + cash + ' gold.';
                     if (num === 'some') {
                         num = 1;
                     }
                     if (this.items[0][0][1].lootOnce) {
                         if (this.items[0][1][1] > 0) {
-                            this.lootMessage = 'You find ' + this.items[0][0][1].name + '.';
+                            this.lootMessage = 'You find ' + this.items[0][0][1].name + ' and ' + cash + ' gold.';
                         }
                     }
                     else {
-                        this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + '.';
+                        this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + ' and ' + cash + ' gold.';
                         if (num === 'some') {
                             num = 1;
                         }
@@ -173,6 +176,7 @@
             },
             this.moneyDrop = function() {
                 var cash = Math.round(this.moneyMult * ( Math.random() + 1));
+                return cash;
             },
             //combat
             this.collisionCheck = function(map, enemyArray) {

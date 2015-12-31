@@ -96,20 +96,11 @@
                             next: 'askCompliment',
                             master: 'treeKing',
                             active: vm.progress.treeKingCompliment
-                        },
-                        bridge: {
-                            text: 'Build Bridge',
-                            next: 'askBuild',
-                            master: 'treeKing',
-                            active: vm.progress.treeKingWorkHandIn
                         }
                     }
                 },
-                askBuild: {
-                    text: 'bridge text'
-                },
                 askRumor: {
-                    text: 'rumor text',
+                    text: 'Things have been weird since the sky attacked.  Scouts have been going missing and there is even word of weather change in the east.',
                     next: 'question',
                     master: 'treeKing',
                     continue: true
@@ -463,6 +454,109 @@
             }
             return dialogue;
         };
+
+        vm.inn = new vm.Dialogue;
+        vm.inn.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'Welcome to the best inn in all of Tresabor, The Sleepy Sapling!  You look like you are new here, am I right?',
+                    continue: true,
+                    next: 'question',
+                    master: 'inn'
+                },
+                question: {
+                    text: 'If you need a room to rest in we have one available for 250g a night.  The Sleepy Sapling also has the tastiest pie that you can find, only 100g for a piece!  Due to limited supply it is only one per customer.  Otherwise we can always just chat!',
+                    buttons: {
+                        rest: {
+                            text: 'I am a sleepy sapling and need a room.',
+                            next: 'rest',
+                            active: true,
+                            master: 'inn'
+                        },
+                        pie: {
+                            text: 'Let me get in on some of that pie!',
+                            next: 'pie',
+                            active: true,
+                            master: 'inn'
+                        },
+                        chat: {
+                            text: 'Lets chat!',
+                            next: 'chat',
+                            active: true,
+                            master: 'inn'
+                        }
+                    }
+                },
+                rest: {
+                    text: 'rest text here',
+                },
+                pie: {
+                    text: 'One slice of Butterscotch Pie coming up!  I wish we could offer more than one per customer, but since the sky event trade with the Northern Empire has been difficult.  I heard the impact was right along the trade route! Anyway, enjoy the pie!',
+                    next: 'eatPie',
+                    continue: true,
+                    master: 'inn'
+                },
+                eatPie: {
+                    text: '*You eat the Butterscotch Pie, it fills you with DETERMINTION.*',
+                    next: 'question',
+                    continue: true,
+                    master: 'inn'
+                },
+                chat: {
+                    text: 'Alright! What would you like to talk about?',
+                    buttons: {
+                        sky: {
+                            text: 'What is your opinion on the sky attacking?',
+                            next: 'sky',
+                            active: true,
+                            master: 'inn'
+                        },
+                        whatToDo: {
+                            text: 'What is there to do around here?',
+                            next: 'whatToDo',
+                            active: true,
+                            master: 'inn'
+                        },
+                        wizards: {
+                            text: 'Any wizards around here?',
+                            next: 'wizards',
+                            active: true,
+                            master: 'inn'
+                        },
+                        nothing: {
+                            text: 'Nothing for now.',
+                            next: 'nothing',
+                            active: true,
+                            master: 'inn'
+                        }
+                    }
+                },
+                nothing: {
+                    text: 'Oh.  Well I enjoyed our chat while it lasted!',
+                    next: 'question',
+                    continue: true,
+                    master: 'inn'
+                },
+                sky: {
+                    text: 'Hmm, everyone is on edge thinking it was an attack by one of our enemies, but I fear it is far more dangerous. I have heard of people going missing and other strange occurences since that day. Lets change the subject, it worries me to think of the event.',
+                    next: 'chat',
+                    continue: true,
+                    master: 'inn'
+                },
+                whatToDo: {
+                    text: 'Well if you need work, the King usually has something to offer.  Otherwise there is a shop and enchant on the main level.  Down here there isnt much else.  If you are looking to leave Tresabor then you can checkout the Arena to the east.  I heard you have to be pretty tough to fight there though.',
+                    next: 'chat',
+                    continue: true,
+                    master: 'inn'
+                },
+                wizards: {
+                    text: 'Wizards huh? I didnt take you for the type.  Well, if you must see one of them, the closest one is to the east across the river.  The Arena guards the bridge though and they only let the toughest through.  If you want my advice, stay away from wizards.',
+                    next: 'chat',
+                    continue: true,
+                    master: 'inn'
+                }
+            }
+        }
 
         vm.house = new vm.Dialogue;
         vm.house.setDialogue = function() {

@@ -226,6 +226,11 @@
                 }
                 return armor;
             },
+            this.trueSelf = {
+                offense: false,
+                defense: false,
+                healing: false
+            },
             this.active = true,
             this.ground = false,
             this.health = 100,

@@ -12,6 +12,7 @@
         var vm = this;
         vm.locationText = '';
         vm.progress = progressService.progress;
+        vm.player = playerService.player;
 
         vm.Dialogue = function() {
             //return intro by default
@@ -215,7 +216,7 @@
                             text: 'I lost my memory.',
                             next: 'memory',
                             master: 'enchant',
-                            active: true
+                            active: !vm.progress.quizTaken
                         },
                         elder: {
                             text: 'Is "The Elder" a title?',
@@ -363,6 +364,9 @@
                     }
                 },
                 result: {
+                    continue: true,
+                    next: 'choice',
+                    master: 'enchant',
                     specialText: function() {
                         var text = vm.enchant.dialogue.result.special();
                         return text;
@@ -376,6 +380,10 @@
                             top = [vm.quiz.healing, 'healing'];
                         }
                         var text = vm.enchant.dialogue.result.pickText(top[1]);
+                        vm.progress.quizTaken = true;
+                        vm.initAllDialogues();
+                        vm.player.trueSelf[top[1]] = true;
+                        console.log(vm.player.trueSelf);
                         return text;
                     },
                     pickText: function(top) {

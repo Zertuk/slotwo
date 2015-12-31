@@ -26,6 +26,7 @@
             trainDefense: false,
             trainMoney: false,
             canLearn: 1,
+            quizTaken: false,
             levels: {
                 treeCity: true,
                 treeOne: true,

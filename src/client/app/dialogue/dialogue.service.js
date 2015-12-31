@@ -723,7 +723,7 @@
                     master: 'inn'
                 },
                 eatPie: {
-                    text: '*You eat the Butterscotch Pie, it fills you with DETERMINTION.*',
+                    text: '*You eat the Butterscotch Pie, it fills you with DETERMINATION.*',
                     next: 'question',
                     continue: true,
                     master: 'inn'

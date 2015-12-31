@@ -35,6 +35,60 @@
             return results;
         }
 
+        vm.arena = new vm.Dialogue;
+        vm.arena.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'Welcome to the arena!  I am Abner; Owner, showman, and gentleman!  We are still taking contestants for tonights show if you are interested.  Defeat your opponent and win passage across The Bridge!  Or, if you just need to train, I can hook you up.';
+                    buttons: {
+                        fight: {
+                            next: 'I am here to fight.',
+                            next: 'fight',
+                            active: true,
+                            master: 'arena'
+                        },
+                        train: {
+                            text: 'Hook me up with training!',
+                            next: 'train',
+                            active: true,
+                            master: 'arena'
+                        },
+                        buy: {
+                            text: 'I need some more training formula',
+                            next: 'buy',
+                            active: true,
+                            master: 'arena'
+                        },
+                        secret: {
+                            text: 'Whats the secret to the formula?',
+                            next: 'secret',
+                            active: true,
+                            master: 'arena'
+                        }
+                        skeleton: {
+                            text: 'Are you a skeleton?',
+                            next: 'skeleton',
+                            active: true,
+                            master: 'arena'
+                        }
+                    }
+                },
+                fight: {
+
+                },
+                train: {
+                    text: 'Splendid! Here is a free sample of my special training formula, after that one I will have to charge you gold.  Drink up!',
+                    continue: true,
+                    next: 'introduction',
+                    master: 'arena'
+                },
+                skeleton: {
+
+                }
+            }
+            return dialogue;
+        }
+
         vm.wizard = new vm.Dialogue;
         vm.wizard.setDialogue = function() {
             var dialogue = {

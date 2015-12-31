@@ -259,6 +259,16 @@
 		this.snowmanHat.message = 'Attacks cause +5 damage';
 		this.snowmanHat.lootOnce = true;
 
+		this.sleepingBag = new this.Item();
+		this.sleepingBag.name = 'Deluxe Sleeping Bag';
+		this.sleepingBag.slug = 'sleepingBag';
+		this.sleepingBag.desc = 'Deluxe model is 23% cozier';
+		this.sleepingBag.message = 'Allows you to sleep outside and rest anywhere';
+		this.sleepingBag.buyable = true;
+		this.sleepingBag.price = 2000;
+		this.sleepingBag.removeAfterBuy = true;
+
+		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 1]];
 		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 1]]
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 1]];
@@ -293,7 +303,8 @@
 		vm.otherItems = [vm.itemDictionary['winterCoat'],
 						 vm.itemDictionary['deerAntlers'],
 						 vm.itemDictionary['wizardsHair'],
-						 vm.itemDictionary['snowmanHat']];
+						 vm.itemDictionary['snowmanHat'],
+						 vm.itemDictionary['sleepingBag']];
 
 		vm.buyableItems = ['potion', 
 						   'swordShield', 
@@ -301,7 +312,8 @@
 						   'boneArmor', 
 						   'winterCoat', 
 						   'wizardsHair', 
-						   'compendium'];
+						   'compendium',
+						   'sleepingBag'];
 
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['club'], 

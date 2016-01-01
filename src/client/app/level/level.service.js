@@ -313,6 +313,7 @@
         this.levelDictionary['ruins'] = this.ruins;
         this.levelDictionary['dungeon'] = this.dungeon;
         this.levelDictionary['shroom'] = this.shroom;
+        this.levelDictionary['arena'] = this.arena;
 
 
         

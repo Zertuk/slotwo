@@ -38,7 +38,8 @@
                 snow: true,
                 shroom: true,
                 wizard: true,
-                robot: true
+                robot: true,
+                arena: true
             },
             items : {
                 winterSweater: false

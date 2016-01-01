@@ -283,13 +283,13 @@
 		this.pocketSand.lootOnce = true;
 
 		this.lostSoul = new this.Item();
-		this.lostSoul.name = 'Lost Soul';
+		this.lostSoul.name = 'Spooky Aura';
 		this.lostSoul.slug = 'lostSoul';
-		this.lostSoul.desc = 'Victim of The Minotaur';
-		this.lostSoul.message = 'RIP';
+		this.lostSoul.desc = 'It surrounds you...';
+		this.lostSoul.message = '+50 health';
 		this.lostSoul.lootOnce = true;
 
-		vm.itemDictionary['']
+		vm.itemDictionary['lostSoul'] = [['item', this.pocketSand], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];

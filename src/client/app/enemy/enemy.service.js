@@ -302,7 +302,7 @@
             this.desc = 'They come from under the sand!';
             this.deathMessage = '';
             this.symbol = 'G';
-            this.items = [];
+            this.items = [vm.itemDictionary['gorillaFoot']];
             this.itemChance = 20;
             this.maxHealth = 30;
             this.health = 30;
@@ -316,7 +316,7 @@
             this.desc = '';
             this.deathMessage = '';
             this.symbol ='V';
-            this.items = [];
+            this.items = [vm.itemDictionary['pocketSand']];
             this.itemChance = 10;
             this.maxHealth = 30;
             this.health = 30;

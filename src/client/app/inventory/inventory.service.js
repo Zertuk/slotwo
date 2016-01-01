@@ -289,6 +289,22 @@
 		this.lostSoul.message = '+50 health';
 		this.lostSoul.lootOnce = true;
 
+		this.mantisClaw = new this.Item();
+		this.mantisClaw.name = 'Mantis Claw';
+		this.mantisClaw.slug = 'mantisClaw';
+		this.mantisClaw.desc = 'desc';
+		this.mantisClaw.message = '+5 attack ';
+		this.mantisClaw.lootOnce = true;
+
+		this.bugExoskeleton = new this.Item();
+		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';
+		this.bugExoskeleton.slug = 'bugExoskeleton';
+		this.bugExoskeleton.desc = 'desc';
+		this.bugExoskeleton.message = '+5 attack';
+		this.bugExoskeleton.lootOnce = true;
+
+		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
+		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 1]];
 		vm.itemDictionary['lostSoul'] = [['item', this.pocketSand], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];

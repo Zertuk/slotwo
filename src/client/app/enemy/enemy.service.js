@@ -302,8 +302,8 @@
             this.desc = '';
             this.deathMessage = '';
             this.symbol = 'M';
-            this.items = [];
-            this.itemChance = 5;
+            this.items = [vm.itemDictionary['mantisClaw']];
+            this.itemChance = 0;
             this.maxHealth = 5;
             this.health = 5;
             this.damage = 5;
@@ -315,9 +315,9 @@
             this.name = 'Giant Stick Bug';
             this.desc = '';
             this.deathMessage = '';
-            this.symbol = '';
-            this.items = [];
-            this.itemChance = 5;
+            this.symbol = 'T';
+            this.items = [vm.itemDictionary['bugExoskeleton']];
+            this.itemChance = 0;
             this.maxHealth = 5;
             this.health = 5;
             this.damage = 5;

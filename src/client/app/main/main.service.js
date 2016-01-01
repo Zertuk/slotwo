@@ -112,6 +112,8 @@
         	vm.click(this, 'Snow Wastes', 'snow', 140, 30, 30, 15, true);
         	//bridge
         	vm.click(this, 'The Bridge', 'bridge', 110, 39, 25, 5, true);
+            //arena
+            vm.click(this, 'The Arena', 'arena', 80, 30, 20, 10);
         	//tree city
         	vm.click(this, 'Tree City', 'treeCity', 33, 18, 15, 10);
         	//tree two
@@ -391,7 +393,7 @@
                          "                                                                                       | |   ______________|  |"]                                                                                                                                                                                    
 
 
-        vm.arena = new vm.location;
+        vm.arena = new vm.Location;
         vm.arena.name = 'arena';
         vm.arena.prev = 'mainMap';
         vm.arena.prevName = 'Map';

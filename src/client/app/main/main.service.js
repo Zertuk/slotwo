@@ -399,7 +399,9 @@
         vm.arena.prevName = 'Map';
         vm.arena.specialText = true;
         vm.arena.dialogue = dialogueService.arena;
-        vm.arena.ascii = 'ascii';
+        vm.arena.ascii = ['ascii',
+                            'test'];
+
 
 
 

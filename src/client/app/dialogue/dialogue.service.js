@@ -1061,6 +1061,7 @@
             vm.enchant.dialogue = vm.enchant.setDialogue();
             vm.house.dialogue = vm.house.setDialogue();
             vm.inn.dialogue = vm.inn.setDialogue();
+            vm.arena.dialogue = vm.arena.setDialogue();
         }
     }
 })();

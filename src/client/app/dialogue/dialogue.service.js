@@ -106,7 +106,7 @@
                     master: 'arena'
                 },
                 fight: {
-                    text: 'The match today is against 7rtfyt.  Win your match and you gain passage to The Bridge.  Its a fullhouse tonight, give them a show!',
+                    text: 'The match today is against a swarm of Giant Bugs!  Win your match and you gain passage to The Bridge.  Its a fullhouse tonight, give them a show!',
                     continue: true,
                     level: 'arena'
                 },

@@ -391,6 +391,14 @@
                          "                                                                                       | |   ______________|  |"]                                                                                                                                                                                    
 
 
+        vm.arena = new vm.location;
+        vm.arena.name = 'arena';
+        vm.arena.prev = 'mainMap';
+        vm.arena.prevName = 'Map';
+        vm.arena.specialText = true;
+        vm.arena.dialogue = dialogueService.arena;
+        vm.arena.ascii = 'ascii';
+
 
 
 		vm.treeGovernment = new vm.Location;
@@ -437,5 +445,6 @@
 			vm.locationDictionary['wizard'] = this.wizard;
             vm.locationDictionary['monk'] = this.monk;
             vm.locationDictionary['house'] = this.house;
+            vm.locationDictionary['arena'] = this.arena;
     }
 })();

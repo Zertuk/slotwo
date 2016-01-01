@@ -252,11 +252,11 @@
 
 
         this.arena = new this.Level();
-        this.arena.enemyArray = [];
+        this.arena.enemyArray = [enemyService.Mantis, enemyService.StickBug];
         this.arena.playerSpawn = [3, 10];
-        this.arena.enemySpawn = [];
-        this.arena.name = '';
-        this.arena.slug = '';
+        this.arena.enemySpawn = [40, 10];
+        this.arena.name = 'Fight Night';
+        this.arena.slug = 'arena';
         this.arena.defaultAscii = ["^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^",
                                    "|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|",
                                    "|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|",

@@ -297,6 +297,34 @@
         };
         vm.Bear.prototype = new vm.Enemy();
 
+        vm.Mantis = function Mantis() {
+            this.name = 'Giant Mantis';
+            this.desc = '';
+            this.deathMessage = '';
+            this.symbol = 'M';
+            this.items = [];
+            this.itemChance = 5;
+            this.maxHealth = 5;
+            this.health = 5;
+            this.damage = 5;
+            this.attackSpeed = 5;
+        };
+        vm.Mantis.prototype = new vm.Enemy();
+
+        vm.StickBug = function StickBug() {
+            this.name = 'Giant Stick Bug';
+            this.desc = '';
+            this.deathMessage = '';
+            this.symbol = '';
+            this.items = [];
+            this.itemChance = 5;
+            this.maxHealth = 5;
+            this.health = 5;
+            this.damage = 5;
+            this.attackSpeed = 5;
+        };
+        vm.StickBug.prototype = new vm.Enemy();
+
         vm.Gorilla = function Gorilla() {
             this.name = 'Desert Gorilla';
             this.desc = 'They come from under the sand!';

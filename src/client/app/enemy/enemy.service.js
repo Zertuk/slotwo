@@ -323,6 +323,7 @@
             this.damage = 10;
             this.attackSpeed = 5;
         }
+        vm.DustDevil.prototype = new vm.Enemy();
 
         vm.Deer = function Deer() {
             this.name = 'Deer';

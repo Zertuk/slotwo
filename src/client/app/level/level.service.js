@@ -166,10 +166,10 @@
         this.ruins = new this.Level();
         this.ruins.slug = 'desert';
         this.ruins.unlock = 'dungeon';
-        this.ruins.enemyArray = [enemyService.Gorilla];
+        this.ruins.enemyArray = [enemyService.Gorilla, enemyService.DustDevil];
         this.ruins.specialSpawn = [120, 12];
         this.ruins.specialSpawnChance = 50;
-        this.ruins.unitSpawnChance = [80];
+        this.ruins.unitSpawnChance = [50, 100];
         this.ruins.enemyMax = 3;
         this.ruins.playerSpawn = [0, 13];
         this.ruins.enemySpawn = [250, 10];

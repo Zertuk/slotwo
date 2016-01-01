@@ -31,7 +31,7 @@
     <div ng-controller = "MainController as vm">
         <header>
             <div class = "row controls">
-                <button ng-click = "vm.switchTemplate('app/resources/resources.html')">Home</button>
+                <div class = 'noactive button' ng-click = "vm.player.rest()">Rest</div>
                 <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
                 <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
                 <button ng-click = "vm.switchLocation('mainMap')">Map</button>

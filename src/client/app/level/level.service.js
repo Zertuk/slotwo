@@ -253,8 +253,11 @@
 
         this.arena = new this.Level();
         this.arena.enemyArray = [enemyService.Mantis, enemyService.StickBug];
-        this.arena.playerSpawn = [3, 10];
-        this.arena.enemySpawn = [40, 10];
+        this.arena.unitSpawnChance = [40, 80];
+        this.arena.playerSpawn = [2, 18];
+        this.arena.enemySpawn = [87, 18];
+        this.arena.specialEnd = 87;
+        this.arena.enemyMax = 20;
         this.arena.name = 'Fight Night';
         this.arena.slug = 'arena';
         this.arena.defaultAscii = ["^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^",

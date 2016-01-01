@@ -39,7 +39,7 @@
         vm.arena.setDialogue = function() {
             var dialogue = {
                 introduction: {
-                    text: 'Welcome to the arena!  I am Abner; Owner, showman, and gentleman!  We are still taking contestants for tonights show if you are interested.  Defeat your opponent and win passage across The Bridge!  Or, if you just need to train, I can hook you up.';
+                    text: 'Welcome to the arena!  I am Abner; Owner, showman, and gentleman!  We are still taking contestants for tonights show if you are interested.  Defeat your opponent and win passage across The Bridge!  Or, if you just need to train, I can hook you up.',
                     buttons: {
                         fight: {
                             next: 'I am here to fight.',
@@ -64,7 +64,7 @@
                             next: 'secret',
                             active: true,
                             master: 'arena'
-                        }
+                        },
                         skeleton: {
                             text: 'Are you a skeleton?',
                             next: 'skeleton',
@@ -73,8 +73,42 @@
                         }
                     }
                 },
-                fight: {
+                secret: {
+                    text: 'I will only share my secret once you sign this NDA!  I cant risk a product this good.',
+                    buttons: {
+                        sign: {
+                            text: 'Sign the NDA',
+                            next: 'sign',
+                            master: 'arena',
+                            active: true
+                        },
+                        refuse: {
+                            text: 'Im not signing anything.',
+                            next: 'refuse',
+                            master: 'arena',
+                            active: true
+                        }
+                    }
+                },
+                buy: {
 
+                },
+                refuse: {
+                    text: 'Your loss!  Ill keep this NDA handy if you change your mind.',
+                    next: 'introduction',
+                    master: 'arena',
+                    active: true
+                },
+                sign: {
+                    text: 'Alright heres the scoop.  You know the animal "cow" right?  Well I found that lady cows can excreet white fluid.  I took a drink of it and I was in utter shock!  Every glass of this stuff makes you healthier.  My bones have never been stronger!',
+                    next: 'introduction',
+                    continue: true,
+                    master: 'arena'
+                },
+                fight: {
+                    text: 'The match today is against 7rtfyt.  Win your match and you gain passage to The Bridge.  Its a fullhouse tonight, give them a show!',
+                    continue: true,
+                    level: 'arena'
                 },
                 train: {
                     text: 'Splendid! Here is a free sample of my special training formula, after that one I will have to charge you gold.  Drink up!',
@@ -83,7 +117,10 @@
                     master: 'arena'
                 },
                 skeleton: {
-
+                    text: 'Why yes I am.  You dont have a problem with that do you?',
+                    continue: true,
+                    master: 'arena',
+                    next: 'introduction'
                 }
             }
             return dialogue;

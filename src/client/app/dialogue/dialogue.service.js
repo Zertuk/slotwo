@@ -944,13 +944,13 @@
                     next: 'question'
                 },
                 question: {
-                    text: 'Here, take this map.  A short distance north east of here is Tree City, there will be work for you there.  Take this backpack too, I am too old for adventuring now.',
+                    text: 'Here, take this map.  A short distance north east of here is Tresabor, City in the Tree. The Elder may be able to help with your memory loss and there will be work for you there.  Take this backpack too, I am too old for adventuring now.',
                     continue: true,
                     master: 'house',
                     next: 'goodBye'
                 },
                 goodBye: {
-                    text: 'Goodluck kid, and remember, head north east to Tree City!'
+                    text: 'Goodluck kid, and remember, head north east to Tresabor!'
                 }
             };
             return dialogue;

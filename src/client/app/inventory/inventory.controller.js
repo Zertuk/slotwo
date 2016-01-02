@@ -19,6 +19,8 @@
 		vm.otherItems = inventoryService.otherItems;
 		vm.equippedWeapon = vm.player.weapon;
 		vm.equippedArmor = vm.player.armor;
+		activate();
+		
 
 		function createItemList(items, list) {
 			for (var i = 0; i < items.length; i++) {
@@ -32,25 +34,12 @@
 			vm.player.armor = vm.itemDictionary[vm.equippedArmor][0][1];
             vm.player.armorValue = vm.player.armor.armor;
 			// toSlug(vm.test);
-		}
+		};
 
 		vm.equipWeapon = function() {
 			vm.player.weapon = vm.itemDictionary[vm.equippedWeapon][0][1];
 			vm.player.damage = vm.player.weapon.damage;
-		}
-
-		vm.equipTrinket = function() {
-
-		}
-
-		// function toSlug(input) {
-		// 	var formatted = input.split(' ');
-		// 	console.log(formatted)
-		// 	formatted[0] = formatted[0].toLowerCase();
-		// 	formatted = formatted.join('');
-		// 	console.log(formatted);
-		// }
-
+		};
 
 		function activate() {
 			createItemList(inventoryService.armor, vm.armor);
@@ -58,6 +47,5 @@
 			createItemList(inventoryService.trinkets, vm.trinkets);
 			createItemList(inventoryService.helm, vm.helm);
 		}
-		activate();
 	}
 })();

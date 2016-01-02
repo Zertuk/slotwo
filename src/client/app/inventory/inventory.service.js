@@ -86,18 +86,9 @@
 		this.fists.attackSpeed = 1;
 		this.fists.slug = 'fists';
 
-		this.club = new this.Item();
-		this.club.recipe = ['stick-1', 'grass-1', 'rock-1'];
-		this.club.desc = 'This thing is a beast';
-		this.club.cat = 'weapon';
-		this.club.damage = 4;
-		this.club.attackSpeed = 2;
-		this.club.name = 'Club';
-		this.club.slug = 'club';
-
 		this.sword = new this.Item();
-		this.sword.name = 'Sword';
-		this.sword.desc = 'A wooden sword.';
+		this.sword.name = 'Wooden Sword';
+		this.sword.desc = 'Sourced from 100% Organic GMO Free Trees';
 		this.sword.recipe = ['wood-100'];
 		this.sword.cat = 'weapon';
 		this.sword.damage = 4;
@@ -105,37 +96,18 @@
 		this.sword.slug = 'sword';
 
 		this.bearClaws = new this.Item();
-		this.bearClaws.name = 'Bear Claws';
-		this.bearClaws.desc = 'claws of a bear';
+		this.bearClaws.name = 'Bear Arms';
+		this.bearClaws.desc = 'Just like the founding fathers intended';
 		this.bearClaws.damage = 3;
 		this.bearClaws.attackSpeed = 1;
 		this.bearClaws.slug = 'bearClaws';
 
 		this.minotaurHammer = new this.Item();
 		this.minotaurHammer.name = 'Minotaur Hammer';
-		this.minotaurHammer.desc = 'minotaur hammer';
+		this.minotaurHammer.desc = 'This thing is a beast';
 		this.minotaurHammer.damage = 20;
 		this.minotaurHammer.attackSpeed = 5;
 		this.minotaurHammer.slug = 'minotaurHammer';
-
-		this.doubleShield = new this.Item();
-		this.doubleShield.name = 'Double Shields';
-		this.doubleShield.desc = 'Wield two shields at the same time!';
-		this.doubleShield.damage = 0;
-		this.doubleShield.attackSpeed = 999999999999;
-		this.doubleShield.slug = 'doubleShield';
-		this.doubleShield.armor = 100;
-
-		this.swordShield = new this.Item();
-		this.swordShield.name = 'Sword + Shield';
-		this.swordShield.desc = 'Classic Combo';
-		this.swordShield.damage = 2;
-		this.swordShield.attackSpeed = 2;
-		this.swordShield.slug = 'swordShield';
-		this.swordShield.armor = 10;
-		this.swordShield.buyable = true;
-		this.swordShield.removeAfterBuy = true;
-		this.swordShield.price = 1000;
 
 		this.giantCarrot = new this.Item();
 		this.giantCarrot.name = 'Giant Carrot';
@@ -146,12 +118,9 @@
 		this.giantCarrot.lootOnce = true;
 
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
-		vm.itemDictionary['club'] = [['item', this.club], ['amount', 0]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 1]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]];
-		vm.itemDictionary['doubleShield'] = [['item', this.doubleShield], ['amount', 1]];
-		vm.itemDictionary['swordShield'] = [['item', this.swordShield], ['amount', 1]];
 		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 1]];
 
 
@@ -159,8 +128,10 @@
 		//armor
 		this.clothArmor = new this.Item();
 		this.clothArmor.name = 'Cloth Armor';
+		this.clothArmor.desc = 'Better than nothing?';
 		this.clothArmor.armor = 0;
 		this.clothArmor.slug = 'clothArmor';
+		this.clothArmor.damageMult = 1;
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
@@ -189,8 +160,26 @@
 		this.polarArmor.armor = 0.3;
 		this.polarArmor.slug = 'polarArmor';
 
+		this.healthArmor = new this.Item();
+		this.healthArmor.name = 'health armor';
+		this.healthArmor.desc = 'health armor';
+		this.healthArmor.armor = 0;
+		this.healthArmor.healthMult = 2;
+		this.healthArmor.slug = 'healthArmor';
+
+		this.ghostArmor = new this.Item();
+		this.ghostArmor.name = 'Spooky Aura';
+		this.ghostArmor.desc = 'Feels like a ghost hug <3';
+		this.ghostArmor.armor = 0;
+		this.ghostArmor.damageMult = 2;
+		this.ghostArmor.slug = 'ghostArmor';
+
+
+
+		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 1]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
+		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 1]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
 		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 1]];
 
@@ -282,13 +271,6 @@
 		this.pocketSand.message = '5% chance to evade damage.';
 		this.pocketSand.lootOnce = true;
 
-		this.lostSoul = new this.Item();
-		this.lostSoul.name = 'Spooky Aura';
-		this.lostSoul.slug = 'lostSoul';
-		this.lostSoul.desc = 'It surrounds you...';
-		this.lostSoul.message = '+50 health';
-		this.lostSoul.lootOnce = true;
-
 		this.mantisClaw = new this.Item();
 		this.mantisClaw.name = 'Mantis Claw';
 		this.mantisClaw.slug = 'mantisClaw';
@@ -305,7 +287,6 @@
 
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 1]];
-		vm.itemDictionary['lostSoul'] = [['item', this.pocketSand], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];
@@ -351,7 +332,7 @@
 						 vm.itemDictionary['mantisClaw']];
 
 		vm.buyableItems = ['potion', 
-						   'swordShield', 
+						   'sword', 
 						   'wood', 
 						   'boneArmor', 
 						   'winterCoat', 
@@ -360,19 +341,18 @@
 						   'sleepingBag'];
 
 		vm.weapons = [vm.itemDictionary['fists'],
-					  vm.itemDictionary['club'], 
 					  vm.itemDictionary['sword'],
 					  vm.itemDictionary['bearClaws'],
 					  vm.itemDictionary['minotaurHammer'],
-					  vm.itemDictionary['swordShield'],
-					  vm.itemDictionary['doubleShield'],
 					  vm.itemDictionary['giantCarrot']];
 
 
 		vm.armor = [vm.itemDictionary['clothArmor'],
 					vm.itemDictionary['woodArmor'],
 					vm.itemDictionary['boneArmor'],
-					vm.itemDictionary['polarArmor']];
+					vm.itemDictionary['polarArmor'],
+					vm.itemDictionary['healthArmor'],
+					vm.itemDictionary['ghostArmor']];
 
 		vm.trinkets = [];
 

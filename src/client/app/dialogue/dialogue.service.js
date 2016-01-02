@@ -42,7 +42,7 @@
                     text: 'Welcome to the arena!  I am Abner; Owner, showman, and gentleman!  We are still taking contestants for tonights show if you are interested.  Defeat your opponent and win passage across The Bridge!  Or, if you just need to train, I can hook you up.',
                     buttons: {
                         fight: {
-                            next: 'I am here to fight.',
+                            text: 'I am here to fight.',
                             next: 'fight',
                             active: true,
                             master: 'arena'

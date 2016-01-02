@@ -346,7 +346,9 @@
 						 vm.itemDictionary['snowmanHat'],
 						 vm.itemDictionary['sleepingBag'],
 						 vm.itemDictionary['gorillaFoot'],
-						 vm.itemDictionary['pocketSand']];
+						 vm.itemDictionary['pocketSand'],
+						 vm.itemDictionary['bugExoskeleton'],
+						 vm.itemDictionary['mantisClaw']];
 
 		vm.buyableItems = ['potion', 
 						   'swordShield', 

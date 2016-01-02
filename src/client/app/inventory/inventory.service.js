@@ -318,25 +318,5 @@
 					vm.itemDictionary['polarArmor'],
 					vm.itemDictionary['healthArmor'],
 					vm.itemDictionary['ghostArmor']];
-
-		vm.trinkets = [];
-
-		vm.helm = [];
-
-
-
-		// function findWeapons() {
-		// 	var length = Object.keys(vm.itemDictionary).length;
-		// 	for (var i = 0; i < length; i++) {
-		// 		console.log(vm.itemDictionary[0])
-		// 		// if (vm.itemDictionary[i][0][1].cat == 'weapon') {
-		// 		// 	console.log(vm.itemDictionary[0][1].name);
-		// 		// }
-		// 		// else {
-		// 		// 	console.log(vm.itemDictionary[0][1].cat);
-		// 		// }
-		// 	}
-		// }
-		// findWeapons();
     }
 })();

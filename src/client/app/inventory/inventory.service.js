@@ -20,45 +20,10 @@
 			this.quantity = 0,
 			this.cat = 'default',
 			this.spawn = undefined,
-			this.name = "Default",
+			this.name = 'Default',
 			this.slug = function() {
 				var slug = this.name.toLowerCase();
 				return slug;
-			},
-			this.effect = function() {
-				console.log('does nothing');
-			},
-			this.craftWait = function() {
-				var time = 5000;
-				for (var i = 0; i < this.craftTime; i++) {
-					if (i = this.craftTime - 1) {
-						this.craft;
-					}
-					else {
-						time = time - 1;
-					}
-				}
-			},
-			this.craft = function() {
-				if (typeof this.recipe !== 'undefined') {
-					var recipe = [];
-					var err = 0;
-					var testAmt = 5;
-					for (var i = 0; i < this.recipe.length; i++) {
-						recipe[i] = this.recipe[i].split('-');
-						if (recipe[i][1] > vm.itemDictionary[recipe[i][0]][1][1]) {
-							err = err + 1;
-						}
-					}
-					//if err === 0 then we have enough resources, so craft
-					if (err === 0) {
-						for (var j = 0; j < recipe.length; j++) {
-							vm.itemDictionary[recipe[j][0]][1][1] = vm.itemDictionary[recipe[j][0]][1][1] - recipe[j][1];
-						}
-						vm.itemDictionary[this.slug][1][1] = vm.itemDictionary[this.slug][1][1] + this.quant;
-						return true;
-					}
-				}
 			},
 			this.attackSpeedMessage = function() {
 				var message = '';

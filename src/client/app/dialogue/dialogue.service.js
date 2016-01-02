@@ -321,8 +321,20 @@
                             next: 'elder',
                             master: 'enchant',
                             active: true
+                        },
+                        train: {
+                            text: 'How can I become stronger',
+                            next: 'train',
+                            master: 'enchant',
+                            active: true
                         }
                     }
+                },
+                train: {
+                    text: 'If you need to become stronger, you need to train.  An old friend of mine is living in the mountains.  He can help you learn new abilities.  If you just want to get tougher, the arena will get you in top shape.',
+                    next: 'choice',
+                    master: 'enchant',
+                    continue: 'true'
                 },
                 memory: {
                     text: 'I see.  Memory loss is very difficult to handle.  I can help you along but I cannot restore your memories.  What I can do is guide you to your true self.',

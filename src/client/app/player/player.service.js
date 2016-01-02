@@ -80,6 +80,9 @@
                 }
             }
             this.healthRegen = function() {
+                if (this.health < 0) {
+                    this.health = 0;
+                }
                 if (this.health < this.maxHealth) {
                     var health = parseFloat(this.health);
                     this.health = (health + this.regen).toFixed(2);

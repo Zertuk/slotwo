@@ -143,7 +143,14 @@
                             next: 'hair',
                             master: 'wizard',
                             active: true
-                        }
+                        },
+                        whatsItLike: {
+                            text: 'Whats it like to be a wizard?',
+                            next: 'whatsItLike',
+                            master: 'wizard',
+                            active: true
+                        },
+                        
                     }
                 }
             }

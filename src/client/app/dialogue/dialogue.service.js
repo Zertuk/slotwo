@@ -18,7 +18,7 @@
             //return intro by default
             this.initDialogue = function() {
                 return 'introduction';
-            }
+            };
         };
 
         //Dialogue function purposes
@@ -26,16 +26,19 @@
         //initDialogue : sets initial dialogue on location switch
         //setDialogue : set up for the dialogue, runs to grab conditional changes for dialogue
 
+
+        //init&reset quiz results for elder quiz
         function initQuiz() {
             var results = {
                 offense: 0,
                 defense: 0,
                 healing: 0
-            }
+            };
             return results;
         }
 
-        vm.arena = new vm.Dialogue;
+        //arena dialogue
+        vm.arena = new vm.Dialogue();
         vm.arena.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -122,11 +125,12 @@
                     master: 'arena',
                     next: 'introduction'
                 }
-            }
+            };
             return dialogue;
-        }
+        };
 
-        vm.wizard = new vm.Dialogue;
+        //wizard in bear dialogue
+        vm.wizard = new vm.Dialogue();
         vm.wizard.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -153,20 +157,19 @@
                         
                     }
                 }
-            }
+            };
             return dialogue;
-        }
+        };
 
-        vm.treeKing = new vm.Dialogue;
+        vm.treeKing = new vm.Dialogue();
         vm.treeKing.initDialogue = function() {
-            console.log(vm.progress.treeKingIntro)
             if (!vm.progress.treeKingIntro) {
                 return 'introduction';
             }
             else {
                 return 'question';
             }
-        }
+        };
         vm.treeKing.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -294,11 +297,11 @@
                     master: 'treeKing',
                     continue: true
                 }
-            }
+            };
             return dialogue;
-        }
+        };
 
-        vm.enchant = new vm.Dialogue;
+        vm.enchant = new vm.Dialogue();
         vm.enchant.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -576,9 +579,9 @@
                 }
             };
             return dialogue;
-        }
+        };
 
-        vm.monk = new vm.Dialogue;
+        vm.monk = new vm.Dialogue();
         vm.monk.checkLearn = function() {
             var learn = false;
             if (vm.progress.canLearn > 0) {
@@ -670,7 +673,7 @@
                         }
                     },
                     special: function() {
-                        console.log('this runs')
+                        console.log('this runs');
                     }
                 },
                 battleLearn: {
@@ -689,7 +692,7 @@
                     next: 'question',
                     continue: true,
                     special: function() {
-                        monkService.train('defense'),
+                        monkService.train('defense');
                         vm.initAllDialogues();
                     }
                 },
@@ -699,7 +702,7 @@
                     next: 'question',
                     continue: true,
                     special: function() {
-                        monkService.train('money'),
+                        monkService.train('money');
                         vm.initAllDialogues();
                     }
                 },
@@ -728,10 +731,10 @@
                 }
             };
             return dialogue;
-        }
+        };
 
 
-        vm.slumThugs = new vm.Dialogue;
+        vm.slumThugs = new vm.Dialogue();
         vm.slumThugs.initDialogue = function() {
             if (vm.progress.slumBossMet) {
                 return 'boss';
@@ -740,7 +743,7 @@
                 return 'introduction';
             }
             console.log('poop test');
-        }
+        };
         vm.slumThugs.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -787,7 +790,7 @@
                     next: 'bossReturn',
                     master: 'slumThugsBoss'
                 }
-            }
+            };
             return dialogue;
         };
 
@@ -891,11 +894,11 @@
                     continue: true,
                     master: 'inn'
                 }
-            }
+            };
             return dialogue;
-        }
+        };
 
-        vm.house = new vm.Dialogue;
+        vm.house = new vm.Dialogue();
         vm.house.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -973,11 +976,11 @@
                 }
             };
             return dialogue;
-        }
+        };
 
 
 
-        vm.slumThugsBoss = new vm.Dialogue;
+        vm.slumThugsBoss = new vm.Dialogue();
         vm.slumThugsBoss.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -1066,9 +1069,9 @@
                     level: 'shroom',
                     active: true
                 }
-            }
+            };
             return dialogue;
-        }
+        };
 
         //init the dialogues based on setDialogue to grab changed conditionals
         vm.initAllDialogues = function() {
@@ -1081,6 +1084,6 @@
             vm.house.dialogue = vm.house.setDialogue();
             vm.inn.dialogue = vm.inn.setDialogue();
             vm.arena.dialogue = vm.arena.setDialogue();
-        }
+        };
     }
 })();

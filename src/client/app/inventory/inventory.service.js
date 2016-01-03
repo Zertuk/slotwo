@@ -53,7 +53,7 @@
 
 		this.sword = new this.Item();
 		this.sword.name = 'Wooden Sword';
-		this.sword.desc = 'Sourced from 100% Organic GMO Free Trees';
+		this.sword.desc = 'Sourced from 100% Organic Non-GMO Trees';
 		this.sword.recipe = ['wood-100'];
 		this.sword.cat = 'weapon';
 		this.sword.damage = 4;
@@ -250,6 +250,15 @@
 		this.bugExoskeleton.message = '+5 attack';
 		this.bugExoskeleton.lootOnce = true;
 
+		this.bigHeavyWood = new this.Item();
+		this.bigHeavyWood.name = 'Log';
+		this.bigHeavyWood.slug = 'bigHeavyWood';
+		this.bigHeavyWood.desc = 'Its big, its heavy, its wood!';
+		this.bigHeavyWood.message = '+25 health';
+		this.bigHeavyWood.lootOnce = true;
+
+
+		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 1]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 1]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]
@@ -294,7 +303,8 @@
 						 vm.itemDictionary['gorillaFoot'],
 						 vm.itemDictionary['pocketSand'],
 						 vm.itemDictionary['bugExoskeleton'],
-						 vm.itemDictionary['mantisClaw']];
+						 vm.itemDictionary['mantisClaw'],
+						 vm.itemDictionary['bigHeavyWood']];
 
 		vm.buyableItems = ['potion', 
 						   'sword', 

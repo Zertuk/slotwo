@@ -190,6 +190,9 @@
 		this.winterCoat.buyable = true;
 		this.winterCoat.price = 1000;
 		this.winterCoat.removeAfterBuy = true;
+		this.winterCoat.special = function() {
+			vm.progress.hasSweater = true;
+		};
 
 		this.wizardsHair = new this.Item();
 		this.wizardsHair.name = 'Wizards Hair';
@@ -224,7 +227,7 @@
 		this.sleepingBag.removeAfterBuy = true;
 		this.sleepingBag.special = function() {
 			vm.progress.hasSleepingBag = true;
-		}
+		};
 
 		this.gorillaFoot = new this.Item();
 		this.gorillaFoot.name = 'Lucky Gorilla Foot';

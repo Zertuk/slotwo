@@ -470,7 +470,7 @@
                 var thisEnemy = this;
                 messageService.addMessage(this.name + ' charges a freezing attack! Stay warm!');
                 $timeout(function() {
-                    if (vm.progress.items.winterSweater) {
+                    if (vm.progress.hasSweater) {
                         messageService.addMessage('You stay toasty in your Winter Sweater!');
                     }
                     else {

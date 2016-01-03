@@ -276,7 +276,7 @@
             this.maxHealth = 20;
             this.health = 20;
             this.colBox = [3, 4];
-            this.items = [vm.itemDictionary['wood']];
+            this.items = [vm.itemDictionary['bigHeavyWood']];
             this.itemChance = 100;
             this.itemMult = 3;
             this.damage = 0;

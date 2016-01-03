@@ -258,7 +258,7 @@
 		this.bigHeavyWood.lootOnce = true;
 
 
-		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 1]];
+		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 1]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 1]]

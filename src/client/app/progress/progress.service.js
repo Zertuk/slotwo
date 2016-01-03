@@ -10,6 +10,9 @@
     /* @ngInject */
     function progressService() {
         this.progress = {
+            hasMap: true,
+            hasSleepingBag: false,
+            introComplete: false,
         	treeKingWorkAccept: false,
         	treeKingCompliment: true,
         	ruinsCleared: false,

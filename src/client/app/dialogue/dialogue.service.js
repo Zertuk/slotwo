@@ -899,6 +899,14 @@
         };
 
         vm.house = new vm.Dialogue();
+        vm.house.initDialogue = function() {
+            if (vm.progress.introComplete) {
+                return 'help';
+            }
+            else {
+                return 'introduction';
+            }
+        }
         vm.house.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -918,6 +926,9 @@
                         }
 
                     }
+                },
+                help: {
+                    text: 'What? You are back already?! Get back out there!'
                 },
                 lie: {
                     text: 'Well then why did I find you passed out in my yard.  It looked like a few goons had beaten you up.',
@@ -969,7 +980,11 @@
                     text: 'Here, take this map.  A short distance north east of here is Tresabor, City in the Tree. The Elder may be able to help with your memory loss and there will be work for you there.  Take this backpack too, I am too old for adventuring now.',
                     continue: true,
                     master: 'house',
-                    next: 'goodBye'
+                    next: 'goodBye',
+                    special: function() {
+                        vm.progress.hasMap = true;
+                        vm.progress.introComplete = true;
+                    }
                 },
                 goodBye: {
                     text: 'Goodluck kid, and remember, head north east to Tresabor!'

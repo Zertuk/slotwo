@@ -5,11 +5,12 @@
         .module('app.inventory')
         .service('inventoryService', inventoryService);
 
-    inventoryService.$inject = [];
+    inventoryService.$inject = ['progressService'];
 
     /* @ngInject */
-    function inventoryService() {
+    function inventoryService(progressService) {
     	var vm = this;
+    	vm.progress = progressService.progress;
 		vm.itemDictionary = [];
 
 		this.Item = function() {
@@ -219,8 +220,11 @@
 		this.sleepingBag.desc = 'Deluxe model is 23% cozier';
 		this.sleepingBag.message = 'Allows you to sleep outside and rest anywhere';
 		this.sleepingBag.buyable = true;
-		this.sleepingBag.price = 2000;
+		this.sleepingBag.price = 200;
 		this.sleepingBag.removeAfterBuy = true;
+		this.sleepingBag.special = function() {
+			vm.progress.hasSleepingBag = true;
+		}
 
 		this.gorillaFoot = new this.Item();
 		this.gorillaFoot.name = 'Lucky Gorilla Foot';
@@ -256,7 +260,6 @@
 		this.bigHeavyWood.desc = 'Its big, its heavy, its wood!';
 		this.bigHeavyWood.message = '+25 health';
 		this.bigHeavyWood.lootOnce = true;
-
 
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];

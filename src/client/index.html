@@ -31,10 +31,10 @@
     <div ng-controller = "MainController as vm">
         <header>
             <div class = "row controls">
-                <div class = 'noactive button' ng-click = "vm.player.rest()">Rest</div>
-                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
+                <div class = 'noactive button' ng-click = "vm.player.rest()" ng-if = " vm.progress.hasSleepingBag">Rest</div>
+                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')" ng-if = "vm.progress.hasMap">Inventory</button>
                 <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
-                <button ng-click = "vm.switchLocation('mainMap')">Map</button>
+                <button ng-click = "vm.switchLocation('mainMap')" ng-if = "vm.progress.hasMap">Map</button>
                 <p class = "inline nomargin">{{vm.money}} Gold</p>
 <!--                 <p>{{vm.player.gold}}</p>
  -->                <h1>{{vm.currentLocation.name}}</h1>
@@ -47,7 +47,7 @@
                 </div><!--healthbar-->
             </div><!--row-->
             <div class = "row conditional">
-                <button ng-if = "vm.currentLocation.prevName" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
+                <button ng-if = "vm.currentLocation.prevName && vm.progress.hasMap" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
                 <button ng-if = "vm.prevMessage" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">{{vm.prevMessage}}</button>
                 <p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
                 <div class = "playerinfo">

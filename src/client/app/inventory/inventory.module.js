@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('app.inventory', [
-    	'app.player'
+    	'app.player',
+    	'app.progress'
     ]);
 })();

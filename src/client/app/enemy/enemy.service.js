@@ -156,17 +156,17 @@
                         num = 'some';
                     }
                     this.foundLoot = true;
-                    this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + ' and ' + cash + ' gold.';
+                    this.lootMessage = 'You find ' + num + ' [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
                     if (num === 'some') {
                         num = 1;
                     }
                     if (this.items[0][0][1].lootOnce) {
                         if (this.items[0][1][1] > 0) {
-                            this.lootMessage = 'You find ' + this.items[0][0][1].name + ' and ' + cash + ' gold.';
+                            this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
                         }
                     }
                     else {
-                        this.lootMessage = 'You find ' + num + ' ' + this.items[0][0][1].name + ' and ' + cash + ' gold.';
+                        this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
                         if (num === 'some') {
                             num = 1;
                         }

@@ -44,8 +44,6 @@
 		function activate() {
 			createItemList(inventoryService.armor, vm.armor);
 			createItemList(inventoryService.weapons, vm.weapons);
-			createItemList(inventoryService.trinkets, vm.trinkets);
-			createItemList(inventoryService.helm, vm.helm);
 		}
 	}
 })();

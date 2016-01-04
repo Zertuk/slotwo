@@ -209,6 +209,7 @@
 		this.deerAntlers.desc = 'The latest in deer fashion';
 		this.deerAntlers.message = 'Attacks cause +1 damage.';
 		this.deerAntlers.lootOnce = true;
+		this.deerAntlers.damage = 1;
 
 		this.snowmanHat = new this.Item();
 		this.snowmanHat.name = 'Snowmans Hat';
@@ -216,6 +217,7 @@
 		this.snowmanHat.desc = 'No one will ever wear it as good as the snowman...';
 		this.snowmanHat.message = 'Attacks cause +5 damage';
 		this.snowmanHat.lootOnce = true;
+		this.snowmanHat.damage = 5;
 
 		this.sleepingBag = new this.Item();
 		this.sleepingBag.name = 'Deluxe Sleeping Bag';
@@ -235,6 +237,7 @@
 		this.gorillaFoot.desc = 'Luckiest of all animal feet';
 		this.gorillaFoot.message = 'Holder gains +5 gold a second';
 		this.gorillaFoot.lootOnce = true;
+		this.gorillaFoot.money = 5;
 
 		this.pocketSand = new this.Item();
 		this.pocketSand.name = 'Pocket Sand';
@@ -242,6 +245,7 @@
 		this.pocketSand.desc = 'Wingo! Pocket sand!';
 		this.pocketSand.message = '5% chance to evade damage.';
 		this.pocketSand.lootOnce = true;
+		this.pocketSand.evade = 5;
 
 		this.mantisClaw = new this.Item();
 		this.mantisClaw.name = 'Mantis Claw';
@@ -249,6 +253,7 @@
 		this.mantisClaw.desc = 'desc';
 		this.mantisClaw.message = '+5 attack ';
 		this.mantisClaw.lootOnce = true;
+		this.mantisClaw.damage = 5;
 
 		this.bugExoskeleton = new this.Item();
 		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';
@@ -256,6 +261,7 @@
 		this.bugExoskeleton.desc = 'desc';
 		this.bugExoskeleton.message = '+5 attack';
 		this.bugExoskeleton.lootOnce = true;
+		this.bugExoskeleton.damage = 5;
 
 		this.bigHeavyWood = new this.Item();
 		this.bigHeavyWood.name = 'Log';
@@ -263,6 +269,7 @@
 		this.bigHeavyWood.desc = 'Its big, its heavy, its wood!';
 		this.bigHeavyWood.message = '+25 health';
 		this.bigHeavyWood.lootOnce = true;
+		this.bigHeavyWood.health = 25;
 
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
@@ -334,5 +341,27 @@
 					vm.itemDictionary['polarArmor'],
 					vm.itemDictionary['healthArmor'],
 					vm.itemDictionary['ghostArmor']];
+
+		function findVal() {
+			var keys = ['damage', 'health', 'evade', 'money', 'defense'];
+			var stats = {
+				damage: 0,
+				health: 0,
+				evade: 0,
+				money: 0,
+				defense: 0
+			}
+			for (var i = 0; i < vm.otherItems.length; i++) {
+				if (vm.otherItems[i][1][1] > 0) {
+					for (var k = 0; k < keys.length; k++) {
+						if (typeof vm.otherItems[i][0][1][keys[k]] !== 'undefined') {
+							stats[keys[k]] = stats[keys[k]] + vm.otherItems[i][0][1][keys[k]];
+						}
+					}
+				}
+			}
+			console.log(stats);
+		}
+		findVal();
     }
 })();

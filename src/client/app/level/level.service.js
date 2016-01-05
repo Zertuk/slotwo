@@ -223,9 +223,11 @@
  
 
         this.shroom = new this.Level();
-        this.shroom.enemyArray = [enemyService.TreeWarrior];
+        this.shroom.enemyArray = [enemyService.Unicorn, enemyService.Unicorn];
+        this.shroom.unitSpawnChance = [25, 75];
         this.shroom.playerSpawn = [0, 13];
-        this.shroom.enemySpawn = [0, 0];
+        this.shroom.enemySpawn = [20, 13];
+        this.shroom.enemyMax = 10;
         this.shroom.name = '? ? ?'; 
         this.shroom.slug = 'shroom';
         this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",

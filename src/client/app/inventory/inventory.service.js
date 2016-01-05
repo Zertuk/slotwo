@@ -182,6 +182,12 @@
 		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 10]];
 
 		//other items
+		this.trueOffense = new this.Item();
+
+		this.trueDefense = new this.Item();
+
+		this.trueHealth = new this.Item();
+
 		this.winterCoat = new this.Item();
 		this.winterCoat.name = 'Winter Sweater';
 		this.winterCoat.slug = 'winterCoat';

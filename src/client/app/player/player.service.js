@@ -236,10 +236,9 @@
                 var evasion = inventoryService.stats.evade;
                 return evasion;
             },
-            this.trueSelf = {
-                offense: false,
-                defense: false,
-                healing: false
+            this.trueSelf = function(self) {
+                console.log(self);
+                vm.itemDictionary[self][1][1] = 1;
             },
             this.active = true,
             this.ground = false,

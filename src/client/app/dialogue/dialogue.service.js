@@ -490,13 +490,18 @@
                             top = [vm.quiz.defense, 'defense'];
                         }
                         if (top[0] < vm.quiz.healing) {
-                            top = [vm.quiz.healing, 'healing'];
+                            top = [vm.quiz.healing, 'health'];
                         }
+                        //find trueSelf var for item init
+                        var trueSelf = top[1];
+                        trueSelf = trueSelf.charAt(0).toUpperCase() + trueSelf.slice(1);
+                        trueSelf = 'true' + trueSelf;
+                        vm.player.trueSelf(trueSelf);
+                        //find text for dialogue
                         var text = vm.enchant.dialogue.result.pickText(top[1]);
                         vm.progress.quizTaken = true;
                         vm.initAllDialogues();
                         vm.player.trueSelf[top[1]] = true;
-                        console.log(vm.player.trueSelf);
                         return text;
                     },
                     pickText: function(top) {
@@ -507,7 +512,7 @@
                         else if (top === 'defense') {
                             text = 'Oh my, you must prefer to stand your ground instead of fighting.  Your physical and mental defenses will be top quality.';
                         }
-                        else if (top === 'healing') {
+                        else if (top === 'health') {
                             text = 'Ahh.. Your true self is leaking kindness.  You will find great friendships and you be in great health.';
                         }
                         return text;

@@ -26,7 +26,7 @@
 
     	vm.moneyTick = function() {
             vm.forgeActive();
-    		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
+    		vm.resources.money = vm.resources.money + vm.resources.calculateTotlMoneyRate();
     		return vm.resources.money;
     	};
 
@@ -149,6 +149,10 @@
     	vm.resources = {
     		money: 1000,
     		moneyRate: 1,
+            calculateTotlMoneyRate: function() {
+                var moneyRate = vm.resources.moneyRate + inventoryService.stats.money;
+                return moneyRate;
+            },
     		workers: 10,
     		lumberjacks: 0,
     		farmers: 0,

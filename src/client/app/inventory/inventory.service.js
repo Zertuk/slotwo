@@ -183,11 +183,26 @@
 
 		//other items
 		this.trueOffense = new this.Item();
+		this.trueOffense.name = 'True Offense';
+		this.trueOffense.slug = 'trueOffense';
+		this.trueOffense.desc = 'desc';
+		this.trueOffense.message = 'Damage increased by 25%';
+		this.trueOffense.damageMult = 25;
 
 		this.trueDefense = new this.Item();
+		this.trueDefense.name = 'True Defense';
+		this.trueDefense.slug = 'trueDefense';
+		this.trueDefense.desc = 'desc';
+		this.trueDefense.message = 'Armor increased by 25%';
+		this.trueDefense.armorMult = 25;
 
 		this.trueHealth = new this.Item();
-
+		this.trueHealth.name = 'True Health';
+		this.trueHealth.slug = 'trueHealth';
+		this.trueHealth.desc = 'desc';
+		this.trueHealth.message = 'Health increased by 25%';
+		this.trueHealth.healthMult = 25;
+ 
 		this.winterCoat = new this.Item();
 		this.winterCoat.name = 'Winter Sweater';
 		this.winterCoat.slug = 'winterCoat';

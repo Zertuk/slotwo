@@ -30,6 +30,7 @@
             trainDefense: false,
             trainMoney: false,
             canLearn: 1,
+            elderMet: false,
             quizTaken: false,
             levels: {
                 treeCity: true,

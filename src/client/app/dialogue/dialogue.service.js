@@ -302,10 +302,27 @@
         };
 
         vm.enchant = new vm.Dialogue();
+        vm.enchant.initDialogue = function() {
+            if (vm.progress.elderMet) {
+                return 'welcome';
+            }
+            else {
+                return 'introduction';
+            }
+        };
         vm.enchant.setDialogue = function() {
             var dialogue = {
                 introduction: {
                     text: 'Welcome young one. As you may know, I am known as The Elder of Tresabor.  Come in, come in.  Let us have some tea and speak.',
+                    continue: true,
+                    next: 'choice',
+                    master: 'enchant',
+                    special: function() {
+                        vm.progress.elderMet = true;
+                    }
+                },
+                welcome: {
+                    text: 'Welcome back, let us continue our discussion.',
                     continue: true,
                     next: 'choice',
                     master: 'enchant'

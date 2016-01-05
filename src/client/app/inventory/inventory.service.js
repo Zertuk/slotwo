@@ -140,8 +140,14 @@
 		this.ghostArmor.damageMult = 2;
 		this.ghostArmor.slug = 'ghostArmor';
 
+		this.potionArmor = new this.Item();
+		this.potionArmor.name = 'Potion Armor';
+		this.potionArmor.desc = 'Feels like a ghost hug <3';
+		this.potionArmor.armor = 0;
+		this.potionArmor.healthRate = 20;
+		this.potionArmor.slug = 'potionArmor';
 
-
+		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
 		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 1]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
@@ -368,7 +374,8 @@
 					vm.itemDictionary['boneArmor'],
 					vm.itemDictionary['polarArmor'],
 					vm.itemDictionary['healthArmor'],
-					vm.itemDictionary['ghostArmor']];
+					vm.itemDictionary['ghostArmor'],
+					vm.itemDictionary['potionArmor']];
 
 
 

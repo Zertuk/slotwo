@@ -78,7 +78,7 @@
                 if (this.health > this.maxHealth) {
                     this.health = this.maxHealth;
                 }
-            }
+            },
             this.healthRegen = function() {
                 if (this.health < 0) {
                     this.health = 0;
@@ -110,7 +110,6 @@
             },
             this.prevTile = function(unitOld, map) {
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
-                testage = 3;
             },
             this.endLevel = function() {
                 messageService.addMessage('You have reached the end of the level');
@@ -118,7 +117,7 @@
                 this.levelComplete = true;
                 messageService.updateMainMessage('You finish the level.');
                 return true;
-            }
+            },
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
                     this.endLevel();
@@ -148,43 +147,39 @@
                     }
                     
                     for (var i = 0; i < enemyArray.length; i++) {
-                        if ((map[current.position[1]][current.position[0] + current.speed]) == (enemyArray[i].symbol)) {
+                        if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
                             inCombat = true;
                         }
                     }
                     if (inCombat) {
                     }
                     //collission detection y
-                    else if (((map[current.position[1] + 1][current.position[0]] == ' ')||(map[current.position[1] + 1][current.position[0]] == '_')) && !current.prevCheck) {
+                    else if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
-                        if (map[current.position[1]][current.position[0]] == '_') {
+                        if (map[current.position[1]][current.position[0]] === '_') {
                             current.prev = true;
                         }
                     }
                      //collision detection x
-                    else if (map[current.position[1]][current.position[0] + current.speed] == ' ') {
+                    else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
                     //collision detection with replacable tiles
-                    else if (map[current.position[1]][current.position[0] + current.speed] == '_') {
+                    else if (map[current.position[1]][current.position[0] + current.speed] === '_') {
                         current.prev = true;
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
-                    else if ((map[current.position[1]][current.position[0] + current.speed] == 'Y')) {
-                        if (current.symbol == 'Y') {
+                    else if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
+                        if (current.symbol === 'Y') {
                             var inCombat = false;
                             for (var i = 0; i < enemyArray.length; i++) {
-                                if ((map[current.position[1]][current.position[0] + current.speed]) == (enemyArray[i].symbol)) {
+                                if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
                                     inCombat = true;
                                 }
                             }
                             if (!inCombat) {
                                 current.updatePosition(current.position, current.positionOld, current.speed, -1);
                             }
-                        }
-                        else {
-                            battle(player, current, map);
-                            var inCombat = true;
                         }
                     }
                     // else {
@@ -196,7 +191,7 @@
                     else {
                         var cantMove = false;
                         for (var i = 0; i < enemyArray.length; i++) {
-                            if (map[current.position[1]][current.position[0] + current.speed] == enemyArray[i].symbol) {
+                            if (map[current.position[1]][current.position[0] + current.speed] === enemyArray[i].symbol) {
                                 cantMove = true;
                             }
                         }
@@ -250,11 +245,11 @@
                 this.positionOld = this.position;
             },
             //other
-            this.position = [0, 0];
-            this.positionOld = [0, 0];
+            this.position = [0, 0],
+            this.positionOld = [0, 0],
             this.name = 'Player',
             this.symbol = 'Y',
-            this.desc = 'This is you'
+            this.desc = 'This is you',
             //attack
             this.weapon = vm.itemDictionary.fists[0][1],
             this.damage = this.calculateTotalDamage(),
@@ -264,8 +259,8 @@
             this.armorValue = this.armor.armor,
             //money
             this.gold = 0
-        };
-        this.player = new this.Player();
-        this.player.calculateTotalDamage();
+        },
+        this.player = new this.Player(),
+        this.player.calculateTotalDamage()
     }
 })();

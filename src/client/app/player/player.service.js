@@ -215,11 +215,13 @@
                 if (this.abilities.berserk.active) {
                     damage = this.weapon.damage*2;
                 }
-                damage = damage + inventoryService.stats.damage;
+                damage = damage + inventoryService.stats.damage
+                damage = damage + damage*(inventoryService.stats.damageMult/100);
                 return damage;
             },
             this.calculateTotalArmor = function() {
                 var armor = this.armor.armor + inventoryService.stats.defense;
+                armor = armor + armor*(inventoryService.stats.defenseMult/100);
                 if (this.abilities.block.active) {
                     armor = 1;
                 }
@@ -227,6 +229,7 @@
             },
             this.calculateTotalHealth = function() {
                 var health = this.baseHealth + inventoryService.stats.health;
+                health = health + health*(inventoryService.stats.healthMult/100);
                 return health;
             },
             this.calculateTotalEvasion = function() {

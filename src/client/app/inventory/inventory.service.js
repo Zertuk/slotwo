@@ -346,16 +346,16 @@
 
 		function findVal() {
 			var keys = ['damage', 'health', 'evade', 'money', 'defense'];
-			var stats = {
+			vm.stats = {
 				damage: 0,
 				health: 0,
 				evade: 0,
 				money: 0,
 				defense: 0
 			}
-			addVal(keys, stats);
-			console.log(stats);
+			addVal(keys, vm.stats);
 		}
+
 		function addVal(keys, stats) {
 			for (var i = 0; i < vm.otherItems.length; i++) {
 				if (vm.otherItems[i][1][1] > 0) {
@@ -367,6 +367,7 @@
 				}
 			}
 		}
+
 		findVal();
     }
 })();

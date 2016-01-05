@@ -342,6 +342,8 @@
 					vm.itemDictionary['healthArmor'],
 					vm.itemDictionary['ghostArmor']];
 
+
+
 		function findVal() {
 			var keys = ['damage', 'health', 'evade', 'money', 'defense'];
 			var stats = {
@@ -351,6 +353,10 @@
 				money: 0,
 				defense: 0
 			}
+			addVal(keys, stats);
+			console.log(stats);
+		}
+		function addVal(keys, stats) {
 			for (var i = 0; i < vm.otherItems.length; i++) {
 				if (vm.otherItems[i][1][1] > 0) {
 					for (var k = 0; k < keys.length; k++) {
@@ -360,7 +366,6 @@
 					}
 				}
 			}
-			console.log(stats);
 		}
 		findVal();
     }

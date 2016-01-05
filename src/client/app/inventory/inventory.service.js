@@ -194,7 +194,7 @@
 		this.trueDefense.slug = 'trueDefense';
 		this.trueDefense.desc = 'desc';
 		this.trueDefense.message = 'Armor increased by 25%';
-		this.trueDefense.armorMult = 25;
+		this.trueDefense.defenseMult = 25;
 
 		this.trueHealth = new this.Item();
 		this.trueHealth.name = 'True Health';

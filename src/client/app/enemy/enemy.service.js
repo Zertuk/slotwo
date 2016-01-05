@@ -437,6 +437,28 @@
         };
         vm.Minotaur.prototype = new vm.Enemy();
 
+        vm.Alchemist = function Alchemist() {
+            this.name = 'Unicorn Alchemist';
+            this.desc = 'desc';
+            this.items = [vm.itemDictionary['potionArmor']];
+            this.itemChance = 25;
+            this.deathMessage = '';
+            this.symbol = '';
+            this.damage = 1;
+            this.attackSpeed = 2;
+        };
+
+        vm.unicorn = function Unicorn() {
+            this.name = 'Unicorn';
+            this.desc = 'desc';
+            this.items = [];
+            this.itemChance = 25;
+            this.symbol = '';
+            this.damage = 1;
+            this.attackSpeed = 2;
+        };
+        
+
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
             this.desc = 'Part snow, part man.'

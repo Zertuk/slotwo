@@ -373,13 +373,16 @@
 
 
 		function findVal() {
-			var keys = ['damage', 'health', 'evade', 'money', 'defense'];
+			var keys = ['damage', 'health', 'evade', 'money', 'defense', 'defenseMult', 'damageMult', 'healthMult'];
 			vm.stats = {
 				damage: 0,
 				health: 0,
 				evade: 0,
 				money: 0,
-				defense: 0
+				defense: 0,
+				defenseMult: 0,
+				damageMult: 0,
+				healthMult: 0
 			}
 			addVal(keys, vm.stats);
 		}

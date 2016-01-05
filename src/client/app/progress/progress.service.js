@@ -12,6 +12,7 @@
         this.progress = {
             hasMap: true,
             hasSleepingBag: false,
+            hasSweater: false,
             introComplete: false,
         	treeKingWorkAccept: false,
         	treeKingCompliment: true,
@@ -43,9 +44,6 @@
                 wizard: true,
                 robot: true,
                 arena: true
-            },
-            items : {
-                winterSweater: false
             }
         }
     }

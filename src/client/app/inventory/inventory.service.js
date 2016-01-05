@@ -293,9 +293,9 @@
 		this.bigHeavyWood.health = 25;
 
 
-		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 1]];
-		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 1]];
-		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 1]];
+		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
+		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];
+		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 1]];

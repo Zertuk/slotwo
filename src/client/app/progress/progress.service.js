@@ -34,6 +34,9 @@
             pieEaten: false,
             innIntro: false,
             quizTaken: false,
+            berserk: false,
+            shield: false,
+            healing: false,
             levels: {
                 treeCity: true,
                 treeOne: true,

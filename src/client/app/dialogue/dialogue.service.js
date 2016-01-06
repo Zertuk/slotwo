@@ -620,7 +620,7 @@
                     master: 'monk'
                 },
                 question: {
-                    text: 'questions list',
+                    text: 'Well, what do you want?',
                     buttons: {
                         angry: {
                             text: 'This is the great monk? I am unimpressed.',
@@ -661,7 +661,7 @@
                     master: 'monk'
                 },
                 train: {
-                    text: 'Hmm, yes I can teach you.  I cant teach you everything right now, but after sometime I will be able to teach you more.  What would you like to learn?',
+                    text: 'Hmm, yes I can teach you.  What would you like to learn?',
                     buttons: {
                         battle: {
                             text: 'Battle',
@@ -673,19 +673,13 @@
                             text: 'Defense',
                             master: 'monk',
                             next: 'defenseLearn',
-                            active: !vm.progress.trainDefense,
-                            special: function() {
-                                monkService.train('defense');
-                            }
+                            active: !vm.progress.trainDefense
                         },
-                        money: {
+                        health: {
                             text: '$$$',
                             master: 'monk',
-                            next: 'moneyLearn',
-                            active: !vm.progress.trainMoney,
-                            special: function() {
-                                monkService.train('money');
-                            }
+                            next: 'healthLearn',
+                            active: !vm.progress.trainMoney
                         },
                         nothing: {
                             text: 'Nothing for now',
@@ -705,6 +699,7 @@
                     continue: true,
                     special: function() {
                         monkService.train('battle');
+                        vm.progress.berserk = true;
                         vm.initAllDialogues();
                     }
                 },
@@ -715,16 +710,18 @@
                     continue: true,
                     special: function() {
                         monkService.train('defense');
+                        vm.progress.shield = true;
                         vm.initAllDialogues();
                     }
                 },
-                moneyLearn: {
-                    text: 'learn money',
+                healthLearn: {
+                    text: 'learn health',
                     master: 'monk',
                     next: 'question',
                     continue: true,
                     special: function() {
-                        monkService.train('money');
+                        monkService.train('health');
+                        vm.progress.healing = true;
                         vm.initAllDialogues();
                     }
                 },
@@ -732,21 +729,30 @@
                     text: 'fight text',
                     buttons: {
                         sorry: {
-                            text: 'sorry',
+                            text: 'Sorry',
                             next: 'sorry',
                             master: 'monk',
                             active: true
                         },
                         fight: {
-                            text: 'fight',
+                            text: 'Fight me',
                             next: 'fight',
-                            level: 'monkFight',
+                            master: 'monk',
                             active: true
                         }
                     }
                 },
+                fight: {
+                    text: '*The monk knocks you out instantly, you didnt stand a chance.*',
+                    next: 'question',
+                    master: 'monk',
+                    special: function() {
+                        vm.player.health = 0;
+                    },
+                    continue: true
+                },
                 sorry: {
-                    text: 'let it go',
+                    text: 'Alright, Ill let it go this time.',
                     continue: true,
                     next: 'question',
                     master: 'monk'

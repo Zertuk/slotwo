@@ -6,14 +6,15 @@
         .service('playerService', playerService);
 
 
-    playerService.$inject = ['inventoryService', 'messageService'];
+    playerService.$inject = ['inventoryService', 'messageService', 'progressService'];
 
     /* @ngInject */
-    function playerService(inventoryService, messageService) {
+    function playerService(inventoryService, messageService, progressService) {
 
         ////////////////
         var vm = this;
         vm.itemDictionary = inventoryService.itemDictionary;
+        vm.progress = progressService.progress;
         this.Player = function() {
             this.rest = function() {
                 this.health = this.maxHealth;
@@ -24,7 +25,9 @@
                     name: 'Berserk',
                     slug: 'berserk',
                     text: 'Attacks deal double damage',
-                    unlocked: true,
+                    checkUnlock: function() {
+                        return vm.progress.berserk;
+                    },
                     active: false,
                     timer: 0,
                     max: 100,
@@ -39,7 +42,9 @@
                     name: 'Block',
                     slug: 'block',
                     text: 'Blocks incoming damage',
-                    unlocked: true,
+                    checkUnlock: function() {
+                        // return vm.progress.shield;
+                    },
                     active: false,
                     timer: 0,
                     max: 50,

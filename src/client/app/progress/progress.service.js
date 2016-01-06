@@ -37,6 +37,8 @@
             berserk: false,
             shield: false,
             healing: false,
+            freeSample: false,
+            signedNDA: false,
             levels: {
                 treeCity: true,
                 treeOne: true,

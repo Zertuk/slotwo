@@ -53,19 +53,19 @@
                         train: {
                             text: 'Hook me up with training!',
                             next: 'train',
-                            active: true,
+                            active: !vm.freeSample,
                             master: 'arena'
                         },
                         buy: {
                             text: 'I need some more training formula',
                             next: 'buy',
-                            active: true,
+                            active: vm.freeSample&&vm.signedNDA,
                             master: 'arena'
                         },
                         secret: {
                             text: 'Whats the secret to the formula?',
                             next: 'secret',
-                            active: true,
+                            active: vm.freeSample,
                             master: 'arena'
                         },
                         skeleton: {
@@ -106,10 +106,14 @@
                     text: 'Alright heres the scoop.  You know the animal "cow" right?  Well I found that lady cows can excreet white fluid.  I took a drink of it and I was in utter shock!  Every glass of this stuff makes you healthier.  My bones have never been stronger!',
                     next: 'introduction',
                     continue: true,
-                    master: 'arena'
+                    master: 'arena',
+                    special: function() {
+                        vm.progress.signedNDA = true;
+                        vm.initAllDialogues();
+                    }
                 },
                 fight: {
-                    text: 'The match today is against a swarm of Giant Bugs!  Win your match and you gain passage to The Bridge.  Its a fullhouse tonight, give them a show!',
+                    text: 'The match tonight is against a swarm of Giant Bugs!  Win your match and you gain passage to The Bridge.  Its a fullhouse tonight, give them a show!',
                     continue: true,
                     level: 'arena'
                 },
@@ -117,7 +121,11 @@
                     text: 'Splendid! Here is a free sample of my special training formula, after that one I will have to charge you gold.  Drink up!',
                     continue: true,
                     next: 'introduction',
-                    master: 'arena'
+                    master: 'arena',
+                    special: function() {
+                        vm.progress.freeSample = true;
+                        vm.initAllDialogues();
+                    }
                 },
                 skeleton: {
                     text: 'Why yes I am.  You dont have a problem with that do you?',

@@ -53,19 +53,19 @@
                         train: {
                             text: 'Hook me up with training!',
                             next: 'train',
-                            active: !vm.freeSample,
+                            active: !vm.progress.freeSample,
                             master: 'arena'
                         },
                         buy: {
                             text: 'I need some more training formula',
                             next: 'buy',
-                            active: vm.freeSample&&vm.signedNDA,
+                            active: vm.progress.freeSample,
                             master: 'arena'
                         },
                         secret: {
                             text: 'Whats the secret to the formula?',
                             next: 'secret',
-                            active: vm.freeSample,
+                            active: vm.progress.freeSample&&!vm.progress.signedNDA,
                             master: 'arena'
                         },
                         skeleton: {
@@ -100,7 +100,8 @@
                     text: 'Your loss!  Ill keep this NDA handy if you change your mind.',
                     next: 'introduction',
                     master: 'arena',
-                    active: true
+                    active: true,
+                    continue: true
                 },
                 sign: {
                     text: 'Alright heres the scoop.  You know the animal "cow" right?  Well I found that lady cows can excreet white fluid.  I took a drink of it and I was in utter shock!  Every glass of this stuff makes you healthier.  My bones have never been stronger!',
@@ -125,6 +126,7 @@
                     special: function() {
                         vm.progress.freeSample = true;
                         vm.initAllDialogues();
+                        console.log('wtf')
                     }
                 },
                 skeleton: {

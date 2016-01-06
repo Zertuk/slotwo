@@ -817,13 +817,24 @@
         };
 
         vm.inn = new vm.Dialogue;
+        vm.inn.initDialogue = function() {
+            if (vm.progress.innIntro) {
+                return 'question';
+            }
+            else {
+                return 'introduction';
+            }
+        };
         vm.inn.setDialogue = function() {
             var dialogue = {
                 introduction: {
                     text: 'Welcome to the best inn in all of Tresabor, The Sleepy Sapling!  You look like you are new here, am I right?',
                     continue: true,
                     next: 'question',
-                    master: 'inn'
+                    master: 'inn',
+                    special: function() {
+                        vm.progress.innIntro = true;
+                    }
                 },
                 question: {
                     text: 'If you need a room to rest in we have one available for 250g a night.  The Sleepy Sapling also has the tastiest pie that you can find, only 100g for a piece!  Due to limited supply it is only one per customer.  Otherwise we can always just chat!',
@@ -837,7 +848,7 @@
                         pie: {
                             text: 'Let me get in on some of that pie!',
                             next: 'pie',
-                            active: true,
+                            active: !vm.progress.pieEaten,
                             master: 'inn'
                         },
                         chat: {
@@ -861,7 +872,11 @@
                     text: '*You eat the Butterscotch Pie, it fills you with DETERMINATION.*',
                     next: 'question',
                     continue: true,
-                    master: 'inn'
+                    master: 'inn',
+                    special: function() {
+                        vm.progress.pieEaten = !vm.progress.pieEaten;
+                        vm.initAllDialogues();
+                    }
                 },
                 chat: {
                     text: 'Alright! What would you like to talk about?',

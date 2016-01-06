@@ -31,6 +31,8 @@
             trainMoney: false,
             canLearn: 1,
             elderMet: false,
+            pieEaten: false,
+            innIntro: false,
             quizTaken: false,
             levels: {
                 treeCity: true,

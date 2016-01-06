@@ -126,7 +126,6 @@
                     special: function() {
                         vm.progress.freeSample = true;
                         vm.initAllDialogues();
-                        console.log('wtf')
                     }
                 },
                 skeleton: {

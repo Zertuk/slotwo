@@ -223,7 +223,7 @@
  
 
         this.shroom = new this.Level();
-        this.shroom.enemyArray = [enemyService.Unicorn, enemyService.Unicorn];
+        this.shroom.enemyArray = [enemyService.Alchemist, enemyService.Unicorn];
         this.shroom.unitSpawnChance = [25, 75];
         this.shroom.playerSpawn = [0, 13];
         this.shroom.enemySpawn = [128, 8];

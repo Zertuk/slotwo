@@ -20,7 +20,7 @@
                 this.health = this.maxHealth;
             },
             this.abilities = {
-                keys: ['berserk', 'block'],
+                keys: ['berserk', 'block', 'heal'],
                 berserk: {
                     name: 'Berserk',
                     slug: 'berserk',
@@ -108,6 +108,11 @@
                 if (this.health < this.maxHealth) {
                     var health = parseFloat(this.health);
                     this.health = (health + this.regen).toFixed(2);
+                    //if healing ability active then extra hp regen
+                    if (this.abilities.heal.active) {
+                        health = parseFloat(this.health);
+                        this.health = (health + (this.maxHealth * 0.25)).toFixed(2);
+                    }
                 }
                 this.checkMaxHealth();
             },
@@ -266,7 +271,7 @@
             this.ground = false,
             this.evasion = this.calculateTotalEvasion(),
             this.health = 100,
-            this.baseHealth = 100,
+            this.baseHealth = 1000,
             this.maxHealth = this.calculateTotalHealth(),
             this.regen = 1,
             this.alive = true,

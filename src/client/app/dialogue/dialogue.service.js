@@ -614,7 +614,7 @@
         vm.monk.setDialogue = function() {
             var dialogue = {
                 introduction: {
-                    text: 'introText',
+                    text: 'Hey, what are you doing in my cave?',
                     continue: true,
                     next: 'question',
                     master: 'monk'
@@ -661,25 +661,25 @@
                     master: 'monk'
                 },
                 train: {
-                    text: 'Hmm, yes I can teach you.  What would you like to learn?',
+                    text: 'Hmm, yes I can teach you.  What ability would you like to learn?',
                     buttons: {
                         battle: {
-                            text: 'Battle',
+                            text: 'Berserk',
                             master: 'monk',
                             next: 'battleLearn',
-                            active: !vm.progress.trainBattle
+                            active: !vm.progress.berserk
                         },
                         defense: {
-                            text: 'Defense',
+                            text: 'Shield',
                             master: 'monk',
                             next: 'defenseLearn',
-                            active: !vm.progress.trainDefense
+                            active: !vm.progress.shield
                         },
                         health: {
-                            text: '$$$',
+                            text: 'Healing',
                             master: 'monk',
                             next: 'healthLearn',
-                            active: !vm.progress.trainMoney
+                            active: !vm.progress.healing
                         },
                         nothing: {
                             text: 'Nothing for now',
@@ -687,13 +687,10 @@
                             master: 'monk',
                             active: true
                         }
-                    },
-                    special: function() {
-                        console.log('this runs');
                     }
                 },
                 battleLearn: {
-                    text: 'learn battle',
+                    text: 'Ok! You can now use Berserk, it will double your damage for a short time! Pretty cool huh?',
                     master: 'monk',
                     next: 'question',
                     continue: true,
@@ -704,7 +701,7 @@
                     }
                 },
                 defenseLearn: {
-                    text: 'learn defense',
+                    text: 'Alright you can now use Shield.  It will stop any damage for a short period of time, no matter how strong.',
                     master: 'monk',
                     next: 'question',
                     continue: true,
@@ -715,7 +712,7 @@
                     }
                 },
                 healthLearn: {
-                    text: 'learn health',
+                    text: 'So you want to heal more right?  Well you can use Heal now.  It will give you a burst of health over a few seconds.',
                     master: 'monk',
                     next: 'question',
                     continue: true,

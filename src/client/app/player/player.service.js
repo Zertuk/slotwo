@@ -43,13 +43,30 @@
                     slug: 'block',
                     text: 'Blocks incoming damage',
                     checkUnlock: function() {
-                        // return vm.progress.shield;
+                        return vm.progress.shield;
                     },
                     active: false,
                     timer: 0,
                     max: 50,
                     cd: 0,
                     cdMax: 200,
+                    special: function() {
+                        this.timer = this.max;
+                        this.active = true;
+                    }
+                },
+                heal: {
+                    name: 'Heal',
+                    slug: 'heal',
+                    text: 'Heals over few seconds',
+                    checkUnlock: function() {
+                        return vm.progress.healing;
+                    },
+                    active: false,
+                    timer: 0,
+                    max: 50,
+                    cd: 0,
+                    cdMax: 400,
                     special: function() {
                         this.timer = this.max;
                         this.active = true;

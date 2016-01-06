@@ -271,7 +271,7 @@
             this.ground = false,
             this.evasion = this.calculateTotalEvasion(),
             this.health = 100,
-            this.baseHealth = 1000,
+            this.baseHealth = 100,
             this.maxHealth = this.calculateTotalHealth(),
             this.regen = 1,
             this.alive = true,

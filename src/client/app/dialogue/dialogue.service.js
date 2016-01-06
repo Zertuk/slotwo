@@ -5,10 +5,10 @@
         .module('app.dialogue')
         .service('dialogueService', dialogueService);
 
-    dialogueService.$inject = ['progressService', 'monkService', 'playerService'];
+    dialogueService.$inject = ['progressService', 'monkService', 'playerService', 'resourcesService'];
 
     /* @ngInject */
-    function dialogueService(progressService, monkService, playerService) {
+    function dialogueService(progressService, monkService, playerService, resourcesService) {
         var vm = this;
         vm.locationText = '';
         vm.progress = progressService.progress;
@@ -57,9 +57,15 @@
                             master: 'arena'
                         },
                         buy: {
-                            text: 'I need some more training formula',
+                            text: 'I need some more training formula (' + resourcesService.resources.milkPrice + 'g)',
                             next: 'buy',
-                            active: vm.progress.freeSample,
+                            active: vm.progress.freeSample&&resourcesService.canBuyMilk(),
+                            master: 'arena'
+                        },
+                        notEnoughMoney: {
+                            text: 'I need some more training formula (' + resourcesService.resources.milkPrice + 'g)',
+                            next: 'notEnoughMoney',
+                            active: vm.progress.freeSample&&!resourcesService.canBuyMilk(),
                             master: 'arena'
                         },
                         secret: {
@@ -74,6 +80,15 @@
                             active: true,
                             master: 'arena'
                         }
+                    }
+                },
+                notEnoughMoney: {
+                    text: 'Sorry! You are going to need more money than that.  Current price is ' + resourcesService.resources.milkPrice + '.',
+                    continue: true,
+                    next: 'introduction',
+                    master: 'arena',
+                    special: function() {
+                        vm.initAllDialogues();
                     }
                 },
                 secret: {
@@ -94,7 +109,16 @@
                     }
                 },
                 buy: {
-
+                    text: 'Alright one bottle coming up!',
+                    next: 'introduction',
+                    continue: true,
+                    master: 'arena',
+                    special: function() {
+                        vm.player.baseHealth = vm.player.baseHealth + 50;
+                        vm.player.calculateTotalHealth();
+                        resourcesService.raiseMilkPrice();
+                        vm.initAllDialogues();
+                    }
                 },
                 refuse: {
                     text: 'Your loss!  Ill keep this NDA handy if you change your mind.',
@@ -124,6 +148,8 @@
                     next: 'introduction',
                     master: 'arena',
                     special: function() {
+                        playerService.player.baseHealth = playerService.player.baseHealth + 50;
+                        playerService.player.calculateTotalHealth();
                         vm.progress.freeSample = true;
                         vm.initAllDialogues();
                     }

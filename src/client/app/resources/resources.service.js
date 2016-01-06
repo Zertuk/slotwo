@@ -12,6 +12,24 @@
         vm.itemDictionary = inventoryService.itemDictionary;
         vm.progress = progressService.progress;
 
+        vm.canBuyMilk = function() {
+            if (vm.resources.money > vm.resources.milkPrice) {
+                console.log('can buy');
+                return true;
+            }
+            else {
+                console.log('rip no buy');
+                return false;
+            }
+        }
+
+        vm.raiseMilkPrice = function() {
+            var price = vm.resources.milkPrice;
+            price = price + price/2;
+            vm.resources.milkPrice = price;
+        }
+
+
         vm.addLogToFire = function() {
             console.log('add log')
             if (vm.resources.wood > 0) {
@@ -149,6 +167,7 @@
     	vm.resources = {
     		money: 1000,
     		moneyRate: 1,
+            milkPrice: 500,
             calculateTotlMoneyRate: function() {
                 var moneyRate = vm.resources.moneyRate + inventoryService.stats.money;
                 return moneyRate;

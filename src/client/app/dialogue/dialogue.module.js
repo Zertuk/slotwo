@@ -5,6 +5,7 @@
         .module('app.dialogue', [
         	'app.progress',
         	'app.main',
-        	'app.monk'
+        	'app.monk',
+        	'app.resources'
         ]);
 })();

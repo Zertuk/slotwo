@@ -115,7 +115,7 @@
                     master: 'arena',
                     special: function() {
                         vm.player.baseHealth = vm.player.baseHealth + 50;
-                        vm.player.calculateTotalHealth();
+                        vm.player.maxHealth = vm.player.calculateTotalHealth();
                         resourcesService.raiseMilkPrice();
                         vm.initAllDialogues();
                     }
@@ -148,8 +148,8 @@
                     next: 'introduction',
                     master: 'arena',
                     special: function() {
-                        playerService.player.baseHealth = playerService.player.baseHealth + 50;
-                        playerService.player.calculateTotalHealth();
+                        vm.player.baseHealth = vm.player.baseHealth + 50;
+                        vm.player.maxHealth = vm.player.calculateTotalHealth();
                         vm.progress.freeSample = true;
                         vm.initAllDialogues();
                     }

@@ -255,8 +255,10 @@
                 return armor;
             },
             this.calculateTotalHealth = function() {
+                console.log(this.baseHealth + ' base health');
                 var health = this.baseHealth + inventoryService.stats.health;
                 health = health + health*(inventoryService.stats.healthMult/100);
+                console.log(health);
                 return health;
             },
             this.calculateTotalEvasion = function() {
@@ -302,5 +304,6 @@
         },
         this.player = new this.Player(),
         this.player.calculateTotalDamage()
+        this.player.calculateTotalHealth()
     }
 })();

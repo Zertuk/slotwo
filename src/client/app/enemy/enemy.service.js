@@ -416,11 +416,58 @@
             this.name = 'Robot';
             this.deathMessage = '';
             this.symbol = 'c';
-            this.maxHealth = '30';
-            this.health = 30;
-            this.damage = 2;
+            this.maxHealth = '200';
+            this.health = 200;
+            this.damage = 5;
+            this.attackSpeed = 3;
+            this.colBox = [15, 15];
+            this.move = false;
+            this.phases = true;
+            this.phaseOne = true;
+            this.phaseTwo = true;
+            this.phaseThree = true;
+            this.phaseOneActivate = function() {
+                messageService.addMessage('"INITIALIZING REPAIR DRONES."');
+                var thisEnemy = this;
+                function heal() {
+                    thisEnemy.health = thisEnemy.health + 50;
+                    console.log(thisEnemy.health);
+                    $timeout(function() {
+                        heal();
+                    }, 1000);
+                }
+                heal();
+            },
+            this.phaseTwoActivate = function() {
+                messageService.addMessage('"TOUGH ENEMY DETECTED. INITIALIZING KILL RAY."');
+                this.attackSpeed = 1;
+            },
+            this.phaseThreeActivate = function() {
+                var count = 3;
+                function selfDestructMessage() {
+                    messageService.addMessage('"CRITICAL DAMAGE. SELF DESTRUCT INITIALIZING IN ' + count + ' SECONDS');
+                    count = count - 1;
+                    $timeout(function() {
+                        //check if enemy is alive
+                        if (typeof this.alive !== 'undefined') {
+                            if (count > 0) {
+                                selfDestructMessage();
+                            }
+                            else if (count === 0) {
+                                selfDestructActivate();
+                            }
+                        }
+                    }, 1000);
+                }
+                function selfDestructActivate() {
+                    this.damage = 99999999999;
+                    this.health = 10;
+                }
+                selfDestructMessage();
+
+            }
         };
-        vm.Robot.prototype = vm.Enemy();
+        vm.Robot.prototype = new vm.Enemy();
 
         vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';

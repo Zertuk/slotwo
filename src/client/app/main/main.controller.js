@@ -27,7 +27,6 @@
                 removeAscii();
                 if (location === 'treeShop') {
                     initShop();
-                    console.log('this is the shop');
                 }
             }
             console.log(vm.currentLocation.slug);

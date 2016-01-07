@@ -103,7 +103,7 @@
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
             //robot
-            vm.click(this, 'Wizards Task', 'robot', 90, 2, 15, 5);
+            vm.click(this, 'Wizards Task', 'robot', 90, 2, 15, 5, true);
             //monk
             vm.click(this, 'Mysterious Cavern', 'monk', 112, 16, 4, 3);
         	//wizard

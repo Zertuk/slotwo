@@ -285,8 +285,9 @@
 
         this.robot = new this.Level();
         this.robot.enemyArray = [enemyService.Robot];
-        this.robot.playerSpawn = [0, 10];
-        this.robot.enemySpawn = [50, 10];
+        this.robot.playerSpawn = [0, 15];
+        this.robot.spawnAtStart = [[108, 15]];
+        this.robot.spawnMore = false;
         this.robot.name = 'The Wizards Task';
         this.robot.slug = 'robot';
         this.robot.defaultAscii = ["           /                                                                                       \\    /                                                     ",

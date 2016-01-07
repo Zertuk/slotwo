@@ -83,7 +83,7 @@
                     }
                 },
                 notEnoughMoney: {
-                    text: 'Sorry! You are going to need more money than that.  Current price is ' + resourcesService.resources.milkPrice + '.',
+                    text: 'Sorry! You are going to need more money than that.  Current price is ' + resourcesService.resources.milkPrice + 'g.',
                     continue: true,
                     next: 'introduction',
                     master: 'arena',
@@ -116,6 +116,7 @@
                     special: function() {
                         vm.player.baseHealth = vm.player.baseHealth + 50;
                         vm.player.maxHealth = vm.player.calculateTotalHealth();
+                        resourcesService.resources.money = resourcesService.resources.money - resourcesService.resources.milkPrice;
                         resourcesService.raiseMilkPrice();
                         vm.initAllDialogues();
                     }

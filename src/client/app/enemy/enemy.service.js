@@ -416,9 +416,9 @@
             this.name = 'Robot';
             this.deathMessage = '';
             this.symbol = 'c';
-            this.maxHealth = '200';
-            this.health = 200;
-            this.damage = 5;
+            this.maxHealth = '1000';
+            this.health = 1000;
+            this.damage = 1;
             this.attackSpeed = 3;
             this.colBox = [15, 15];
             this.move = false;
@@ -444,26 +444,28 @@
             },
             this.phaseThreeActivate = function() {
                 var count = 3;
-                function selfDestructMessage() {
-                    messageService.addMessage('"CRITICAL DAMAGE. SELF DESTRUCT INITIALIZING IN ' + count + ' SECONDS');
+                var thisEnemy = this;
+                function selfDestructMessage(thisEnemy) {
+                    messageService.addMessage('"CRITICAL DAMAGE. SELF DESTRUCT INITIALIZING IN ' + count + ' SECONDS"');
                     count = count - 1;
                     $timeout(function() {
                         //check if enemy is alive
-                        if (typeof this.alive !== 'undefined') {
+                        if (typeof thisEnemy.alive !== 'undefined') {
                             if (count > 0) {
-                                selfDestructMessage();
+                                selfDestructMessage(thisEnemy);
                             }
                             else if (count === 0) {
-                                selfDestructActivate();
+                                selfDestructActivate(thisEnemy);
                             }
                         }
                     }, 1000);
                 }
-                function selfDestructActivate() {
-                    this.damage = 99999999999;
-                    this.health = 10;
+                function selfDestructActivate(thisEnemy) {
+                    messageService.addMessage('"SELF DESTRUCT INTIALIZED. GOODBYE."');
+                    thisEnemy.damage = 99999999999;
+                    thisEnemy.health = 10;
                 }
-                selfDestructMessage();
+                selfDestructMessage(thisEnemy);
 
             }
         };

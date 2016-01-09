@@ -143,14 +143,14 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 var cash = this.moneyDrop();
-                this.foundLoot = true;
-                this.lootMessage ='You find ' + cash + ' gold.';
-                if (random <= this.itemChance) {
+                if (random <= this.itemChance&&this.items[0][1][1] === 0) {
                     this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
+                    this.items[0][1][1] = 1;
                 }
                 else {
                     this.lootMessage = 'You find ' + cash + ' gold.';
                 }
+                this.foundLoot = true;
             },
             this.moneyDrop = function() {
                 var cash = Math.round(this.moneyMult * ( Math.random() + 1));
@@ -255,7 +255,7 @@
             this.health = 20;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['bigHeavyWood']];
-            this.itemChance = 50;
+            this.itemChance = 1000;
             this.damage = 0;
         };
         vm.Tree.prototype = new vm.Enemy();

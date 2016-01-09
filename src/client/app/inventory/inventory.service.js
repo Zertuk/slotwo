@@ -148,12 +148,12 @@
 		this.potionArmor.slug = 'potionArmor';
 
 		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
-		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 1]];
-		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 1]];
+		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];
+		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
-		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 1]];
-		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
-		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 1]];
+		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
+		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 0]];
+		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 0]];
 
 
 		//resources

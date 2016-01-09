@@ -143,35 +143,13 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 var cash = this.moneyDrop();
+                this.foundLoot = true;
                 this.lootMessage ='You find ' + cash + ' gold.';
                 if (random <= this.itemChance) {
-                    var num;
-                    if (this.itemMult > 1) {
-                        num = Math.round(this.itemMult * Math.random());
-                        if (num === 0) {
-                            num = 1;
-                        }
-                    }
-                    else {
-                        num = 'some';
-                    }
-                    this.foundLoot = true;
-                    this.lootMessage = 'You find ' + num + ' [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
-                    if (num === 'some') {
-                        num = 1;
-                    }
-                    if (this.items[0][0][1].lootOnce) {
-                        if (this.items[0][1][1] > 0) {
-                            this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
-                        }
-                    }
-                    else {
-                        this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
-                        if (num === 'some') {
-                            num = 1;
-                        }
-                        this.items[0][1][1] = this.items[0][1][1] + num;
-                    }
+                    this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
+                }
+                else {
+                    this.lootMessage = 'You find ' + cash + ' gold.';
                 }
             },
             this.moneyDrop = function() {
@@ -277,8 +255,7 @@
             this.health = 20;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['bigHeavyWood']];
-            this.itemChance = 100;
-            this.itemMult = 3;
+            this.itemChance = 50;
             this.damage = 0;
         };
         vm.Tree.prototype = new vm.Enemy();
@@ -286,6 +263,7 @@
         vm.Bear = function Bear() {
             this.name = 'Bear';
             this.desc = 'A Wandering Bear';
+            this.deathMessage = 'The Bear has died!';
             this.deathMessage = '';
             this.symbol = 'B';
             this.items = [vm.itemDictionary['bearClaws']];
@@ -299,11 +277,11 @@
 
         vm.Mantis = function Mantis() {
             this.name = 'Giant Mantis';
-            this.desc = '';
-            this.deathMessage = '';
+            this.desc = 'Pretty scary';
+            this.deathMessage = 'The Giant Mantis has been squashed!';
             this.symbol = 'M';
             this.items = [vm.itemDictionary['mantisClaw']];
-            this.itemChance = 0;
+            this.itemChance = 10;
             this.maxHealth = 5;
             this.health = 5;
             this.damage = 5;
@@ -367,7 +345,7 @@
         vm.DustDevil = function DustDevil() {
             this.name = 'Dust Devil';
             this.desc = '';
-            this.deathMessage = '';
+            this.deathMessage = 'The Dust Devil was blown away!';
             this.symbol ='V';
             this.items = [vm.itemDictionary['pocketSand']];
             this.itemChance = 10;
@@ -382,6 +360,7 @@
             this.name = 'Deer';
             this.desc = 'A Cute Deer';
             this.items = [vm.itemDictionary['deerAntlers']];
+            this.deathMessage = 'A Deer has been killed.';
             this.itemChance = 25;
             this.deathMessage = '';
             this.symbol = 'D';
@@ -404,7 +383,9 @@
 
         vm.Ghost = function Ghost() {
             this.name = 'Ghost of a Prisoner';
-            this.deathMessage = '';
+            this.deathMessage = 'The prisoners soul has been freed.';
+            this.items = [vm.itemDictionary['ghostArmor']];
+            this.itemChance = 20;
             this.symbol = '@';
             this.maxHealth = 30;
             this.health = 30;

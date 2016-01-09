@@ -22,6 +22,7 @@
             count = count + 1;
             vm.currentEnemy = enemy;
             vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
+            //higher attackspeed less attacks performed
             if (count % enemy.attackSpeed === 0) {
                 var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
                 unit.health = unit.health - damageDealt;
@@ -30,12 +31,13 @@
             if (count % unit.attackSpeed === 0) {
                 enemy.health = enemy.health - unit.damage;
             }
+            //kill current enemy
             if (enemy.health <= 0) {
                 vm.currentEnemy = '';
             }
+            //kill player
             if (unit.health <= 0) {
                 unit.alive = false;
-                console.log('you have been slain');
                 return;
             }
             enemy.death(map);
@@ -248,12 +250,12 @@
 
         vm.Tree = function Tree() {
             this.name = 'Tree';
-            this.moneyMult = 100;
+            this.moneyMult = 2;
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;
-            this.maxHealth = 20;
-            this.health = 20;
+            this.maxHealth = 10;
+            this.health = 10;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['bigHeavyWood']];
             this.itemChance = 1000;
@@ -267,10 +269,11 @@
             this.deathMessage = 'The Bear has died!';
             this.symbol = 'B';
             this.items = [vm.itemDictionary['bearClaws']];
-            this.itemChance = 5;
-            this.maxHealth = 30;
-            this.health = 30;
-            this.damage = 10;
+            this.itemChance = 25;
+            this.moneyMult = 30;
+            this.maxHealth = 25;
+            this.health = 25;
+            this.damage = 15;
             this.attackSpeed = 5;
         };
         vm.Bear.prototype = new vm.Enemy();
@@ -339,7 +342,7 @@
             this.health = 30;
             this.damage = 10;
             this.attackSpeed = 5;
-        }
+        };
         vm.Gorilla.prototype = new vm.Enemy();
 
         vm.DustDevil = function DustDevil() {
@@ -353,7 +356,7 @@
             this.health = 30;
             this.damage = 10;
             this.attackSpeed = 5;
-        }
+        };
         vm.DustDevil.prototype = new vm.Enemy();
 
         vm.Deer = function Deer() {
@@ -361,14 +364,15 @@
             this.desc = 'A Cute Deer';
             this.items = [vm.itemDictionary['deerAntlers']];
             this.deathMessage = 'A Deer has been killed.';
-            this.itemChance = 25;
+            this.itemChance = 50;
+            this.moneyMult = 10;
             this.symbol = 'D';
-            this.maxHealth = 100;
-            this.health = 100;
+            this.maxHealth = 10;
+            this.health = 10;
             this.damage = 1;
             this.attackSpeed = 1;
         };
-        this.Deer.prototype = new vm.Enemy();
+        vm.Deer.prototype = new vm.Enemy();
 
         vm.TreeWarrior = function TreeWarrior() {
             this.name = 'Treeperson Warrior';
@@ -493,7 +497,7 @@
 
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
-            this.desc = 'Part snow, part man.'
+            this.desc = 'Part snow, part man.';
             this.items = [vm.itemDictionary['snowmanHat']];
             this.itemChance = 25;
             this.deathMessage = 'A Snowman has been turned to slush!';
@@ -507,7 +511,7 @@
 
         vm.SnowmanBoss = function SnowmanBoss() {
             this.name = 'Gary the Snowman';
-            this.desc = 'Just a regular giant guy made of snow.'
+            this.desc = 'Just a regular giant guy made of snow.';
             this.items = [vm.itemDictionary['giantCarrot']];
             this.itemChance = 50;
             this.deathMessage = 'The Snowman Boss has been defeeated!';
@@ -533,7 +537,7 @@
                     }
                 }, 1500);
             };
-        }
+        };
         vm.SnowmanBoss.prototype = new vm.Enemy();
 
     

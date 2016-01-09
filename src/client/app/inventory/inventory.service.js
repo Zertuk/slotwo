@@ -55,6 +55,9 @@
 		this.sword = new this.Item();
 		this.sword.name = 'Wooden Sword';
 		this.sword.desc = 'Sourced from 100% Organic Non-GMO Trees';
+		this.sword.buyable = true;
+		this.sword.removeAfterBuy = true;
+		this.sword.price = 200;
 		this.sword.recipe = ['wood-100'];
 		this.sword.cat = 'weapon';
 		this.sword.damage = 4;
@@ -302,7 +305,7 @@
 		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
 		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];
 		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];
-		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
+		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 1]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 0]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 0]]

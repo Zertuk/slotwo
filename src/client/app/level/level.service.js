@@ -66,12 +66,9 @@
         this.treeTwo.slug = 'treeTwo';
         this.treeTwo.unlock = 'treeCity';
         this.treeTwo.specialEnd = 95;
-        this.treeTwo.enemyArray = [enemyService.Bear, enemyService.Deer];
-        this.treeTwo.specialSpawn = [50, 22];
-        this.treeTwo.specialSpawnChance = 75;
-        this.treeTwo.unitSpawnChance = [25, 75];
-        this.treeTwo.enemyMax = 3;
-        this.treeTwo.enemySpawn = [89, 22];
+        this.treeTwo.enemyArray = [enemyService.Deer, enemyService.Bear];
+        this.treeTwo.spawnMore = false;
+        this.treeTwo.spawnAtStart = [[20, 22], [45, 22], [70,22], [85, 22]];
         this.treeTwo.playerSpawn = [0, 22];
         this.treeTwo.name = 'Approach the Giant Tree';
         this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    

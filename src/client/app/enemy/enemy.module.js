@@ -5,6 +5,7 @@
         .module('app.enemy', [
         	'app.inventory',
         	'app.message',
-        	'app.progress'
+        	'app.progress',
+        	'app.resources'
         ]);
 })();

@@ -6,12 +6,12 @@
         .service('enemyService', enemyService);
 
 
-    enemyService.$inject = ['inventoryService', '$timeout', 'messageService', 'progressService'];
+    enemyService.$inject = ['inventoryService', '$timeout', 'messageService', 'progressService', 'resourcesService'];
 
 
 
     /* @ngInject */
-    function enemyService(inventoryService, $timeout, messageService, progressService) {
+    function enemyService(inventoryService, $timeout, messageService, progressService, resourcesService) {
         var count = 0;
         var vm = this;
         vm.watch = false;
@@ -134,7 +134,6 @@
                 if (this.health <= 0) {
                     this.alive = false;
                     this.itemDrop();
-                    this.moneyDrop();
                     this.health = this.fullHealth;
                     // map[this.position[1]] = setCharAt(map[this.position[1]], this.position[0], '');
                     this.symbol = '';
@@ -143,6 +142,7 @@
             this.itemDrop = function() {
                 var random = Math.round(Math.random()*100);
                 var cash = this.moneyDrop();
+                resourcesService.resources.money = resourcesService.resources.money + cash;
                 if (random <= this.itemChance&&this.items[0][1][1] === 0) {
                     this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
                     this.items[0][1][1] = 1;
@@ -248,6 +248,7 @@
 
         vm.Tree = function Tree() {
             this.name = 'Tree';
+            this.moneyMult = 100;
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
             this.move = false;

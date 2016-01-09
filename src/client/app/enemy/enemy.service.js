@@ -264,7 +264,6 @@
             this.name = 'Bear';
             this.desc = 'A Wandering Bear';
             this.deathMessage = 'The Bear has died!';
-            this.deathMessage = '';
             this.symbol = 'B';
             this.items = [vm.itemDictionary['bearClaws']];
             this.itemChance = 5;
@@ -362,10 +361,9 @@
             this.items = [vm.itemDictionary['deerAntlers']];
             this.deathMessage = 'A Deer has been killed.';
             this.itemChance = 25;
-            this.deathMessage = '';
             this.symbol = 'D';
-            this.maxHealth = 10;
-            this.health = 10;
+            this.maxHealth = 100;
+            this.health = 100;
             this.damage = 1;
             this.attackSpeed = 1;
         };

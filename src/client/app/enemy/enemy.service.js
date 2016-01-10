@@ -478,14 +478,14 @@
             this.phaseThree = true;
             this.phaseActive = function(phase) {
                 var thisEnemy= this;
-                this.damage = 2;
+                this.damage = thisEnemy.regularDamage*2;
                 messageService.addMessage('The ' + this.name + ' has enraged, dealing extra damage for a few seconds!');
                 $timeout(function() {
                     var phaseCheck = thisEnemy[phase];
                     if (phaseCheck) {
-                        thisEnemy.damage = 1;
+                        thisEnemy.damage = thisEnemy.regularDamage;
                     }
-                }, 2000);
+                }, 3000);
             };
             this.phaseOneActivate = function() {
                 this.phaseActive('phaseTwo');

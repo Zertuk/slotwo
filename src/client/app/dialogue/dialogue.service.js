@@ -899,7 +899,32 @@
                     }
                 },
                 rest: {
-                    text: 'rest text here',
+                    text: 'Alright, that will be 100g for a room.  If you cant cover it now, i can put it on your tab.  Sound good?',
+                    next: 'sleep',
+                    buttons: {
+                        refuse: {
+                            text: 'No Thanks.',
+                            next: 'question',
+                            active: true,
+                            master: 'inn'
+                        },
+                        sleep: {
+                            text: 'Sounds good!',
+                            next: 'sleep',
+                            active: true,
+                            master: 'inn',
+                            special: function() {
+                                resourcesService.resources.money = resourcesService.resources.money - 100;
+                                vm.player.rest();
+                            }
+                        }
+                    }
+                },
+                sleep: {
+                    text: 'ZZZzzz',
+                    next: 'question',
+                    continue: true,
+                    master: 'inn'
                 },
                 pie: {
                     text: 'One slice of Butterscotch Pie coming up!  I wish we could offer more than one per customer, but since the sky event trade with the Northern Empire has been difficult.  I heard the impact was right along the trade route! Anyway, enjoy the pie!',

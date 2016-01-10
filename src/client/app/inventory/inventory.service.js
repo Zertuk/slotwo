@@ -230,7 +230,7 @@
 		this.wizardsHair.desc = 'Rumored to grant the holder great luck.';
 		this.wizardsHair.message = 'A lock of bushy Wizard hair.';
 		this.wizardsHair.buyable = true;
-		this.wizardsHair.price = 1000;
+		this.wizardsHair.price = 10000;
 		this.wizardsHair.removeAfterBuy = true;
 
 		this.deerAntlers = new this.Item();
@@ -255,7 +255,7 @@
 		this.sleepingBag.desc = 'Deluxe model is 23% cozier';
 		this.sleepingBag.message = 'Allows you to sleep outside and rest anywhere';
 		this.sleepingBag.buyable = true;
-		this.sleepingBag.price = 200;
+		this.sleepingBag.price = 2000;
 		this.sleepingBag.removeAfterBuy = true;
 		this.sleepingBag.special = function() {
 			vm.progress.hasSleepingBag = true;
@@ -339,7 +339,7 @@
 		this.compendium.name = 'Beast compendium';
 		this.compendium.slug = 'compendium';
 		this.compendium.buyable = true;
-		this.compendium.price = 1000;
+		this.compendium.price = 500;
 		this.compendium.removeAfterBuy = true;
 
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];

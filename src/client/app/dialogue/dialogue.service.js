@@ -877,7 +877,7 @@
                     }
                 },
                 question: {
-                    text: 'If you need a room to rest in we have one available for 250g a night.  The Sleepy Sapling also has the tastiest pie that you can find, only 100g for a piece!  Due to limited supply it is only one per customer.  Otherwise we can always just chat!',
+                    text: 'If you need a room to rest in we have one available for 100g a night.  The Sleepy Sapling also has the tastiest pie that you can find, only 50g for a piece!  Due to limited supply it is only one per customer.  Otherwise we can always just chat!',
                     buttons: {
                         rest: {
                             text: 'I am a sleepy sapling and need a room.',
@@ -939,6 +939,7 @@
                     continue: true,
                     master: 'inn',
                     special: function() {
+                        resourcesService.resources.money = resourcesService.resources.money - 50;
                         vm.progress.pieEaten = !vm.progress.pieEaten;
                         vm.initAllDialogues();
                         vm.itemDictionary['pie'][1][1] = 1;

@@ -239,15 +239,16 @@
                 }
             },
             this.calculateTotalDamage = function() {
-                if (typeof this.armor !== 'undefined') {
-                    if (this.armor.damageMult !== 1) {
-                        inventoryService.stats.damageMult = this.armor.damageMult;
-                        console.log(inventoryService.stats)
-                    }
-                }
                 var damage = this.weapon.damage;
                 if (this.abilities.berserk.active) {
                     damage = this.weapon.damage*2;
+                }
+                if ((typeof this.armor.damageMult !== 'undefined') && (this.armor.damageMult !== 1)) {
+                    inventoryService.stats.damageMult = this.armor.damageMult;
+                    console.log(inventoryService.stats)
+                }
+                else {
+                    inventoryService.stats.damageMult = 0;
                 }
                 damage = damage + inventoryService.stats.damage
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
@@ -300,13 +301,14 @@
             this.name = 'Player',
             this.symbol = 'Y',
             this.desc = 'This is you',
+            //armor
+            this.armor = vm.itemDictionary.clothArmor[0][1],
+            this.armorValue = this.calculateTotalArmor(),
+
             //attack
             this.weapon = vm.itemDictionary.fists[0][1],
             this.damage = this.calculateTotalDamage(),
             this.attackSpeed = this.weapon.attackSpeed,
-            //armor
-            this.armor = vm.itemDictionary.clothArmor[0][1],
-            this.armorValue = this.calculateTotalArmor(),
             //money
             this.gold = 0
         },

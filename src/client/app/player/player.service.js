@@ -18,6 +18,7 @@
         this.Player = function() {
             this.rest = function() {
                 this.health = this.maxHealth;
+                messageService.updateMainMessage('You feel well rested!');
             },
             this.abilities = {
                 keys: ['berserk', 'block', 'heal'],

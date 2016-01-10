@@ -74,8 +74,8 @@
 		this.minotaurHammer = new this.Item();
 		this.minotaurHammer.name = 'Minotaur Hammer';
 		this.minotaurHammer.desc = 'This thing is a beast';
-		this.minotaurHammer.damage = 20;
-		this.minotaurHammer.attackSpeed = 5;
+		this.minotaurHammer.damage = 30;
+		this.minotaurHammer.attackSpeed = 4;
 		this.minotaurHammer.slug = 'minotaurHammer';
 
 		this.giantCarrot = new this.Item();
@@ -89,7 +89,7 @@
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 1]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
-		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
+		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 1]];
 		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];
 
 
@@ -106,7 +106,7 @@
 		this.woodArmor.name = 'Wood Armor';
 		this.woodArmor.desc = 'Hope for no splinters!';
 		this.woodArmor.cat = 'armor';
-		this.woodArmor.armor = 0.1;
+		this.woodArmor.armor = 0.15;
 		this.woodArmor.buyable = true;
 		this.woodArmor.removeAfterBuy = true;
 		this.woodArmor.price = 200;

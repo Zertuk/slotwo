@@ -138,7 +138,7 @@
 		this.ghostArmor.name = 'Spooky Aura';
 		this.ghostArmor.desc = 'Feels like a ghost hug <3';
 		this.ghostArmor.armor = 0;
-		this.ghostArmor.damageMult = 2;
+		this.ghostArmor.damageMult = 100;
 		this.ghostArmor.slug = 'ghostArmor';
 
 		this.potionArmor = new this.Item();
@@ -149,7 +149,7 @@
 		this.potionArmor.slug = 'potionArmor';
 
 		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
-		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];
+		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 1]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];

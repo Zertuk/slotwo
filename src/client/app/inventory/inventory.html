@@ -17,7 +17,7 @@
 				</select>
 				<p class = "small italic">~ {{vm.player.armor.desc}} ~</p>
 				<p>{{vm.player.armorValue*100}}% Armor</p>
-				<p ng-if = "vm.player.armor.damageMult">{{vm.player.armor.damageMult}}x Damage dealt</p>
+				<p ng-if = "vm.player.armor.damageMult">{{(1 + (vm.player.armor.damageMult/100)).toFixed(0)}}x Damage dealt</p>
 			</div>
 		</div>
 	</div><!--inventoryselect-->

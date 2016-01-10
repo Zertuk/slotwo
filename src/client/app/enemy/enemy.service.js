@@ -285,10 +285,10 @@
             this.symbol = 'M';
             this.items = [vm.itemDictionary['mantisClaw']];
             this.itemChance = 10;
-            this.maxHealth = 5;
-            this.health = 5;
-            this.damage = 5;
-            this.attackSpeed = 5;
+            this.maxHealth = 40;
+            this.health = 40;
+            this.damage = 10;
+            this.attackSpeed = 2;
         };
         vm.Mantis.prototype = new vm.Enemy();
 
@@ -298,11 +298,11 @@
             this.deathMessage = '';
             this.symbol = 'T';
             this.items = [vm.itemDictionary['bugExoskeleton']];
-            this.itemChance = 0;
-            this.maxHealth = 5;
-            this.health = 5;
-            this.damage = 5;
-            this.attackSpeed = 5;
+            this.itemChance = 10;
+            this.maxHealth = 50;
+            this.health = 50;
+            this.damage = 10;
+            this.attackSpeed = 3;
         };
         vm.StickBug.prototype = new vm.Enemy();
 
@@ -339,8 +339,8 @@
             this.items = [vm.itemDictionary['gorillaFoot']];
             this.moneyMult = 100;
             this.itemChance = 20;
-            this.maxHealth = 60;
-            this.health = 60;
+            this.maxHealth = 50;
+            this.health = 50;
             this.damage = 10;
             this.attackSpeed = 5;
         };
@@ -354,8 +354,8 @@
             this.items = [vm.itemDictionary['pocketSand']];
             this.moneyMult = 50;
             this.itemChance = 10;
-            this.maxHealth = 50;
-            this.health = 50;
+            this.maxHealth = 40;
+            this.health = 40;
             this.damage = 5;
             this.attackSpeed = 3;
         };

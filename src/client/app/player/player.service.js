@@ -239,12 +239,19 @@
                 }
             },
             this.calculateTotalDamage = function() {
+                if (typeof this.armor !== 'undefined') {
+                    if (this.armor.damageMult !== 1) {
+                        inventoryService.stats.damageMult = this.armor.damageMult;
+                        console.log(inventoryService.stats)
+                    }
+                }
                 var damage = this.weapon.damage;
                 if (this.abilities.berserk.active) {
                     damage = this.weapon.damage*2;
                 }
                 damage = damage + inventoryService.stats.damage
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
+                console.log(inventoryService.stats.damageMult);
                 return damage;
             },
             this.calculateTotalArmor = function() {

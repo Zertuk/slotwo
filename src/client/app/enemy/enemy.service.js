@@ -275,7 +275,7 @@
             this.damage = 10;
             this.attackSpeed = 2;
         };
-        vm.Penguin = new vm.Enemy();
+        vm.Penguin.prototype = new vm.Enemy();
 
         vm.Bear = function Bear() {
             this.name = 'Bear';

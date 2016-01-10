@@ -109,9 +109,7 @@
 		this.woodArmor.armor = 0.1;
 		this.woodArmor.buyable = true;
 		this.woodArmor.removeAfterBuy = true;
-		this.woodArmor.recipe = ['wood-100'];
-		this.woodArmor.unlock = 'boneArmor';
-		this.woodArmor.price = 150;
+		this.woodArmor.price = 200;
 		this.woodArmor.slug = 'woodArmor';
 
 		this.boneArmor = new this.Item();
@@ -366,8 +364,7 @@
 
 		vm.buyableItems = ['potion', 
 						   'sword', 
-						   'wood', 
-						   'boneArmor', 
+						   'woodArmor', 
 						   'winterCoat', 
 						   'wizardsHair', 
 						   'compendium',

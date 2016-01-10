@@ -258,10 +258,24 @@
             this.health = 10;
             this.colBox = [3, 4];
             this.items = [vm.itemDictionary['bigHeavyWood']];
-            this.itemChance = 1000;
+            this.itemChance = 75;
             this.damage = 0;
         };
         vm.Tree.prototype = new vm.Enemy();
+
+        vm.Penguin = function Penguin() {
+            this.name = 'Penguin';
+            this.moneyMult = 1;
+            this.deathMessage = '';
+            this.symbol = 'P';
+            this.maxHealth = '75';
+            this.health = 75;
+            this.items = [vm.itemDictionary['polarArmor']];
+            this.itemChance = 50;
+            this.damage = 10;
+            this.attackSpeed = 2;
+        };
+        vm.Penguin = new vm.Enemy();
 
         vm.Bear = function Bear() {
             this.name = 'Bear';

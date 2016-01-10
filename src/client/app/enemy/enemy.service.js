@@ -334,13 +334,13 @@
         vm.Gorilla = function Gorilla() {
             this.name = 'Desert Gorilla';
             this.desc = 'They come from under the sand!';
-            this.deathMessage = '';
+            this.deathMessage = 'A Desert Gorilla has been crushed!';
             this.symbol = 'G';
             this.items = [vm.itemDictionary['gorillaFoot']];
             this.moneyMult = 100;
             this.itemChance = 20;
-            this.maxHealth = 30;
-            this.health = 30;
+            this.maxHealth = 60;
+            this.health = 60;
             this.damage = 10;
             this.attackSpeed = 5;
         };
@@ -348,16 +348,16 @@
 
         vm.DustDevil = function DustDevil() {
             this.name = 'Dust Devil';
-            this.desc = '';
+            this.desc = 'Sand Attack!';
             this.deathMessage = 'The Dust Devil was blown away!';
             this.symbol ='V';
             this.items = [vm.itemDictionary['pocketSand']];
             this.moneyMult = 50;
             this.itemChance = 10;
-            this.maxHealth = 40;
-            this.health = 40;
-            this.damage = 4;
-            this.attackSpeed = 5;
+            this.maxHealth = 50;
+            this.health = 50;
+            this.damage = 5;
+            this.attackSpeed = 3;
         };
         vm.DustDevil.prototype = new vm.Enemy();
 
@@ -392,9 +392,11 @@
             this.items = [vm.itemDictionary['ghostArmor']];
             this.itemChance = 20;
             this.symbol = '@';
-            this.maxHealth = 30;
-            this.health = 30;
-            this.damage = 2;
+            this.maxHealth = 15;
+            this.health = 15;
+            this.damage = 1;
+            this.attackSpeed = 1;
+            this.moneyMult = 70;
         };
         vm.Ghost.prototype = new vm.Enemy();
 
@@ -463,11 +465,11 @@
             this.itemChance = 50;
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
-            this.maxHealth = 100;
-            this.health = 100;
-            this.damage = 1;
-            this.regularDamage = 1;
-            this.attackSpeed = 0.125;
+            this.maxHealth = 500;
+            this.health = 500;
+            this.damage = 15;
+            this.regularDamage = 15;
+            this.attackSpeed = 10;
             this.colBox = [15, 15];
             this.move = false;
             this.phases = true;

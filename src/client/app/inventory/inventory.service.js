@@ -86,7 +86,7 @@
 		this.giantCarrot.slug = 'giantCarrot';
 		this.giantCarrot.lootOnce = true;
 
-		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 0]];
+		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
@@ -153,7 +153,7 @@
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
-		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 0]];
+		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
 		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 0]];
 
 

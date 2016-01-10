@@ -301,7 +301,14 @@
 		this.bigHeavyWood.lootOnce = true;
 		this.bigHeavyWood.health = 25;
 
+		this.pie = new this.Item();
+		this.pie.name = 'Memories of pie';
+		this.pie.slug = 'pie';
+		this.pie.desc = 'Remembering the pie, it fills you with determination.3 ';
+		this.pie.message = '+50 health';
+		this.pie.health = 50;
 
+		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 0]];
 		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
 		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];
 		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];
@@ -354,7 +361,8 @@
 						 vm.itemDictionary['pocketSand'],
 						 vm.itemDictionary['bugExoskeleton'],
 						 vm.itemDictionary['mantisClaw'],
-						 vm.itemDictionary['bigHeavyWood']];
+						 vm.itemDictionary['bigHeavyWood'],
+						 vm.itemDictionary['pie']];
 
 		vm.buyableItems = ['potion', 
 						   'sword', 

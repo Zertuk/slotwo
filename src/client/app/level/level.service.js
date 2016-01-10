@@ -101,6 +101,7 @@
         this.bridge = new this.Level();
         this.bridge.enemyArray = [enemyService.Penguin];
         this.bridge.playerSpawn = [0, 14];
+        this.bridge.enemySpawn = [200, 13];
         this.bridge.unitSpawnChance = [50];
         this.bridge.specialSpawn = [140, 14];
         this.bridge.specialSpawnChance = [100];
@@ -120,8 +121,8 @@
                               "   / \\                / \\         |      /                                                           /              /              .'''       ''...                                        |-                                   ",
                               "    |         ^       / \\               /                                                           /                                                                                      |                                    ",
                               "             / \\       |  .           .'                      ~~~                                 .'                                          |-                                                                                ",
-                              "   /\\        / \\         / \\         /                                                           /                                           -|                                                                                 ",
-                              "  /  \\        |         /   \\       /                                                           /                                             |                                                                                 ",
+                              "   /\\        / \\         / \\         /                                                           /                                           -|                                                                                ",
+                              "  /  \\        |         /   \\       /                                                           /                                             |                                                                               ",
                               "  /  \\                  /   \\      /                                               ~~~         /                                                                                                                                ",
                               "   ||                     |       /                                                          _/      ,..'''''''''''''____                               __________----''''''''''''''''''''''''''''''''''''''''''''''''''----____  ",                                                            
                               "                                .'          ~~~~                                           .'     ,.'                '''''''''''''''''''''''''''''''''''''''''''''                                                          '''''",                                                                                                                                                                                                                                                                 

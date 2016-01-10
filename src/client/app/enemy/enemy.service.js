@@ -308,8 +308,8 @@
 
         vm.StickBug = function StickBug() {
             this.name = 'Giant Stick Bug';
-            this.desc = '';
-            this.deathMessage = '';
+            this.desc = 'AKA Walking Stick';
+            this.deathMessage = 'A Giant Stick Bug has been snapped!';
             this.symbol = 'T';
             this.items = [vm.itemDictionary['bugExoskeleton']];
             this.itemChance = 10;
@@ -337,7 +337,7 @@
             this.name = 'Unicorn';
             this.desc = 'desc';
             this.symbol = 'U';
-            this.items = [];
+            this.items = [vm.itemDictionary['unicornHorn']];
             this.itemChance = 0;
             this.damage = 1;
             this.health = 10;

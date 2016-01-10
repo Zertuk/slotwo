@@ -122,8 +122,8 @@
 		this.boneArmor.slug = 'boneArmor';
 
 		this.polarArmor = new this.Item();
-		this.polarArmor.name = 'Polarbear Furcoat';
-		this.polarArmor.desc = 'Coat made from polerbear fur';
+		this.polarArmor.name = 'Tuxedo';
+		this.polarArmor.desc = 'dapper';
 		this.polarArmor.armor = 0.3;
 		this.polarArmor.slug = 'polarArmor';
 
@@ -380,10 +380,10 @@
 		vm.armor = [vm.itemDictionary['clothArmor'],
 					vm.itemDictionary['woodArmor'],
 					vm.itemDictionary['boneArmor'],
-					vm.itemDictionary['polarArmor'],
 					vm.itemDictionary['healthArmor'],
 					vm.itemDictionary['ghostArmor'],
-					vm.itemDictionary['potionArmor']];
+					vm.itemDictionary['potionArmor'],
+					vm.itemDictionary['polarArmor']];
 
 
 

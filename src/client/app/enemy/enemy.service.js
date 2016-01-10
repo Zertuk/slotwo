@@ -337,6 +337,7 @@
             this.deathMessage = '';
             this.symbol = 'G';
             this.items = [vm.itemDictionary['gorillaFoot']];
+            this.moneyMult = 100;
             this.itemChance = 20;
             this.maxHealth = 30;
             this.health = 30;
@@ -351,10 +352,11 @@
             this.deathMessage = 'The Dust Devil was blown away!';
             this.symbol ='V';
             this.items = [vm.itemDictionary['pocketSand']];
+            this.moneyMult = 50;
             this.itemChance = 10;
-            this.maxHealth = 30;
-            this.health = 30;
-            this.damage = 10;
+            this.maxHealth = 40;
+            this.health = 40;
+            this.damage = 4;
             this.attackSpeed = 5;
         };
         vm.DustDevil.prototype = new vm.Enemy();

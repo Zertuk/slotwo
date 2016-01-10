@@ -304,7 +304,7 @@
 		this.pie = new this.Item();
 		this.pie.name = 'Memories of pie';
 		this.pie.slug = 'pie';
-		this.pie.desc = 'Remembering the pie, it fills you with determination.3 ';
+		this.pie.desc = 'Remembering the pie, it fills you with determination.';
 		this.pie.message = '+50 health';
 		this.pie.health = 50;
 
@@ -390,7 +390,7 @@
 
 
 
-		function findVal() {
+		vm.findVal = function() {
 			var keys = ['damage', 'health', 'evade', 'money', 'defense', 'defenseMult', 'damageMult', 'healthMult'];
 			vm.stats = {
 				damage: 0,
@@ -417,6 +417,6 @@
 			}
 		}
 
-		findVal();
+		vm.findVal();
     }
 })();

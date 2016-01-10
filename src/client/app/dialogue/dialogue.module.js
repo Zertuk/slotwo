@@ -6,6 +6,7 @@
         	'app.progress',
         	'app.main',
         	'app.monk',
-        	'app.resources'
+        	'app.resources',
+        	'app.inventory'
         ]);
 })();

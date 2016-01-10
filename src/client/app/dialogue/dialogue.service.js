@@ -5,14 +5,15 @@
         .module('app.dialogue')
         .service('dialogueService', dialogueService);
 
-    dialogueService.$inject = ['progressService', 'monkService', 'playerService', 'resourcesService'];
+    dialogueService.$inject = ['progressService', 'monkService', 'playerService', 'resourcesService', 'inventoryService'];
 
     /* @ngInject */
-    function dialogueService(progressService, monkService, playerService, resourcesService) {
+    function dialogueService(progressService, monkService, playerService, resourcesService, inventoryService) {
         var vm = this;
         vm.locationText = '';
         vm.progress = progressService.progress;
         vm.player = playerService.player;
+        vm.itemDictionary = inventoryService.itemDictionary;
 
         vm.Dialogue = function() {
             //return intro by default
@@ -940,6 +941,9 @@
                     special: function() {
                         vm.progress.pieEaten = !vm.progress.pieEaten;
                         vm.initAllDialogues();
+                        vm.itemDictionary['pie'][1][1] = 1;
+                        inventoryService.findVal();
+                        vm.player.maxHealth = vm.player.calculateTotalHealth();
                     }
                 },
                 chat: {

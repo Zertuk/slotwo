@@ -556,6 +556,12 @@
                         vm.progress.quizTaken = true;
                         vm.initAllDialogues();
                         vm.player.trueSelf[top[1]] = true;
+                        inventoryService.findVal();
+                        vm.player.maxHealth = vm.player.calculateTotalHealth();
+                        vm.player.damage = vm.player.calculateTotalDamage();
+                        vm.player.armorValue = vm.player.calculateTotalArmor();
+                        vm.player.maxHealth = vm.player.calculateTotalHealth();
+
                         return text;
                     },
                     pickText: function(top) {

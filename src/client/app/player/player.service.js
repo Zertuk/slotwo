@@ -299,12 +299,13 @@
             this.attackSpeed = this.weapon.attackSpeed,
             //armor
             this.armor = vm.itemDictionary.clothArmor[0][1],
-            this.armorValue = this.armor.armor,
+            this.armorValue = this.calculateTotalArmor(),
             //money
             this.gold = 0
         },
         this.player = new this.Player(),
-        this.player.calculateTotalDamage()
-        this.player.calculateTotalHealth()
+        this.player.calculateTotalDamage(),
+        this.player.calculateTotalHealth(),
+        this.player.calculateTotalArmor()
     }
 })();

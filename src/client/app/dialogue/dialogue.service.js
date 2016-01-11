@@ -342,13 +342,13 @@
                     buttons: {
                         no: {
                             text: 'No thanks.',
-                            text: 'no',
+                            next: 'no',
                             active: true,
                             master: 'wizard'
                         },
                         sure: {
                             text: 'Alright, I will do it.',
-                            text: 'no',
+                            next: 'no',
                             active: true,
                             master: 'wizard'
                         }

@@ -253,7 +253,7 @@
                 introFinish: {
                     text: 'Anyway, welcome to my home!  I am the wizard of this land.',
                     continue: true,
-                    next: 'question'
+                    next: 'question',
                     master: 'wizard'
                 },
                 question: {

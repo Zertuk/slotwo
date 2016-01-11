@@ -28,22 +28,23 @@
     -webkit-font-smoothing: antialiased;
     /*font-weight: 400;*/
 }
-
-.playerinfo p {
-    display: inline-block;
-    margin: 0;
+.actualworkers .worker p:last-of-type {
+    margin-left: 20px;
+}
+.arrow {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+}
+.alignvert {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.playerinfo {
-    float: right;
-    margin: 5px 0;
+.borderbottom {
+    border-bottom: 1px solid @color_white;
 }
-
-.playerabilities button {
-    margin: 5px 0;
-}
-
-
 
 .button .bg, .button .abilitybg {
     background: @color_white;
@@ -59,415 +60,9 @@
     opacity: 0.25;
     cursor: no-drop;
 }
-
-.tooltip {
-    display: none;
-    background: @color_black;
-    font-size: 32px;
-    left: 25%;
-    z-index: 100;
-}
-
-span.click:hover .tooltip {
-    display: block;
-    position: absolute;
-}
-
-.itemdesc.noborder {
-    border: none;
-}
-
-.titleborder {
-    border-bottom: 2px solid @color_white;
-    display: inline-block;
-    margin-bottom: 5px;
-}
-
-.titleborder h4 {
-    padding-bottom: 5px;
-}
-
-.otheritem {
-    padding: 10px;
-    border: 1px dashed @color_white;
-    margin-bottom: 2%;
-}
-
-.itemdesc {
-    padding: 10px;
-    border: 1px dashed @color_white;
-    float: left;
-    width: 100%;
-    margin-left: 2%;
-    margin-top: 2%;
-    text-align: center;
-    height: 225px;
-}
-.itemdesc:first-of-type {
-    margin-left: 0;
-}
-
-.small {
-    font-size: 12px;
-}
-
-.shoprow {
-    margin: 10px 0;
-}
-
-.nomargin {
-    margin: 0;
-}
-
-.margintop45 {
-    margin-top: 48px;
-}
-
-
 button.craft {
     margin: 10px 0;
 }
-
-.half {
-    float: left;
-    margin-right: 2%;
-    width: 49%;
-}
-
-.half:last-child {
-    margin-right: 0;
-}
-
-.workerinfo {
-    margin-left: 2%;
-    float: left;
-}
-
-.workerinfo:first-of-type {
-    margin-left: 0;
-    width: 275px;
-    border-right: 1px dashed grey;
-}
-
-.forge, .campfire {
-    float: left;
-    width: 100%;
-}
-
-.forge button, .campfire button {
-    margin: 10px 0;
-}
-
-.text {
-    margin-top: 0;
-}
-
-.worker p {
-    display: inline-block;
-}
-
-.actualworkers .worker p:last-of-type {
-    margin-left: 20px;
-}
-
-.worker p.info:last-of-type {
-    margin-left: 0;
-}
-
-.resourcecontrol {
-    margin: 0 2px;
-    border: 1px solid @color_white;
-    text-align: center;
-    cursor: pointer;
-}
-
-
-#locationtext {
-    border: 1px dashed @color_white;
-    min-height: 200px;
-    width: 45%;
-    position: absolute;
-    top: 50px;
-    padding: 10px 50px;
-    line-height: 22px;
-}
-
-#locationtext button {
-    display: block;
-    margin-bottom: 10px;
-}
-
-#locationtext button:last-child {
-    margin-bottom: 0;
-}
-
-.arrow {
-    position: absolute;
-    right: -20px;
-    top: 10px;
-}
-
-header {
-    border-bottom: 1px solid @color_white;
-    padding: 10px 50px 0;
-
-}
-
-.borderbottom {
-    border-bottom: 1px solid @color_white;
-}
-
-.conditional {
-    height: 33px;
-}
-
-.error {
-    color: red;
-}
-
-.leveloverflow {
-    overflow-x: hidden;
-}
-
-.container {
-    padding: 0 50px 0;
-    position: relative;
-    margin-bottom: 5px;
-}
-
-.container:after,
-.shoprow:after {
-    content: "";
-    display: table;
-    clear: both; 
-}
-
-.mainmessage,
-.mainbutton {
-    display: inline-block;
-}
-
-.mainmessage {
-    margin-left: 25px;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 16px;
-}
-
-#test {
-    background: red !important;
-}
-
-.alignvert {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.marginbottom10 {
-    margin-bottom: 10px;
-}
-
-nav ul li {
-    display: inline-block;
-}
-
-body {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    background: @color_black;
-    color: @color_white;
-    font-family: 'Inconsolata';
-}
-
-div {
-    box-sizing: border-box;
-}
-
-.half {
-    float: left;
-    width: 49%;
-}
-.half:first-of-type {
-    margin-right: 2%;
-}
-
-.inline {
-    display: inline-block;
-}
-
-.italic {
-    font-style: italic;
-    font-size: 12px;
-}
-
-.italic.inline {
-    margin-left: 5px;
-}
-
-h1 {
-    font-size: 26px;
-    float: right;
-    margin: 0;
-}
-
-.one {
-    width: 100%;
-    font-size: 12px
-}
-
-#levelwrap,
-#locationwrap {
-    height: auto;
-    position: relative;
-}
-
-#locationwrap {
-    min-height: 420px;
-}
-
-
-.shop .list {
-    width: 200px;
-}
-.shop .list p {
-    display: inline-block;
-    font-size: 16px;
-}
-
-.shop .list p:last-child {
-    float: right;
-}
-
-span {
-    position: relative;
-}
-
-pre {
-    font-size: 17px;
-    margin: 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-pre:nth-of-type(27) {
-    clear: both;
-}
-
-span.click {
-    cursor: pointer;
-}
-.levelrow {
-    display: block;
-    float: none;
-    margin: 0;
-}
-
-.loadwrap {
-    width: 200px;
-    height: 24px;
-    border: 1px solid @color_white;
-}
-
-.gatherload.loading {
-    width: 100px;
-    background: @color_lightblue;
-    height: 22px;
-}
-
-.healthbar {
-    width: 100%;
-    height: 24px;
-    margin: 10px 0;
-    border: 1px solid @color_white;
-    position: relative;
-
-}
-
-.healthbar p {
-    margin: 0;
-    text-align: center;
-    font-size: 16px;
-}
-
-.enemyname {
-    border-bottom: 2px solid @color_white;
-    padding-bottom: 5px;
-    font-size: 16px;
-    text-align: center;
-    margin: 5px 0 5px;
-}
-
-.enemydesc {
-    text-align: center;
-    font-size: 12px;
-    margin: 0;
-}
-
-.healthbarinner {
-    position: absolute;
-    width: 100%;
-    height: 22px;
-}
-
-.enemyinfo {
-    float: left;
-    width: 24%;
-    margin-right: 1%;
-}
-
-.enemyinfo.book {
-    border: 1px dashed @color_white;
-    margin: 10px 20px 10px 0;
-    width: 45%;
-    padding: 10px;
-}
-
-.enemyinfo.book:last-child {
-    border: 1px solid @color_white;
-    background:  #2f2f2f;
-}
-
-.enemy.info.book.looted {
-    border: 1px solid @color_white;
-}
-
-.playerabilities {
-    float: left;
-    width: 24%;
-    margin-right: 1%;
-}
-
-.enemyinfo .healthbarinner {
-    background: green;
-}
-
-.enemyinfo .healthbar {
-    margin: 5px 0;
-}
-
-.enemyplaceholder {
-    min-height: 100px;
-}
-
-.log {
-    float: right;
-    width: 50%;
-    max-height: 80px;
-    overflow-y: scroll;
-}
-
-
-.overflowhidden {
-    overflow: hidden;
-    max-width: 100%;
-}
-
-/* button styles */
 .button {
     display: inline-block;
     position: relative;
@@ -499,3 +94,418 @@ div.button.noactive {
 button::-moz-focus-inner {
   border: 0;
 }
+
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background: @color_black;
+    color: @color_white;
+    font-family: 'Inconsolata';
+}
+
+.conditional {
+    height: 33px;
+}
+.container {
+    padding: 0 50px 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.container:after,
+.shoprow:after {
+    content: "";
+    display: table;
+    clear: both; 
+}
+div {
+    box-sizing: border-box;
+}
+.error {
+    color: red;
+}
+.enemyname {
+    border-bottom: 2px solid @color_white;
+    padding-bottom: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px 0 5px;
+}
+
+.enemydesc {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+}
+
+.enemyinfo {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+
+.enemyinfo.book {
+    border: 1px dashed @color_white;
+    margin: 10px 20px 10px 0;
+    width: 45%;
+    padding: 10px;
+}
+
+.enemyinfo.book:last-child {
+    border: 1px solid @color_white;
+    background:  #2f2f2f;
+}
+
+.enemy.info.book.looted {
+    border: 1px solid @color_white;
+}
+
+.enemyinfo .healthbarinner {
+    background: green;
+}
+
+.enemyinfo .healthbar {
+    margin: 5px 0;
+}
+
+.enemyplaceholder {
+    min-height: 100px;
+}
+
+.forge, .campfire {
+    float: left;
+    width: 100%;
+}
+
+.forge button, .campfire button {
+    margin: 10px 0;
+}
+.half {
+    float: left;
+    margin-right: 2%;
+    width: 49%;
+}
+
+.half:last-child {
+    margin-right: 0;
+}
+
+.half {
+    float: left;
+    width: 49%;
+}
+.half:first-of-type {
+    margin-right: 2%;
+}
+.healthbar {
+    width: 100%;
+    height: 24px;
+    margin: 10px 0;
+    border: 1px solid @color_white;
+    position: relative;
+
+}
+
+.healthbar p {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+}
+.healthbarinner {
+    position: absolute;
+    width: 100%;
+    height: 22px;
+}
+header {
+    border-bottom: 1px solid @color_white;
+    padding: 10px 50px 0;
+
+}
+h1 {
+    font-size: 26px;
+    float: right;
+    margin: 0;
+}
+.itemdesc {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    float: left;
+    width: 100%;
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: center;
+    height: 225px;
+}
+.itemdesc:first-of-type {
+    margin-left: 0;
+}
+.itemdesc.noborder {
+    border: none;
+}
+.inline {
+    display: inline-block;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.italic.inline {
+    margin-left: 5px;
+}
+
+#locationtext {
+    border: 1px dashed @color_white;
+    min-height: 200px;
+    width: 45%;
+    position: absolute;
+    top: 50px;
+    padding: 10px 50px;
+    line-height: 22px;
+}
+
+#locationtext button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#locationtext button:last-child {
+    margin-bottom: 0;
+}
+#levelwrap,
+#locationwrap {
+    height: auto;
+    position: relative;
+}
+
+#locationwrap {
+    min-height: 420px;
+}
+
+.leveloverflow {
+    overflow-x: hidden;
+}
+
+.levelrow {
+    display: block;
+    float: none;
+    margin: 0;
+}
+.loadwrap {
+    width: 200px;
+    height: 24px;
+    border: 1px solid @color_white;
+}
+.log {
+    float: right;
+    width: 50%;
+    max-height: 80px;
+    overflow-y: scroll;
+}
+
+.margintop45 {
+    margin-top: 48px;
+}
+.mainmessage,
+.mainbutton {
+    display: inline-block;
+}
+
+.mainmessage {
+    margin-left: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+.marginbottom10 {
+    margin-bottom: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+.nomargin {
+    margin: 0;
+}
+.one {
+    width: 100%;
+    font-size: 12px
+}
+.otheritem {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    margin-bottom: 2%;
+}
+
+.overflowhidden {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+
+.playerinfo p {
+    display: inline-block;
+    margin: 0;
+}
+
+.playerinfo {
+    float: right;
+    margin: 5px 0;
+}
+
+.playerabilities button {
+    margin: 5px 0;
+}
+.playerabilities {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+pre {
+    font-size: 17px;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+pre:nth-of-type(27) {
+    clear: both;
+}
+
+.resourcecontrol {
+    margin: 0 2px;
+    border: 1px solid @color_white;
+    text-align: center;
+    cursor: pointer;
+}
+.shop .list {
+    width: 200px;
+}
+.shop .list p {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.shop .list p:last-child {
+    float: right;
+}
+
+span {
+    position: relative;
+}
+span.click {
+    cursor: pointer;
+}
+span.click:hover .tooltip {
+    display: block;
+    position: absolute;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.shoprow {
+    margin: 10px 0;
+}
+.tooltip {
+    display: none;
+    background: @color_black;
+    font-size: 32px;
+    left: 25%;
+    z-index: 100;
+}
+
+.titleborder {
+    border-bottom: 2px solid @color_white;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.titleborder h4 {
+    padding-bottom: 5px;
+}
+.text {
+    margin-top: 0;
+}
+#test {
+    background: red !important;
+}
+
+.worker p {
+    display: inline-block;
+}
+
+.worker p.info:last-of-type {
+    margin-left: 0;
+}
+
+.workerinfo {
+    margin-left: 2%;
+    float: left;
+}
+
+.workerinfo:first-of-type {
+    margin-left: 0;
+    width: 275px;
+    border-right: 1px dashed grey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

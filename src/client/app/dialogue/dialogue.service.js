@@ -171,13 +171,93 @@
         vm.wizard.setDialogue = function() {
             var dialogue = {
                 introduction: {
-                    text: 'wizard introduction',
+                    text: 'Oh hello.  If I had known you were coming I would have disabled my snowmen sentries!',
                     continue: true,
                     next: 'question',
+                    master: 'wizard',
+                    buttons: {
+                        kill: {
+                            text: 'Dont worry, they were no problem.',
+                            next: 'kill',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        sorry: {
+                            text: 'Sorry for killing your buddies...',
+                            next: 'sorry',
+                            active: true,
+                            master: 'wizard'
+                        }
+                    }
+                },
+                kill: {
+                    text: 'Wow! You must be pretty strong to withstand Garys chilly attack!',
+                    next: 'introFinish',
+                    continue: 'true',
+                    master: 'wizard'
+                },
+                sorry: {
+                    text: 'They arent my buddies.  They are magic!  You must be strong if you can take down Gary though!',
+                    buttons: {
+                        intel: {
+                            text: 'What if they are intelligent and conscious?!',
+                            next: 'intel',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        cool: {
+                            text: 'Cool! Guilt free killing!',
+                            next: 'cool',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        introFinish: {
+                            text: 'Alright...',
+                            next: 'introFinish',
+                            active: true,
+                            master: 'wizard'
+                        }
+                    }
+                },
+                cool: {
+                    text: 'Yeah it is pretty great, although sometimes I run low on mana after killing too many! Oops~',
+                    next: 'introFinish',
+                    master: 'active,',
+                    continue: true
+                },
+                intel: {
+                    text: 'Oh man.  When a creature created by magic has gone rogue its a real problem.  It is wizard code to disable them.  Or maybe it is just my code?  Who cares!',
+                    buttons: {
+                        rip: {
+                            text: 'I am sorry Gary and friends ;-;',
+                            next: 'rip',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        introFinish: {
+                            text:'Oh, okay!',
+                            next: 'introFinish',
+                            active: true,
+                            master: 'wizard'
+                        }
+                    }
+                },
+                rip: {
+                    text: '* Gary and his friends cast Snowmens Blessing on you, as a thank you for acknowledging them ;-; *',
+                    special: function() {
+                        console.log('add snowmans blessng item');
+                    },
+                    continue: true,
+                    next: 'introFinish'
+                },
+                introFinish: {
+                    text: 'Anyway, welcome to my home!  I am the wizard of this land.',
+                    continue: true,
+                    next: 'question'
                     master: 'wizard'
                 },
                 question: {
-                    text: 'wizard question',
+                    text: 'Well, you came here for a reason right?  What do you need?',
                     buttons: {
                         hair: {
                             text: 'Is this genuine Wizard hair?',
@@ -191,8 +271,22 @@
                             master: 'wizard',
                             active: true
                         },
-                        
+                        sky: {
+                            text: 'Whats the deal with the sky attack?',
+                            next: 'sky',
+                            master: 'wizard',
+                            active: true
+                        }                        
                     }
+                },
+                hair: {
+
+                },
+                whatsItLike: {
+
+                },
+                sky: {
+
                 }
             };
             return dialogue;

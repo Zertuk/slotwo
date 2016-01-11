@@ -40,6 +40,7 @@
             freeSample: false,
             signedNDA: false,
             wizardMet: false,
+            wizardTask: false,
             levels: {
                 treeCity: true,
                 treeOne: true,

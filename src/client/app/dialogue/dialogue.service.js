@@ -286,7 +286,13 @@
                             text: 'Whats the deal with the sky attack?',
                             next: 'sky',
                             master: 'wizard',
-                            active: true
+                            active: !vm.progress.wizardTask
+                        },
+                        task: {
+                            text: 'What did you want me to do?',
+                            next: 'task',
+                            master: 'wizard',
+                            active: vm.progress.wizardTask
                         },
                         bear: {
                             text: 'Why do you live in a giant bear?',
@@ -295,6 +301,12 @@
                             active: true
                         }                        
                     }
+                },
+                task: {
+                    text: 'Head to the northern mountains, take out the giant robot, and bring me a sample of the meteorite!',
+                    next: 'question',
+                    continue: true,
+                    master: 'wizard'
                 },
                 bear: {
                     text: 'Because I can!  It has been my dream since I was a wee wizard to live in a bear.  Maybe you can too someday! Probably not though.',
@@ -347,7 +359,11 @@
                     text: 'I am counting on you, this is for very important wizard research!',
                     continue: true,
                     next: 'question',
-                    master: 'wizard'
+                    master: 'wizard',
+                    special: function() {
+                        vm.progress.wizardTask = true;
+                        vm.initAllDialogues();
+                    }
                 },
                 you: {
                     text: 'Wow!  Do you know anything?  Everyone knows robots are immune to magic, its the first lesson in wizard school! So will you kill the robot for me or what?',

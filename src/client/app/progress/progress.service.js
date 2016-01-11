@@ -39,6 +39,7 @@
             healing: false,
             freeSample: false,
             signedNDA: false,
+            wizardMet: false,
             levels: {
                 treeCity: true,
                 treeOne: true,

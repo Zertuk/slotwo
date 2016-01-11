@@ -168,6 +168,14 @@
 
         //wizard in bear dialogue
         vm.wizard = new vm.Dialogue();
+        vm.wizard.initDialogue = function() {
+            if (vm.progress.wizardMet) {
+                return 'question';
+            }
+            else {
+                return 'introduction';
+            }
+        };
         vm.wizard.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -253,7 +261,11 @@
                     text: 'Anyway, welcome to my home!  I am the wizard of this land.',
                     continue: true,
                     next: 'question',
-                    master: 'wizard'
+                    master: 'wizard',
+                    special: function() {
+                        vm.progress.wizardMet = true;
+                        vm.initAllDialogues();
+                    }
                 },
                 question: {
                     text: 'Well, you came here for a reason right?  What do you need?',

@@ -245,14 +245,12 @@
                 }
                 if ((typeof this.armor.damageMult !== 'undefined') && (this.armor.damageMult !== 1)) {
                     inventoryService.stats.damageMult = this.armor.damageMult;
-                    console.log(inventoryService.stats)
                 }
                 else {
                     inventoryService.stats.damageMult = 0;
                 }
                 damage = damage + inventoryService.stats.damage
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
-                console.log(inventoryService.stats.damageMult);
                 return damage;
             },
             this.calculateTotalArmor = function() {
@@ -264,10 +262,8 @@
                 return armor;
             },
             this.calculateTotalHealth = function() {
-                console.log(this.baseHealth + ' base health');
                 var health = this.baseHealth + inventoryService.stats.health;
                 health = health + health*(inventoryService.stats.healthMult/100);
-                console.log(health);
                 return health;
             },
             this.calculateTotalEvasion = function() {
@@ -275,7 +271,6 @@
                 return evasion;
             },
             this.trueSelf = function(self) {
-                console.log(self);
                 vm.itemDictionary[self][1][1] = 1;
             },
             this.active = true,

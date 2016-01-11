@@ -172,9 +172,7 @@
             var dialogue = {
                 introduction: {
                     text: 'Oh hello.  If I had known you were coming I would have disabled my snowmen sentries!',
-                    continue: true,
                     next: 'question',
-                    master: 'wizard',
                     buttons: {
                         kill: {
                             text: 'Dont worry, they were no problem.',
@@ -248,7 +246,8 @@
                         console.log('add snowmans blessng item');
                     },
                     continue: true,
-                    next: 'introFinish'
+                    next: 'introFinish',
+                    master: 'wizard'
                 },
                 introFinish: {
                     text: 'Anyway, welcome to my home!  I am the wizard of this land.',
@@ -276,8 +275,20 @@
                             next: 'sky',
                             master: 'wizard',
                             active: true
+                        },
+                        bear: {
+                            text: 'Why do you live in a giant bear?',
+                            next: 'bear',
+                            master: 'wizard',
+                            active: true
                         }                        
                     }
+                },
+                bear: {
+                    text: 'Because I can!  It has been my dream since I was a wee wizard to live in a bear.  Maybe you can too someday! Probably not though.',
+                    continue: true,
+                    next: 'question',
+                    master: 'wizard'
                 },
                 hair: {
 
@@ -286,7 +297,62 @@
 
                 },
                 sky: {
-
+                    text: 'Is that what the commoners are calling it?  Well it was a meteor of some sort.  However!  There is some type of giant robot protecting the meteor!',
+                    continue: true,
+                    next: 'robot',
+                    master: 'wizard'
+                },
+                robot: {
+                    text: 'Yeah thats right, a giant robot!  I need someone to take it out for me so I can do research on the meteor, are you interested?',
+                    buttons: {
+                        sure: {
+                            text: 'Sure, I am interested.',
+                            next: 'sure',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        you: {
+                            text: 'Why dont you kill it?',
+                            next: 'you',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        no: {
+                            text: 'No thanks.',
+                            next: 'no',
+                            active: true,
+                            master: 'wizard'
+                        }
+                    }
+                },
+                sure: {
+                    text: 'Awesome!  You need to head to the mountains of the north and take out the robot.  Once he is taken care of, you need to take a sample from the meteorite and bring it back to me.',
+                    next: 'counting',
+                    continue: true,
+                    master: 'wizard'
+                },
+                counting: {
+                    text: 'I am counting on you, this is for very important wizard research!',
+                    continue: true,
+                    next: 'question',
+                    master: 'wizard'
+                },
+                you: {
+                    text: 'Wow!  Do you know anything?  Everyone knows robots are immune to magic, its the first lesson in wizard school! So will you kill the robot for me or what?',
+                    buttons: {
+                        no: {
+                            text: 'No thanks.',
+                            text: 'no',
+                            active: true,
+                            master: 'wizard'
+                        },
+                        sure: {
+                            text: 'Alright, I will do it.',
+                            text: 'no',
+                            active: true,
+                            master: 'wizard'
+                        }
+                    }
                 }
             };
             return dialogue;

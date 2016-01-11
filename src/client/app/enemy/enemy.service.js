@@ -268,12 +268,12 @@
             this.moneyMult = 1;
             this.deathMessage = '';
             this.symbol = 'P';
-            this.maxHealth = '75';
-            this.health = 75;
+            this.maxHealth = '30';
+            this.health = 30;
             this.items = [vm.itemDictionary['polarArmor']];
             this.itemChance = 50;
             this.damage = 10;
-            this.attackSpeed = 2;
+            this.attackSpeed = 1;
         };
         vm.Penguin.prototype = new vm.Enemy();
 
@@ -320,9 +320,23 @@
         };
         vm.StickBug.prototype = new vm.Enemy();
 
+        vm.Yeti = function Yeti() {
+            this.name = 'Abominable Snowman';
+            this.symbol = 'A';
+            this.desc = 'desc';
+            this.items = [];
+            this.deathMessage = '';
+            this.move = false;
+            this.damage = 15;
+            this.attackSpeed = 3;
+            this.health = 100;
+            this.maxHealth = 100;
+        }
+        vm.Yeti.prototype = new vm.Enemy();
+
         vm.Alchemist = function Alchemist() {
             this.name = 'Unicorn Alchemist';
-            this.symbol = 'A';
+            this.symbol = 'E';
             this.desc = 'desc';
             this.items = [vm.itemDictionary['potionArmor']];
             this.itemChance = 25;

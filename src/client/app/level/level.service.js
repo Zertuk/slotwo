@@ -99,12 +99,14 @@
 
 
         this.bridge = new this.Level();
-        this.bridge.enemyArray = [enemyService.Penguin];
+        this.bridge.enemyArray = [enemyService.Penguin, enemyService.Yeti];
         this.bridge.playerSpawn = [0, 14];
         this.bridge.enemySpawn = [200, 13];
         this.bridge.unitSpawnChance = [50];
         this.bridge.specialSpawn = [140, 14];
         this.bridge.specialSpawnChance = [100];
+        this.bridge.spawnMore = false;
+        this.bridge.spawnAtStart = [[131, 14], [135, 14], [140, 14], [144, 14], [153, 14], [200, 13]];
         this.bridge.slug = 'bridge';
         this.bridge.enemyMax = 5;
         this.bridge.unlock = 'snow'

@@ -383,6 +383,7 @@
 
 		vm.wizard = new vm.Location();
 		vm.wizard.name = 'Wizard';
+        vm.wizard.slug = 'wizard';
 		vm.wizard.prev = 'mainMap';
 		vm.wizard.prevName = 'Map';
 		vm.wizard.specialText = true;

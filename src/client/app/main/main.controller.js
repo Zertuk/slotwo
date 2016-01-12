@@ -100,11 +100,17 @@
             vm.resources = resourcesService.resources;
         }
 
+        function updatePlayer() {
+            vm.player.damage = vm.player.calculateTotalDamage();
+            vm.player.armorValue = vm.player.calculateTotalArmor();
+        }
+
         //1s loop
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
             increaseResources();
+            updatePlayer();
             $timeout(mainLoop, 1000);
         }
         //quicker loop

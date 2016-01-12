@@ -148,6 +148,7 @@
                 if (random <= this.itemChance&&this.items[0][1][1] === 0) {
                     this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
                     this.items[0][1][1] = 1;
+                    inventoryService.findVal();
                 }
                 else {
                     this.lootMessage = 'You find ' + cash + ' gold.';
@@ -266,7 +267,7 @@
         vm.Penguin = function Penguin() {
             this.name = 'Penguin';
             this.moneyMult = 1;
-            this.deathMessage = '';
+            this.deathMessage = 'A penguin has been demolished!';
             this.symbol = 'P';
             this.maxHealth = '30';
             this.health = 30;
@@ -274,6 +275,7 @@
             this.itemChance = 50;
             this.damage = 10;
             this.attackSpeed = 1;
+            this.moneyMult = 100;
         };
         vm.Penguin.prototype = new vm.Enemy();
 
@@ -303,6 +305,7 @@
             this.health = 40;
             this.damage = 10;
             this.attackSpeed = 2;
+            this.moneyMult = 100;
         };
         vm.Mantis.prototype = new vm.Enemy();
 
@@ -317,6 +320,7 @@
             this.health = 50;
             this.damage = 10;
             this.attackSpeed = 3;
+            this.moneyMult = 100;
         };
         vm.StickBug.prototype = new vm.Enemy();
 
@@ -325,12 +329,13 @@
             this.symbol = 'A';
             this.desc = 'desc';
             this.items = [];
-            this.deathMessage = '';
+            this.deathMessage = 'The Yeti has went extinct!';
             this.move = false;
             this.damage = 15;
             this.attackSpeed = 3;
             this.health = 100;
             this.maxHealth = 100;
+            this.moneyMult = 200;
         }
         vm.Yeti.prototype = new vm.Enemy();
 
@@ -491,6 +496,7 @@
             this.name = 'Minotaur';
             this.items = [vm.itemDictionary['minotaurHammer']];
             this.itemChance = 50;
+            this.moneyMult = 250;
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
             this.maxHealth = 500;

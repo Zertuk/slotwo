@@ -287,9 +287,9 @@
             this.items = [vm.itemDictionary['bearClaws']];
             this.itemChance = 25;
             this.moneyMult = 30;
-            this.maxHealth = 25;
-            this.health = 25;
-            this.damage = 15;
+            this.maxHealth = 30;
+            this.health = 30;
+            this.damage = 20;
             this.attackSpeed = 5;
         };
         vm.Bear.prototype = new vm.Enemy();
@@ -402,8 +402,8 @@
             this.itemChance = 50;
             this.moneyMult = 10;
             this.symbol = 'D';
-            this.maxHealth = 10;
-            this.health = 10;
+            this.maxHealth = 15;
+            this.health = 15;
             this.damage = 1;
             this.attackSpeed = 1;
         };

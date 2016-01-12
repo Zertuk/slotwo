@@ -365,6 +365,7 @@
                     special: function() {
                         vm.progress.wizardTask = true;
                         vm.progress.canLearn = vm.progress.canLearn + 1;
+                        vm.progress.levels.robot = true;
                         vm.initAllDialogues();
                     }
                 },

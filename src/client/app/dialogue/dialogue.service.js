@@ -416,7 +416,7 @@
                             text: 'Missing travelers',
                             next: 'askWorkAccepted',
                             master: 'treeKing',
-                            active: vm.progress.treeKingWorkAccept
+                            active: vm.progress.treeKingWorkAccept&&!vm.progress.treeKingWorkHandIn
                         },
                         work: {
                             text: 'Any work you need done?',
@@ -497,7 +497,7 @@
                     text: 'Any news from your search in the desert?',
                     buttons: {
                         yes: {
-                            text: 'Yes, I killed the besat.',
+                            text: 'Yes, I killed the beast.',
                             next: 'askWorkComplete',
                             master: 'treeKing',
                             active: vm.progress.levels.ruinsCleared
@@ -518,6 +518,7 @@
                     special: function() {
                         vm.progress.treeKingWorkHandIn = true;
                         vm.progress.canLearn = vm.progress.canLearn + 1;
+                        vm.initAllDialogues();
                     }
                 },
                 askWorkIncomplete: {

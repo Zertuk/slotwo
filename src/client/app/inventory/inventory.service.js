@@ -334,7 +334,13 @@
 		this.snowmenBlessing.health = 50;
 		this.snowmenBlessing.money = 2;
 
+		this.abomItem = new this.Item();
+		this.abomItem.name = 'abomItem';
+		this.abomItem.slug = 'abomItem';
+		this.abomItem.desc = '';
+		this.abomItem.message = '';
 
+		vm.itemDictionary['abomItem'] = [['item', this.abomItem], ['amount', 0]];
 		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 0]];
 		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 1]];
 		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 1]];
@@ -393,7 +399,8 @@
 						 vm.itemDictionary['bigHeavyWood'],
 						 vm.itemDictionary['pie'],
 						 vm.itemDictionary['piggyBank'],
-						 vm.itemDictionary['snowmenBlessing']];
+						 vm.itemDictionary['snowmenBlessing'],
+						 vm.itemDictionary['abomItem']];
 
 		vm.buyableItems = ['potion', 
 						   'sword', 

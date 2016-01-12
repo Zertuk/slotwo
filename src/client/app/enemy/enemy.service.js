@@ -328,7 +328,7 @@
             this.name = 'Abominable Snowman';
             this.symbol = 'A';
             this.desc = 'desc';
-            this.items = [];
+            this.items = [vm.itemDictionary['abomItem']];
             this.deathMessage = 'The Yeti has went extinct!';
             this.move = false;
             this.damage = 15;

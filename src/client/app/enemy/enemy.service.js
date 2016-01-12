@@ -303,7 +303,7 @@
             this.itemChance = 10;
             this.maxHealth = 40;
             this.health = 40;
-            this.damage = 10;
+            this.damage = 20;
             this.attackSpeed = 2;
             this.moneyMult = 100;
         };
@@ -316,8 +316,8 @@
             this.symbol = 'T';
             this.items = [vm.itemDictionary['bugExoskeleton']];
             this.itemChance = 10;
-            this.maxHealth = 50;
-            this.health = 50;
+            this.maxHealth = 60;
+            this.health = 60;
             this.damage = 10;
             this.attackSpeed = 3;
             this.moneyMult = 100;

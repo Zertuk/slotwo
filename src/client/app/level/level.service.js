@@ -258,7 +258,7 @@
 
         this.arena = new this.Level();
         this.arena.enemyArray = [enemyService.Mantis, enemyService.StickBug];
-        this.arena.unitSpawnChance = [40, 80];
+        this.arena.unitSpawnChance = [45, 90];
         this.arena.playerSpawn = [2, 18];
         this.arena.enemySpawn = [87, 18];
         this.arena.specialEnd = 87;

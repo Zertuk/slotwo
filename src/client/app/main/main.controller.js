@@ -103,6 +103,7 @@
         function updatePlayer() {
             vm.player.damage = vm.player.calculateTotalDamage();
             vm.player.armorValue = vm.player.calculateTotalArmor();
+            vm.player.maxHealth = vm.player.calculateTotalHealth();
         }
 
         //1s loop

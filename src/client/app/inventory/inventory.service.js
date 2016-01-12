@@ -201,23 +201,23 @@
 
 		//other items
 		this.trueOffense = new this.Item();
-		this.trueOffense.name = 'True Offense';
+		this.trueOffense.name = 'Offensive Sprit';
 		this.trueOffense.slug = 'trueOffense';
-		this.trueOffense.desc = 'desc';
+		this.trueOffense.desc = '';
 		this.trueOffense.message = 'Damage increased by 25%';
 		this.trueOffense.damageMult = 25;
 
 		this.trueDefense = new this.Item();
-		this.trueDefense.name = 'True Defense';
+		this.trueDefense.name = 'Defensive Sprit';
 		this.trueDefense.slug = 'trueDefense';
-		this.trueDefense.desc = 'desc';
+		this.trueDefense.desc = '';
 		this.trueDefense.message = 'Armor increased by 25%';
 		this.trueDefense.defenseMult = 25;
 
 		this.trueHealth = new this.Item();
-		this.trueHealth.name = 'True Health';
+		this.trueHealth.name = 'Kind Spirit';
 		this.trueHealth.slug = 'trueHealth';
-		this.trueHealth.desc = 'desc';
+		this.trueHealth.desc = '';
 		this.trueHealth.message = 'Health increased by 25%';
 		this.trueHealth.healthMult = 25;
  
@@ -233,11 +233,13 @@
 			vm.progress.hasSweater = true;
 		};
 
+
+
 		this.piggyBank = new this.Item();
-		this.piggyBank.name = 'Piggy Bank';
+		this.piggyBank.name = 'Cat Bank';
 		this.piggyBank.slug = 'piggyBank';
-		this.piggyBank.desc = '';
-		this.piggyBank.message = '';
+		this.piggyBank.desc = 'Like a Piggy Bank, but a Cat instead';
+		this.piggyBank.message = 'Holder gains +5 gold a second';
 		this.piggyBank.money = 5;
 		this.piggyBank.buyable = true;
 		this.piggyBank.removeAfterBuy = true;
@@ -302,18 +304,18 @@
 		this.mantisClaw = new this.Item();
 		this.mantisClaw.name = 'Mantis Claw';
 		this.mantisClaw.slug = 'mantisClaw';
-		this.mantisClaw.desc = 'desc';
-		this.mantisClaw.message = '+5 attack ';
+		this.mantisClaw.desc = 'Scythe like';
+		this.mantisClaw.message = '+5 damage ';
 		this.mantisClaw.lootOnce = true;
 		this.mantisClaw.damage = 5;
 
 		this.bugExoskeleton = new this.Item();
 		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';
 		this.bugExoskeleton.slug = 'bugExoskeleton';
-		this.bugExoskeleton.desc = 'desc';
-		this.bugExoskeleton.message = '+5 attack';
+		this.bugExoskeleton.desc = 'Not sure how this helps';
+		this.bugExoskeleton.message = '+5% armor';
 		this.bugExoskeleton.lootOnce = true;
-		this.bugExoskeleton.damage = 5;
+		this.bugExoskeleton.armor = 5;
 
 		this.bigHeavyWood = new this.Item();
 		this.bigHeavyWood.name = 'Log';
@@ -382,7 +384,9 @@
 		this.campfire.recipe = ['wood-10'];
 
 		this.compendium = new this.Item();
-		this.compendium.name = 'Beast compendium';
+		this.compendium.name = 'Beast Compendium';
+		this.compendium.desc = 'Basically a scrapbook';
+		this.compendium.message = 'Keeps track of enemies you encounter.';
 		this.compendium.slug = 'compendium';
 		this.compendium.buyable = true;
 		this.compendium.price = 500;

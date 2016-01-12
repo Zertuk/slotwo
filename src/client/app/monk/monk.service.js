@@ -18,7 +18,7 @@
    			var key = 'train' + type;
    			vm.progress[key] = true;
    			vm.progress.canLearn = vm.progress.canLearn - 1;
-   			messageService.updateMainMessage('train');
+   			messageService.updateMainMessage('You have learned ' + type + '!');
     	}
     }
 })();

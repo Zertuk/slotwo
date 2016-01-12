@@ -499,10 +499,10 @@
             this.moneyMult = 250;
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
-            this.maxHealth = 500;
-            this.health = 500;
-            this.damage = 15;
-            this.regularDamage = 15;
+            this.maxHealth = 750;
+            this.health = 750;
+            this.damage = 20;
+            this.regularDamage = 20;
             this.attackSpeed = 10;
             this.colBox = [15, 15];
             this.move = false;

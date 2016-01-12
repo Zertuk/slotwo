@@ -25,7 +25,6 @@
             bridgePrompt: false,
             bridgeBuilt: false,
             forgeActive: false,
-            campFireActive: true,
             trainBattle: false,
             trainDefense: false,
             trainMoney: false,
@@ -42,18 +41,18 @@
             wizardMet: false,
             wizardTask: false,
             levels: {
-                treeCity: true,
+                treeCity: false,
                 treeOne: true,
-                treeTwo: true,
-                dungeon: true,
-                ruins: true,
-                desert: true,
-                bridge: true,
-                snow: true,
-                shroom: true,
-                wizard: true,
-                robot: true,
-                arena: true
+                treeTwo: false,
+                dungeon: false,
+                ruins: false,
+                desert: false,
+                bridge: false,
+                snow: false,
+                shroom: false,
+                wizard: false,
+                robot: false,
+                arena: false
             }
         }
     }

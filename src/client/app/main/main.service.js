@@ -374,6 +374,7 @@
 
         vm.monk = new vm.Location();
         vm.monk.name = 'The Cavern';
+        vm.monk.slug = 'monk';
         vm.monk.prev = 'mainMap';
         vm.monk.prevName = 'Map';
         vm.monk.specialText = true;
@@ -464,7 +465,8 @@
 
 
         vm.arena = new vm.Location();
-        vm.arena.name = 'arena';
+        vm.arena.name = 'The Arena';
+        vm.arena.slug = 'arena';
         vm.arena.prev = 'mainMap';
         vm.arena.prevName = 'Map';
         vm.arena.specialText = true;
@@ -507,6 +509,7 @@
 
         vm.lich = new vm.Location();
         vm.lich.name = 'The Lich';
+        vm.lich.slug = 'lich';
         vm.lich.prev = 'mainMap';
         vm.lich.prevName = 'Map';
         vm.lich.specialText = true;

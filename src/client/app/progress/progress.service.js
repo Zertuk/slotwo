@@ -52,7 +52,8 @@
                 shroom: false,
                 wizard: false,
                 robot: false,
-                arena: false
+                arena: false,
+                monk: false
             }
         }
     }

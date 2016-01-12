@@ -358,12 +358,13 @@
                     master: 'wizard'
                 },
                 counting: {
-                    text: 'I am counting on you, this is for very important wizard research!',
+                    text: 'You should check in with that guy in the mountains who trains people.  Maybe he can teach you another trick to get by.  I am counting on you, this is for very important wizard research!',
                     continue: true,
                     next: 'question',
                     master: 'wizard',
                     special: function() {
                         vm.progress.wizardTask = true;
+                        vm.progress.canLearn = vm.progress.canLearn + 1;
                         vm.initAllDialogues();
                     }
                 },
@@ -496,13 +497,13 @@
                     text: 'Any news from your search in the desert?',
                     buttons: {
                         yes: {
-                            text: 'news',
+                            text: 'Yes, I killed the besat.',
                             next: 'askWorkComplete',
                             master: 'treeKing',
                             active: vm.progress.levels.ruinsCleared
                         },
                         no: {
-                            text: 'Not yet',
+                            text: 'Not yet.',
                             next: 'askWorkIncomplete',
                             master: 'treeKing',
                             active: !vm.progress.levels.ruinsCleared
@@ -510,12 +511,13 @@
                     }
                 },
                 askWorkComplete: {
-                    text: 'finish quest',
+                    text: 'I see.  That is unfortunate what happened to the missing people, but it was expected.  It seems this is more serious than expected.  You should seek the hermit in the mountains, he will be able to teach you more.  The path ahead will be harsh.',
                     next: 'question',
                     master: 'treeKing',
                     continue: true,
                     special: function() {
                         vm.progress.treeKingWorkHandIn = true;
+                        vm.progress.canLearn = vm.progress.canLearn + 1;
                     }
                 },
                 askWorkIncomplete: {
@@ -579,6 +581,11 @@
                 },
                 train: {
                     text: 'If you need to become stronger, you need to train.  An old friend of mine is living in the mountains.  He can help you learn new abilities.  If you just want to get tougher, the arena will get you in top shape.',
+                    special: function() {
+                        vm.progress.levels.arena = true;
+                        vm.progress.levels.monk = true;
+                        vm.progress.canLearn = vm.progress.canLearn + 1;
+                    },
                     next: 'choice',
                     master: 'enchant',
                     continue: 'true'
@@ -1187,6 +1194,9 @@
                 whatToDo: {
                     text: 'Well if you need work, the King usually has something to offer.  Otherwise there is a shop and enchant on the main level.  Down here there isnt much else.  If you are looking to leave Tresabor then you can checkout the Arena to the east.  I heard you have to be pretty tough to fight there though.',
                     next: 'chat',
+                    special: function() {
+                        vm.progress.levels.arena = true;
+                    },
                     continue: true,
                     master: 'inn'
                 },
@@ -1194,6 +1204,9 @@
                     text: 'Wizards huh? I didnt take you for the type.  Well, if you must see one of them, the closest one is to the east across the river.  The Arena guards the bridge though and they only let the toughest through.  If you want my advice, stay away from wizards.',
                     next: 'chat',
                     continue: true,
+                    special: function() {
+                        vm.progress.levels.arena = true;
+                    },
                     master: 'inn'
                 }
             };

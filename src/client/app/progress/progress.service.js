@@ -28,7 +28,7 @@
             trainBattle: false,
             trainDefense: false,
             trainMoney: false,
-            canLearn: 3,
+            canLearn: 0,
             elderMet: false,
             pieEaten: false,
             innIntro: false,

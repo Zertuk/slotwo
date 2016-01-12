@@ -415,7 +415,8 @@
 						 vm.itemDictionary['pie'],
 						 vm.itemDictionary['piggyBank'],
 						 vm.itemDictionary['snowmenBlessing'],
-						 vm.itemDictionary['abomItem']];
+						 vm.itemDictionary['abomItem'],
+						 vm.itemDictionary['compendium']];
 
 		vm.buyableItems = ['potion', 
 						   'sword', 

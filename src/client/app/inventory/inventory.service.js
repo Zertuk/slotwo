@@ -326,6 +326,16 @@
 		this.unicornHorn.message = '';
 		this.unicornHorn.health = '';
 
+		this.snowmenBlessing = new this.Item();
+		this.snowmenBlessing.name = 'Snowmens Blessing';
+		this.snowmenBlessing.slug = 'snowmenBlessing';
+		this.snowmenBlessing.desc = 'RIP Gary & Friends';
+		this.snowmenBlessing.message = 'Increases health by 50 and grants 2 extra gold a second.';
+		this.snowmenBlessing.health = 50;
+		this.snowmenBlessing.money = 2;
+
+
+		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 1]]
 		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 1]];
 		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 1]];
 		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
@@ -382,7 +392,8 @@
 						 vm.itemDictionary['mantisClaw'],
 						 vm.itemDictionary['bigHeavyWood'],
 						 vm.itemDictionary['pie'],
-						 vm.itemDictionary['piggyBank']];
+						 vm.itemDictionary['piggyBank'],
+						 vm.itemDictionary['snowmenBlessing']];
 
 		vm.buyableItems = ['potion', 
 						   'sword', 

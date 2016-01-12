@@ -297,9 +297,9 @@
 		this.pocketSand.name = 'Pocket Sand';
 		this.pocketSand.slug = 'pocketSand';
 		this.pocketSand.desc = 'Wingo! Pocket sand!';
-		this.pocketSand.message = '2% chance to evade damage.';
+		this.pocketSand.message = '1% chance to evade damage.';
 		this.pocketSand.lootOnce = true;
-		this.pocketSand.evade = 2;
+		this.pocketSand.evade = 1;
 
 		this.mantisClaw = new this.Item();
 		this.mantisClaw.name = 'Mantis Claw';

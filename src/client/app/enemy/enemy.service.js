@@ -24,9 +24,15 @@
             vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
             //higher attackspeed less attacks performed
             if (count % enemy.attackSpeed === 0) {
-                var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
-                unit.health = unit.health - damageDealt;
-                unit.health = unit.health.toFixed(2);
+                var random = Math.floor((Math.random()*100));
+                if (random > unit.evade) {
+                    var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
+                    unit.health = unit.health - damageDealt;
+                    unit.health = unit.health.toFixed(2);
+                }
+                else {
+                    messageService.addMessage('You evade an attack thanks to your [Pocket Sand]!')
+                }
             }
             if (count % unit.attackSpeed === 0) {
                 enemy.health = enemy.health - unit.damage;

@@ -275,7 +275,7 @@
             },
             this.active = true,
             this.ground = false,
-            this.evasion = this.calculateTotalEvasion(),
+            this.evade = this.calculateTotalEvasion(),
             this.health = 100,
             this.baseHealth = 100,
             this.maxHealth = this.calculateTotalHealth(),

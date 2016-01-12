@@ -297,9 +297,9 @@
 		this.pocketSand.name = 'Pocket Sand';
 		this.pocketSand.slug = 'pocketSand';
 		this.pocketSand.desc = 'Wingo! Pocket sand!';
-		this.pocketSand.message = '5% chance to evade damage.';
+		this.pocketSand.message = '2% chance to evade damage.';
 		this.pocketSand.lootOnce = true;
-		this.pocketSand.evade = 5;
+		this.pocketSand.evade = 2;
 
 		this.mantisClaw = new this.Item();
 		this.mantisClaw.name = 'Mantis Claw';
@@ -363,7 +363,7 @@
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 0]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];
-		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 0]]
+		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 50]];
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];
 		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 0]];

@@ -64,6 +64,16 @@
 		this.sword.attackSpeed = 2;
 		this.sword.slug = 'sword';
 
+		this.decentSword = new this.Item();
+		this.decentSword.name = 'Decent Sword';
+		this.decentSword.desc = '';
+		this.decentSword.buyable = true;
+		this.decentSword.removeAfterBuy = true;
+		this.decentSword.price = 5000;
+		this.decentSword.damage = 10;
+		this.decentSword.attackSpeed = 2;
+		this.decentSword.slug = 'decentSword';
+
 		this.bearClaws = new this.Item();
 		this.bearClaws.name = 'Bear Arms';
 		this.bearClaws.desc = 'Just like the founding fathers intended';
@@ -88,6 +98,7 @@
 
 		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
+		vm.itemDictionary['decentSword'] = [['item', this.sword], ['amount', 0]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
 		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];
@@ -404,7 +415,8 @@
 
 		vm.buyableItems = ['potion', 
 						   'sword', 
-						   'woodArmor', 
+						   'woodArmor',
+						   'decentSword', 
 						   'winterCoat', 
 						   'wizardsHair', 
 						   'compendium',
@@ -414,6 +426,7 @@
 		vm.weapons = [vm.itemDictionary['fists'],
 					  vm.itemDictionary['sword'],
 					  vm.itemDictionary['bearClaws'],
+					  vm.itemDictionary['decentSword'],
 					  vm.itemDictionary['minotaurHammer'],
 					  vm.itemDictionary['giantCarrot']];
 

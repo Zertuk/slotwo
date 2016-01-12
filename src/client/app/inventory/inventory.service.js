@@ -222,11 +222,24 @@
 			vm.progress.hasSweater = true;
 		};
 
+		this.piggyBank = new this.Item();
+		this.piggyBank.name = 'Piggy Bank';
+		this.piggyBank.slug = 'piggyBank';
+		this.piggyBank.desc = '';
+		this.piggyBank.message = '';
+		this.piggyBank.money = 5;
+		this.piggyBank.buyable = true;
+		this.piggyBank.removeAfterBuy = true;
+		this.piggyBank.price = 2500;
+
 		this.wizardsHair = new this.Item();
 		this.wizardsHair.name = 'Wizards Hair';
 		this.wizardsHair.slug = 'wizardsHair';
-		this.wizardsHair.desc = 'Rumored to grant the holder great luck.';
-		this.wizardsHair.message = 'A lock of bushy Wizard hair.';
+		this.wizardsHair.desc = 'Rumored to grant the holder great power.';
+		this.wizardsHair.message = '5% increased damage, 5% increased armor, 5% increased health';
+		this.wizardsHair.healthMult = 5;
+		this.wizardsHair.damageMult = 5;
+		this.wizardsHair.defenseMult = 5;
 		this.wizardsHair.buyable = true;
 		this.wizardsHair.price = 10000;
 		this.wizardsHair.removeAfterBuy = true;
@@ -306,6 +319,14 @@
 		this.pie.message = '+50 health';
 		this.pie.health = 50;
 
+		this.unicornHorn = new this.Item();
+		this.unicornHorn.name = 'Unicorn Horn';
+		this.unicornHorn.slug = 'unicornHorn';
+		this.unicornHorn.desc = '';
+		this.unicornHorn.message = '';
+		this.unicornHorn.health = '';
+
+		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 1]];
 		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 1]];
 		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
 		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 1]];
@@ -319,7 +340,7 @@
 		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 0]];
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 1]];
 		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];
-		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];
+		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 1]];
 
 
 		//misc
@@ -360,7 +381,8 @@
 						 vm.itemDictionary['bugExoskeleton'],
 						 vm.itemDictionary['mantisClaw'],
 						 vm.itemDictionary['bigHeavyWood'],
-						 vm.itemDictionary['pie']];
+						 vm.itemDictionary['pie'],
+						 vm.itemDictionary['piggyBank']];
 
 		vm.buyableItems = ['potion', 
 						   'sword', 
@@ -368,6 +390,7 @@
 						   'winterCoat', 
 						   'wizardsHair', 
 						   'compendium',
+						   'piggyBank',
 						   'sleepingBag'];
 
 		vm.weapons = [vm.itemDictionary['fists'],

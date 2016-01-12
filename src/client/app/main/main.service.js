@@ -20,7 +20,6 @@
         };
 
         vm.switchLevel = function(level) {
-            console.log('testage');
             //only works if level is unlocked
             var unlockCheck = vm.levelDictionary[level];
             if (vm.progress.levels[unlockCheck.slug]) {

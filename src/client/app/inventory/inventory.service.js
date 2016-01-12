@@ -335,7 +335,7 @@
 		this.snowmenBlessing.money = 2;
 
 
-		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 1]]
+		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 0]];
 		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 1]];
 		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 1]];
 		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];

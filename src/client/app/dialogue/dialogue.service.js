@@ -251,7 +251,9 @@
                 rip: {
                     text: '* Gary and his friends cast Snowmens Blessing on you, as a thank you for acknowledging them ;-; *',
                     special: function() {
-                        console.log('add snowmans blessng item');
+                        vm.itemDictionary['snowmenBlessing'][1][1] = 1;
+                        inventoryService.findVal();
+                        vm.player.maxHealth = vm.player.calculateTotalHealth();
                     },
                     continue: true,
                     next: 'introFinish',

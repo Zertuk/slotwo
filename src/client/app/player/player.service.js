@@ -17,8 +17,13 @@
         vm.progress = progressService.progress;
         this.Player = function() {
             this.rest = function() {
-                this.health = this.maxHealth;
-                messageService.updateMainMessage('You feel well rested!');
+                if (!this.active) {
+                    this.health = this.maxHealth;
+                    messageService.updateMainMessage('You feel well rested!');
+                }
+                else {
+                    messageService.updateMainMessage('You cant rest right now!', true);
+                }
             },
             this.abilities = {
                 keys: ['berserk', 'block', 'heal'],
@@ -273,7 +278,7 @@
             this.trueSelf = function(self) {
                 vm.itemDictionary[self][1][1] = 1;
             },
-            this.active = true,
+            this.active = false,
             this.ground = false,
             this.evade = this.calculateTotalEvasion(),
             this.health = 100,

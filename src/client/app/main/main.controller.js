@@ -29,7 +29,6 @@
                     initShop();
                 }
             }
-            console.log(vm.currentLocation.slug);
         };
         vm.switchLevel = function(level) {
             vm.currentLocation = mainService.switchLevel(level);

@@ -375,7 +375,7 @@
             this.maxHealth = 50;
             this.health = 50;
             this.damage = 10;
-            this.attackSpeed = 5;
+            this.attackSpeed = 4;
         };
         vm.Gorilla.prototype = new vm.Enemy();
 
@@ -390,7 +390,7 @@
             this.maxHealth = 40;
             this.health = 40;
             this.damage = 5;
-            this.attackSpeed = 3;
+            this.attackSpeed = 2;
         };
         vm.DustDevil.prototype = new vm.Enemy();
 

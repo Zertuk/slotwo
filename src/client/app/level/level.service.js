@@ -172,7 +172,7 @@
         this.ruins.enemyArray = [enemyService.Gorilla, enemyService.DustDevil];
         this.ruins.specialSpawn = [120, 12];
         this.ruins.specialSpawnChance = 50;
-        this.ruins.unitSpawnChance = [50, 100];
+        this.ruins.unitSpawnChance = [35, 75];
         this.ruins.enemyMax = 3;
         this.ruins.playerSpawn = [0, 13];
         this.ruins.enemySpawn = [250, 10];

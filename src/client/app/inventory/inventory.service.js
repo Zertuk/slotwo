@@ -66,7 +66,7 @@
 
 		this.decentSword = new this.Item();
 		this.decentSword.name = 'Decent Sword';
-		this.decentSword.desc = '';
+		this.decentSword.desc = 'It is alright';
 		this.decentSword.buyable = true;
 		this.decentSword.removeAfterBuy = true;
 		this.decentSword.price = 5000;

@@ -172,8 +172,8 @@
         this.ruins.enemyArray = [enemyService.Gorilla, enemyService.DustDevil];
         this.ruins.specialSpawn = [120, 12];
         this.ruins.specialSpawnChance = 50;
-        this.ruins.unitSpawnChance = [35, 75];
-        this.ruins.enemyMax = 3;
+        this.ruins.unitSpawnChance = [40, 80];
+        this.ruins.enemyMax = 4;
         this.ruins.playerSpawn = [0, 13];
         this.ruins.enemySpawn = [250, 10];
         this.ruins.name = 'The Desert';
@@ -258,7 +258,7 @@
 
         this.arena = new this.Level();
         this.arena.enemyArray = [enemyService.Mantis, enemyService.StickBug];
-        this.arena.unitSpawnChance = [45, 90];
+        this.arena.unitSpawnChance = [48, 95];
         this.arena.playerSpawn = [2, 18];
         this.arena.enemySpawn = [87, 18];
         this.arena.specialEnd = 87;

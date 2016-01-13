@@ -28,7 +28,7 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div ng-controller = "MainController as vm">
+    <div ng-controller = "MainController as vm" ng-cloak ng-hide = "!vm.player">
         <header>
             <div class = "row controls">
                 <div class = 'noactive button' ng-click = "vm.player.rest()" ng-if = " vm.progress.hasSleepingBag">Rest</div>

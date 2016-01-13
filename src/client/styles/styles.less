@@ -7,6 +7,10 @@
 @color_black: #191919;
 @color_white: #f7f7f7;
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 ::selection {
     background: @color_white;
     color: @color_black;
@@ -119,6 +123,7 @@ body {
     display: table;
     clear: both; 
 }
+
 div {
     box-sizing: border-box;
 }

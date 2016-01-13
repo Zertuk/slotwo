@@ -296,7 +296,7 @@
             this.maxHealth = 30;
             this.health = 30;
             this.damage = 20;
-            this.attackSpeed = 6;
+            this.attackSpeed = 7;
         };
         vm.Bear.prototype = new vm.Enemy();
 

@@ -149,7 +149,7 @@
 		this.ghostArmor.name = 'Spooky Aura';
 		this.ghostArmor.desc = 'Feels like a ghost hug <3';
 		this.ghostArmor.armor = 0;
-		this.ghostArmor.damageMult = 100;
+		this.ghostArmor.damageMult = 50;
 		this.ghostArmor.slug = 'ghostArmor';
 
 		this.potionArmor = new this.Item();

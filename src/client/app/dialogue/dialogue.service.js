@@ -473,7 +473,7 @@
                     }
                 },
                 askWorkAccept: {
-                    text: 'Great! Please let me know if you find anything.',
+                    text: 'Great! Please return here if you find anything.',
                     next: 'question',
                     master: 'treeKing',
                     continue: true,

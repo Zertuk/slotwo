@@ -275,13 +275,13 @@
             this.moneyMult = 1;
             this.deathMessage = 'A penguin has been demolished!';
             this.symbol = 'P';
-            this.maxHealth = '50';
-            this.health = 50;
+            this.maxHealth = '60';
+            this.health = 60;
             this.items = [vm.itemDictionary['polarArmor']];
-            this.itemChance = 50;
+            this.itemChance = 25;
             this.damage = 20;
             this.attackSpeed = 1;
-            this.moneyMult = 100;
+            this.moneyMult = 250;
         };
         vm.Penguin.prototype = new vm.Enemy();
 
@@ -306,10 +306,10 @@
             this.deathMessage = 'The Giant Mantis has been squashed!';
             this.symbol = 'M';
             this.items = [vm.itemDictionary['mantisClaw']];
-            this.itemChance = 10;
+            this.itemChance = 8;
             this.maxHealth = 40;
             this.health = 40;
-            this.damage = 20;
+            this.damage = 22;
             this.attackSpeed = 2;
             this.moneyMult = 100;
         };
@@ -321,10 +321,10 @@
             this.deathMessage = 'A Giant Stick Bug has been snapped!';
             this.symbol = 'T';
             this.items = [vm.itemDictionary['bugExoskeleton']];
-            this.itemChance = 10;
+            this.itemChance = 8;
             this.maxHealth = 60;
             this.health = 60;
-            this.damage = 10;
+            this.damage = 12;
             this.attackSpeed = 3;
             this.moneyMult = 100;
         };
@@ -335,13 +335,14 @@
             this.symbol = 'A';
             this.desc = 'desc';
             this.items = [vm.itemDictionary['abomItem']];
+            this.itemChance = 35;
             this.deathMessage = 'The Yeti has went extinct!';
             this.move = false;
             this.damage = 50;
             this.attackSpeed = 3;
             this.health = 1000;
             this.maxHealth = 1000;
-            this.moneyMult = 400;
+            this.moneyMult = 600;
         }
         vm.Yeti.prototype = new vm.Enemy();
 
@@ -350,7 +351,7 @@
             this.symbol = 'E';
             this.desc = 'desc';
             this.items = [vm.itemDictionary['potionArmor']];
-            this.itemChance = 25;
+            this.itemChance = 15;
             this.deathMessage = '';
             this.damage = 1;
             this.health = 10;
@@ -392,7 +393,7 @@
             this.symbol ='V';
             this.items = [vm.itemDictionary['pocketSand']];
             this.moneyMult = 50;
-            this.itemChance = 10;
+            this.itemChance = 5;
             this.maxHealth = 40;
             this.health = 40;
             this.damage = 5;
@@ -405,7 +406,7 @@
             this.desc = 'A Cute Deer';
             this.items = [vm.itemDictionary['deerAntlers']];
             this.deathMessage = 'A Deer has been killed.';
-            this.itemChance = 50;
+            this.itemChance = 35;
             this.moneyMult = 10;
             this.symbol = 'D';
             this.maxHealth = 15;
@@ -429,7 +430,7 @@
             this.name = 'Ghost of a Prisoner';
             this.deathMessage = 'The prisoners soul has been freed.';
             this.items = [vm.itemDictionary['ghostArmor']];
-            this.itemChance = 20;
+            this.itemChance = 10;
             this.symbol = '@';
             this.maxHealth = 15;
             this.health = 15;
@@ -545,24 +546,28 @@
             this.items = [vm.itemDictionary['snowmanHat']];
             this.itemChance = 25;
             this.deathMessage = 'A Snowman has been turned to slush!';
+            this.moneyMult = 500;
             this.symbol = '(';
-            this.damage = 1;
+            this.damage = 30;
             this.attackSpeed = 2;
             this.colBox = [5, 3];
             this.move = false;
+            this.health = 150;
+            this.maxHealth = 150;
         };
         vm.Snowman.prototype = new vm.Enemy();
 
         vm.SnowmanBoss = function SnowmanBoss() {
             this.name = 'Gary the Snowman';
+            this.moneyMult = 1000;
             this.desc = 'Just a regular giant guy made of snow.';
             this.items = [vm.itemDictionary['giantCarrot']];
             this.itemChance = 50;
             this.deathMessage = 'The Snowman Boss has been defeeated!';
             this.symbol = '\\';
-            this.damage = 1;
-            this.maxHealth = 30;
-            this.health = 30;
+            this.damage = 40;
+            this.maxHealth = 3000;
+            this.health = 3000;
             this.attackSpeed = 2;
             this.colBox = [20, 20];
             this.move = false;

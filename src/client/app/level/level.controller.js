@@ -153,8 +153,16 @@
 		//moves level to left after certain distance has been travelled
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
-			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
-				var left = (vm.player.position[0] - 50)*8;
+			var width = window.innerWidth;
+			var value = 50;
+			if (width < 500) {
+				value = 10;
+			}
+			else if (width < 1000) {
+				value = 30;
+			}
+			if (vm.player.position[0] > value && vm.player.position[0] < length - value) {
+				var left = (vm.player.position[0] - value)*8;
 				var elem = document.getElementById('levelwrap');
 				elem.style.left = '-' + left + 'px';
 			}

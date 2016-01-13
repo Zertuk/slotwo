@@ -118,6 +118,7 @@
 
 		//init level
 		function initLevel() {
+			resetRenderArea();
 			//runs if enemies are immobile and spawn at start, like the trees lvl 1
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
@@ -157,6 +158,11 @@
 				var elem = document.getElementById('levelwrap');
 				elem.style.left = '-' + left + 'px';
 			}
+		}
+
+		function resetRenderArea() {
+			var elem = document.getElementById('levelwrap');
+			elem.style.left = 'auto';
 		}
 
 		//function for default spawning, runs if rng works

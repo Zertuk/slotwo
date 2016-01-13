@@ -275,11 +275,11 @@
             this.moneyMult = 1;
             this.deathMessage = 'A penguin has been demolished!';
             this.symbol = 'P';
-            this.maxHealth = '30';
-            this.health = 30;
+            this.maxHealth = '50';
+            this.health = 50;
             this.items = [vm.itemDictionary['polarArmor']];
             this.itemChance = 50;
-            this.damage = 10;
+            this.damage = 20;
             this.attackSpeed = 1;
             this.moneyMult = 100;
         };
@@ -337,11 +337,11 @@
             this.items = [vm.itemDictionary['abomItem']];
             this.deathMessage = 'The Yeti has went extinct!';
             this.move = false;
-            this.damage = 15;
+            this.damage = 50;
             this.attackSpeed = 3;
-            this.health = 100;
-            this.maxHealth = 100;
-            this.moneyMult = 200;
+            this.health = 1000;
+            this.maxHealth = 1000;
+            this.moneyMult = 400;
         }
         vm.Yeti.prototype = new vm.Enemy();
 
@@ -505,11 +505,11 @@
             this.moneyMult = 250;
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
-            this.maxHealth = 750;
-            this.health = 750;
+            this.maxHealth = 800;
+            this.health = 800;
             this.damage = 20;
             this.regularDamage = 20;
-            this.attackSpeed = 10;
+            this.attackSpeed = 9;
             this.colBox = [15, 15];
             this.move = false;
             this.phases = true;
@@ -525,7 +525,7 @@
                     if (phaseCheck) {
                         thisEnemy.damage = thisEnemy.regularDamage;
                     }
-                }, 3000);
+                }, 3500);
             };
             this.phaseOneActivate = function() {
                 this.phaseActive('phaseTwo');

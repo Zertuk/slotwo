@@ -6,6 +6,7 @@
 @color_violet: #932ab6;
 @color_black: #191919;
 @color_white: #f7f7f7;
+@color_orange: #ffae1a;
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
@@ -31,6 +32,12 @@
     font-family: "Inconsolata";
     -webkit-font-smoothing: antialiased;
     /*font-weight: 400;*/
+}
+a {
+    color: @color_orange;
+}
+a:hover {
+    color: @color_white;
 }
 .actualworkers .worker p:last-of-type {
     margin-left: 20px;
@@ -118,7 +125,8 @@ body {
 }
 
 .container:after,
-.shoprow:after {
+.shoprow:after,
+footer:after {
     content: "";
     display: table;
     clear: both; 
@@ -186,6 +194,21 @@ div {
 .forge button, .campfire button {
     margin: 10px 0;
 }
+
+footer {
+    padding: 5px 50px 10px;
+}
+
+footer a {
+    float: right;
+    margin-left: 25px;
+    color: white;
+}
+
+footer a:hover {
+    color: @color_orange;
+}
+
 .half {
     float: left;
     margin-right: 2%;

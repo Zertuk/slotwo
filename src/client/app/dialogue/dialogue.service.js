@@ -702,7 +702,7 @@
                     buttons: {
                         offense: {  
                             text: 'The power of strength.  You can obtain anylife with enough power.',
-                            next: 'result',
+                            next: 'result2',
                             master: 'enchant',
                             active: true,
                             special: function() {
@@ -711,7 +711,7 @@
                         },
                         healing: {
                             text: 'Kindness, the knowledge that only compassion will bring happiness.',
-                            next: 'result',
+                            next: 'result2',
                             master: 'enchant',
                             active: true,
                             special: function() {
@@ -720,7 +720,7 @@
                         },
                         defense: {
                             text: 'Resolve.  No one can stop you if you are determined enough.',
-                            next: 'result',
+                            next: 'result2',
                             master: 'enchant',
                             active: true,
                             special: function() {
@@ -728,6 +728,12 @@
                             }
                         }
                     }
+                },
+                result2: {
+                    continue: true,
+                    text: 'Alright, that was the last question.  Lets see...',
+                    next: 'result',
+                    master: 'enchant'
                 },
                 result: {
                     continue: true,
@@ -737,6 +743,7 @@
                         var text = vm.enchant.dialogue.result.special();
                         return text;
                     },
+                    //pick quiz rezults
                     special: function() {
                         var top = [vm.quiz.offense, 'offense'];
                         if (top[0] < vm.quiz.defense) {
@@ -749,18 +756,12 @@
                         var trueSelf = top[1];
                         trueSelf = trueSelf.charAt(0).toUpperCase() + trueSelf.slice(1);
                         trueSelf = 'true' + trueSelf;
-                        vm.player.trueSelf(trueSelf);
+                        vm.itemDictionary[trueSelf][1][1] = 1;
                         //find text for dialogue
                         var text = vm.enchant.dialogue.result.pickText(top[1]);
                         vm.progress.quizTaken = true;
-                        vm.initAllDialogues();
-                        vm.player.trueSelf[top[1]] = true;
                         inventoryService.findVal();
-                        vm.player.maxHealth = vm.player.calculateTotalHealth();
-                        vm.player.damage = vm.player.calculateTotalDamage();
-                        vm.player.armorValue = vm.player.calculateTotalArmor();
-                        vm.player.maxHealth = vm.player.calculateTotalHealth();
-
+                        vm.initAllDialogues();
                         return text;
                     },
                     pickText: function(top) {

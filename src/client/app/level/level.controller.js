@@ -16,7 +16,6 @@
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
 		vm.enemySpawn = false;
-		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
 		vm.abilities = vm.player.abilities;
 		vm.itemDictionary = inventoryService.itemDictionary;
@@ -118,6 +117,7 @@
 
 		//init level
 		function initLevel() {
+			messageService.emptyLog();
 			resetRenderArea();
 			//runs if enemies are immobile and spawn at start, like the trees lvl 1
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
@@ -268,6 +268,7 @@
 		//master loop for levels
 		function levelLoop() {
 			var dead = false;
+			vm.messageLog = messageService.messageLog;
 			vm.player.attackSpeed  = vm.player.weapon.attackSpeed;
 			vm.player.damage = vm.player.calculateTotalDamage();
 			vm.player.armorValue = vm.player.calculateTotalArmor();

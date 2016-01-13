@@ -9,7 +9,6 @@
 
     /* @ngInject */
     function messageService() {
-    	this.messageLog = [];
         this.mainMessage = '';
         this.locationText = '';
         this.messageError = false;
@@ -25,11 +24,18 @@
             }
         };
 
+        this.emptyLog = function() {
+            this.messageLog = [];
+        };
+
         this.addMessage = function(message) {
+            if (this.messageLog.length > 2) {
+                this.messageLog.shift();
+            }
 			this.messageLog.push(message);
-			var elem = document.getElementById('log');
-  			elem.scrollTop = elem.scrollHeight;
-		};
+            var elem = angular.element('#log');
+            elem.scrollTop = elem.height;
+        };
         ///////////////
 
         function func() {

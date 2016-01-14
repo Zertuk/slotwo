@@ -226,6 +226,11 @@
 				entity = new vm.currentLevel.enemyArray[0];
 			}
 			var spawn = [];
+			var currentTile = vm.currentLevel.ascii[position[1]][position[0]];
+			if (currentTile === '_') {
+				entity.prev = true;
+				entity.prevCheck = true;
+			}
 			spawn[0] = position[0];
 			spawn[1] = position[1];
 			entity.position = spawn;

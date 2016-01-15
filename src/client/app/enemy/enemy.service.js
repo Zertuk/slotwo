@@ -143,8 +143,12 @@
                     this.alive = false;
                     this.itemDrop();
                     this.health = this.fullHealth;
-                    // map[this.position[1]] = setCharAt(map[this.position[1]], this.position[0], '');
-                    this.symbol = '';
+                    if (this.prevCheck) {
+                        this.symbol = '_'
+                    }
+                    else {
+                        this.symbol = '';
+                    }
                 } 
             },
             this.itemDrop = function() {
@@ -189,22 +193,9 @@
                         current.prevCheck = false;
                     }
                     if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
-                        if (current.symbol === 'Y') {
-                            current.inCombat = false;
-                            for (var i = 0; i < array.length; i++) {
-                                if ((map[current.position[1]][current.position[0] + current.speed]) === (array[i].symbol)) {
-                                    current.inCombat = true;
-                                }
-                            }
-                            if (!current.inCombat) {
-                                current.updatePosition(current.position, current.positionOld, current.speed, -1);
-                            }
-                        }
-                        else {
-                            vm.watch = true;
-                            battle(enemyArray[0], current, map);
-                            current.inCombat = true;
-                        }
+                        vm.watch = true;
+                        battle(enemyArray[0], current, map);
+                        current.inCombat = true;
                     }
                     //collission detection y
                     else if ((map[current.position[1] + 1][current.position[0]] === ' ') && !current.prevCheck && !current.inCombat) {

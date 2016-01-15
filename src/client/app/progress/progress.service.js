@@ -47,7 +47,7 @@
                 dungeon: false,
                 ruins: false,
                 desert: false,
-                bridge: false,
+                bridge: true,
                 snow: false,
                 shroom: false,
                 wizard: false,

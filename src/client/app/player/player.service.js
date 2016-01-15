@@ -171,6 +171,15 @@
                     return false;
                 }
             },
+            this.prevCheckFunc = function(current) {
+                if (current.prev) {
+                    current.prevCheck = true;
+                    current.prev = false;
+                }
+                else {
+                    current.prevCheck = false;
+                }
+            },
             //needs rework
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
@@ -178,19 +187,7 @@
                 if (current.alive) {
                     current.checkLevelEnd(current.position, map);
                     var groundedLastTurn = this.checkGrounded(current);
-                    if (inCombat) {
-                        console.log('incombat');
-                    }
-                    else if (current.prev) {
-                        console.log('current prev');
-                        current.prevCheck = true;
-                        current.prev = false;
-                    }
-                    else {
-                        console.log('current prev false');
-                        current.prevCheck = false;
-                    }
-                    
+                    this.prevCheckFunc(current);
                     for (var i = 0; i < enemyArray.length; i++) {
                         if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
                             inCombat = true;

@@ -196,8 +196,10 @@
                     current.prevCheckFunc(current);
                     current.checkForEnemy(current, enemyArray, map);
                     //collission detection y
+                    console.log(current.prevCheck);
                     if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
+                        //check for replaceable tiles when falling
                         if (map[current.position[1]][current.position[0]] === '_') {
                             current.prev = true;
                         }
@@ -291,8 +293,8 @@
             this.active = false,
             this.ground = false,
             this.evade = this.calculateTotalEvasion(),
-            this.health = 100,
-            this.baseHealth = 100,
+            this.health = 10000,
+            this.baseHealth = 10000,
             this.maxHealth = this.calculateTotalHealth(),
             this.regen = 1,
             this.alive = true,

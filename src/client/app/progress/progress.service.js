@@ -43,7 +43,7 @@
             levels: {
                 treeCity: false,
                 treeOne: true,
-                treeTwo: false,
+                treeTwo: true,
                 dungeon: false,
                 ruins: false,
                 desert: false,

@@ -196,8 +196,15 @@
                     }
                     //collission detection y
                     else if ((map[current.position[1] + 1][current.position[0]] === ' ') && !current.prevCheck && !current.inCombat) {
+                        if (map[current.position[1]][current.position[0]] === '_') {
+                            current.prev = true;
+                            current.prevCheck = true;
+                            console.log('this runs')
+                        }
+                        else {
+                            console.log(map[current.position[1]+1][current.position[0]]);
+                        }
                         current.updatePosition(current.position, current.positionOld, 0, 1);
-
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
@@ -220,11 +227,12 @@
                                 cantMove = true;
                             }
                         }
-                        if (!cantMove) {
-                            this.updatePosition(current.position, current.positionOld, current.speed, -1);                            
-                        }
                         if (current.prevCheck) {
                             current.prev = true;
+                        }
+                        if (!cantMove) {
+                            current.prev = false;
+                            this.updatePosition(current.position, current.positionOld, current.speed, -1);                            
                         }
                     }
                 }

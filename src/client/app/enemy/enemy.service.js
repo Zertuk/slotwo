@@ -195,14 +195,9 @@
                         current.inCombat = true;
                     }
                     //collission detection y
-                    else if ((map[current.position[1] + 1][current.position[0]] === ' ') && !current.prevCheck && !current.inCombat) {
-                        if (map[current.position[1]][current.position[0]] === '_') {
+                    else if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_'))&& !current.prevCheck && !current.inCombat) {
+                        if (map[current.position[1] + 1][current.position[0]] === '_') {
                             current.prev = true;
-                            current.prevCheck = true;
-                            console.log('this runs')
-                        }
-                        else {
-                            console.log(map[current.position[1]+1][current.position[0]]);
                         }
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                     }
@@ -337,7 +332,7 @@
         vm.Yeti.prototype = new vm.Enemy();
 
         vm.Alchemist = function Alchemist() {
-            this.name = 'Unicorn Alchemist';
+            this.name = 'Underground Alchemist';
             this.symbol = 'E';
             this.desc = 'desc';
             this.items = [vm.itemDictionary['potionArmor']];
@@ -350,7 +345,7 @@
         vm.Alchemist.prototype = new vm.Enemy();
 
         vm.Unicorn = function Unicorn() {
-            this.name = 'Unicorn';
+            this.name = 'Underground Henchman';
             this.desc = 'desc';
             this.symbol = 'U';
             this.items = [vm.itemDictionary['unicornHorn']];

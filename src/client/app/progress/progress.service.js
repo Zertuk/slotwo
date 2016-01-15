@@ -41,7 +41,7 @@
             wizardMet: false,
             wizardTask: false,
             levels: {
-                treeCity: false,
+                treeCity: true,
                 treeOne: true,
                 treeTwo: true,
                 dungeon: false,
@@ -49,7 +49,7 @@
                 desert: false,
                 bridge: true,
                 snow: false,
-                shroom: false,
+                shroom: true,
                 wizard: false,
                 robot: false,
                 arena: false,

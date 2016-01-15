@@ -194,10 +194,10 @@
                 if (current.alive) {
                     current.checkLevelEnd(current.position, map);
                     var groundedLastTurn = current.checkGrounded(current);
+                    var enemyLastTurn = false;
                     current.prevCheckFunc(current);
                     current.checkForEnemy(current, enemyArray, map);
                     //collission detection y
-                    console.log(current.prev);
                     if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                         //check for replaceable tiles when falling
@@ -208,8 +208,9 @@
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
-                        //need otherwise tile player is in isnt replaced
-                        if (current.prevCheck) {
+                        //when enemy is killed on tile, space left over so prev breaks.
+                        //need to check that prev was active last turn and enemy was active last turn
+                        if (current.prevCheck&&current.enemyLastTurn) {
                             current.prev = true;
                         }
                     }
@@ -218,15 +219,10 @@
                         current.prev = true;
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
-                    else if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
-                        if (current.symbol === 'Y') {
-                            if (!current.inCombat) {
-                                current.updatePosition(current.position, current.positionOld, current.speed, -1);
-                            }
-                        }
-                    }
                     else if (current.inCombat) {
-                        if (current.inCombat&&current.prevCheck) {
+                        current.enemyLastTurn = true;
+                        enemyLastTurn = true;
+                        if (current.prevCheck) {
                             current.prev = true;
                         }
                     }
@@ -234,6 +230,10 @@
                     else if (!current.inCombat) {
                         current.updatePosition(current.position, current.positionOld, current.speed, -1);                            
                     }
+                    if (!enemyLastTurn) {
+                        current.enemyLastTurn = false;
+                    }
+
                 }   
                 else {
                     messageService.updateMainMessage('You have been slain.', true);

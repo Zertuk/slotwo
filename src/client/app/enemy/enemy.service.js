@@ -176,9 +176,6 @@
                     if ((map[current.position[1]][current.position[0] + current.speed] === 'Y') || current.inCombat) {
                         current.inCombat = true;
                     }
-                    if (current.checkLevelEnd(current.position, map)) {
-                        return;
-                    }
                     if (current.grounded) {
                         current.grounded = false;
                         var groundedLastTurn = true;
@@ -200,6 +197,7 @@
                     //collission detection y
                     else if ((map[current.position[1] + 1][current.position[0]] === ' ') && !current.prevCheck && !current.inCombat) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
+
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
@@ -211,14 +209,9 @@
                         this.updatePosition(current.position, current.positionOld, current.speed, 0);
                     }
                     else if (map[current.position[1] + 1][current.position[0]] === '_') {
-                        current.prev = true;
+                        current.prev = false;
                         this.updatePosition(current.position, current.positionOld, 0, 1);
                     }
-                    // else {
-                    //     setTimeout(function() {
-                    //         var wait = true;
-                    //     }, 1000);
-                    // }
                     //move up and over if nothing else possible
                     else {
                         var cantMove = false;
@@ -234,11 +227,6 @@
                             current.prev = true;
                         }
                     }
-                    // if (current.prevCheck) {
-                    //     console.log('test');
-                    //     prevTile(current.positionOld, map);
-                    // }
-                    // $scope.$apply();
                 }
                 else if (current.alive) {
                     this.battleCheck(enemyArray[0], current, map);

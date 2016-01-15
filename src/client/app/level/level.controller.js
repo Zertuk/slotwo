@@ -330,7 +330,7 @@
 					createEnemy();
 				}
 				levelRenderArea();
-				$timeout(levelLoop, 1000);
+				$timeout(levelLoop, 125);
 			}
 			else if (vm.player.levelComplete && vm.player.alive) {
 				if (vm.currentLevel.unlock) {

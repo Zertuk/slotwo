@@ -230,6 +230,9 @@
                         if (!cantMove) {
                             this.updatePosition(current.position, current.positionOld, current.speed, -1);                            
                         }
+                        if (current.prevCheck) {
+                            current.prev = true;
+                        }
                     }
                     // if (current.prevCheck) {
                     //     console.log('test');

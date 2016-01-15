@@ -202,17 +202,17 @@
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                         //check for replaceable tiles when falling
                         if (map[current.position[1]][current.position[0]] === '_') {
-                            current.prevCheck = true;
+                            current.prev = true;
                         }
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
-                        current.updatePosition(current.position, current.positionOld, current.speed, 0);
-                        //when enemy is killed on tile, space left over so prev breaks.
-                        //need to check that prev was active last turn and enemy was active last turn
                         if (current.prevCheck&&current.enemyLastTurn) {
                             current.prev = true;
                         }
+                        current.updatePosition(current.position, current.positionOld, current.speed, 0);
+                        //when enemy is killed on tile, space left over so prev breaks.
+                        //need to check that prev was active last turn and enemy was active last turn
                     }
                     //collision detection with replacable tiles
                     else if (map[current.position[1]][current.position[0] + current.speed] === '_') {
@@ -233,7 +233,6 @@
                     if (!enemyLastTurn) {
                         current.enemyLastTurn = false;
                     }
-
                 }   
                 else {
                     messageService.updateMainMessage('You have been slain.', true);

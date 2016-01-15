@@ -315,14 +315,14 @@
 								newArray.push(vm.unitArray[j]);
 							}
 							else {
-								updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, ' ', vm.unitArray[i].prev);
+								updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, ' ', vm.unitArray[i].prevCheck);
 								dead = true;
 							}
 						}
 						vm.unitArray = newArray;
 					}
 					if (typeof vm.unitArray[i] !== 'undefined') {
-						updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prev);
+						updateMap(vm.unitArray[i].position, vm.unitArray[i].positionOld, vm.currentLevel.ascii, vm.unitArray[i].symbol, vm.unitArray[i].prevCheck);
 					}
 					vm.currentEnemy = enemyService.currentEnemy;
 				}

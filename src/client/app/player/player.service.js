@@ -196,58 +196,43 @@
                     current.prevCheckFunc(current);
                     current.checkForEnemy(current, enemyArray, map);
                     //collission detection y
-                    console.log(current.prevCheck);
+                    console.log(current.prev);
                     if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                         //check for replaceable tiles when falling
                         if (map[current.position[1]][current.position[0]] === '_') {
-                            current.prev = true;
+                            current.prevCheck = true;
                         }
+                        console.log('y runs')
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
+                        console.log('emtpy x runs')
                     }
                     //collision detection with replacable tiles
                     else if (map[current.position[1]][current.position[0] + current.speed] === '_') {
                         current.prev = true;
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
+                        console.log('_ x runs');
                     }
                     else if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
                         if (current.symbol === 'Y') {
-                            var inCombat = false;
-                            for (var i = 0; i < enemyArray.length; i++) {
-                                if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
-                                    inCombat = true;
-                                }
-                            }
-                            if (!inCombat) {
+                            console.log('player thing runs');
+                            if (!current.inCombat) {
                                 current.updatePosition(current.position, current.positionOld, current.speed, -1);
                             }
                         }
                     }
-                    // else {
-                    //     setTimeout(function() {
-                    //         var wait = true;
-                    //     }, 1000);
-                    // }
-                    //move up and over if nothing else possible
-                    else {
-                        var cantMove = false;
-                        for (var i = 0; i < enemyArray.length; i++) {
-                            if (map[current.position[1]][current.position[0] + current.speed] === enemyArray[i].symbol) {
-                                cantMove = true;
-                            }
-                        }
-                        if (!cantMove) {
-                            current.updatePosition(current.position, current.positionOld, current.speed, -1);                            
+                    else if (current.inCombat) {
+                        if (current.inCombat&&current.prevCheck) {
+                            current.prev = true;
                         }
                     }
-                    // if (current.prevCheck) {
-                    //     console.log('test');
-                    //     prevTile(current.positionOld, map);
-                    // }
-                    // $scope.$apply();
+                    //move up and over if not in combat
+                    else if (!current.inCombat) {
+                        current.updatePosition(current.position, current.positionOld, current.speed, -1);                            
+                    }
                 }   
                 else {
                     messageService.updateMainMessage('You have been slain.', true);

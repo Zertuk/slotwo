@@ -13,6 +13,7 @@
 
         ////////////////
         var vm = this;
+        var incombat = false;
         vm.itemDictionary = inventoryService.itemDictionary;
         vm.progress = progressService.progress;
         this.Player = function() {
@@ -161,21 +162,32 @@
                     }
                 }
             },
+            this.checkGrounded = function(current) {
+                if (current.grounded) {
+                    current.grounded = false;
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
             //needs rework
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 current.levelComplete = false;
                 if (current.alive) {
                     current.checkLevelEnd(current.position, map);
-                    if (current.grounded) {
-                        current.grounded = false;
-                        var groundedLastTurn = true;
+                    var groundedLastTurn = this.checkGrounded(current);
+                    if (inCombat) {
+                        console.log('incombat');
                     }
-                    if (current.prev) {
+                    else if (current.prev) {
+                        console.log('current prev');
                         current.prevCheck = true;
                         current.prev = false;
                     }
                     else {
+                        console.log('current prev false');
                         current.prevCheck = false;
                     }
                     
@@ -184,10 +196,8 @@
                             inCombat = true;
                         }
                     }
-                    if (inCombat) {
-                    }
                     //collission detection y
-                    else if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
+                    if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
                         if (map[current.position[1]][current.position[0]] === '_') {
                             current.prev = true;

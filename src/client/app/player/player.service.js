@@ -13,7 +13,6 @@
 
         ////////////////
         var vm = this;
-        var incombat = false;
         vm.itemDictionary = inventoryService.itemDictionary;
         vm.progress = progressService.progress;
         this.Player = function() {
@@ -180,19 +179,22 @@
                     current.prevCheck = false;
                 }
             },
+            this.checkForEnemy = function(current, enemyArray, map) {
+                for (var i = 0; i < enemyArray.length; i++) {
+                    if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
+                        current.inCombat = true;
+                    }
+                }
+            },
             //needs rework
             this.collisionCheck = function(map, enemyArray) {
                 var current = this;
                 current.levelComplete = false;
                 if (current.alive) {
                     current.checkLevelEnd(current.position, map);
-                    var groundedLastTurn = this.checkGrounded(current);
-                    this.prevCheckFunc(current);
-                    for (var i = 0; i < enemyArray.length; i++) {
-                        if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
-                            inCombat = true;
-                        }
-                    }
+                    var groundedLastTurn = current.checkGrounded(current);
+                    current.prevCheckFunc(current);
+                    current.checkForEnemy(current, enemyArray, map);
                     //collission detection y
                     if (((map[current.position[1] + 1][current.position[0]] === ' ')||(map[current.position[1] + 1][current.position[0]] === '_')) && !current.prevCheck) {
                         current.updatePosition(current.position, current.positionOld, 0, 1);
@@ -285,6 +287,7 @@
             this.trueSelf = function(self) {
                 vm.itemDictionary[self][1][1] = 1;
             },
+            this.inCombat = false,
             this.active = false,
             this.ground = false,
             this.evade = this.calculateTotalEvasion(),

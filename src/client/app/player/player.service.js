@@ -180,6 +180,7 @@
                 }
             },
             this.checkForEnemy = function(current, enemyArray, map) {
+                current.inCombat = false;
                 for (var i = 0; i < enemyArray.length; i++) {
                     if ((map[current.position[1]][current.position[0] + current.speed]) === (enemyArray[i].symbol)) {
                         current.inCombat = true;
@@ -203,22 +204,22 @@
                         if (map[current.position[1]][current.position[0]] === '_') {
                             current.prevCheck = true;
                         }
-                        console.log('y runs')
                     }
                      //collision detection x
                     else if (map[current.position[1]][current.position[0] + current.speed] === ' ') {
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
-                        console.log('emtpy x runs')
+                        //need otherwise tile player is in isnt replaced
+                        if (current.prevCheck) {
+                            current.prev = true;
+                        }
                     }
                     //collision detection with replacable tiles
                     else if (map[current.position[1]][current.position[0] + current.speed] === '_') {
                         current.prev = true;
                         current.updatePosition(current.position, current.positionOld, current.speed, 0);
-                        console.log('_ x runs');
                     }
                     else if ((map[current.position[1]][current.position[0] + current.speed] === 'Y')) {
                         if (current.symbol === 'Y') {
-                            console.log('player thing runs');
                             if (!current.inCombat) {
                                 current.updatePosition(current.position, current.positionOld, current.speed, -1);
                             }

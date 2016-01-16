@@ -518,6 +518,7 @@
                     continue: true,
                     special: function() {
                         vm.progress.treeKingWorkHandIn = true;
+                        vm.progress.levels.monk = true;
                         vm.progress.canLearn = vm.progress.canLearn + 1;
                         vm.initAllDialogues();
                     }

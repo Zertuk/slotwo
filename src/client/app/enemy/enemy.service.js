@@ -411,6 +411,34 @@
         };
         vm.TreeWarrior.prototype = new vm.Enemy();
 
+        vm.Crab = function Crab() {
+            this.move = false;
+            this.name = 'Huge Crab';
+            this.deathMessage = 'RIP the crab is toast.';
+            this.items = [vm.itemDictionary['crabArmor']];
+            this.symbol = ';';
+            this.moneyMult = 200;
+            this.maxHealth = 150;
+            this.health = 150;
+            this.damage = 50;
+            this.colBox = [10, 5];
+            this.attackSpeed = 5;
+        }
+        vm.Crab.prototype = new vm.Enemy();
+
+        vm.Oyster = function Oyster() {
+            this.move = false;
+            this.name ='Oyster?';
+            this.moneyMult = 100;
+            this.symbol = 'o'
+            this.desc = 'Or is it a Clam?!';
+            this.deathMessage = 'An Oyster? has been shucked!'
+            this.maxHealth = 100;
+            this.health = 100;
+            this.damage = 20;
+        }
+        vm.Oyster.prototype = new vm.Enemy();
+
         vm.Ghost = function Ghost() {
             this.name = 'Ghost of a Prisoner';
             this.deathMessage = 'The prisoners soul has been freed.';

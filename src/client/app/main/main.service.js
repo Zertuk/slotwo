@@ -101,6 +101,11 @@
         vm.mainMap = new vm.Location();
         vm.mainMap.name = 'Map';
         vm.mainMap.initClicks = function() {
+            //cabin
+            vm.click(this, 'A Cabin', 'cabin', 160, 5, 30, 9);
+            //northwastes
+            vm.click(this, 'Northern Wastes', 'northernWastes', 150, 15, 50, 15, true);
+            vm.click(this, 'Northern Wastes', 'northernWastes', 130, 15, 19, 10, true);
             //lich
             vm.click(this, 'Lich', 'lich', 105, 1, 1, 1);
             //robot

@@ -88,10 +88,17 @@
 		this.minotaurHammer.attackSpeed = 4;
 		this.minotaurHammer.slug = 'minotaurHammer';
 
+		this.claws = new this.Item();
+		this.claws.name = 'Crab Claws';
+		this.claws.slug = 'claws';
+		this.claws.desc = 'Big, Meaty, Claws!';
+		this.claws.damage = 45;
+		this.claws.attackSpeed = 4;
+
 		this.giantCarrot = new this.Item();
 		this.giantCarrot.name = 'Giant Carrot';
 		this.giantCarrot.desc = 'Formerly known as Garys nose';
-		this.giantCarrot.damage = 5;
+		this.giantCarrot.damage = 10;
 		this.giantCarrot.attackSpeed = 1;
 		this.giantCarrot.slug = 'giantCarrot';
 		this.giantCarrot.lootOnce = true;
@@ -101,6 +108,7 @@
 		vm.itemDictionary['decentSword'] = [['item', this.decentSword], ['amount', 0]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
+		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 0]];
 		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];
 
 
@@ -233,7 +241,12 @@
 			vm.progress.hasSweater = true;
 		};
 
-
+		this.pearl = new this.Item();
+		this.pearl.name = 'Shiny Pearl';
+		this.pearl.slug = 'pearl';
+		this.pearl.desc = '';
+		this.pearl.message = 'Holder gains +5 gold a second';
+		this.pearl.money = 5;
 
 		this.piggyBank = new this.Item();
 		this.piggyBank.name = 'Cat Bank';
@@ -365,6 +378,7 @@
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 50]];
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
+		vm.itemDictionary['pearl'] = [['item', this.pearl], ['amount, 0']];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];
 		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 0]];
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 0]];
@@ -408,6 +422,7 @@
 						 vm.itemDictionary['snowmanHat'],
 						 vm.itemDictionary['sleepingBag'],
 						 vm.itemDictionary['gorillaFoot'],
+						 vm.itemDictionary['pearl'],
 						 vm.itemDictionary['pocketSand'],
 						 vm.itemDictionary['bugExoskeleton'],
 						 vm.itemDictionary['mantisClaw'],
@@ -433,6 +448,7 @@
 					  vm.itemDictionary['bearClaws'],
 					  vm.itemDictionary['decentSword'],
 					  vm.itemDictionary['minotaurHammer'],
+					  vm.itemDictionary['claws'],
 					  vm.itemDictionary['giantCarrot']];
 
 

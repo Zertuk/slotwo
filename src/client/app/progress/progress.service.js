@@ -49,6 +49,7 @@
                 desert: false,
                 bridge: true,
                 snow: false,
+                snowNorth: true,
                 shroom: true,
                 wizard: false,
                 robot: false,

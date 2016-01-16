@@ -89,10 +89,16 @@
 			vm.abilities.resetAbilities();
 		}
 
+		function prevReset() {
+			vm.player.prev = false;
+			vm.player.prevCheck = false;
+		}
+
 		//sets everything to default when called
 		vm.resetLevel = function() {
 			enemyService.currentEnemy = undefined;
 			vm.currentLevel = levelService.currentLevel;
+			prevReset();
 			resetAbilities();
 			specialEnd();
 			vm.unitArray = [playerService.player];

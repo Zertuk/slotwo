@@ -197,7 +197,7 @@
                                                                                                                                                                                                                                 
       this.sea = new this.Level();
       this.sea.enemyArray = [];
-      this.sea.playerSpawn = [0, 15];
+      this.sea.playerSpawn = [0, 14];
       this.sea.name = 'Going for a Swim';
       this.sea.slug = 'sea';
       this.sea.defaultAscii =["                                                                                                                                                                                                                                 ",

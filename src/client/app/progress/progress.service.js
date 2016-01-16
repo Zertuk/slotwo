@@ -47,6 +47,7 @@
                 dungeon: false,
                 ruins: false,
                 desert: false,
+                sea: true,
                 bridge: true,
                 snow: false,
                 snowNorth: true,

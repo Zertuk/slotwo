@@ -351,6 +351,7 @@
         this.levelDictionary['treeTwo'] = this.treeTwo;
         this.levelDictionary['bridge']  = this.bridge;
         this.levelDictionary['snow'] = this.snow;
+        this.levelDictionary['northernWastes'] = this.northernWastes;
         this.levelDictionary['ruins'] = this.ruins;
         this.levelDictionary['dungeon'] = this.dungeon;
         this.levelDictionary['shroom'] = this.shroom;

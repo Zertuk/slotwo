@@ -371,6 +371,34 @@
         };
         vm.Gorilla.prototype = new vm.Enemy();
 
+        vm.GorillaSnow = function GorillaSnow() {
+            this.name = 'Snow Gorilla';
+            this.desc = 'desc';
+            this.deathMessage = 'death';
+            this.symbol = 'G';
+            this.items = [];
+            this.moneyMult = 300;
+            this.itemChance = 20;
+            this.maxHealth = 200;
+            this.health = 200;
+            this.damage = 50;
+            this.attackSpeed = 4;
+        };
+
+        vm.Mammoth = function Mammoth() {
+            this.name = 'Mini Mammoth';
+            this.desc = 'desc';
+            this.deathMessage = 'death';
+            this.symbol = 'M';
+            this.items = [];
+            this.moneyMult = 400;
+            this.itemChance = 25;
+            this.maxHealth = 200;
+            this.health = 200;
+            this.damage = 100;
+            this.attackspeed = 4;
+        }
+
         vm.DustDevil = function DustDevil() {
             this.name = 'Dust Devil';
             this.desc = 'Sand Attack!';
@@ -415,9 +443,10 @@
             this.move = false;
             this.name = 'Huge Crab';
             this.deathMessage = 'RIP the crab is toast.';
-            this.items = [vm.itemDictionary['crabArmor']];
+            this.desc = 'Loves money'
+            this.items = [vm.itemDictionary['moneyGenerator']];
             this.symbol = ';';
-            this.moneyMult = 200;
+            this.moneyMult = 500;
             this.maxHealth = 150;
             this.health = 150;
             this.damage = 50;

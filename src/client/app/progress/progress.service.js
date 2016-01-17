@@ -44,7 +44,7 @@
                 treeCity: true,
                 treeOne: true,
                 treeTwo: true,
-                dungeon: false,
+                dungeon: true,
                 ruins: false,
                 desert: false,
                 sea: true,
@@ -56,6 +56,12 @@
                 robot: false,
                 arena: false,
                 monk: false
+            },
+            enemies: {
+
+            },
+            looted: {
+                
             }
         }
     }

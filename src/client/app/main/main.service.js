@@ -135,7 +135,7 @@
             //arena
             vm.click(this, 'The Arena', 'arena', 80, 30, 20, 10);
         	//tree city
-        	vm.click(this, 'Tree City', 'treeCity', 33, 18, 15, 10);
+        	vm.click(this, 'Tresabor', 'treeCity', 33, 18, 15, 10);
         	//tree two
         	vm.click(this, 'Approach the Tree', 'treeTwo', 30, 29, 30, 10, true);
         	//treeone 
@@ -197,10 +197,10 @@
 
 
         vm.treeCity = new vm.Location();
-        vm.treeCity.name = 'Tree City';
+        vm.treeCity.name = 'Tresabor';
         vm.treeCity.slug = 'treeCity';
         vm.treeCity.prev = 'mainMap';
-        vm.treeCity.prevName = 'The Map';
+        vm.treeCity.prevName = 'Map';
 		vm.treeCity.ascii =   ["        ///////\\\\\\\\\\\\\\         //////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ///////\\\\\\\\\\\\\\             |       |           |              ",                                                                        
 							   "      /////////\\\\\\\\\\\\\\\\\\     ////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////\\\\\\\\\\\\              |       |           |              ",                                                                        
 							   "       ////////\\\\\\\\\\\\\\              |                   |    ///////\\\\\\\\\\\\\\             |       |     |     |              ",                                                                 
@@ -235,12 +235,12 @@
 		vm.treeSecret.name = '? ? ?';
 		vm.treeSecret.ascii = ['tree secret'];
 		vm.treeSecret.prev = 'treeCity';
-		vm.treeSecret.prevName = 'Tree City';
+		vm.treeSecret.prevName = 'Tresabor';
 
 		vm.treeShop = new vm.Location();
 		vm.treeShop.name = 'Tree Shop';
 		vm.treeShop.prev = 'treeCity';
-        vm.treeShop.prevName = 'Tree City';
+        vm.treeShop.prevName = 'Tresabor';
         vm.treeShop.ascii = ["                                                                                              ___________________________| |_____-'-              ",                                                                                                                                                 
                              "                                                                                             /    ____________________   |          |             ",                                                                                                                                                  
                              "                                                                                             \\___________________________|  _____   |             ",                                                                                                                                                    
@@ -292,7 +292,7 @@
         vm.treeInn.specialText = true;
         vm.treeInn.dialogue = dialogueService.enchant;
 		vm.treeInn.prev = 'treeCity';
-		vm.treeInn.prevName = 'Tree City';
+		vm.treeInn.prevName = 'Tresabor';
 
 		vm.treeSlums = new vm.Location();
 		vm.treeSlums.name = 'The Slums';
@@ -302,7 +302,7 @@
 			vm.click(this, 'Suspicious Men', 'slumsThugs', 42, 11, 13, 5);
 		}
 		vm.treeSlums.prev = 'treeCity';
-		vm.treeSlums.prevName = 'Tree City';
+		vm.treeSlums.prevName = 'Tresabor';
 		vm.treeSlums.ascii = ["            `                              ////\\\\\\\\                                                   ///\\\\\\                                      /////\\\\\\\\\\              ",                                                      
 								"           `                                ///\\\\\\                                                   ////\\\\\\\\\\                                  ///////\\\\\\\\\\\\\\            ",                                                      
 								"             `                            /////\\\\\\\\\                                                //////\\\\\\\\\\\\\\                                 //////\\\\\\\\\\\\\\            ",                                                      
@@ -419,7 +419,27 @@
         vm.monk.prevName = 'Map';
         vm.monk.specialText = true;
         vm.monk.dialogue = dialogueService.monk;
-        vm.monk.ascii = ["monk ascii here"];
+        vm.monk.ascii = ["                                                                                                                         ",                                                                                                                                                              
+                         "                                                                                                     _____               ",                                                                                                                                                                                               
+                         "                                                                                                    /     \\              ",                                                                                                                                                                                      
+                         "                                                                                                    |.  . |)             ",                                                                                                                                                                                         
+                         "                                                                                                    | '_  /              ",                                                                                                                                                                                         
+                         "                                                                                                     \\___/|              ",                                                                                                                                                                                             
+                         "                                                                                                  ____|   |___           ",                                                                                                                                                                                                  
+                         "                                                                                                 |    \\   /   |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |     \\ /    |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |  |   \\   | |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |  |    \\  | |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |  |     \\ | |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |  |      \\| |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |  |       | |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |  |_______| |          ",                                                                                                                                                                                                  
+                         "                                                                                                 |__|       |_|          ",                                                                                                                                                                                                  
+                         "                                                                                                 | |        | |          ",                                                                                                                                                                                                  
+                         "                                                                                                 '.|        |.'          ",                                                                                                                                                                                                    
+                         "                                                                                                   |        |            ",                                                                                                                                                                                                  
+                         "                                                                                                   |        |            "];                                                                                                                                                                                                  
+
 
         vm.cabin = new vm.Location();
         vm.cabin.name = 'A Cabin';
@@ -527,7 +547,7 @@
 		vm.treeGovernment = new vm.Location();
 		vm.treeGovernment.name = 'King Treemaster';
 		vm.treeGovernment.prev = 'treeCity';
-		vm.treeGovernment.prevName = 'Tree City';
+		vm.treeGovernment.prevName = 'Tresabor';
 		vm.treeGovernment.specialText = true;
 		vm.treeGovernment.dialogue = dialogueService.treeKing;
 		vm.treeGovernment.ascii =   ["                                                                                                  __/                                                       ",                                                                                                                                             

@@ -108,7 +108,7 @@
 		vm.itemDictionary['decentSword'] = [['item', this.decentSword], ['amount', 0]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
-		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 0]];
+		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 1]];
 		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];
 
 
@@ -425,7 +425,7 @@
 
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
 		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]];
-		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 0]];
+		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 1]];
 
 
 		////////////////

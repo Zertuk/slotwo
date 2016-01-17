@@ -73,12 +73,22 @@
         vm.click = function(location, hover, data,  x, y, xlength, ylength, isLevel) {
             for (var i = 0; i < ylength; i++) {
                 var before = '';
-                var tooltip = '<p class = "tooltip">'+ hover + '</p>';
+                var tooltip = '<p class = "tooltip">' + hover + '</p>';
                 
                 if (isLevel) {
+                    var unlockCheck = vm.levelDictionary[data];
+                    if (typeof unlockCheck !== 'undefined') {
+                        var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
+                        tooltip = '<p class = "tooltip" ' + conditional + '>' + hover + '</p>';
+                    }
                 	before = '<span class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
             	else {
+                    var unlockCheck = vm.locationDictionary[data];
+                    if (typeof unlockCheck !== 'undefined') {
+                        var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
+                        tooltip = '<p class = "tooltip" ' + conditional + '>' + hover + '</p>';
+                    }
                 	before = '<span class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
                 var after = location.ascii[y + i][x + xlength] + '</span>';
@@ -387,6 +397,11 @@
         vm.monk.dialogue = dialogueService.monk;
         vm.monk.ascii = ["monk ascii here"];
 
+        vm.cabin = new vm.Location();
+        vm.cabin.name = 'A Cabin';
+        vm.cabin.slug = 'cabin';
+        vm.cabin.ascii = ['cabin'];
+
 		vm.wizard = new vm.Location();
 		vm.wizard.name = 'Wizard';
         vm.wizard.slug = 'wizard';
@@ -443,6 +458,7 @@
 
         vm.house = new vm.Location();
         vm.house.name = 'Home';
+        vm.house.slug = 'home';
         vm.house.prev = 'mainMap';
         vm.house.prevName = 'Map';
         vm.house.specialText = true;
@@ -566,5 +582,6 @@
             vm.locationDictionary['house'] = this.house;
             vm.locationDictionary['arena'] = this.arena;
             vm.locationDictionary['lich'] = this.lich;
+            vm.locationDictionary['cabin'] = this.cabin;
     }
 })();

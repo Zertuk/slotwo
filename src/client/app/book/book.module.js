@@ -3,6 +3,7 @@
 
     angular
         .module('app.book', [
+        	'app.progress',
         	'app.enemy'
         ]);
 })();

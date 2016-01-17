@@ -9,7 +9,6 @@
 
     /* @ngInject */
     function bookService(enemyService) {
-        this.func = func;
         var keys = enemyService.keys;
         this.enemyArray = fakeEnemy();
 
@@ -24,9 +23,6 @@
             }
             console.log(enemyArray)
             return enemyArray;
-        }
-        function func() {
-
         }
     }
 })();

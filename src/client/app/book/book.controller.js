@@ -5,20 +5,13 @@
         .module('app.book')
         .controller('BookController', BookController);
 
-    BookController.$inject = ['bookService'];
+    BookController.$inject = ['progressService', 'bookService'];
 
     /* @ngInject */
-    function BookController(bookService) {
+    function BookController(progressService, bookService) {
         var vm = this;
         vm.enemyArray = bookService.enemyArray;
-        bookService.func();
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-            console.log('book')
-        }
+        vm.enemyProgress = progressService.progress.enemies;
+        vm.enemyLooted = progressService.progress.looted;
     }
 })();

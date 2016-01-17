@@ -71,6 +71,14 @@
             this.phaseTwo = false,
             this.phaseThree = false,
             this.moneyMult = 1,
+            this.logSeen = function() {
+                if (typeof vm.progress.enemies[this.slug] === 'undefined') {
+                    vm.progress.enemies[this.slug] = 1;
+                }
+                else {
+                    vm.progress.enemies[this.slug] = vm.progress.enemies[this.slug] + 1;
+                }
+            },
             this.attackSpeedText = function() {
                 if (this.attackSpeed === 2) {
                     return 'average';
@@ -140,6 +148,7 @@
             },
             this.death = function(map) {
                 if (this.health <= 0) {
+                    this.logSeen();
                     this.alive = false;
                     this.itemDrop();
                     this.health = this.fullHealth;
@@ -159,6 +168,7 @@
                     this.lootMessage = 'You find [' + this.items[0][0][1].name + '] and ' + cash + ' gold.';
                     this.items[0][1][1] = 1;
                     inventoryService.findVal();
+                    vm.progress.looted[this.slug] = true;
                 }
                 else {
                     this.lootMessage = 'You find ' + cash + ' gold.';
@@ -242,6 +252,7 @@
 
         vm.Tree = function Tree() {
             this.name = 'Tree';
+            this.slug = 'Tree'
             this.moneyMult = 2;
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
@@ -272,6 +283,7 @@
 
         vm.Bear = function Bear() {
             this.name = 'Bear';
+            this.slug = 'Bear';
             this.desc = 'A Wandering Bear';
             this.deathMessage = 'The Bear has died!';
             this.symbol = 'B';
@@ -287,6 +299,7 @@
 
         vm.Mantis = function Mantis() {
             this.name = 'Giant Mantis';
+            this.slug = 'Mantis';
             this.desc = 'Pretty scary';
             this.deathMessage = 'The Giant Mantis has been squashed!';
             this.symbol = 'M';
@@ -418,6 +431,7 @@
 
         vm.Deer = function Deer() {
             this.name = 'Deer';
+            this.slug = 'Deer';
             this.desc = 'A Cute Deer';
             this.items = [vm.itemDictionary['deerAntlers']];
             this.deathMessage = 'A Deer has been killed.';
@@ -633,8 +647,9 @@
         };
         vm.SnowmanBoss.prototype = new vm.Enemy();
 
-    
-        vm.keys = ['Tree', 'Minotaur', 'TreeWarrior', 'Bear', 'Deer', 'Snowman', 'SnowmanBoss'];
+        vm.keys = ['Tree', 'Deer', 'Bear', 'Gorilla', 'DustDevil', 'Ghost', 'Minotaur',
+                   'Mantis', 'StickBug', 'Oyster', 'Crab', 'Penguin', 'Yeti',
+                   'Snowman', 'SnowmanBoss', 'GorillaSnow', 'Mammoth', 'Robot'];
     }
 
 })();

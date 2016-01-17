@@ -77,7 +77,8 @@
                 
                 if (isLevel) {
                     var unlockCheck = vm.levelDictionary[data];
-                    if (typeof unlockCheck !== 'undefined') {
+                    var isUnlockable = vm.progress.levels[unlockCheck.slug];
+                    if (typeof isUnlockable !== 'undefined') {
                         var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
                         tooltip = '<p class = "tooltip" ' + conditional + '>' + hover + '</p>';
                     }
@@ -85,7 +86,8 @@
             	}
             	else {
                     var unlockCheck = vm.locationDictionary[data];
-                    if (typeof unlockCheck !== 'undefined') {
+                    var isUnlockable = vm.progress.levels[unlockCheck.slug];
+                    if (typeof isUnlockable !== 'undefined') {
                         var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
                         tooltip = '<p class = "tooltip" ' + conditional + '>' + hover + '</p>';
                     }

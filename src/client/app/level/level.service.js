@@ -28,7 +28,7 @@
         this.treeOne.enemySpawn = [141, 21];
         this.treeOne.playerSpawn = [0, 22];
         this.treeOne.enemyArray = [enemyService.Tree];
-        this.treeOne.name = 'Forest Approach';
+        this.treeOne.name = 'The Forest';
         this.treeOne.slug = 'treeOne'
         this.treeOne.defaultAscii = ["     .\'           \'./   \\    .\'\\      /                            /                                     \\/                               /                     ",
                                      "    /               \\    \\ .\'   \\    /                            /                                      /                              .\'                       ",
@@ -51,9 +51,9 @@
                                      "|    / \\   /  \\  .    / \\      ^        / \\     |            / \\      .   |  .^.           / \\       .          / \\       / \\        |       ^   /   \\   ^  / \\  .   ",
                                      "     / \\    ||  / \\    |      / \\        |           .       / \\     / \\    /   \\           |       / \\          |         |                / \\  /   \\  / \\ / \\ / \\  ",
                                      "      |         / \\          /   \\                  / \\       |     /   \\   /   \\                   / \\                                     / \\    |    / \\  |  / \\  ",
-                                     "                / \\          /   \\                  / \\             /   \\     |             _________|___________         --------------  ___|_          |       |   ",
-                                     "_________________|_____________|_____________________|________________|___________----------------------------------------              ----------                   ",
-                                     "----------------------------------------------------------------------------------                                                                -------------------"];
+                                     "                / \\          /   \\                  / \\             /   \\     |                      |                    ''''''''''''''     |           |       |   ",
+                                     "                 |             |                     |                |           ''''''''''''''''''''''''''''''''''''''''              ''''''''''                   ",
+                                     "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''                                                                '''''''''''''''''''"];
 
 
 
@@ -66,12 +66,11 @@
         this.treeTwo.slug = 'treeTwo';
         this.treeTwo.unlock = 'treeCity';
         this.treeTwo.specialEnd = 95;
-        this.treeTwo.enemyArray = [enemyService.Bear, enemyService.Deer];
-        this.treeTwo.unitSpawnChance = [25, 100]
-        this.treeTwo.enemyMax = 3;
-        this.treeTwo.enemySpawn = [89, 22];
+        this.treeTwo.enemyArray = [enemyService.Deer, enemyService.Bear];
+        this.treeTwo.spawnMore = false;
+        this.treeTwo.spawnAtStart = [[20, 22], [45, 22], [70,22], [85, 22]];
         this.treeTwo.playerSpawn = [0, 22];
-        this.treeTwo.name = 'Tree Two';
+        this.treeTwo.name = 'Approach the Giant Tree';
         this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    
                               "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
                               "    /               \\    \\ .'   \\    /                            /////////////////////////     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",            
@@ -100,12 +99,18 @@
 
 
         this.bridge = new this.Level();
-        this.bridge.enemyArray = [enemyService.TreeWarrior];
+        this.bridge.enemyArray = [enemyService.Penguin, enemyService.Yeti];
         this.bridge.playerSpawn = [0, 14];
-        this.bridge.enemySpawn = [150, 14];
+        this.bridge.enemySpawn = [200, 13];
+        this.bridge.unitSpawnChance = [50];
+        this.bridge.specialSpawn = [140, 14];
+        this.bridge.specialSpawnChance = [100];
+        this.bridge.spawnMore = false;
+        this.bridge.spawnAtStart = [[131, 14], [135, 14], [140, 14], [144, 14], [153, 14], [200, 13]];
         this.bridge.slug = 'bridge';
+        this.bridge.enemyMax = 5;
         this.bridge.unlock = 'snow'
-        this.bridge.name = 'Bridge';
+        this.bridge.name = 'The Bridge';
         this.bridge.defaultAscii =  
                               ["  / \\    / \\                          .           /                                                             _'                                                                         .........                            ",                                                                                                                                                                                                                  
                               "  / \\     |         .                / \\         /                                               ~~~           / \\_                                                                    ..''         ''..                        ",
@@ -118,13 +123,13 @@
                               "   / \\                / \\         |      /                                                           /              /              .'''       ''...                                        |-                                   ",
                               "    |         ^       / \\               /                                                           /                                                                                      |                                    ",
                               "             / \\       |  .           .'                      ~~~                                 .'                                          |-                                                                                ",
-                              "   /\\        / \\         / \\         /                                                           /                                           -|                                                                                 ",
-                              "  /  \\        |         /   \\       /                                                           /                                             |                                                                                 ",
-                              "  /  \\                  /   \\      /                                               ~~~         /                                                                                                       _________________        ",
-                              "   ||                     |       /                                                          _/      ,..'''''''''''''____                                         ......................''''''''''''''''''.................''__  ",                                                            
-                              "                                .'          ~~~~                                           .'     ,.'                '''''''''''''''''''''''''''''''''''''''''''''                                                         ''''''",                                                                                                                                                                                                                                                                 
-                              "'''''''____                   _________________________________________________________________,.'                                                                                                                              ",                                                                                
-                              "       ''''''''''''''''''''''/   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   / /                                                    |-                                                                          ",
+                              "   /\\        / \\         / \\         /                                                           /                                           -|                                                                                ",
+                              "  /  \\        |         /   \\       /                                                           /                                             |                                                                               ",
+                              "  /  \\                  /   \\      /                                               ~~~         /                                                                                                                                ",
+                              "   ||                     |       /                                                          _/                                                            __________----''''''''''''''''''''''''''''''''''''''''''''''''''----____  ",                                                            
+                              "                                .'          ~~~~                                           .'                           '''''''''''''''''''''''''''''''''''''''''''''                                                          '''''",                                                                                                                                                                                                                                                                 
+                              "'''''''____                   __________________________________________________________________           '''''''''''''                                                                                                                              ",                                                                                
+                              "       ''''''''''''''''''''''/   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   / /'''''''''''                                         |-                                                                          ",
                               "  .                         /-----------------------------------------------------------------/                                -|                  -|                           -|                                              ",
                               " / \\        .             .'         //\\\\                // \\\\                 //\\\\          /                                  |-                  |                            |-                              |-             ",
                               " / \\       / \\          .'                                                                 .'                                   |                                                |                              -|              ",
@@ -132,40 +137,107 @@
                               "            |         /                                          ~~~~                   .'             |                                                                                                                        "];
 
         this.snow = new this.Level();
-        this.snow.enemyArray = [enemyService.TreeWarrior];
+        this.snow.enemyArray = [enemyService.Snowman, enemyService.SnowmanBoss];
         this.snow.playerSpawn = [0, 10];
-        this.snow.enemySpawn = [10, 10];
-        this.snow.name = 'Snow';
+        this.snow.spawnMore = false;
+        this.snow.spawnAtStart = [[14, 11], [47, 9], [124, 14]];
+        this.snow.name = 'Snow Wastes';
         this.snow.slug = 'snow';
         this.snow.unlock = 'wizard';
+        this.snow.specialEnd = 190;
         this.snow.defaultAscii = ["                                                                                                                                                           \\                                       ",               
                                   "                                                                                                                                                            \\  /____                               ",               
-                                  "                                                                                                                                                             \\/     \\____    ______                ",                            
-                                  "                                                                                                                                                                         \\  /      \\_____          ",                           
-                                  "                                                                                                                                                                          \\/             \\     ____",
-                                  "                                                                                                                                                                                          \\  /     ",         
-                                  "                                                                                                                                                                                           \\/      ",                
-                                  "                                                                                                                                                                                                   ",               
-                                  "                                                                                                                                                                                                   ",             
-                                  "                                                ________                                                                                                                                           ",             
-                                  "                                      ___ -------------------__________                                                                                                                            ",             
-                                  "                   ________________--------                  -----------------____                                                                                                              /\\ ",                  
-                                  "-----------------------------------                                           --------______                                                                            /\\         /\\       ___/  \\", 
-                                  "                                                                                      -----------___                                                        /\\     ____/  \\_______/  \\_____/       ", 
-                                  "                                                                                                 ------___________________                    _____--------/  \\___/                                ",
+                                  "                                                                                                                          _     _____                        \\/     \\____    ______                ",                            
+                                  "                                                                                                                         ***   |     |                                   \\  /      \\_____          ",                           
+                                  "                                                                                                                          |   _|_____|_                                   \\/             \\     ____",
+                                  "                                                                                                                          |    ( . . )                                                    \\  /     ",         
+                                  "                                                                                                                          >    _\\_-_/_                                                     \\/      ",                
+                                  "                                                 o                                                                        |\\  /   +   \\                                                               ",               
+                                  "                                               -( )-                                                                      | \\_|   +   |--.                                                               ",             
+                                  "                o                              (   )                                                                         _\\_______/_  \\                                                                ",             
+                                  "              -( )-                    ____-----------------------------___                                                 /           \\  ^                                                              ",             
+                                  "              (   )      __________--------                            -------____                                         /             \\                                                       /\\ ",                  
+                                  "-----------------------------------                                           --------______                               |             |                               /\\         /\\       ___/  \\", 
+                                  "                                                                                      -----------___                       \\             /                   /\\     ____/  \\_______/  \\_____/       ", 
+                                  "                                                                                                 ------______               \\           /      ____---------/  \\___/                                ",
                                   "                                                                                                       --------------------------------------------                                                ",
                                   "                                                                                                                                                                                                   ",
                                   "                                                                                                                                                                                                   ",
                                   "                                                                                                                                                                                                   ",
                                   "                                                                                                                                                                                                   "];
 
+
+      this.snowNorth = new this.Level();
+      this.snowNorth.enemyArray = [enemyService.GorillaSnow, enemyService.Mammoth];
+      this.snowNorth.unitSpawnChance = [45, 70];
+      this.snowNorth.enemySpawn = [200, 14];
+      this.snowNorth.enemyMax = 5;
+      this.snowNorth.playerSpawn = [0, 15];
+      this.snowNorth.name = 'Northern Wastes';
+      this.snowNorth.slug = 'snowNorth';
+      this.snowNorth.specialEnd = 265;
+      this.snowNorth.unlock = 'cabin';
+      this.snowNorth.defaultAscii = ["                                                                                                                                                                                                                                                                                                             ",                                                                                                                                                                                  
+                                     "                                                                                              _|                                                                                                                                                                                                             ",
+                                     "                                                                                               |_                                                                                                                           _|                                                                               ",
+                                     "    _|                                               .'''''''''''''.                           |                                                      .'''''''''''''''''.                                                    |_                                                                              ",
+                                     "     |_                                                                                                                                                                                                                      |                                                                 .             ",
+                                     "     |                                                                                                                                                              _|                                                                                                                        / \\            ",
+                                     "                                                                                            .''''''''''.                                                             |_                                                                                                             .        / ~ \\           ",
+                                     "                   .'''''''''''''.                    _|_                                                                                                            |                                                                                                        .    / \\       /___\\           ",
+                                     "                                                       |_                                                                                                                                                                                                                    / \\   / \\     ~   |         *   ",
+                                     "                                                       |                                                                                                                                                                                                                     / \\    |        ~          / \\  ",
+                                     "                                                                                                                                                                                                                                                                          .   |            __          /   \\ ",
+                                     "                                                                                                                                                                                                                                                                         / \\        _______||_      .  /   \\ ",
+                                     "                                                                                                                                                                                                                                                                         / \\       /   \\      \\    / \\   |   ",
+                                     "                                                                                                                                                                                                                                                                          |       /_____\\______\\  /   \\      ",
+                                     "                                                                                                                 ____________________________________________________________                                                                                                     |  _   |     |  /___\\      ",
+                                     "__________________________                                                        _______________________________''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''_____________________________________________________________________________________________________| | |  |     |____|________",
+                                     "''''''''''''''''''''''''''________________________________________________________'''''''''''''''''''''''''''''''                                                            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",                                 
+                                     "                          ''''''''''''''''''''''''''''''''''''''''''''''''''''''''                                                                                                                                                                                                                           "];
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                
+      this.sea = new this.Level();
+      this.sea.enemyArray = [enemyService.Oyster, enemyService.Crab];
+      this.sea.playerSpawn = [0, 14];
+      this.sea.spawnMore = false;
+      this.sea.spawnAtStart = [[54, 13], [76, 13], [110, 14], [131, 14], [153, 13]];
+      this.sea.name = 'Going for a Swim';
+      this.sea.slug = 'sea';
+      this.sea.defaultAscii =["                                                                                                                                                                                                                                 ",
+                              "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",                                                                                                                                                                                                                                
+                              "                                                                                                                                                                                                                                 ",  
+                              "                                                                                                                                                                                                                                 ",  
+                              "                                            `                                                                                            `                        `                                                              ",  
+                              "                                                                                                     `                                                                                                                           ", 
+                              "                                                                        `                                                                                                                                                        ", 
+                              "                                                                                                                                     `                                                                                           ",
+                              "                                                                                                                                            `                                                                                    ", 
+                              "           `                                                                                                                                                         `                                                           ", 
+                              "                                                                                                                                                                                                                                 ", 
+                              "                                                                                                                                                        V          V                                                               ", 
+                              "                                                                                                                                                        \\_.''''._/                                                               ",
+                              "                                                                                                                                                         ;',--,';                                                                ",
+                              "                                             ,'''''''''''''''''''''''''''''''''''''''''''''.                                                  .''''''''''''''''''''''''''''''''''''''''''.                                       ",                                                                                         
+                              "'''''''''''''''''''''''''''''''''''''''''''''                                               ''''''''''''''''''''''''''''''''''''''''''''''''''                                            '''''''''''''''''''''''''''''''''''''''",                                                                                                                                   
+                              "                                                                                                                                                                                                                                 "]
+                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                      
+
+
+
         this.ruins = new this.Level();
         this.ruins.slug = 'desert';
         this.ruins.unlock = 'dungeon';
-        this.ruins.enemyArray = [enemyService.TreeWarrior];
+        this.ruins.enemyArray = [enemyService.Gorilla, enemyService.DustDevil];
+        this.ruins.specialSpawn = [120, 12];
+        this.ruins.specialSpawnChance = 50;
+        this.ruins.unitSpawnChance = [40, 80];
+        this.ruins.enemyMax = 4;
         this.ruins.playerSpawn = [0, 13];
-        this.ruins.enemySpawn = [60, 12];
-        this.ruins.name = 'Ruins';
+        this.ruins.enemySpawn = [250, 10];
+        this.ruins.name = 'The Desert';
         this.ruins.specialEnd = 250;
         this.ruins.defaultAscii = ["                                                                                                                                                                                     /                                                                                   ",                                                                                                                       
                                    "                                                                                                                                                                                    /                                        ________________                            ",                                                                                                                       
@@ -187,36 +259,40 @@
 
 
         this.dungeon = new this.Level();
-        this.dungeon.enemyArray = [enemyService.TreeWarrior];
+        this.dungeon.spawnMore = false;
+        this.dungeon.enemyArray = [enemyService.Ghost, enemyService.Minotaur];
         this.dungeon.playerSpawn = [0, 0];
-        this.dungeon.enemySpawn = [180, 10];
+        this.dungeon.spawnAtStart = [[100, 11], [180, 11], [198, 11]];
         this.dungeon.slug = 'dungeon';
         this.dungeon.unlock = 'ruinsCleared';
-        this.dungeon.name = 'Dungeon';
+        this.dungeon.name = 'The Beasts Lair';
         this.dungeon.defaultAscii = ["                                             *                                                                                                                                                                                    ",
                                      "____                                         *                        *   *                                                                                                                                                       ",
                                      "''''____                                   __*__                      *   *                                                                                                                                                       ",
-                                     "    ''''____                              |||||||                     *   *                                                                                                                                                       ",
-                                     "        ''''____                          |||||||                      \\o/                                                                                                                                                        ",
-                                     "            ''''____                      |||||||                       |                                    _______                    *-------------------*                                                                     ",
-                                     "                ''''____                  *******                      / \\                                  .|'|'|'|.                       |   |   |  |                                                                          ",
-                                     "                    ''''____                                                                                || | | ||                      c|  <|   V =|=                                                                         ",
-                                     "                        ''''____                                               ....0..0....                 || | | ||                                                                                O                            ",
-                                     "                            ''''____                                           |\\   >--\\-o \\                |v v v v|                                                                               /|\\                           ",
-                                     "                                ''''____                                         |--0---0---|                                                                                                        |                            ",
-                                     "                                    ''''____                                                                                                                                                        / \\                           ",
+                                     "    ''''____                              |||||||                     *   *                                                                                                                     .'\\                               ",
+                                     "        ''''____                          |||||||                      \\o/                                                                                                                    .'   \\  |\\...|\\                     ",
+                                     "            ''''____                      |||||||                       |                                    _______                    *-------------------*                                 \\    .' |o  o  |                    ",
+                                     "                ''''____                  *******                      / \\                                  .|'|'|'|.                       |   |   |  |                                       \\.'\\\\  ;|../;;;_                   ",
+                                     "                    ''''____                                                                                || | | ||                      c|  <|   V =|=                                          o\\/ ;;  ;; /\\                  ",
+                                     "                        ''''____                                               ....0..0....                 || | | ||                                                                               \\'| ;  ;  | \\                 ",
+                                     "                            ''''____                                           |\\   >--\\-o \\                |v v v v|                                                                                 '._____.'  O                ",
+                                     "                                ''''____                                         |--0---0---|                                                                                                          | |  | |                   ",
+                                     "                                    ''''____                                                                                                                                                          ,' /  \\ ',                  ",
                                      "                                        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",
                                      "                                                                                                                                                                                                                                  ",
                                      "                                                                                                                                                                                                                                  ",
                                      "                                                                                                                                                                                                                                  ",
                                      "                                                                                                                                                                                                                                  ",
                                      "                                                                                                                                                                                                                                  "];
+ 
 
         this.shroom = new this.Level();
-        this.shroom.enemyArray = [enemyService.TreeWarrior];
+        this.shroom.enemyArray = [enemyService.Alchemist, enemyService.Unicorn];
+        this.shroom.unitSpawnChance = [25, 75];
         this.shroom.playerSpawn = [0, 13];
-        this.shroom.enemySpawn = [0, 0];
-        this.shroom.name = 'Mushroom Level'; 
+        this.shroom.enemySpawn = [128, 8];
+        this.shroom.enemyMax = 10;
+        this.shroom.name = '? ? ?'; 
         this.shroom.slug = 'shroom';
         this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",
                                    "                                                                                                                                           /  \\                 |'._______'.                                                                   ",
@@ -226,8 +302,8 @@
                                    "           \"\"||\"\"              /_________\\                 /_______\\                ________     /________\\ ,_____________ |   '.||____________|  |   | |     | |          |                                                                   ",
                                    "_____________||____________        //                          \\\\     ______       /________\\   _____\\\\__.''               |     |                    'V'     'V'          |                                                                   ",
                                    "  _______    ||            '--.____\\\\__________________________//____/o  o  \\__________//_____.'     //                    |     |                                          \\                                                                  ",
-                                   " /_______\\            _________     \\\\     ________           //     | o   o|          \\\\            \\\\                   /     __________________________________________   \\_________________________________________________________________",          
-                                   "    //               /_________\\          /________\\                 '''||'''           \\\\                               /     /        ____                              \\                                                                    ",
+                                   " /_______\\            _________     \\\\     ________           //     | o   o|          \\\\            \\\\                   /       ________________________________________                                                                   ",          
+                                   "    //               /_________\\          /________\\                 '''||'''           \\\\                               /     /''      ____                              \\                                                                    ",
                                    "    \\\\                    \\\\                  \\\\                        ||                          ____________________/     /        /o  o\\                              '''''''''''''''''''''''\\                                            ",
                                    "      _____________       //                   \\\\            ____       ||                         /                         /         |  o |                                                      \\__________________________                 ",   
                                    "     /             \\     //                    //           /o  o\\                                /     ____________________/          \"\"||\"\"      _________                                                                  \\________________",     
@@ -241,15 +317,77 @@
 
 
 
+        this.arena = new this.Level();
+        this.arena.enemyArray = [enemyService.Mantis, enemyService.StickBug];
+        this.arena.unitSpawnChance = [48, 95];
+        this.arena.playerSpawn = [2, 18];
+        this.arena.enemySpawn = [87, 18];
+        this.arena.specialEnd = 87;
+        this.arena.enemyMax = 20;
+        this.arena.name = 'Fight Night';
+        this.arena.slug = 'arena';
+        this.arena.unlock = 'bridge';
+        this.arena.defaultAscii = ["^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^",
+                                   "|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|",
+                                   "|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|",
+                                   "                  ..........................................................                   ",
+                                   "          ....''''     o o    \\o/  o   o   o   o   o  o    o   o   o  \\o/   ''''....           ",
+                                   "       .''             ' '     '   '   '   '   '   '  '    '   '   '   '            ''.        ",
+                                   "    .''   o \\o/   o   \\o/ \\o/  \\o/  o \\o/   o   \\o/  \\o/  o    oo     o   o  \\o/  \\o/  ''.     ",
+                                   "  .'      '  '    '    '   '    '   '  '    '    '    '   '    ''     '   '   '    '      '.   ",
+                                   " /   \\o/  o   o   o    o   o   o \\o/o/ \\o/ o \\o \\o/     o   \\o/ o   \\o/ o  o    \\o/  o   o  \\  ",
+                                   "/____________________________________________________________________________________________\\ ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "_                                                                                         __  ",
+                                   " |                                                                                       |  | ",
+                                   " |                                                                                       |  | ",
+                                   "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' "]; 
+
+        this.robot = new this.Level();
+        this.robot.enemyArray = [enemyService.Robot];
+        this.robot.playerSpawn = [0, 15];
+        this.robot.spawnAtStart = [[108, 15]];
+        this.robot.spawnMore = false;
+        this.robot.name = 'The Wizards Task';
+        this.robot.slug = 'robot';
+        this.robot.defaultAscii = ["           /                                                                                       \\    /                                                     ",
+                                   "          /                                                                                         \\  /                                                      ",
+                                   "        .'                                                                                           '/                                                       ",
+                                   "       /                                                                                                                                                      ",       
+                                   "      /                                                                                                                                                       ",          
+                                   "    .'                                                                                                                                                        ",      
+                                   "   /                                                                                                                                                          ",      
+                                   "  /                                                                                                                                                           ",      
+                                   ".'                                                                                                             .                                              ",
+                                   "                                                                                                            ___|____                                          ",
+                                   "                                                                                                           |        |                                         ",
+                                   "                                                                                                        o  | 0  0   |                                         ",
+                                   "                                                                                                         \\.|  __    |.                                        ",
+                                   "                                                                                                            \\______/  \\                                       ",
+                                   "                                                                                                             |    |    o                                      ",
+                                   "                                                                                                            c|   c|                                           ",
+                                   "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"],
+
+
+
 
         this.levelDictionary = [];
         this.levelDictionary['treeOne'] = this.treeOne;
         this.levelDictionary['treeTwo'] = this.treeTwo;
         this.levelDictionary['bridge']  = this.bridge;
+        this.levelDictionary['sea'] = this.sea;
         this.levelDictionary['snow'] = this.snow;
+        this.levelDictionary['snowNorth'] = this.snowNorth;
         this.levelDictionary['ruins'] = this.ruins;
         this.levelDictionary['dungeon'] = this.dungeon;
         this.levelDictionary['shroom'] = this.shroom;
+        this.levelDictionary['arena'] = this.arena;
+        this.levelDictionary['robot'] = this.robot;
 
 
         

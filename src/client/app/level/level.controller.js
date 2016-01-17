@@ -5,10 +5,10 @@
 		.module('app.level')
 		.controller('LevelController', LevelController);
 
-	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService', 'progressService'];
+	LevelController.$inject = ['levelService', 'playerService', 'enemyService', '$scope', '$timeout', 'messageService', 'progressService', 'inventoryService'];
 
 	/* @ngInject */
-	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService, progressService) {
+	function LevelController(levelService, playerService, enemyService, $scope, $timeout, messageService, progressService, inventoryService) {
 		var vm = this;
 		vm.title = 'LevelController';
 
@@ -16,12 +16,90 @@
 		vm.currentLevel.checkLength();
 		vm.player = playerService.player;
 		vm.enemySpawn = false;
-		vm.messageLog = messageService.messageLog;
 		vm.mainMessage = messageService.mainMessage;
+		vm.abilities = vm.player.abilities;
+		vm.itemDictionary = inventoryService.itemDictionary;
+
+		vm.activateAbility = function(ability) {
+			var message = '';
+			if (!vm.abilities[ability].active && vm.abilities[ability].cd === 0) {
+				vm.abilities[ability].special();
+				message = vm.abilities[ability].name + ' has been used.';
+				messageService.updateMainMessage(message);
+				var id = '#' + vm.abilities[ability].slug;
+				var elem = id + ' .abilitybg';
+				angular.element(elem).css('width', '100%');
+				abilityTimer(ability, elem);
+			}
+			else if (vm.abilities[ability].cd > 0) {
+				message = vm.abilities[ability].name + ' is on cooldown!';
+				messageService.updateMainMessage(message, true)
+			}
+			else {
+				message = vm.abilities[ability].name + ' already active!';
+				messageService.updateMainMessage(message, true)
+			}
+		}
+
+		function abilityTimer(ability, elem) {
+			if (vm.abilities[ability].active) {
+				vm.player.damage = vm.player.calculateTotalDamage();
+				vm.player.armorValue = vm.player.calculateTotalArmor();
+				if (vm.abilities[ability].timer > 0) {
+					vm.abilities[ability].timer = vm.abilities[ability].timer - 1;
+					var percent = (vm.abilities[ability].timer / vm.abilities[ability].max)*100;
+					angular.element(elem).css('width', percent + '%');
+					$timeout(function() {
+						abilityTimer(ability, elem);
+					}, 125);
+				}
+				else {
+					angular.element(elem).css('width', '0%');
+					vm.abilities[ability].timer = 0;
+					vm.abilities[ability].active = false;
+					abilityCooldown(ability, elem);
+				}
+			}
+		}
+
+		function abilityCooldown(ability, elem) {
+			var cdMax = vm.abilities[ability].cdMax;
+			vm.abilities[ability].cd = cdMax;
+			angular.element(elem).addClass('abilitycooldown');
+			abilityCooldownLoop(ability, elem);
+		}
+
+		function abilityCooldownLoop(ability, elem) {
+			if (vm.abilities[ability].cd > 0) {
+				vm.abilities[ability].cd = vm.abilities[ability].cd - 1;
+				var percent = (vm.abilities[ability].cd / vm.abilities[ability].cdMax)*100;
+				angular.element(elem).css('width', percent + '%');
+				$timeout(function() {
+					abilityCooldownLoop(ability, elem);
+				}, 125);
+			}
+			else {
+				vm.abilities[ability].cd = 0;
+				angular.element(elem).removeClass('abilitycooldown');
+				angular.element(elem).css('width', '0%');
+			}
+		}
+
+		function resetAbilities() {
+			vm.abilities.resetAbilities();
+		}
+
+		function prevReset() {
+			vm.player.prev = false;
+			vm.player.prevCheck = false;
+		}
 
 		//sets everything to default when called
 		vm.resetLevel = function() {
+			enemyService.currentEnemy = undefined;
 			vm.currentLevel = levelService.currentLevel;
+			prevReset();
+			resetAbilities();
 			specialEnd();
 			vm.unitArray = [playerService.player];
 			vm.player.active = true;
@@ -45,10 +123,21 @@
 
 		//init level
 		function initLevel() {
+			messageService.emptyLog();
+			resetRenderArea();
 			//runs if enemies are immobile and spawn at start, like the trees lvl 1
 			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
-					spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+					if (i + 1 === vm.currentLevel.spawnAtStart.length) {
+						if (vm.currentLevel.enemyArray.length > 1) {
+							spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i], true);
+						}
+						else {
+							spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+						}
+					} else {
+						spawnEnemyAtStart(vm.currentLevel.spawnAtStart[i]);
+					}
 				}
 			}
 			//otherwise default spawn is on
@@ -70,11 +159,24 @@
 		//moves level to left after certain distance has been travelled
 		function levelRenderArea() {
 			var length = vm.currentLevel.ascii[0].length;
-			if (vm.player.position[0] > 50 && vm.player.position[0] < length - 50) {
-				var left = (vm.player.position[0] - 50)*8;
+			var width = window.innerWidth;
+			var value = 50;
+			if (width < 500) {
+				value = 10;
+			}
+			else if (width < 1000) {
+				value = 30;
+			}
+			if (vm.player.position[0] > value && vm.player.position[0] < length - value) {
+				var left = (vm.player.position[0] - value)*8;
 				var elem = document.getElementById('levelwrap');
 				elem.style.left = '-' + left + 'px';
 			}
+		}
+
+		function resetRenderArea() {
+			var elem = document.getElementById('levelwrap');
+			elem.style.left = 'auto';
 		}
 
 		//function for default spawning, runs if rng works
@@ -87,21 +189,54 @@
 				for (var i = 0; i < vm.currentLevel.unitSpawnChance.length; i++) {
 					if (random < vm.currentLevel.unitSpawnChance[i]) {
 						var unit = new vm.currentLevel.enemyArray[i];
-						var spawn = [];
-						spawn[0] = vm.currentLevel.enemySpawn[0];
-						spawn[1] = vm.currentLevel.enemySpawn[1];
-						unit.position = spawn;
-						vm.unitArray.push(unit);
-						i = vm.currentLevel.unitSpawnChance.length;
+						if (typeof vm.currentLevel.specialSpawn !== 'undefined') {
+							if (vm.player.position[0] < vm.currentLevel.specialSpawn[0]) {
+								var specialCheck = Math.floor(Math.random()*100);
+								if (specialCheck < vm.currentLevel.specialSpawnChance) {
+									regularSpawn(unit, 'specialSpawn');
+								}
+								else {
+									regularSpawn(unit, 'enemySpawn');
+								}
+							}
+							else {
+								regularSpawn(unit, 'enemySpawn');
+							}
+						}
+						else {
+							console.log('special undefined');
+							regularSpawn(unit, 'enemySpawn');
+						}
+						return;
 					}
 				}
 			}
 		}
 
-		//function for spawning immobile enemies at start of level
-		function spawnEnemyAtStart(position) {
-			var entity = new vm.currentLevel.enemyArray[0];
+		//spawn
+		function regularSpawn(unit, type) {
 			var spawn = [];
+			spawn[0] = vm.currentLevel[type][0];
+			spawn[1] = vm.currentLevel[type][1];
+			unit.position = spawn;
+			vm.unitArray.push(unit);
+		}
+
+		//function for spawning immobile enemies at start of level
+		function spawnEnemyAtStart(position, extra) {
+			var entity;
+			if (extra) {
+				entity = new vm.currentLevel.enemyArray[1];
+			}
+			else {
+				entity = new vm.currentLevel.enemyArray[0];
+			}
+			var spawn = [];
+			var currentTile = vm.currentLevel.ascii[position[1]][position[0]];
+			if (currentTile === '_') {
+				entity.prev = true;
+				entity.prevCheck = true;
+			}
 			spawn[0] = position[0];
 			spawn[1] = position[1];
 			entity.position = spawn;
@@ -132,7 +267,7 @@
 		//if it has an extra collission box for large ascii art, delete the extra on death as well
 		function checkBig(unit) {
 			if (typeof unit.colBox !== 'undefined') {
-				for (var j = 1; j < unit.colBox[1] + 1; j++) {
+				for (var j = 0; j < unit.colBox[1]; j++) {
 					for (var i = 0; i < unit.colBox[0]; i++) {
 						setCharAt();
 						vm.currentLevel.ascii[unit.position[1] - j] = setCharAt(vm.currentLevel.ascii[unit.position[1] - j], unit.position[0] + i, ' ');
@@ -152,6 +287,10 @@
 		//master loop for levels
 		function levelLoop() {
 			var dead = false;
+			vm.messageLog = messageService.messageLog;
+			vm.player.attackSpeed  = vm.player.weapon.attackSpeed;
+			vm.player.damage = vm.player.calculateTotalDamage();
+			vm.player.armorValue = vm.player.calculateTotalArmor();
 			if (vm.player.active) {
 				if (!vm.player.alive) {
 					vm.player.alive = true;
@@ -164,8 +303,17 @@
 						autoKill(vm.unitArray[i]);
 					}
 					if (!vm.unitArray[i].alive) {
-						messageService.addMessage(vm.unitArray[i].deathMessage);
 						checkBig(vm.unitArray[i]);
+
+						if (vm.unitArray[i].foundLoot) {
+							var lootMessage = vm.unitArray[i].deathMessage + ' ' + vm.unitArray[i].lootMessage;
+						}
+						else {
+							var lootMessage = vm.unitArray[i].deathMessage;
+						}
+						messageService.addMessage(lootMessage);
+
+
 						enemyCount = enemyCount - 1;
 						var newArray = [];
 						for (var j = 0; j < vm.unitArray.length; j++) {

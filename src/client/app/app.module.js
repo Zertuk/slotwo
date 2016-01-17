@@ -6,7 +6,6 @@
 		'app.widgets',
 		'app.admin',
 		'app.main',
-		'app.maps',
 		'app.inventory',
 		'app.town',
 		'app.player',
@@ -18,7 +17,7 @@
 		'app.progress',
 		'app.resources',
 		'app.monk',
-		'app.enchant'
+		'app.book'
 	]);
 
 })();

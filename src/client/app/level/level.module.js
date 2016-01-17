@@ -4,6 +4,7 @@
     angular
         .module('app.level', [
         	'app.enemy',
-        	'app.message'
+        	'app.message',
+        	'app.inventory'
         ]);
 })();

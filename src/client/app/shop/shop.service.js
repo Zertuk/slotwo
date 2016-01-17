@@ -11,6 +11,7 @@
     function shopService(playerService, inventoryService, resourcesService, messageService) {
     	var vm = this;
         vm.resources = resourcesService.resources;
+        vm.itemDictionary = inventoryService.itemDictionary;
 
     	vm.initShop = function() {
     		createShopList();
@@ -18,6 +19,10 @@
 
         vm.initPurchase = function(item) {
             checkBalance(item);
+        }
+
+        vm.grabItemDictionary = function() {
+            return vm.itemDictionary;
         }
 
         ////////////////
@@ -66,13 +71,12 @@
             }
         }
 
-        function increasePrice(item) {
-
-        }
-
         function addToInventory(item) {
+            if (typeof item.special !== 'undefined') {
+                item.special();
+            }
             messageService.updateMainMessage(item.name + ' has been purchased.');
-        	item.quantity = item.quantity + 1;
+        	inventoryService.itemDictionary[item.slug][1][1] = inventoryService.itemDictionary[item.slug][1][1] + 1;
             removeItem(item);
         }
 

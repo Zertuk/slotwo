@@ -13,7 +13,7 @@
         vm.count = 0;
         resourcesService.initRates();
         vm.player = playerService.player;
-        vm.currentLocation = mainService.treeCity;
+        vm.currentLocation = mainService.mainMap;
         initShop();
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
@@ -27,10 +27,8 @@
                 removeAscii();
                 if (location === 'treeShop') {
                     initShop();
-                    console.log('this is the shop');
                 }
             }
-            console.log(vm.currentLocation.slug);
         };
         vm.switchLevel = function(level) {
             vm.currentLocation = mainService.switchLevel(level);
@@ -50,6 +48,7 @@
 
         function initShop() {
             shopService.initShop();
+            vm.itemDictionary = shopService.grabItemDictionary();
             vm.itemList = [shopService.shopList];
         }
 
@@ -100,11 +99,18 @@
             vm.resources = resourcesService.resources;
         }
 
+        function updatePlayer() {
+            vm.player.damage = vm.player.calculateTotalDamage();
+            vm.player.armorValue = vm.player.calculateTotalArmor();
+            vm.player.maxHealth = vm.player.calculateTotalHealth();
+        }
+
         //1s loop
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
             increaseResources();
+            updatePlayer();
             $timeout(mainLoop, 1000);
         }
         //quicker loop

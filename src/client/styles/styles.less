@@ -6,6 +6,11 @@
 @color_violet: #932ab6;
 @color_black: #191919;
 @color_white: #f7f7f7;
+@color_orange: #ffae1a;
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
 
 ::selection {
     background: @color_white;
@@ -28,26 +33,171 @@
     -webkit-font-smoothing: antialiased;
     /*font-weight: 400;*/
 }
-
-.small {
-    font-size: 12px;
+a {
+    color: @color_orange;
+}
+a:hover {
+    color: @color_white;
+}
+.actualworkers .worker p:last-of-type {
+    margin-left: 20px;
+}
+.arrow {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+}
+.alignvert {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.shoprow {
+.borderbottom {
+    border-bottom: 1px solid @color_white;
+}
+
+.button .bg, .button .abilitybg {
+    background: @color_white;
+    position: absolute;
+    height: 22px;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+.button .abilitybg.abilitycooldown {
+    background: red;
+    opacity: 0.25;
+    cursor: no-drop;
+}
+button.craft {
     margin: 10px 0;
 }
+.button {
+    display: inline-block;
+    position: relative;
+}
+button, .button {
+    padding: 2px 10px;
+    background: @color_black;
+    color: @color_white;
+    box-shadow: none;
+    border: 1px solid @color_white;
+    cursor: pointer;
+}
+button:hover, .resourcecontrol:hover, .button:hover {
+    background: #2f2f2f;
+}
 
-.nomargin {
+button:active, 
+.resourcecontrol:active, 
+.button:active, 
+button.active {
+    background: @color_white;
+    color: @color_black;
+}
+
+div.button.noactive {
+    font-size: 13px;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background: @color_black;
+    color: @color_white;
+    font-family: 'Inconsolata';
+}
+
+.conditional {
+    height: 33px;
+}
+.container {
+    padding: 0 50px 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.container:after,
+.shoprow:after,
+footer:after {
+    content: "";
+    display: table;
+    clear: both; 
+}
+
+div {
+    box-sizing: border-box;
+}
+.error {
+    color: red;
+}
+.enemyname {
+    border-bottom: 2px solid @color_white;
+    padding-bottom: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px 0 5px;
+}
+
+.enemydesc {
+    text-align: center;
+    font-size: 12px;
     margin: 0;
 }
 
-.margintop45 {
-    margin-top: 48px;
+.enemyinfo {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
 }
 
+.enemyinfo.book {
+    border: 1px dashed @color_white;
+    margin: 10px 20px 10px 0;
+    width: 45%;
+    padding: 10px;
+}
 
-button.craft {
+.enemyinfo .healthbarinner {
+    background: green;
+}
+
+.enemyinfo .healthbar {
+    margin: 5px 0;
+}
+
+.enemyplaceholder {
+    min-height: 100px;
+}
+
+.forge, .campfire {
+    float: left;
+    width: 100%;
+}
+
+.forge button, .campfire button {
     margin: 10px 0;
+}
+
+footer {
+    padding: 5px 50px 10px;
+}
+
+footer a {
+    float: right;
+    margin-left: 25px;
+    color: white;
+}
+
+footer a:hover {
+    color: @color_orange;
 }
 
 .half {
@@ -60,49 +210,73 @@ button.craft {
     margin-right: 0;
 }
 
-.workerinfo {
-    margin-left: 2%;
+.half {
     float: left;
+    width: 49%;
+}
+.half:first-of-type {
+    margin-right: 2%;
+}
+.healthbar {
+    width: 100%;
+    height: 24px;
+    margin: 10px 0;
+    border: 1px solid @color_white;
+    position: relative;
+
 }
 
-.workerinfo:first-of-type {
-    margin-left: 0;
-    width: 275px;
-    border-right: 1px dashed grey;
+.healthbar p {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
 }
+.healthbarinner {
+    position: absolute;
+    width: 100%;
+    height: 22px;
+}
+header {
+    border-bottom: 1px solid @color_white;
+    padding: 10px 50px 0;
 
-.forge {
+}
+h1 {
+    font-size: 26px;
+    float: right;
+    margin: 0;
+}
+.itemdesc {
+    padding: 10px;
+    border: 1px dashed @color_white;
     float: left;
     width: 100%;
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: center;
+    height: 225px;
 }
-
-.forge button {
-    margin: 10px 0;
+.itemdesc:first-of-type {
+    margin-left: 0;
 }
-
-.text {
-    margin-top: 0;
+.itemdesc.noborder {
+    border: none;
 }
-
-.worker p {
+.inline {
     display: inline-block;
 }
 
-.actualworkers .worker p:last-of-type {
-    margin-left: 20px;
+.italic {
+    font-style: italic;
+    font-size: 12px;
 }
 
-.worker p.info:last-of-type {
-    margin-left: 0;
+.italic.inline {
+    margin-left: 5px;
 }
-
-.resourcecontrol {
-    margin: 0 2px;
-    border: 1px solid @color_white;
-    text-align: center;
-    cursor: pointer;
+.looted {
+    border: 1px solid white !important;
 }
-
 
 #locationtext {
     border: 1px dashed @color_white;
@@ -122,47 +296,40 @@ button.craft {
 #locationtext button:last-child {
     margin-bottom: 0;
 }
-
-.arrow {
-    position: absolute;
-    right: -20px;
-    top: 10px;
+#levelwrap,
+#locationwrap {
+    height: auto;
+    position: relative;
 }
 
-header {
-    border-bottom: 1px solid @color_white;
-    padding: 10px 50px 0;
-
-}
-
-.borderbottom {
-    border-bottom: 1px solid @color_white;
-}
-
-.conditional {
-    height: 33px;
-}
-
-.error {
-    color: red;
+#locationwrap {
+    min-height: 420px;
 }
 
 .leveloverflow {
     overflow-x: hidden;
 }
 
-.container {
-    padding: 0 50px 0;
-    position: relative;
+.levelrow {
+    display: block;
+    float: none;
+    margin: 0;
+}
+.loadwrap {
+    width: 200px;
+    height: 24px;
+    border: 1px solid @color_white;
+}
+.log {
+    float: right;
+    width: 50%;
+    height: 120px;
+    overflow-y: hidden;
 }
 
-.container:after,
-.shoprow:after {
-    content: "";
-    display: table;
-    clear: both; 
+.margintop45 {
+    margin-top: 48px;
 }
-
 .mainmessage,
 .mainbutton {
     display: inline-block;
@@ -174,17 +341,6 @@ header {
     margin-bottom: 0;
     font-size: 16px;
 }
-
-#test {
-    background: red !important;
-}
-
-.alignvert {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .marginbottom10 {
     margin-bottom: 10px;
 }
@@ -193,64 +349,62 @@ nav ul li {
     display: inline-block;
 }
 
-body {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    background: @color_black;
-    color: @color_white;
-    font-family: 'Inconsolata';
-}
-
-div {
-    box-sizing: border-box;
-}
-
-.half {
-    float: left;
-    width: 49%;
-}
-.half:first-of-type {
-    margin-right: 2%;
-}
-
-.inline {
-    display: inline-block;
-}
-
-.italic {
-    font-style: italic;
-    font-size: 12px;
-    margin-left: 5px;
-}
-
-h1 {
-    font-size: 26px;
-    float: right;
+.nomargin {
     margin: 0;
 }
-
 .one {
     width: 100%;
     font-size: 12px
 }
-
-#levelwrap,
-#locationwrap {
-    height: auto;
-    position: relative;
+.otheritem {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    margin-bottom: 2%;
 }
 
-#locationwrap {
-    min-height: 420px;
+.overflowhidden {
+    overflow: hidden;
+    max-width: 100%;
 }
 
-.tooltip {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-    min-height: 100px;
+
+.playerinfo p {
+    display: inline-block;
+    margin: 0;
+}
+
+.playerinfo {
+    float: right;
+    margin: 5px 0;
+}
+
+.playerabilities button {
+    margin: 5px 0;
+}
+.playerabilities {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+pre {
+    font-size: 17px;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+pre:nth-of-type(27) {
+    clear: both;
+}
+
+.resourcecontrol {
+    margin: 0 2px;
     border: 1px solid @color_white;
+    text-align: center;
+    cursor: pointer;
 }
 .shop .list {
     width: 200px;
@@ -267,106 +421,116 @@ h1 {
 span {
     position: relative;
 }
-
-pre {
-    font-size: 17px;
-    margin: 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-pre:nth-of-type(27) {
-    clear: both;
-}
-
 span.click {
     cursor: pointer;
 }
-.levelrow {
+span.click:hover .tooltip {
     display: block;
-    float: none;
-    margin: 0;
-}
-
-.loadwrap {
-    width: 200px;
-    height: 24px;
-    border: 1px solid @color_white;
-}
-
-.gatherload.loading {
-    width: 100px;
-    background: @color_lightblue;
-    height: 22px;
-}
-
-.healthbar {
-    width: 100%;
-    height: 24px;
-    margin: 10px 0;
-    border: 1px solid @color_white;
-    position: relative;
-
-}
-
-.healthbar p {
-    margin: 0;
-    text-align: center;
-    font-size: 16px;
-}
-
-.enemyname {
-    font-size: 16px;
-    margin: 0 0 5px;
-}
-
-.enemydesc {
-    font-size: 12px;
-    margin: 0;
-}
-
-.healthbarinner {
     position: absolute;
-    width: 100%;
-    height: 22px;
 }
 
-.enemyinfo {
-    float: left;
-    width: 25%;
+.small {
+    font-size: 12px;
 }
 
-.log {
-    float: left;
-    width: 50%;
-    max-height: 80px;
-    overflow-y: scroll;
+.shoprow {
+    margin: 10px 0;
 }
-
-
-.overflowhidden {
-    overflow: hidden;
-    max-width: 100%;
+.textcenter {
+    text-align: center;
 }
-
-/* button styles */
-button {
-    padding: 2px 10px;
+.tooltip {
+    display: none;
     background: @color_black;
-    color: @color_white;
-    box-shadow: none;
-    border: 1px solid @color_white;
-    cursor: pointer;
-}
-button:hover, .resourcecontrol:hover {
-    background: #2f2f2f;
+    font-size: 32px;
+    left: 25%;
+    z-index: 100;
 }
 
-button:active, .resourcecontrol:active {
-    background: @color_white;
-    color: @color_black;
+.titleborder {
+    border-bottom: 2px solid @color_white;
+    display: inline-block;
+    margin-bottom: 5px;
 }
+
+.titleborder h4 {
+    padding-bottom: 5px;
+}
+.text {
+    margin-top: 0;
+}
+#test {
+    background: red !important;
+}
+
+.worker p {
+    display: inline-block;
+}
+
+.worker p.info:last-of-type {
+    margin-left: 0;
+}
+
+.workerinfo {
+    margin-left: 2%;
+    float: left;
+}
+
+.workerinfo:first-of-type {
+    margin-left: 0;
+    width: 275px;
+    border-right: 1px dashed grey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

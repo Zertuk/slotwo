@@ -7,7 +7,6 @@
 		<div class = "half">
 			<p class = "nomargin inline">{{item.price}} gold</p>
 			<p class = "nomargin inline" ng-if = "item.slug === 'potion'"> | </p>
-			<p class = "nomargin inline small" ng-if = "item.slug === 'potion'">{{item.quantity}} owned</p>
-		</div>
+			<p class = "nomargin inline small" ng-if = "item.slug === 'potion'">{{vm.itemDictionary.potion[1][1]}} Owned</p>
 	</div>
 </div>

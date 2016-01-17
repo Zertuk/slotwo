@@ -3,6 +3,7 @@
 
     angular
         .module('app.player', [
-        	'app.message'
+        	'app.message',
+        	'app.progress'
         ]);
 })();

@@ -28,12 +28,13 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div ng-controller = "MainController as vm">
+    <div ng-controller = "MainController as vm" ng-cloak ng-hide = "!vm.player">
         <header>
-            <div class = "row">
-                <button ng-click = "vm.switchTemplate('app/resources/resources.html')">Home</button>
-                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')">Inventory</button>
-                <button ng-click = "vm.switchLocation('mainMap')">Map</button>
+            <div class = "row controls">
+                <div class = 'noactive button' ng-click = "vm.player.rest()" ng-if = " vm.progress.hasSleepingBag">Rest</div>
+                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')" ng-if = "vm.progress.hasMap">Inventory</button>
+                <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
+                <button ng-click = "vm.switchLocation('mainMap')" ng-if = "vm.progress.hasMap">Map</button>
                 <p class = "inline nomargin">{{vm.money}} Gold</p>
 <!--                 <p>{{vm.player.gold}}</p>
  -->                <h1>{{vm.currentLocation.name}}</h1>
@@ -46,13 +47,22 @@
                 </div><!--healthbar-->
             </div><!--row-->
             <div class = "row conditional">
-                <button ng-if = "vm.currentLocation.prevName" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
+                <button ng-if = "vm.currentLocation.prevName && vm.progress.hasMap" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
                 <button ng-if = "vm.prevMessage" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">{{vm.prevMessage}}</button>
                 <p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
+                <div class = "playerinfo">
+                    <p>{{vm.player.calculateTotalDamage()}} Damage at {{vm.player.weapon.attackSpeedMessage()}} |</p>
+                    <p>{{vm.player.calculateTotalArmor()*100}}% Armor</p>
+                </div>
             </div><!--row-->
         </header>
         <ng-include class = "template" src="vm.activeTemplate"></ng-include>
+        <footer>
+            <a href = "https://www.github.com/zertuk/slotwo" target = "_blank">GitHub</a>
+            <a href = "" ng-click = "vm.switchTemplate('app/about/about.html')">About</a>
+        </footer>
     </div>
+
     
 
     <!-- build:js js/lib.js -->
@@ -77,14 +87,13 @@
     <script src="/src/client/app/blocks/exception/exception.module.js"></script>
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
+    <script src="/src/client/app/book/book.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dialogue/dialogue.module.js"></script>
-    <script src="/src/client/app/enchant/enchant.module.js"></script>
     <script src="/src/client/app/enemy/enemy.module.js"></script>
     <script src="/src/client/app/inventory/inventory.module.js"></script>
     <script src="/src/client/app/level/level.module.js"></script>
     <script src="/src/client/app/main/main.module.js"></script>
-    <script src="/src/client/app/map/map.module.js"></script>
     <script src="/src/client/app/message/message.module.js"></script>
     <script src="/src/client/app/monk/monk.module.js"></script>
     <script src="/src/client/app/player/player.module.js"></script>
@@ -102,25 +111,22 @@
     <script src="/src/client/app/blocks/exception/exception.js"></script>
     <script src="/src/client/app/blocks/logger/logger.js"></script>
     <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
+    <script src="/src/client/app/book/book.controller.js"></script>
+    <script src="/src/client/app/book/book.service.js"></script>
     <script src="/src/client/app/core/config.js"></script>
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
     <script src="/src/client/app/core/dataservice.js"></script>
     <script src="/src/client/app/dialogue/dialogue.controller.js"></script>
     <script src="/src/client/app/dialogue/dialogue.service.js"></script>
-    <script src="/src/client/app/enchant/enchant.controller.js"></script>
-    <script src="/src/client/app/enchant/enchant.service.js"></script>
     <script src="/src/client/app/enemy/enemy.service.js"></script>
     <script src="/src/client/app/inventory/inventory.controller.js"></script>
-    <script src="/src/client/app/inventory/inventory.route.js"></script>
     <script src="/src/client/app/inventory/inventory.service.js"></script>
     <script src="/src/client/app/level/level.controller.js"></script>
     <script src="/src/client/app/level/level.service.js"></script>
     <script src="/src/client/app/main/main.controller.js"></script>
     <script src="/src/client/app/main/main.route.js"></script>
     <script src="/src/client/app/main/main.service.js"></script>
-    <script src="/src/client/app/map/map.controller.js"></script>
-    <script src="/src/client/app/map/map.route.js"></script>
     <script src="/src/client/app/message/message.directive.js"></script>
     <script src="/src/client/app/message/message.service.js"></script>
     <script src="/src/client/app/monk/monk.service.js"></script>

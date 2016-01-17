@@ -12,9 +12,40 @@
         vm.itemDictionary = inventoryService.itemDictionary;
         vm.progress = progressService.progress;
 
+        vm.canBuyMilk = function() {
+            if (vm.resources.money > vm.resources.milkPrice) {
+                console.log('can buy');
+                return true;
+            }
+            else {
+                console.log('rip no buy');
+                return false;
+            }
+        }
+
+        vm.raiseMilkPrice = function() {
+            var price = vm.resources.milkPrice;
+            price = price + price/2;
+            price.toFixed(0);
+            vm.resources.milkPrice = price;
+        }
+
+
+        vm.addLogToFire = function() {
+            console.log('add log')
+            if (vm.resources.wood > 0) {
+                vm.itemDictionary['wood'][1][1] = vm.itemDictionary['wood'][1][1] - 1;
+                vm.regrabAmounts();
+                return true;
+            }
+            else {
+                return false;
+            }
+        } 
+
     	vm.moneyTick = function() {
             vm.forgeActive();
-    		vm.resources.money = vm.resources.money + vm.resources.moneyRate;
+    		vm.resources.money = vm.resources.money + vm.resources.calculateTotlMoneyRate();
     		return vm.resources.money;
     	};
 
@@ -67,29 +98,46 @@
 
         vm.craftables = {
             sword: {
-                unlock: '',
                 active: !vm.progress.woodSwordCrafted,
                 text: 'Carve Wooden Sword',
-                cost: '50 Wood',
+                cost: '100 Wood',
                 key: 'sword',
                 special: function() {
                     vm.progress.woodSwordCrafted = true;
                     this.active = !this.active;
                 }
             },
+            woodArmor: {
+                active: !vm.progress.woodArmorCrafted,
+                text: 'Carve Wooden Armor',
+                cost: '100 Wood',
+                key: 'woodArmor',
+                special: function() {
+                    vm.progress.woodArmorCrafted = true;
+                    this.active = !this.active;
+                }
+            },
             bridge: {
-                unlock: '',
                 active: vm.progress.bridgePrompt && !vm.progress.bridgeBuilt,
                 text: 'Build Bridge',
                 cost: '500 Wood 250 Ore',
                 key: 'bridge'
             },
             forge: {
-                unlock: '',
                 active: vm.progress.forgeActive,
                 text: 'Build Forge',
                 cost: '50 Wood 250 Ore',
                 key: 'forge'
+            },
+            campfire: {
+                active: !vm.progress.campfireActive,
+                text: 'Build Fire',
+                cost: '10 Wood',
+                key: 'campfire',
+                special: function() {
+                    vm.progress.campfireActive = true;
+                    this.active = !this.active;
+                }
             }
         };
 
@@ -118,8 +166,13 @@
     	};
 
     	vm.resources = {
-    		money: 1000,
+    		money: 0,
     		moneyRate: 1,
+            milkPrice: 500,
+            calculateTotlMoneyRate: function() {
+                var moneyRate = vm.resources.moneyRate + inventoryService.stats.money;
+                return moneyRate;
+            },
     		workers: 10,
     		lumberjacks: 0,
     		farmers: 0,
@@ -178,6 +231,8 @@
     		var gainRate = resource + 'Up';
     		var downRate = resource + 'Down';
     		var rate = vm.resources[gainRate] + vm.resources[downRate];
+            console.log(resource);
+            console.log(rate);
     		vm.resources[resource] = vm.resources[resource] + rate;
     		var totalRate = resource + 'Rate';
     		vm.resources[totalRate] = rate;
@@ -223,16 +278,16 @@
     		for (var i = 0; i < losses.length; i++) {
     			if (vm.workers[key][losses[i]]*vm.resources[key]*-1 <= vm.resources[losses[i]]) {
     				var lossRate = losses[i] + 'Down';
+                    console.log('test')
     				vm.resources[lossRate] = vm.resources[lossRate] + vm.workers[key][losses[i]]*vm.resources[key];
     			}
     			else {
-    				error = error + 1;
     				var errorMessage = 'Not enough ' + losses[i];
     				messageService.updateMainMessage(errorMessage, true);
     			}
     		}
             //if error, then some resource doesnt have enough, so dont run
-            console.log(gains);
+            console.log(vm.resources[losses[0]]);
     		if (error === 0) {
     			vm.workers[key].active = true;
     			for (var j = 0; j < gains.length; j++) {

@@ -267,7 +267,7 @@
 		//if it has an extra collission box for large ascii art, delete the extra on death as well
 		function checkBig(unit) {
 			if (typeof unit.colBox !== 'undefined') {
-				for (var j = 1; j < unit.colBox[1] + 1; j++) {
+				for (var j = 0; j < unit.colBox[1]; j++) {
 					for (var i = 0; i < unit.colBox[0]; i++) {
 						setCharAt();
 						vm.currentLevel.ascii[unit.position[1] - j] = setCharAt(vm.currentLevel.ascii[unit.position[1] - j], unit.position[0] + i, ' ');

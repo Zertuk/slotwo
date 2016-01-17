@@ -376,7 +376,7 @@
             this.desc = 'desc';
             this.deathMessage = 'death';
             this.symbol = 'G';
-            this.items = [];
+            this.items = [vm.itemDictionary['frozenBanana']];
             this.moneyMult = 300;
             this.itemChance = 20;
             this.maxHealth = 200;
@@ -384,13 +384,14 @@
             this.damage = 50;
             this.attackSpeed = 4;
         };
+        vm.GorillaSnow.prototype = new vm.Enemy();
 
         vm.Mammoth = function Mammoth() {
             this.name = 'Mini Mammoth';
             this.desc = 'desc';
             this.deathMessage = 'death';
             this.symbol = 'M';
-            this.items = [];
+            this.items = [vm.itemDictionary['mammothFur']];
             this.moneyMult = 400;
             this.itemChance = 25;
             this.maxHealth = 200;
@@ -398,6 +399,7 @@
             this.damage = 100;
             this.attackspeed = 4;
         }
+        vm.Mammoth.prototype = new vm.Enemy();
 
         vm.DustDevil = function DustDevil() {
             this.name = 'Dust Devil';

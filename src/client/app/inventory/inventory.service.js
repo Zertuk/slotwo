@@ -356,7 +356,7 @@
 		this.snowmenBlessing.name = 'Snowmens Blessing';
 		this.snowmenBlessing.slug = 'snowmenBlessing';
 		this.snowmenBlessing.desc = 'RIP Gary & Friends';
-		this.snowmenBlessing.message = 'Increases health by 50 and grants 2 extra gold a second.';
+		this.snowmenBlessing.message = 'Increases health by 50 and gives +2 gold a second.';
 		this.snowmenBlessing.health = 50;
 		this.snowmenBlessing.money = 2;
 
@@ -366,6 +366,23 @@
 		this.abomItem.desc = '';
 		this.abomItem.message = '';
 
+		this.mammothFur = new this.Item();
+		this.mammothFur.name = 'Mammoth Fur Scarf';
+		this.mammothFur.slug = 'mammothFur';
+		this.mammothFur.desc = '';
+		this.mammothFur.message = 'Health increased by 2%';
+		this.mammothFur.healthMult = 2;
+
+		this.frozenBanana = new this.Item();
+		this.frozenBanana.name = 'Frozen Banana';
+		this.frozenBanana.slug = 'frozenBanana';
+		this.frozenBanana.desc = '';
+		this.frozenBanana.message = 'Damage increased by 2%';
+		this.frozenBanana.damageMult = 2;
+
+
+		vm.itemDictionary['frozenBanana'] = [['item', this.frozenBanana], ['amount', 0]];
+		vm.itemDictionary['mammothFur'] = [['item', this.mammothFur], ['amount', 0]];
 		vm.itemDictionary['abomItem'] = [['item', this.abomItem], ['amount', 0]];
 		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 0]];
 		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 0]];
@@ -431,6 +448,8 @@
 						 vm.itemDictionary['piggyBank'],
 						 vm.itemDictionary['snowmenBlessing'],
 						 vm.itemDictionary['abomItem'],
+						 vm.itemDictionary['mammothFur'],
+						 vm.itemDictionary['frozenBanana'],
 						 vm.itemDictionary['compendium']];
 
 		vm.buyableItems = ['potion', 

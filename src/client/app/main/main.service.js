@@ -74,9 +74,9 @@
             for (var i = 0; i < ylength; i++) {
                 var before = '';
                 var tooltip = '<p class = "tooltip">' + hover + '</p>';
-                
                 if (isLevel) {
                     var unlockCheck = vm.levelDictionary[data];
+                    //check if we even have unlock/lock values for this 
                     var isUnlockable = vm.progress.levels[unlockCheck.slug];
                     if (typeof isUnlockable !== 'undefined') {
                         var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';

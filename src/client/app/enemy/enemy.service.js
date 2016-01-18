@@ -583,7 +583,7 @@
             this.maxHealth = 800;
             this.health = 800;
             this.damage = 20;
-            this.regularDamage = 20;
+            this.regularDamage = 22;
             this.attackSpeed = 9;
             this.colBox = [15, 15];
             this.move = false;

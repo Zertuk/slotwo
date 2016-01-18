@@ -344,30 +344,30 @@
         }
         vm.Yeti.prototype = new vm.Enemy();
 
-        vm.Alchemist = function Alchemist() {
-            this.name = 'Underground Alchemist';
-            this.symbol = 'E';
+        vm.King = function King() {
+            this.name = 'Vampire King';
+            this.symbol = 'K';
             this.desc = 'desc';
-            this.items = [vm.itemDictionary['potionArmor']];
+            this.items = [vm.itemDictionary['kingCrown']];
             this.itemChance = 15;
             this.deathMessage = '';
             this.damage = 1;
             this.health = 10;
             this.attackSpeed = 2;
         };
-        vm.Alchemist.prototype = new vm.Enemy();
+        vm.King.prototype = new vm.Enemy();
 
-        vm.Unicorn = function Unicorn() {
-            this.name = 'Underground Henchman';
+        vm.Vampire = function Vampire() {
+            this.name = 'Vampire ';
             this.desc = 'desc';
-            this.symbol = 'U';
-            this.items = [vm.itemDictionary['unicornHorn']];
+            this.symbol = 'V';
+            this.items = [vm.itemDictionary['vampireTeeth']];
             this.itemChance = 0;
             this.damage = 1;
             this.health = 10;
             this.attackSpeed = 2;
         };
-        vm.Unicorn.prototype = new vm.Enemy();
+        vm.Vampire.prototype = new vm.Enemy();
 
         vm.Gorilla = function Gorilla() {
             this.name = 'Desert Gorilla';

@@ -279,7 +279,7 @@
             this.itemChance = 25;
             this.damage = 20;
             this.attackSpeed = 1;
-            this.moneyMult = 250;
+            this.moneyMult = 500;
         };
         vm.Penguin.prototype = new vm.Enemy();
 
@@ -311,7 +311,7 @@
             this.health = 40;
             this.damage = 22;
             this.attackSpeed = 2;
-            this.moneyMult = 100;
+            this.moneyMult = 200;
         };
         vm.Mantis.prototype = new vm.Enemy();
 
@@ -327,7 +327,7 @@
             this.health = 60;
             this.damage = 12;
             this.attackSpeed = 3;
-            this.moneyMult = 100;
+            this.moneyMult = 200;
         };
         vm.StickBug.prototype = new vm.Enemy();
 
@@ -406,10 +406,10 @@
             this.deathMessage = 'A Snow Gorilla has been stomped!';
             this.symbol = 'G';
             this.items = [vm.itemDictionary['frozenBanana']];
-            this.moneyMult = 300;
+            this.moneyMult = 1000;
             this.itemChance = 20;
-            this.maxHealth = 200;
-            this.health = 200;
+            this.maxHealth = 300;
+            this.health = 300;
             this.damage = 50;
             this.attackSpeed = 4;
         };
@@ -417,21 +417,23 @@
 
         vm.Mammoth = function Mammoth() {
             this.name = 'Mini Mammoth';
+            this.slug = 'Mammoth';
             this.desc = 'Like a Mammoth, but smaller';
             this.deathMessage = 'A Mini Mammoth has collapsed!';
             this.symbol = 'M';
             this.items = [vm.itemDictionary['mammothFur']];
-            this.moneyMult = 400;
+            this.moneyMult = 1000;
             this.itemChance = 25;
-            this.maxHealth = 200;
-            this.health = 200;
-            this.damage = 100;
-            this.attackspeed = 4;
+            this.maxHealth = 400;
+            this.health = 400;
+            this.damage = 75;
+            this.attackspeed = 5;
         }
         vm.Mammoth.prototype = new vm.Enemy();
 
         vm.DustDevil = function DustDevil() {
             this.name = 'Dust Devil';
+            this.slug = 'DustDevil';
             this.desc = 'Sand Attack!';
             this.deathMessage = 'The Dust Devil was blown away!';
             this.symbol ='V';
@@ -474,6 +476,7 @@
         vm.Crab = function Crab() {
             this.move = false;
             this.name = 'Huge Crab';
+            this.slug = 'Crab';
             this.deathMessage = 'RIP the crab is toast.';
             this.desc = 'Loves money'
             this.items = [vm.itemDictionary['moneyGenerator']];
@@ -490,6 +493,7 @@
         vm.Oyster = function Oyster() {
             this.move = false;
             this.name ='Oyster?';
+            this.slug = 'Oyster';
             this.moneyMult = 100;
             this.symbol = 'o'
             this.desc = 'Or is it a Clam?!';
@@ -502,6 +506,8 @@
 
         vm.Ghost = function Ghost() {
             this.name = 'Ghost of a Prisoner';
+            this.slug = 'Ghost';
+            this.desc = 'A lost soul';
             this.deathMessage = 'The prisoners soul has been freed.';
             this.items = [vm.itemDictionary['ghostArmor']];
             this.itemChance = 10;
@@ -516,7 +522,8 @@
 
         vm.Robot = function Robot() {
             this.name = 'Robot';
-            this.deathMessage = '';
+            this.slug = 'Robot';
+            this.deathMessage = 'The Robot has been shutdown!';
             this.symbol = 'c';
             this.maxHealth = '1000';
             this.health = 1000;
@@ -575,6 +582,8 @@
 
         vm.Minotaur = function Minotaur() {
             this.name = 'Minotaur';
+            this.slug = 'Minotaur';
+            this.desc = 'Smells of death';
             this.items = [vm.itemDictionary['minotaurHammer']];
             this.itemChance = 50;
             this.moneyMult = 250;
@@ -616,11 +625,12 @@
 
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
+            this.slug = 'Snowman';
             this.desc = 'Part snow, part man.';
             this.items = [vm.itemDictionary['snowmanHat']];
             this.itemChance = 25;
             this.deathMessage = 'A Snowman has been turned to slush!';
-            this.moneyMult = 500;
+            this.moneyMult = 750;
             this.symbol = '(';
             this.damage = 30;
             this.attackSpeed = 2;
@@ -633,15 +643,16 @@
 
         vm.SnowmanBoss = function SnowmanBoss() {
             this.name = 'Gary the Snowman';
-            this.moneyMult = 1000;
+            this.slug = 'SnowmanBoss';
+            this.moneyMult = 1500;
             this.desc = 'Just a regular giant guy made of snow.';
             this.items = [vm.itemDictionary['giantCarrot']];
             this.itemChance = 50;
-            this.deathMessage = 'The Snowman Boss has been defeeated!';
+            this.deathMessage = 'Gary the Snowman has been melted!';
             this.symbol = '\\';
             this.damage = 40;
-            this.maxHealth = 3000;
-            this.health = 3000;
+            this.maxHealth = 2500;
+            this.health = 2500;
             this.attackSpeed = 2;
             this.colBox = [20, 20];
             this.move = false;

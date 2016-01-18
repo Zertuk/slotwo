@@ -252,7 +252,8 @@
 
         vm.Tree = function Tree() {
             this.name = 'Tree';
-            this.slug = 'Tree'
+            this.slug = 'Tree';
+            this.desc = 'Just a Tree';
             this.moneyMult = 2;
             this.deathMessage = 'A Tree has been chopped!';
             this.symbol = '|';
@@ -268,6 +269,7 @@
 
         vm.Penguin = function Penguin() {
             this.name = 'Penguin';
+            this.slug = 'Penguin';
             this.moneyMult = 1;
             this.deathMessage = 'A penguin has been demolished!';
             this.symbol = 'P';
@@ -315,6 +317,7 @@
 
         vm.StickBug = function StickBug() {
             this.name = 'Giant Stick Bug';
+            this.slug = 'StickBug';
             this.desc = 'AKA Walking Stick';
             this.deathMessage = 'A Giant Stick Bug has been snapped!';
             this.symbol = 'T';
@@ -330,6 +333,7 @@
 
         vm.Yeti = function Yeti() {
             this.name = 'Abominable Snowman';
+            this.slug = 'Yeti';
             this.symbol = 'A';
             this.desc = 'desc';
             this.items = [vm.itemDictionary['abomItem']];
@@ -346,31 +350,42 @@
 
         vm.King = function King() {
             this.name = 'Vampire King';
+            this.slug = 'King';
+            this.desc = 'Weak, but respected';
+            this.deathMessage = 'The Vampire King has been dethroned!';
+            this.move = false;
             this.symbol = 'K';
             this.desc = 'desc';
             this.items = [vm.itemDictionary['kingCrown']];
-            this.itemChance = 15;
-            this.deathMessage = '';
-            this.damage = 1;
-            this.health = 10;
-            this.attackSpeed = 2;
+            this.itemChance = 50;
+            this.damage = 5;
+            this.health = 50;
+            this.moneyMult = 300;
+            this.maxHealth = 50;
+            this.attackSpeed = 3;
         };
         vm.King.prototype = new vm.Enemy();
 
         vm.Vampire = function Vampire() {
-            this.name = 'Vampire ';
-            this.desc = 'desc';
+            this.move = false;
+            this.name = 'Vampire';
+            this.slug = 'Vampire';
+            this.desc = 'Dont get bit!';
+            this.deathMessage = 'A Vampire has been staked!';
             this.symbol = 'V';
             this.items = [vm.itemDictionary['vampireTeeth']];
-            this.itemChance = 0;
-            this.damage = 1;
-            this.health = 10;
+            this.itemChance = 20;
+            this.damage = 50;
+            this.health = 200;
+            this.maxHealth = 200;
+            this.moneyMult = 100;
             this.attackSpeed = 2;
         };
         vm.Vampire.prototype = new vm.Enemy();
 
         vm.Gorilla = function Gorilla() {
             this.name = 'Desert Gorilla';
+            this.slug = 'Gorilla';
             this.desc = 'They come from under the sand!';
             this.deathMessage = 'A Desert Gorilla has been crushed!';
             this.symbol = 'G';
@@ -386,8 +401,9 @@
 
         vm.GorillaSnow = function GorillaSnow() {
             this.name = 'Snow Gorilla';
-            this.desc = 'desc';
-            this.deathMessage = 'death';
+            this.slug = 'GorillaSnow';
+            this.desc = 'Fuzzier than regular Gorillas';
+            this.deathMessage = 'A Snow Gorilla has been stomped!';
             this.symbol = 'G';
             this.items = [vm.itemDictionary['frozenBanana']];
             this.moneyMult = 300;
@@ -401,8 +417,8 @@
 
         vm.Mammoth = function Mammoth() {
             this.name = 'Mini Mammoth';
-            this.desc = 'desc';
-            this.deathMessage = 'death';
+            this.desc = 'Like a Mammoth, but smaller';
+            this.deathMessage = 'A Mini Mammoth has collapsed!';
             this.symbol = 'M';
             this.items = [vm.itemDictionary['mammothFur']];
             this.moneyMult = 400;

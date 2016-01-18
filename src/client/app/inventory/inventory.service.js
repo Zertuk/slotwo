@@ -233,7 +233,8 @@
 		this.winterCoat.name = 'Winter Sweater';
 		this.winterCoat.slug = 'winterCoat';
 		this.winterCoat.desc = 'Covered in cute deer and trees~';
-		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely!';
+		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely! +25 Health';
+		this.winterCoat.health = 25;
 		this.winterCoat.buyable = true;
 		this.winterCoat.price = 1000;
 		this.winterCoat.removeAfterBuy = true;
@@ -274,7 +275,7 @@
 		this.deerAntlers.name = 'Deer Antlers';
 		this.deerAntlers.slug = 'deerAntlers';
 		this.deerAntlers.desc = 'The latest in deer fashion';
-		this.deerAntlers.message = 'Attacks cause +1 damage.';
+		this.deerAntlers.message = 'Attacks deal +1 damage.';
 		this.deerAntlers.lootOnce = true;
 		this.deerAntlers.damage = 1;
 
@@ -282,7 +283,7 @@
 		this.snowmanHat.name = 'Snowmans Hat';
 		this.snowmanHat.slug = 'snowmanHat';
 		this.snowmanHat.desc = 'No one will ever wear it as good as the snowman...';
-		this.snowmanHat.message = 'Attacks cause +5 damage';
+		this.snowmanHat.message = 'Attacks deal +5 damage';
 		this.snowmanHat.lootOnce = true;
 		this.snowmanHat.damage = 5;
 
@@ -318,7 +319,7 @@
 		this.mantisClaw.name = 'Mantis Claw';
 		this.mantisClaw.slug = 'mantisClaw';
 		this.mantisClaw.desc = 'Scythe like';
-		this.mantisClaw.message = '+5 damage ';
+		this.mantisClaw.message = 'Attacks deal +5 damage';
 		this.mantisClaw.lootOnce = true;
 		this.mantisClaw.damage = 5;
 
@@ -326,7 +327,7 @@
 		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';
 		this.bugExoskeleton.slug = 'bugExoskeleton';
 		this.bugExoskeleton.desc = 'Not sure how this helps';
-		this.bugExoskeleton.message = '+5% armor';
+		this.bugExoskeleton.message = 'Armor increased by 5%';
 		this.bugExoskeleton.lootOnce = true;
 		this.bugExoskeleton.armor = 5;
 
@@ -369,14 +370,14 @@
 		this.mammothFur = new this.Item();
 		this.mammothFur.name = 'Mammoth Fur Scarf';
 		this.mammothFur.slug = 'mammothFur';
-		this.mammothFur.desc = '';
+		this.mammothFur.desc = 'Kind of itchy..';
 		this.mammothFur.message = 'Health increased by 2%';
 		this.mammothFur.healthMult = 2;
 
 		this.frozenBanana = new this.Item();
 		this.frozenBanana.name = 'Frozen Banana';
 		this.frozenBanana.slug = 'frozenBanana';
-		this.frozenBanana.desc = '';
+		this.frozenBanana.desc = 'Maybe it will melt someday';
 		this.frozenBanana.message = 'Damage increased by 2%';
 		this.frozenBanana.damageMult = 2;
 
@@ -384,13 +385,16 @@
 		this.kingCrown.name = 'Crown of the King';
 		this.kingCrown.slug = 'kingCrown';
 		this.kingCrown.desc = '';
-		this.kingCrown.message = '';
+		this.kingCrown.message = '+50 health and armor increased by 5%';
+		this.kingCrown.health = 50;
+		this.kingCrown.defenseMult = 5;
 
 		this.vampireTeeth = new this.Item();
 		this.vampireTeeth.name = 'Vampire Teeth';
 		this.vampireTeeth.slug = 'vampireTeeth';
 		this.vampireTeeth.desc = '';
-		this.vampireTeeth.message = '';
+		this.vampireTeeth.message = 'Attacks deal +5 damage';
+		this.vampireTeeth.damage = 5;
 
 		vm.itemDictionary['vampireTeeth'] = [['item', this.vampireTeeth], ['amount', 0]];
 		vm.itemDictionary['kingCrown'] = [['item', this.kingCrown], ['amount', 0]];
@@ -406,7 +410,7 @@
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
 		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 0]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];
-		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 50]];
+		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 0]];
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
 		vm.itemDictionary['pearl'] = [['item', this.pearl], ['amount, 0']];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];

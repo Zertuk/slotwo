@@ -211,21 +211,21 @@
 		this.trueOffense = new this.Item();
 		this.trueOffense.name = 'Offensive Sprit';
 		this.trueOffense.slug = 'trueOffense';
-		this.trueOffense.desc = '';
+		this.trueOffense.desc = 'Elder seal of approval';
 		this.trueOffense.message = 'Damage increased by 25%';
 		this.trueOffense.damageMult = 25;
 
 		this.trueDefense = new this.Item();
 		this.trueDefense.name = 'Defensive Sprit';
 		this.trueDefense.slug = 'trueDefense';
-		this.trueDefense.desc = '';
+		this.trueDefense.desc = 'Elder seal of approval';
 		this.trueDefense.message = 'Armor increased by 25%';
 		this.trueDefense.defenseMult = 25;
 
 		this.trueHealth = new this.Item();
 		this.trueHealth.name = 'Kind Spirit';
 		this.trueHealth.slug = 'trueHealth';
-		this.trueHealth.desc = '';
+		this.trueHealth.desc = 'Elder seal of approval';
 		this.trueHealth.message = 'Health increased by 25%';
 		this.trueHealth.healthMult = 25;
  
@@ -246,15 +246,15 @@
 		this.pearl.name = 'Shiny Pearl';
 		this.pearl.slug = 'pearl';
 		this.pearl.desc = '';
-		this.pearl.message = 'Holder gains +5 gold a second';
-		this.pearl.money = 5;
+		this.pearl.message = 'Holder gains +25 gold a second';
+		this.pearl.money = 25;
 
 		this.piggyBank = new this.Item();
 		this.piggyBank.name = 'Cat Bank';
 		this.piggyBank.slug = 'piggyBank';
 		this.piggyBank.desc = 'Like a Piggy Bank, but a Cat instead';
-		this.piggyBank.message = 'Holder gains +5 gold a second';
-		this.piggyBank.money = 5;
+		this.piggyBank.message = 'Holder gains +15 gold a second';
+		this.piggyBank.money = 15;
 		this.piggyBank.buyable = true;
 		this.piggyBank.removeAfterBuy = true;
 		this.piggyBank.price = 2500;
@@ -357,15 +357,17 @@
 		this.snowmenBlessing.name = 'Snowmens Blessing';
 		this.snowmenBlessing.slug = 'snowmenBlessing';
 		this.snowmenBlessing.desc = 'RIP Gary & Friends';
-		this.snowmenBlessing.message = 'Increases health by 50 and gives +2 gold a second.';
+		this.snowmenBlessing.message = 'Increases health by 50 and gives +10 gold a second.';
 		this.snowmenBlessing.health = 50;
-		this.snowmenBlessing.money = 2;
+		this.snowmenBlessing.money = 10;
 
 		this.abomItem = new this.Item();
-		this.abomItem.name = 'abomItem';
+		this.abomItem.name = 'Lucky Yeti Boots';
 		this.abomItem.slug = 'abomItem';
-		this.abomItem.desc = '';
-		this.abomItem.message = '';
+		this.abomItem.desc = 'A little too big';
+		this.abomItem.message = '+50 health and wearer gains +20 gold a second.';
+		this.abomItem.health = 50;
+		this.abomItem.money = 20;
 
 		this.mammothFur = new this.Item();
 		this.mammothFur.name = 'Mammoth Fur Scarf';
@@ -392,7 +394,7 @@
 		this.vampireTeeth = new this.Item();
 		this.vampireTeeth.name = 'Vampire Teeth';
 		this.vampireTeeth.slug = 'vampireTeeth';
-		this.vampireTeeth.desc = '';
+		this.vampireTeeth.desc = 'Made from plastic?';
 		this.vampireTeeth.message = 'Attacks deal +5 damage';
 		this.vampireTeeth.damage = 5;
 

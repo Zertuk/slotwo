@@ -481,12 +481,12 @@
             this.desc = 'Loves money'
             this.items = [vm.itemDictionary['moneyGenerator']];
             this.symbol = ';';
-            this.moneyMult = 500;
-            this.maxHealth = 150;
-            this.health = 150;
+            this.moneyMult = 1500;
+            this.maxHealth = 500;
+            this.health = 500;
             this.damage = 50;
             this.colBox = [10, 5];
-            this.attackSpeed = 5;
+            this.attackSpeed = 4;
         }
         vm.Crab.prototype = new vm.Enemy();
 

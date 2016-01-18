@@ -893,7 +893,7 @@
                     }
                 },
                 trainMore: {
-                    text: 'You are not ready yet my student.  Check back later.',
+                    text: 'You are not ready for more, you might never be!',
                     next: 'question',
                     master: 'monk',
                     continue: true
@@ -967,7 +967,7 @@
                     }
                 },
                 angry: {
-                    text: 'fight text',
+                    text: 'Ok we can fight if you want I guess...',
                     buttons: {
                         sorry: {
                             text: 'Sorry',
@@ -976,7 +976,7 @@
                             active: true
                         },
                         fight: {
-                            text: 'Fight me',
+                            text: 'Fight',
                             next: 'fight',
                             master: 'monk',
                             active: true

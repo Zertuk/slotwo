@@ -307,9 +307,9 @@
             this.symbol = 'M';
             this.items = [vm.itemDictionary['mantisClaw']];
             this.itemChance = 8;
-            this.maxHealth = 40;
-            this.health = 40;
-            this.damage = 22;
+            this.maxHealth = 60;
+            this.health = 60;
+            this.damage = 30;
             this.attackSpeed = 2;
             this.moneyMult = 200;
         };
@@ -323,9 +323,9 @@
             this.symbol = 'T';
             this.items = [vm.itemDictionary['bugExoskeleton']];
             this.itemChance = 8;
-            this.maxHealth = 60;
-            this.health = 60;
-            this.damage = 12;
+            this.maxHealth = 80;
+            this.health = 80;
+            this.damage = 20;
             this.attackSpeed = 3;
             this.moneyMult = 200;
         };

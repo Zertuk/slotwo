@@ -380,7 +380,20 @@
 		this.frozenBanana.message = 'Damage increased by 2%';
 		this.frozenBanana.damageMult = 2;
 
+		this.kingCrown = new this.Item();
+		this.kingCrown.name = 'Crown of the King';
+		this.kingCrown.slug = 'kingCrown';
+		this.kingCrown.desc = '';
+		this.kingCrown.message = '';
 
+		this.vampireTeeth = new this.Item();
+		this.vampireTeeth.name = 'Vampire Teeth';
+		this.vampireTeeth.slug = 'vampireTeeth';
+		this.vampireTeeth.desc = '';
+		this.vampireTeeth.message = '';
+
+		vm.itemDictionary['vampireTeeth'] = [['item', this.vampireTeeth], ['amount', 0]];
+		vm.itemDictionary['kingCrown'] = [['item', this.kingCrown], ['amount', 0]];
 		vm.itemDictionary['frozenBanana'] = [['item', this.frozenBanana], ['amount', 0]];
 		vm.itemDictionary['mammothFur'] = [['item', this.mammothFur], ['amount', 0]];
 		vm.itemDictionary['abomItem'] = [['item', this.abomItem], ['amount', 0]];
@@ -439,6 +452,8 @@
 						 vm.itemDictionary['snowmanHat'],
 						 vm.itemDictionary['sleepingBag'],
 						 vm.itemDictionary['gorillaFoot'],
+						 vm.itemDictionary['vampireTeeth'],
+						 vm.itemDictionary['kingCrown'],
 						 vm.itemDictionary['pearl'],
 						 vm.itemDictionary['pocketSand'],
 						 vm.itemDictionary['bugExoskeleton'],

@@ -914,7 +914,7 @@
                             active: !vm.progress.berserk
                         },
                         defense: {
-                            text: 'Shield',
+                            text: 'Block',
                             master: 'monk',
                             next: 'defenseLearn',
                             active: !vm.progress.shield
@@ -945,7 +945,7 @@
                     }
                 },
                 defenseLearn: {
-                    text: 'Alright you can now use Shield.  It will stop any damage for a short period of time, no matter how strong.',
+                    text: 'Alright you can now use Block.  It will stop any damage for a short period of time, no matter how strong.',
                     master: 'monk',
                     next: 'question',
                     continue: true,

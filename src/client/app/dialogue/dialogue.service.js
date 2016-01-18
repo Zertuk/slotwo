@@ -272,12 +272,6 @@
                 question: {
                     text: 'Well, you came here for a reason right?  What do you need?',
                     buttons: {
-                        hair: {
-                            text: 'Is this genuine Wizard hair?',
-                            next: 'hair',
-                            master: 'wizard',
-                            active: true
-                        },
                         whatsItLike: {
                             text: 'Whats it like to be a wizard?',
                             next: 'whatsItLike',
@@ -358,7 +352,7 @@
                     master: 'wizard'
                 },
                 counting: {
-                    text: 'You should check in with that guy in the mountains who trains people.  Maybe he can teach you another trick to get by.  I am counting on you, this is for very important wizard research!',
+                    text: 'You should check in with that monk in the mountains who trains people.  Maybe he can teach you another trick to get by.  I am counting on you, this is for very important wizard research!',
                     continue: true,
                     next: 'question',
                     master: 'wizard',

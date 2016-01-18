@@ -287,10 +287,10 @@
  
 
         this.shroom = new this.Level();
-        this.shroom.enemyArray = [enemyService.Alchemist, enemyService.Unicorn];
-        this.shroom.unitSpawnChance = [25, 75];
-        this.shroom.playerSpawn = [0, 13];
-        this.shroom.enemySpawn = [128, 8];
+        this.shroom.enemyArray = [enemyService.Vampire, enemyService.King];
+        this.shroom.spawnMore = false;
+        this.shroom.playerSpawn = [0, 14];
+        this.shroom.spawnAtStart = [[140, 8], [145, 8], [150, 8], [160, 8], [ 165, 8]];
         this.shroom.enemyMax = 10;
         this.shroom.name = '? ? ?'; 
         this.shroom.slug = 'shroom';

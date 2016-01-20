@@ -289,15 +289,106 @@
                             text: 'What did you want me to do?',
                             next: 'task',
                             master: 'wizard',
-                            active: vm.progress.wizardTask
+                            active: vm.progress.wizardTask&&!vm.progress.vialTaken
                         },
                         bear: {
                             text: 'Why do you live in a giant bear?',
                             next: 'bear',
                             master: 'wizard',
                             active: true
+                        },
+                        vial: {
+                            text: 'I found this in the meteorite',
+                            next: 'vial',
+                            master: 'wizard',
+                            active: vm.progress.vialTaken
                         }                        
                     }
+                },
+                vial: {
+                    text: 'Quick...  Hand that vial to me!',
+                    next: 'giveVial',
+                    master: 'wizard',
+                    continue: true
+                },
+                giveVial: {
+                    text: '*You hand the wizard the vial*',
+                    next: 'doom',
+                    master: 'wizard',
+                    continue: true
+                },
+                doom: {
+                    text: 'Yes...  THE PHYLACTERY! Finally!',
+                    continue: true,
+                    next: 'doom2',
+                    master: 'wizard'
+                },
+                doom2: {
+                    text: '*The wizard starts casting a strange spell on the vial*',
+                    continue: true,
+                    next: 'doom3',
+                    master: 'wizard'
+                },
+                doom3: {
+                    text: 'I can feel the power!  The power of...',
+                    continue: true,
+                    next: 'doom3',
+                    master: 'wizard'
+                },
+                doom4: {
+                    text: 'THE LICH',
+                    continue: true,
+                    next: 'doom4',
+                    master: 'wizard'
+                },
+                memory: {
+                    text: '*Flashes of your memory return, dark memories of THE LICH.*'
+                },
+                lich: {
+                    text: 'I am awoken.  KNEEL before me mortal skum.',
+                    buttons: {
+                        trick: {
+                            text: 'You tricked me!',
+                            next: 'trick',
+                            master: 'wizard',
+                            active: true
+                        },
+                        never: {
+                            text: 'I will never kneel to you, LICH SCUM',
+                            next: 'never',
+                            master: 'wizard',
+                            active: true
+                        }
+                    }
+                },
+                trick: {
+                    text: 'No, the wizard tricked you.  His soul was an offering.  KNEEL before me or join him!',
+                    buttons: {
+                        never: {
+                            text: 'I will never kneel to you, LICH SCUM',
+                            next: 'never',
+                            master: 'wizard',
+                            active: true
+                        }
+                    }
+                },
+                never: {
+                    text: 'FOOL.  This world will fall beneath my might, as many have before it!',
+                    continue: true,
+                    next: 'memory2',
+                    master: 'wizard'
+                },
+                memory2: {
+                    text: '*Memories of other worlds return, tainted by THE LICH...',
+                    continue: true,
+                    next: 'end',
+                    master: 'wizard'
+                },
+                end: {
+                    text: 'Y O U W I L L P E R I S H.',
+                    continue: true,
+                    next: 'lichfight',
+                    level: true
                 },
                 task: {
                     text: 'Head to the northern mountains, take out the giant robot, and bring me a sample of the meteorite!',
@@ -1410,7 +1501,37 @@
                 }
             }
             return dialogue;
-        }
+        };
+
+        vm.meteor = new vm.Dialogue();
+        vm.meteor.initDialogue = function() {
+            if (vm.progress.vialTaken) {
+                return 'rubble';
+            }
+            else {
+                return 'introduction';
+            }
+        };
+        vm.meteor.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: '*The meteorite is cracked open from the impact, inside you see a glass vial.*',
+                    continue: true,
+                    master: 'meteor',
+                    next: 'grab'
+                },
+                grab: {
+                    text: '*You take the vial, only rubble is left.*',
+                    special: function() {
+                        vm.resources.vialTaken = true;
+                    }
+                },
+                rubble: {
+                    text: '*You already took the vial, only rubble is left.*'
+                }
+            }
+            return dialogue;
+        };
 
 
         vm.slumThugsBoss = new vm.Dialogue();
@@ -1519,6 +1640,7 @@
             vm.arena.dialogue = vm.arena.setDialogue();
             vm.secret.dialogue = vm.secret.setDialogue();
             vm.bum.dialogue = vm.bum.setDialogue();
+            vm.meteor.dialogue = vm.meteor.setDialogue();
         };
     }
 })();

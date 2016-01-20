@@ -40,6 +40,7 @@
             signedNDA: false,
             wizardMet: false,
             wizardTask: false,
+            vialTaken: false,
             levels: {
                 treeCity: true,
                 treeOne: true,
@@ -55,7 +56,8 @@
                 wizard: false,
                 robot: false,
                 arena: false,
-                monk: false
+                monk: false,
+                lich: true
             },
             enemies: {
 

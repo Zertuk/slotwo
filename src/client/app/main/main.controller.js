@@ -111,6 +111,8 @@
             vm.player.healthRegen();
             increaseResources();
             updatePlayer();
+            vm.locationDictionary['wizard'].ascii = vm.locationDictionary['wizard'][vm.locationDictionary['wizard'].asciiCheck()];
+            console.log(vm.locationDictionary['wizard'].ascii)
             $timeout(mainLoop, 1000);
         }
         //quicker loop

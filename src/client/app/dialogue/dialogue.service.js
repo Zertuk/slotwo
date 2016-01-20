@@ -177,6 +177,7 @@
                 return 'introduction';
             }
         };
+        vm.wizard.ascii = 'regular';
         vm.wizard.setDialogue = function() {
             var dialogue = {
                 introduction: {
@@ -327,22 +328,31 @@
                     text: '*The wizard starts casting a strange spell on the vial*',
                     continue: true,
                     next: 'doom3',
-                    master: 'wizard'
+                    master: 'wizard',
+                    special: function() {
+                        vm.wizard.ascii = 'spell';
+                    }
                 },
                 doom3: {
                     text: 'I can feel the power!  The power of...',
                     continue: true,
-                    next: 'doom3',
+                    next: 'doom4',
                     master: 'wizard'
                 },
                 doom4: {
                     text: 'THE LICH',
                     continue: true,
-                    next: 'doom4',
-                    master: 'wizard'
+                    next: 'memory',
+                    master: 'wizard',
+                    special: function() {
+                        vm.wizard.ascii = 'lich';
+                    }
                 },
                 memory: {
-                    text: '*Flashes of your memory return, dark memories of THE LICH.*'
+                    text: '*Flashes of your memory return, dark memories of THE LICH.*',
+                    next: 'lich',
+                    continue: true,
+                    master: 'wizard'
                 },
                 lich: {
                     text: 'I am awoken.  KNEEL before me mortal skum.',
@@ -385,7 +395,7 @@
                     master: 'wizard'
                 },
                 end: {
-                    text: 'Y O U W I L L P E R I S H.',
+                    text: 'Y O U W I L L P E R I S H',
                     continue: true,
                     next: 'lichfight',
                     level: true

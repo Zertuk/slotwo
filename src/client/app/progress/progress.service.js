@@ -40,7 +40,7 @@
             signedNDA: false,
             wizardMet: false,
             wizardTask: false,
-            vialTaken: false,
+            vialTaken: true,
             levels: {
                 treeCity: true,
                 treeOne: true,
@@ -53,7 +53,7 @@
                 snow: false,
                 snowNorth: true,
                 shroom: true,
-                wizard: false,
+                wizard: true,
                 robot: false,
                 arena: false,
                 monk: false,

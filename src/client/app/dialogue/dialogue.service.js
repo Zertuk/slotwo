@@ -1306,7 +1306,15 @@
             return dialogue;
         };
 
-
+        vm.secret = new vm.Dialogue();
+        vm.secret.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: '*The room is empty.  Carved into the walls is "QAXK"*'
+                }
+            };
+            return dialogue;
+        };
 
         vm.slumThugsBoss = new vm.Dialogue();
         vm.slumThugsBoss.setDialogue = function() {
@@ -1412,6 +1420,7 @@
             vm.house.dialogue = vm.house.setDialogue();
             vm.inn.dialogue = vm.inn.setDialogue();
             vm.arena.dialogue = vm.arena.setDialogue();
+            vm.secret.dialogue = vm.secret.setDialogue();
         };
     }
 })();

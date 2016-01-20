@@ -233,7 +233,9 @@
 
 		vm.treeSecret = new vm.Location();
 		vm.treeSecret.name = '? ? ?';
-		vm.treeSecret.ascii = ['tree secret'];
+		vm.treeSecret.ascii = [''];
+        vm.treeSecret.dialogue = dialogueService.secret;
+        vm.treeSecret.specialText = true;
 		vm.treeSecret.prev = 'treeCity';
 		vm.treeSecret.prevName = 'Tresabor';
 

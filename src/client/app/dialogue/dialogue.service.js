@@ -355,7 +355,7 @@
                     master: 'wizard'
                 },
                 lich: {
-                    text: 'I am awoken.  KNEEL before me mortal skum.',
+                    text: 'I am awoken.  KNEEL before me mortal filth.',
                     buttons: {
                         trick: {
                             text: 'You tricked me!',
@@ -1525,7 +1525,7 @@
         vm.meteor.setDialogue = function() {
             var dialogue = {
                 introduction: {
-                    text: '*The meteorite is cracked open from the impact, inside you see a glass vial.*',
+                    text: '*You smash the meteorite open and grab a sample, inside you see a glass vial.*',
                     continue: true,
                     master: 'meteor',
                     next: 'grab'

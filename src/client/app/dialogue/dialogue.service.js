@@ -1036,19 +1036,19 @@
                     text: 'Thats what I thought.  Now beat it scrub!',
                 },
                 threaten: {
-                    text: 'Oh man I like this guy! Lets take him to meet the boss!',
+                    text: 'Oh man I like this guy! Lets take him to the hideout!',
                     continue: true,
                     next: 'introduction',
                     master: 'slumThugsBoss'
                 },
                 question: {
-                    text: 'Nosy huh?  Lets let the boss deal with him!',
+                    text: 'Nosy huh?  Here, follow us!',
                     continue: true,
                     next: 'introductionNosy',
                     master: 'slumThugsBoss'
                 },
                 boss: {
-                    text: 'You need to see the boss again? Lets go.',
+                    text: 'You want to try again? Lets go.',
                     continue: true,
                     next: 'bossReturn',
                     master: 'slumThugsBoss'
@@ -1312,7 +1312,7 @@
         vm.slumThugsBoss.setDialogue = function() {
             var dialogue = {
                 introduction: {
-                    text: 'You think you have what it takes huh? Well lets see it then.',
+                    text: 'Here we are, you think you have what it takes for our super secret mission huh? Well lets see it then.',
                     buttons: {
                         confused: {
                             text: 'I have no idea what you mean',
@@ -1327,7 +1327,7 @@
                             active: true
                         },
                         threaten: {
-                            text: 'I will mess you up old man!',
+                            text: 'I will mess you dudes up!',
                             next: 'threaten',
                             master: 'slumThugsBoss',
                             active: true
@@ -1335,7 +1335,7 @@
                     }
                 },
                 introductionNosy: {
-                    text: 'You like going around asking questions huh?  You think you have what it takes?',
+                    text: 'You think you have what it takes for our super secret mission?',
                     buttons: {
                         confused: {
                             text: 'Takes to do what?',
@@ -1350,7 +1350,7 @@
                             active: true
                         },
                         threaten: {
-                            text: 'I will mess you up old man!',
+                            text: 'I will mess you dudes up!',
                             next: 'threaten',
                             master: 'slumThugsBoss',
                             active: true
@@ -1376,7 +1376,7 @@
                     }
                 },
                 leave: {
-                    text: 'Then beat it kid! I dont have time for scrubs like you.',
+                    text: 'Then beat it kid! We dont have time for scrubs like you.',
                 },
                 confident: {
                     text: 'Alright!  Here now drink this.  Dont ask any questions.  Hopefully this is the right amount...',
@@ -1389,10 +1389,10 @@
                     }
                 },
                 threaten: {
-                    text: 'Ha! You wish.  Get out of here before I sick my guard cat on you.  He doesnt mess around.'
+                    text: 'Ha! You wish.  Get out of here before we sick the guard cat on you.  He doesnt mess around.'
                 },
                 bossReturn: {
-                    text: 'Back Again? Drink this again, lets see what you can do!',
+                    text: 'Here, drink this again, lets see what you can do!',
                     continue: true,
                     level: 'shroom',
                     active: true

@@ -92,6 +92,19 @@
             }
         }
 
+        function wizardCheck() {
+            if (vm.currentLocation.slug === 'wizard') {
+                var asciiCheck = vm.currentLocation.asciiCheck();
+                if  (asciiCheck !== vm.currentLocation.currentAscii) {
+                    vm.currentLocation.currentAscii = asciiCheck;
+                    vm.currentLocation.ascii = vm.currentLocation[asciiCheck];
+                    vm.currentLocation.formatted = false;
+                    removeAscii();
+                    sanitizeAscii();
+                } 
+            }
+        }
+
         //all resource info here
         function increaseResources() {
             vm.money = resourcesService.moneyTick();
@@ -111,8 +124,6 @@
             vm.player.healthRegen();
             increaseResources();
             updatePlayer();
-            vm.locationDictionary['wizard'].ascii = vm.locationDictionary['wizard'][vm.locationDictionary['wizard'].asciiCheck()];
-            console.log(vm.locationDictionary['wizard'].ascii)
             $timeout(mainLoop, 1000);
         }
         //quicker loop
@@ -121,6 +132,7 @@
             vm.activeTemplate = templateService.activeTemplate;
             vm.messageError = messageService.messageError;
             vm.mainMessage = messageService.mainMessage;
+            wizardCheck();
             $timeout(quickLoop, 125);
         }
 

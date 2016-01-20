@@ -480,7 +480,9 @@
 		vm.wizard.prevName = 'Map';
 		vm.wizard.specialText = true;
 		vm.wizard.dialogue = dialogueService.wizard;
-        vm.wizard.ascii1 =  ["                                                                                         ",                                                                                                                                        
+        vm.wizard.ascii =  ["                                                                                         ",
+                            "                                                                                         ",
+                            "                                                                                         ",                                                                                                                                        
                             "                                                                                         ",                                                                                                                                        
                             "                                                                                         ",                                                                                                                                        
                             "                                                                                                          \\  )(  /                     ",                                                                                                                                        
@@ -501,9 +503,10 @@
                             "                                                                                            |         |      ||      ",                                                                                                                                        
                             "                                                                                            |         |      ||      ",                                                                                                                                        
                             "                                                                                            |_________|      ||      "];
+21
 
-
-		vm.wizard.ascii2 =	["                                                                               )(                                     ~  \\  )(  /  ~               ",                                                                                                                                            
+		vm.wizard.ascii2 =	["                                                                                                                                                    ",
+                             "                                                                               )(                                     ~  \\  )(  /  ~               ",                                                                                                                                            
 							 "                                                                              ))((                                 ~    ~ \\//\\\\/ ~   ~             ",                                                                                                                                           
 							 "                                                                             ((()))                                    ---((X.))---                ",                                                                                                                                               
 							 "                                                                             \\_  _/             ( >>\\\\\\\\\\           ~   ~ /\\\\//\\ ~   ~             ",                                                                                                                                          
@@ -527,13 +530,14 @@
 							 "                                                                                            (___|       |___)                                      "];
 
 
-        vm.wizard.ascii3 = ["                                                                                                                               __                        ",                                                                                                                                                                          
+        vm.wizard.ascii3 = ["                                                                                         ",
+                         "                                                                                                                               __                        ",                                                                                                                                                                          
                          "                                                                                                /\\                           _/  \\__                     ",                                                                                                                                                                            
                          "                                                                                             /\\/  \\/\\                      _/       \\__                  ",                                                                                                                                                                            
                          "                                                                                            /    .   \\                   _/   _/\\_     \\__               ",                                                                                                                                                                            
                          "                                                                                           /    / \\   \\/|              _/   _/____\\_      \\__            ",                                                                                                                                                                            
                          "                                                                                        |\\|  /\\/   \\    |/|          _/   _/        \\_       \\_          ",                                                                                                                                                                            
-                         "                                                                                       |   |   /|\\ \\/\\   |         /   _/            \\_       \\         ",                                                                                                                                                                                 
+                         "                                                                                        |   |   /|\\ \\/\\   |         /   _/            \\_       \\         ",                                                                                                                                                                                 
                          "                                                                                        | |\\|  / | \\   |  |         |  / | .|.    .|.   \\_      |        ",                                                                                                                                                                            
                          "                                                                                      |\\| |   |  |  |  |  |/\\       |  | |- o -  - o -  | \\_    |        ",                                                                                                                                                                            
                          "                                                                                      |   |   |  |  |  |     |      |  | | '.' /| '.'   |   |   |        ",                                                                                                                                                                                    
@@ -549,11 +553,11 @@
                          "                                                                                      __  \\_\\ |  |  | /__/ __   /            \\ \\__||_/ /           |  \\  ",                                                                                                                                                                            
                          "                                                                                     /  \\___\\\\|  |  |//___/  \\ /              \\_ \\||/ /            |   \\ ",                                                                                                                                                          
                          "                                                                                    /    _____       _____    \\                 \\ \\/ /             |    |"];                                                                                                                                                  
-
+        vm.wizard.currentAscii = 'ascii';
         vm.wizard.asciiCheck = function() {
             var check = dialogueService.wizard.ascii;
             if (check === 'regular') {
-                return 'ascii1';
+                return 'ascii';
             }
             else if (check === 'spell') {
                 return 'ascii2';
@@ -561,11 +565,8 @@
             else {
                 return 'ascii3';
             }
-            vm.wizard.ascii = vm.wizard[vm.wizard.asciiCheck()];
         }
-        vm.wizard.switchAscii = function() {
 
-        }
 
 
         vm.house = new vm.Location();

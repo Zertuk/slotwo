@@ -33,6 +33,7 @@
 		vm.equipArmor = function() {
 			vm.player.armor = vm.itemDictionary[vm.equippedArmor][0][1];
             vm.player.armorValue = vm.player.armor.armor;
+            vm.player.armorCheck = false;
 			// toSlug(vm.test);
 		};
 

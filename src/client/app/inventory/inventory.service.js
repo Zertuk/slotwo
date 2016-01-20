@@ -119,7 +119,6 @@
 		this.clothArmor.desc = 'Better than nothing?';
 		this.clothArmor.armor = 0;
 		this.clothArmor.slug = 'clothArmor';
-		this.clothArmor.damageMult = 1;
 
 		this.woodArmor = new this.Item();
 		this.woodArmor.name = 'Wood Armor';
@@ -168,7 +167,7 @@
 		this.potionArmor.slug = 'potionArmor';
 
 		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
-		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];
+		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 1]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
@@ -406,7 +405,7 @@
 		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 0]];
 		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 0]];
 		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 0]];
-		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
+		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 1]];
 		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];
 		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
@@ -515,6 +514,7 @@
 				healthMult: 0
 			}
 			addVal(keys, vm.stats);
+			vm.statReset = true;
 		}
 
 		function addVal(keys, stats) {

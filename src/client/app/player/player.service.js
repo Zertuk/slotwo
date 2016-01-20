@@ -244,13 +244,19 @@
                 if (this.abilities.berserk.active) {
                     damage = this.weapon.damage*2;
                 }
-                if ((typeof this.armor.damageMult !== 'undefined') && (this.armor.damageMult !== 1)) {
-                    inventoryService.stats.damageMult = this.armor.damageMult;
+                if (inventoryService.statReset) {
+                    this.armorCheck = false;
+                    inventoryService.statReset = false;
                 }
-                else {
-                    inventoryService.stats.damageMult = 0;
+                if ((typeof this.armor.damageMult !== 'undefined') && (!this.armorCheck)) {
+                    this.armorCheck = true;
+                    inventoryService.stats.damageMult = this.armor.damageMult + inventoryService.stats.damageMult;
+                }
+                else if (!this.armorCheck) {
+                    inventoryService.findVal();
                 }
                 damage = damage + inventoryService.stats.damage
+                console.log(inventoryService.stats.damageMult);
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
                 return damage;
             },
@@ -274,6 +280,7 @@
             this.trueSelf = function(self) {
                 vm.itemDictionary[self][1][1] = 1;
             },
+            this.armorCheck = false,
             this.inCombat = false,
             this.active = false,
             this.ground = false,

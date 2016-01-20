@@ -391,6 +391,8 @@
 		vm.treeSlumsBum.name = 'Tree Slums Bum';
 		vm.treeSlumsBum.prev = 'slums';
 		vm.treeSlumsBum.prevName = 'Slums';
+        vm.treeSlumsBum.dialogue = dialogueService.bum;
+        vm.treeSlumsBum.specialText = true;
         vm.treeSlumsBum.ascii = ["                                                                                                         ",                                                                                   
                                  "                                                                                                             ",                                                                                   
                                  "                                                                                       /\\\\\\\\\\\\               ",                                                                                                                                                                           

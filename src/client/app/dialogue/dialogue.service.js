@@ -11,6 +11,7 @@
     function dialogueService(progressService, monkService, playerService, resourcesService, inventoryService) {
         var vm = this;
         vm.locationText = '';
+        vm.resources = resourcesService.resources;
         vm.progress = progressService.progress;
         vm.player = playerService.player;
         vm.itemDictionary = inventoryService.itemDictionary;
@@ -1316,6 +1317,102 @@
             return dialogue;
         };
 
+        vm.bum = new vm.Dialogue();
+        vm.bum.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'Hey man, can you spare any gold?  I can give you information in exchange.',
+                    buttons: {
+                        give: {
+                            text: 'Sure, I can spare a few',
+                            next: 'give',
+                            master: 'bum',
+                            active: true
+                        },
+                        refuse: {
+                            text: 'Sorry buddy not today',
+                            next: 'refuse',
+                            master: 'bum',
+                            active: true
+                        },
+                        ignore: {
+                            text: '*Ignore the man*',
+                            next: 'ignore',
+                            master: 'bum',
+                            active: true
+                        }
+                    }
+                },
+                give: {
+                    text: '',
+                    buttons: {
+                        100: {
+                            text: 'Give 100g',
+                            next: 'tip1',
+                            master: 'bum',
+                            active: vm.resources.money > 100
+                        },
+                        1000: {
+                            text: 'Give 1000g',
+                            next: 'tip2',
+                            master: 'bum',
+                            active: vm.resources.money > 1000
+                        },
+                        10000: {
+                            text: 'Give 10000g',
+                            next: 'tip3',
+                            master: 'bum',
+                            active: vm.resources.money > 10000
+                        },
+                        refuse: {
+                            text: 'Sorry I guess I dont have enough',
+                            next: 'refuse',
+                            master: 'bum',
+                            active: true
+                        }
+                    }
+                },
+                refuse: {
+                    text: 'Thank you anyway my friend.'
+                },
+                ignore: {
+                    text: '*You ignore the man, he ignores you back, it gets weird*'
+                },
+                tip1: {
+                    text: 'Thank you!  Heres a tip, I always see adventurers walk out half naked and die!  Make sure you equip your new armor and weapons!',
+                    continue: true,
+                    master: 'bum',
+                    next: 'introduction',
+                    special: function() {
+                        vm.resources.money = vm.resources.money - 100;
+                        vm.initAllDialogues();
+                    }
+                },
+                tip2: {
+                    text: 'Thank you!  If you dont have one already, you should pick up a beast compendium.  You can track enemies that you kill and loot!',
+                    continue: true,
+                    master: 'bum',
+                    next: 'introduction',
+                    special: function() {
+                        vm.resources.money = vm.resources.money - 1000;
+                        vm.initAllDialogues();
+                    }
+                },
+                tip3: {
+                    text: 'Thank you!  There was a strange group of people down here earlier, someone mentioned that a key to the passcode was 2143.  Whatever that means!',
+                    continue: true,
+                    master: 'bum',
+                    next: 'introduction',
+                    special: function() {
+                        vm.resources.money = vm.resources.money - 10000;
+                        vm.initAllDialogues();
+                    }
+                }
+            }
+            return dialogue;
+        }
+
+
         vm.slumThugsBoss = new vm.Dialogue();
         vm.slumThugsBoss.setDialogue = function() {
             var dialogue = {
@@ -1421,6 +1518,7 @@
             vm.inn.dialogue = vm.inn.setDialogue();
             vm.arena.dialogue = vm.arena.setDialogue();
             vm.secret.dialogue = vm.secret.setDialogue();
+            vm.bum.dialogue = vm.bum.setDialogue();
         };
     }
 })();

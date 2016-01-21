@@ -265,7 +265,7 @@
             this.move = false;
             this.maxHealth = 10;
             this.health = 10;
-            this.colBox = [3, 4];
+            this.colBox = [3, 5];
             this.items = [vm.itemDictionary['bigHeavyWood']];
             this.itemChance = 75;
             this.damage = 0;
@@ -656,8 +656,8 @@
             this.deathMessage = 'Gary the Snowman has been melted!';
             this.symbol = '\\';
             this.damage = 40;
-            this.maxHealth = 2500;
-            this.health = 2500;
+            this.maxHealth = 2000;
+            this.health = 2000;
             this.attackSpeed = 2;
             this.colBox = [20, 20];
             this.move = false;

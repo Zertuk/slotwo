@@ -374,6 +374,14 @@
                                    "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"],
 
 
+        this.lich = new this.Level();
+        this.lich.enemyArray = [enemyService.Skeleton, enemyService.Lich];
+        this.lich.playerSpawn = [0, 15];
+        this.lich.name = 'The Lich';
+        this.lich.slug = 'lich';
+        this.lich.defaultAscii = ["                                                                                                     "];
+
+
 
 
         this.levelDictionary = [];

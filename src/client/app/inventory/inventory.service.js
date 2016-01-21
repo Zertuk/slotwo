@@ -69,7 +69,7 @@
 		this.decentSword.desc = 'It is alright';
 		this.decentSword.buyable = true;
 		this.decentSword.removeAfterBuy = true;
-		this.decentSword.price = 5000;
+		this.decentSword.price = 4000;
 		this.decentSword.damage = 10;
 		this.decentSword.attackSpeed = 2;
 		this.decentSword.slug = 'decentSword';
@@ -98,7 +98,7 @@
 		this.giantCarrot = new this.Item();
 		this.giantCarrot.name = 'Giant Carrot';
 		this.giantCarrot.desc = 'Formerly known as Garys nose';
-		this.giantCarrot.damage = 10;
+		this.giantCarrot.damage = 15;
 		this.giantCarrot.attackSpeed = 1;
 		this.giantCarrot.slug = 'giantCarrot';
 		this.giantCarrot.lootOnce = true;

@@ -355,6 +355,7 @@
         this.robot.spawnMore = false;
         this.robot.name = 'The Wizards Task';
         this.robot.slug = 'robot';
+        this.robot.unlock = 'lich';
         this.robot.defaultAscii = ["           /                                                                                       \\    /                                                     ",
                                    "          /                                                                                         \\  /                                                      ",
                                    "        .'                                                                                           '/                                                       ",

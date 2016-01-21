@@ -60,7 +60,7 @@
                 robot: false,
                 arena: false,
                 monk: false,
-                lich: true
+                lich: false
             },
             enemies: {
 

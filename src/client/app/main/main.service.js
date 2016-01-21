@@ -121,9 +121,9 @@
             //sea
             vm.click(this, 'Go For a Swim?', 'sea', 100, 20, 25, 10, true);
             //lich
-            vm.click(this, 'Lich', 'lich', 105, 1, 1, 1);
+            vm.click(this, 'Meteorite', 'lich', 104, 1, 3, 3);
             //robot
-            vm.click(this, 'Wizards Task', 'robot', 90, 2, 15, 5, true);
+            vm.click(this, 'Wizards Task', 'robot', 90, 4, 15, 5, true);
             //monk
             vm.click(this, 'Mysterious Cavern', 'monk', 112, 16, 4, 3);
         	//wizard

@@ -503,8 +503,6 @@
                             "                                                                                            |         |      ||      ",                                                                                                                                        
                             "                                                                                            |         |      ||      ",                                                                                                                                        
                             "                                                                                            |_________|      ||      "];
-21
-
 		vm.wizard.ascii2 =	["                                                                                                                                                    ",
                              "                                                                               )(                                     ~  \\  )(  /  ~               ",                                                                                                                                            
 							 "                                                                              ))((                                 ~    ~ \\//\\\\/ ~   ~             ",                                                                                                                                           
@@ -555,15 +553,20 @@
                          "                                                                                    /    _____       _____    \\                 \\ \\/ /             |    |"];                                                                                                                                                  
         vm.wizard.currentAscii = 'ascii';
         vm.wizard.asciiCheck = function() {
-            var check = dialogueService.wizard.ascii;
-            if (check === 'regular') {
-                return 'ascii';
-            }
-            else if (check === 'spell') {
-                return 'ascii2';
+            if (vm.progress.lichReveal) {
+                return 'ascii3';
             }
             else {
-                return 'ascii3';
+                var check = dialogueService.wizard.ascii;
+                if (check === 'regular') {
+                    return 'ascii';
+                }
+                else if (check === 'spell') {
+                    return 'ascii2';
+                }
+                else {
+                    return 'ascii3';
+                }                    
             }
         }
 

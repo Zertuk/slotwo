@@ -256,7 +256,6 @@
                     inventoryService.findVal();
                 }
                 damage = damage + inventoryService.stats.damage
-                console.log(inventoryService.stats.damageMult);
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
                 return damage;
             },

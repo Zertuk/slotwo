@@ -31,7 +31,10 @@
             }
         };
         vm.switchLevel = function(level) {
-            vm.currentLocation = mainService.switchLevel(level);
+            var check = mainService.switchLevel(level);
+            if (check) {
+                vm.currentLocation = mainService.switchLevel(level);
+            }
         };
 
         vm.switchTemplate = function(template) {

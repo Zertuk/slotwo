@@ -26,7 +26,7 @@
         vm.raiseMilkPrice = function() {
             var price = vm.resources.milkPrice;
             price = price + price/2;
-            price = price.toFixed(0);
+            price = Math.floor(price);
             vm.resources.milkPrice = price;
         }
 
@@ -166,7 +166,7 @@
     	};
 
     	vm.resources = {
-    		money: 0,
+    		money: 10000,
     		moneyRate: 1,
             milkPrice: 500,
             calculateTotlMoneyRate: function() {

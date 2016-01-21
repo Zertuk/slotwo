@@ -30,6 +30,7 @@
             if (vm.passcode === 'AQKX') {
                 vm.passComplete = true;
                 progressService.progress.passCode = true;
+                inventoryService.itemDictionary['sweetJacket'][1][1] = 1;
                 vm.passText = 'Nice!  Thats the passcode alright.  You solved my riddle, now here is your prize. *The man hands you a [Sweet Jacket]!*';
             }
             else {

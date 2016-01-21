@@ -705,9 +705,10 @@
                     }
                 },
                 train: {
-                    text: 'If you need to become stronger, you need to train.  An old friend of mine is living in the mountains.  He can help you learn new abilities.  If you just want to get tougher, the arena will get you in top shape.',
+                    text: 'If you need to become stronger, you need to train.  An old monk friend of mine is living in the mountains.  He can help you learn new abilities.  If you just want to get tougher, the arena will get you in top shape.',
                     special: function() {
                         vm.progress.levels.arena = true;
+                        vm.progress.levels.sea = true;
                         vm.progress.levels.monk = true;
                         vm.progress.canLearn = vm.progress.canLearn + 1;
                     },
@@ -1322,6 +1323,7 @@
                     next: 'chat',
                     special: function() {
                         vm.progress.levels.arena = true;
+                        vm.progress.levels.sea = true;
                     },
                     continue: true,
                     master: 'inn'
@@ -1332,6 +1334,7 @@
                     continue: true,
                     special: function() {
                         vm.progress.levels.arena = true;
+                        vm.progress.levels.sea = true;
                     },
                     master: 'inn'
                 }

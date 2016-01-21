@@ -77,7 +77,7 @@
 		this.bearClaws = new this.Item();
 		this.bearClaws.name = 'Bear Arms';
 		this.bearClaws.desc = 'Just like the founding fathers intended';
-		this.bearClaws.damage = 3;
+		this.bearClaws.damage = 2;
 		this.bearClaws.attackSpeed = 1;
 		this.bearClaws.slug = 'bearClaws';
 

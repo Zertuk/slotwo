@@ -41,6 +41,7 @@
             wizardMet: false,
             wizardTask: false,
             vialTaken: true,
+            lichReveal: false,
             levels: {
                 treeCity: true,
                 treeOne: true,

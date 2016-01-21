@@ -1,4 +1,4 @@
-<div id = "locationtext" ng-controller = "DialogueController as vm">
+<div id = "locationtext" ng-controller = "DialogueController as vm" ng-cloak>
 	<p class = "text" ng-if = "vm.locationText">{{vm.locationText}}</p>
 	<p class = "text" ng-if = "vm.currentDialogue.specialText">{{vm.currentDialogue.specialText()}}</p>
 	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.next" ng-click = "vm.switchDialogue(vm.currentDialogue.next, vm.currentDialogue.master)">Continue</button>

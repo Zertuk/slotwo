@@ -42,7 +42,9 @@
             wizardTask: false,
             vialTaken: true,
             lichReveal: false,
+            passCode: false,
             levels: {
+                cabin: true,
                 treeCity: true,
                 treeOne: true,
                 treeTwo: true,

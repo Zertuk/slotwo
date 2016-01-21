@@ -490,6 +490,28 @@
             return dialogue;
         };
 
+        vm.cabin = new vm.Dialogue();
+        vm.cabin.initDialogue = function() {
+            if (vm.progress.passCode) {
+                return 'complete';
+            }
+            else {
+                return 'introduction';
+            }
+        };
+        vm.cabin.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: '',
+                    input: true
+                },
+                complete: {
+                    text: 'Sorry, the riddle is over, please leave..'
+                }
+            };
+            return dialogue;
+        };
+
         vm.treeKing = new vm.Dialogue();
         vm.treeKing.initDialogue = function() {
             if (!vm.progress.treeKingIntro) {
@@ -1655,6 +1677,7 @@
             vm.secret.dialogue = vm.secret.setDialogue();
             vm.bum.dialogue = vm.bum.setDialogue();
             vm.meteor.dialogue = vm.meteor.setDialogue();
+            vm.cabin.dialogue = vm.cabin.setDialogue();
         };
     }
 })();

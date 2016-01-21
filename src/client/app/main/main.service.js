@@ -448,6 +448,8 @@
         vm.cabin = new vm.Location();
         vm.cabin.name = 'A Cabin';
         vm.cabin.slug = 'cabin';
+        vm.cabin.dialogue = dialogueService.cabin;
+        vm.cabin.specialText = true;
         vm.cabin.ascii = ["                                                                                                                                                  ",
                           "                                                                                                  wwwwwwwwwwwwwwwwww                              ",                                                                                                                                         
                           "                                                                                                  |_____ |______  wwww                            ",                                                                                                                                         

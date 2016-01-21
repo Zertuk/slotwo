@@ -414,7 +414,7 @@
 		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 0]];
 		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 0]];
 		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 0]];
-		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 1]];
+		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];
 		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];
 		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
@@ -452,7 +452,7 @@
 
 		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
 		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]];
-		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 1]];
+		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 0]];
 
 
 		////////////////

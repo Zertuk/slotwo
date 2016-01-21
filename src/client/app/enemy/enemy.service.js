@@ -24,7 +24,12 @@
             vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
             //higher attackspeed less attacks performed
             if (count % enemy.attackSpeed === 0) {
-                var random = Math.floor((Math.random()*100));
+                if (unit.evade > 0) {
+                    var random = Math.floor((Math.random()*100));
+                }
+                else {
+                    random = 100;
+                }
                 if (random > unit.evade) {
                     var damageDealt = enemy.damage - (enemy.damage*unit.armorValue);
                     unit.health = unit.health - damageDealt;

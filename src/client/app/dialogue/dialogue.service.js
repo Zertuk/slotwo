@@ -170,7 +170,10 @@
         //wizard in bear dialogue
         vm.wizard = new vm.Dialogue();
         vm.wizard.initDialogue = function() {
-            if (vm.progress.wizardMet) {
+            if (vm.progress.lichReveal) {
+                return 'lich';
+            }
+            else if (vm.progress.wizardMet) {
                 return 'question';
             }
             else {
@@ -346,6 +349,7 @@
                     master: 'wizard',
                     special: function() {
                         vm.wizard.ascii = 'lich';
+                        vm.progress.lichReveal = true;
                     }
                 },
                 memory: {

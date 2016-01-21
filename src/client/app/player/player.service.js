@@ -86,6 +86,11 @@
                     }
                 }
             },
+            this.findDPS = function() {
+                var dps = this.damage*8/this.attackSpeed;
+                console.log(this.attackSpeed);
+                return dps;
+            },
             this.specialEnd = undefined,
             this.money = 1000,
             this.usePotion = function() {
@@ -240,6 +245,7 @@
                 }
             },
             this.calculateTotalDamage = function() {
+                this.attackSpeed = this.weapon.attackSpeed;
                 var damage = this.weapon.damage;
                 if (this.abilities.berserk.active) {
                     damage = this.weapon.damage*2;

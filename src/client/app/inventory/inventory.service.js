@@ -385,7 +385,7 @@
 		this.kingCrown = new this.Item();
 		this.kingCrown.name = 'Crown of the King';
 		this.kingCrown.slug = 'kingCrown';
-		this.kingCrown.desc = '';
+		this.kingCrown.desc = 'Slightly bloody';
 		this.kingCrown.message = '+50 health and armor increased by 5%';
 		this.kingCrown.health = 50;
 		this.kingCrown.defenseMult = 5;
@@ -397,6 +397,15 @@
 		this.vampireTeeth.message = 'Attacks deal +5 damage';
 		this.vampireTeeth.damage = 5;
 
+		this.sweetJacket = new this.Item();
+		this.sweetJacket.name = 'Sweet Jacket';
+		this.sweetJacket.slug = 'sweetJacket';
+		this.sweetJacket.desc = 'Makes you look tough and has pockets for snacks!';
+		this.sweetJacket.message = 'Damage increased by 3%, Armor increased by 3%, +100 coolness';
+		this.sweetJacket.damageMult = '3';
+		this.sweetJacket.armorMult = '3';
+
+		vm.itemDictionary['sweetJacket'] = [['item', this.sweetJacket], ['amount', 0]];
 		vm.itemDictionary['vampireTeeth'] = [['item', this.vampireTeeth], ['amount', 0]];
 		vm.itemDictionary['kingCrown'] = [['item', this.kingCrown], ['amount', 0]];
 		vm.itemDictionary['frozenBanana'] = [['item', this.frozenBanana], ['amount', 0]];

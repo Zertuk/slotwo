@@ -372,15 +372,15 @@
 		this.mammothFur.name = 'Mammoth Fur Scarf';
 		this.mammothFur.slug = 'mammothFur';
 		this.mammothFur.desc = 'Kind of itchy..';
-		this.mammothFur.message = 'Health increased by 2%';
-		this.mammothFur.healthMult = 2;
+		this.mammothFur.message = 'Health increased by 5%';
+		this.mammothFur.healthMult = 5;
 
 		this.frozenBanana = new this.Item();
 		this.frozenBanana.name = 'Frozen Banana';
 		this.frozenBanana.slug = 'frozenBanana';
 		this.frozenBanana.desc = 'Maybe it will melt someday';
-		this.frozenBanana.message = 'Damage increased by 2%';
-		this.frozenBanana.damageMult = 2;
+		this.frozenBanana.message = 'Damage increased by 4%';
+		this.frozenBanana.damageMult = 4;
 
 		this.kingCrown = new this.Item();
 		this.kingCrown.name = 'Crown of the King';
@@ -401,9 +401,9 @@
 		this.sweetJacket.name = 'Sweet Jacket';
 		this.sweetJacket.slug = 'sweetJacket';
 		this.sweetJacket.desc = 'Makes you look tough and has pockets for snacks!';
-		this.sweetJacket.message = 'Damage increased by 3%, Armor increased by 3%, +100 coolness';
-		this.sweetJacket.damageMult = '3';
-		this.sweetJacket.armorMult = '3';
+		this.sweetJacket.message = 'Damage increased by 10%, Armor increased by 10%, +100 coolness';
+		this.sweetJacket.damageMult = 10;
+		this.sweetJacket.defenseMult = 10;
 
 		vm.itemDictionary['sweetJacket'] = [['item', this.sweetJacket], ['amount', 0]];
 		vm.itemDictionary['vampireTeeth'] = [['item', this.vampireTeeth], ['amount', 0]];

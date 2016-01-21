@@ -479,6 +479,7 @@
 						 vm.itemDictionary['abomItem'],
 						 vm.itemDictionary['mammothFur'],
 						 vm.itemDictionary['frozenBanana'],
+						 vm.itemDictionary['sweetJacket'],
 						 vm.itemDictionary['compendium']];
 
 		vm.buyableItems = ['potion', 

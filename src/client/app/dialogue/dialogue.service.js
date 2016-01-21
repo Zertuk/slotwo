@@ -186,6 +186,9 @@
                 introduction: {
                     text: 'Oh hello.  If I had known you were coming I would have disabled my snowmen sentries!',
                     next: 'question',
+                    special: function() {
+                        vm.progress.levels.snowNorth = true;
+                    },                    
                     buttons: {
                         kill: {
                             text: 'Dont worry, they were no problem.',

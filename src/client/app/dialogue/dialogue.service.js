@@ -1137,7 +1137,6 @@
             else {
                 return 'introduction';
             }
-            console.log('poop test');
         };
         vm.slumThugs.setDialogue = function() {
             var dialogue = {
@@ -1653,7 +1652,6 @@
                     level: 'shroom',
                     special: function() {
                         vm.progress.slumBossMet = true;
-                        console.log(vm.progress.slumBossMet);
                     }
                 },
                 threaten: {

@@ -1189,7 +1189,7 @@
             return dialogue;
         };
 
-        vm.inn = new vm.Dialogue;
+        vm.inn = new vm.Dialogue();
         vm.inn.initDialogue = function() {
             if (vm.progress.innIntro) {
                 return 'question';
@@ -1353,7 +1353,7 @@
             else {
                 return 'introduction';
             }
-        }
+        };
         vm.house.setDialogue = function() {
             var dialogue = {
                 introduction: {

@@ -28,6 +28,6 @@
    			vm.progress[key] = true;
    			vm.progress.canLearn = vm.progress.canLearn - 1;
    			messageService.updateMainMessage('You have learned ' + type + '!');
-    	}
+    	};
     }
 })();

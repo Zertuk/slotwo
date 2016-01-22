@@ -15,15 +15,15 @@
 
     	vm.initShop = function() {
     		createShopList();
-    	}
+    	};
 
         vm.initPurchase = function(item) {
             checkBalance(item);
-        }
+        };
 
         vm.grabItemDictionary = function() {
             return vm.itemDictionary;
-        }
+        };
 
         ////////////////
 

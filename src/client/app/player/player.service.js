@@ -88,7 +88,6 @@
             },
             this.findDPS = function() {
                 var dps = this.damage*8/this.attackSpeed;
-                console.log(this.attackSpeed);
                 return dps;
             },
             this.specialEnd = undefined,
@@ -110,7 +109,7 @@
                     messageService.updateMainMessage('You have no potions.', true);
                 }
             },
-            this.potionCD = 0;
+            this.potionCD = 0,
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;
                 return percent;
@@ -269,7 +268,7 @@
                 else if (!this.armorCheck) {
                     inventoryService.findVal();
                 }
-                damage = damage + inventoryService.stats.damage
+                damage = damage + inventoryService.stats.damage;
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
                 return damage;
             },
@@ -325,13 +324,11 @@
             //attack
             this.weapon = vm.itemDictionary.fists[0][1],
             this.damage = this.calculateTotalDamage(),
-            this.attackSpeed = this.weapon.attackSpeed,
-            //money
-            this.gold = 0
-        },
-        this.player = new this.Player(),
-        this.player.calculateTotalDamage(),
-        this.player.calculateTotalHealth(),
-        this.player.calculateTotalArmor()
+            this.attackSpeed = this.weapon.attackSpeed
+        };
+        this.player = new this.Player();
+        this.player.calculateTotalDamage();
+        this.player.calculateTotalHealth();
+        this.player.calculateTotalArmor();
     }
 })();

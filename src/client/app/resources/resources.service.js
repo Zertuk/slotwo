@@ -14,25 +14,22 @@
 
         vm.canBuyMilk = function() {
             if (vm.resources.money > vm.resources.milkPrice) {
-                console.log('can buy');
                 return true;
             }
             else {
-                console.log('rip no buy');
                 return false;
             }
-        }
+        };
 
         vm.raiseMilkPrice = function() {
             var price = vm.resources.milkPrice;
             price = price + price/2;
             price = Math.floor(price);
             vm.resources.milkPrice = price;
-        }
+        };
 
 
         vm.addLogToFire = function() {
-            console.log('add log')
             if (vm.resources.wood > 0) {
                 vm.itemDictionary['wood'][1][1] = vm.itemDictionary['wood'][1][1] - 1;
                 vm.regrabAmounts();
@@ -41,7 +38,7 @@
             else {
                 return false;
             }
-        } 
+        };
 
     	vm.moneyTick = function() {
             vm.forgeActive();
@@ -79,11 +76,11 @@
                     vm.resources.money = vm.resources.money + 25;
                 }
             }
-        }
+        };
 
         vm.toggleForge = function() {
             vm.resources.forge = !vm.resources.forge;
-        }
+        };
 
         vm.forgeMessage = function() {
             var message = '';
@@ -94,7 +91,7 @@
                 message = 'Activate Forge';
             }
             return message;
-        }
+        };
 
         vm.craftables = {
             sword: {
@@ -231,8 +228,6 @@
     		var gainRate = resource + 'Up';
     		var downRate = resource + 'Down';
     		var rate = vm.resources[gainRate] + vm.resources[downRate];
-            console.log(resource);
-            console.log(rate);
     		vm.resources[resource] = vm.resources[resource] + rate;
     		var totalRate = resource + 'Rate';
     		vm.resources[totalRate] = rate;
@@ -278,7 +273,6 @@
     		for (var i = 0; i < losses.length; i++) {
     			if (vm.workers[key][losses[i]]*vm.resources[key]*-1 <= vm.resources[losses[i]]) {
     				var lossRate = losses[i] + 'Down';
-                    console.log('test')
     				vm.resources[lossRate] = vm.resources[lossRate] + vm.workers[key][losses[i]]*vm.resources[key];
     			}
     			else {
@@ -287,7 +281,6 @@
     			}
     		}
             //if error, then some resource doesnt have enough, so dont run
-            console.log(vm.resources[losses[0]]);
     		if (error === 0) {
     			vm.workers[key].active = true;
     			for (var j = 0; j < gains.length; j++) {

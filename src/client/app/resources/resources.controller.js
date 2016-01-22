@@ -45,7 +45,7 @@
             else {
                 messageService.updateMainMessage('No wood available', true);
             }
-        }
+        };
 
         vm.checkActive = function(input) {
             var check = input + 'Active';
@@ -63,7 +63,6 @@
         };
 
         vm.craft = function(itemInput) {
-            console.log(itemInput)
             var item = vm.itemDictionary[itemInput][0][1];
             var crafted = item.craft();
             if (crafted) {
@@ -79,7 +78,7 @@
         vm.toggleForge = function() {
             resourcesService.toggleForge();
             vm.forgeMessage = resourcesService.forgeMessage();
-        }
+        };
 
         vm.forgeMessage = resourcesService.forgeMessage();
 

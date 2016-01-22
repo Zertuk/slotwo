@@ -24,8 +24,9 @@
             vm.currentEnemy.percent = vm.currentEnemy.findHealthPercent();
             //higher attackspeed less attacks performed
             if (count % enemy.attackSpeed === 0) {
+                var random;
                 if (unit.evade > 0) {
-                    var random = Math.floor((Math.random()*100));
+                    random = Math.floor((Math.random()*100));
                 }
                 else {
                     random = 100;
@@ -36,7 +37,7 @@
                     unit.health = unit.health.toFixed(2);
                 }
                 else {
-                    messageService.addMessage('You evade an attack thanks to your [Pocket Sand]!')
+                    messageService.addMessage('You evade an attack thanks to your [Pocket Sand]!');
                 }
             }
             if (count % unit.attackSpeed === 0) {
@@ -159,7 +160,7 @@
                     this.itemDrop();
                     this.health = this.fullHealth;
                     if (this.prevCheck) {
-                        this.symbol = '_'
+                        this.symbol = '_';
                     }
                     else {
                         this.symbol = '';
@@ -351,7 +352,7 @@
             this.health = 1000;
             this.maxHealth = 1000;
             this.moneyMult = 600;
-        }
+        };
         vm.Yeti.prototype = new vm.Enemy();
 
         vm.King = function King() {
@@ -434,7 +435,7 @@
             this.health = 400;
             this.damage = 75;
             this.attackspeed = 5;
-        }
+        };
         vm.Mammoth.prototype = new vm.Enemy();
 
         vm.DustDevil = function DustDevil() {
@@ -484,7 +485,7 @@
             this.name = 'Huge Crab';
             this.slug = 'Crab';
             this.deathMessage = 'RIP the crab is toast.';
-            this.desc = 'Loves money'
+            this.desc = 'Loves money';
             this.items = [vm.itemDictionary['moneyGenerator']];
             this.symbol = ';';
             this.moneyMult = 1500;
@@ -493,7 +494,7 @@
             this.damage = 50;
             this.colBox = [10, 5];
             this.attackSpeed = 4;
-        }
+        };
         vm.Crab.prototype = new vm.Enemy();
 
         vm.Oyster = function Oyster() {
@@ -501,13 +502,13 @@
             this.name ='Oyster?';
             this.slug = 'Oyster';
             this.moneyMult = 100;
-            this.symbol = 'o'
+            this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
-            this.deathMessage = 'An Oyster? has been shucked!'
+            this.deathMessage = 'An Oyster? has been shucked!';
             this.maxHealth = 100;
             this.health = 100;
             this.damage = 20;
-        }
+        };
         vm.Oyster.prototype = new vm.Enemy();
 
         vm.Ghost = function Ghost() {

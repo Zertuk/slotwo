@@ -55,15 +55,6 @@
             }
         };
 
-
-
-    	// vm.switchLocation = function(location) {
-     //        vm.currentLocation = vm.locationDictionary[location];
-     //        console.log(vm.currentLocation);
-     //        return vm.currentLocation;
-     //    };
-
-
     	vm.setCharAt = function(str,index,chr) {
             if (index > str.length-1) {
                 return str;
@@ -74,21 +65,24 @@
             for (var i = 0; i < ylength; i++) {
                 var before = '';
                 var tooltip = '<p class = "tooltip">' + hover + '</p>';
+                var unlockCheck;
+                var isUnlockable;
+                var conditional;
                 if (isLevel) {
-                    var unlockCheck = vm.levelDictionary[data];
+                    unlockCheck = vm.levelDictionary[data];
                     //check if we even have unlock/lock values for this 
-                    var isUnlockable = vm.progress.levels[unlockCheck.slug];
+                    isUnlockable = vm.progress.levels[unlockCheck.slug];
                     if (typeof isUnlockable !== 'undefined') {
-                        var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
+                        conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
                         tooltip = '<p class = "tooltip" ' + conditional + '>' + hover + '</p>';
                     }
                 	before = '<span class = "click" ng-click = "vm.switchLevel(\''+ data + '\')">' + tooltip + location.ascii[y + i][x];
             	}
             	else {
-                    var unlockCheck = vm.locationDictionary[data];
-                    var isUnlockable = vm.progress.levels[unlockCheck.slug];
+                    unlockCheck = vm.locationDictionary[data];
+                    isUnlockable = vm.progress.levels[unlockCheck.slug];
                     if (typeof isUnlockable !== 'undefined') {
-                        var conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
+                        conditional = 'ng-if = "vm.progress.levels[\'' + unlockCheck.slug + '\'];"';
                         tooltip = '<p class = "tooltip" ' + conditional + '>' + hover + '</p>';
                     }
                 	before = '<span class = "click" ng-click = "vm.switchLocation(\'' + data + '\')">' + tooltip + location.ascii[y + i][x];
@@ -104,8 +98,8 @@
     		this.asciiFormatted = [];
     		this.asciiSpanned = [];
     		this.formatted = false;
-    		this.initClicks = function(){}
-    		this.specFunc = function(){}
+    		this.initClicks = function(){};
+    		this.specFunc = function(){};
         };
 
         vm.locationDictionary = [];

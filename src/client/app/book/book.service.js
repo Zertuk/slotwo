@@ -21,7 +21,6 @@
                 var enemy = new enemyService[keys[i]]();
                 enemyArray.push(enemy);
             }
-            console.log(enemyArray)
             return enemyArray;
         }
     }

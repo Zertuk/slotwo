@@ -149,7 +149,6 @@
             },
             this.checkLevelEnd = function(unit, map) {
                 if (map[unit[1]].length <= unit[0]) {
-                    console.log('level end');
                     return true;
                 }
             },
@@ -547,7 +546,6 @@
                 var thisEnemy = this;
                 function heal() {
                     thisEnemy.health = thisEnemy.health + 50;
-                    console.log(thisEnemy.health);
                     $timeout(function() {
                         heal();
                     }, 1000);

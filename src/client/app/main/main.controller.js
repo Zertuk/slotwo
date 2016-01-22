@@ -47,7 +47,7 @@
             $timeout(function() {
                 vm.itemList = [shopService.shopList];
             }, 50);
-        }
+        };
 
         function initShop() {
             shopService.initShop();

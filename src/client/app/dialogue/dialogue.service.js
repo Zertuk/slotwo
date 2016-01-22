@@ -236,7 +236,7 @@
                 cool: {
                     text: 'Yeah it is pretty great, although sometimes I run low on mana after killing too many! Oops~',
                     next: 'introFinish',
-                    master: 'active,',
+                    master: 'wizard,',
                     continue: true
                 },
                 intel: {
@@ -419,11 +419,11 @@
                     next: 'question',
                     master: 'wizard'
                 },
-                hair: {
-
-                },
                 whatsItLike: {
-
+                    text: 'Sorry man, I cant even explain how great it is.  It is something you just have to experience.  Too bad you never will haha!',
+                    continue: true,
+                    next: 'question',
+                    master: 'wizard'
                 },
                 sky: {
                     text: 'Is that what the commoners are calling it?  Well it was a meteor of some sort.  However!  There is some type of giant robot protecting the meteor!',

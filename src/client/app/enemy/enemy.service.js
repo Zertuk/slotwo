@@ -41,6 +41,7 @@
             }
             if (count % unit.attackSpeed === 0) {
                 enemy.health = enemy.health - unit.damage;
+                enemy.health = enemy.health.toFixed(1);
             }
             //kill current enemy
             if (enemy.health <= 0) {

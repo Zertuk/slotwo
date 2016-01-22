@@ -36,7 +36,7 @@
             else {
                 vm.passText = 'Hey! Thats not the passcode!';
             }
-        }
+        };
 
         function special() {
             if (typeof vm.currentDialogue.special !== 'undefined') {

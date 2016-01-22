@@ -95,14 +95,22 @@
             this.money = 1000,
             this.usePotion = function() {
                 if (inventoryService.itemDictionary.potion[1][1] > 0) {
-                    var health = parseFloat(this.health);                
-                    this.health = (health + this.maxHealth/2).toFixed(2);
-                    inventoryService.itemDictionary.potion[1][1] = inventoryService.itemDictionary.potion[1][1] - 1;
+                    if (this.potionCD <= 0) {
+                        var health = parseFloat(this.health);                
+                        this.health = (health + this.maxHealth/2).toFixed(2);
+                        inventoryService.itemDictionary.potion[1][1] = inventoryService.itemDictionary.potion[1][1] - 1;
+                        this.potionCD = 300;
+                        return true;
+                    }
+                    else {
+                        messageService.updateMainMessage('Potions are on cooldown!', true);
+                    }
                 }
                 else {
                     messageService.updateMainMessage('You have no potions.', true);
                 }
             },
+            this.potionCD = 0;
             this.healthPercent = function() {
                 var percent = (this.health / this.maxHealth)*100;
                 return percent;

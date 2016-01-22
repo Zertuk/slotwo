@@ -62,6 +62,27 @@
 			}
 		}
 
+		vm.initPotion = function() {
+			var potionUsed = vm.player.usePotion();
+			if (potionUsed) {
+				potionCooldown();
+			}
+		};
+
+		function potionCooldown() {
+			if (vm.player.potionCD > 0) {
+				vm.player.potionCD = vm.player.potionCD - 1;
+				var percent = (vm.player.potionCD / 300)*100 - 1;
+				angular.element('.potioncd .abilitybg').css('width', percent + '%');
+				$timeout(function() {
+					potionCooldown();
+				}, 125);
+			}
+			else {
+				vm.player.potionCD = 0;
+			}
+		}
+
 		function abilityCooldown(ability, elem) {
 			var cdMax = vm.abilities[ability].cdMax;
 			vm.abilities[ability].cd = cdMax;
@@ -87,6 +108,7 @@
 
 		function resetAbilities() {
 			vm.abilities.resetAbilities();
+			vm.player.potionCD = 0;
 		}
 
 		function prevReset() {

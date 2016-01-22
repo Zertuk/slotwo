@@ -45,7 +45,7 @@
             passCode: false,
             levels: {
                 cabin: false,
-                treeCity: false,
+                treeCity: true,
                 treeOne: true,
                 treeTwo: false,
                 dungeon: false,

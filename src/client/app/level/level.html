@@ -22,7 +22,7 @@
 	        </div>
 		</div>
 		<div class = "playerabilities">
-			<button ng-click = "vm.player.usePotion()" class = "block">Use Potion ({{vm.itemDictionary['potion'][1][1]}})</button>
+			<div ng-click = "vm.initPotion()" class = "button potioncd"><div class = "abilitybg abilitycooldown"></div>Use Potion ({{vm.itemDictionary['potion'][1][1]}})</div>
 			<div ng-repeat = "ability in vm.abilities track by $index">
 				<div ng-click = "vm.activateAbility(ability.slug)" class = "button" id = "{{ability.slug}}" ng-if = "ability.slug && ability.checkUnlock()"><div class = "abilitybg"></div>{{ability.name}}</div>
 			</div>

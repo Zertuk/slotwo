@@ -20,6 +20,8 @@
 		vm.abilities = vm.player.abilities;
 		vm.itemDictionary = inventoryService.itemDictionary;
 
+
+		//ability functions
 		vm.activateAbility = function(ability) {
 			var message = '';
 			if (!vm.abilities[ability].active && vm.abilities[ability].cd === 0) {

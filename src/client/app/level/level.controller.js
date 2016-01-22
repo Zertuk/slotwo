@@ -33,13 +33,13 @@
 			}
 			else if (vm.abilities[ability].cd > 0) {
 				message = vm.abilities[ability].name + ' is on cooldown!';
-				messageService.updateMainMessage(message, true)
+				messageService.updateMainMessage(message, true);
 			}
 			else {
 				message = vm.abilities[ability].name + ' already active!';
-				messageService.updateMainMessage(message, true)
+				messageService.updateMainMessage(message, true);
 			}
-		}
+		};
 
 		function abilityTimer(ability, elem) {
 			if (vm.abilities[ability].active) {
@@ -131,7 +131,7 @@
 			spawn[0] = vm.currentLevel.playerSpawn[0];
 			spawn[1] = vm.currentLevel.playerSpawn[1];
 			vm.player.position = spawn;
-		}
+		};
 		vm.resetLevel();
 
 		//used for levels that end early
@@ -148,7 +148,7 @@
 			messageService.emptyLog();
 			resetRenderArea();
 			//runs if enemies are immobile and spawn at start, like the trees lvl 1
-			if (typeof vm.currentLevel.spawnAtStart != 'undefined') {
+			if (typeof vm.currentLevel.spawnAtStart !== 'undefined') {
 				for (var i = 0; i < vm.currentLevel.spawnAtStart.length; i++) {
 					if (i + 1 === vm.currentLevel.spawnAtStart.length) {
 						if (vm.currentLevel.enemyArray.length > 1) {
@@ -173,7 +173,6 @@
 			for (var i = 0; i < vm.currentLevel.defaultAscii.length; i++) {
 				ascii[i] = vm.currentLevel.defaultAscii[i];
 			}
-			console.log(vm.currentLevel.defaultAscii);
 			vm.currentLevel.ascii = ascii;
 			levelRenderArea();
 		}
@@ -210,7 +209,7 @@
 				var random = Math.floor(Math.random()*100);
 				for (var i = 0; i < vm.currentLevel.unitSpawnChance.length; i++) {
 					if (random < vm.currentLevel.unitSpawnChance[i]) {
-						var unit = new vm.currentLevel.enemyArray[i];
+						var unit = new vm.currentLevel.enemyArray[i]();
 						if (typeof vm.currentLevel.specialSpawn !== 'undefined') {
 							if (vm.player.position[0] < vm.currentLevel.specialSpawn[0]) {
 								var specialCheck = Math.floor(Math.random()*100);
@@ -226,7 +225,6 @@
 							}
 						}
 						else {
-							console.log('special undefined');
 							regularSpawn(unit, 'enemySpawn');
 						}
 						return;
@@ -248,10 +246,10 @@
 		function spawnEnemyAtStart(position, extra) {
 			var entity;
 			if (extra) {
-				entity = new vm.currentLevel.enemyArray[1];
+				entity = new vm.currentLevel.enemyArray[1]();
 			}
 			else {
-				entity = new vm.currentLevel.enemyArray[0];
+				entity = new vm.currentLevel.enemyArray[0]();
 			}
 			var spawn = [];
 			var currentTile = vm.currentLevel.ascii[position[1]][position[0]];
@@ -301,7 +299,7 @@
 
 		//kills unit that reach end
 		function autoKill(unit) {
-			if (unit.position[0] == 0) {
+			if (unit.position[0] === 0) {
 				unit.alive = false;
 			}
 		}
@@ -326,12 +324,12 @@
 					}
 					if (!vm.unitArray[i].alive) {
 						checkBig(vm.unitArray[i]);
-
+						var lootMessage = '';
 						if (vm.unitArray[i].foundLoot) {
-							var lootMessage = vm.unitArray[i].deathMessage + ' ' + vm.unitArray[i].lootMessage;
+							lootMessage = vm.unitArray[i].deathMessage + ' ' + vm.unitArray[i].lootMessage;
 						}
 						else {
-							var lootMessage = vm.unitArray[i].deathMessage;
+							lootMessage = vm.unitArray[i].deathMessage;
 						}
 						messageService.addMessage(lootMessage);
 

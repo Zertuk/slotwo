@@ -530,10 +530,12 @@
             this.name = 'Robot';
             this.slug = 'Robot';
             this.deathMessage = 'The Robot has been shutdown!';
+            this.items = [vm.itemDictionary['robotArmor']];
+            this.itemChance = 100;
             this.symbol = 'c';
-            this.maxHealth = '1000';
-            this.health = 1000;
-            this.damage = 1;
+            this.maxHealth = '3000';
+            this.health = 3000;
+            this.damage = 20;
             this.attackSpeed = 3;
             this.colBox = [15, 15];
             this.move = false;
@@ -545,7 +547,7 @@
                 messageService.addMessage('"INITIALIZING REPAIR DRONES."');
                 var thisEnemy = this;
                 function heal() {
-                    thisEnemy.health = thisEnemy.health + 50;
+                    thisEnemy.health = thisEnemy.health + 100;
                     $timeout(function() {
                         heal();
                     }, 1000);
@@ -557,7 +559,7 @@
                 this.attackSpeed = 1;
             },
             this.phaseThreeActivate = function() {
-                var count = 3;
+                var count = 2;
                 var thisEnemy = this;
                 function selfDestructMessage(thisEnemy) {
                     messageService.addMessage('"CRITICAL DAMAGE. SELF DESTRUCT INITIALIZING IN ' + count + ' SECONDS"');
@@ -576,7 +578,7 @@
                 }
                 function selfDestructActivate(thisEnemy) {
                     messageService.addMessage('"SELF DESTRUCT INTIALIZED. GOODBYE."');
-                    thisEnemy.damage = 99999999999;
+                    thisEnemy.damage = 999999;
                     thisEnemy.health = 10;
                 }
                 selfDestructMessage(thisEnemy);
@@ -590,7 +592,7 @@
             this.slug = 'Minotaur';
             this.desc = 'Smells of death';
             this.items = [vm.itemDictionary['minotaurHammer']];
-            this.itemChance = 50;
+            this.itemChance = 100;
             this.moneyMult = 250;
             this.deathMessage = 'The Minotaur has been defeated!';
             this.symbol = ',';
@@ -652,7 +654,7 @@
             this.moneyMult = 1500;
             this.desc = 'Just a regular giant guy made of snow.';
             this.items = [vm.itemDictionary['giantCarrot']];
-            this.itemChance = 50;
+            this.itemChance = 100;
             this.deathMessage = 'Gary the Snowman has been melted!';
             this.symbol = '\\';
             this.damage = 40;

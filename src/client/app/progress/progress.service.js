@@ -58,7 +58,7 @@
                 shroom: true,
                 shroomFinish: false,
                 wizard: true,
-                robot: false,
+                robot: true,
                 arena: true,
                 monk: false,
                 lich: false

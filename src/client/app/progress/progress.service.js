@@ -56,6 +56,7 @@
                 snow: false,
                 snowNorth: false,
                 shroom: true,
+                shroomFinish: false,
                 wizard: true,
                 robot: false,
                 arena: true,

@@ -1179,7 +1179,7 @@
                     master: 'slumThugsBoss'
                 },
                 boss: {
-                    text: 'You want to try again? Lets go.',
+                    text: 'You want to go to the hideout again? Lets go.',
                     continue: true,
                     next: 'bossReturn',
                     master: 'slumThugsBoss'
@@ -1658,10 +1658,30 @@
                     text: 'Ha! You wish.  Get out of here before we sick the guard cat on you.  He doesnt mess around.'
                 },
                 bossReturn: {
+                    text: 'Here we are! Is the mission complete?',
+                    buttons: {
+                        tryAgain: {
+                            text: 'I need to try again',
+                            next: 'lvlReturn',
+                            active: true,
+                            master: 'slumThugsBoss'
+                        },
+                        finishQuest: {
+                            text: 'The vampire king is slain',
+                            next: 'finishQuest',
+                            active: vm.progress.levels.shroomFinish,
+                            master: 'slumThugsBoss'
+                        }
+                    }
+                },
+                lvlReturn: {
                     text: 'Here, drink this again, lets see what you can do!',
                     continue: true,
                     level: 'shroom',
                     active: true
+                },
+                finishQuest: {
+                    text: 'Wow!  Thanks for the help.  Now beat it!  Dont tell anyone about this super secret mission.'
                 }
             };
             return dialogue;

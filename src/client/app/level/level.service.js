@@ -294,6 +294,7 @@
         this.shroom.enemyMax = 10;
         this.shroom.name = '? ? ?'; 
         this.shroom.slug = 'shroom';
+        this.shroom.unlock = 'shroomFinish';
         this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",
                                    "                                                                                                                                           /  \\                 |'._______'.                                                                   ",
                                    "            ____                                                                                                           /\\              |  |_/\\______________| |   __   |                                                                   ",

@@ -4,6 +4,7 @@
 	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.next" ng-click = "vm.switchDialogue(vm.currentDialogue.next, vm.currentDialogue.master)">Continue</button>
 	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.level === 'shroom'" ng-click = "vm.switchLevel('shroom')">Continue</button>
 	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.level === 'arena'" ng-click = "vm.switchLevel('arena')">Continue</button>
+	<button ng-if = "vm.currentDialogue.continue && vm.currentDialogue.level === 'theEnd'" ng-click = "vm.switchLevel('theEnd')">Continue</button>
 	<button ng-if = "!vm.currentDialogue.continue && button.active" ng-repeat = "button in vm.currentDialogue.buttons" ng-click = "vm.switchDialogue(button.next, button.master); button.special()">{{button.text}}</button>
 	<form ng-if = "vm.currentDialogue.input" ng-submit = "vm.passSubmit()">
 		<p class = "text">{{vm.passText}}</p>

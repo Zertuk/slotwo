@@ -373,15 +373,19 @@
                                    "                                                                                                            \\______/  \\                                       ",
                                    "                                                                                                             |    |    o                                      ",
                                    "                                                                                                            c|   c|                                           ",
-                                   "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"],
+                                   "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"];
 
 
-        this.lich = new this.Level();
-        this.lich.enemyArray = [enemyService.Skeleton, enemyService.Lich];
-        this.lich.playerSpawn = [0, 15];
-        this.lich.name = 'The Lich';
-        this.lich.slug = 'lich';
-        this.lich.defaultAscii = ["                                                                                                     "];
+        this.theEnd = new this.Level();
+        this.theEnd.enemyArray = [enemyService.Mantis, enemyService.StickBug];
+        this.theEnd.unitSpawnChance = [48, 95];
+        this.theEnd.playerSpawn = [0, 0];
+        this.theEnd.enemySpawn = [80, 0];
+        this.theEnd.enemyMax = 20;
+        this.theEnd.name = 'The End';
+        this.theEnd.slug = 'theEnd';
+        this.theEnd.defaultAscii = ["                                                                                            ",
+                                    "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"]; 
 
 
 
@@ -398,6 +402,7 @@
         this.levelDictionary['shroom'] = this.shroom;
         this.levelDictionary['arena'] = this.arena;
         this.levelDictionary['robot'] = this.robot;
+        this.levelDictionary['theEnd'] = this.theEnd;
 
 
         

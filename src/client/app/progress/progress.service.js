@@ -41,10 +41,10 @@
             wizardMet: false,
             wizardTask: false,
             vialTaken: false,
-            lichReveal: false,
+            lichReveal: true,
             passCode: false,
             levels: {
-                cabin: false,
+                cabin: true,
                 treeCity: true,
                 treeOne: true,
                 treeTwo: false,
@@ -61,7 +61,8 @@
                 robot: true,
                 arena: true,
                 monk: false,
-                lich: false
+                lich: false,
+                theEnd: true
             },
             enemies: {
 

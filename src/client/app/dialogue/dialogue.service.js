@@ -404,8 +404,7 @@
                 end: {
                     text: 'Y O U W I L L P E R I S H',
                     continue: true,
-                    next: 'lichfight',
-                    level: true
+                    level: 'theEnd'
                 },
                 task: {
                     text: 'Head to the northern mountains, take out the giant robot, and bring me a sample of the meteorite!',
@@ -432,7 +431,7 @@
                     master: 'wizard'
                 },
                 robot: {
-                    text: 'Yeah thats right, a giant robot!  I need someone to take it out for me so I can do research on the meteor, are you interested?',
+                    text: 'Yeah thats right, a giant robot!  I need someone to take it out for me so I can do research on the meteorite, are you interested?',
                     buttons: {
                         sure: {
                             text: 'Sure, I am interested.',

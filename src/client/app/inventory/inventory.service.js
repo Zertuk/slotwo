@@ -161,11 +161,17 @@
 
 		this.robotArmor = new this.Item();
 		this.robotArmor.name = 'Mech Suit';
-		this.robotArmor.desc = '';
+		this.robotArmor.desc = 'Battle Ready Armor';
 		this.robotArmor.armor = 0.4;
 		this.robotArmor.damageMult = 15;
 		this.robotArmor.slug = 'robotArmor';
 
+		this.bugExoskeleton = new this.Item();
+		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';
+		this.bugExoskeleton.slug = 'bugExoskeleton';
+		this.bugExoskeleton.desc = 'Seems useful';
+		this.bugExoskeleton.armor = 0.5;
+		this.bugExoskeleton.damageMult = -25;
 
 		this.potionArmor = new this.Item();
 		this.potionArmor.name = 'Potion Armor';
@@ -178,6 +184,7 @@
 		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
 		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
+		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
@@ -331,13 +338,7 @@
 		this.mantisClaw.lootOnce = true;
 		this.mantisClaw.damage = 5;
 
-		this.bugExoskeleton = new this.Item();
-		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';
-		this.bugExoskeleton.slug = 'bugExoskeleton';
-		this.bugExoskeleton.desc = 'Not sure how this helps';
-		this.bugExoskeleton.message = 'Armor increased by 5%';
-		this.bugExoskeleton.lootOnce = true;
-		this.bugExoskeleton.armor = 5;
+
 
 		this.bigHeavyWood = new this.Item();
 		this.bigHeavyWood.name = 'Log';
@@ -427,7 +428,6 @@
 		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];
 		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];
 		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];
-		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 0]];
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 0]];
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
@@ -481,7 +481,6 @@
 						 vm.itemDictionary['vampireTeeth'],
 						 vm.itemDictionary['kingCrown'],
 						 vm.itemDictionary['pearl'],
-						 vm.itemDictionary['bugExoskeleton'],
 						 vm.itemDictionary['mantisClaw'],
 						 vm.itemDictionary['abomItem'],
 						 vm.itemDictionary['snowmanHat'],
@@ -512,9 +511,9 @@
 
 		vm.armor = [vm.itemDictionary['clothArmor'],
 					vm.itemDictionary['woodArmor'],
-					vm.itemDictionary['boneArmor'],
 					vm.itemDictionary['healthArmor'],
 					vm.itemDictionary['ghostArmor'],
+					vm.itemDictionary['bugExoskeleton'],
 					vm.itemDictionary['potionArmor'],
 					vm.itemDictionary['polarArmor'],
 					vm.itemDictionary['robotArmor']];

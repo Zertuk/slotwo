@@ -109,7 +109,7 @@
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
 		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 0]];
-		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];
+		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 1]];
 
 
 
@@ -159,6 +159,14 @@
 		this.ghostArmor.damageMult = 50;
 		this.ghostArmor.slug = 'ghostArmor';
 
+		this.robotArmor = new this.Item();
+		this.robotArmor.name = 'Mech Suit';
+		this.robotArmor.desc = '';
+		this.robotArmor.armor = 0.4;
+		this.robotArmor.damageMult = 15;
+		this.robotArmor.slug = 'robotArmor';
+
+
 		this.potionArmor = new this.Item();
 		this.potionArmor.name = 'Potion Armor';
 		this.potionArmor.desc = 'Feels like a ghost hug <3';
@@ -166,13 +174,14 @@
 		this.potionArmor.healthRate = 20;
 		this.potionArmor.slug = 'potionArmor';
 
+		vm.itemDictionary['robotArmor'] = [['item', this.robotArmor], ['amount', 1]];
 		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
 		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
-		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 0]];
+		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 1]];
 
 
 		//resources
@@ -460,23 +469,23 @@
 		vm.otherItems = [vm.itemDictionary['trueHealth'],
 						 vm.itemDictionary['trueOffense'],
 						 vm.itemDictionary['trueDefense'],
+						 vm.itemDictionary['bigHeavyWood'],
+						 vm.itemDictionary['pie'],
 						 vm.itemDictionary['winterCoat'],
 						 vm.itemDictionary['deerAntlers'],
 						 vm.itemDictionary['wizardsHair'],
-						 vm.itemDictionary['snowmanHat'],
 						 vm.itemDictionary['sleepingBag'],
+						 vm.itemDictionary['piggyBank'],
 						 vm.itemDictionary['gorillaFoot'],
+						 vm.itemDictionary['pocketSand'],
 						 vm.itemDictionary['vampireTeeth'],
 						 vm.itemDictionary['kingCrown'],
 						 vm.itemDictionary['pearl'],
-						 vm.itemDictionary['pocketSand'],
 						 vm.itemDictionary['bugExoskeleton'],
 						 vm.itemDictionary['mantisClaw'],
-						 vm.itemDictionary['bigHeavyWood'],
-						 vm.itemDictionary['pie'],
-						 vm.itemDictionary['piggyBank'],
-						 vm.itemDictionary['snowmenBlessing'],
 						 vm.itemDictionary['abomItem'],
+						 vm.itemDictionary['snowmanHat'],
+						 vm.itemDictionary['snowmenBlessing'],
 						 vm.itemDictionary['mammothFur'],
 						 vm.itemDictionary['frozenBanana'],
 						 vm.itemDictionary['sweetJacket'],
@@ -507,7 +516,8 @@
 					vm.itemDictionary['healthArmor'],
 					vm.itemDictionary['ghostArmor'],
 					vm.itemDictionary['potionArmor'],
-					vm.itemDictionary['polarArmor']];
+					vm.itemDictionary['polarArmor'],
+					vm.itemDictionary['robotArmor']];
 
 
 

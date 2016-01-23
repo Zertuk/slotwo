@@ -533,6 +533,7 @@
             this.items = [vm.itemDictionary['robotArmor']];
             this.itemChance = 100;
             this.symbol = 'c';
+            this.moneyMult = 5000;
             this.maxHealth = '3000';
             this.health = 3000;
             this.damage = 20;
@@ -566,7 +567,7 @@
                     count = count - 1;
                     $timeout(function() {
                         //check if enemy is alive
-                        if (typeof thisEnemy.alive !== 'undefined') {
+                        if (thisEnemy.alive) {
                             if (count > 0) {
                                 selfDestructMessage(thisEnemy);
                             }

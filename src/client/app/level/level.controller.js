@@ -306,6 +306,12 @@
 			}
 		}
 
+		function teleportPlayer() {
+			vm.player.position = vm.currentLevel.playerSpawn;
+			vm.currentLevel.ascii[24] = setCharAt(vm.currentLevel.ascii[24], 110, ' ');
+			resetRenderArea();
+		}
+
 		//master loop for levels
 		function levelLoop() {
 			var dead = false;
@@ -313,7 +319,15 @@
 			vm.player.attackSpeed  = vm.player.weapon.attackSpeed;
 			vm.player.damage = vm.player.calculateTotalDamage();
 			vm.player.armorValue = vm.player.calculateTotalArmor();
+
 			if (vm.player.active) {
+				if (vm.currentLevel.slug === 'theEnd') {
+					vm.currentEnemy = vm.unitArray[1];
+					if (vm.currentEnemy.playerWarp) {
+						vm.currentEnemy.playerWarp = false;
+						teleportPlayer();
+					}
+				}
 				if (!vm.player.alive) {
 					vm.player.alive = true;
 					messageService.updateMainMessage('You have been slain.', true);

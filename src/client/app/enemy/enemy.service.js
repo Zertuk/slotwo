@@ -638,14 +638,14 @@
             this.items = [];
             this.itemChance = 0;
             this.deathMessage = '';
-            this.symbol = 'x';
+            this.symbol = '|';
             this.moneyMult = 25000;
             this.damage = 30;
             this.attackspeed = 2;
-            this.colBox = [5, 5];
+            this.colBox = [35, 25];
             this.move = false;
-            this.health = 1000;
-            this.maxHealth = 1000;
+            this.health = 100;
+            this.maxHealth = 100;
             this.playerWarp = false;
             this.spawnBuddies = false;
             this.phases = true;
@@ -665,27 +665,28 @@
                 this.powerBuild(count, thisEnemy);
             };
             this.powerBuild = function(count, thisEnemy) {
-                if (count > 0) {
-                    thisEnemy.damage = 0;
-                    messageService.addMessage('The Lich is building up energy...');
-                    count = count - 1;
-                    $timeout(function() {
-                        thisEnemy.powerBuild(count, thisEnemy);
-                    }, 1000);
-                }
-                else if (count === 0) {
-                    thisEnemy.damage = 9999;
-                    messageService.addMessage('The Lich unleashes a huge attack!');
-                    $timeout(function() {
-                        thisEnemy.damage = 30;
-                    }, 4000);
+                if (thisEnemy.alive){
+                    if (count > 0) {
+                        thisEnemy.damage = 0;
+                        messageService.addMessage('The Lich is building up energy...');
+                        count = count - 1;
+                        $timeout(function() {
+                            thisEnemy.powerBuild(count, thisEnemy);
+                        }, 1000);
+                    }
+                    else if (count === 0) {
+                        thisEnemy.damage = 9999;
+                        messageService.addMessage('The Lich unleashes a huge attack!');
+                        $timeout(function() {
+                            thisEnemy.damage = 30;
+                        }, 4000);
+                    }
                 }
             },
             this.phaseThreeActivate = function() {
-                // this.playerWarp = true;
-                // this.spawnBuddies = true;
-                // this.attackSpeed = 1;
-                // messageService.updatePosition('The Lich teleports you backwards and summons some friends!');
+                this.playerWarp = true;
+                this.attackSpeed = 1;
+                messageService.addMessage('The Lich teleports you backwards and summons some friends!');
             }
         };
         vm.Lich.prototype = new vm.Enemy();

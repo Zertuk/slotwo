@@ -307,9 +307,10 @@
 		}
 
 		function teleportPlayer() {
-			vm.player.position = vm.currentLevel.playerSpawn;
+			vm.player.position = [0, 24];
 			vm.currentLevel.ascii[24] = setCharAt(vm.currentLevel.ascii[24], 110, ' ');
 			resetRenderArea();
+			console.log('run');
 		}
 
 		//master loop for levels

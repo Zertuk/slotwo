@@ -654,12 +654,9 @@
             this.phaseThree = true;
             this.phaseOneActivate = function() {
                 this.playerWarp = true;
-                this.spawnBuddies = true;
                 messageService.addMessage('The Lich teleports you backwards and summons some friends!');
             };
             this.phaseTwoActivate = function() {
-                this.playerWarp = true;
-                this.spawnBuddies = true;
                 var thisEnemy = this;
                 var count = 2;
                 this.powerBuild(count, thisEnemy);
@@ -675,7 +672,7 @@
                         }, 1000);
                     }
                     else if (count === 0) {
-                        thisEnemy.damage = 9999;
+                        thisEnemy.damage = 9;
                         messageService.addMessage('The Lich unleashes a huge attack!');
                         $timeout(function() {
                             thisEnemy.damage = 30;

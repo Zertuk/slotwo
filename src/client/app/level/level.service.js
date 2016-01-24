@@ -377,15 +377,16 @@
 
 
         this.theEnd = new this.Level();
-        this.theEnd.enemyArray = [enemyService.Mantis, enemyService.StickBug];
-        this.theEnd.unitSpawnChance = [48, 95];
-        this.theEnd.playerSpawn = [0, 0];
-        this.theEnd.enemySpawn = [80, 0];
+        this.theEnd.enemyArray = [enemyService.Lich];
+        this.theEnd.playerSpawn = [0, 1];
+        this.theEnd.spawnAtStart = [[89, 1]];
+        this.theEnd.spawnMore = false;
         this.theEnd.enemyMax = 20;
         this.theEnd.name = 'The End';
         this.theEnd.slug = 'theEnd';
-        this.theEnd.defaultAscii = ["                                                                                            ",
-                                    "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"]; 
+        this.theEnd.defaultAscii = ["                                                                                             ",
+                                    "                                                                                           x ",
+                                    "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"]; 
 
 
 

@@ -631,6 +631,65 @@
         };
         vm.Minotaur.prototype = new vm.Enemy();
 
+        vm.Lich = function Lich() {
+            this.name = 'The Lich';
+            this.slug = 'The Lich';
+            this.desc = '';
+            this.items = [];
+            this.itemChance = 0;
+            this.deathMessage = '';
+            this.symbol = 'x';
+            this.moneyMult = 25000;
+            this.damage = 30;
+            this.attackspeed = 2;
+            this.colBox = [5, 5];
+            this.move = false;
+            this.health = 1000;
+            this.maxHealth = 1000;
+            this.playerWarp = false;
+            this.spawnBuddies = false;
+            this.phases = true;
+            this.phaseOne = true;
+            this.phaseTwo = true;
+            this.phaseThree = true;
+            this.phaseOneActivate = function() {
+                this.playerWarp = true;
+                this.spawnBuddies = true;
+                messageService.addMessage('The Lich teleports you backwards and summons some friends!');
+            };
+            this.phaseTwoActivate = function() {
+                this.playerWarp = true;
+                this.spawnBuddies = true;
+                var thisEnemy = this;
+                var count = 2;
+                this.powerBuild(count, thisEnemy);
+            };
+            this.powerBuild = function(count, thisEnemy) {
+                if (count > 0) {
+                    thisEnemy.damage = 0;
+                    messageService.addMessage('The Lich is building up energy...');
+                    count = count - 1;
+                    $timeout(function() {
+                        thisEnemy.powerBuild(count, thisEnemy);
+                    }, 1000);
+                }
+                else if (count === 0) {
+                    thisEnemy.damage = 9999;
+                    messageService.addMessage('The Lich unleashes a huge attack!');
+                    $timeout(function() {
+                        thisEnemy.damage = 30;
+                    }, 4000);
+                }
+            },
+            this.phaseThreeActivate = function() {
+                // this.playerWarp = true;
+                // this.spawnBuddies = true;
+                // this.attackSpeed = 1;
+                // messageService.updatePosition('The Lich teleports you backwards and summons some friends!');
+            }
+        };
+        vm.Lich.prototype = new vm.Enemy();
+
         vm.Snowman = function Snowman() {
             this.name = 'Snowman';
             this.slug = 'Snowman';
@@ -684,7 +743,7 @@
 
         vm.keys = ['Tree', 'Deer', 'Bear', 'Gorilla', 'DustDevil', 'Ghost', 'Minotaur',
                    'Mantis', 'StickBug', 'Oyster', 'Crab', 'Penguin', 'Yeti',
-                   'Snowman', 'SnowmanBoss', 'GorillaSnow', 'Mammoth', 'Robot'];
+                   'Snowman', 'SnowmanBoss', 'GorillaSnow', 'Mammoth', 'Robot', 'Lich'];
     }
 
 })();

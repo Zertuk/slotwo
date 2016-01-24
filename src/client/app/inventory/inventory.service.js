@@ -109,7 +109,7 @@
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
 		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 0]];
-		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 1]];
+		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];
 
 
 
@@ -180,15 +180,15 @@
 		this.potionArmor.healthRate = 20;
 		this.potionArmor.slug = 'potionArmor';
 
-		vm.itemDictionary['robotArmor'] = [['item', this.robotArmor], ['amount', 1]];
+		vm.itemDictionary['robotArmor'] = [['item', this.robotArmor], ['amount', 0]];
 		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];
 		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];
 		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];
-		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 1]];
+		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 0]];
 		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
-		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 1]];
+		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 0]];
 
 
 		//resources

@@ -163,7 +163,7 @@
     	};
 
     	vm.resources = {
-    		money: 10000,
+    		money: 0,
     		moneyRate: 1,
             milkPrice: 500,
             calculateTotlMoneyRate: function() {

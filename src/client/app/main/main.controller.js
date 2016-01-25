@@ -121,12 +121,20 @@
             vm.player.maxHealth = vm.player.calculateTotalHealth();
         }
 
+        function lichCheck() {
+            if (vm.player.lichKilled) {
+                vm.player.lichKilled = false;
+                vm.switchLocation('ending');
+            }
+        }
+
         //1s loop
         function mainLoop() {
             vm.count = vm.count + 1;
             vm.player.healthRegen();
             increaseResources();
             updatePlayer();
+            lichCheck();
             $timeout(mainLoop, 1000);
         }
         //quicker loop

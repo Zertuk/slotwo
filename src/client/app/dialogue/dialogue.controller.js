@@ -13,6 +13,10 @@
         dialogueService.initAllDialogues();
         activate();
         vm.passText = 'You have the passcode?';
+        
+        vm.switchTemplate = function(template) {
+            mainService.switchTemplate(template);
+        };
 
         vm.switchDialogue = function(input, master) {
             vm.currentMaster = dialogueService[master];

@@ -359,6 +359,9 @@
 						autoKill(vm.unitArray[i]);
 					}
 					if (!vm.unitArray[i].alive) {
+						if (vm.unitArray[i].slug === 'Lich') {
+							vm.player.lichKilled = true;
+						}
 						checkBig(vm.unitArray[i]);
 						var lootMessage = '';
 						if (vm.unitArray[i].foundLoot) {
@@ -368,8 +371,6 @@
 							lootMessage = vm.unitArray[i].deathMessage;
 						}
 						messageService.addMessage(lootMessage);
-
-
 						enemyCount = enemyCount - 1;
 						var newArray = [];
 						for (var j = 0; j < vm.unitArray.length; j++) {

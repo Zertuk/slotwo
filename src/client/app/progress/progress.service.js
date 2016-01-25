@@ -62,7 +62,8 @@
                 arena: false,
                 monk: false,
                 lich: false,
-                theEnd: true
+                theEnd: true,
+                ending: true
             },
             enemies: {
 

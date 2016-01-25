@@ -673,6 +673,15 @@
         vm.lich.specialText = true;
         vm.lich.ascii = [''];
 
+        vm.ending = new vm.Location();
+        vm.ending.name = 'The End';
+        vm.ending.slug = 'ending';
+        vm.ending.prev = 'mainMap';
+        vm.ending.prevName = 'Map';
+        vm.ending.specialText = true;
+        vm.ending.dialogue = dialogueService.ending;
+        vm.ending.ascii = [''];
+
 
 
     	vm.currentLocation = vm.mainMap;
@@ -696,5 +705,6 @@
             vm.locationDictionary['arena'] = this.arena;
             vm.locationDictionary['lich'] = this.lich;
             vm.locationDictionary['cabin'] = this.cabin;
+        vm.locationDictionary['ending'] = this.ending;
     }
 })();

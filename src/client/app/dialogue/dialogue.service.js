@@ -482,7 +482,7 @@
                         },
                         sure: {
                             text: 'Alright, I will do it.',
-                            next: 'no',
+                            next: 'sure',
                             active: true,
                             master: 'wizard'
                         }

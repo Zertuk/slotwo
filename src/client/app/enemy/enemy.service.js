@@ -414,8 +414,8 @@
             this.items = [vm.itemDictionary['frozenBanana']];
             this.moneyMult = 1000;
             this.itemChance = 20;
-            this.maxHealth = 300;
-            this.health = 300;
+            this.maxHealth = 400;
+            this.health = 400;
             this.damage = 50;
             this.attackSpeed = 4;
         };
@@ -430,8 +430,8 @@
             this.items = [vm.itemDictionary['mammothFur']];
             this.moneyMult = 1000;
             this.itemChance = 25;
-            this.maxHealth = 400;
-            this.health = 400;
+            this.maxHealth = 500;
+            this.health = 500;
             this.damage = 75;
             this.attackspeed = 5;
         };

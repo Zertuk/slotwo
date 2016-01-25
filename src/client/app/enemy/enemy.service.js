@@ -551,9 +551,9 @@
             this.itemChance = 100;
             this.symbol = 'c';
             this.moneyMult = 5000;
-            this.maxHealth = '3000';
-            this.health = 3000;
-            this.damage = 20;
+            this.maxHealth = '4000';
+            this.health = 4000;
+            this.damage = 30;
             this.attackSpeed = 3;
             this.colBox = [15, 15];
             this.move = false;
@@ -565,7 +565,7 @@
                 messageService.addMessage('"INITIALIZING REPAIR DRONES."');
                 var thisEnemy = this;
                 function heal() {
-                    thisEnemy.health = thisEnemy.health + 100;
+                    thisEnemy.health = thisEnemy.health + 250;
                     $timeout(function() {
                         heal();
                     }, 1000);

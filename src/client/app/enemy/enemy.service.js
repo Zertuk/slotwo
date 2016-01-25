@@ -529,7 +529,7 @@
         vm.Undead = function Undead() {
             this.name = 'Undead Husk';
             this.slug = 'undead';
-            this.desc = '';
+            this.desc = 'The Lichs only friend';
             this.deathMessage = 'An Undead Husk haas been destroyed!';
             this.items = [vm.itemDictionary['undeadItem']];
             this.itemChance = 0;
@@ -543,7 +543,8 @@
         vm.Undead.prototype = new vm.Enemy();
 
         vm.Robot = function Robot() {
-            this.name = 'Robot';
+            this.name = 'Giant Robot';
+            this.desc = 'beep boop';
             this.slug = 'Robot';
             this.deathMessage = 'The Robot has been shutdown!';
             this.items = [vm.itemDictionary['robotArmor']];

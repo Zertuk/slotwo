@@ -32,7 +32,7 @@
         <header>
             <div class = "row controls">
                 <div class = 'noactive button' ng-click = "vm.player.rest()" ng-if = " vm.progress.hasSleepingBag">Rest</div>
-                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')" ng-if = "vm.progress.hasMap">Inventory</button>
+                <button ng-click = "vm.switchTemplate('app/end/end.html')" ng-if = "vm.progress.hasMap">Inventory</button>
                 <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
                 <button ng-click = "vm.switchLocation('mainMap')" ng-if = "vm.progress.hasMap">Map</button>
                 <p class = "inline nomargin">{{vm.money}} Gold ({{vm.resources.calculateTotlMoneyRate()}}/s)</p>

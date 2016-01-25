@@ -1573,6 +1573,53 @@
             return dialogue;
         };
 
+        vm.ending = new vm.Dialogue();
+        vm.ending.setDialogue = function() {
+            var dialogue = {
+                introduction: {
+                    text: 'The Lichs soul has been sealed!  The phylactery is sitting on the ground.',
+                    continue: true,
+                    next: 'grab',
+                    master: 'ending'
+                },
+                grab: {
+                    text: '*You grab the phylactery.*',
+                    next: 'end',
+                    continue: true,
+                    master: 'ending'
+                },
+                end: {
+                    text: 'You can feel The Lichs soul inside, malevolence is slowly leaking into your soul.  If you keep the phylactery, it will corrupt your soul someday.',
+                    buttons: {
+                        keep: {
+                            text: 'Take the phylactery',
+
+                        },
+                        hide: {
+                            text: 'Hide the phylactery',
+
+                        },
+                        smash: {
+                            text: 'Smash the phylactery',
+                        }
+                    }
+                },
+                keep: {
+                    text: 'You keep the phylactery, knowing that you will slowly lose yourself to The Lichs power.  Someone has to keep the phylactery safe and hidden.',
+                    end: true
+                },
+                ditch: {
+                    text: 'You hide the phylactery, your soul will not be corrupted by The Lich.  However, someday someone with a weaker soul, may be find the phylactery and be turned by The Lich.',
+                    end: true
+                },
+                smash: {
+                    text: 'You smash the phylactery.  The Lich is too weak to take a physical form.  The Lich preys on the weak, he will leave this world behind.  This world will survive, but others will not be so lucky.',
+                    end: true
+                }
+            }
+            return dialogue;
+        }
+
 
         vm.slumThugsBoss = new vm.Dialogue();
         vm.slumThugsBoss.setDialogue = function() {
@@ -1701,6 +1748,7 @@
             vm.bum.dialogue = vm.bum.setDialogue();
             vm.meteor.dialogue = vm.meteor.setDialogue();
             vm.cabin.dialogue = vm.cabin.setDialogue();
+            vm.ending.dialogue = vm.ending.setDialogue();
         };
     }
 })();

@@ -157,10 +157,10 @@
                 map[unitOld[1]] = setCharAt(map[unitOld[1]], unitOld[0], '_');
             },
             this.endLevel = function() {
-                messageService.addMessage('You have reached the end of the level');
+                messageService.addMessage('You have reached the end of the level!');
                 this.active = false;
                 this.levelComplete = true;
-                messageService.updateMainMessage('You finish the level.');
+                messageService.updateMainMessage('You finish the level!');
                 return true;
             },
             this.checkLevelEnd = function(unit, map) {

@@ -377,7 +377,7 @@
 
 
         this.theEnd = new this.Level();
-        this.theEnd.enemyArray = [enemyService.Lich];
+        this.theEnd.enemyArray = [enemyService.Undead, enemyService.Lich];
         this.theEnd.playerSpawn = [0, 24];
         this.theEnd.spawnAtStart = [[111, 24]];
         this.theEnd.spawnMore = false;

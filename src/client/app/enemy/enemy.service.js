@@ -526,6 +526,22 @@
         };
         vm.Ghost.prototype = new vm.Enemy();
 
+        vm.Undead = function Undead() {
+            this.name = 'Undead Husk';
+            this.slug = 'undead';
+            this.desc = '';
+            this.deathMessage = 'An Undead Husk haas been destroyed!';
+            this.items = [vm.itemDictionary['undeadItem']];
+            this.itemChance = 10;
+            this.symbol = 'U';
+            this.damage = 50;
+            this.attackSpeed = 2;
+            this.health = 150;
+            this.maxHealth = 150;
+            this.moneyMult = 5000;
+        };
+        vm.Undead.prototype = new vm.Enemy();
+
         vm.Robot = function Robot() {
             this.name = 'Robot';
             this.slug = 'Robot';

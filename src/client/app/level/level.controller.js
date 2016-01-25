@@ -309,9 +309,27 @@
 		function teleportPlayer() {
 			vm.player.position = [0, 24];
 			vm.currentLevel.ascii[24] = setCharAt(vm.currentLevel.ascii[24], 110, ' ');
+			spawnBuddiesLoop();
 			resetRenderArea();
-			console.log('run');
 		}
+
+		function spawnBuddiesLoop() {
+			var random = [];
+			for (var i = 0; i < 3; i++) {
+				(function spawnBuddies(i, random) {
+					var unit = new vm.currentLevel.enemyArray[0]();
+					random[i] = Math.floor(Math.random()*60) + 40;
+					var spawn = [];
+					spawn[0] = random[i];
+					spawn[1] = 24;
+					unit.position = spawn;
+					vm.unitArray.push(unit);
+				})(i, random);
+			}
+			console.log(random);
+		}
+
+		
 
 		//master loop for levels
 		function levelLoop() {
@@ -323,10 +341,11 @@
 
 			if (vm.player.active) {
 				if (vm.currentLevel.slug === 'theEnd') {
-					vm.currentEnemy = vm.unitArray[1];
-					if (vm.currentEnemy.playerWarp) {
-						vm.currentEnemy.playerWarp = false;
-						teleportPlayer();
+					if (typeof vm.currentEnemy !== 'undefined') {
+						if (vm.currentEnemy.playerWarp) {
+							vm.currentEnemy.playerWarp = false;
+							teleportPlayer();
+						}
 					}
 				}
 				if (!vm.player.alive) {

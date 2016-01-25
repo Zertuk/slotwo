@@ -1593,14 +1593,21 @@
                     buttons: {
                         keep: {
                             text: 'Take the phylactery',
-
+                            next: 'keep',
+                            master: 'ending',
+                            active: true
                         },
                         hide: {
                             text: 'Hide the phylactery',
-
+                            next: 'ditch',
+                            master: 'ending',
+                            active: true
                         },
                         smash: {
                             text: 'Smash the phylactery',
+                            next: 'smash',
+                            master: 'ending',
+                            active: true
                         }
                     }
                 },

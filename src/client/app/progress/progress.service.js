@@ -41,7 +41,7 @@
             wizardMet: false,
             wizardTask: false,
             vialTaken: false,
-            lichReveal: false,
+            lichReveal: true,
             passCode: false,
             levels: {
                 cabin: true,

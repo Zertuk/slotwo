@@ -88,6 +88,7 @@
             },
             this.findDPS = function() {
                 var dps = this.damage*8/this.attackSpeed;
+                dps = dps.toFixed(2);
                 return dps;
             },
             this.specialEnd = undefined,
@@ -270,6 +271,7 @@
                 }
                 damage = damage + inventoryService.stats.damage;
                 damage = damage + damage*(inventoryService.stats.damageMult/100);
+                damage = damage.toFixed(2);
                 return damage;
             },
             this.calculateTotalArmor = function() {
@@ -278,6 +280,7 @@
                 if (this.abilities.block.active) {
                     armor = 1;
                 }
+                armor = armor.toFixed(2);
                 return armor;
             },
             this.calculateTotalHealth = function() {

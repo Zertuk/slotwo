@@ -162,7 +162,7 @@
 		this.robotArmor = new this.Item();
 		this.robotArmor.name = 'Mech Suit';
 		this.robotArmor.desc = 'Battle Ready Armor';
-		this.robotArmor.armor = 0.4;
+		this.robotArmor.armor = 0.40;
 		this.robotArmor.damageMult = 15;
 		this.robotArmor.slug = 'robotArmor';
 

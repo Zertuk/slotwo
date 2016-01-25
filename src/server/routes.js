@@ -2,6 +2,7 @@ var router = require('express').Router();
 var four0four = require('./utils/404')();
 var data = require('./data');
 
+router.get('/players', getPlayers);
 router.get('/people', getPeople);
 router.get('/person/:id', getPerson);
 router.get('/*', four0four.notFoundMiddleware);
@@ -9,6 +10,18 @@ router.get('/*', four0four.notFoundMiddleware);
 module.exports = router;
 
 //////////////
+
+function getPlayers(req, res, next) {
+    res.status(200).send(data.players);
+}
+
+function getTrueSelf(req, res, next) {
+    res.status(200).send(data.trueSelf);
+}
+
+function setPlayers(req, res, next) {
+
+}
 
 function getPeople(req, res, next) {
     res.status(200).send(data.people);

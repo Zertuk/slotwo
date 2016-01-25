@@ -532,11 +532,11 @@
             this.desc = '';
             this.deathMessage = 'An Undead Husk haas been destroyed!';
             this.items = [vm.itemDictionary['undeadItem']];
-            this.itemChance = 10;
+            this.itemChance = 0;
             this.symbol = 'U';
             this.damage = 50;
             this.attackSpeed = 2;
-            this.health = 150;
+            this.health = 15;
             this.maxHealth = 150;
             this.moneyMult = 5000;
         };
@@ -681,6 +681,7 @@
                 if (thisEnemy.alive){
                     if (count > 0) {
                         thisEnemy.damage = 0;
+                        thisEnemy.health = thisEnemy.maxHealth;
                         messageService.addMessage('The Lich is building up energy...');
                         count = count - 1;
                         $timeout(function() {
@@ -688,6 +689,7 @@
                         }, 1000);
                     }
                     else if (count === 0) {
+                        thisEnemy.phaseOne = true;
                         thisEnemy.damage = 9;
                         messageService.addMessage('The Lich unleashes a huge attack!');
                         $timeout(function() {

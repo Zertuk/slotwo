@@ -234,7 +234,7 @@
 		vm.treeSecret.prevName = 'Tresabor';
 
 		vm.treeShop = new vm.Location();
-		vm.treeShop.name = 'Tree Shop';
+		vm.treeShop.name = 'The Shop';
 		vm.treeShop.prev = 'treeCity';
         vm.treeShop.prevName = 'Tresabor';
         vm.treeShop.ascii = ["                                                                                              ___________________________| |_____-'-              ",                                                                                                                                                 
@@ -382,7 +382,7 @@
 
 
 		vm.treeSlumsBum = new vm.Location();
-		vm.treeSlumsBum.name = 'Tree Slums Bum';
+		vm.treeSlumsBum.name = 'Bum';
 		vm.treeSlumsBum.prev = 'slums';
 		vm.treeSlumsBum.prevName = 'Slums';
         vm.treeSlumsBum.dialogue = dialogueService.bum;
@@ -444,6 +444,8 @@
         vm.cabin.slug = 'cabin';
         vm.cabin.dialogue = dialogueService.cabin;
         vm.cabin.specialText = true;
+        vm.cabin.prevName = 'Map';
+        vm.cabin.prev = 'mainMap';
         vm.cabin.ascii = ["                                                                                                                                                  ",
                           "                                                                                                  wwwwwwwwwwwwwwwwww                              ",                                                                                                                                         
                           "                                                                                                  |_____ |______  wwww                            ",                                                                                                                                         
@@ -470,7 +472,7 @@
 
 
 		vm.wizard = new vm.Location();
-		vm.wizard.name = 'Wizard';
+		vm.wizard.name = 'The Wizard';
         vm.wizard.slug = 'wizard';
 		vm.wizard.prev = 'mainMap';
 		vm.wizard.prevName = 'Map';
@@ -550,6 +552,7 @@
         vm.wizard.currentAscii = 'ascii';
         vm.wizard.asciiCheck = function() {
             if (vm.progress.lichReveal) {
+                vm.wizard.name = 'The Lich';
                 return 'ascii3';
             }
             else {

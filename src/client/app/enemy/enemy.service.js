@@ -532,7 +532,7 @@
             this.desc = 'The Lichs only friend';
             this.deathMessage = 'An Undead Husk haas been destroyed!';
             this.items = [vm.itemDictionary['undeadItem']];
-            this.itemChance = 0;
+            this.itemChance = 20;
             this.symbol = 'U';
             this.damage = 50;
             this.attackSpeed = 2;
@@ -650,10 +650,10 @@
 
         vm.Lich = function Lich() {
             this.name = 'The Lich';
-            this.slug = 'The Lich';
+            this.slug = 'Lich';
             this.desc = '';
-            this.items = [];
-            this.itemChance = 0;
+            this.items = [vm.itemDictionary['lichItem']];
+            this.itemChance = 100;
             this.deathMessage = '';
             this.symbol = '|';
             this.moneyMult = 25000;

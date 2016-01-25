@@ -415,6 +415,23 @@
 		this.sweetJacket.damageMult = 10;
 		this.sweetJacket.defenseMult = 10;
 
+		this.undeadItem = new this.Item();
+		this.undeadItem.name = 'Soul Fragment';
+		this.undeadItem.desc = 'A piece of The Lichs soul';
+		this.undeadItem.slug = 'undeadItem';
+		this.undeadItem.message = 'Damage increased by 5%, Armor increased by 5%, +100 health';
+		this.undeadItem.damageMult = 5;
+		this.undeadItem.defenseMult = 5;
+		this.undeadItem.health = 100;
+
+		this.lichItem = new this.Item();
+		this.lichItem.name = 'The Lichs Phylactery';
+		this.lichItem.desc = '';
+		this.lichItem.slug = 'lichItem';
+		this.lichItem.message = '';
+
+		vm.itemDictionary['lichItem'] = [['item', this.lichItem], ['amount', 0]];
+		vm.itemDictionary['undeadItem'] = [['item', this.undeadItem], ['amount', 0]];
 		vm.itemDictionary['sweetJacket'] = [['item', this.sweetJacket], ['amount', 0]];
 		vm.itemDictionary['vampireTeeth'] = [['item', this.vampireTeeth], ['amount', 0]];
 		vm.itemDictionary['kingCrown'] = [['item', this.kingCrown], ['amount', 0]];
@@ -488,6 +505,8 @@
 						 vm.itemDictionary['mammothFur'],
 						 vm.itemDictionary['frozenBanana'],
 						 vm.itemDictionary['sweetJacket'],
+						 vm.itemDictionary['undeadItem'],
+						 vm.itemDictionary['lichItem'],
 						 vm.itemDictionary['compendium']];
 
 		vm.buyableItems = ['potion', 

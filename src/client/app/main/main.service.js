@@ -14,6 +14,18 @@
         vm.progress = progressService.progress;
         vm.player = playerService.player;
 
+        function initGame() {
+            var location;
+            if (!vm.progress.hasMap) {
+                location = vm.house;
+            }
+            else  {
+                location = vm.mainMap;
+            }
+            console.log(location);
+            return location;
+        }
+
         vm.switchTemplate = function(template) {
             vm.player.active = false;
             templateService.switchTemplate(template);
@@ -572,8 +584,8 @@
 
 
         vm.house = new vm.Location();
-        vm.house.name = 'Home';
-        vm.house.slug = 'home';
+        vm.house.name = '? ? ?';
+        vm.house.slug = 'house';
         vm.house.prev = 'mainMap';
         vm.house.prevName = 'Map';
         vm.house.specialText = true;
@@ -682,12 +694,7 @@
         vm.ending.dialogue = dialogueService.ending;
         vm.ending.ascii = [''];
 
-
-
-    	vm.currentLocation = vm.mainMap;
-
-
-
+        vm.currentLocation = initGame();
 
 		vm.locationDictionary['mainMap'] = this.mainMap;
 			vm.locationDictionary['treeCity'] = this.treeCity;

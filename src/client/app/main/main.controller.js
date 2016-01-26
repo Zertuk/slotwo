@@ -12,12 +12,12 @@
         var vm = this;
         vm.count = 0;
         vm.player = playerService.player;
-        vm.currentLocation = mainService.mainMap;
+        vm.progress = progressService.progress;
+        vm.currentLocation = mainService.currentLocation;
         initShop();
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
-        vm.progress = progressService.progress;
         vm.reset = '';
         vm.switchLocation = function(location) {
             var check = mainService.switchLocation(location);

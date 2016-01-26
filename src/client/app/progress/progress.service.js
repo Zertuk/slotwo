@@ -10,7 +10,7 @@
     /* @ngInject */
     function progressService() {
         var newProgress = {
-            hasMap: true,
+            hasMap: false,
             hasSleepingBag: false,
             hasSweater: false,
             introComplete: false,
@@ -44,9 +44,10 @@
             lichReveal: false,
             passCode: false,
             levels: {
-                cabin: true,
-                treeCity: true,
+                cabin: false,
+                treeCity: false,
                 treeOne: true,
+                house: true,
                 treeTwo: false,
                 dungeon: false,
                 ruins: false,
@@ -59,7 +60,7 @@
                 shroomFinish: false,
                 wizard: false,
                 robot: false,
-                arena: true,
+                arena: false,
                 monk: false,
                 lich: false,
                 theEnd: true,

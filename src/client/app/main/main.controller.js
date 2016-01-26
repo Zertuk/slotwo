@@ -11,7 +11,6 @@
     function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService, savingService) {
         var vm = this;
         vm.count = 0;
-        resourcesService.initRates();
         vm.player = playerService.player;
         vm.currentLocation = mainService.mainMap;
         initShop();
@@ -47,6 +46,10 @@
                 vm.itemList = [shopService.shopList];
             }, 50);
         };
+
+        vm.calculateTotlMoneyRate = function() {
+            return resourcesService.calculateTotlMoneyRate();
+        }
 
         function initShop() {
             shopService.initShop();
@@ -110,7 +113,6 @@
         //all resource info here
         function increaseResources() {
             vm.money = resourcesService.moneyTick();
-            resourcesService.resources.updateAmounts();
             vm.resources = resourcesService.resources;
         }
 

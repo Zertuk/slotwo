@@ -35,7 +35,7 @@
                 <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')" ng-if = "vm.progress.hasMap">Inventory</button>
                 <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
                 <button ng-click = "vm.switchLocation('mainMap')" ng-if = "vm.progress.hasMap">Map</button>
-                <p class = "inline nomargin">{{vm.money}} Gold ({{vm.resources.calculateTotlMoneyRate()}}/s)</p>
+                <p class = "inline nomargin">{{vm.money}} Gold ({{vm.calculateTotlMoneyRate()}}/s)</p>
 <!--                 <p>{{vm.player.gold}}</p>
  -->                <h1>{{vm.currentLocation.name}}</h1>
             </div><!--row-->
@@ -133,7 +133,6 @@
     <script src="/src/client/app/monk/monk.service.js"></script>
     <script src="/src/client/app/player/player.service.js"></script>
     <script src="/src/client/app/progress/progress.service.js"></script>
-    <script src="/src/client/app/resources/resources.controller.js"></script>
     <script src="/src/client/app/resources/resources.service.js"></script>
     <script src="/src/client/app/saving/saving.service.js"></script>
     <script src="/src/client/app/shop/shop.service.js"></script>

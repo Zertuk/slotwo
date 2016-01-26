@@ -5,6 +5,7 @@
         .module('app.saving', [
             'app.progress',
             'app.inventory',
-            'app.player'
+            'app.player',
+            'app.resources'
         ]);
 })();

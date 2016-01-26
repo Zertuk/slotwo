@@ -17,7 +17,8 @@
 		'app.progress',
 		'app.resources',
 		'app.monk',
-		'app.book'
+		'app.book',
+		'app.saving'
 	]);
 
 })();

@@ -9,17 +9,17 @@
 
     /* @ngInject */
     function progressService() {
-        this.progress = {
+        var newProgress = {
             hasMap: true,
             hasSleepingBag: false,
             hasSweater: false,
             introComplete: false,
-        	treeKingWorkAccept: false,
-        	treeKingCompliment: true,
-        	ruinsCleared: false,
-        	treeKingWorkHandIn: false,
-        	treeKingIntro: false,
-        	slumBossMet: false,
+            treeKingWorkAccept: false,
+            treeKingCompliment: true,
+            ruinsCleared: false,
+            treeKingWorkHandIn: false,
+            treeKingIntro: false,
+            slumBossMet: false,
             woodSwordCrafted: false,
             woodArmorCrafted: false,
             bridgePrompt: false,
@@ -28,7 +28,7 @@
             trainBattle: false,
             trainDefense: false,
             trainMoney: false,
-            canLearn: 3,
+            canLearn: 0,
             elderMet: false,
             pieEaten: false,
             innIntro: false,
@@ -41,7 +41,7 @@
             wizardMet: false,
             wizardTask: false,
             vialTaken: false,
-            lichReveal: true,
+            lichReveal: false,
             passCode: false,
             levels: {
                 cabin: true,
@@ -57,9 +57,9 @@
                 snowNorth: false,
                 shroom: true,
                 shroomFinish: false,
-                wizard: true,
-                robot: true,
-                arena: false,
+                wizard: false,
+                robot: false,
+                arena: true,
                 monk: false,
                 lich: false,
                 theEnd: true,
@@ -71,6 +71,17 @@
             looted: {
                 
             }
-        };
+        }
+        function loadProgress() {
+            var progress;
+            if (localStorage['progressSave']) {
+                progress = JSON.parse(atob(localStorage['progressSave']));
+            }
+            else {
+                progress = newProgress;
+            }
+            return progress;
+        }
+        this.progress = loadProgress();
     }
 })();

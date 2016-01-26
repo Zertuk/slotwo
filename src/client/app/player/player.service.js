@@ -300,7 +300,7 @@
             this.active = false,
             this.ground = false,
             this.evade = this.calculateTotalEvasion(),
-            this.health = 1100,
+            this.health = 1000,
             this.baseHealth = 1100,
             this.maxHealth = this.calculateTotalHealth(),
             this.regen = 1,
@@ -329,7 +329,22 @@
             this.damage = this.calculateTotalDamage(),
             this.attackSpeed = this.weapon.attackSpeed
         };
-        this.player = new this.Player();
+        var newPlayer = new this.Player();
+        function setPlayerStats(storage) {
+            newPlayer.health = storage.health;
+            newPlayer.maxHealth = storage.maxHealth;
+            newPlayer.weapon = storage.weapon;
+            newPlayer.armor = storage.armor;
+        }
+        function loadPlayer() {
+            var player = newPlayer
+            if (localStorage['playerSave']) {
+                var storage = JSON.parse(atob(localStorage['playerSave']));
+                setPlayerStats(storage);
+            }
+            return player;
+        }
+        this.player = loadPlayer();
         this.player.calculateTotalDamage();
         this.player.calculateTotalHealth();
         this.player.calculateTotalArmor();

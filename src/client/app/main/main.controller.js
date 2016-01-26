@@ -5,10 +5,10 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService', 'progressService'];
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService', 'progressService', 'savingService'];
 
     /* @ngInject */
-    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService) {
+    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService, savingService) {
         var vm = this;
         vm.count = 0;
         resourcesService.initRates();
@@ -19,7 +19,6 @@
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
         vm.progress = progressService.progress;
-
         vm.switchLocation = function(location) {
             var check = mainService.switchLocation(location);
             if (check) {
@@ -127,7 +126,11 @@
                 vm.switchLocation('ending');
             }
         }
-
+        function saveCheck() {
+            if (vm.count % 15 === 0) {
+                savingService.saveGame();
+            }
+        }
         //1s loop
         function mainLoop() {
             vm.count = vm.count + 1;
@@ -135,6 +138,7 @@
             increaseResources();
             updatePlayer();
             lichCheck();
+            saveCheck();
             $timeout(mainLoop, 1000);
         }
         //quicker loop

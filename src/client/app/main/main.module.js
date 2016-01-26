@@ -8,6 +8,7 @@
     	'app.template',
     	'app.dialogue',
     	'app.resources',
-    	'app.progress'
+    	'app.progress',
+        'app.saving'
         ]);
 })();

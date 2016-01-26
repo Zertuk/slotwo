@@ -1,7 +1,7 @@
 <div class = "container">
 	<p>To reset your game, type "RESET" (without quotes) in the box and hit submit.  This will delete your save!</p>
 	<form ng-submit = "vm.resetGame()">
-		<input ng-model = "vm.reset"></input><button ng-if = "!vm.passComplete" type = "submit">Reset</button>
+		<input class = "block" ng-model = "vm.reset"></input><button ng-if = "!vm.passComplete" type = "submit">Reset</button>
 	</form>
 
 	<p>Thank you for playing Space Lich Omega 2!</p>

@@ -1,4 +1,9 @@
 <div class = "container">
+	<p>To reset your game, type "RESET" (without quotes) in the box and hit submit.  This will delete your save!</p>
+	<form ng-submit = "vm.resetGame()">
+		<input ng-model = "vm.reset"></input><button ng-if = "!vm.passComplete" type = "submit">Reset</button>
+	</form>
+
 	<p>Thank you for playing Space Lich Omega 2!</p>
 	<p>If you have any questions or find a bug, you can find me on <a href = "https://twitter.com/Zertuk" target = "_blank">Twitter</a> or you can send me an <a href = "mailto:just.forcier@gmail.com" target = "_blank">email</a>.
 	<p>Space Lich Omega 2 is built with AngularJS with a small Node.js backend.  If you are interested, the source code is on <a href = "https://github.com/Zertuk/slotwo" target = "_blank">GitHub</a>.  The original <a href = "http://spacelichomega.zertukis.com" target = "_blank">Space Lich Omega is playable here</a>.

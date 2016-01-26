@@ -5,10 +5,10 @@
         .module('app.saving')
         .service('savingService', savingService);
 
-    savingService.$inject = ['progressService', 'playerService', 'inventoryService', 'resourcesService'];
+    savingService.$inject = ['progressService', 'playerService', 'inventoryService', 'resourcesService', '$window'];
 
     /* @ngInject */
-    function savingService(progressService, playerService, inventoryService, resourcesService) {
+    function savingService(progressService, playerService, inventoryService, resourcesService, $window) {
         var vm = this;
         vm.player = playerService.player;
         vm.progress = progressService.progress;        
@@ -32,5 +32,10 @@
             localStorage['resourcesSave'] = btoa(JSON.stringify(vm.resources));
             localStorage['itemSave'] = btoa(JSON.stringify(saveItems()));
         };
+
+        vm.resetGame = function() {
+            localStorage.clear();
+            document.location.reload();
+        }
     }
 })();

@@ -51,6 +51,16 @@
             return resourcesService.calculateTotlMoneyRate();
         }
 
+        vm.resetGame = function() {
+            vm.reset = vm.reset.toUpperCase();
+            if (vm.reset === 'RESET') {
+                savingService.resetGame();
+            }
+            else {
+                messageService.updateMainMessage('You must send "RESET" to delete your save!', true);
+            }
+        }
+
         function initShop() {
             shopService.initShop();
             vm.itemDictionary = shopService.grabItemDictionary();

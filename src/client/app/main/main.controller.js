@@ -18,6 +18,7 @@
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
         vm.progress = progressService.progress;
+        vm.reset = '';
         vm.switchLocation = function(location) {
             var check = mainService.switchLocation(location);
             if (check) {

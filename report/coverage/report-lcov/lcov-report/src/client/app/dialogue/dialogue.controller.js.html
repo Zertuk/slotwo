@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/client/app/dialogue/dialogue.controller.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./src/client/app/dialogue/dialogue.controller.js</span></h1>
+    <h2>
+        Statements: <span class="metric">16.67% <small>(6 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">12.5% <small>(1 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">16.67% <small>(6 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">./src/client/app/dialogue/</a> &#187; dialogue.controller.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function() {
+    'use strict';
+&nbsp;
+    angular
+        .module('app.dialogue')
+        .controller('DialogueController', DialogueController);
+&nbsp;
+    DialogueController.$inject = ['dialogueService', 'progressService', 'mainService', 'inventoryService'];
+&nbsp;
+    /* @ngInject */
+<span class="fstat-no" title="function not covered" >    function DialogueController(dialogueService, progressService, mainService, inventoryService) {</span>
+<span class="cstat-no" title="statement not covered" >        var vm = this;</span>
+<span class="cstat-no" title="statement not covered" >        dialogueService.initAllDialogues();</span>
+<span class="cstat-no" title="statement not covered" >        activate();</span>
+<span class="cstat-no" title="statement not covered" >        vm.passText = 'You have the passcode?';</span>
+        
+<span class="cstat-no" title="statement not covered" >        vm.switchTemplate = <span class="fstat-no" title="function not covered" >function(template) {</span></span>
+<span class="cstat-no" title="statement not covered" >            mainService.switchTemplate(template);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.switchDialogue = <span class="fstat-no" title="function not covered" >function(input, master) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.currentMaster = dialogueService[master];</span>
+<span class="cstat-no" title="statement not covered" >            vm.currentDialogue = vm.currentMaster.dialogue[input];</span>
+<span class="cstat-no" title="statement not covered" >            vm.locationText = vm.currentDialogue.text;</span>
+<span class="cstat-no" title="statement not covered" >            special();</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.switchLevel = <span class="fstat-no" title="function not covered" >function(level) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.currentLocation = mainService.switchLevel(level);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.passSubmit = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.passcode = vm.passcode.toUpperCase();</span>
+<span class="cstat-no" title="statement not covered" >            if (vm.passcode === 'AQKX') {</span>
+<span class="cstat-no" title="statement not covered" >                vm.passComplete = true;</span>
+<span class="cstat-no" title="statement not covered" >                progressService.progress.passCode = true;</span>
+<span class="cstat-no" title="statement not covered" >                inventoryService.itemDictionary['sweetJacket'][1][1] = 1;</span>
+<span class="cstat-no" title="statement not covered" >                vm.passText = 'Nice!  Thats the passcode alright.  You solved my riddle, now here is your prize. *The man hands you a [Sweet Jacket]!*';</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                vm.passText = 'Hey! Thats not the passcode!';</span>
+            }
+        };
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function special() {</span>
+<span class="cstat-no" title="statement not covered" >            if (typeof vm.currentDialogue.special !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >                vm.currentDialogue.special();</span>
+            }
+        }
+&nbsp;
+        ////////////////
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function activate() {</span>
+<span class="cstat-no" title="statement not covered" >            var location = mainService.currentLocation;</span>
+<span class="cstat-no" title="statement not covered" >            var initDialogue = location.dialogue;</span>
+<span class="cstat-no" title="statement not covered" >            var key = initDialogue.initDialogue();</span>
+<span class="cstat-no" title="statement not covered" >            vm.passcode = '';</span>
+<span class="cstat-no" title="statement not covered" >            vm.currentDialogue = initDialogue.dialogue[key];</span>
+<span class="cstat-no" title="statement not covered" >            vm.locationText = vm.currentDialogue.text;</span>
+<span class="cstat-no" title="statement not covered" >            special();</span>
+        }
+    }
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 26 2016 16:27:17 GMT-0600 (Central Standard Time)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

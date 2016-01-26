@@ -1,0 +1,1707 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/client/app/inventory/inventory.service.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./src/client/app/inventory/inventory.service.js</span></h1>
+    <h2>
+        Statements: <span class="metric">1.55% <small>(6 / 388)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">10% <small>(1 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">1.55% <small>(6 / 388)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">./src/client/app/inventory/</a> &#187; inventory.service.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function() {
+    'use strict';
+&nbsp;
+    angular
+        .module('app.inventory')
+        .service('inventoryService', inventoryService);
+&nbsp;
+    inventoryService.$inject = ['progressService'];
+&nbsp;
+    /* @ngInject */
+<span class="fstat-no" title="function not covered" >    function inventoryService(progressService) {</span>
+<span class="cstat-no" title="statement not covered" >    	var vm = this;</span>
+<span class="cstat-no" title="statement not covered" >    	vm.progress = progressService.progress;</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.Item = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >			this.buyable = false,</span>
+			this.removeAfterBuy = false,
+			this.craftTime = 5000,
+			this.recipe  = undefined,
+			this.quantity = 0,
+			this.cat = 'default',
+			this.spawn = undefined,
+			this.name = 'Default',
+			this.slug = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >				var slug = this.name.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >				return slug;</span>
+			},
+			this.attackSpeedMessage = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >				var message = '';</span>
+<span class="cstat-no" title="statement not covered" >				if (this.attackSpeed === 2) {</span>
+<span class="cstat-no" title="statement not covered" >					message = 'Average Speed';</span>
+				}
+				else <span class="cstat-no" title="statement not covered" >if (this.attackSpeed &gt; 2) {</span>
+<span class="cstat-no" title="statement not covered" >					message = 'Slow Speed';</span>
+&nbsp;
+				} else <span class="cstat-no" title="statement not covered" >if (this.attackSpeed &lt; 2) {</span>
+<span class="cstat-no" title="statement not covered" >					message = 'Fast Speed';</span>
+				}
+<span class="cstat-no" title="statement not covered" >				return message;</span>
+			}
+		};
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+		//weapons
+<span class="cstat-no" title="statement not covered" >		this.fists = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.fists.name = 'Fists';</span>
+<span class="cstat-no" title="statement not covered" >		this.fists.desc = 'just some fists'</span>
+<span class="cstat-no" title="statement not covered" >		this.fists.damage = 1;</span>
+<span class="cstat-no" title="statement not covered" >		this.fists.attackSpeed = 1;</span>
+<span class="cstat-no" title="statement not covered" >		this.fists.slug = 'fists';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.sword = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.name = 'Wooden Sword';</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.desc = 'Sourced from 100% Organic Non-GMO Trees';</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.price = 200;</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.recipe = ['wood-100'];</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.cat = 'weapon';</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.damage = 4;</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.attackSpeed = 2;</span>
+<span class="cstat-no" title="statement not covered" >		this.sword.slug = 'sword';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.decentSword = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.name = 'Decent Sword';</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.desc = 'It is alright';</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.price = 4000;</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.damage = 10;</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.attackSpeed = 2;</span>
+<span class="cstat-no" title="statement not covered" >		this.decentSword.slug = 'decentSword';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.bearClaws = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.bearClaws.name = 'Bear Arms';</span>
+<span class="cstat-no" title="statement not covered" >		this.bearClaws.desc = 'Just like the founding fathers intended';</span>
+<span class="cstat-no" title="statement not covered" >		this.bearClaws.damage = 2;</span>
+<span class="cstat-no" title="statement not covered" >		this.bearClaws.attackSpeed = 1;</span>
+<span class="cstat-no" title="statement not covered" >		this.bearClaws.slug = 'bearClaws';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.minotaurHammer = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.minotaurHammer.name = 'Minotaur Hammer';</span>
+<span class="cstat-no" title="statement not covered" >		this.minotaurHammer.desc = 'This thing is a beast';</span>
+<span class="cstat-no" title="statement not covered" >		this.minotaurHammer.damage = 30;</span>
+<span class="cstat-no" title="statement not covered" >		this.minotaurHammer.attackSpeed = 4;</span>
+<span class="cstat-no" title="statement not covered" >		this.minotaurHammer.slug = 'minotaurHammer';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.claws = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.claws.name = 'Crab Claws';</span>
+<span class="cstat-no" title="statement not covered" >		this.claws.slug = 'claws';</span>
+<span class="cstat-no" title="statement not covered" >		this.claws.desc = 'Big, Meaty, Claws!';</span>
+<span class="cstat-no" title="statement not covered" >		this.claws.damage = 45;</span>
+<span class="cstat-no" title="statement not covered" >		this.claws.attackSpeed = 4;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot.name = 'Giant Carrot';</span>
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot.desc = 'Formerly known as Garys nose';</span>
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot.damage = 15;</span>
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot.attackSpeed = 1;</span>
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot.slug = 'giantCarrot';</span>
+<span class="cstat-no" title="statement not covered" >		this.giantCarrot.lootOnce = true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['decentSword'] = [['item', this.decentSword], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 0]];</span>
+&nbsp;
+		//armor
+<span class="cstat-no" title="statement not covered" >		this.clothArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.clothArmor.name = 'Cloth Armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.clothArmor.desc = 'Better than nothing?';</span>
+<span class="cstat-no" title="statement not covered" >		this.clothArmor.armor = 0;</span>
+<span class="cstat-no" title="statement not covered" >		this.clothArmor.slug = 'clothArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.woodArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.name = 'Wood Armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.desc = 'Hope for no splinters!';</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.cat = 'armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.armor = 0.15;</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.price = 200;</span>
+<span class="cstat-no" title="statement not covered" >		this.woodArmor.slug = 'woodArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.boneArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.name = 'Bone Armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.desc = 'Bonez';</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.cat = 'armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.armor = 0.2;</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.price = 300;</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.boneArmor.slug = 'boneArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.polarArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.polarArmor.name = 'Tuxedo';</span>
+<span class="cstat-no" title="statement not covered" >		this.polarArmor.desc = 'dapper';</span>
+<span class="cstat-no" title="statement not covered" >		this.polarArmor.armor = 0.3;</span>
+<span class="cstat-no" title="statement not covered" >		this.polarArmor.slug = 'polarArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.healthArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.healthArmor.name = 'health armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.healthArmor.desc = 'health armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.healthArmor.armor = 0;</span>
+<span class="cstat-no" title="statement not covered" >		this.healthArmor.healthMult = 2;</span>
+<span class="cstat-no" title="statement not covered" >		this.healthArmor.slug = 'healthArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.ghostArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.ghostArmor.name = 'Spooky Aura';</span>
+<span class="cstat-no" title="statement not covered" >		this.ghostArmor.desc = 'Feels like a ghost hug &lt;3';</span>
+<span class="cstat-no" title="statement not covered" >		this.ghostArmor.armor = 0;</span>
+<span class="cstat-no" title="statement not covered" >		this.ghostArmor.damageMult = 50;</span>
+<span class="cstat-no" title="statement not covered" >		this.ghostArmor.slug = 'ghostArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.robotArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.robotArmor.name = 'Mech Suit';</span>
+<span class="cstat-no" title="statement not covered" >		this.robotArmor.desc = 'Battle Ready Armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.robotArmor.armor = 0.40;</span>
+<span class="cstat-no" title="statement not covered" >		this.robotArmor.damageMult = 15;</span>
+<span class="cstat-no" title="statement not covered" >		this.robotArmor.slug = 'robotArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.bugExoskeleton = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.bugExoskeleton.name = 'Stick Bug Exoskeleton';</span>
+<span class="cstat-no" title="statement not covered" >		this.bugExoskeleton.slug = 'bugExoskeleton';</span>
+<span class="cstat-no" title="statement not covered" >		this.bugExoskeleton.desc = 'Seems useful';</span>
+<span class="cstat-no" title="statement not covered" >		this.bugExoskeleton.armor = 0.5;</span>
+<span class="cstat-no" title="statement not covered" >		this.bugExoskeleton.damageMult = -25;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.potionArmor = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.potionArmor.name = 'Potion Armor';</span>
+<span class="cstat-no" title="statement not covered" >		this.potionArmor.desc = 'Feels like a ghost hug &lt;3';</span>
+<span class="cstat-no" title="statement not covered" >		this.potionArmor.armor = 0;</span>
+<span class="cstat-no" title="statement not covered" >		this.potionArmor.healthRate = 20;</span>
+<span class="cstat-no" title="statement not covered" >		this.potionArmor.slug = 'potionArmor';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['robotArmor'] = [['item', this.robotArmor], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['potionArmor'] = [['item', this.potionArmor], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['ghostArmor'] = [['item', this.ghostArmor], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['woodArmor'] = [['item', this.woodArmor], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['bugExoskeleton'] = [['item', this.bugExoskeleton], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['boneArmor'] = [['item', this.boneArmor], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 0]];</span>
+&nbsp;
+		//consumables
+<span class="cstat-no" title="statement not covered" >		this.potion = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.potion.name = 'Health Potion';</span>
+<span class="cstat-no" title="statement not covered" >		this.potion.slug = 'potion';</span>
+<span class="cstat-no" title="statement not covered" >		this.potion.desc = 'Heals ' + this.potion.strength + ' health';</span>
+<span class="cstat-no" title="statement not covered" >		this.potion.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.potion.price = 100;</span>
+<span class="cstat-no" title="statement not covered" >		this.potion.quantity = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['potion'] = [['item', this.potion], ['amount', 0]];</span>
+&nbsp;
+		//other items
+<span class="cstat-no" title="statement not covered" >		this.trueOffense = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.trueOffense.name = 'Offensive Sprit';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueOffense.slug = 'trueOffense';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueOffense.desc = 'Elder seal of approval';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueOffense.message = 'Damage increased by 25%';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueOffense.damageMult = 25;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.trueDefense = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.trueDefense.name = 'Defensive Sprit';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueDefense.slug = 'trueDefense';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueDefense.desc = 'Elder seal of approval';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueDefense.message = 'Armor increased by 25%';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueDefense.defenseMult = 25;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.trueHealth = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.trueHealth.name = 'Kind Spirit';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueHealth.slug = 'trueHealth';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueHealth.desc = 'Elder seal of approval';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueHealth.message = 'Health increased by 25%';</span>
+<span class="cstat-no" title="statement not covered" >		this.trueHealth.healthMult = 25;</span>
+ 
+<span class="cstat-no" title="statement not covered" >		this.winterCoat = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.name = 'Winter Sweater';</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.slug = 'winterCoat';</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.desc = 'Covered in cute deer and trees~';</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely! +25 Health';</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.health = 25;</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.price = 5000;</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.winterCoat.special = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >			vm.progress.hasSweater = true;</span>
+		};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.pearl = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.pearl.name = 'Shiny Pearl';</span>
+<span class="cstat-no" title="statement not covered" >		this.pearl.slug = 'pearl';</span>
+<span class="cstat-no" title="statement not covered" >		this.pearl.desc = '';</span>
+<span class="cstat-no" title="statement not covered" >		this.pearl.message = 'Holder gains +25 gold a second';</span>
+<span class="cstat-no" title="statement not covered" >		this.pearl.money = 25;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.piggyBank = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.name = 'Cat Bank';</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.slug = 'piggyBank';</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.desc = 'Like a Piggy Bank, but a Cat instead';</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.message = 'Holder gains +15 gold a second';</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.money = 15;</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.piggyBank.price = 2500;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.name = 'Wizards Hair';</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.slug = 'wizardsHair';</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.desc = 'Rumored to grant the holder great power.';</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.message = '5% increased damage, 5% increased armor, 5% increased health';</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.healthMult = 5;</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.damageMult = 5;</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.defenseMult = 5;</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.price = 10000;</span>
+<span class="cstat-no" title="statement not covered" >		this.wizardsHair.removeAfterBuy = true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers.name = 'Deer Antlers';</span>
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers.slug = 'deerAntlers';</span>
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers.desc = 'The latest in deer fashion';</span>
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers.message = 'Attacks deal +1 damage.';</span>
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers.lootOnce = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.deerAntlers.damage = 1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat.name = 'Snowmans Hat';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat.slug = 'snowmanHat';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat.desc = 'No one will ever wear it as good as the snowman...';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat.message = 'Attacks deal +5 damage';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat.lootOnce = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmanHat.damage = 5;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.name = 'Deluxe Sleeping Bag';</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.slug = 'sleepingBag';</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.desc = 'Deluxe model is 23% cozier';</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.message = 'Allows you to sleep outside and rest anywhere';</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.price = 2000;</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.removeAfterBuy = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.sleepingBag.special = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >			vm.progress.hasSleepingBag = true;</span>
+		};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot.name = 'Lucky Gorilla Foot';</span>
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot.slug = 'gorillaFoot';</span>
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot.desc = 'Luckiest of all animal feet';</span>
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot.message = 'Holder gains +5 gold a second';</span>
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot.lootOnce = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.gorillaFoot.money = 5;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.pocketSand = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.pocketSand.name = 'Pocket Sand';</span>
+<span class="cstat-no" title="statement not covered" >		this.pocketSand.slug = 'pocketSand';</span>
+<span class="cstat-no" title="statement not covered" >		this.pocketSand.desc = 'Wingo! Pocket sand!';</span>
+<span class="cstat-no" title="statement not covered" >		this.pocketSand.message = '1% chance to evade damage.';</span>
+<span class="cstat-no" title="statement not covered" >		this.pocketSand.lootOnce = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.pocketSand.evade = 1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw.name = 'Mantis Claw';</span>
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw.slug = 'mantisClaw';</span>
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw.desc = 'Scythe like';</span>
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw.message = 'Attacks deal +5 damage';</span>
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw.lootOnce = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.mantisClaw.damage = 5;</span>
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood.name = 'Log';</span>
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood.slug = 'bigHeavyWood';</span>
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood.desc = 'Its big, its heavy, its wood!';</span>
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood.message = '+25 health';</span>
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood.lootOnce = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.bigHeavyWood.health = 25;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.pie = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.pie.name = 'Memories of pie';</span>
+<span class="cstat-no" title="statement not covered" >		this.pie.slug = 'pie';</span>
+<span class="cstat-no" title="statement not covered" >		this.pie.desc = 'Remembering the pie, it fills you with determination.';</span>
+<span class="cstat-no" title="statement not covered" >		this.pie.message = '+50 health';</span>
+<span class="cstat-no" title="statement not covered" >		this.pie.health = 50;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.unicornHorn = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.unicornHorn.name = 'Unicorn Horn';</span>
+<span class="cstat-no" title="statement not covered" >		this.unicornHorn.slug = 'unicornHorn';</span>
+<span class="cstat-no" title="statement not covered" >		this.unicornHorn.desc = '';</span>
+<span class="cstat-no" title="statement not covered" >		this.unicornHorn.message = '';</span>
+<span class="cstat-no" title="statement not covered" >		this.unicornHorn.health = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing.name = 'Snowmens Blessing';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing.slug = 'snowmenBlessing';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing.desc = 'RIP Gary &amp; Friends';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing.message = 'Increases health by 50 and gives +10 gold a second.';</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing.health = 50;</span>
+<span class="cstat-no" title="statement not covered" >		this.snowmenBlessing.money = 10;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.abomItem = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.abomItem.name = 'Lucky Yeti Boots';</span>
+<span class="cstat-no" title="statement not covered" >		this.abomItem.slug = 'abomItem';</span>
+<span class="cstat-no" title="statement not covered" >		this.abomItem.desc = 'A little too big';</span>
+<span class="cstat-no" title="statement not covered" >		this.abomItem.message = '+50 health and wearer gains +20 gold a second.';</span>
+<span class="cstat-no" title="statement not covered" >		this.abomItem.health = 50;</span>
+<span class="cstat-no" title="statement not covered" >		this.abomItem.money = 20;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.mammothFur = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.mammothFur.name = 'Mammoth Fur Scarf';</span>
+<span class="cstat-no" title="statement not covered" >		this.mammothFur.slug = 'mammothFur';</span>
+<span class="cstat-no" title="statement not covered" >		this.mammothFur.desc = 'Kind of itchy..';</span>
+<span class="cstat-no" title="statement not covered" >		this.mammothFur.message = 'Health increased by 5%';</span>
+<span class="cstat-no" title="statement not covered" >		this.mammothFur.healthMult = 5;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.frozenBanana = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.frozenBanana.name = 'Frozen Banana';</span>
+<span class="cstat-no" title="statement not covered" >		this.frozenBanana.slug = 'frozenBanana';</span>
+<span class="cstat-no" title="statement not covered" >		this.frozenBanana.desc = 'Maybe it will melt someday';</span>
+<span class="cstat-no" title="statement not covered" >		this.frozenBanana.message = 'Damage increased by 4%';</span>
+<span class="cstat-no" title="statement not covered" >		this.frozenBanana.damageMult = 4;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.kingCrown = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.kingCrown.name = 'Crown of the King';</span>
+<span class="cstat-no" title="statement not covered" >		this.kingCrown.slug = 'kingCrown';</span>
+<span class="cstat-no" title="statement not covered" >		this.kingCrown.desc = 'Slightly bloody';</span>
+<span class="cstat-no" title="statement not covered" >		this.kingCrown.message = '+50 health and armor increased by 5%';</span>
+<span class="cstat-no" title="statement not covered" >		this.kingCrown.health = 50;</span>
+<span class="cstat-no" title="statement not covered" >		this.kingCrown.defenseMult = 5;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.vampireTeeth = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.vampireTeeth.name = 'Vampire Teeth';</span>
+<span class="cstat-no" title="statement not covered" >		this.vampireTeeth.slug = 'vampireTeeth';</span>
+<span class="cstat-no" title="statement not covered" >		this.vampireTeeth.desc = 'Made from plastic?';</span>
+<span class="cstat-no" title="statement not covered" >		this.vampireTeeth.message = 'Attacks deal +5 damage';</span>
+<span class="cstat-no" title="statement not covered" >		this.vampireTeeth.damage = 5;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket.name = 'Sweet Jacket';</span>
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket.slug = 'sweetJacket';</span>
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket.desc = 'Makes you look tough and has pockets for snacks!';</span>
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket.message = 'Damage increased by 10%, Armor increased by 10%, +100 coolness';</span>
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket.damageMult = 10;</span>
+<span class="cstat-no" title="statement not covered" >		this.sweetJacket.defenseMult = 10;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.undeadItem = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.name = 'Soul Fragment';</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.desc = 'A piece of The Lichs soul';</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.slug = 'undeadItem';</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.message = 'Damage increased by 5%, Armor increased by 5%, +100 health';</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.damageMult = 5;</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.defenseMult = 5;</span>
+<span class="cstat-no" title="statement not covered" >		this.undeadItem.health = 100;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.lichItem = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.lichItem.name = 'The Lichs Phylactery';</span>
+<span class="cstat-no" title="statement not covered" >		this.lichItem.desc = '';</span>
+<span class="cstat-no" title="statement not covered" >		this.lichItem.slug = 'lichItem';</span>
+<span class="cstat-no" title="statement not covered" >		this.lichItem.message = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['lichItem'] = [['item', this.lichItem], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['undeadItem'] = [['item', this.undeadItem], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['sweetJacket'] = [['item', this.sweetJacket], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['vampireTeeth'] = [['item', this.vampireTeeth], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['kingCrown'] = [['item', this.kingCrown], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['frozenBanana'] = [['item', this.frozenBanana], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['mammothFur'] = [['item', this.mammothFur], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['abomItem'] = [['item', this.abomItem], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['snowmenBlessing'] = [['item', this.snowmenBlessing], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['piggyBank'] = [['item', this.piggyBank], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['pie'] = [['item', this.pie], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['trueOffense'] = [['item', this.trueOffense], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['trueDefense'] = [['item', this.trueDefense], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['trueHealth'] = [['item', this.trueHealth], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['bigHeavyWood'] = [['item', this.bigHeavyWood], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['pearl'] = [['item', this.pearl], ['amount, 0']];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['winterCoat'] = [['item', this.winterCoat], ['amount', 0]];</span>
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['wizardsHair'] = [['item', this.wizardsHair], ['amount', 0]];</span>
+&nbsp;
+&nbsp;
+		//misc
+<span class="cstat-no" title="statement not covered" >		this.compendium = new this.Item();</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.name = 'Beast Compendium';</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.desc = 'Basically a scrapbook';</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.message = 'Keeps track of enemies you encounter.';</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.slug = 'compendium';</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.buyable = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.price = 500;</span>
+<span class="cstat-no" title="statement not covered" >		this.compendium.removeAfterBuy = true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 0]];</span>
+&nbsp;
+		////////////////
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.otherItems = [vm.itemDictionary['trueHealth'],</span>
+						 vm.itemDictionary['trueOffense'],
+						 vm.itemDictionary['trueDefense'],
+						 vm.itemDictionary['bigHeavyWood'],
+						 vm.itemDictionary['pie'],
+						 vm.itemDictionary['winterCoat'],
+						 vm.itemDictionary['deerAntlers'],
+						 vm.itemDictionary['wizardsHair'],
+						 vm.itemDictionary['sleepingBag'],
+						 vm.itemDictionary['piggyBank'],
+						 vm.itemDictionary['gorillaFoot'],
+						 vm.itemDictionary['pocketSand'],
+						 vm.itemDictionary['vampireTeeth'],
+						 vm.itemDictionary['kingCrown'],
+						 vm.itemDictionary['pearl'],
+						 vm.itemDictionary['mantisClaw'],
+						 vm.itemDictionary['abomItem'],
+						 vm.itemDictionary['snowmanHat'],
+						 vm.itemDictionary['snowmenBlessing'],
+						 vm.itemDictionary['mammothFur'],
+						 vm.itemDictionary['frozenBanana'],
+						 vm.itemDictionary['sweetJacket'],
+						 vm.itemDictionary['undeadItem'],
+						 vm.itemDictionary['lichItem'],
+						 vm.itemDictionary['compendium']];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.buyableItems = ['potion', </span>
+						   'sword', 
+						   'woodArmor',
+						   'decentSword', 
+						   'winterCoat', 
+						   'wizardsHair', 
+						   'compendium',
+						   'piggyBank',
+						   'sleepingBag'];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.weapons = [vm.itemDictionary['fists'],</span>
+					  vm.itemDictionary['sword'],
+					  vm.itemDictionary['bearClaws'],
+					  vm.itemDictionary['decentSword'],
+					  vm.itemDictionary['minotaurHammer'],
+					  vm.itemDictionary['claws'],
+					  vm.itemDictionary['giantCarrot']];
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.armor = [vm.itemDictionary['clothArmor'],</span>
+					vm.itemDictionary['woodArmor'],
+					vm.itemDictionary['healthArmor'],
+					vm.itemDictionary['ghostArmor'],
+					vm.itemDictionary['bugExoskeleton'],
+					vm.itemDictionary['potionArmor'],
+					vm.itemDictionary['polarArmor'],
+					vm.itemDictionary['robotArmor']];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.keys = ['fists', 'sword', 'decentSword', 'bearClaws', 'minotaurHammer', 'claws', 'giantCarrot',</span>
+				   'robotArmor', 'potionArmor', 'ghostArmor', 'woodArmor', 'bugExoskeleton', 'boneArmor', 'healthArmor', 'polarArmor', 'clothArmor',
+				   'potion', 'compendium', 'wizardsHair', 'winterCoat', 'deerAntlers', 'sleepingBag', 'snowmanHat', 'pearl', 'gorillaFoot', 'pocketSand',
+				   'mantisClaw', 'bigHeavyWood', 'trueOffense', 'trueDefense', 'trueHealth', 'pie', 'piggyBank', 'snowmenBlessing', 'abomItem',
+				   'mammothFur', 'frozenBanana', 'kingCrown', 'vampireTeeth', 'sweetJacket', 'undeadItem', 'lichItem'];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.findVal = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >			var keys = ['damage', 'health', 'evade', 'money', 'defense', 'defenseMult', 'damageMult', 'healthMult'];</span>
+<span class="cstat-no" title="statement not covered" >			vm.stats = {</span>
+				damage: 0,
+				health: 0,
+				evade: 0,
+				money: 0,
+				defense: 0,
+				defenseMult: 0,
+				damageMult: 0,
+				healthMult: 0
+			}
+<span class="cstat-no" title="statement not covered" >			addVal(keys, vm.stats);</span>
+<span class="cstat-no" title="statement not covered" >			vm.statReset = true;</span>
+		}
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >		function loadItems() {</span>
+<span class="cstat-no" title="statement not covered" >            if (localStorage['itemSave']) {</span>
+<span class="cstat-no" title="statement not covered" >                var items = JSON.parse(atob(localStorage['itemSave']));</span>
+<span class="cstat-no" title="statement not covered" >                for (var i = 0; i &lt; items.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                	if (items[i][1] &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >                		console.log('tset')</span>
+<span class="cstat-no" title="statement not covered" >                		vm.itemDictionary[items[i][0]][1][1] = 1;</span>
+                	}
+                }
+<span class="cstat-no" title="statement not covered" >                console.log(items);</span>
+            }
+		}
+<span class="cstat-no" title="statement not covered" >		loadItems();</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >		function addVal(keys, stats) {</span>
+<span class="cstat-no" title="statement not covered" >			for (var i = 0; i &lt; vm.otherItems.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >				if (vm.otherItems[i][1][1] &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >					for (var k = 0; k &lt; keys.length; k++) {</span>
+<span class="cstat-no" title="statement not covered" >						if (typeof vm.otherItems[i][0][1][keys[k]] !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >							stats[keys[k]] = stats[keys[k]] + vm.otherItems[i][0][1][keys[k]];</span>
+						}
+					}
+				}
+			}
+		}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		vm.findVal();</span>
+    }
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 26 2016 16:27:17 GMT-0600 (Central Standard Time)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

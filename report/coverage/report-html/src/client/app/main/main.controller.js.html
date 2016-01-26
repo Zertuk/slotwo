@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/client/app/main/main.controller.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./src/client/app/main/main.controller.js</span></h1>
+    <h2>
+        Statements: <span class="metric">15.6% <small>(17 / 109)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">4.55% <small>(1 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">15.6% <small>(17 / 109)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">./src/client/app/main/</a> &#187; main.controller.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function () {
+    'use strict';
+&nbsp;
+    angular
+        .module('app.main')
+        .controller('MainController', MainController);
+&nbsp;
+    MainController.$inject = ['$rootScope', '$scope', 'playerService', 'mainService', '$timeout', '$compile', 'levelService', 'shopService', 'messageService', 'templateService', 'dialogueService', 'resourcesService', 'progressService', 'savingService'];
+&nbsp;
+    /* @ngInject */
+<span class="fstat-no" title="function not covered" >    function MainController($rootScope, $scope, playerService, mainService, $timeout, $compile, levelService, shopService, messageService, templateService, dialogueService, resourcesService, progressService, savingService) {</span>
+<span class="cstat-no" title="statement not covered" >        var vm = this;</span>
+<span class="cstat-no" title="statement not covered" >        vm.count = 0;</span>
+<span class="cstat-no" title="statement not covered" >        vm.player = playerService.player;</span>
+<span class="cstat-no" title="statement not covered" >        vm.progress = progressService.progress;</span>
+<span class="cstat-no" title="statement not covered" >        vm.currentLocation = mainService.currentLocation;</span>
+<span class="cstat-no" title="statement not covered" >        vm.locationDictionary = mainService.locationDictionary;</span>
+<span class="cstat-no" title="statement not covered" >        vm.levelDictionary = levelService.levelDictionary;</span>
+<span class="cstat-no" title="statement not covered" >        vm.currentLocation.specFunc();</span>
+<span class="cstat-no" title="statement not covered" >        vm.reset = '';</span>
+<span class="cstat-no" title="statement not covered" >        vm.switchLocation = <span class="fstat-no" title="function not covered" >function(location) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var check = mainService.switchLocation(location);</span>
+<span class="cstat-no" title="statement not covered" >            if (check) {</span>
+<span class="cstat-no" title="statement not covered" >                vm.currentLocation = mainService.switchLocation(location);</span>
+<span class="cstat-no" title="statement not covered" >                removeAscii();</span>
+<span class="cstat-no" title="statement not covered" >                if (location === 'treeShop') {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('shop init')</span>
+<span class="cstat-no" title="statement not covered" >                    initShop();</span>
+                }
+            }
+        };
+<span class="cstat-no" title="statement not covered" >        vm.switchLevel = <span class="fstat-no" title="function not covered" >function(level) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var check = mainService.switchLevel(level);</span>
+<span class="cstat-no" title="statement not covered" >            if (check) {</span>
+<span class="cstat-no" title="statement not covered" >                vm.currentLocation = mainService.switchLevel(level);</span>
+            }
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.switchTemplate = <span class="fstat-no" title="function not covered" >function(template) {</span></span>
+<span class="cstat-no" title="statement not covered" >            mainService.switchTemplate(template);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.buyItem = <span class="fstat-no" title="function not covered" >function(item) {</span></span>
+<span class="cstat-no" title="statement not covered" >            shopService.initPurchase(item);</span>
+<span class="cstat-no" title="statement not covered" >            vm.money = resourcesService.resources.money;</span>
+<span class="cstat-no" title="statement not covered" >            $timeout(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                vm.itemList = [shopService.shopList];</span>
+            }, 50);
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.calculateTotlMoneyRate = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            return resourcesService.calculateTotlMoneyRate();</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.resetGame = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.reset = vm.reset.toUpperCase();</span>
+<span class="cstat-no" title="statement not covered" >            if (vm.reset === 'RESET') {</span>
+<span class="cstat-no" title="statement not covered" >                savingService.resetGame();</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                messageService.updateMainMessage('You must send "RESET" to delete your save!', true);</span>
+            }
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function initShop() {</span>
+<span class="cstat-no" title="statement not covered" >            shopService.initShop();</span>
+<span class="cstat-no" title="statement not covered" >            vm.itemDictionary = shopService.grabItemDictionary();</span>
+<span class="cstat-no" title="statement not covered" >            vm.itemList = [shopService.shopList];</span>
+<span class="cstat-no" title="statement not covered" >            console.log(vm.itemList[0]);</span>
+        }
+&nbsp;
+&nbsp;
+        //if ascii isnt deleted before, can cause issues with different size ascii
+<span class="fstat-no" title="function not covered" >        function removeAscii() {</span>
+<span class="cstat-no" title="statement not covered" >            var elements = angular.element('#locationwrap').children();</span>
+<span class="cstat-no" title="statement not covered" >            elements.remove();</span>
+<span class="cstat-no" title="statement not covered" >            sanitizeAscii();</span>
+        }
+&nbsp;
+        //add pre tags and $compile to angular code so ng-click works
+<span class="fstat-no" title="function not covered" >        function sanitizeAscii() {</span>
+            //dont run twice, adds double pre tags
+<span class="cstat-no" title="statement not covered" >            if (!vm.currentLocation.formatted) {</span>
+<span class="cstat-no" title="statement not covered" >                vm.currentLocation.initClicks();</span>
+            }
+<span class="cstat-no" title="statement not covered" >            for (var i = 0; i &lt; vm.currentLocation.ascii.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                if (!vm.currentLocation.formatted) {</span>
+<span class="cstat-no" title="statement not covered" >                    vm.currentLocation.ascii[i] = '&lt;pre&gt;' + vm.currentLocation.ascii[i] + '&lt;/pre&gt;';</span>
+                }
+<span class="cstat-no" title="statement not covered" >                vm.currentLocation.ascii[i] = $compile(vm.currentLocation.ascii[i])($scope);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            vm.currentLocation.formatted = true;</span>
+<span class="cstat-no" title="statement not covered" >            appendAscii();</span>
+<span class="cstat-no" title="statement not covered" >            verifyAscii();</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function appendAscii() {</span>
+<span class="cstat-no" title="statement not covered" >            for (var i = 0; i &lt; vm.currentLocation.ascii.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                angular.element('#locationwrap').append(vm.currentLocation.ascii[i]);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            $timeout(verifyAscii, 10);</span>
+        }
+&nbsp;
+        //ascii append check, if it didnt work lengths wont matchup, rerun append
+<span class="fstat-no" title="function not covered" >        function verifyAscii() {</span>
+<span class="cstat-no" title="statement not covered" >            var length = angular.element('#locationwrap').children().length;</span>
+<span class="cstat-no" title="statement not covered" >            if (length !== vm.currentLocation.ascii.length) {</span>
+<span class="cstat-no" title="statement not covered" >                appendAscii();</span>
+            }
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function wizardCheck() {</span>
+<span class="cstat-no" title="statement not covered" >            if (vm.currentLocation.slug === 'wizard') {</span>
+<span class="cstat-no" title="statement not covered" >                var asciiCheck = vm.currentLocation.asciiCheck();</span>
+<span class="cstat-no" title="statement not covered" >                if  (asciiCheck !== vm.currentLocation.currentAscii) {</span>
+<span class="cstat-no" title="statement not covered" >                    vm.currentLocation.currentAscii = asciiCheck;</span>
+<span class="cstat-no" title="statement not covered" >                    vm.currentLocation.ascii = vm.currentLocation[asciiCheck];</span>
+<span class="cstat-no" title="statement not covered" >                    vm.currentLocation.formatted = false;</span>
+<span class="cstat-no" title="statement not covered" >                    removeAscii();</span>
+<span class="cstat-no" title="statement not covered" >                    sanitizeAscii();</span>
+                } 
+            }
+        }
+&nbsp;
+        //all resource info here
+<span class="fstat-no" title="function not covered" >        function increaseResources() {</span>
+<span class="cstat-no" title="statement not covered" >            vm.money = resourcesService.moneyTick();</span>
+<span class="cstat-no" title="statement not covered" >            vm.resources = resourcesService.resources;</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function updatePlayer() {</span>
+<span class="cstat-no" title="statement not covered" >            vm.player.damage = vm.player.calculateTotalDamage();</span>
+<span class="cstat-no" title="statement not covered" >            vm.player.armorValue = vm.player.calculateTotalArmor();</span>
+<span class="cstat-no" title="statement not covered" >            vm.player.maxHealth = vm.player.calculateTotalHealth();</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function lichCheck() {</span>
+<span class="cstat-no" title="statement not covered" >            if (vm.player.lichKilled) {</span>
+<span class="cstat-no" title="statement not covered" >                vm.player.lichKilled = false;</span>
+<span class="cstat-no" title="statement not covered" >                vm.switchLocation('ending');</span>
+            }
+        }
+<span class="fstat-no" title="function not covered" >        function saveCheck() {</span>
+<span class="cstat-no" title="statement not covered" >            if (vm.count % 15 === 0) {</span>
+<span class="cstat-no" title="statement not covered" >                savingService.saveGame();</span>
+            }
+        }
+        //1s loop
+<span class="fstat-no" title="function not covered" >        function mainLoop() {</span>
+<span class="cstat-no" title="statement not covered" >            vm.count = vm.count + 1;</span>
+<span class="cstat-no" title="statement not covered" >            vm.player.healthRegen();</span>
+<span class="cstat-no" title="statement not covered" >            increaseResources();</span>
+<span class="cstat-no" title="statement not covered" >            updatePlayer();</span>
+<span class="cstat-no" title="statement not covered" >            lichCheck();</span>
+<span class="cstat-no" title="statement not covered" >            saveCheck();</span>
+<span class="cstat-no" title="statement not covered" >            $timeout(mainLoop, 1000);</span>
+        }
+        //quicker loop
+<span class="fstat-no" title="function not covered" >        function quickLoop() {</span>
+<span class="cstat-no" title="statement not covered" >            vm.player.healthBarUpdate();</span>
+<span class="cstat-no" title="statement not covered" >            vm.activeTemplate = templateService.activeTemplate;</span>
+<span class="cstat-no" title="statement not covered" >            vm.messageError = messageService.messageError;</span>
+<span class="cstat-no" title="statement not covered" >            vm.mainMessage = messageService.mainMessage;</span>
+<span class="cstat-no" title="statement not covered" >            wizardCheck();</span>
+<span class="cstat-no" title="statement not covered" >            $timeout(quickLoop, 125);</span>
+        }
+&nbsp;
+        ////////////////////
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function activate() {</span>
+<span class="cstat-no" title="statement not covered" >            sanitizeAscii();</span>
+<span class="cstat-no" title="statement not covered" >            mainLoop();</span>
+<span class="cstat-no" title="statement not covered" >            quickLoop();</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        activate();</span>
+    }
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 26 2016 16:27:17 GMT-0600 (Central Standard Time)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

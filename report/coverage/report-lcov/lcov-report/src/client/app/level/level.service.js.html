@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/client/app/level/level.service.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../../prettify.css">
+    <link rel="stylesheet" href="../../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./src/client/app/level/level.service.js</span></h1>
+    <h2>
+        Statements: <span class="metric">2.67% <small>(4 / 150)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">20% <small>(1 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">2.67% <small>(4 / 150)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">./src/client/app/level/</a> &#187; level.service.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function() {
+    'use strict';
+&nbsp;
+    angular
+        .module('app.level')
+        .service('levelService', levelService);
+&nbsp;
+    levelService.$inject = ['enemyService'];
+&nbsp;
+    /* @ngInject */
+<span class="fstat-no" title="function not covered" >    function levelService(enemyService) {</span>
+<span class="cstat-no" title="statement not covered" >        this.mainMessage = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.Level = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            this.checkLength = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >                console.log(this.defaultAscii[0].length);</span>
+            },
+            this.spawnMore = true;
+<span class="cstat-no" title="statement not covered" >            this.prev = 'mainMap';</span>
+<span class="cstat-no" title="statement not covered" >            this.prevName = 'Map';</span>
+<span class="cstat-no" title="statement not covered" >            this.spawnChance = 90;</span>
+        };
+&nbsp;
+        //treeone
+<span class="cstat-no" title="statement not covered" >        this.treeOne = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.unlock = 'treeTwo';</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.enemySpawn = [141, 21];</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.playerSpawn = [0, 22];</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.enemyArray = [enemyService.Tree];</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.name = 'The Forest';</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.slug = 'treeOne'</span>
+<span class="cstat-no" title="statement not covered" >        this.treeOne.defaultAscii = ["     .\'           \'./   \\    .\'\\      /                            /                                     \\/                               /                     ",</span>
+                                     "    /               \\    \\ .\'   \\    /                            /                                      /                              .\'                       ",
+                                     "  .\'                      /      \'../               //\\\\        .\'                                     .\'                              /                           ",
+                                     " /                 .     /         /               ///\\\\\\    . /                                      /                              .\'                           ",
+                                     "/      ^           T    /                        /////\\\\\\\\   T       ^                .                              .                                          .",
+                                     "   ^   T    .    ^               .       ^      //////\\\\\\\\\\      .   T                T              ^               T       ^                                  T",
+                                     "   T  .     T    T     ^     .   T       T  //////////\\\\\\\\\\\\\\\\\\  T            ^                      T                       T            .              .  ",
+                                     "     / \\      .       / \\   / \\     / \\       /// -- /\\ -- \\\\\\         .      T          .                                                T              T   ",
+                                     ".     |      / \\       |     |       |    ////////////\\\\\\\\\\\\\\\\\\\\\\     / \\           .    T          .            .              .                 ^                  ",
+                                     " \\     .      |             ^     .       ////////////\\\\\\\\\\\\\\\\\\\\\\\\   . |    ^      / \\      .      / \\          / \\     ^      / \\      .         T             .    ",
+                                     " \\    / \\   .     ^        / \\   / \\        //////////\\\\\\\\\\\\\\\\\\\\    / \\    / \\     / \\     / \\     / \\  ^        |.    / \\      |      / \\     .          .    / \\   ",
+                                     "| .   / \\  / \\   / \\      . |    / \\      //////////    \\\\\\\\\\\\\\\\\     |      |       |   .  / \\      |  / \\  .    / \\   / \\        ^    / \\    / \\        / \\    |    ",
+                                     " / \\   |    |    / \\     / \\      |     //////// |        | \\\\\\\\\\\\\\\\ .      .          / \\  |    ^      |  / \\   / \\    |     ^  / \\    |     / \\        / \\         ",
+                                     " / \\   .          |     /   \\                   ,|   __   |.        / \\    / \\         / \\      / \\        / \\    |          / \\ / \\      .    |      ^   |    ^     ",
+                                     "  |   / \\         .     /   \\      .        __.\'_|  /__\\. | \\__     / \\    / \\      .   |       / \\    ^    |        ^       / \\  |      / \\   .     / \\      / \\    ",
+                                     "^     / \\        / \\      |       / \\     ,\'__.\'.  \\ \\ / \\|__  \\,.   |    . |      / \\           |    / \\           / \\       |      .   / \\  / \\    / \\      / \\    ",
+                                     " \\     |    /\\   / \\   .          / \\    .     / \\ / / / \\   \\___ \\      / \\       / \\      ^         / \\        .  / \\    .        / \\   |   / \\  .  |        |     ",
+                                     " \\    ^    /  \\   |   / \\          |    / \\    / \\ \\/   |     ^  \/       / \\        |      / \\         |        / \\  |    / \\       / \\        |  / \\        .       ",
+                                     "|    / \\   /  \\  .    / \\      ^        / \\     |            / \\      .   |  .^.           / \\       .          / \\       / \\        |       ^   /   \\   ^  / \\  .   ",
+                                     "     / \\    ||  / \\    |      / \\        |           .       / \\     / \\    /   \\           |       / \\          |         |                / \\  /   \\  / \\ / \\ / \\  ",
+                                     "      |         / \\          /   \\                  / \\       |     /   \\   /   \\                   / \\                                     / \\    |    / \\  |  / \\  ",
+                                     "                / \\          /   \\                  / \\             /   \\     |                      |                    ''''''''''''''     |           |       |   ",
+                                     "                 |             |                     |                |           ''''''''''''''''''''''''''''''''''''''''              ''''''''''                   ",
+                                     "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''                                                                '''''''''''''''''''"];
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.treeOne.spawnAtStart = [[17, 22], [31, 22], [53, 22], [70, 22], [101, 21], [141, 21]];</span>
+&nbsp;
+&nbsp;
+&nbsp;
+        //treetwo
+<span class="cstat-no" title="statement not covered" >        this.treeTwo = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.slug = 'treeTwo';</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.unlock = 'treeCity';</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.specialEnd = 95;</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.enemyArray = [enemyService.Deer, enemyService.Bear];</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.spawnAtStart = [[20, 22], [45, 22], [70,22], [85, 22]];</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.playerSpawn = [0, 22];</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.name = 'Approach the Giant Tree';</span>
+<span class="cstat-no" title="statement not covered" >        this.treeTwo.defaultAscii = ["       /         \\   .^.               .'                               //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  ",    </span>
+                              "     .'           './   \\    .'\\      /                            ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",      
+                              "    /               \\    \\ .'   \\    /                            /////////////////////////     \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",            
+                              "  .'                      /      '../                       /////////////////////////////          \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",     
+                              " /                 .     /         /                    ///////////////////////////////              \\\\\\\\\\\\\\\\\\\\\\\\\\\\",
+                              "/                  T    /                                                        |            |           |        ",
+                              "   ^        .    ^               .                                               |            |           |        ",
+                              "   T  .     T    T           .   T                   .                        ^  |                        |        ",
+                              "     / \\      .             / \\            .        / \\     .          .      T .'   |             |      '.       ",
+                              ".     |      / \\      .      |         .  / \\       / \\    / \\        / \\       |    |             |       |       ",
+                              " \\     .      |      / \\    ^     .   / \\  |         |     / \\       . |    ^   |                          |       ",
+                              " \\    / \\         ^  / \\  ./ \\   / \\  / \\        .          |       / \\    / \\  |           |              |       ",
+                              "| .   / \\     ^  / \\  |  / \\|    / \\   |   .    / \\                  |      |   |                          |       ",
+                              " / \\   |  .  / \\ / \\   . / \\   .  |   .   / \\   / \\     ^            .      .  .'                          '.      ",
+                              " / \\   .  / \\/ \\  |   / \\ |   / \\    / \\  / \\    |     / \\          / \\    / \\ |        |               |   |      ",
+                              "  |   / \\ / \\ |   .   / \\  .  / \\  . / \\   |           / \\          / \\    / \\ |        |               |   |      ",
+                              "^     / \\  |     / \\   |  / \\  |  / \\ |          ^      |            |      ,..|                 |      |   |      ",
+                              " \\     |    /\\   / \\   .  / \\  .  / \\    .      / \\          ^         ___.'   |                 |          |      ",
+                              " \\         /  \\   |   / \\  |  / \\  |    / \\    /   \\        / \\ _____.'       .'   |      ________          '.     ",
+                              "|          /  \\       / \\     / \\       / \\    /   \\        / \\ '.____.,'--__.|    |     /        \\          |'.   ",
+                              "            ||         |       |         |       |           |                |          |        |          |  \\  ",
+                              "                                                                                           _______/           |   '",
+                              "__________________________________________________________________________________________-                        ",
+                              "-------------------------------------------------------------------------------------------------------------------"];
+        
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.bridge = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.enemyArray = [enemyService.Penguin, enemyService.Yeti];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.playerSpawn = [0, 14];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.enemySpawn = [200, 13];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.unitSpawnChance = [50];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.specialSpawn = [140, 14];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.specialSpawnChance = [100];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.spawnAtStart = [[131, 14], [135, 14], [140, 14], [144, 14], [153, 14], [200, 13]];</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.slug = 'bridge';</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.enemyMax = 5;</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.unlock = 'snow'</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.name = 'The Bridge';</span>
+<span class="cstat-no" title="statement not covered" >        this.bridge.defaultAscii =  </span>
+                              ["  / \\    / \\                          .           /                                                             _'                                                                         .........                            ",                                                                                                                                                                                                                  
+                              "  / \\     |         .                / \\         /                                               ~~~           / \\_                                                                    ..''         ''..                        ",
+                              "   |               / \\       .       / \\        /                     ~~                                      /    \\  /                      |-                                                                                 ",
+                              "           .       / \\      / \\       |        /      ~~~                                                   .'     /\\/                      -|                                                                                  ",
+                              "          / \\       |       / \\               /                                                           .'      /  \\                       |                    -|                                              -|            ",
+                              "          / \\                |    ^          /                                    ~~~                    /        \\  /                                             |-                                              |-           ",
+                              "    .      |                     / \\       .'                                                           /         /\\                                               |                                               |            ",                                     
+                              "   / \\                 .         / \\      /                                                           .'         /  \\/                 ,......                                            -|                                    ",
+                              "   / \\                / \\         |      /                                                           /              /              .'''       ''...                                        |-                                   ",
+                              "    |         ^       / \\               /                                                           /                                                                                      |                                    ",
+                              "             / \\       |  .           .'                      ~~~                                 .'                                          |-                                                                                ",
+                              "   /\\        / \\         / \\         /                                                           /                                           -|                                                                                ",
+                              "  /  \\        |         /   \\       /                                                           /                                             |                                                                               ",
+                              "  /  \\                  /   \\      /                                               ~~~         /                                                                                                                                ",
+                              "   ||                     |       /                                                          _/                                                            __________----''''''''''''''''''''''''''''''''''''''''''''''''''----____  ",                                                            
+                              "                                .'          ~~~~                                           .'                           '''''''''''''''''''''''''''''''''''''''''''''                                                          '''''",                                                                                                                                                                                                                                                                 
+                              "'''''''____                   __________________________________________________________________           '''''''''''''                                                                                                                              ",                                                                                
+                              "       ''''''''''''''''''''''/   /   /   /   /   /   /   /   /   /   /   /   /   /   /   /   / /'''''''''''                                         |-                                                                          ",
+                              "  .                         /-----------------------------------------------------------------/                                -|                  -|                           -|                                              ",
+                              " / \\        .             .'         //\\\\                // \\\\                 //\\\\          /                                  |-                  |                            |-                              |-             ",
+                              " / \\       / \\          .'                                                                 .'                                   |                                                |                              -|              ",
+                              "  |        / \\         /                       ~~                                         /            |-                                                                                                        |              ",
+                              "            |         /                                          ~~~~                   .'             |                                                                                                                        "];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.snow = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.enemyArray = [enemyService.Snowman, enemyService.SnowmanBoss];</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.playerSpawn = [0, 10];</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.spawnAtStart = [[14, 11], [47, 9], [124, 14]];</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.name = 'Snow Wastes';</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.slug = 'snow';</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.unlock = 'wizard';</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.specialEnd = 190;</span>
+<span class="cstat-no" title="statement not covered" >        this.snow.defaultAscii = ["                                                                                                                                                           \\                                       ",               </span>
+                                  "                                                                                                                                                            \\  /____                               ",               
+                                  "                                                                                                                          _     _____                        \\/     \\____    ______                ",                            
+                                  "                                                                                                                         ***   |     |                                   \\  /      \\_____          ",                           
+                                  "                                                                                                                          |   _|_____|_                                   \\/             \\     ____",
+                                  "                                                                                                                          |    ( . . )                                                    \\  /     ",         
+                                  "                                                                                                                          &gt;    _\\_-_/_                                                     \\/      ",                
+                                  "                                                 o                                                                        |\\  /   +   \\                                                               ",               
+                                  "                                               -( )-                                                                      | \\_|   +   |--.                                                               ",             
+                                  "                o                              (   )                                                                         _\\_______/_  \\                                                                ",             
+                                  "              -( )-                    ____-----------------------------___                                                 /           \\  ^                                                              ",             
+                                  "              (   )      __________--------                            -------____                                         /             \\                                                       /\\ ",                  
+                                  "-----------------------------------                                           --------______                               |             |                               /\\         /\\       ___/  \\", 
+                                  "                                                                                      -----------___                       \\             /                   /\\     ____/  \\_______/  \\_____/       ", 
+                                  "                                                                                                 ------______               \\           /      ____---------/  \\___/                                ",
+                                  "                                                                                                       --------------------------------------------                                                ",
+                                  "                                                                                                                                                                                                   ",
+                                  "                                                                                                                                                                                                   ",
+                                  "                                                                                                                                                                                                   ",
+                                  "                                                                                                                                                                                                   "];
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      this.snowNorth = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.enemyArray = [enemyService.GorillaSnow, enemyService.Mammoth];</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.unitSpawnChance = [60, 80];</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.enemySpawn = [200, 14];</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.enemyMax = 5;</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.playerSpawn = [0, 15];</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.name = 'Northern Wastes';</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.slug = 'snowNorth';</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.specialEnd = 265;</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.unlock = 'cabin';</span>
+<span class="cstat-no" title="statement not covered" >      this.snowNorth.defaultAscii = ["                                                                                                                                                                                                                                                                                                             ",                                                                                                                                                                                  </span>
+                                     "                                                                                              _|                                                                                                                                                                                                             ",
+                                     "                                                                                               |_                                                                                                                           _|                                                                               ",
+                                     "    _|                                               .'''''''''''''.                           |                                                      .'''''''''''''''''.                                                    |_                                                                              ",
+                                     "     |_                                                                                                                                                                                                                      |                                                                 .             ",
+                                     "     |                                                                                                                                                              _|                                                                                                                        / \\            ",
+                                     "                                                                                            .''''''''''.                                                             |_                                                                                                             .        / ~ \\           ",
+                                     "                   .'''''''''''''.                    _|_                                                                                                            |                                                                                                        .    / \\       /___\\           ",
+                                     "                                                       |_                                                                                                                                                                                                                    / \\   / \\     ~   |         *   ",
+                                     "                                                       |                                                                                                                                                                                                                     / \\    |        ~          / \\  ",
+                                     "                                                                                                                                                                                                                                                                          .   |            __          /   \\ ",
+                                     "                                                                                                                                                                                                                                                                         / \\        _______||_      .  /   \\ ",
+                                     "                                                                                                                                                                                                                                                                         / \\       /   \\      \\    / \\   |   ",
+                                     "                                                                                                                                                                                                                                                                          |       /_____\\______\\  /   \\      ",
+                                     "                                                                                                                 ____________________________________________________________                                                                                                     |  _   |     |  /___\\      ",
+                                     "__________________________                                                        _______________________________''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''_____________________________________________________________________________________________________| | |  |     |____|________",
+                                     "''''''''''''''''''''''''''________________________________________________________'''''''''''''''''''''''''''''''                                                            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",                                 
+                                     "                          ''''''''''''''''''''''''''''''''''''''''''''''''''''''''                                                                                                                                                                                                                           "];
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                
+<span class="cstat-no" title="statement not covered" >      this.sea = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.enemyArray = [enemyService.Oyster, enemyService.Crab];</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.playerSpawn = [0, 14];</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.spawnAtStart = [[54, 13], [76, 13], [110, 14], [131, 14], [153, 13]];</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.name = 'Going for a Swim';</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.slug = 'sea';</span>
+<span class="cstat-no" title="statement not covered" >      this.sea.defaultAscii =["                                                                                                                                                                                                                                 ",</span>
+                              "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",                                                                                                                                                                                                                                
+                              "                                                                                                                                                                                                                                 ",  
+                              "                                                                                                                                                                                                                                 ",  
+                              "                                            `                                                                                            `                        `                                                              ",  
+                              "                                                                                                     `                                                                                                                           ", 
+                              "                                                                        `                                                                                                                                                        ", 
+                              "                                                                                                                                     `                                                                                           ",
+                              "                                                                                                                                            `                                                                                    ", 
+                              "           `                                                                                                                                                         `                                                           ", 
+                              "                                                                                                                                                                                                                                 ", 
+                              "                                                                                                                                                        V          V                                                               ", 
+                              "                                                                                                                                                        \\_.''''._/                                                               ",
+                              "                                                                                                                                                         ;',--,';                                                                ",
+                              "                                             ,'''''''''''''''''''''''''''''''''''''''''''''.                                                  .''''''''''''''''''''''''''''''''''''''''''.                                       ",                                                                                         
+                              "'''''''''''''''''''''''''''''''''''''''''''''                                               ''''''''''''''''''''''''''''''''''''''''''''''''''                                            '''''''''''''''''''''''''''''''''''''''",                                                                                                                                   
+                              "                                                                                                                                                                                                                                 "]
+                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                      
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.ruins = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.slug = 'desert';</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.unlock = 'dungeon';</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.enemyArray = [enemyService.Gorilla, enemyService.DustDevil];</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.specialSpawn = [120, 12];</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.specialSpawnChance = 50;</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.unitSpawnChance = [40, 80];</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.enemyMax = 4;</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.playerSpawn = [0, 13];</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.enemySpawn = [250, 10];</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.name = 'The Desert';</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.specialEnd = 250;</span>
+<span class="cstat-no" title="statement not covered" >        this.ruins.defaultAscii = ["                                                                                                                                                                                     /                                                                                   ",                                                                                                                       </span>
+                                   "                                                                                                                                                                                    /                                        ________________                            ",                                                                                                                       
+                                   "                                                                                                                                                                                   /                                                                                     ",                                                                                                                       
+                                   "                                                                                                                                                                                  /         __________________________                                                   ",                                                                                                                                                 
+                                   "                                                                                                                                                                                 /                                                                                       ",                                                                                                                          
+                                   "                                                                                                                                                                                /                                                                                        ",                                                                                                                             
+                                   "                                                                                                                                                                               /                        ____________________________                [=]=v=[=]            ",                                                                                                                                                                                                   
+                                   "                                                                                                                                                                              /                                                                     __.\\ /.__            ",                                                                                                                                                                                                             
+                                   "                                                                                                          ____________________________.''''''''''''._________________________/                                                                      |        |           ",                                                                                                                                                                                                                        
+                                   "                                ________.'''''''''._______________                      ________________.'                                                                  /                                                                       |        |           ",                                                                                                                                                                                             
+                                   "______.'''''''''._____________.'                                  '.__________________.'            +                           +                        +                 /                                                                        |        |           ",                                                                                                                                                                                                 
+                                   "                                                       +                                            +                                                    +                                                                                                   |           ",                                                                                                                                                                                        
+                                   "                         +                             +                                                                                                      .'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''           ",                                                                                                                                                                                                     
+                                   "                         +                                                                                         .''''''''''''''''''''''''''''''''''''''''''                                                                                                           ",                                                                                                                                                                                                       
+                                   "                                               .'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''                                                                                                                                                      ",                                                                                                                                                                                                     
+                                   "'''''''''''''''''''''''''''''''''''''''''''''''                                                                                                                                                                                                                          "];                                                                                                                                                                                                  
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.dungeon = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.enemyArray = [enemyService.Ghost, enemyService.Minotaur];</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.playerSpawn = [0, 0];</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.spawnAtStart = [[100, 11], [180, 11], [198, 11]];</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.slug = 'dungeon';</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.unlock = 'ruinsCleared';</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.name = 'The Beasts Lair';</span>
+<span class="cstat-no" title="statement not covered" >        this.dungeon.defaultAscii = ["                                             *                                                                                                                                                                                    ",</span>
+                                     "____                                         *                        *   *                                                                                                                                                       ",
+                                     "''''____                                   __*__                      *   *                                                                                                                                                       ",
+                                     "    ''''____                              |||||||                     *   *                                                                                                                     .'\\                               ",
+                                     "        ''''____                          |||||||                      \\o/                                                                                                                    .'   \\  |\\...|\\                     ",
+                                     "            ''''____                      |||||||                       |                                    _______                    *-------------------*                                 \\    .' |o  o  |                    ",
+                                     "                ''''____                  *******                      / \\                                  .|'|'|'|.                       |   |   |  |                                       \\.'\\\\  ;|../;;;_                   ",
+                                     "                    ''''____                                                                                || | | ||                      c|  &lt;|   V =|=                                          o\\/ ;;  ;; /\\                  ",
+                                     "                        ''''____                                               ....0..0....                 || | | ||                                                                               \\'| ;  ;  | \\                 ",
+                                     "                            ''''____                                           |\\   &gt;--\\-o \\                |v v v v|                                                                                 '._____.'  O                ",
+                                     "                                ''''____                                         |--0---0---|                                                                                                          | |  | |                   ",
+                                     "                                    ''''____                                                                                                                                                          ,' /  \\ ',                  ",
+                                     "                                        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  ",
+                                     "                                                                                                                                                                                                                                  "];
+ 
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.shroom = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.enemyArray = [enemyService.Vampire, enemyService.King];</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.playerSpawn = [0, 14];</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.spawnAtStart = [[140, 8], [145, 8], [150, 8], [160, 8], [ 165, 8]];</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.enemyMax = 10;</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.name = '? ? ?'; </span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.slug = 'shroom';</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.unlock = 'shroomFinish';</span>
+<span class="cstat-no" title="statement not covered" >        this.shroom.defaultAscii =["                                                                                                                                            /\\                   _________                                                                     ",</span>
+                                   "                                                                                                                                           /  \\                 |'._______'.                                                                   ",
+                                   "            ____                                                                                                           /\\              |  |_/\\______________| |   __   |                                                                   ",
+                                   "           /  o \\                                                                                                          ||______________|  '/  \\               |  |  |  |                                                                   ",
+                                   "           |o  o|               _________                   _______                               ________                 | '.  /\\            |  |_______________|  |__|  |                                                                   ",
+                                   "           \"\"||\"\"              /_________\\                 /_______\\                ________     /________\\ ,_____________ |   '.||____________|  |   | |     | |          |                                                                   ",
+                                   "_____________||____________        //                          \\\\     ______       /________\\   _____\\\\__.''               |     |                    'V'     'V'          |                                                                   ",
+                                   "  _______    ||            '--.____\\\\__________________________//____/o  o  \\__________//_____.'     //                    |     |                                          \\                                                                  ",
+                                   " /_______\\            _________     \\\\     ________           //     | o   o|          \\\\            \\\\                   /       ________________________________________                                                                   ",          
+                                   "    //               /_________\\          /________\\                 '''||'''           \\\\                               /     /''      ____                              \\                                                                    ",
+                                   "    \\\\                    \\\\                  \\\\                        ||                          ____________________/     /        /o  o\\                              '''''''''''''''''''''''\\                                            ",
+                                   "      _____________       //                   \\\\            ____       ||                         /                         /         |  o |                                                      \\__________________________                 ",   
+                                   "     /             \\     //                    //           /o  o\\                                /     ____________________/          \"\"||\"\"      _________                                                                  \\________________",     
+                                   "____/    ______     \\______________________                 | o  |         ______________________/     /    ______                       ||       /_________\\                                                                                  ",
+                                   "        /      \\                           \\                 \"||\"         /                           /    /o   o \\             _____    ||           //                                                                                       ",               
+                                   "_______/        \\_______________________    \\                 ||         /     ______________________/     |  o  o|            /_____\\                \\\\                                                                                       ",
+                                   "     ____________                       \\    \\__________________________/     /      ______________        \"\"\"||\"\"\"              //                    \\\\                                                                                      ",
+                                   "    /            \\                       \\                                   /      /              \\          ||                //                                                                                                             ",
+                                   "   /______________\\                       \\_________________________________/      /________________\\         ||                \\\\                                                                                                             ",
+                                   "         \\   \\                                                                           /  /                                                                                                                                                  "];
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.arena = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.enemyArray = [enemyService.Mantis, enemyService.StickBug];</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.unitSpawnChance = [48, 95];</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.playerSpawn = [2, 18];</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.enemySpawn = [87, 18];</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.specialEnd = 87;</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.enemyMax = 20;</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.name = 'Fight Night';</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.slug = 'arena';</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.unlock = 'bridge';</span>
+<span class="cstat-no" title="statement not covered" >        this.arena.defaultAscii = ["^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^",</span>
+                                   "|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|",
+                                   "|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|",
+                                   "                  ..........................................................                   ",
+                                   "          ....''''     o o    \\o/  o   o   o   o   o  o    o   o   o  \\o/   ''''....           ",
+                                   "       .''             ' '     '   '   '   '   '   '  '    '   '   '   '            ''.        ",
+                                   "    .''   o \\o/   o   \\o/ \\o/  \\o/  o \\o/   o   \\o/  \\o/  o    oo     o   o  \\o/  \\o/  ''.     ",
+                                   "  .'      '  '    '    '   '    '   '  '    '    '    '   '    ''     '   '   '    '      '.   ",
+                                   " /   \\o/  o   o   o    o   o   o \\o/o/ \\o/ o \\o \\o/     o   \\o/ o   \\o/ o  o    \\o/  o   o  \\  ",
+                                   "/____________________________________________________________________________________________\\ ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "                                                                                              ",
+                                   "_                                                                                         __  ",
+                                   " |                                                                                       |  | ",
+                                   " |                                                                                       |  | ",
+                                   "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' "]; 
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.robot = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.enemyArray = [enemyService.Robot];</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.playerSpawn = [0, 15];</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.spawnAtStart = [[108, 15]];</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.name = 'The Wizards Task';</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.slug = 'robot';</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.unlock = 'lich';</span>
+<span class="cstat-no" title="statement not covered" >        this.robot.defaultAscii = ["           /                                                                                       \\    /                                                     ",</span>
+                                   "          /                                                                                         \\  /                                                      ",
+                                   "        .'                                                                                           '/                                                       ",
+                                   "       /                                                                                                                                                      ",       
+                                   "      /                                                                                                                                                       ",          
+                                   "    .'                                                                                                                                                        ",      
+                                   "   /                                                                                                                                                          ",      
+                                   "  /                                                                                                                                                           ",      
+                                   ".'                                                                                                             .                                              ",
+                                   "                                                                                                            ___|____                                          ",
+                                   "                                                                                                           |        |                                         ",
+                                   "                                                                                                        o  | 0  0   |                                         ",
+                                   "                                                                                                         \\.|  __    |.                                        ",
+                                   "                                                                                                            \\______/  \\                                       ",
+                                   "                                                                                                             |    |    o                                      ",
+                                   "                                                                                                            c|   c|                                           ",
+                                   "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"];
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.theEnd = new this.Level();</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.enemyArray = [enemyService.Undead, enemyService.Lich];</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.playerSpawn = [0, 24];</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.spawnAtStart = [[111, 24]];</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.spawnMore = false;</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.enemyMax = 20;</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.name = 'The End';</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.slug = 'theEnd';</span>
+<span class="cstat-no" title="statement not covered" >        this.theEnd.defaultAscii = ["                                                                                                  /     \\              _                                 ",                                                </span>
+                                    "                                                                                                \\\\  /\\   /           _/_\\\\                            ",                                                     
+                                    "                                                                                               \\\\  | ||  //         //    \\\\                          ",                                                        
+                                    "                                                                                               \\ \\ | ||   //       | |* *  |\\                         ",                                                  
+                                    "                                                                                              \\ \\  | ||  / /       |  vvvv | |                //       ",                                                    
+                                    "                                                                                               \\ \\ | ||  / /        \\ wwww/ _/              ////      ",                                                      
+                                    "                                                                                               \\ \\ | ||  / /         \\__|/_/___           \\/  /       ",                                                          
+                                    "                                                                                               \\ \\ | || / /         / \\_//     |\\        /| -'        ",                                                                 
+                                    "                                                                                                \\ \\| || //         /|  '/      | \\      / |           ",                                                          
+                                    "                                                                                              .-._\\| ||/.-.       / |          |  \\    /  |           ",                                                        
+                                    "                                                                                              '..--___--..'______/  |          |   \\  /   |           ",                                                       
+                                    "                                                                                                  /   \\|            |          ||   \\/    |           ",                                                       
+                                    "                                                                                                  \\___/            ||          |||        |           ",                                                    
+                                    "                                                                                                   / \\|        |  |||__________| | |      |           ",
+                                    "                                                                                                   \\ /|    ||| |/|| |          |  ||   ||/            ",                                                    
+                                    "                                                                                                    '  \\ |\\| |\\|    |          |   \\/|\\|          ",                                                         
+                                    "                                                                                                        \\|         ||          ||                     ",                                                                 
+                                    "                                                                                                                   |            |                     ",                                                             
+                                    "                                                                                                                   |            |                     ",                                                  
+                                    "                                                                                                                   |            |                     ",                                               
+                                    "                                                                                                                   |            |                     ",                                               
+                                    "                                                                                                                  |              |                    ",                                               
+                                    "                                                                                                                  | |      |   | |  |                 ",                                               
+                                    "                                                                                                               | || | | |  | | | | ||                 ",                                               
+                                    "                                                                                                               |||||||||||||||||||||||                ",                                                         
+                                    "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"];
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary = [];</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['treeOne'] = this.treeOne;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['treeTwo'] = this.treeTwo;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['bridge']  = this.bridge;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['sea'] = this.sea;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['snow'] = this.snow;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['snowNorth'] = this.snowNorth;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['ruins'] = this.ruins;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['dungeon'] = this.dungeon;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['shroom'] = this.shroom;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['arena'] = this.arena;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['robot'] = this.robot;</span>
+<span class="cstat-no" title="statement not covered" >        this.levelDictionary['theEnd'] = this.theEnd;</span>
+&nbsp;
+&nbsp;
+        
+<span class="cstat-no" title="statement not covered" >        this.switchCurrentLevel = <span class="fstat-no" title="function not covered" >function(activeLevel) {</span></span>
+<span class="cstat-no" title="statement not covered" >            this.currentLevel = this.levelDictionary[activeLevel];</span>
+        }
+&nbsp;
+    }
+})();</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 26 2016 16:27:17 GMT-0600 (Central Standard Time)</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

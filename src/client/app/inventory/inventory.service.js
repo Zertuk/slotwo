@@ -103,15 +103,13 @@
 		this.giantCarrot.slug = 'giantCarrot';
 		this.giantCarrot.lootOnce = true;
 
-		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 1]];
+		vm.itemDictionary['fists'] = [['item', this.fists], ['amount', 0]];
 		vm.itemDictionary['sword'] = [['item', this.sword], ['amount', 0]];
 		vm.itemDictionary['decentSword'] = [['item', this.decentSword], ['amount', 0]];
 		vm.itemDictionary['bearClaws'] = [['item', this.bearClaws], ['amount', 0]];
 		vm.itemDictionary['minotaurHammer'] = [['item', this.minotaurHammer], ['amount', 0]];
 		vm.itemDictionary['claws'] = [['item', this.claws], ['amount', 0]];
 		vm.itemDictionary['giantCarrot'] = [['item', this.giantCarrot], ['amount', 1]];
-
-
 
 		//armor
 		this.clothArmor = new this.Item();
@@ -189,27 +187,6 @@
 		vm.itemDictionary['healthArmor'] = [['item', this.healthArmor], ['amount', 0]];
 		vm.itemDictionary['clothArmor'] = [['item', this.clothArmor], ['amount', 1]];
 		vm.itemDictionary['polarArmor'] = [['item', this.polarArmor], ['amount', 0]];
-
-
-		//resources
-		this.food = new this.Item();
-		this.food.name = 'Food';
-		this.food.desc = 'Food for workers';
-
-		this.ore = new this.Item();
-		this.ore.name = 'Ore';
-		this.ore.desc = 'Metal stuff';
-
-		this.wood  = new this.Item();
-		this.wood.desc = 'A slab of wood';
-		this.wood.cat = 'ingredient';
-		this.wood.name = 'Wood';
-		this.wood.slug = 'wood';
-
-		vm.itemDictionary['food'] = [['item', this.food], ['amount', 0]];
-		vm.itemDictionary['ore'] = [['item', this.ore], ['amount', 0]];
-		vm.itemDictionary['wood']  = [['item', this.wood], ['amount', 0]];
-
 
 		//consumables
 		this.potion = new this.Item();
@@ -457,16 +434,6 @@
 
 
 		//misc
-		this.forge = new this.Item();
-		this.forge.name = 'Forge';
-		this.forge.slug = 'forge';
-		this.forge.recipe = ['wood-50', 'ore-250'];
-
-		this.campfire = new this.Item();
-		this.campfire.name = 'Campfire';
-		this.campfire.slug = 'campfire';
-		this.campfire.recipe = ['wood-10'];
-
 		this.compendium = new this.Item();
 		this.compendium.name = 'Beast Compendium';
 		this.compendium.desc = 'Basically a scrapbook';
@@ -476,10 +443,7 @@
 		this.compendium.price = 500;
 		this.compendium.removeAfterBuy = true;
 
-		vm.itemDictionary['campfire'] = [['item', this.campfire], ['amount', 0]];
-		vm.itemDictionary['forge'] = [['item', this.forge], ['amount', 0]];
 		vm.itemDictionary['compendium'] = [['item', this.compendium], ['amount', 0]];
-
 
 		////////////////
 
@@ -537,7 +501,11 @@
 					vm.itemDictionary['polarArmor'],
 					vm.itemDictionary['robotArmor']];
 
-
+		vm.keys = ['fists', 'sword', 'decentSword', 'bearClaws', 'minotaurHammer', 'claws', 'giantCarrot',
+				   'robotArmor', 'potionArmor', 'ghostArmor', 'woodArmor', 'bugExoskeleton', 'boneArmor', 'healthArmor', 'polarArmor', 'clothArmor',
+				   'potion', 'compendium', 'wizardsHair', 'winterCoat', 'deerAntlers', 'sleepingBag', 'snowmanHat', 'pearl', 'gorillaFoot', 'pocketSand',
+				   'mantisClaw', 'bigHeavyWood', 'trueOffense', 'trueDefense', 'trueHealth', 'pie', 'piggyBank', 'snowmenBlessing', 'abomItem',
+				   'mammothFur', 'frozenBanana', 'kingCrown', 'vampireTeeth', 'sweetJacket', 'undeadItem', 'lichItem'];
 
 		vm.findVal = function() {
 			var keys = ['damage', 'health', 'evade', 'money', 'defense', 'defenseMult', 'damageMult', 'healthMult'];
@@ -554,6 +522,21 @@
 			addVal(keys, vm.stats);
 			vm.statReset = true;
 		}
+
+
+		function loadItems() {
+            if (localStorage['itemSave']) {
+                var items = JSON.parse(atob(localStorage['itemSave']));
+                for (var i = 0; i < items.length; i++) {
+                	if (items[i][1] > 0) {
+                		console.log('tset')
+                		vm.itemDictionary[items[i][0]][1][1] = 1;
+                	}
+                }
+                console.log(items);
+            }
+		}
+		loadItems();
 
 		function addVal(keys, stats) {
 			for (var i = 0; i < vm.otherItems.length; i++) {

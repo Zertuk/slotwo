@@ -228,7 +228,7 @@
 		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely! +25 Health';
 		this.winterCoat.health = 25;
 		this.winterCoat.buyable = true;
-		this.winterCoat.price = 1000;
+		this.winterCoat.price = 5000;
 		this.winterCoat.removeAfterBuy = true;
 		this.winterCoat.special = function() {
 			vm.progress.hasSweater = true;

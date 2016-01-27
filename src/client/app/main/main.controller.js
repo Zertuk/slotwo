@@ -14,6 +14,7 @@
         vm.player = playerService.player;
         vm.progress = progressService.progress;
         vm.currentLocation = mainService.currentLocation;
+        initShop();
         vm.locationDictionary = mainService.locationDictionary;
         vm.levelDictionary = levelService.levelDictionary;
         vm.currentLocation.specFunc();
@@ -24,7 +25,6 @@
                 vm.currentLocation = mainService.switchLocation(location);
                 removeAscii();
                 if (location === 'treeShop') {
-                    console.log('shop init')
                     initShop();
                 }
             }

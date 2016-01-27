@@ -1563,7 +1563,7 @@
                 grab: {
                     text: '*You take the vial, only rubble is left.*',
                     special: function() {
-                        vm.resources.vialTaken = true;
+                        vm.progress.vialTaken = true;
                     }
                 },
                 rubble: {

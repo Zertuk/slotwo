@@ -36,6 +36,7 @@
                 <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
                 <button ng-click = "vm.switchLocation('mainMap')" ng-if = "vm.progress.hasMap">Map</button>
                 <p class = "inline nomargin">{{vm.money}} Gold ({{vm.calculateTotlMoneyRate()}}/s)</p>
+                <p class = "inline marginleft50 saving fade">Saving Complete</p>
 <!--                 <p>{{vm.player.gold}}</p>
  -->                <h1>{{vm.currentLocation.name}}</h1>
             </div><!--row-->

@@ -141,7 +141,7 @@
             }
         }
         function saveCheck() {
-            if (vm.count % 15 === 0) {
+            if (vm.count % 30 === 0) {
                 savingService.saveGame();
             }
         }

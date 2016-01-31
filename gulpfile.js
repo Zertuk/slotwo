@@ -209,7 +209,7 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function() {
  * and inject them into the new index.html
  * @return {Stream}
  */
-gulp.task('optimize', ['inject', 'test'], function() {
+gulp.task('optimize', ['inject'], function() {
     log('Optimizing the js, css, and html');
 
     var assets = $.useref.assets({searchPath: './'});
@@ -300,19 +300,6 @@ gulp.task('clean-code', function(done) {
     clean(files, done);
 });
 
-/**
- * Run specs once and exit
- * To start servers and run midway specs as well:
- *    gulp test --startServers
- * @return {Stream}
- */
-
-/**
- * Run specs and wait.
- * Watch for file changes and re-run tests on each change
- * To start servers and run midway specs as well:
- *    gulp autotest --startServers
- */
 
 /**
  * serve the dev environment

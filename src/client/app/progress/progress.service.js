@@ -10,6 +10,7 @@
     /* @ngInject */
     function progressService() {
         var newProgress = {
+            elderLearnPoint: false,
             hasMap: false,
             hasSleepingBag: false,
             hasSweater: false,

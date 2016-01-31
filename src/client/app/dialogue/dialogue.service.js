@@ -709,10 +709,13 @@
                 train: {
                     text: 'If you need to become stronger, you need to train.  An old monk friend of mine is living in the mountains.  He can help you learn new abilities.  If you just want to get tougher, the arena will get you in top shape.',
                     special: function() {
-                        vm.progress.levels.arena = true;
-                        vm.progress.levels.sea = true;
-                        vm.progress.levels.monk = true;
-                        vm.progress.canLearn = vm.progress.canLearn + 1;
+                        if (!vm.progress.elderLearnPoint) {
+                            vm.progress.elderLearnPoint = true;
+                            vm.progress.levels.arena = true;
+                            vm.progress.levels.sea = true;
+                            vm.progress.levels.monk = true;
+                            vm.progress.canLearn = vm.progress.canLearn + 1;
+                        }
                     },
                     next: 'choice',
                     master: 'enchant',
@@ -1320,7 +1323,7 @@
                     master: 'inn'
                 },
                 whatToDo: {
-                    text: 'Well if you need work, the King usually has something to offer.  Otherwise there is a shop and enchant on the main level.  Down here there isnt much else.  If you are looking to leave Tresabor then you can checkout the Arena to the east.  I heard you have to be pretty tough to fight there though.',
+                    text: 'Well if you need work, The King usually has something to offer.  Otherwise there is a shop and The Elder on the main level.  Down here there isnt much else.  If you are looking to leave Tresabor then you can checkout the Arena to the east.  I heard you have to be pretty tough to fight there though.',
                     next: 'chat',
                     special: function() {
                         vm.progress.levels.arena = true;

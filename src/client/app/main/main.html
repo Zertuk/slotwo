@@ -1,5 +1,5 @@
 <div class = "container borderbottom">
-	<div id = "locationwrap">
+	<div id = "locationwrap" ng-class="{true: 'smallpre'}[vm.currentLocation.name === 'Map']">
 	</div>
 	<ng-include src="'app/dialogue/dialogue.html'" ng-if = "vm.currentLocation.specialText"></ng-include>
 	<ng-include src="'app/shop/shop.html'" ng-if = "vm.currentLocation.name === 'The Shop'"></ng-include>

@@ -306,9 +306,6 @@ gulp.task('clean-code', function(done) {
  *    gulp test --startServers
  * @return {Stream}
  */
-gulp.task('test', ['vet', 'templatecache'], function(done) {
-    startTests(true /*singleRun*/ , done);
-});
 
 /**
  * Run specs and wait.
@@ -316,9 +313,6 @@ gulp.task('test', ['vet', 'templatecache'], function(done) {
  * To start servers and run midway specs as well:
  *    gulp autotest --startServers
  */
-gulp.task('autotest', function(done) {
-    startTests(false /*singleRun*/ , done);
-});
 
 /**
  * serve the dev environment

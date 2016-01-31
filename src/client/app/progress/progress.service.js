@@ -5,9 +5,6 @@
         .module('app.progress')
         .service('progressService', progressService);
 
-    // Service.$inject = ['dependencies'];
-
-    /* @ngInject */
     function progressService() {
         var newProgress = {
             elderLearnPoint: false,

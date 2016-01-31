@@ -170,7 +170,7 @@
       this.snowNorth = new this.Level();
       this.snowNorth.enemyArray = [enemyService.GorillaSnow, enemyService.Mammoth];
       this.snowNorth.unitSpawnChance = [60, 80];
-      this.snowNorth.enemySpawn = [200, 14];
+      this.snowNorth.enemySpawn = [240, 15];
       this.snowNorth.enemyMax = 5;
       this.snowNorth.playerSpawn = [0, 15];
       this.snowNorth.name = 'Northern Wastes';

@@ -154,7 +154,7 @@
 		this.ghostArmor.name = 'Spooky Aura';
 		this.ghostArmor.desc = 'Feels like a ghost hug <3';
 		this.ghostArmor.armor = 0;
-		this.ghostArmor.damageMult = 50;
+		this.ghostArmor.damageMult = 25;
 		this.ghostArmor.slug = 'ghostArmor';
 
 		this.robotArmor = new this.Item();
@@ -169,7 +169,7 @@
 		this.bugExoskeleton.slug = 'bugExoskeleton';
 		this.bugExoskeleton.desc = 'Seems useful';
 		this.bugExoskeleton.armor = 0.5;
-		this.bugExoskeleton.damageMult = -25;
+		this.bugExoskeleton.damageMult = -20;
 
 		this.potionArmor = new this.Item();
 		this.potionArmor.name = 'Potion Armor';

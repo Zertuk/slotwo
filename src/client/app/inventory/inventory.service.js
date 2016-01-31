@@ -237,7 +237,7 @@
 		this.pearl = new this.Item();
 		this.pearl.name = 'Shiny Pearl';
 		this.pearl.slug = 'pearl';
-		this.pearl.desc = '';
+		this.pearl.desc = 'It is shiny';
 		this.pearl.message = 'Holder gains +25 gold a second';
 		this.pearl.money = 25;
 

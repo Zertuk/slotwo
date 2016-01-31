@@ -485,7 +485,8 @@
             this.slug = 'Crab';
             this.deathMessage = 'RIP the crab is toast.';
             this.desc = 'Loves money';
-            this.items = [vm.itemDictionary['moneyGenerator']];
+            this.items = [vm.itemDictionary['claws']];
+            this.itemChance = 10;
             this.symbol = ';';
             this.moneyMult = 1500;
             this.maxHealth = 500;
@@ -501,6 +502,8 @@
             this.name ='Oyster?';
             this.slug = 'Oyster';
             this.moneyMult = 100;
+            this.itemChance = 10;
+            this.items = [vm.itemDictionary['pearl']];
             this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
             this.deathMessage = 'An Oyster? has been shucked!';

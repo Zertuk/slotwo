@@ -11,7 +11,7 @@
     function progressService() {
         var newProgress = {
             elderLearnPoint: false,
-            hasMap: true,
+            hasMap: false,
             hasSleepingBag: false,
             hasSweater: false,
             introComplete: false,
@@ -46,7 +46,7 @@
             passCode: false,
             levels: {
                 cabin: false,
-                treeCity: true,
+                treeCity: false,
                 treeOne: true,
                 house: true,
                 treeTwo: false,

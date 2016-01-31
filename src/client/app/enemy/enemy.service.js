@@ -664,8 +664,8 @@
             this.attackspeed = 2;
             this.colBox = [35, 25];
             this.move = false;
-            this.health = 100;
-            this.maxHealth = 100;
+            this.health = 5000;
+            this.maxHealth = 5000;
             this.playerWarp = false;
             this.spawnBuddies = false;
             this.phases = true;

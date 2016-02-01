@@ -534,7 +534,7 @@
             this.name = 'Undead Husk';
             this.slug = 'undead';
             this.desc = 'The Lichs only friend';
-            this.deathMessage = 'An Undead Husk haas been destroyed!';
+            this.deathMessage = 'An Undead Husk has been destroyed!';
             this.items = [vm.itemDictionary['undeadItem']];
             this.itemChance = 20;
             this.symbol = 'U';
@@ -662,7 +662,7 @@
             this.deathMessage = '';
             this.symbol = '|';
             this.moneyMult = 25000;
-            this.damage = 90;
+            this.damage = 80;
             this.attackspeed = 2;
             this.colBox = [35, 25];
             this.move = false;

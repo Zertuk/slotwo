@@ -830,7 +830,7 @@
                     text: 'Last question: A destitute youth wanders your way, what lesson do you teach him to obtain a better life?',
                     buttons: {
                         offense: {  
-                            text: 'The power of strength.  You can obtain anylife with enough power.',
+                            text: 'The power of strength.  You can obtain any life with enough power.',
                             next: 'result2',
                             master: 'enchant',
                             active: true,
@@ -908,7 +908,7 @@
                     }
                 },
                 elder: {
-                    text: 'Yes, "The Elder" is granted as a title and position to Tresaboras oldest citizen.  Currently, that is me of course!  I have served as The Elder for 29 years now, I was 137 at the time.',
+                    text: 'Yes, "The Elder" is granted as a title and position to Tresaboras oldest citizen.  Currently, that is me of course!  I have served as The Elder for 29 years now, I was 137 when I was choosen.',
                     buttons: {
                         old: {
                             text: 'Wow you are old!',

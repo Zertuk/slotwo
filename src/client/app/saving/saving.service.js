@@ -39,6 +39,7 @@
             vm.resources = resourcesService.resources
             vm.itemDictionary = inventoryService.itemDictionary;
             localStorage['potionAmt'] = btoa(JSON.stringify(vm.itemDictionary['potion'][1][1]));
+            console.log(vm.player);
             localStorage['playerSave'] = btoa(JSON.stringify(vm.player));
             localStorage['progressSave'] = btoa(JSON.stringify(vm.progress));
             localStorage['resourcesSave'] = btoa(JSON.stringify(vm.resources));

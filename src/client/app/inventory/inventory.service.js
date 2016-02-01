@@ -531,7 +531,7 @@
                 for (var i = 0; i < items.length; i++) {
                 	if (items[i][1] > 0) {
                 		if (items[i][0] === 'potion') {
-                			vm.itemDictionary[items[i][0]] = potionAmt;
+                			vm.itemDictionary['potion'][1][1] = potionAmt;
                 		}
                 		else {
                 			vm.itemDictionary[items[i][0]][1][1] = 1;

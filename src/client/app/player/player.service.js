@@ -6,10 +6,10 @@
         .service('playerService', playerService);
 
 
-    playerService.$inject = ['inventoryService', 'messageService', 'progressService'];
+    playerService.$inject = ['inventoryService', 'messageService', 'progressService', '$timeout'];
 
     /* @ngInject */
-    function playerService(inventoryService, messageService, progressService) {
+    function playerService(inventoryService, messageService, progressService, $timeout) {
 
         ////////////////
         var vm = this;
@@ -121,19 +121,21 @@
                 }
             },
             this.healthRegen = function() {
-                if (this.health < 0) {
-                    this.health = 0;
-                }
-                if (this.health < this.maxHealth) {
-                    var health = parseFloat(this.health);
-                    this.health = (health + this.regen).toFixed(2);
-                    //if healing ability active then extra hp regen
-                    if (this.abilities.heal.active) {
-                        health = parseFloat(this.health);
-                        this.health = (health + (this.maxHealth * 0.25)).toFixed(2);
+                if (this.initRegen) {
+                    if (this.health < 0) {
+                        this.health = 0;
                     }
+                    if (this.health < this.maxHealth) {
+                        var health = parseFloat(this.health);
+                        this.health = (health + this.regen).toFixed(2);
+                        //if healing ability active then extra hp regen
+                        if (this.abilities.heal.active) {
+                            health = parseFloat(this.health);
+                            this.health = (health + (this.maxHealth * 0.25)).toFixed(2);
+                        }
+                    }
+                    this.checkMaxHealth();
                 }
-                this.checkMaxHealth();
             },
             this.healthBarUpdate = function(enemy) {
                 this.checkMaxHealth();
@@ -327,7 +329,8 @@
             //attack
             this.weapon = vm.itemDictionary.fists[0][1],
             this.damage = this.calculateTotalDamage(),
-            this.attackSpeed = this.weapon.attackSpeed
+            this.attackSpeed = this.weapon.attackSpeed,
+            this.initRegen = false
         };
         var newPlayer = new this.Player();
         function setPlayerStats(storage) {
@@ -344,9 +347,15 @@
             }
             return player;
         }
+        function initRegen() {
+            newPlayer.initRegen = true;
+        }
         this.player = loadPlayer();
         this.player.calculateTotalDamage();
         this.player.calculateTotalHealth();
         this.player.calculateTotalArmor();
+        $timeout(function() {
+            initRegen();
+        }, 1000);
     }
 })();

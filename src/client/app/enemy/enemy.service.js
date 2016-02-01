@@ -446,7 +446,7 @@
             this.symbol ='V';
             this.items = [vm.itemDictionary['pocketSand']];
             this.moneyMult = 50;
-            this.itemChance = 5;
+            this.itemChance = 15;
             this.maxHealth = 40;
             this.health = 40;
             this.damage = 5;
@@ -504,7 +504,7 @@
             this.slug = 'Oyster';
             this.moneyMult = 100;
             this.items = [vm.itemDictionary['pearl']];
-            this.itemChance = 25;
+            this.itemChance = 50;
             this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
             this.deathMessage = 'An Oyster? has been shucked!';
@@ -520,7 +520,7 @@
             this.desc = 'A lost soul';
             this.deathMessage = 'The prisoners soul has been freed.';
             this.items = [vm.itemDictionary['ghostArmor']];
-            this.itemChance = 10;
+            this.itemChance = 20;
             this.symbol = '@';
             this.maxHealth = 15;
             this.health = 15;

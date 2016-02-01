@@ -537,10 +537,10 @@
             this.items = [vm.itemDictionary['undeadItem']];
             this.itemChance = 20;
             this.symbol = 'U';
-            this.damage = 125;
+            this.damage = 75;
             this.attackSpeed = 2;
-            this.health = 250;
-            this.maxHealth = 250;
+            this.health = 400;
+            this.maxHealth = 400;
             this.moneyMult = 5000;
         };
         vm.Undead.prototype = new vm.Enemy();
@@ -554,8 +554,8 @@
             this.itemChance = 100;
             this.symbol = 'c';
             this.moneyMult = 5000;
-            this.maxHealth = 4500;
-            this.health = 4500;
+            this.maxHealth = 6000;
+            this.health = 6000;
             this.damage = 40;
             this.attackSpeed = 3;
             this.colBox = [15, 15];
@@ -664,8 +664,8 @@
             this.attackspeed = 2;
             this.colBox = [35, 25];
             this.move = false;
-            this.health = 5000;
-            this.maxHealth = 5000;
+            this.health = 6000;
+            this.maxHealth = 6000;
             this.playerWarp = false;
             this.spawnBuddies = false;
             this.phases = true;

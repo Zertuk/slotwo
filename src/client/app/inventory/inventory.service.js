@@ -527,7 +527,7 @@
 		function loadItems() {
             if (localStorage['itemSave']) {
                 var items = JSON.parse(atob(localStorage['itemSave']));
-                var potionAmt = atob(localStorage['potionAmt'])
+                var potionAmt = JSON.parse(atob(localStorage['potionAmt']));
                 for (var i = 0; i < items.length; i++) {
                 	if (items[i][1] > 0) {
                 		if (items[i][0] === 'potion') {

@@ -558,8 +558,8 @@
             this.maxHealth = 10000;
             this.health = 10000;
             this.damage = 40;
-            this.attackSpeed = 3;
-            this.colBox = [15, 15];
+            this.attackSpeed = 2;
+            this.colBox = [12, 12];
             this.move = false;
             this.phases = true;
             this.phaseOne = true;
@@ -579,6 +579,7 @@
             this.phaseTwoActivate = function() {
                 messageService.addMessage('"TOUGH ENEMY DETECTED. INITIALIZING KILL RAY."');
                 this.attackSpeed = 1;
+                this.damage = 60;
             },
             this.phaseThreeActivate = function() {
                 var count = 2;

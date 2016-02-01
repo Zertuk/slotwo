@@ -22,7 +22,6 @@
             else  {
                 location = vm.mainMap;
             }
-            console.log(location);
             return location;
         }
 

@@ -66,7 +66,6 @@
             shopService.initShop();
             vm.itemDictionary = shopService.grabItemDictionary();
             vm.itemList = [shopService.shopList];
-            console.log(vm.itemList[0]);
         }
 
 

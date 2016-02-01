@@ -42,7 +42,6 @@
             else {
                 resources = vm.defaultResources;
             }
-            console.log(resources);
             return resources;
         }
         vm.resources = loadResources();

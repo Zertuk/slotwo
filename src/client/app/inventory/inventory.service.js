@@ -403,9 +403,9 @@
 
 		this.lichItem = new this.Item();
 		this.lichItem.name = 'The Lichs Phylactery';
-		this.lichItem.desc = '';
+		this.lichItem.desc = 'You beat the game!';
 		this.lichItem.slug = 'lichItem';
-		this.lichItem.message = '';
+		this.lichItem.message = 'You beat the game!';
 
 		vm.itemDictionary['lichItem'] = [['item', this.lichItem], ['amount', 0]];
 		vm.itemDictionary['undeadItem'] = [['item', this.undeadItem], ['amount', 0]];
@@ -425,7 +425,7 @@
 		vm.itemDictionary['mantisClaw'] = [['item', this.mantisClaw], ['amount', 0]];
 		vm.itemDictionary['pocketSand'] = [['item', this.pocketSand], ['amount', 0]];
 		vm.itemDictionary['gorillaFoot'] = [['item', this.gorillaFoot], ['amount', 0]];
-		vm.itemDictionary['pearl'] = [['item', this.pearl], ['amount, 0']];
+		vm.itemDictionary['pearl'] = [['item', this.pearl], ['amount', 0]];
 		vm.itemDictionary['sleepingBag'] = [['item', this.sleepingBag], ['amount', 0]];
 		vm.itemDictionary['snowmanHat'] = [['item', this.snowmanHat], ['amount', 0]];
 		vm.itemDictionary['deerAntlers'] = [['item', this.deerAntlers], ['amount', 0]];

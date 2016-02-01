@@ -30,7 +30,7 @@ module.exports = function() {
         fonts: bower.directory + 'font-awesome/fonts/**/*.*',
         html: client + '**/*.html',
         htmltemplates: clientApp + '**/*.html',
-        images: client + 'images/**/*.*',
+        images: client + 'styles/**/*.*',
         index: client + 'index.html',
         // app js, with no specs
         js: [

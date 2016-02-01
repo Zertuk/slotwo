@@ -414,9 +414,9 @@
             this.items = [vm.itemDictionary['frozenBanana']];
             this.moneyMult = 1000;
             this.itemChance = 20;
-            this.maxHealth = 400;
-            this.health = 400;
-            this.damage = 50;
+            this.maxHealth = 450;
+            this.health = 450;
+            this.damage = 60;
             this.attackSpeed = 4;
         };
         vm.GorillaSnow.prototype = new vm.Enemy();
@@ -430,8 +430,8 @@
             this.items = [vm.itemDictionary['mammothFur']];
             this.moneyMult = 1000;
             this.itemChance = 25;
-            this.maxHealth = 500;
-            this.health = 500;
+            this.maxHealth = 600;
+            this.health = 600;
             this.damage = 75;
             this.attackspeed = 5;
         };

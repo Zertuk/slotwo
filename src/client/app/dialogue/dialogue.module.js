@@ -7,6 +7,7 @@
         	'app.main',
         	'app.monk',
         	'app.resources',
-        	'app.inventory'
+        	'app.inventory',
+        	'app.statistics'
         ]);
 })();

@@ -9,6 +9,7 @@
     	'app.dialogue',
     	'app.resources',
     	'app.progress',
-        'app.saving'
+        'app.saving',
+        'app.statistics'
         ]);
 })();

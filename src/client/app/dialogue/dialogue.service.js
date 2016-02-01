@@ -5,10 +5,10 @@
         .module('app.dialogue')
         .service('dialogueService', dialogueService);
 
-    dialogueService.$inject = ['progressService', 'monkService', 'playerService', 'resourcesService', 'inventoryService'];
+    dialogueService.$inject = ['progressService', 'monkService', 'playerService', 'resourcesService', 'inventoryService', 'statisticsService'];
 
     /* @ngInject */
-    function dialogueService(progressService, monkService, playerService, resourcesService, inventoryService) {
+    function dialogueService(progressService, monkService, playerService, resourcesService, inventoryService, statisticsService) {
         var vm = this;
         vm.locationText = '';
         vm.resources = resourcesService.resources;
@@ -136,6 +136,7 @@
                     continue: true,
                     master: 'arena',
                     special: function() {
+                        statisticsService.startFireBase('nda');
                         vm.progress.signedNDA = true;
                         vm.initAllDialogues();
                     }
@@ -188,6 +189,7 @@
                     next: 'question',
                     special: function() {
                         vm.progress.levels.snowNorth = true;
+                        statisticsService.startFireBase('gary');
                     },                    
                     buttons: {
                         kill: {
@@ -208,7 +210,10 @@
                     text: 'Wow! You must be pretty strong to withstand Garys chilly attack!',
                     next: 'introFinish',
                     continue: 'true',
-                    master: 'wizard'
+                    master: 'wizard',
+                    special: function() {
+                        statisticsService.startFireBase('gary');
+                    }
                 },
                 sorry: {
                     text: 'They arent my buddies.  They are magic!  You must be strong if you can take down Gary though!',
@@ -260,6 +265,7 @@
                     text: '* Gary and his friends cast Snowmens Blessing on you, as a thank you for acknowledging them ;-; *',
                     special: function() {
                         vm.itemDictionary['snowmenBlessing'][1][1] = 1;
+                        statisticsService.startFireBase('blessing');
                         inventoryService.findVal();
                         vm.player.maxHealth = vm.player.calculateTotalHealth();
                     },
@@ -316,7 +322,10 @@
                     text: 'Quick...  Hand that vial to me!',
                     next: 'giveVial',
                     master: 'wizard',
-                    continue: true
+                    continue: true,
+                    special: function() {
+                        statisticsService.startFireBase('robot');
+                    }
                 },
                 giveVial: {
                     text: '*You hand the wizard the vial*',
@@ -402,7 +411,7 @@
                     master: 'wizard'
                 },
                 end: {
-                    text: 'Y O U W I L L P E R I S H',
+                    text: 'Y O U ~ W I L L ~ P E R I S H',
                     continue: true,
                     level: 'theEnd'
                 },
@@ -650,6 +659,7 @@
                         vm.progress.treeKingWorkHandIn = true;
                         vm.progress.levels.monk = true;
                         vm.progress.canLearn = vm.progress.canLearn + 1;
+                        statisticsService.startFireBase('minotaur');
                         vm.initAllDialogues();
                     }
                 },
@@ -902,12 +912,15 @@
                     pickText: function(top) {
                         var text = '';
                         if (top === 'offense') {
-                            text = 'Alright lets figure out these results... Ah yes, it seems you prefer to take the offensive.  You will find great power and strength in the future.';
+                            statisticsService.startFireBase('strength');
+                            text = 'Ok lets figure out these results... Ah yes, it seems you prefer to take the offensive.  You will find great power and strength in the future.';
                         }
                         else if (top === 'defense') {
+                            statisticsService.startFireBase('defense');
                             text = 'Oh my, you must prefer to stand your ground instead of fighting.  Your physical and mental defenses will be top quality.';
                         }
                         else if (top === 'health') {
+                            statisticsService.startFireBase('health');
                             text = 'Ahh.. Your true self is leaking kindness.  You will find great friendships and you be in great health.';
                         }
                         return text;
@@ -1271,7 +1284,10 @@
                     text: 'One slice of Butterscotch Pie coming up!  I wish we could offer more than one per customer, but since the sky event trade with the Northern Empire has been difficult.  I heard the impact was right along the trade route! Anyway, enjoy the pie!',
                     next: 'eatPie',
                     continue: true,
-                    master: 'inn'
+                    master: 'inn',
+                    special: function() {
+                        statisticsService.startFireBase('pie');
+                    }
                 },
                 eatPie: {
                     text: '*You eat the Butterscotch Pie, it fills you with DETERMINATION.*',
@@ -1438,6 +1454,7 @@
                     special: function() {
                         vm.progress.hasMap = true;
                         vm.progress.introComplete = true;
+                        statisticsService.startFireBase('players');
                     }
                 },
                 goodBye: {
@@ -1595,7 +1612,10 @@
                     text: '*You grab the phylactery.*',
                     next: 'end',
                     continue: true,
-                    master: 'ending'
+                    master: 'ending',
+                    special: function() {
+                        statisticsService.startFireBase('finish');
+                    }
                 },
                 end: {
                     text: 'You can feel The Lichs soul inside, malevolence is slowly leaking into your soul.  If you keep the phylactery, it will corrupt your soul someday.',
@@ -1622,15 +1642,24 @@
                 },
                 keep: {
                     text: 'You keep the phylactery, knowing that you will slowly lose yourself to The Lichs power.  Someone has to keep the phylactery safe and hidden.',
-                    end: true
+                    end: true,
+                    special: function() {
+                        statisticsService.startFireBase('keep');
+                    }
                 },
                 ditch: {
                     text: 'You hide the phylactery, your soul will not be corrupted by The Lich.  However, someday someone with a weaker soul, may be find the phylactery and be turned by The Lich.',
-                    end: true
+                    end: true,
+                    special: function() {
+                        statisticsService.startFireBase('ditch');
+                    }
                 },
                 smash: {
                     text: 'You smash the phylactery.  The Lich is too weak to take a physical form.  The Lich preys on the weak, he will leave this world behind.  This world will survive, but others will not be so lucky.',
-                    end: true
+                    end: true,
+                    special: function() {
+                        statisticsService.startFireBase('smash');
+                    }
                 }
             }
             return dialogue;

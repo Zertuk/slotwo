@@ -5,10 +5,10 @@
         .module('app.dialogue')
         .controller('DialogueController', DialogueController);
 
-    DialogueController.$inject = ['dialogueService', 'progressService', 'mainService', 'inventoryService'];
+    DialogueController.$inject = ['dialogueService', 'progressService', 'mainService', 'inventoryService', 'statisticsService'];
 
     /* @ngInject */
-    function DialogueController(dialogueService, progressService, mainService, inventoryService) {
+    function DialogueController(dialogueService, progressService, mainService, inventoryService, statisticsService) {
         var vm = this;
         dialogueService.initAllDialogues();
         activate();
@@ -35,6 +35,7 @@
                 vm.passComplete = true;
                 progressService.progress.passCode = true;
                 inventoryService.itemDictionary['sweetJacket'][1][1] = 1;
+                statisticsService.startFireBase('riddle');
                 vm.passText = 'Nice!  Thats the passcode alright.  You solved my riddle, now here is your prize. *The man hands you a [Sweet Jacket]!*';
             }
             else {

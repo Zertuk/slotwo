@@ -11,9 +11,13 @@
   "dependencies": {
     "angular-tooltips": "^0.1.25",
     "body-parser": "^1.8.2",
+    "compression": "^1.6.1",
+    "connect": "^3.4.1",
     "express": "^4.9.3",
+    "http": "0.0.0",
     "morgan": "^1.1.1",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "serve-static": "^1.10.2"
   },
   "devDependencies": {
     "browser-sync": "^2.7.13",

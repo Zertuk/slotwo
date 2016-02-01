@@ -538,7 +538,7 @@
             this.items = [vm.itemDictionary['undeadItem']];
             this.itemChance = 20;
             this.symbol = 'U';
-            this.damage = 60;
+            this.damage = 65;
             this.attackSpeed = 2;
             this.health = 400;
             this.maxHealth = 400;

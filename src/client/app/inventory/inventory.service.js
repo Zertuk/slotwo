@@ -527,9 +527,15 @@
 		function loadItems() {
             if (localStorage['itemSave']) {
                 var items = JSON.parse(atob(localStorage['itemSave']));
+                var potionAmt = atob(localStorage['potionAmt'])
                 for (var i = 0; i < items.length; i++) {
                 	if (items[i][1] > 0) {
-                		vm.itemDictionary[items[i][0]][1][1] = 1;
+                		if (items[i][0] === 'potion') {
+                			vm.itemDictionary[items[i][0]] = potionAmt;
+                		}
+                		else {
+                			vm.itemDictionary[items[i][0]][1][1] = 1;
+                		}
                 	}
                 }
             }

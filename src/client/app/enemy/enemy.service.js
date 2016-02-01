@@ -699,7 +699,7 @@
                         thisEnemy.damage = 99999;
                         messageService.addMessage('The Lich unleashes a huge attack!');
                         $timeout(function() {
-                            thisEnemy.damage = 90;
+                            thisEnemy.damage = 80;
                         }, 3000);
                     }
                 }

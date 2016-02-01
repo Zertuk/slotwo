@@ -38,6 +38,7 @@
             vm.progress = progressService.progress;        
             vm.resources = resourcesService.resources
             vm.itemDictionary = inventoryService.itemDictionary;
+            localStorage['potionAmt'] = vm.itemDictionary['potion'][1][1];
             localStorage['playerSave'] = btoa(JSON.stringify(vm.player));
             localStorage['progressSave'] = btoa(JSON.stringify(vm.progress));
             localStorage['resourcesSave'] = btoa(JSON.stringify(vm.resources));

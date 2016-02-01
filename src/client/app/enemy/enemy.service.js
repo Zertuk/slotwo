@@ -555,8 +555,8 @@
             this.itemChance = 100;
             this.symbol = 'c';
             this.moneyMult = 5000;
-            this.maxHealth = 8000;
-            this.health = 8000;
+            this.maxHealth = 10000;
+            this.health = 10000;
             this.damage = 40;
             this.attackSpeed = 3;
             this.colBox = [15, 15];
@@ -661,7 +661,7 @@
             this.deathMessage = '';
             this.symbol = '|';
             this.moneyMult = 25000;
-            this.damage = 100;
+            this.damage = 90;
             this.attackspeed = 2;
             this.colBox = [35, 25];
             this.move = false;
@@ -698,7 +698,7 @@
                         thisEnemy.damage = 99999;
                         messageService.addMessage('The Lich unleashes a huge attack!');
                         $timeout(function() {
-                            thisEnemy.damage = 100;
+                            thisEnemy.damage = 90;
                         }, 3000);
                     }
                 }

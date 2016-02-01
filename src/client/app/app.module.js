@@ -2,12 +2,8 @@
 	'use strict';
 
 	angular.module('app', [
-		'app.core',
-		'app.widgets',
-		'app.admin',
 		'app.main',
 		'app.inventory',
-		'app.town',
 		'app.player',
 		'app.enemy',
 		'app.level',

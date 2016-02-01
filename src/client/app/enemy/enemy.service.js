@@ -503,8 +503,8 @@
             this.name ='Oyster?';
             this.slug = 'Oyster';
             this.moneyMult = 100;
-            this.items = [vm.itemDictionary['abomItem']];
-            this.itemChance = 100;
+            this.items = [vm.itemDictionary['pearl']];
+            this.itemChance = 25;
             this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
             this.deathMessage = 'An Oyster? has been shucked!';

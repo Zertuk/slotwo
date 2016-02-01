@@ -18,7 +18,8 @@
 		'app.resources',
 		'app.monk',
 		'app.book',
-		'app.saving'
+		'app.saving',
+		'app.statistics'
 	]);
 
 })();

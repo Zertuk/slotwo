@@ -228,7 +228,7 @@
 		this.winterCoat.message = 'Keeps you warm and cozy so you can visit the snow wastes safely! +25 Health';
 		this.winterCoat.health = 25;
 		this.winterCoat.buyable = true;
-		this.winterCoat.price = 5000;
+		this.winterCoat.price = 10000;
 		this.winterCoat.removeAfterBuy = true;
 		this.winterCoat.special = function() {
 			vm.progress.hasSweater = true;
@@ -256,11 +256,11 @@
 		this.wizardsHair.slug = 'wizardsHair';
 		this.wizardsHair.desc = 'Rumored to grant the holder great power.';
 		this.wizardsHair.message = '5% increased damage, 5% increased armor, 5% increased health';
-		this.wizardsHair.healthMult = 5;
 		this.wizardsHair.damageMult = 5;
 		this.wizardsHair.defenseMult = 5;
+		this.wizardsHair.healthMult = 5;
 		this.wizardsHair.buyable = true;
-		this.wizardsHair.price = 10000;
+		this.wizardsHair.price = 20000;
 		this.wizardsHair.removeAfterBuy = true;
 
 		this.deerAntlers = new this.Item();

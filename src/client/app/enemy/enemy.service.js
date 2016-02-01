@@ -504,7 +504,7 @@
             this.slug = 'Oyster';
             this.moneyMult = 100;
             this.items = [vm.itemDictionary['pearl']];
-            this.itemChance = 50;
+            this.itemChance = 100;
             this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
             this.deathMessage = 'An Oyster? has been shucked!';
@@ -538,7 +538,7 @@
             this.items = [vm.itemDictionary['undeadItem']];
             this.itemChance = 20;
             this.symbol = 'U';
-            this.damage = 75;
+            this.damage = 60;
             this.attackSpeed = 2;
             this.health = 400;
             this.maxHealth = 400;
@@ -558,7 +558,7 @@
             this.maxHealth = 10000;
             this.health = 10000;
             this.damage = 40;
-            this.attackSpeed = 2;
+            this.attackSpeed = 3;
             this.colBox = [12, 12];
             this.move = false;
             this.phases = true;

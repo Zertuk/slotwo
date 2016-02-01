@@ -654,7 +654,7 @@
         vm.Lich = function Lich() {
             this.name = 'The Lich';
             this.slug = 'Lich';
-            this.desc = '';
+            this.desc = 'd o o m';
             this.items = [vm.itemDictionary['lichItem']];
             this.itemChance = 100;
             this.deathMessage = '';

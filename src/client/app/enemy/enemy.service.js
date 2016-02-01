@@ -486,9 +486,9 @@
             this.deathMessage = 'RIP the crab is toast.';
             this.desc = 'Loves money';
             this.items = [vm.itemDictionary['claws']];
-            this.itemChance = 10;
+            this.itemChance = 20;
             this.symbol = ';';
-            this.moneyMult = 1500;
+            this.moneyMult = 1000;
             this.maxHealth = 500;
             this.health = 500;
             this.damage = 50;
@@ -502,8 +502,8 @@
             this.name ='Oyster?';
             this.slug = 'Oyster';
             this.moneyMult = 100;
-            this.itemChance = 10;
             this.items = [vm.itemDictionary['pearl']];
+            this.itemChance = 10;
             this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
             this.deathMessage = 'An Oyster? has been shucked!';
@@ -762,8 +762,8 @@
         vm.SnowmanBoss.prototype = new vm.Enemy();
 
         vm.keys = ['Tree', 'Deer', 'Bear', 'Gorilla', 'DustDevil', 'Ghost', 'Minotaur',
-                   'Mantis', 'StickBug', 'Oyster', 'Crab', 'Penguin', 'Yeti',
-                   'Snowman', 'SnowmanBoss', 'GorillaSnow', 'Mammoth', 'Robot', 'Lich'];
+                   'Vampire', 'King', 'Mantis', 'StickBug', 'Oyster', 'Crab', 'Penguin', 'Yeti',
+                   'Snowman', 'SnowmanBoss', 'GorillaSnow', 'Mammoth', 'Robot', 'Undead', 'Lich'];
     }
 
 })();

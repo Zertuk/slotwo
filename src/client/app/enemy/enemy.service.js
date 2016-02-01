@@ -557,7 +557,7 @@
             this.moneyMult = 5000;
             this.maxHealth = 10000;
             this.health = 10000;
-            this.damage = 40;
+            this.damage = 50;
             this.attackSpeed = 3;
             this.colBox = [12, 12];
             this.move = false;

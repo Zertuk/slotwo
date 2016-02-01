@@ -487,6 +487,12 @@
                             master: 'wizard'
                         }
                     }
+                },
+                no: {
+                    text: 'Your loss!  Let me know if you change your mind about the mission.',
+                    next: 'question',
+                    continue: true,
+                    master: 'wizard'
                 }
             };
             return dialogue;

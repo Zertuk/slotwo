@@ -277,6 +277,7 @@
             this.name = 'Penguin';
             this.slug = 'Penguin';
             this.moneyMult = 1;
+            this.desc = 'Evilest of all birds'
             this.deathMessage = 'A penguin has been demolished!';
             this.symbol = 'P';
             this.maxHealth = '60';
@@ -346,7 +347,7 @@
             this.itemChance = 35;
             this.deathMessage = 'The Yeti has went extinct!';
             this.move = false;
-            this.damage = 50;
+            this.damage = 60;
             this.attackSpeed = 3;
             this.health = 1000;
             this.maxHealth = 1000;
@@ -414,8 +415,8 @@
             this.items = [vm.itemDictionary['frozenBanana']];
             this.moneyMult = 1000;
             this.itemChance = 20;
-            this.maxHealth = 450;
-            this.health = 450;
+            this.maxHealth = 600;
+            this.health = 600;
             this.damage = 60;
             this.attackSpeed = 4;
         };
@@ -430,8 +431,8 @@
             this.items = [vm.itemDictionary['mammothFur']];
             this.moneyMult = 1000;
             this.itemChance = 25;
-            this.maxHealth = 600;
-            this.health = 600;
+            this.maxHealth = 700;
+            this.health = 700;
             this.damage = 75;
             this.attackspeed = 5;
         };
@@ -486,7 +487,7 @@
             this.deathMessage = 'RIP the crab is toast.';
             this.desc = 'Loves money';
             this.items = [vm.itemDictionary['claws']];
-            this.itemChance = 20;
+            this.itemChance = 50;
             this.symbol = ';';
             this.moneyMult = 1000;
             this.maxHealth = 500;
@@ -503,7 +504,7 @@
             this.slug = 'Oyster';
             this.moneyMult = 100;
             this.items = [vm.itemDictionary['pearl']];
-            this.itemChance = 10;
+            this.itemChance = 25;
             this.symbol = 'o';
             this.desc = 'Or is it a Clam?!';
             this.deathMessage = 'An Oyster? has been shucked!';
@@ -554,8 +555,8 @@
             this.itemChance = 100;
             this.symbol = 'c';
             this.moneyMult = 5000;
-            this.maxHealth = 6000;
-            this.health = 6000;
+            this.maxHealth = 8000;
+            this.health = 8000;
             this.damage = 40;
             this.attackSpeed = 3;
             this.colBox = [15, 15];
@@ -694,11 +695,11 @@
                     }
                     else if (count === 0) {
                         thisEnemy.phaseOne = true;
-                        thisEnemy.damage = 9;
+                        thisEnemy.damage = 99999;
                         messageService.addMessage('The Lich unleashes a huge attack!');
                         $timeout(function() {
-                            thisEnemy.damage = 30;
-                        }, 4000);
+                            thisEnemy.damage = 100;
+                        }, 3000);
                     }
                 }
             },
@@ -738,8 +739,8 @@
             this.deathMessage = 'Gary the Snowman has been melted!';
             this.symbol = '\\';
             this.damage = 40;
-            this.maxHealth = 2000;
-            this.health = 2000;
+            this.maxHealth = 2200;
+            this.health = 2200;
             this.attackSpeed = 2;
             this.colBox = [20, 20];
             this.move = false;

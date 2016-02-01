@@ -331,6 +331,7 @@
         };
         var newPlayer = new this.Player();
         function setPlayerStats(storage) {
+            console.log(storage);
             newPlayer.health = storage.health;
             newPlayer.baseHealth = storage.baseHealth;
             newPlayer.weapon = storage.weapon;

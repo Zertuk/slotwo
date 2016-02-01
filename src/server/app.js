@@ -26,6 +26,7 @@ switch (environment){
     case 'build':
         console.log('** BUILD **');
         app.use(express.static('./build/'));
+        // Any invalid calls for templateUrls are under app/* and should return 404
         app.use('/app/*', function(req, res, next) {
             four0four.send404(req, res);
         });

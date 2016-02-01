@@ -529,9 +529,11 @@
                 var items = JSON.parse(atob(localStorage['itemSave']));
                 for (var i = 0; i < items.length; i++) {
                 	if (items[i][1] > 0) {
+                		console.log('tset')
                 		vm.itemDictionary[items[i][0]][1][1] = 1;
                 	}
                 }
+                console.log(items);
             }
 		}
 		loadItems();

@@ -326,6 +326,7 @@
 					vm.unitArray.push(unit);
 				})(i, random);
 			}
+			console.log(random);
 		}
 
 		

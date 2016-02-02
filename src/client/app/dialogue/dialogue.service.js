@@ -241,7 +241,7 @@
                 cool: {
                     text: 'Yeah it is pretty great, although sometimes I run low on mana after killing too many! Oops~',
                     next: 'introFinish',
-                    master: 'wizard,',
+                    master: 'wizard',
                     continue: true
                 },
                 intel: {

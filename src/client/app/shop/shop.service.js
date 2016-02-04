@@ -75,6 +75,7 @@
             if (typeof item.special !== 'undefined') {
                 item.special();
             }
+            inventoryService.findVal();
             messageService.updateMainMessage(item.name + ' has been purchased.');
         	inventoryService.itemDictionary[item.slug][1][1] = inventoryService.itemDictionary[item.slug][1][1] + 1;
             removeItem(item);

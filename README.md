@@ -2,7 +2,9 @@
 
 Play the game here: http://spacelichomega2.com
 
-Sequel to http://spacelichomega.zertukis.com built with Angular, uses Firebase for statistics tracking.
+Sequel to http://spacelichomega.zertukis.com.
+
+Built with Angular, uses Firebase for statistics tracking.
 
 ![image](https://pbs.twimg.com/media/CYlZ8wZU0AEFsX9.png:large)
 

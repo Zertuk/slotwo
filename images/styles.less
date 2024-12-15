@@ -1,0 +1,594 @@
+@color_lightblue: #00BFFF;
+@color_blue: #1171a3;
+@color_success: #43c83c;
+@color_warning: #f88529;
+@color_important: #fa3031;
+@color_violet: #932ab6;
+@color_black: #191919;
+@color_white: #f7f7f7;
+@color_orange: #ffae1a;
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+::selection {
+    background: @color_white;
+    color: @color_black;
+}
+::-moz-selection {
+    background: @color_white;
+    color: @color_black;
+}
+#__bs_notify__ {
+    display: none !important; 
+}
+
+* {
+    /*-webkit-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    box-shadow: none !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false) !important;
+    -webkit-text-shadow: none !important;
+    -ms-text-shadow: none !important;
+    text-shadow: none !important;*/
+    font-family: "Inconsolata";
+    -webkit-font-smoothing: antialiased;
+    /*font-weight: 400;*/
+}
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+a {
+    color: @color_orange;
+}
+a:hover {
+    color: @color_white;
+}
+.actualworkers .worker p:last-of-type {
+    margin-left: 20px;
+}
+.arrow {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+}
+.alignvert {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.block {
+    display: block;
+}
+
+.borderbottom {
+    border-bottom: 1px solid @color_white;
+}
+
+.button .bg, .button .abilitybg {
+    background: @color_white;
+    position: absolute;
+    height: 22px;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+.button .abilitybg.abilitycooldown {
+    background: red;
+    opacity: 0.25;
+    cursor: no-drop;
+}
+button.craft {
+    margin: 10px 0;
+}
+.button {
+    display: inline-block;
+    position: relative;
+}
+button, .button {
+    padding: 2px 10px;
+    background: @color_black;
+    color: @color_white;
+    box-shadow: none;
+    border: 1px solid @color_white;
+    cursor: pointer;
+}
+button:hover, .resourcecontrol:hover, .button:hover {
+    background: #2f2f2f;
+}
+
+button:active, 
+.resourcecontrol:active, 
+.button:active, 
+button.active {
+    background: @color_white;
+    color: @color_black;
+}
+
+div.button.noactive {
+    font-size: 13px;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background: @color_black;
+    color: @color_white;
+    font-family: 'Inconsolata';
+}
+
+.conditional {
+    height: 33px;
+}
+.container {
+    padding: 0 50px 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.container:after,
+.shoprow:after,
+footer:after {
+    content: "";
+    display: table;
+    clear: both; 
+}
+
+div {
+    box-sizing: border-box;
+}
+.error {
+    color: red;
+}
+.enemyname {
+    border-bottom: 2px solid @color_white;
+    padding-bottom: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px 0 5px;
+}
+
+.enemydesc {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+}
+
+.enemyinfo {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+
+.enemyinfo.book {
+    border: 1px dashed @color_white;
+    margin: 10px 20px 10px 0;
+    width: 45%;
+    padding: 10px;
+}
+
+.enemyinfo .healthbarinner {
+    background: green;
+}
+
+.enemyinfo .healthbar {
+    margin: 5px 0;
+}
+
+.enemyplaceholder {
+    min-height: 100px;
+}
+
+.fade {
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
+    opacity: 0;
+}
+
+.forge, .campfire {
+    float: left;
+    width: 100%;
+}
+
+.forge button, .campfire button {
+    margin: 10px 0;
+}
+
+footer {
+    padding: 5px 50px 10px;
+}
+
+footer a {
+    float: right;
+    margin-left: 25px;
+    color: white;
+}
+
+footer a:hover {
+    color: @color_orange;
+}
+
+.half {
+    float: left;
+    margin-right: 2%;
+    width: 49%;
+}
+
+.half:last-child {
+    margin-right: 0;
+}
+
+.half {
+    float: left;
+    width: 49%;
+}
+.half:first-of-type {
+    margin-right: 2%;
+}
+.healthbar {
+    width: 100%;
+    height: 24px;
+    margin: 10px 0;
+    border: 1px solid @color_white;
+    position: relative;
+
+}
+
+.healthbar p {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+}
+.healthbarinner {
+    position: absolute;
+    width: 100%;
+    height: 22px;
+}
+header {
+    border-bottom: 1px solid @color_white;
+    padding: 10px 50px 0;
+
+}
+h1 {
+    font-size: 26px;
+    float: right;
+    margin: 0;
+}
+input {
+    margin-bottom: 10px;
+    background: #2f2f2f;
+    color: @color_white;
+    border: 1px solid @color_white;
+}
+input.noborder {
+    border: 0;
+}
+
+.itemdesc {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    float: left;
+    width: 100%;
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: center;
+    height: 225px;
+}
+.itemdesc:first-of-type {
+    margin-left: 0;
+}
+.itemdesc.noborder {
+    border: none;
+}
+.inline {
+    display: inline-block;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.italic.inline {
+    margin-left: 5px;
+}
+.looted {
+    border: 1px solid white !important;
+}
+
+#locationtext {
+    border: 1px dashed @color_white;
+    min-height: 200px;
+    width: 45%;
+    max-width: 600px;
+    position: absolute;
+    top: 50px;
+    padding: 10px 50px;
+    line-height: 22px;
+}
+
+#locationtext button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#locationtext button:last-child {
+    margin-bottom: 0;
+}
+#levelwrap,
+#locationwrap {
+    height: auto;
+    position: relative;
+}
+
+#locationwrap {
+    min-height: 420px;
+}
+
+.leveloverflow {
+    overflow-x: hidden;
+}
+
+.levelrow {
+    display: block;
+    float: none;
+    margin: 0;
+}
+.loadwrap {
+    width: 200px;
+    height: 24px;
+    border: 1px solid @color_white;
+}
+.log {
+    float: right;
+    width: 50%;
+    height: 120px;
+    overflow-y: hidden;
+}
+
+.margintop45 {
+    margin-top: 48px;
+}
+.mainmessage,
+.mainbutton {
+    display: inline-block;
+}
+
+.mainmessage {
+    margin-left: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+.marginbottom10 {
+    margin-bottom: 10px;
+}
+.marginleft50 {
+    margin: 0;
+    margin-left:  50px;
+}
+nav ul li {
+    display: inline-block;
+}
+
+.nomargin {
+    margin: 0;
+}
+.one {
+    width: 100%;
+    font-size: 12px
+}
+.otheritem {
+    padding: 10px;
+    border: 1px dashed @color_white;
+    margin-bottom: 2%;
+}
+
+.overflowhidden {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+
+.playerinfo p {
+    display: inline-block;
+    margin: 0;
+}
+
+.playerinfo {
+    float: right;
+    margin: 5px 0;
+}
+
+.playerabilities button,
+.playerabilities .button {
+    margin: 5px 0;
+}
+.playerabilities {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+pre {
+    font-size: 17px;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+pre:nth-of-type(27) {
+    clear: both;
+}
+
+.smallpre pre {
+    font-size: 14px;
+}
+
+.resourcecontrol {
+    margin: 0 2px;
+    border: 1px solid @color_white;
+    text-align: center;
+    cursor: pointer;
+}
+.shop .list {
+    width: 200px;
+}
+.shop .list p {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.shop .list p:last-child {
+    float: right;
+}
+
+span {
+    position: relative;
+}
+span.click {
+    cursor: pointer;
+}
+span.click:hover .tooltip {
+    display: block;
+    position: absolute;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.shoprow {
+    margin: 10px 0;
+}
+.textcenter {
+    text-align: center;
+}
+.tooltip {
+    display: none;
+    background: @color_black;
+    font-size: 32px;
+    left: 25%;
+    z-index: 100;
+}
+
+.titleborder {
+    border-bottom: 2px solid @color_white;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.titleborder h4 {
+    padding-bottom: 5px;
+}
+.text {
+    margin-top: 0;
+}
+#test {
+    background: red !important;
+}
+
+.worker p {
+    display: inline-block;
+}
+
+.worker p.info:last-of-type {
+    margin-left: 0;
+}
+
+.workerinfo {
+    margin-left: 2%;
+    float: left;
+}
+
+.workerinfo:first-of-type {
+    margin-left: 0;
+    width: 275px;
+    border-right: 1px dashed grey;
+}
+
+
+/* these help the dialogue art a little bit on tablet */
+@media only screen and (max-width: 1200px) {
+    #locationwrap pre {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #locationwrap pre {
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

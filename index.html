@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide { display: none!important; }
+    </style>
+    <title>Space Lich Omega 2</title>
+    <meta name = "description" content = 'An incremental RPG called Space Lich Omega 2 where you must defeat the awful lich created by Zertuk / Nora Forcier.  Inspired by Candybox by aniwey.'>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <base href="/">
+
+    <link rel="stylesheet" href="styles/lib-9de3c31031.css">
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="styles/app-7b548f7358.css">
+</head>
+<body>
+    <div ng-controller = "MainController as vm" ng-cloak ng-hide = "!vm.player">
+        <header>
+            <div class = "row controls">
+                <div class = 'noactive button' ng-click = "vm.player.rest()" ng-if = " vm.progress.hasSleepingBag">Rest</div>
+                <button ng-click = "vm.switchTemplate('app/inventory/inventory.html')" ng-if = "vm.progress.hasMap">Inventory</button>
+                <button ng-click = "vm.switchTemplate('app/book/book.html')" ng-if = "vm.itemDictionary['compendium'][1][1] !== 0">Compendium</button>
+                <button ng-click = "vm.switchLocation('mainMap')" ng-if = "vm.progress.hasMap">Map</button>
+                <p class = "inline nomargin">{{vm.money}} Gold ({{vm.calculateTotlMoneyRate()}}/s)</p>
+                <p class = "inline marginleft50 saving fade">Saving Complete</p>
+<!--                 <p>{{vm.player.gold}}</p>
+ -->                <h1>{{vm.currentLocation.name}}</h1>
+            </div><!--row-->
+            <div class = "row">
+                <div class = "healthbar">
+                    <div class = "healthbarinner" ng-style = "vm.player.healthWidth">
+                    </div>
+                    <p class = "alignvert">{{vm.player.health}} / {{vm.player.maxHealth}}</p>
+                </div><!--healthbar-->
+            </div><!--row-->
+            <div class = "row conditional">
+                <button ng-if = "vm.currentLocation.prevName && vm.progress.hasMap" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">Return to {{vm.currentLocation.prevName}}</button>
+                <button ng-if = "vm.prevMessage" class = "marginbottom10 mainbutton" ng-click = "vm.switchLocation(vm.currentLocation.prev)">{{vm.prevMessage}}</button>
+                <p class = "mainmessage" message-directive messageerror = "{{vm.messageError}}">{{vm.mainMessage}}</p>
+                <div class = "playerinfo">
+                    <p>{{vm.player.calculateTotalDamage()}} Damage at {{vm.player.weapon.attackSpeedMessage()}} ({{vm.player.findDPS()}} dps)|</p>
+                    <p>{{vm.player.calculateTotalArmor()*100}}% Armor</p>
+                </div>
+            </div><!--row-->
+        </header>
+        <ng-include class = "template" src="vm.activeTemplate"></ng-include>
+        <footer>
+            <a href = "https://www.github.com/zertuk/slotwo" target = "_blank">GitHub</a>
+            <a href = "" ng-click = "vm.switchTemplate('app/about/about.html')">About</a>
+        </footer>
+    </div>
+
+    
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script src="js/lib-bc8ca47d70.js"></script>
+
+    <script src="js/app-6d0688fdcd.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48873622-11', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
